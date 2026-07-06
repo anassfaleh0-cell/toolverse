@@ -3,17 +3,21 @@
 import { useTheme } from "next-themes";
 import { useSyncExternalStore } from "react";
 
-function useMounted() {
-  return useSyncExternalStore(
-    () => () => {},
-    () => true,
-    () => false,
-  );
+function noopSubscribe() {
+  return () => {};
+}
+
+function getClientSnapshot() {
+  return true;
+}
+
+function getServerSnapshot() {
+  return false;
 }
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
-  const mounted = useMounted();
+  const mounted = useSyncExternalStore(noopSubscribe, getClientSnapshot, getServerSnapshot);
 
   if (!mounted) {
     return (

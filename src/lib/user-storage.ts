@@ -11,6 +11,20 @@ export interface StoredTool {
   viewedAt: string;
 }
 
+let _recentViewed: StoredTool[] = [];
+let _recentDirty = true;
+
+function _readRecent(): void {
+  if (typeof window === "undefined") return;
+  try {
+    const raw = localStorage.getItem(RECENTLY_VIEWED_KEY);
+    _recentViewed = raw ? (JSON.parse(raw) as StoredTool[]) : [];
+  } catch {
+    _recentViewed = [];
+  }
+  _recentDirty = false;
+}
+
 function safeGet<T>(key: string, fallback: T): T {
   if (typeof window === "undefined") return fallback;
   try {
@@ -31,17 +45,28 @@ function safeSet(key: string, value: unknown): void {
 }
 
 export function getRecentlyViewed(): StoredTool[] {
-  return safeGet<StoredTool[]>(RECENTLY_VIEWED_KEY, []);
+  if (typeof window === "undefined") return [];
+  if (_recentDirty) _readRecent();
+  return _recentViewed;
 }
 
 export function addRecentlyViewed(tool: Omit<StoredTool, "viewedAt">): void {
   const list = getRecentlyViewed().filter((t) => t.slug !== tool.slug);
   list.unshift({ ...tool, viewedAt: new Date().toISOString() });
-  safeSet(RECENTLY_VIEWED_KEY, list.slice(0, MAX_RECENT));
+  const trimmed = list.slice(0, MAX_RECENT);
+  safeSet(RECENTLY_VIEWED_KEY, trimmed);
+  _recentViewed = trimmed;
 }
 
 export function clearRecentlyViewed(): void {
   safeSet(RECENTLY_VIEWED_KEY, []);
+  _recentViewed = [];
+}
+
+/* Called by window "storage" event listener to invalidate the cache
+   when another tab changes localStorage. */
+export function invalidateRecentlyViewed(): void {
+  _recentDirty = true;
 }
 
 export function getBookmarks(): StoredTool[] {

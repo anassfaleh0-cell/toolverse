@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { useSyncExternalStore } from "react";
-import { getRecentlyViewed, clearRecentlyViewed } from "@/lib/user-storage";
+import { getRecentlyViewed, clearRecentlyViewed, invalidateRecentlyViewed } from "@/lib/user-storage";
 
 function subscribe(cb: () => void) {
-  window.addEventListener("storage", cb);
-  return () => window.removeEventListener("storage", cb);
+  const handler = () => { invalidateRecentlyViewed(); cb(); };
+  window.addEventListener("storage", handler);
+  return () => window.removeEventListener("storage", handler);
 }
 
 export function RecentlyViewed() {
