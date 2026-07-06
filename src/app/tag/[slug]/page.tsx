@@ -12,8 +12,9 @@ export function generateStaticParams() {
   return getAllTagSlugs().map((slug) => ({ slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const tag = getTag(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const tag = getTag(slug);
   if (!tag) return {};
   return {
     title: `${tag.name} Tools - ${SITE_NAME}`,
@@ -24,8 +25,9 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function TagPage({ params }: { params: { slug: string } }) {
-  const tag = getTag(params.slug);
+export default async function TagPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const tag = getTag(slug);
   if (!tag) notFound();
 
   const tools = getToolsForTag(tag);

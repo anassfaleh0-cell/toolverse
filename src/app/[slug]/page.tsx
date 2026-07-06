@@ -12,8 +12,9 @@ export function generateStaticParams() {
   return getAllLandingSlugs().map((slug) => ({ slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const page = getLandingPage(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const page = getLandingPage(slug);
   if (!page) return {};
   return {
     title: page.getTitle(),
@@ -24,8 +25,9 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function LandingPage({ params }: { params: { slug: string } }) {
-  const page = getLandingPage(params.slug);
+export default async function LandingPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const page = getLandingPage(slug);
   if (!page) notFound();
 
   const tools = page.getTools();
