@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "geist": "^1.7.2",
     "js-yaml": "^5.2.1",
     "jszip": "^3.10.1",
     "marked": "^18.0.5",
