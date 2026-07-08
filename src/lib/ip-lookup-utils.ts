@@ -17,9 +17,6 @@ export interface IpLookupData {
   asn: string;
   currency: string;
   callingCode: string;
-  isVpn: boolean;
-  isProxy: boolean;
-  isTor: boolean;
 }
 
 export const CONTINENT_MAP: Record<string, string> = {

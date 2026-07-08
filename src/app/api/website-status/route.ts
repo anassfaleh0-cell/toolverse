@@ -59,6 +59,6 @@ export async function GET(request: Request) {
       contentLength: null,
       server: "",
       error: message,
-    });
+    }, { status: 500 });
   }
 }

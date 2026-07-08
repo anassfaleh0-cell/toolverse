@@ -1,7 +1,10 @@
 "use client";
 
-import { useReducer, useEffect, useCallback, startTransition } from "react";
-import { ToolResultCard, ToolSkeleton, ToolError, CopyButton } from "@/components/shared";
+import { useReducer, useEffect, useCallback, startTransition, useState } from "react";
+import Link from "next/link";
+import { ToolResultCard, ToolSkeleton, ToolError, CopyButton, ShareButton, DashboardSummary, StatusBadge, ScoreGauge, ToolFaqSection } from "@/components/shared";
+import { TOOL_FAQS } from "@/lib/tool-faqs";
+import { Card, Button } from "@/components/ui";
 import { RefreshButton } from "./refresh-button";
 import {
   getBrowserData,
@@ -60,6 +63,88 @@ const initialState: State = {
   error: null,
 };
 
+function IpMap({ lat, lon }: { lat: number; lon: number }) {
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoaded(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const src = `https://www.openstreetmap.org/export/embed.html?bbox=${lon - 0.05}%2C${lat - 0.05}%2C${lon + 0.05}%2C${lat + 0.05}&layer=mapnik&marker=${lat}%2C${lon}`;
+
+  return (
+    <div className="relative aspect-[2/1] w-full overflow-hidden rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800">
+      {!loaded && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="size-8 animate-pulse rounded-full bg-zinc-300 dark:bg-zinc-600" />
+        </div>
+      )}
+      <iframe
+        src={src}
+        title="Map showing your location"
+        className={`h-full w-full border-0 transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-0"}`}
+        loading="lazy"
+        allowFullScreen
+        referrerPolicy="no-referrer"
+        sandbox="allow-scripts allow-same-origin"
+      />
+    </div>
+  );
+}
+
+function formatAllData(
+  geo: IpGeoData | null,
+  browser: BrowserData | null,
+  ipv4: string | null,
+  ipv6: string | null,
+  displayIp: string,
+): string {
+  const lines: string[] = ["What Is My IP - ToolVerse", ""];
+  lines.push(`IP: ${displayIp}`);
+  if (ipv6 && ipv6 !== displayIp) lines.push(`IPv6: ${ipv6}`);
+  if (geo) {
+    lines.push(`Country: ${geo.country}`);
+    lines.push(`Region: ${geo.regionName}`);
+    lines.push(`City: ${geo.city}`);
+    lines.push(`ZIP Code: ${geo.zip || "\u2014"}`);
+    lines.push(`ISP: ${geo.isp}`);
+    lines.push(`ASN: ${geo.as}`);
+    lines.push(`Timezone: ${geo.timezone}`);
+    lines.push(`Latitude: ${geo.lat}`);
+    lines.push(`Longitude: ${geo.lon}`);
+  }
+  if (browser) {
+    lines.push("");
+    lines.push(`Browser: ${browser.browser}`);
+    lines.push(`Browser Version: ${browser.browserVersion || "\u2014"}`);
+    lines.push(`Operating System: ${browser.os}`);
+    lines.push(`Device Type: ${browser.deviceType}`);
+    lines.push(`Screen Resolution: ${browser.screenResolution}`);
+    lines.push(`Language: ${browser.language}`);
+    lines.push(`User Agent: ${browser.userAgent}`);
+  }
+  return lines.join("\n");
+}
+
+function downloadJson(data: {
+  geo: IpGeoData | null;
+  ipv4: string | null;
+  ipv6: string | null;
+  browser: BrowserData | null;
+}): void {
+  const payload = { ...data, timestamp: new Date().toISOString() };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "ip-data.json";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
 export function IpDisplay({ pageUrl }: IpDisplayProps) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -103,7 +188,20 @@ export function IpDisplay({ pageUrl }: IpDisplayProps) {
   }, [fetchIpInfo]);
 
   if (state.error) {
-    return <ToolError message={state.error} onRetry={fetchIpInfo} />;
+    return (
+      <div className="space-y-4">
+        <ToolError message={state.error} onRetry={fetchIpInfo} />
+        <Card className="p-4 text-sm text-zinc-600 dark:text-zinc-400 space-y-1">
+          <p className="font-medium text-zinc-800 dark:text-zinc-200">Troubleshooting tips:</p>
+          <ul className="list-inside list-disc space-y-1">
+            <li>Check your internet connection</li>
+            <li>Try refreshing the page</li>
+            <li>Disable any VPN or proxy temporarily</li>
+            <li>Allow requests to the IP info API</li>
+          </ul>
+        </Card>
+      </div>
+    );
   }
 
   if (state.loading) {
@@ -111,13 +209,37 @@ export function IpDisplay({ pageUrl }: IpDisplayProps) {
   }
 
   const { geo, ipv4, ipv6, browser } = state;
-  const displayIp = geo?.ip || ipv4 || ipv6 || "—";
+  const displayIp = geo?.ip || ipv4 || ipv6 || "\u2014";
+  const allText = formatAllData(geo, browser, ipv4, ipv6, displayIp);
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+      {(() => {
+        const exposureScore = geo ? 30 : 10;
+        const privacyScore = 100 - exposureScore;
+        return (
+          <DashboardSummary
+            title="Your Public IP"
+            status={geo !== null ? "good" : "warning"}
+            mainFinding={displayIp !== "\u2014" ? `${ipv4 || displayIp}${ipv6 && ipv6 !== displayIp ? ` + IPv6: ${ipv6}` : ""}` : "Could not detect IP"}
+            riskLevel={geo !== null ? "low" : "medium"}
+            riskLabel={geo ? `${geo.country || "Unknown"}` : "Unavailable"}
+            nextAction={geo ? "Your IP is visible to every website you visit. Use a VPN if you want to mask it." : "Refresh the page to try again. If the issue persists, check your internet connection."}
+          >
+            <ScoreGauge score={privacyScore} size={60} label={privacyScore >= 80 ? "Protected" : privacyScore >= 60 ? "Exposed" : "Visible"} />
+            <div className="flex flex-wrap items-center gap-2">
+              <StatusBadge status={ipv4 ? "good" : "neutral"} label={ipv4 ? "IPv4" : "No IPv4"} />
+              <StatusBadge status={ipv6 ? "good" : "neutral"} label={ipv6 ? "IPv6" : "No IPv6"} />
+              <StatusBadge status={geo?.isp ? "good" : "warning"} label={geo?.isp || "ISP Unknown"} />
+            </div>
+          </DashboardSummary>
+        );
+      })()}
+
+      <Card variant="elevated" className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+          <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5">
+            <span className="inline-block size-1.5 rounded-full bg-emerald-500" />
             Your Public IP
           </p>
           <p className="mt-1 font-mono text-2xl font-bold text-zinc-900 dark:text-zinc-50">
@@ -133,36 +255,114 @@ export function IpDisplay({ pageUrl }: IpDisplayProps) {
           <CopyButton text={displayIp} />
           <RefreshButton onRefresh={fetchIpInfo} loading={false} />
         </div>
+      </Card>
+
+      <div className="flex flex-wrap gap-2">
+        <CopyButton text={allText} label="Copy All" />
+        <Button
+          type="button"
+          variant="secondary"
+          size="sm"
+          onClick={() => downloadJson({ geo, ipv4, ipv6, browser })}
+          aria-label="Export IP data as JSON"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          Export JSON
+        </Button>
+        <ShareButton
+          title="What Is My IP - ToolVerse"
+          text="Find your public IP address with detailed geolocation and browser information."
+          url={pageUrl}
+        />
       </div>
+
+      {geo && (
+        <IpMap lat={geo.lat} lon={geo.lon} />
+      )}
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {geo && (
           <>
-            <ToolResultCard label="IP Address" value={geo.ip} icon="🌐" mono />
-            <ToolResultCard label="Country" value={geo.country} icon="🗺️" />
-            <ToolResultCard label="Region" value={geo.regionName} icon="📍" />
-            <ToolResultCard label="City" value={geo.city} icon="🏙️" />
-            <ToolResultCard label="ZIP Code" value={geo.zip || "—"} icon="📮" />
-            <ToolResultCard label="ISP" value={geo.isp} icon="🔌" />
-            <ToolResultCard label="ASN" value={geo.as} icon="🏷️" />
-            <ToolResultCard label="Timezone" value={geo.timezone} icon="🕐" />
-            <ToolResultCard label="Latitude" value={String(geo.lat)} icon="📐" />
-            <ToolResultCard label="Longitude" value={String(geo.lon)} icon="📐" />
+            <ToolResultCard label="IP Address" value={geo.ip} icon="\uD83C\uDF10" mono />
+            <ToolResultCard label="Country" value={geo.country} icon="\uD83D\uDDFA\uFE0F" />
+            <ToolResultCard label="Region" value={geo.regionName} icon="\uD83D\uDCCD" />
+            <ToolResultCard label="City" value={geo.city} icon="\uD83C\uDFD9\uFE0F" />
+            <ToolResultCard label="ZIP Code" value={geo.zip || "\u2014"} icon="\uD83D\uDCEA" />
+            <ToolResultCard label="ISP" value={geo.isp} icon="\uD83D\uDD0C" />
+            <ToolResultCard label="ASN" value={geo.as} icon="\uD83C\uDFF7\uFE0F" />
+            <ToolResultCard label="Timezone" value={geo.timezone} icon="\uD83D\uDD50" />
+            <ToolResultCard label="Latitude" value={String(geo.lat)} icon="\uD83D\uDCD0" />
+            <ToolResultCard label="Longitude" value={String(geo.lon)} icon="\uD83D\uDCD0" />
           </>
         )}
         {browser && (
           <>
             <ToolResultCard label="Browser" value={browser.browser} icon={getBrowserEmoji(browser.browser)} />
-            <ToolResultCard label="Browser Version" value={browser.browserVersion || "—"} icon="🔢" />
+            <ToolResultCard label="Browser Version" value={browser.browserVersion || "\u2014"} icon="\uD83D\uDD22" />
             <ToolResultCard label="Operating System" value={browser.os} icon={getOsEmoji(browser.os)} />
             <ToolResultCard label="Device Type" value={browser.deviceType} icon={getDeviceEmoji(browser.deviceType)} />
-            <ToolResultCard label="Screen Resolution" value={browser.screenResolution} icon="🖥️" />
-            <ToolResultCard label="Language" value={browser.language} icon="🔤" />
-            <ToolResultCard label="User Agent" value={browser.userAgent.slice(0, 80) + "..."} icon="🤖" />
+            <ToolResultCard label="Screen Resolution" value={browser.screenResolution} icon="\uD83D\uDDA5\uFE0F" />
+            <ToolResultCard label="Language" value={browser.language} icon="\uD83D\uDD24" />
+            <ToolResultCard label="User Agent" value={browser.userAgent.slice(0, 80) + "..."} icon="\uD83E\uDD16" />
           </>
         )}
       </div>
 
+      <div className="space-y-4">
+        <div className="rounded-xl border border-zinc-200 p-5 text-sm dark:border-zinc-800">
+          <h3 className="mb-2 font-medium text-zinc-900 dark:text-zinc-50">Understanding Your Results</h3>
+          <div className="space-y-3 text-zinc-600 dark:text-zinc-400">
+            <div>
+              <p className="font-medium text-zinc-800 dark:text-zinc-200">Public vs Private IP</p>
+              <p className="mt-0.5">Your public IP ({displayIp}) is globally routable and visible to every server you connect to. Your private IP (e.g., 192.168.x.x, 10.x.x.x) only exists on your local network and is never sent to the internet. Your router translates between them using NAT.</p>
+            </div>
+            {ipv4 && ipv6 && (
+              <div>
+                <p className="font-medium text-zinc-800 dark:text-zinc-200">Dual-Stack: IPv4 + IPv6 Active</p>
+                <p className="mt-0.5">Your connection supports both protocols. IPv6 traffic is preferred by modern browsers, so your IPv6 address is what most sites see. Verify your VPN masks both addresses, as many VPNs only tunnel IPv4.</p>
+              </div>
+            )}
+            <div>
+              <p className="font-medium text-zinc-800 dark:text-zinc-200">ISP & Location Accuracy</p>
+              <p className="mt-0.5">Your ISP ({geo?.isp || "Unknown"}) owns the IP block. The city and region shown are based on ISP registration data, not your physical location. Geolocation is usually accurate to the city level but cannot pinpoint your address. Mobile IPs are even less precise due to carrier-grade NAT.</p>
+            </div>
+            <div>
+              <p className="font-medium text-zinc-800 dark:text-zinc-200">VPN & Proxy Detection Limits</p>
+              <p className="mt-0.5">This tool shows the IP your browser exposes. If a VPN is active, you will see the VPN server&apos;s IP, not your real one. However, WebRTC, IPv6, and DNS leaks can bypass the VPN and reveal your actual IP. Run <Link href="/ip-lookup" className="text-blue-600 hover:underline dark:text-blue-400">IP Lookup</Link> on your address for deeper threat analysis.</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="rounded-xl border border-emerald-200 p-5 text-sm dark:border-emerald-900">
+          <h3 className="mb-2 font-medium text-emerald-800 dark:text-emerald-200">Privacy Guidance</h3>
+          <ul className="space-y-1.5 text-emerald-700 dark:text-emerald-300">
+            <li>&#8226; Use a reputable VPN that supports IPv6 leak protection and includes a kill switch.</li>
+            <li>&#8226; Disable WebRTC in browser settings or use an extension that blocks WebRTC leaks.</li>
+            <li>&#8226; Use encrypted DNS (DoH/DoT) to prevent your ISP from logging DNS queries.</li>
+            <li>&#8226; Clear browser fingerprints by using private/incognito mode or privacy-focused browsers.</li>
+            <li>&#8226; Check your IP before and after enabling your VPN to confirm the tunnel works on both stacks.</li>
+          </ul>
+        </div>
+
+        <div className="rounded-xl border border-blue-200 p-5 text-sm dark:border-blue-900">
+          <h3 className="mb-2 font-medium text-blue-800 dark:text-blue-200">Security Recommendations</h3>
+          <ul className="space-y-1.5 text-blue-700 dark:text-blue-300">
+            <li>&#8226; Run <Link href="/port-checker" className="underline">Port Checker</Link> to verify no unexpected services are exposed on your connection.</li>
+            <li>&#8226; Monitor your IP reputation — a blacklisted IP can block access to services you use.</li>
+            <li>&#8226; Use <Link href="/ip-lookup" className="underline">IP Lookup</Link> to trace any suspicious IP that appears in your server logs.</li>
+            <li>&#8226; Check <Link href="/dns-lookup" className="underline">DNS Lookup</Link> to verify your domain&apos;s DNS records haven&apos;t been tampered with.</li>
+            <li>&#8226; Run a <Link href="/ping-test" className="underline">Ping Test</Link> to measure latency and detect packet loss that may indicate throttling.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="mt-8">
+        <ToolFaqSection items={TOOL_FAQS["what-is-my-ip"]} toolName="What Is My IP" />
+      </div>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -173,6 +373,15 @@ export function IpDisplay({ pageUrl }: IpDisplayProps) {
             description:
               "Find your public IPv4 and IPv6 address with detailed geolocation and browser information.",
             url: pageUrl,
+            sameAs: ["https://en.wikipedia.org/wiki/IP_address"],
+            potentialAction: {
+              "@type": "SearchAction",
+              target: {
+                "@type": "EntryPoint",
+                urlTemplate: "https://www.google.com/search?q=what+is+my+ip",
+              },
+              "query-input": "required name=search_term",
+            },
             mainEntity: {
               "@type": "SoftwareApplication",
               name: "What Is My IP",

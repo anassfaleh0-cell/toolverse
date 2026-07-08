@@ -1,0 +1,12 @@
+{
+  "name": "ToolVerse",
+  "short_name": "ToolVerse",
+  "description": "Free online network tools including IP lookup, WHOIS, DNS lookup, SSL checker, ping test, and more.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0a0a0a",
+  "categories": ["developer-tools", "utilities", "networking"],
+  "lang": "en-US",
+  "orientation": "any"
+}

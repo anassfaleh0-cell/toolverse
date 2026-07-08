@@ -12,7 +12,7 @@ async function resolveRecord(hostname: string, type: RecordType) {
     return result;
   } catch (err: unknown) {
     const code = (err as NodeJS.ErrnoException).code;
-    if (code === "ENODATA" || code === "ENOTFOUND") return null;
+    if (code === "ENODATA" || code === "ENOTFOUND" || code === "ECONNREFUSED") return null;
     throw err;
   }
 }

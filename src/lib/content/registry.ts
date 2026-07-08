@@ -1,10 +1,15 @@
 import type { ContentPiece, ContentType } from "./types";
-import { GUIDES } from "./data/guides";
+import { GUIDES, BEGINNER_GUIDES } from "./data/guides";
 import { ARTICLES } from "./data/articles";
 import { COMPARISONS } from "./data/comparisons";
+import { EXAMPLES } from "./data/examples";
+import { ERROR_PAGES } from "./data/error-pages";
+import { REFERENCE_PAGES } from "./data/reference-pages";
 import { TOPIC_CLUSTERS } from "./clusters";
+import { generateAllKnowledgePieces } from "@/lib/knowledge/generator";
 
-const ALL_CONTENT: ContentPiece[] = [...GUIDES, ...ARTICLES, ...COMPARISONS];
+const KNOWLEDGE_PIECES = generateAllKnowledgePieces();
+const ALL_CONTENT: ContentPiece[] = [...GUIDES, ...BEGINNER_GUIDES, ...ARTICLES, ...COMPARISONS, ...EXAMPLES, ...ERROR_PAGES, ...REFERENCE_PAGES, ...KNOWLEDGE_PIECES];
 
 export function getAllContent(): ContentPiece[] {
   return ALL_CONTENT;
@@ -72,10 +77,17 @@ export function getClusterContent(clusterSlug: string): ContentPiece[] {
 export function getContentCountByType(): Record<ContentType, number> {
   return {
     guide: GUIDES.length,
-    tutorial: 0,
-    article: ARTICLES.length,
+    tutorial: ALL_CONTENT.filter((c) => c.type === "tutorial").length,
+    article: ALL_CONTENT.filter((c) => c.type === "article").length,
     learn: ALL_CONTENT.filter((c) => c.type === "learn").length,
     comparison: COMPARISONS.length,
+    examples: ALL_CONTENT.filter((c) => c.type === "examples").length,
+    errors: ALL_CONTENT.filter((c) => c.type === "errors").length,
+    reference: ALL_CONTENT.filter((c) => c.type === "reference").length,
+    "cheat-sheet": ALL_CONTENT.filter((c) => c.type === "cheat-sheet").length,
+    "best-practices": ALL_CONTENT.filter((c) => c.type === "best-practices").length,
+    commands: ALL_CONTENT.filter((c) => c.type === "commands").length,
+    "use-cases": ALL_CONTENT.filter((c) => c.type === "use-cases").length,
   };
 }
 
@@ -90,9 +102,24 @@ export function getAllContentSlugs(): string[] {
   return ALL_CONTENT.map((c) => c.slug);
 }
 
+const TYPE_ROUTE_MAP: Record<string, string> = {
+  guide: "guides",
+  article: "blog",
+  comparison: "compare",
+  learn: "learn",
+  tutorial: "learn",
+  examples: "examples",
+  errors: "errors",
+  reference: "reference",
+  "cheat-sheet": "cheat-sheets",
+  "best-practices": "best-practices",
+  commands: "commands",
+  "use-cases": "use-cases",
+};
+
 export function getSitemapPaths(): string[] {
   const contentPaths = ALL_CONTENT.map(
-    (c) => `/${c.type}/${c.slug}`,
+    (c) => `/${TYPE_ROUTE_MAP[c.type] ?? c.type}/${c.slug}`,
   );
   return [
     ...new Set([

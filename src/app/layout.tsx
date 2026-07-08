@@ -1,11 +1,16 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { CookieConsent } from "@/components/shared/cookie-consent";
 import { Analytics } from "@/components/shared/analytics";
+import { JsonLd } from "@/components/shared";
+
+const UniversalWorkspace = dynamic(() => import("@/components/shared/universal-workspace").then((m) => ({ default: m.UniversalWorkspace })));
+const CommandPalette = dynamic(() => import("@/components/shared/command-palette").then((m) => ({ default: m.CommandPalette })));
 
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/constants";
 import "./globals.css";
@@ -39,15 +44,31 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
+    images: [{ url: `${SITE_URL}/og-image.svg`, width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
+    images: [`${SITE_URL}/og-image.svg`],
   },
   robots: {
     index: true,
     follow: true,
+  },
+  other: {
+    "color-scheme": "light dark",
+    "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || "",
+  },
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    title: SITE_NAME,
+    statusBarStyle: "black-translucent",
+  },
+  icons: {
+    icon: { url: "/icon.svg", type: "image/svg+xml" },
+    apple: { url: "/icon.svg", sizes: "180x180", type: "image/svg+xml" },
   },
 };
 
@@ -72,6 +93,36 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable}`}
     >
       <body className="flex min-h-screen flex-col bg-background font-sans antialiased">
+        <JsonLd data={{
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: SITE_NAME,
+          url: SITE_URL,
+          logo: `${SITE_URL}/icon.svg`,
+          description: SITE_DESCRIPTION,
+          foundingDate: "2023",
+          contactPoint: {
+            "@type": "ContactPoint",
+            email: "hello@toolverse.dev",
+            contactType: "customer support",
+          },
+          sameAs: [],
+        }} />
+        <JsonLd data={{
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: SITE_NAME,
+          url: SITE_URL,
+          description: SITE_DESCRIPTION,
+          potentialAction: {
+            "@type": "SearchAction",
+            target: {
+              "@type": "EntryPoint",
+              urlTemplate: `${SITE_URL}/search?q={search_term_string}`,
+            },
+            "query-input": "required name=search_term_string",
+          },
+        }} />
         <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-blue-600 focus:px-4 focus:py-2 focus:text-white">
           Skip to main content
         </a>
@@ -82,6 +133,12 @@ export default function RootLayout({
           <CookieConsent />
           <Suspense fallback={null}>
             <Analytics />
+          </Suspense>
+          <Suspense fallback={null}>
+            <UniversalWorkspace />
+          </Suspense>
+          <Suspense fallback={null}>
+            <CommandPalette />
           </Suspense>
         </ThemeProvider>
       </body>

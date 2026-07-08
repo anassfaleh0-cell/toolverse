@@ -19,7 +19,7 @@ import { SITE_URL } from "@/lib/constants";
 import Link from "next/link";
 
 const slug = "ssl-certificate-checker";
-const pageTitle = "SSL Certificate Checker - Verify TLS Cert & Expiration Dates";
+const pageTitle = "SSL Certificate Checker — Verify TLS Cert & Expiration";
 const pageDescription =
   "Check SSL/TLS certificate details for any domain. Verify expiration, issuer, SANs, and certificate chain validity. Free SSL certificate checker tool.";
 
@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/${slug}`,
   },
   twitter: {
+    card: "summary_large_image",
     title: pageTitle,
     description: pageDescription,
   },
@@ -118,7 +119,7 @@ export default function SslCertificatePage() {
       <JsonLd data={softwareAppSchema({ name: pageTitle, description: pageDescription, url: `${SITE_URL}/${slug}` })} />
 
       <section className="border-b border-zinc-200 dark:border-zinc-800">
-        <ToolLayout>
+        <ToolLayout toolSlug={slug}>
           <ToolHero
             title="SSL Certificate Checker"
             description="Check SSL/TLS certificate details for any domain. Verify expiration, issuer, SANs, and the full certificate chain."

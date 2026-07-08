@@ -255,24 +255,39 @@ export const TAGS: TagConfig[] = [
     ],
   },
   {
-    slug: "email",
-    name: "Email",
+    slug: "password",
+    name: "Password",
     getDescription: () =>
-      `Free email-related tools on ${SITE_NAME}. Look up MX records, verify domain mail server configuration through DNS, and check email delivery settings.`,
-    matchTool: nameOrDescIncludes("mx", "email", "mail"),
+      `Free password generation and security tools on ${SITE_NAME}. Generate strong random passwords, check password strength, and create secure credentials for your online accounts.`,
+    matchTool: nameOrDescIncludes("password"),
     getFaqs: () => [
-      {
-        question: `What email tools does ${SITE_NAME} offer?`,
-        answer: `DNS Lookup supports MX record queries to check mail server configuration for any domain.`,
-      },
-      {
-        question: `How do I check MX records?`,
-        answer: `Use the DNS Lookup tool and select MX record type. Enter the domain to see its mail exchange servers and priority values.`,
-      },
-      {
-        question: `Why check email configuration?`,
-        answer: `Verifying MX records, SPF, and DKIM settings helps diagnose email delivery issues and prevents emails from being marked as spam.`,
-      },
+      { question: `What password tools does ${SITE_NAME} offer?`, answer: `${SITE_NAME} provides a Password Generator that creates cryptographically strong random passwords with customizable length and character types.` },
+      { question: `Are generated passwords stored on your servers?`, answer: `No. Password generation happens entirely in your browser using the Web Crypto API. Generated passwords exist only in memory on your device and are never transmitted.` },
+      { question: `What makes a password strong?`, answer: `A strong password has at least 12 characters (16+ recommended), includes uppercase, lowercase, numbers, and symbols, and is randomly generated rather than based on dictionary words or personal information.` },
+    ],
+  },
+  {
+    slug: "text",
+    name: "Text Processing",
+    getDescription: () =>
+      `Free text processing tools on ${SITE_NAME}. Count words and characters, generate lorem ipsum, compare text differences, randomize lists, convert case, and encode/decode text.`,
+    matchTool: nameOrDescIncludes("lorem ipsum", "word count", "text diff", "randomiz", "case convert", "text"),
+    getFaqs: () => [
+      { question: `What text processing tools does ${SITE_NAME} offer?`, answer: `Lorem Ipsum Generator, Word Counter, Text Diff Checker, List Randomizer, Case Converter, URL Encoder, and HTML Entity Encoder.` },
+      { question: `Is my text data stored or sent to a server?`, answer: `No. All text processing is done client-side in your browser. Your data never leaves your device.` },
+      { question: `What is lorem ipsum used for?`, answer: `Lorem ipsum is placeholder text used in design mockups, typesetting, and publishing to demonstrate visual form without meaningful content distracting from the layout.` },
+    ],
+  },
+  {
+    slug: "converter",
+    name: "Converters",
+    getDescription: () =>
+      `Free online converter tools on ${SITE_NAME}. Convert between JSON, CSV, YAML, XML, colors, number bases, timestamps, and more. Format transformations for developers and data analysts.`,
+    matchTool: nameOrDescIncludes("convert", "json to csv", "yaml", "xml", "timestamp", "number base", "color convert"),
+    getFaqs: () => [
+      { question: `What converter tools does ${SITE_NAME} offer?`, answer: `JSON to CSV, YAML to JSON, XML to JSON, Color Converter, Number Base Converter, Timestamp Converter, and URL Encoder.` },
+      { question: `Are uploaded files stored during conversion?`, answer: `No. All conversions happen entirely in your browser. Your data is never uploaded, stored, or logged.` },
+      { question: `What is the difference between JSON and YAML?`, answer: `JSON uses a strict syntax with brackets, quotes, and commas, making it ideal for API data. YAML uses indentation-based structure with minimal punctuation, making it more human-readable for configuration files. Both represent the same data types.` },
     ],
   },
 ];

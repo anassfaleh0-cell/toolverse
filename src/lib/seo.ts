@@ -68,6 +68,49 @@ export function webPageSchema({
   return schema as WithContext<Thing>;
 }
 
+export function howToSchema({
+  name,
+  description,
+  steps,
+}: {
+  name: string;
+  description: string;
+  steps: { name: string; text: string }[];
+}): WithContext<Thing> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name,
+    description,
+    step: steps.map((s) => ({
+      "@type": "HowToStep",
+      name: s.name,
+      text: s.text,
+    })),
+  } as WithContext<Thing>;
+}
+
+export function qaPageSchema({
+  question,
+  answer,
+}: {
+  question: string;
+  answer: string;
+}): WithContext<Thing> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "QAPage",
+    mainEntity: {
+      "@type": "Question",
+      name: question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: answer,
+      },
+    },
+  } as WithContext<Thing>;
+}
+
 export function softwareAppSchema({
   name,
   description,

@@ -8,8 +8,8 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 export const metadata: Metadata = {
   title: `Blog - ${SITE_NAME}`,
   description: `Technical articles and guides about network diagnostics, DNS management, SSL/TLS, web security, and performance optimization. ${SITE_DESCRIPTION}`,
-  openGraph: { title: `Blog - ${SITE_NAME}`, description: `Network diagnostics and security articles.` },
-  twitter: { title: `Blog - ${SITE_NAME}`, description: `Network diagnostics and security articles.` },
+  openGraph: { title: `Blog - ${SITE_NAME}`, description: `Technical articles about network diagnostics, DNS management, SSL/TLS, web security, and performance optimization.`, url: `${SITE_URL}/blog` },
+  twitter: { card: "summary_large_image", title: `Blog - ${SITE_NAME}`, description: `Technical articles about network diagnostics, DNS management, SSL/TLS, and web security.` },
   alternates: { canonical: `${SITE_URL}/blog` },
 };
 

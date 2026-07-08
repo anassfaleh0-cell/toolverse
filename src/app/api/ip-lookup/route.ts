@@ -68,9 +68,6 @@ export async function GET(request: Request) {
       asn: geoData.as || "—",
       currency: getCurrency(countryCode),
       callingCode: getCallingCode(countryCode),
-      isVpn: false,
-      isProxy: false,
-      isTor: false,
     };
 
     return NextResponse.json(result, { headers: { "Cache-Control": "no-store" } });

@@ -19,7 +19,7 @@ import { SITE_URL } from "@/lib/constants";
 import Link from "next/link";
 
 const slug = "whois-lookup";
-const pageTitle = "WHOIS Lookup - Check Domain Registration & Ownership Info";
+const pageTitle = "WHOIS Lookup — Check Domain Registration & Ownership Info";
 const pageDescription =
   "Look up WHOIS records for any domain. See registrar, registration dates, name servers, and contact info. Verify domain ownership and detect expiry risks.";
 
@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/${slug}`,
   },
   twitter: {
+    card: "summary_large_image",
     title: pageTitle,
     description: pageDescription,
   },
@@ -118,7 +119,7 @@ export default function WhoisLookupPage() {
       <JsonLd data={softwareAppSchema({ name: pageTitle, description: pageDescription, url: `${SITE_URL}/${slug}` })} />
 
       <section className="border-b border-zinc-200 dark:border-zinc-800">
-        <ToolLayout>
+        <ToolLayout toolSlug={slug}>
           <ToolHero
             title="WHOIS Lookup"
             description="Look up WHOIS records for any domain. See registrar, registration dates, name servers, and contact info. Verify domain ownership and detect expiry risks."

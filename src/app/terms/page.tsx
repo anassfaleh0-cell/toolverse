@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "ToolVerse Terms of Service.",
+  description: "ToolVerse Terms of Service — rules, disclaimers, and acceptable use for our free online tools and content.",
+  openGraph: { title: "Terms of Service", description: "ToolVerse Terms of Service & acceptable use policy.", url: `${SITE_URL}/terms` },
+  twitter: { card: "summary_large_image", title: "Terms of Service", description: "ToolVerse Terms of Service & acceptable use policy." },
+  alternates: { canonical: `${SITE_URL}/terms` },
 };
 
 export default function Terms() {

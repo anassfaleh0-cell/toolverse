@@ -1,36 +1,41 @@
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/constants";
-import { getAllContent } from "@/lib/content/registry";
+import { getAllTools } from "@/lib/registry";
 
 export const dynamic = "force-static";
 
-export async function GET() {
-  const content = getAllContent();
-  const now = new Date();
+function escapeXml(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+}
 
-  const items = content
-    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
-    .slice(0, 50)
+export async function GET() {
+  const tools = getAllTools();
+  const now = new Date().toUTCString();
+
+  const items = tools
     .map(
-      (piece) => `
+      (tool) => `
     <item>
-      <title><![CDATA[${piece.title}]]></title>
-      <link>${SITE_URL}/${piece.type}/${piece.slug}</link>
-      <guid isPermaLink="true">${SITE_URL}/${piece.type}/${piece.slug}</guid>
-      <description><![CDATA[${piece.description}]]></description>
-      <pubDate>${new Date(piece.publishedAt).toUTCString()}</pubDate>
-      <category>${piece.category || "general"}</category>
+      <title>${escapeXml(tool.name)}</title>
+      <description>${escapeXml(tool.description)}</description>
+      <link>${SITE_URL}${tool.url}</link>
+      <guid>${SITE_URL}${tool.url}</guid>
+      <category>${escapeXml(tool.category)}</category>
     </item>`,
     )
     .join("");
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>${SITE_NAME}</title>
+    <title>${escapeXml(SITE_NAME)}</title>
+    <description>${escapeXml(SITE_DESCRIPTION)}</description>
     <link>${SITE_URL}</link>
-    <description>${SITE_DESCRIPTION}</description>
-    <language>en-us</language>
-    <lastBuildDate>${now.toUTCString()}</lastBuildDate>
+    <lastBuildDate>${now}</lastBuildDate>
     <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml"/>
     ${items}
   </channel>

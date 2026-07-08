@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { UAParser } from "ua-parser-js";
+import { Input, Button } from "@/components/ui";
 
 interface ParsedResult {
   ua: string;
@@ -54,27 +55,26 @@ export function UserAgentParser() {
   return (
     <div className="mx-auto max-w-3xl">
       <div className="flex gap-3">
-        <input
+        <Input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Paste a User-Agent string here..."
-          className="flex-1 rounded-lg border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder-zinc-500"
           aria-label="User-Agent string"
         />
-        <button
+        <Button
           onClick={handleParse}
           disabled={!input.trim()}
-          className="rounded-lg bg-blue-600 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-700 disabled:opacity-50"
+          variant="primary"
         >
           Parse
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={handleClear}
-          className="rounded-lg border border-zinc-300 px-4 py-3 text-sm text-zinc-600 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-900"
+          variant="secondary"
         >
           Clear
-        </button>
+        </Button>
       </div>
 
       {result && (

@@ -19,7 +19,7 @@ import { SITE_URL } from "@/lib/constants";
 import Link from "next/link";
 
 const slug = "dns-propagation-checker";
-const pageTitle = "DNS Propagation Checker - Verify DNS Changes Worldwide";
+const pageTitle = "DNS Propagation Checker — Verify DNS Changes Worldwide";
 const pageDescription =
   "Check DNS propagation from 20+ global locations. See which resolvers have updated A, AAAA, MX, NS, CNAME, and TXT records. Free DNS propagation tool.";
 
@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/${slug}`,
   },
   twitter: {
+    card: "summary_large_image",
     title: pageTitle,
     description: pageDescription,
   },
@@ -118,7 +119,7 @@ export default function DnsPropagationPage() {
       <JsonLd data={softwareAppSchema({ name: pageTitle, description: pageDescription, url: `${SITE_URL}/${slug}` })} />
 
       <section className="border-b border-zinc-200 dark:border-zinc-800">
-        <ToolLayout>
+        <ToolLayout toolSlug={slug}>
           <ToolHero
             title="DNS Propagation Checker"
             description="Check DNS propagation from multiple global resolvers. See which servers have updated A, AAAA, MX, NS, CNAME, and TXT records."

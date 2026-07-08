@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import { Input, Button, Alert, Skeleton } from "@/components/ui";
+import { CopyButton } from "@/components/shared";
 
 interface ReverseDnsResult {
   ip: string;
@@ -42,46 +44,39 @@ export function ReverseDnsLookup() {
   return (
     <div className="mx-auto max-w-3xl">
       <form onSubmit={handleSubmit} className="flex gap-3">
-        <input
+        <Input
           type="text"
           value={ip}
           onChange={(e) => setIp(e.target.value)}
           placeholder="8.8.8.8"
-          className="flex-1 rounded-lg border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder-zinc-500"
           aria-label="IP address"
         />
-        <button
+        <Button
           type="submit"
           disabled={loading}
-          className="rounded-lg bg-blue-600 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-700 disabled:opacity-50"
+          variant="primary"
         >
           {loading ? "Looking up..." : "Lookup"}
-        </button>
+        </Button>
       </form>
 
       {error && (
-        <div className="mt-6 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-800 dark:bg-red-950 dark:text-red-400">
-          {error}
-        </div>
+        <Alert variant="error" className="mt-6">{error}</Alert>
       )}
 
       {loading && (
-        <div className="mt-8 space-y-3">
-          {Array.from({ length: 4 }).map((_, i) => (
-            <div key={i} className="flex gap-4">
-              <div className="h-4 w-24 animate-pulse rounded bg-zinc-200 dark:bg-zinc-800" />
-              <div className="h-4 flex-1 animate-pulse rounded bg-zinc-200 dark:bg-zinc-800" />
-            </div>
-          ))}
+        <div className="mt-8">
+          <Skeleton count={4} columns={1} />
         </div>
       )}
 
       {result && !loading && (
         <div className="mt-8 overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800">
-          <div className="border-b border-zinc-200 bg-zinc-50 px-5 py-3 dark:border-zinc-800 dark:bg-zinc-900">
+          <div className="flex items-center justify-between border-b border-zinc-200 bg-zinc-50 px-5 py-3 dark:border-zinc-800 dark:bg-zinc-900">
             <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
               Reverse DNS for {result.ip}
             </p>
+            <CopyButton text={JSON.stringify(result, null, 2)} label="Copy" />
           </div>
           <div className="divide-y divide-zinc-200 dark:divide-zinc-800">
             {result.hostnames.length > 0 ? (

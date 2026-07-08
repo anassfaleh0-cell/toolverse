@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer className="border-t border-zinc-200 dark:border-zinc-800">
       <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6">
-        <div className="grid gap-8 sm:grid-cols-3">
+        <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
           {FOOTER_LINKS.map((group) => (
             <div key={group.heading}>
               <h3 className="mb-4 text-sm font-semibold text-zinc-900 dark:text-zinc-50">

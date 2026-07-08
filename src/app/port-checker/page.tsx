@@ -19,7 +19,7 @@ import { SITE_URL } from "@/lib/constants";
 import Link from "next/link";
 
 const slug = "port-checker";
-const pageTitle = "Port Checker - Test if a Port is Open or Closed Online";
+const pageTitle = "Port Checker — Test if a Port is Open or Closed";
 const pageDescription =
   "Check if a network port is open or closed from outside your network. Scan common ports or test a specific port for SSH, HTTP, SMTP, and more. Free port checker tool.";
 
@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/${slug}`,
   },
   twitter: {
+    card: "summary_large_image",
     title: pageTitle,
     description: pageDescription,
   },
@@ -118,7 +119,7 @@ export default function PortCheckerPage() {
       <JsonLd data={softwareAppSchema({ name: pageTitle, description: pageDescription, url: `${SITE_URL}/${slug}` })} />
 
       <section className="border-b border-zinc-200 dark:border-zinc-800">
-        <ToolLayout>
+        <ToolLayout toolSlug={slug}>
           <ToolHero
             title="Port Checker"
             description="Check if a network port is open or closed from outside your network. Scan common ports or test a specific port."

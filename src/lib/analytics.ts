@@ -1,11 +1,3 @@
-/**
- * Analytics architecture for ToolVerse.
- *
- * Slot-based design: actual analytics providers (GA4, Clarity, etc.) are
- * injected via environment variables and rendered by the Analytics component.
- * This file provides the event tracking interface used across the application.
- */
-
 export interface AnalyticsEvent {
   name: string;
   category?: string;
@@ -20,15 +12,6 @@ export interface PageView {
   referrer?: string;
 }
 
-export type AnalyticsProvider = "ga4" | "clarity" | "custom";
-
-export interface AnalyticsConfig {
-  ga4MeasurementId?: string;
-  clarityProjectId?: string;
-  enabled: boolean;
-  cookieConsentRequired: boolean;
-}
-
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
@@ -37,6 +20,8 @@ declare global {
 }
 
 const ANALYTICS_KEY = "tv_analytics_consent";
+const BOOKMARKS_KEY = "tv_bookmarks";
+const HISTORY_KEY = "tv_history";
 
 export function getAnalyticsConsent(): boolean | null {
   if (typeof window === "undefined") return null;
@@ -54,28 +39,32 @@ export function setAnalyticsConsent(granted: boolean): void {
   }
 }
 
+export function revokeConsent(): void {
+  if (typeof window === "undefined") return;
+  localStorage.removeItem(ANALYTICS_KEY);
+  window.dispatchEvent(new CustomEvent("tv:analytics-consent-revoked"));
+}
+
+function pushEvent(event: AnalyticsEvent): void {
+  if (typeof window.gtag === "function") {
+    window.gtag("event", event.name, {
+      event_category: event.category,
+      event_label: event.label,
+      value: event.value,
+      ...event.metadata,
+    });
+  }
+}
+
 export function trackEvent(event: AnalyticsEvent): void {
   if (typeof window === "undefined") return;
   if (getAnalyticsConsent() !== true) return;
-
-  try {
-    if (typeof window.gtag === "function") {
-      window.gtag("event", event.name, {
-        event_category: event.category,
-        event_label: event.label,
-        value: event.value,
-        ...event.metadata,
-      });
-    }
-  } catch {
-    /* analytics error */
-  }
+  try { pushEvent(event); } catch { /* analytics error */ }
 }
 
 export function trackPageView(pageView: PageView): void {
   if (typeof window === "undefined") return;
   if (getAnalyticsConsent() !== true) return;
-
   try {
     if (typeof window.gtag === "function") {
       window.gtag("config", "", {
@@ -84,34 +73,73 @@ export function trackPageView(pageView: PageView): void {
         page_referrer: pageView.referrer,
       });
     }
-  } catch {
-    /* analytics error */
-  }
+  } catch { /* analytics error */ }
 }
 
-export function trackToolUsage(toolSlug: string, toolName: string): void {
-  trackEvent({
-    name: "tool_usage",
-    category: "Tool",
-    label: toolSlug,
-    metadata: { tool_name: toolName },
-  });
+export function trackToolOpen(toolSlug: string): void {
+  trackEvent({ name: "tool_open", category: "Tool", label: toolSlug });
+}
+
+export function trackToolRun(toolSlug: string): void {
+  trackEvent({ name: "tool_run", category: "Tool", label: toolSlug });
+}
+
+export function trackToolComplete(toolSlug: string, msElapsed?: number): void {
+  trackEvent({ name: "tool_complete", category: "Tool", label: toolSlug, value: msElapsed });
 }
 
 export function trackSearch(query: string, resultCount: number): void {
-  trackEvent({
-    name: "search",
-    category: "Search",
-    label: query,
-    value: resultCount,
-  });
+  trackEvent({ name: "search", category: "Search", label: query, value: resultCount });
+}
+
+export function trackExport(format: string, toolSlug: string): void {
+  trackEvent({ name: "export", category: "Export", label: format, metadata: { tool: toolSlug } });
+}
+
+export function trackShare(platform: string, toolSlug: string): void {
+  trackEvent({ name: "share", category: "Share", label: platform, metadata: { tool: toolSlug } });
+}
+
+export function trackBookmark(toolSlug: string, action: "add" | "remove"): void {
+  trackEvent({ name: "bookmark", category: "Bookmark", label: toolSlug, metadata: { action } });
+}
+
+export function trackWorkflow(workflowName: string, steps?: number): void {
+  trackEvent({ name: "workflow_complete", category: "Workflow", label: workflowName, value: steps });
 }
 
 export function trackConversion(type: string, value?: number): void {
+  trackEvent({ name: "conversion", category: "Conversion", label: type, value });
+}
+
+export function reportWebVitals(id: string, name: string, value: number, rating: string): void {
   trackEvent({
-    name: "conversion",
-    category: "Conversion",
-    label: type,
-    value,
+    name: "web_vital",
+    category: "Web Vitals",
+    label: name,
+    value: Math.round(name === "CLS" ? value * 1000 : value),
+    metadata: { metric_id: id, rating },
   });
+}
+
+export function clearAnalyticsData(): void {
+  if (typeof window === "undefined") return;
+  localStorage.removeItem(ANALYTICS_KEY);
+  localStorage.removeItem(BOOKMARKS_KEY);
+  localStorage.removeItem(HISTORY_KEY);
+}
+
+export function getBookmarks(): string[] {
+  if (typeof window === "undefined") return [];
+  try { return JSON.parse(localStorage.getItem(BOOKMARKS_KEY) || "[]"); } catch { return []; }
+}
+
+export function clearBookmarks(): void {
+  if (typeof window === "undefined") return;
+  localStorage.removeItem(BOOKMARKS_KEY);
+}
+
+export function clearHistory(): void {
+  if (typeof window === "undefined") return;
+  localStorage.removeItem(HISTORY_KEY);
 }

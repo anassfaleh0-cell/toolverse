@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: cat.seoDescription,
     alternates: { canonical: `${SITE_URL}/category/${slug}` },
     openGraph: { title: cat.seoTitle, description: cat.seoDescription },
-    twitter: { title: cat.seoTitle, description: cat.seoDescription },
+    twitter: { card: "summary_large_image", title: cat.seoTitle, description: cat.seoDescription },
   };
 }
 
@@ -81,33 +81,35 @@ export default async function CategoryPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="border-b border-zinc-200 py-12 dark:border-zinc-800">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {category.tools.map((tool) => (
-              <Link
-                key={tool.id}
-                href={tool.url}
-                className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900"
-              >
-                <div className="flex items-start justify-between gap-2">
-                  <h2 className="font-semibold text-zinc-900 dark:text-zinc-50">
-                    {tool.name}
-                  </h2>
-                  {tool.isFree && (
-                    <span className="shrink-0 rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">
-                      Free
-                    </span>
-                  )}
-                </div>
-                <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                  {tool.description}
-                </p>
-              </Link>
-            ))}
+      {category.tools.length > 0 && (
+        <section className="border-b border-zinc-200 py-12 dark:border-zinc-800">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {category.tools.map((tool) => (
+                <Link
+                  key={tool.id}
+                  href={tool.url}
+                  className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900"
+                >
+                  <div className="flex items-start justify-between gap-2">
+                    <h2 className="font-semibold text-zinc-900 dark:text-zinc-50">
+                      {tool.name}
+                    </h2>
+                    {tool.isFree && (
+                      <span className="shrink-0 rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">
+                        Free
+                      </span>
+                    )}
+                  </div>
+                  <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                    {tool.description}
+                  </p>
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <section className="border-b border-zinc-200 py-16 dark:border-zinc-800 sm:py-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">

@@ -19,7 +19,7 @@ import { SITE_URL } from "@/lib/constants";
 import Link from "next/link";
 
 const slug = "website-status-checker";
-const pageTitle = "Website Status Checker - Check if a Site is Online & Response Time";
+const pageTitle = "Website Status Checker — Check if a Site is Online";
 const pageDescription =
   "Check if any website is online, down, or experiencing issues. Get HTTP status codes, response times, and uptime monitoring insights. Free website status checker.";
 
@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/${slug}`,
   },
   twitter: {
+    card: "summary_large_image",
     title: pageTitle,
     description: pageDescription,
   },
@@ -118,7 +119,7 @@ export default function WebsiteStatusPage() {
       <JsonLd data={softwareAppSchema({ name: pageTitle, description: pageDescription, url: `${SITE_URL}/${slug}` })} />
 
       <section className="border-b border-zinc-200 dark:border-zinc-800">
-        <ToolLayout>
+        <ToolLayout toolSlug={slug}>
           <ToolHero
             title="Website Status Checker"
             description="Check if any website is online, down, or experiencing issues. See HTTP status codes and response times from an external perspective."

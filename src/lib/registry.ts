@@ -17,8 +17,21 @@ const enriched: Tool[] = rawTools.map((t) => ({
   slug: t.url.startsWith("/") ? t.url.slice(1) : t.url,
 }));
 
+const slugCounts = new Map<string, number>();
+for (const t of enriched) {
+  slugCounts.set(t.slug, (slugCounts.get(t.slug) || 0) + 1);
+}
+const duplicateSlugs = [...slugCounts.entries()].filter(([, c]) => c > 1);
+if (duplicateSlugs.length > 0) {
+  console.warn(`[Scale Audit] Duplicate slugs found: ${duplicateSlugs.map(([s, c]) => `${s} (${c}x)`).join(", ")}`);
+}
+
 export function getAllTools(): Tool[] {
   return enriched;
+}
+
+export function getRegisteredToolCount(): number {
+  return enriched.length;
 }
 
 export function getInternalTools(): Tool[] {
@@ -96,7 +109,7 @@ export function generateToolMetadata(tool: Tool): Metadata {
     title,
     description: tool.description,
     openGraph: { title, description: tool.description, url: `${SITE_URL}${tool.url}` },
-    twitter: { title, description: tool.description },
+    twitter: { card: "summary_large_image", title, description: tool.description },
     alternates: { canonical: `${SITE_URL}${tool.url}` },
     robots: { index: true, follow: true },
   };
@@ -159,4 +172,45 @@ export const SITEMAP_PATHS = [
   "/contact",
   "/privacy",
   "/terms",
+  "/glossary",
+  "/case-studies",
+  "/community-templates",
+  "/roadmap",
+  "/changelog",
+  "/whats-new",
+  "/trending",
+  "/editor-picks",
+  "/research",
+  "/open-source",
+  "/choose-the-right-tool",
+  "/best-online/best-free-online-tools",
+  "/best-online/best-dns-tools",
+  "/best-online/best-image-tools",
+  "/best-online/best-seo-tools",
+  "/best-online/best-json-tools",
+  "/best-online/best-developer-tools",
+  "/best-online/best-website-tools",
+  "/best-online/best-security-tools",
+  "/best-online/best-ai-tools",
+  "/best-online/best-productivity-tools",
+  "/best-online/best-marketing-tools",
+  "/best-online/best-pdf-tools",
+  "/decision-trees/dns-troubleshooting",
+  "/decision-trees/ssl-troubleshooting",
+  "/decision-trees/seo-diagnostics",
+  "/compare/dns-providers",
+  "/compare/ssl-certificate-types",
+  "/tool-comparisons/network-diagnostics",
+  "/technical-flow/dns-resolution",
+  "/technical-flow/ssl-tls-handshake",
+  "/troubleshooting/dns-propagation",
+  "/troubleshooting/ssl-certificate",
+  "/cheat-sheets/developer-dns",
+  "/cheat-sheets/developer-ssl-tls",
+  "/protocols/http-versus-https",
+  "/protocols/dns-protocols",
+  "/benchmarks/dns-performance",
+  "/learning-paths/dns-fundamentals",
+  "/100m-roadmap",
+  "/500-tool-roadmap",
 ];

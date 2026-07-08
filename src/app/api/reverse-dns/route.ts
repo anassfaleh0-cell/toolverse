@@ -16,9 +16,10 @@ function isValidIp(ip: string): boolean {
 }
 
 export async function GET(request: Request) {
+  let ip: string | undefined;
   try {
     const { searchParams } = new URL(request.url);
-    const ip = searchParams.get("ip")?.trim();
+    ip = searchParams.get("ip")?.trim();
 
     if (!ip) {
       return NextResponse.json(
@@ -36,10 +37,14 @@ export async function GET(request: Request) {
 
     const hostnames = await dns.reverse(ip);
     return NextResponse.json({ ip, hostnames: hostnames.length > 0 ? hostnames : [] }, { headers: { "Cache-Control": "no-store" } });
-  } catch {
+  } catch (err) {
+    const code = (err as NodeJS.ErrnoException).code;
+    if (code === "ECONNREFUSED" || code === "ENOTFOUND" || code === "ENODATA") {
+      return NextResponse.json({ ip, hostnames: [], note: "No reverse DNS record found for this IP address" }, { status: 200 });
+    }
     return NextResponse.json(
-      { error: "No reverse DNS record found for this IP address" },
-      { status: 404 },
+      { error: "Reverse DNS lookup failed" },
+      { status: 500 },
     );
   }
 }

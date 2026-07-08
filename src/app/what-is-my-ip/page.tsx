@@ -19,7 +19,7 @@ import { SITE_URL } from "@/lib/constants";
 import Link from "next/link";
 
 const slug = "what-is-my-ip";
-const pageTitle = "What Is My IP - Check Your Public IPv4, IPv6 & Privacy";
+const pageTitle = "What Is My IP — Check Public IPv4, IPv6 & Privacy";
 const pageDescription =
   "See your real public IPv4 and IPv6 addresses, ISP, and location. Detect WebRTC leaks, proxy and VPN exposure, and DNS privacy issues instantly.";
 
@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/${slug}`,
   },
   twitter: {
+    card: "summary_large_image",
     title: pageTitle,
     description: pageDescription,
   },
@@ -42,6 +43,7 @@ export const metadata: Metadata = {
 
 const breadcrumbs = [
   { label: "Home", href: SITE_URL },
+  { label: "Productivity", href: `${SITE_URL}/category/productivity` },
   { label: "What Is My IP" },
 ];
 
@@ -117,7 +119,7 @@ export default function WhatIsMyIp() {
       <JsonLd data={softwareAppSchema({ name: pageTitle, description: pageDescription, url: `${SITE_URL}/${slug}` })} />
 
       <section className="border-b border-zinc-200 dark:border-zinc-800">
-        <ToolLayout>
+        <ToolLayout toolSlug={slug}>
           <ToolHero
             title="What Is My IP?"
             description="See your real public IPv4 and IPv6 addresses, ISP, and location. Detect WebRTC leaks, proxy exposure, and DNS privacy issues instantly."

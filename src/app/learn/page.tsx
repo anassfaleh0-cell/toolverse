@@ -28,10 +28,11 @@ export default function LearnPage() {
           <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">Beginner-friendly guides and tutorials for network tools, DNS, SSL, and web security fundamentals.</p>
         </div>
       </section>
-      <section className="py-12 sm:py-16">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {items.map((item) => (
+      {items.length > 0 && (
+        <section className="py-12 sm:py-16">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {items.map((item) => (
               <Link
                 key={item.slug}
                 href={`/learn/${item.slug}`}
@@ -48,6 +49,7 @@ export default function LearnPage() {
           </div>
         </div>
       </section>
+      )}
     </>
   );
 }

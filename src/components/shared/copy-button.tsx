@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { Button } from "@/components/ui";
 
 interface CopyButtonProps {
   text: string;
@@ -21,10 +22,11 @@ export function CopyButton({ text, label = "Copy" }: CopyButtonProps) {
   }, [text]);
 
   return (
-    <button
+    <Button
       type="button"
+      variant="secondary"
+      size="sm"
       onClick={handleCopy}
-      className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-zinc-300 bg-white px-3 text-xs font-medium text-zinc-700 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-300 dark:hover:bg-zinc-900"
       aria-label={copied ? "Copied" : `Copy ${label} to clipboard`}
     >
       {copied ? (
@@ -59,6 +61,6 @@ export function CopyButton({ text, label = "Copy" }: CopyButtonProps) {
           {label}
         </>
       )}
-    </button>
+    </Button>
   );
 }

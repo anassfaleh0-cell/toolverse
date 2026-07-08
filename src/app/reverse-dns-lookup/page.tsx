@@ -19,7 +19,7 @@ import { SITE_URL } from "@/lib/constants";
 import Link from "next/link";
 
 const slug = "reverse-dns-lookup";
-const pageTitle = "Reverse DNS Lookup - Check PTR Records for Email & Servers";
+const pageTitle = "Reverse DNS Lookup — Check PTR Records for Email";
 const pageDescription =
   "Verify PTR records for any IP address. Check rDNS configuration to ensure email deliverability and server authentication. Free reverse DNS lookup tool.";
 
@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/${slug}`,
   },
   twitter: {
+    card: "summary_large_image",
     title: pageTitle,
     description: pageDescription,
   },
@@ -118,7 +119,7 @@ export default function ReverseDnsPage() {
       <JsonLd data={softwareAppSchema({ name: pageTitle, description: pageDescription, url: `${SITE_URL}/${slug}` })} />
 
       <section className="border-b border-zinc-200 dark:border-zinc-800">
-        <ToolLayout>
+        <ToolLayout toolSlug={slug}>
           <ToolHero
             title="Reverse DNS Lookup"
             description="Verify PTR records for any IP address. Check rDNS configuration to ensure email deliverability and server authentication."

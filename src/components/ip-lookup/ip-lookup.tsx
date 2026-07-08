@@ -7,11 +7,7 @@ import { IpLookupResults } from "./ip-lookup-results";
 import { IpLookupHistory } from "./ip-lookup-history";
 import { addToHistory, type IpLookupData } from "@/lib/ip-lookup-utils";
 
-interface IpLookupProps {
-  pageUrl: string;
-}
-
-export function IpLookup({ pageUrl }: IpLookupProps) {
+export function IpLookup() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -73,7 +69,6 @@ export function IpLookup({ pageUrl }: IpLookupProps) {
           loading={loading}
           error={error}
           onRetry={handleRefresh}
-          pageUrl={pageUrl}
         />
         <aside className="order-first lg:order-last">
           <IpLookupHistory onSelect={performLookup} currentIp={lookedUpIp} />

@@ -8,7 +8,29 @@ interface SearchResult {
   name: string;
   url: string;
   category: string;
+  type: "tool" | "guide" | "article" | "comparison" | "learn" | "faq" | "category";
+  match: string;
 }
+
+const TYPE_LABELS: Record<string, string> = {
+  tool: "Tool",
+  guide: "Guide",
+  article: "Article",
+  comparison: "Compare",
+  learn: "Learn",
+  faq: "FAQ",
+  category: "Category",
+};
+
+const TYPE_COLORS: Record<string, string> = {
+  tool: "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300",
+  guide: "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300",
+  article: "bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300",
+  comparison: "bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-300",
+  learn: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900 dark:text-emerald-300",
+  faq: "bg-rose-100 text-rose-700 dark:bg-rose-900 dark:text-rose-300",
+  category: "bg-zinc-100 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300",
+};
 
 export function SearchSuggestions() {
   const [query, setQuery] = useState("");
@@ -102,9 +124,9 @@ export function SearchSuggestions() {
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKey}
           onFocus={() => { if (results.length > 0) setOpen(true); }}
-          placeholder="Search tools..."
+          placeholder="Search tools, guides, articles..."
           className="flex-1 bg-transparent text-sm text-zinc-900 outline-none placeholder:text-zinc-400 dark:text-zinc-50"
-          aria-label="Search tools"
+          aria-label="Search tools, guides, articles"
           aria-autocomplete="list"
           role="searchbox"
         />
@@ -117,10 +139,10 @@ export function SearchSuggestions() {
         >
           {results.map((result, i) => (
             <li
-              key={result.slug}
+              key={`${result.type}-${result.slug}`}
               role="option"
               aria-selected={i === selectedIndex}
-              className={`flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2 text-sm ${
+              className={`flex cursor-pointer items-center gap-2 rounded-lg px-3 py-2 text-sm ${
                 i === selectedIndex
                   ? "bg-zinc-100 dark:bg-zinc-800"
                   : "hover:bg-zinc-50 dark:hover:bg-zinc-800/50"
@@ -128,10 +150,12 @@ export function SearchSuggestions() {
               onClick={() => select(result)}
               onMouseEnter={() => setSelectedIndex(i)}
             >
-              <span className="flex-1 font-medium text-zinc-900 dark:text-zinc-50">
+              <span className={`shrink-0 rounded px-1.5 py-0.5 text-[10px] font-medium ${TYPE_COLORS[result.type] || "bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400"}`}>
+                {TYPE_LABELS[result.type] || result.type}
+              </span>
+              <span className="flex-1 truncate font-medium text-zinc-900 dark:text-zinc-50">
                 {result.name}
               </span>
-              <span className="text-xs text-zinc-400 capitalize">{result.category}</span>
             </li>
           ))}
         </ul>

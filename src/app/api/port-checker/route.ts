@@ -65,7 +65,8 @@ export async function GET(request: Request) {
     host = host.split("/")[0].split(":")[0];
 
     const hostRegex = /^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,}$/;
-    if (!hostRegex.test(host) && host !== "localhost") {
+    const ipv4Regex = /^(\d{1,3}\.){3}\d{1,3}$/;
+    if (!hostRegex.test(host) && host !== "localhost" && !ipv4Regex.test(host)) {
       return NextResponse.json({ error: "Enter a valid hostname or IP address" }, { status: 400 });
     }
 

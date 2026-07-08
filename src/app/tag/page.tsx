@@ -8,8 +8,9 @@ import { webPageSchema, breadcrumbSchema } from "@/lib/seo";
 export const metadata: Metadata = {
   title: `Tags - ${SITE_NAME}`,
   description: `Browse all tags on ${SITE_NAME}. Find tools by category — DNS, IP, HTTP, SSL, security, network, JSON, and more.`,
+  openGraph: { title: `Tags - ${SITE_NAME}`, description: `Browse all tags on ${SITE_NAME}. Find tools by topic.`, url: `${SITE_URL}/tag` },
+  twitter: { card: "summary_large_image", title: `Tags - ${SITE_NAME}`, description: `Browse all tags on ${SITE_NAME}. Find tools by topic.` },
   alternates: { canonical: `${SITE_URL}/tag` },
-  openGraph: { title: `Tags - ${SITE_NAME}` },
 };
 
 const breadcrumbs = [

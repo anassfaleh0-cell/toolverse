@@ -44,17 +44,18 @@ export async function GET(request: Request) {
     host = host.split("/")[0].split(":")[0];
 
     const hostRegex = /^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,}$/;
-    if (!hostRegex.test(host) && host !== "localhost") {
+    const ipv4Regex = /^(\d{1,3}\.){3}\d{1,3}$/;
+    if (!hostRegex.test(host) && host !== "localhost" && !ipv4Regex.test(host)) {
       return NextResponse.json({ error: "Enter a valid hostname or IP address" }, { status: 400 });
     }
 
     const port = 80;
-    const attempts = 4;
+    const attempts = 5;
     const timeouts: number[] = [];
     let lossCount = 0;
 
     for (let i = 0; i < attempts; i++) {
-      const time = await tcpPing(host, port, 5000);
+      const time = await tcpPing(host, port, 3000);
       if (time !== null) {
         timeouts.push(time);
       } else {
@@ -66,6 +67,9 @@ export async function GET(request: Request) {
     const min = timeouts.length > 0 ? Math.min(...timeouts) : 0;
     const max = timeouts.length > 0 ? Math.max(...timeouts) : 0;
     const avg = timeouts.length > 0 ? Math.round(timeouts.reduce((a, b) => a + b, 0) / timeouts.length) : 0;
+    const jitter = timeouts.length > 1
+      ? Math.round(Math.sqrt(timeouts.reduce((sq, t) => sq + (t - avg) ** 2, 0) / timeouts.length))
+      : 0;
 
     return NextResponse.json({
       host,
@@ -76,6 +80,7 @@ export async function GET(request: Request) {
       min,
       max,
       avg,
+      jitter,
       times: timeouts,
     }, { headers: { "Cache-Control": "no-store" } });
   } catch (err) {

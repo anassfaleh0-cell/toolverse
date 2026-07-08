@@ -15,9 +15,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const indexNowKey = process.env.INDEXNOW_KEY || "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6";
     const payload = {
       host: new URL(SITE_URL).hostname,
-      key: "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6",
+      key: indexNowKey,
       keyLocation: `${SITE_URL}/indexnow-key.txt`,
       urlList: urlList.map((url) =>
         url.startsWith("http") ? url : `${SITE_URL}${url.startsWith("/") ? url : `/${url}`}`,

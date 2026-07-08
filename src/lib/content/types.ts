@@ -3,7 +3,14 @@ export type ContentType =
   | "tutorial"
   | "article"
   | "learn"
-  | "comparison";
+  | "comparison"
+  | "examples"
+  | "errors"
+  | "reference"
+  | "cheat-sheet"
+  | "best-practices"
+  | "commands"
+  | "use-cases";
 
 export type Difficulty = "beginner" | "intermediate" | "advanced";
 
@@ -25,6 +32,8 @@ export interface ContentPiece {
   readingTimeMinutes: number;
   publishedAt: string;
   updatedAt: string;
+  author?: { name: string; url?: string };
+  schema?: Record<string, unknown>;
 }
 
 export interface TopicCluster {

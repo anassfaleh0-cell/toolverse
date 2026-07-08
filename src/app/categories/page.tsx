@@ -6,6 +6,8 @@ import { SITE_NAME, SITE_URL } from "@/lib/constants";
 export const metadata: Metadata = {
   title: `Categories - ${SITE_NAME}`,
   description: `Browse tool categories on ${SITE_NAME}. Find tools for text, design, code, data, audio, video, and productivity.`,
+  openGraph: { title: `Categories - ${SITE_NAME}`, description: `Browse tool categories on ${SITE_NAME}.`, url: `${SITE_URL}/categories` },
+  twitter: { card: "summary_large_image", title: `Categories - ${SITE_NAME}`, description: `Browse tool categories on ${SITE_NAME}.` },
   alternates: { canonical: `${SITE_URL}/categories` },
 };
 

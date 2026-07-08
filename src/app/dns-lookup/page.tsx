@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DnsLookup } from "@/components/dns-lookup/dns-lookup";
+import { DnsLookup, DnsVisualization } from "@/components/dns-lookup";
 import {
   ToolLayout,
   ToolHero,
@@ -19,7 +19,7 @@ import { SITE_URL } from "@/lib/constants";
 import Link from "next/link";
 
 const slug = "dns-lookup";
-const pageTitle = "DNS Lookup - Query All DNS Record Types for Any Domain";
+const pageTitle = "DNS Lookup — Query All DNS Record Types for Any Domain";
 const pageDescription =
   "Perform detailed DNS lookups to retrieve A, AAAA, MX, NS, CNAME, TXT, and SOA records. Troubleshoot resolution failures and verify DNS configuration.";
 
@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/${slug}`,
   },
   twitter: {
+    card: "summary_large_image",
     title: pageTitle,
     description: pageDescription,
   },
@@ -118,7 +119,7 @@ export default function DnsLookupPage() {
       <JsonLd data={softwareAppSchema({ name: pageTitle, description: pageDescription, url: `${SITE_URL}/${slug}` })} />
 
       <section className="border-b border-zinc-200 dark:border-zinc-800">
-        <ToolLayout>
+        <ToolLayout toolSlug={slug}>
           <ToolHero
             title="DNS Lookup"
             description="Perform detailed DNS lookups to retrieve A, AAAA, MX, NS, CNAME, TXT, and SOA records. Troubleshoot resolution failures and verify DNS configuration."
@@ -145,21 +146,7 @@ export default function DnsLookupPage() {
         </div>
       </section>
 
-      <section className="border-b border-zinc-200 py-16 dark:border-zinc-800 sm:py-20">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6">
-          <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
-            The DNS Resolution Path: Recursor to Authority
-          </h2>
-          <div className="mt-8 space-y-4 text-zinc-600 dark:text-zinc-400">
-            <p>
-              Every DNS query follows a defined chain mirroring how all internet resolution works. Your query first hits a recursor (resolver) operated by your ISP, Google (8.8.8.8), Cloudflare (1.1.1.1), or a corporate DNS server. If uncached, the recursor begins iterative queries: starting at the root servers (operated by 12 independent organizations), then the TLD servers (e.g., Verisign for .com), and finally the domain&apos;s authoritative name servers.
-            </p>
-            <p>
-              Each step introduces failure points. Root servers are remarkably stable, but TLD server latency varies. Authoritative servers are the most common bottleneck: misconfigured glue records, expired domains, or overwhelmed hosting cause SERVFAIL or NXDOMAIN responses. Cache introduces another variable: stale records serve incorrect IPs for the TTL duration, which can range from 30 seconds to 86,400 seconds. Running a <Link href="/dns-propagation-checker" className="text-blue-600 hover:underline dark:text-blue-400">DNS Propagation Checker</Link> alongside your lookup reveals whether recent changes have propagated globally. Combining DNS data with <Link href="/ip-lookup" className="text-blue-600 hover:underline dark:text-blue-400">IP Lookup</Link> on resolved addresses completes the chain from hostname to physical infrastructure.
-            </p>
-          </div>
-        </div>
-      </section>
+      <DnsVisualization />
 
       <section className="border-b border-zinc-200 py-16 dark:border-zinc-800 sm:py-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">

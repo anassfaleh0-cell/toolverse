@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useState } from "react";
+import { Button } from "@/components/ui";
 
 interface ShareButtonProps {
   title: string;
@@ -28,10 +29,11 @@ export function ShareButton({ title, text, url }: ShareButtonProps) {
   }, [title, text, url]);
 
   return (
-    <button
+    <Button
       type="button"
+      variant="secondary"
+      size="sm"
       onClick={handleShare}
-      className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-zinc-300 bg-white px-3 text-xs font-medium text-zinc-700 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-300 dark:hover:bg-zinc-900"
       aria-label={shared ? "Link copied" : "Share this tool"}
     >
       {shared ? (
@@ -67,6 +69,6 @@ export function ShareButton({ title, text, url }: ShareButtonProps) {
           Share
         </>
       )}
-    </button>
+    </Button>
   );
 }

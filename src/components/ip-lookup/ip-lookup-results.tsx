@@ -1,13 +1,16 @@
 "use client";
 
-import { useCallback } from "react";
 import {
   ToolResultCard,
   CopyButton,
-  ShareButton,
   ToolSkeleton,
   ToolError,
+  DashboardSummary,
+  StatusBadge,
+  ScoreGauge,
+  ToolFaqSection,
 } from "@/components/shared";
+import { TOOL_FAQS } from "@/lib/tool-faqs";
 import { IpLookupMap } from "./ip-lookup-map";
 import type { IpLookupData } from "@/lib/ip-lookup-utils";
 import { getFlagEmoji } from "@/lib/ip-lookup-utils";
@@ -17,7 +20,6 @@ interface IpLookupResultsProps {
   loading: boolean;
   error: string | null;
   onRetry: () => void;
-  pageUrl: string;
 }
 
 export function IpLookupResults({
@@ -25,36 +27,7 @@ export function IpLookupResults({
   loading,
   error,
   onRetry,
-  pageUrl,
 }: IpLookupResultsProps) {
-  const handleCopyAll = useCallback(() => {
-    if (!data) return;
-    const lines = [
-      `IP Address: ${data.ip}`,
-      `IP Version: IPv${data.version}`,
-      `Hostname: ${data.hostname}`,
-      `Country: ${data.country}`,
-      `Country Code: ${data.countryCode}`,
-      `Region: ${data.region}`,
-      `City: ${data.city}`,
-      `Postal Code: ${data.postalCode}`,
-      `Continent: ${data.continent}`,
-      `Latitude: ${data.lat}`,
-      `Longitude: ${data.lon}`,
-      `Timezone: ${data.timezone}`,
-      `Local Time: ${data.localTime}`,
-      `ISP: ${data.isp}`,
-      `Organization: ${data.org}`,
-      `ASN: ${data.asn}`,
-      `Currency: ${data.currency}`,
-      `Calling Code: ${data.callingCode}`,
-      `VPN: ${data.isVpn ? "Yes" : "No"}`,
-      `Proxy: ${data.isProxy ? "Yes" : "No"}`,
-      `Tor: ${data.isTor ? "Yes" : "No"}`,
-    ];
-    const text = lines.join("\n");
-    navigator.clipboard.writeText(text).catch(() => {});
-  }, [data]);
 
   if (error) {
     return <ToolError message={error} onRetry={onRetry} />;
@@ -65,7 +38,16 @@ export function IpLookupResults({
   }
 
   if (!data) {
-    return null;
+    return (
+      <div className="rounded-xl border border-zinc-200 p-8 text-center dark:border-zinc-800">
+        <p className="text-zinc-600 dark:text-zinc-400">
+          Enter an IP address above to look up location, ISP, ASN, and more.
+        </p>
+        <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
+          Try entering <span className="font-mono text-zinc-700 dark:text-zinc-300">8.8.8.8</span> (Google DNS) to see a sample result.
+        </p>
+      </div>
+    );
   }
 
   const rows = [
@@ -86,56 +68,34 @@ export function IpLookupResults({
     { label: "ASN", value: data.asn, icon: "🏷️", mono: true },
     { label: "Currency", value: data.currency, icon: "💵" },
     { label: "Calling Code", value: data.callingCode, icon: "📞" },
-    { label: "VPN", value: data.isVpn ? "Yes" : "No", icon: "🛡️" },
-    { label: "Proxy", value: data.isProxy ? "Yes" : "No", icon: "🔒" },
-    { label: "Tor", value: data.isTor ? "Yes" : "No", icon: "🧅" },
   ];
 
   return (
     <div className="space-y-6">
-      <div className="rounded-xl border border-zinc-200/80 bg-white/60 p-6 shadow-sm backdrop-blur-sm dark:border-zinc-800/80 dark:bg-zinc-900/60">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-              Lookup Result
-            </p>
-            <p className="mt-1 font-mono text-2xl font-bold text-zinc-900 dark:text-zinc-50">
-              {data.ip}
-              <span className="ml-2 text-sm font-normal text-zinc-400">
-                IPv{data.version}
-              </span>
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            <CopyButton text={data.ip} label="Copy IP" />
-            <button
-              type="button"
-              onClick={handleCopyAll}
-              className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-zinc-300 bg-white px-3 text-xs font-medium text-zinc-700 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-300 dark:hover:bg-zinc-900"
-              aria-label="Copy all results"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                className="size-4"
-                aria-hidden="true"
-              >
-                <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
-                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
-              </svg>
-              Copy All
-            </button>
-            <ShareButton
-              title={`IP Lookup: ${data.ip}`}
-              text={`IP: ${data.ip} | Location: ${data.city}, ${data.country} | ISP: ${data.isp}`}
-              url={`${pageUrl}?ip=${data.ip}`}
-            />
-          </div>
-        </div>
-      </div>
+      {(() => {
+        const hasFullData = data.city !== "\u2014" && data.isp !== "\u2014";
+        const privacyScore = hasFullData ? 40 : data.city !== "\u2014" ? 60 : 80;
+        const asnShort = data.asn ? data.asn.replace("AS", "") : "";
+        return (
+          <DashboardSummary
+            title={data.ip}
+            status={data.city !== "\u2014" ? "good" : "warning"}
+            mainFinding={`${data.city}, ${data.country}${data.countryCode}${data.isp !== "\u2014" ? ` \u00B7 ${data.isp}` : ""}`}
+            riskLevel="low"
+            riskLabel={`IPv${data.version}`}
+            timestamp={new Date().toISOString()}
+            nextAction={data.isp !== "\u2014" ? "Use this data for network diagnostics. For real-time threat detection, run periodic lookups." : "Some data fields are unavailable. Try a different IP address for more complete results."}
+          >
+            <ScoreGauge score={100 - privacyScore} size={60} label="Privacy" />
+            {data.asn !== "\u2014" && <div className="text-center"><p className="text-xs text-zinc-500">ASN</p><p className="text-sm font-bold text-zinc-900 dark:text-zinc-50">{asnShort}</p></div>}
+            <div className="flex flex-wrap items-center gap-2">
+              <StatusBadge status={data.countryCode ? "good" : "neutral"} label={data.countryCode || "No Geo"} />
+              <StatusBadge status={data.isp !== "\u2014" ? "good" : "warning"} label={data.isp !== "\u2014" ? "ISP Known" : "ISP Unknown"} />
+              <StatusBadge status={data.hostname ? "good" : "neutral"} label={data.hostname ? "PTR Record" : "No PTR"} />
+            </div>
+          </DashboardSummary>
+        );
+      })()}
 
       {data.lat !== 0 && data.lon !== 0 && (
         <div className="overflow-hidden rounded-xl border border-zinc-200/80 shadow-sm dark:border-zinc-800/80">
@@ -152,6 +112,29 @@ export function IpLookupResults({
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="rounded-xl border border-zinc-200 p-5 text-sm text-zinc-600 dark:border-zinc-800 dark:text-zinc-400">
+        <p className="mb-2 font-medium text-zinc-900 dark:text-zinc-50">
+          About This Data
+        </p>
+        <ul className="space-y-2">
+          <li>
+            <strong>Source:</strong> ip-api.com — geolocation data derived from BGP routing tables, WHOIS allocation records, and latency measurements from global probe networks.
+          </li>
+          <li>
+            <strong>Generated:</strong> {new Date().toLocaleString("en-US", { year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" })}
+          </li>
+          <li>
+            <strong>Accuracy:</strong> City-level accuracy for residential IPs is typically 85-95% in developed countries. Mobile and datacenter IPs are less precise. This data should not be used for street-level location or law enforcement purposes.
+          </li>
+          <li>
+            <strong>VPN/Proxy Detection:</strong> Not available in the current tier. For reliable VPN/proxy detection, use a dedicated threat intelligence feed.
+          </li>
+        </ul>
+      </div>
+      <div className="mt-8">
+        <ToolFaqSection items={TOOL_FAQS["ip-lookup"]} toolName="IP Lookup" />
       </div>
     </div>
   );

@@ -19,7 +19,7 @@ import { SITE_URL } from "@/lib/constants";
 import Link from "next/link";
 
 const slug = "ping-test";
-const pageTitle = "Ping Test - Measure Network Latency & Packet Loss Online";
+const pageTitle = "Ping Test — Measure Network Latency & Packet Loss";
 const pageDescription =
   "Test network latency and packet loss to any server. Get min, average, and max ping times with detailed network diagnostics. Free online ping test tool.";
 
@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/${slug}`,
   },
   twitter: {
+    card: "summary_large_image",
     title: pageTitle,
     description: pageDescription,
   },
@@ -118,7 +119,7 @@ export default function PingTestPage() {
       <JsonLd data={softwareAppSchema({ name: pageTitle, description: pageDescription, url: `${SITE_URL}/${slug}` })} />
 
       <section className="border-b border-zinc-200 dark:border-zinc-800">
-        <ToolLayout>
+        <ToolLayout toolSlug={slug}>
           <ToolHero
             title="Ping Test"
             description="Test network latency and packet loss to any server. Get min, average, and max ping times from our servers."

@@ -19,7 +19,7 @@ import { SITE_URL } from "@/lib/constants";
 import Link from "next/link";
 
 const slug = "http-headers-checker";
-const pageTitle = "HTTP Headers Checker - Audit Security & Response Headers Online";
+const pageTitle = "HTTP Headers Checker — Audit Security & Response Headers";
 const pageDescription =
   "Inspect all HTTP response headers from any URL. Check CORS, CSP, HSTS, and cache policies. Free HTTP security header analysis tool.";
 
@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/${slug}`,
   },
   twitter: {
+    card: "summary_large_image",
     title: pageTitle,
     description: pageDescription,
   },
@@ -118,7 +119,7 @@ export default function HttpHeadersPage() {
       <JsonLd data={softwareAppSchema({ name: pageTitle, description: pageDescription, url: `${SITE_URL}/${slug}` })} />
 
       <section className="border-b border-zinc-200 dark:border-zinc-800">
-        <ToolLayout>
+        <ToolLayout toolSlug={slug}>
           <ToolHero
             title="HTTP Headers Checker"
             description="Inspect all HTTP response headers from any URL. Check security, CORS, and cache policies from an external perspective."

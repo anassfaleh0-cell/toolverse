@@ -6,8 +6,9 @@ import { webPageSchema } from "@/lib/seo";
 export const metadata: Metadata = {
   title: `Transparency - ${SITE_NAME}`,
   description: `${SITE_NAME}'s commitment to transparency: how we operate, fund the site, handle data, and maintain independence.`,
+  openGraph: { title: `Transparency - ${SITE_NAME}`, description: `${SITE_NAME}'s commitment to transparency.`, url: `${SITE_URL}/transparency` },
+  twitter: { card: "summary_large_image", title: `Transparency - ${SITE_NAME}`, description: `${SITE_NAME}'s commitment to transparency.` },
   alternates: { canonical: `${SITE_URL}/transparency` },
-  openGraph: { title: `Transparency - ${SITE_NAME}` },
 };
 
 export default function TransparencyPage() {

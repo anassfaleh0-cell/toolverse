@@ -1,51 +1,12 @@
 import type { MetadataRoute } from "next";
-import { SITEMAP_PATHS } from "@/lib/registry";
-import { getSitemapPaths } from "@/lib/content/registry";
-import { getAllLandingSlugs } from "@/lib/seo/landing-pages";
-import { getAllTagSlugs } from "@/lib/seo/tags";
+import { SITE_URL } from "@/lib/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://toolverse.dev";
-  const now = new Date();
-
-  const priorityMap: Record<string, number> = {
-    "/": 1,
-    "/tools": 0.9,
-    "/categories": 0.8,
-    "/what-is-my-ip": 0.9,
-    "/ip-lookup": 0.9,
-    "/resources": 0.9,
-    "/guides": 0.9,
-    "/learn": 0.9,
-    "/blog": 0.9,
-    "/compare": 0.9,
-  };
-
-  const staticExtra = [
-    "/feed.xml",
-    "/sitemap",
-    "/editorial-guidelines",
-    "/how-we-test-tools",
-    "/about-our-research",
-    "/transparency",
-    "/tag",
+  const baseUrl = SITE_URL;
+  return [
+    { url: `${baseUrl}/sitemap-tools.xml`, lastModified: new Date(), changeFrequency: "weekly", priority: 1 },
+    { url: `${baseUrl}/sitemap-content.xml`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
+    { url: `${baseUrl}/sitemap-landing.xml`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
+    { url: `${baseUrl}/sitemap-static.xml`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
   ];
-
-  const landingPaths = getAllLandingSlugs().map((slug) => `/${slug}`);
-  const tagPaths = getAllTagSlugs().map((slug) => `/tag/${slug}`);
-
-  const allPaths = [
-    ...SITEMAP_PATHS,
-    ...getSitemapPaths(),
-    ...staticExtra,
-    ...landingPaths,
-    ...tagPaths,
-  ];
-
-  return allPaths.map((path) => ({
-    url: `${baseUrl}${path}`,
-    lastModified: now,
-    changeFrequency: "weekly" as const,
-    priority: priorityMap[path] ?? 0.6,
-  }));
 }

@@ -1,6 +1,9 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import { Input, Button, Alert, Skeleton } from "@/components/ui";
+import { CopyButton, DashboardSummary, StatusBadge, CompositeScore, RiskMeter, ToolFaqSection } from "@/components/shared";
+import { TOOL_FAQS } from "@/lib/tool-faqs";
 
 interface PortResult {
   port: number;
@@ -66,54 +69,79 @@ export function PortChecker() {
   return (
     <div className="mx-auto max-w-3xl">
       <form onSubmit={handleSubmit} className="flex gap-3">
-        <input
+        <Input
           type="text"
           value={host}
           onChange={(e) => setHost(e.target.value)}
           placeholder="example.com"
-          className="flex-1 rounded-lg border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder-zinc-500"
           aria-label="Hostname"
         />
-        <input
+        <Input
           type="text"
           value={customPort}
           onChange={(e) => setCustomPort(e.target.value)}
           placeholder="Port (optional)"
-          className="w-32 rounded-lg border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder-zinc-500"
+          className="w-32"
           aria-label="Port number"
         />
-        <button
+        <Button
           type="submit"
           disabled={loading}
-          className="rounded-lg bg-blue-600 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-700 disabled:opacity-50"
+          variant="primary"
         >
           {loading ? "Scanning..." : "Scan"}
-        </button>
+        </Button>
       </form>
 
       {error && (
-        <div className="mt-6 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-800 dark:bg-red-950 dark:text-red-400">
-          {error}
-        </div>
+        <Alert variant="error" className="mt-6">{error}</Alert>
       )}
 
       {loading && (
-        <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
-          {Array.from({ length: 12 }).map((_, i) => (
-            <div key={i} className="rounded-xl border border-zinc-200 p-4 dark:border-zinc-800">
-              <div className="mb-2 h-4 w-16 animate-pulse rounded bg-zinc-200 dark:bg-zinc-800" />
-              <div className="h-3 w-20 animate-pulse rounded bg-zinc-200 dark:bg-zinc-800" />
-            </div>
-          ))}
+        <div className="mt-8">
+          <Skeleton count={6} columns={3} />
         </div>
       )}
 
       {result && !loading && (
         <div className="mt-8 space-y-6">
-          <p className="text-sm text-zinc-500 dark:text-zinc-400">
-            Scan results for <span className="font-medium text-zinc-900 dark:text-zinc-50">{result.host}</span>
-            {" "}— {openPorts.length} open, {filteredPorts.length} filtered, {closedPorts.length} closed
-          </p>
+          {(() => {
+            const riskyPorts = [21, 23, 25, 3389, 22, 445, 135, 139, 1433, 3306, 5900, 6379, 8080, 27017];
+            const attackScore = Math.min(100, openPorts.filter(p => riskyPorts.includes(p.port)).length * 20 + openPorts.filter(p => !riskyPorts.includes(p.port)).length * 5);
+            const total = result.ports.length;
+            return (
+              <DashboardSummary
+                title={result.host}
+                status={openPorts.length === 0 ? "good" : openPorts.length <= 3 ? "warning" : "critical"}
+                mainFinding={openPorts.length === 0 ? "No open ports detected" : `${openPorts.length} open, ${filteredPorts.length} filtered, ${closedPorts.length} closed — Attack Surface: ${attackScore}/100`}
+                riskLevel={openPorts.length === 0 ? "low" : openPorts.length <= 3 ? "medium" : "high"}
+                riskLabel={attackScore <= 10 ? "Minimal" : attackScore <= 40 ? "Moderate" : attackScore <= 70 ? "Elevated" : "Severe"}
+                nextAction={openPorts.length > 0 ? "Review each open port. Close unused ports at the firewall. Restrict access by source IP where possible." : "Your host has no exposed ports. Continue monitoring with periodic scans."}
+              >
+                <CompositeScore overall={100 - attackScore} subScores={[
+                  { label: "Open", score: openPorts.length, max: total },
+                  { label: "Filtered", score: total - openPorts.length - closedPorts.length, max: total },
+                  { label: "Closed", score: closedPorts.length, max: total },
+                ]} size={60} />
+                <RiskMeter level={attackScore <= 10 ? "low" : attackScore <= 40 ? "medium" : "high"} label={attackScore <= 10 ? "Minimal Risk" : attackScore <= 40 ? "Moderate Risk" : "High Risk"} />
+                <div className="flex flex-wrap items-center gap-2">
+                  <StatusBadge status={openPorts.length === 0 ? "good" : "warning"} label={`${openPorts.length} Open`} />
+                  <StatusBadge status={filteredPorts.length > 0 ? "warning" : "good"} label={`${filteredPorts.length} Filtered`} />
+                  {openPorts.some((p: {port: number}) => riskyPorts.slice(0, 4).includes(p.port)) && (
+                    <StatusBadge status="critical" label="Risky Ports" />
+                  )}
+                </div>
+              </DashboardSummary>
+            );
+          })()}
+
+          <div className="flex items-center justify-between">
+            <p className="text-sm text-zinc-500 dark:text-zinc-400">
+              Scan results for <span className="font-medium text-zinc-900 dark:text-zinc-50">{result.host}</span>
+              {" "}— {openPorts.length} open, {filteredPorts.length} filtered, {closedPorts.length} closed
+            </p>
+            <CopyButton text={JSON.stringify(result, null, 2)} label="Copy" />
+          </div>
 
           {openPorts.length > 0 && (
             <div>
@@ -159,6 +187,40 @@ export function PortChecker() {
               </div>
             </details>
           )}
+
+          {openPorts.length > 0 && (
+            <div className="rounded-xl border border-zinc-200 p-5 text-sm dark:border-zinc-800">
+              <p className="mb-2 font-medium text-zinc-900 dark:text-zinc-50">
+                Security Assessment
+              </p>
+              <div className="space-y-2 text-zinc-600 dark:text-zinc-400">
+                <p>
+                  <strong>{openPorts.length} port{openPorts.length > 1 ? "s are" : " is"} open.</strong>{" "}
+                  {openPorts.some((p) => [21, 23, 25, 3389].includes(p.port))
+                    ? "Ports commonly targeted by attackers (FTP, Telnet, SMTP, RDP) are exposed. Review whether each service requires public access."
+                    : "Open ports are necessary for running services, but every open port expands the attack surface."}
+                </p>
+                <p>
+                  To reduce risk: close unused ports at the firewall, restrict access by source IP where possible,
+                  use strong authentication, and keep all services patched. Run this scan periodically to detect
+                  unauthorized services.
+                </p>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {result && !loading && (
+        <div className="mt-8">
+          <ToolFaqSection items={TOOL_FAQS["port-checker"]} toolName="Port Checker" />
+        </div>
+      )}
+      {!result && !loading && !error && (
+        <div className="mt-8 rounded-xl border border-zinc-200 p-8 text-center dark:border-zinc-800">
+          <p className="text-zinc-600 dark:text-zinc-400">
+            Enter a hostname above to scan common ports and check which services are exposed.
+          </p>
         </div>
       )}
     </div>

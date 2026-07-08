@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "ToolVerse Privacy Policy.",
+  description: "ToolVerse Privacy Policy — how we collect, use, and protect your data when using our free online tools.",
+  openGraph: { title: "Privacy Policy", description: "ToolVerse Privacy Policy — data collection, usage, and protection.", url: `${SITE_URL}/privacy` },
+  twitter: { card: "summary_large_image", title: "Privacy Policy", description: "ToolVerse Privacy Policy — data collection and protection." },
+  alternates: { canonical: `${SITE_URL}/privacy` },
 };
 
 export default function Privacy() {

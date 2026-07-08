@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { validateIp } from "@/lib/ip-lookup-utils";
+import { Button } from "@/components/ui";
 
 interface IpLookupFormProps {
   onLookup: (ip: string) => void;
@@ -56,10 +57,11 @@ export function IpLookupForm({ onLookup, loading }: IpLookupFormProps) {
             spellCheck={false}
             enterKeyHint="search"
           />
-          <button
+          <Button
             type="submit"
             disabled={loading || !input.trim()}
-            className="mr-1.5 inline-flex h-9 items-center gap-1.5 rounded-lg bg-zinc-900 px-4 text-xs font-medium text-white transition-colors hover:bg-zinc-700 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
+            variant="primary"
+            size="sm"
           >
             {loading ? (
               <>
@@ -89,7 +91,7 @@ export function IpLookupForm({ onLookup, loading }: IpLookupFormProps) {
             ) : (
               "Lookup"
             )}
-          </button>
+          </Button>
         </div>
       </div>
       {error && (

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, startTransition } from "react";
 import { getHistory, clearHistory, getFlagEmoji, type HistoryEntry } from "@/lib/ip-lookup-utils";
+import { Button } from "@/components/ui";
 
 interface IpLookupHistoryProps {
   onSelect: (ip: string) => void;
@@ -33,16 +34,17 @@ export function IpLookupHistory({ onSelect, currentIp }: IpLookupHistoryProps) {
         <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
           Recent Lookups
         </h3>
-        <button
+        <Button
           type="button"
+          variant="ghost"
+          size="sm"
           onClick={() => {
             clearHistory();
             setHistory([]);
           }}
-          className="text-xs text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
         >
           Clear
-        </button>
+        </Button>
       </div>
       <ul className="mt-3 space-y-1">
         {history.map((entry) => (
