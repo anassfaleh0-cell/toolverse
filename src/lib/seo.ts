@@ -111,6 +111,56 @@ export function qaPageSchema({
   } as WithContext<Thing>;
 }
 
+export function articleSchema({
+  type,
+  headline,
+  description,
+  url,
+  publishedAt,
+  updatedAt,
+  authorName,
+  authorUrl,
+  imageUrl,
+}: {
+  type: "Article" | "TechArticle" | "NewsArticle";
+  headline: string;
+  description: string;
+  url: string;
+  publishedAt: string;
+  updatedAt: string;
+  authorName?: string;
+  authorUrl?: string;
+  imageUrl?: string;
+}): WithContext<Thing> {
+  const schema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": type,
+    headline,
+    description,
+    url,
+    datePublished: publishedAt,
+    dateModified: updatedAt,
+    mainEntityOfPage: url,
+    publisher: {
+      "@type": "Organization",
+      name: "ToolVerse",
+      url: "https://toolverse.dev",
+      logo: { "@type": "ImageObject", url: "https://toolverse.dev/icon.svg" },
+    },
+  };
+  if (imageUrl) {
+    schema.image = { "@type": "ImageObject", url: imageUrl };
+  }
+  if (authorName) {
+    schema.author = {
+      "@type": "Person",
+      name: authorName,
+      ...(authorUrl ? { url: authorUrl } : {}),
+    };
+  }
+  return schema as WithContext<Thing>;
+}
+
 export function softwareAppSchema({
   name,
   description,

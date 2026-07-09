@@ -5,17 +5,17 @@ import { breadcrumbSchema, webPageSchema, faqSchema, type FaqItem } from "@/lib/
 import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Best Free DNS Tools Online — Lookup, Propagation, WHOIS | ToolVerse",
+  title: "Best Free DNS Tools Online — Lookup, Propagation, WHOIS | Nuvora",
   description:
-    "Compare the best free online DNS tools. DNS lookup, propagation checking, reverse DNS, and WHOIS. We review DNS Checker, MXToolbox, WhatIsMyDNS, IntoDNS, DNSSEC Analyzer, and ToolVerse DNS Lookup.",
+    "Compare the best free online DNS tools. DNS lookup, propagation checking, reverse DNS, and WHOIS. We review DNS Checker, MXToolbox, WhatIsMyDNS, IntoDNS, DNSSEC Analyzer, and Nuvora DNS Lookup.",
   openGraph: {
-    title: "Best Free DNS Tools Online — Lookup, Propagation, WHOIS | ToolVerse",
+    title: "Best Free DNS Tools Online — Lookup, Propagation, WHOIS | Nuvora",
     description:
       "Compare the best free online DNS tools. DNS lookup, propagation checking, reverse DNS, and WHOIS.",
     url: `${SITE_URL}/best-online/best-dns-tools`,
   },
   twitter: {
-    title: "Best Free DNS Tools Online — Lookup, Propagation, WHOIS | ToolVerse",
+    title: "Best Free DNS Tools Online — Lookup, Propagation, WHOIS | Nuvora",
     description:
       "Compare the best free online DNS tools. DNS lookup, propagation checking, reverse DNS, and WHOIS.",
   },
@@ -32,7 +32,7 @@ const breadcrumbs = [
   { label: "DNS Tools" },
 ];
 
-const matrixHeaders = ["Feature", "DNS Checker", "MXToolbox", "WhatIsMyDNS", "IntoDNS", "DNSSEC Analyzer", "ToolVerse DNS Lookup"];
+const matrixHeaders = ["Feature", "DNS Checker", "MXToolbox", "WhatIsMyDNS", "IntoDNS", "DNSSEC Analyzer", "Nuvora DNS Lookup"];
 const matrixRows = [
   { feature: "Free Tier Available", values: [true, true, true, true, true, true] },
   { feature: "DNS Lookup (A, AAAA, MX, TXT)", values: [true, true, true, false, false, true] },
@@ -51,17 +51,17 @@ const faqItems: FaqItem[] = [
   {
     question: "What is the best free DNS lookup tool?",
     answer:
-      "ToolVerse DNS Lookup offers comprehensive DNS record checking (A, AAAA, MX, TXT, CNAME, NS), propagation verification, and reverse DNS — all free with no sign-up. DNS Checker is also excellent for multi-location propagation checks.",
+      "Nuvora DNS Lookup offers comprehensive DNS record checking (A, AAAA, MX, TXT, CNAME, NS), propagation verification, and reverse DNS — all free with no sign-up. DNS Checker is also excellent for multi-location propagation checks.",
   },
   {
     question: "Can I check DNS propagation globally?",
     answer:
-      "Yes. DNS Checker and ToolVerse DNS Lookup both query multiple global resolvers to show where your DNS changes have propagated. This is essential after switching hosting or updating DNS records.",
+      "Yes. DNS Checker and Nuvora DNS Lookup both query multiple global resolvers to show where your DNS changes have propagated. This is essential after switching hosting or updating DNS records.",
   },
   {
     question: "What is DNSSEC and why should I check it?",
     answer:
-      "DNSSEC adds cryptographic signatures to DNS records to prevent spoofing and cache poisoning. DNSSEC Analyzer and ToolVerse DNS Lookup both verify whether your domain has valid DNSSEC signatures.",
+      "DNSSEC adds cryptographic signatures to DNS records to prevent spoofing and cache poisoning. DNSSEC Analyzer and Nuvora DNS Lookup both verify whether your domain has valid DNSSEC signatures.",
   },
 ];
 

@@ -5,17 +5,17 @@ import { breadcrumbSchema, webPageSchema, faqSchema, type FaqItem } from "@/lib/
 import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Best Free AI Tools Online — Text, Image, Code Generation | ToolVerse",
+  title: "Best Free AI Tools Online — Text, Image, Code Generation | Nuvora",
   description:
-    "Compare the best free AI tools for text, image, and code generation. We review ChatGPT, Claude AI, Perplexity, Gemini, Copilot, and ToolVerse AI.",
+    "Compare the best free AI tools for text, image, and code generation. We review ChatGPT, Claude AI, Perplexity, Gemini, Copilot, and Nuvora AI.",
   openGraph: {
-    title: "Best Free AI Tools Online — Text, Image, Code Generation | ToolVerse",
+    title: "Best Free AI Tools Online — Text, Image, Code Generation | Nuvora",
     description:
-      "Compare the best free AI tools for text, image, and code generation. We review ChatGPT, Claude AI, Perplexity, Gemini, Copilot, and ToolVerse AI.",
+      "Compare the best free AI tools for text, image, and code generation. We review ChatGPT, Claude AI, Perplexity, Gemini, Copilot, and Nuvora AI.",
     url: `${SITE_URL}/best-online/best-ai-tools`,
   },
   twitter: {
-    title: "Best Free AI Tools Online — Text, Image, Code Generation | ToolVerse",
+    title: "Best Free AI Tools Online — Text, Image, Code Generation | Nuvora",
     description:
       "Compare the best free AI tools for text, image, and code generation.",
   },
@@ -32,7 +32,7 @@ const breadcrumbs = [
   { label: "AI Tools" },
 ];
 
-const matrixHeaders = ["Feature", "ChatGPT", "Claude AI", "Perplexity", "Gemini", "Copilot", "ToolVerse AI"];
+const matrixHeaders = ["Feature", "ChatGPT", "Claude AI", "Perplexity", "Gemini", "Copilot", "Nuvora AI"];
 const matrixRows = [
   { feature: "Free Tier Available", values: [true, true, true, true, true, true] },
   { feature: "Text Generation", values: [true, true, true, true, true, true] },
@@ -52,17 +52,17 @@ const faqItems: FaqItem[] = [
   {
     question: "Which free AI tool has the largest context window?",
     answer:
-      "Claude AI offers a 100K token context window on its free tier — enough to analyze entire books. ToolVerse AI (coming soon) will offer 32K context with privacy-first processing.",
+      "Claude AI offers a 100K token context window on its free tier — enough to analyze entire books. Nuvora AI (coming soon) will offer 32K context with privacy-first processing.",
   },
   {
     question: "What is the best free AI for coding assistance?",
     answer:
-      "GitHub Copilot is excellent for in-editor code completion. ChatGPT and Claude AI also excel at code generation and debugging. ToolVerse AI will provide code generation with no account required.",
+      "GitHub Copilot is excellent for in-editor code completion. ChatGPT and Claude AI also excel at code generation and debugging. Nuvora AI will provide code generation with no account required.",
   },
   {
     question: "Can I use AI tools without creating an account?",
     answer:
-      "Most major AI platforms require a free account. ToolVerse AI (coming soon) will offer anonymous usage with privacy-first design — no account or personal data needed.",
+      "Most major AI platforms require a free account. Nuvora AI (coming soon) will offer anonymous usage with privacy-first design — no account or personal data needed.",
   },
 ];
 
@@ -116,7 +116,7 @@ export default function BestAiToolsPage() {
       <section className="border-t border-zinc-200 bg-zinc-50 py-12 dark:border-zinc-800 dark:bg-zinc-900/50">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">Try AI-Powered Tools</h2>
-          <p className="mt-3 text-zinc-600 dark:text-zinc-400">Free, no sign-up needed. Coming soon to ToolVerse.</p>
+          <p className="mt-3 text-zinc-600 dark:text-zinc-400">Free, no sign-up needed. Coming soon to Nuvora.</p>
           <Link href="/tools" className="mt-6 inline-block rounded-lg bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-700">
             Browse Current Tools
           </Link>

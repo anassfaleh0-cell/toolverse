@@ -1,12 +1,15 @@
 {
-  "name": "ToolVerse",
-  "short_name": "ToolVerse",
-  "description": "Free online network tools including IP lookup, WHOIS, DNS lookup, SSL checker, ping test, and more.",
+  "name": "Nuvora — Smart Tools for Everything You Do",
+  "short_name": "Nuvora",
+  "description": "Nuvora is an intelligent digital workspace with powerful AI-powered tools for network diagnostics, security analysis, PDF processing, image editing, and developer utilities.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#0a0a0a",
-  "categories": ["developer-tools", "utilities", "networking"],
+  "background_color": "#fafafa",
+  "theme_color": "#4f46e5",
+  "categories": ["developer-tools", "utilities", "networking", "productivity"],
   "lang": "en-US",
-  "orientation": "any"
+  "orientation": "any",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
 }

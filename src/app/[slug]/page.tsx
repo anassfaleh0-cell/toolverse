@@ -3,35 +3,55 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SITE_URL } from "@/lib/constants";
 import { LANDING_PAGES, getLandingPage, getAllLandingSlugs, getRelatedLandingPages } from "@/lib/seo/landing-pages";
-import { getAllTools } from "@/lib/registry";
+import { getAllTools, getToolBySlug, generateToolBreadcrumbs, generateToolMetadata, generateToolFaq, getRelatedTools } from "@/lib/registry";
 import { getContentForTool } from "@/lib/content/registry";
-import { JsonLd, Breadcrumbs, SuggestedNextTool, RelatedContent } from "@/components/shared";
-import { webPageSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
+import { JsonLd, Breadcrumbs, SuggestedNextTool, RelatedContent, ToolLayout, FaqSection } from "@/components/shared";
+import { webPageSchema, breadcrumbSchema, faqSchema, softwareAppSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/seo";
+
+const TYPE_ROUTE: Record<string, string> = {
+  guide: "guides",
+  article: "blog",
+  tutorial: "learn",
+  comparison: "compare",
+  "cheat-sheet": "cheat-sheets",
+  examples: "examples",
+  errors: "errors",
+  reference: "reference",
+  "best-practices": "best-practices",
+  commands: "commands",
+  "use-cases": "use-cases",
+};
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return getAllLandingSlugs().map((slug) => ({ slug }));
+  const landingSlugs = getAllLandingSlugs();
+  const toolSlugs = getAllTools().map((t) => t.slug);
+  const allSlugs = [...new Set([...landingSlugs, ...toolSlugs])];
+  return allSlugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const page = getLandingPage(slug);
-  if (!page) return {};
-  return {
-    title: page.getTitle(),
-    description: page.getDescription(),
-    alternates: { canonical: `${SITE_URL}/${page.slug}` },
-    openGraph: { title: page.getTitle(), description: page.getDescription(), url: `${SITE_URL}/${page.slug}` },
-    twitter: { card: "summary_large_image", title: page.getTitle(), description: page.getDescription() },
-  };
+  if (page) {
+    return {
+      title: page.getTitle(),
+      description: page.getDescription(),
+      alternates: { canonical: `${SITE_URL}/${page.slug}` },
+      openGraph: { title: page.getTitle(), description: page.getDescription(), url: `${SITE_URL}/${page.slug}` },
+      twitter: { card: "summary_large_image", title: page.getTitle(), description: page.getDescription() },
+    };
+  }
+  const tool = getToolBySlug(slug);
+  if (tool) return generateToolMetadata(tool);
+  return {};
 }
 
-export default async function LandingPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+function LandingPageContent({ slug }: { slug: string }) {
   const page = getLandingPage(slug);
-  if (!page) notFound();
+  if (!page) return null;
 
   const tools = page.getTools();
   const faqs = page.getFaqs();
@@ -108,7 +128,7 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
             </h2>
             <div className="mt-4 grid gap-4 sm:grid-cols-2">
               {relatedContent.map((piece) => {
-                const typeRoute = piece.type === "article" ? "blog" : piece.type;
+                const resolvedRoute = TYPE_ROUTE[piece.type] ?? piece.type;
                 const typeColor: Record<string, string> = {
                   guide: "text-blue-600 dark:text-blue-400",
                   article: "text-purple-600 dark:text-purple-400",
@@ -118,7 +138,7 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
                 return (
                   <Link
                     key={piece.slug}
-                    href={`/${typeRoute}/${piece.slug}`}
+                    href={`/${resolvedRoute}/${piece.slug}`}
                     className="rounded-lg border border-zinc-200 p-4 transition-colors hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-900"
                   >
                     <span className={`text-xs font-medium uppercase tracking-wider ${typeColor[piece.type] || "text-zinc-500"}`}>
@@ -193,6 +213,72 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
       {allToolSlugs.length > 0 && (
         <RelatedContent toolSlug={allToolSlugs[0]} />
       )}
+    </>
+  );
+}
+
+export default async function SlugPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const page = getLandingPage(slug);
+  if (page) return <LandingPageContent slug={slug} />;
+  const tool = getToolBySlug(slug);
+  if (tool) return <ToolGenericPage slug={slug} />;
+  notFound();
+}
+
+function ToolGenericPage({ slug }: { slug: string }) {
+  const tool = getToolBySlug(slug);
+  if (!tool) return null;
+
+  const breadcrumbs = generateToolBreadcrumbs(tool);
+  const faqItems = generateToolFaq(tool);
+  const relatedTools = getRelatedTools(tool, 6);
+
+  return (
+    <>
+      <JsonLd data={webPageSchema({ name: tool.name, description: tool.description, url: `${SITE_URL}/${tool.slug}`, breadcrumbs })} />
+      <JsonLd data={breadcrumbSchema(breadcrumbs)} />
+      <JsonLd data={faqSchema(faqItems)} />
+      <JsonLd data={softwareAppSchema({ name: tool.name, description: tool.description, url: `${SITE_URL}/${tool.slug}` })} />
+
+      <ToolLayout toolSlug={slug}>
+        <div className="py-8 text-center">
+          <div className="mx-auto flex size-16 items-center justify-center rounded-2xl bg-nuvora-100 text-nuvora-600 dark:bg-nuvora-900/50 dark:text-nuvora-400">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-8">
+              <path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+            </svg>
+          </div>
+          <h1 className="mt-6 text-2xl font-bold text-zinc-900 dark:text-zinc-50">{tool.name}</h1>
+          <p className="mt-2 text-zinc-600 dark:text-zinc-400">{tool.description}</p>
+        </div>
+      </ToolLayout>
+
+      <section className="border-t border-zinc-200 py-12 dark:border-zinc-800 sm:py-16">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6">
+          <FaqSection items={faqItems} title={`${tool.name} FAQ`} />
+        </div>
+      </section>
+
+      {relatedTools.length > 0 && (
+        <section className="border-t border-zinc-200 py-12 dark:border-zinc-800 sm:py-16">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {relatedTools.map((rt) => (
+                <Link key={rt.slug} href={rt.url} className="group rounded-xl border border-zinc-200 p-5 transition-colors hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-900">
+                  <h3 className="font-semibold text-zinc-900 group-hover:text-nuvora-600 dark:text-zinc-50 dark:group-hover:text-nuvora-400">{rt.name}</h3>
+                  <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400 line-clamp-2">{rt.description}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section className="border-t border-zinc-200 py-12 dark:border-zinc-800 sm:py-16">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6">
+          <RelatedContent toolSlug={slug} />
+        </div>
+      </section>
     </>
   );
 }

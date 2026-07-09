@@ -5,17 +5,17 @@ import { breadcrumbSchema, webPageSchema, faqSchema, type FaqItem } from "@/lib/
 import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Best Free Developer Tools Online — Code, Format, Convert | ToolVerse",
+  title: "Best Free Developer Tools Online — Code, Format, Convert | Nuvora",
   description:
-    "Compare the best free online developer tools. Format code, encode data, convert formats, and test APIs. We review DevToys, Beautifier.io, CodeBeautify, FreeFormatter, OnlineTools.dev, and ToolVerse.",
+    "Compare the best free online developer tools. Format code, encode data, convert formats, and test APIs. We review DevToys, Beautifier.io, CodeBeautify, FreeFormatter, OnlineTools.dev, and Nuvora.",
   openGraph: {
-    title: "Best Free Developer Tools Online — Code, Format, Convert | ToolVerse",
+    title: "Best Free Developer Tools Online — Code, Format, Convert | Nuvora",
     description:
       "Compare the best free online developer tools. Format code, encode data, convert formats, and test APIs.",
     url: `${SITE_URL}/best-online/best-developer-tools`,
   },
   twitter: {
-    title: "Best Free Developer Tools Online — Code, Format, Convert | ToolVerse",
+    title: "Best Free Developer Tools Online — Code, Format, Convert | Nuvora",
     description:
       "Compare the best free online developer tools. Format code, encode data, convert formats, and test APIs.",
   },
@@ -32,7 +32,7 @@ const breadcrumbs = [
   { label: "Developer Tools" },
 ];
 
-const matrixHeaders = ["Feature", "DevToys", "Beautifier.io", "CodeBeautify", "FreeFormatter", "OnlineTools.dev", "ToolVerse"];
+const matrixHeaders = ["Feature", "DevToys", "Beautifier.io", "CodeBeautify", "FreeFormatter", "OnlineTools.dev", "Nuvora"];
 const matrixRows = [
   { feature: "Free Tier Available", values: [true, true, true, true, true, true] },
   { feature: "JSON Formatter", values: [true, true, true, true, true, true] },
@@ -53,17 +53,17 @@ const faqItems: FaqItem[] = [
   {
     question: "What is the most comprehensive free developer tools platform?",
     answer:
-      "DevToys (Windows app) and ToolVerse offer the widest range of developer utilities. DevToys works as a desktop app with over 20 tools. ToolVerse provides browser-based tools including JSON formatter, JWT decoder, regex tester, hash generator, and more — all client-side.",
+      "DevToys (Windows app) and Nuvora offer the widest range of developer utilities. DevToys works as a desktop app with over 20 tools. Nuvora provides browser-based tools including JSON formatter, JWT decoder, regex tester, hash generator, and more — all client-side.",
   },
   {
     question: "Which developer tools work offline or client-side?",
     answer:
-      "Beautifier.io, CodeBeautify, FreeFormatter, OnlineTools.dev, and ToolVerse all process data client-side in the browser. ToolVerse also offers dark mode and a unified experience across all its tools.",
+      "Beautifier.io, CodeBeautify, FreeFormatter, OnlineTools.dev, and Nuvora all process data client-side in the browser. Nuvora also offers dark mode and a unified experience across all its tools.",
   },
   {
     question: "Can I decode JWT tokens online without security risks?",
     answer:
-      "Yes. ToolVerse JWT Decoder processes everything in your browser using the Web Crypto API. Your token never leaves your device.",
+      "Yes. Nuvora JWT Decoder processes everything in your browser using the Web Crypto API. Your token never leaves your device.",
   },
 ];
 

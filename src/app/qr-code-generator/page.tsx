@@ -153,6 +153,45 @@ export default function QrCodeGeneratorPage() {
 
       <section className="border-b border-zinc-200 py-16 dark:border-zinc-800 sm:py-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
+          <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+            Real-World Example: QR Codes in a Restaurant Digital Menu
+          </h2>
+          <div className="mt-8 space-y-4 text-zinc-600 dark:text-zinc-400">
+            <p>
+              A downtown bistro replaced its paper menus with QR codes printed on table tents. The marketing team generated a QR code encoding the URL <code className="rounded bg-zinc-100 px-1 py-0.5 text-sm dark:bg-zinc-800">https://example-bistro.com/menu</code> using the QR Code Generator with Level M error correction and medium size. The code was printed at 3x3 cm on matte cardstock with a 4-module quiet zone. After deployment, the team discovered that dim restaurant lighting caused scan failures on dark wood tables. They reprinted on white cardstock, which resolved 95% of failures. They also added a WiFi QR code (format: WIFI:S:Bistro-Guest;T:WPA;P:welcome2024;;) printed on the back, which patrons used to connect to the guest network — 200 scans in the first week. The bistro later generated a vCard QR code for the manager&apos;s business card using the contact data format, saving customers from manually typing the restaurant&apos;s phone number and address.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-zinc-200 py-16 dark:border-zinc-800 sm:py-20">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6">
+          <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+            Troubleshooting: When Your QR Code Won&apos;t Scan
+          </h2>
+          <div className="mt-8 space-y-4 text-zinc-600 dark:text-zinc-400">
+            <p>
+              If your QR code is not scanning reliably, check size first: the code should be at least 2x2 cm at normal viewing distance. For codes on posters or signs, increase proportionally — a code at 1 meter distance needs roughly 10x10 cm. Verify contrast: black modules on a white background provide the highest scan rate. Test with multiple devices (iPhone and Android) and multiple scanner apps. If scanning fails only on certain devices, check for reflection or glare on the surface. Ensure there is an adequate quiet zone — at least 4 modules of white space around all four sides of the code. If the QR code contains a URL, test that the URL is accessible and not broken. For very long URLs, the QR code becomes denser and harder to scan; use a URL shortener or increase the physical size of the code. If the code was printed on a curved surface (like a cup or bottle), increase error correction to Level H.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-zinc-200 py-16 dark:border-zinc-800 sm:py-20">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6">
+          <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+            References
+          </h2>
+          <div className="mt-8 space-y-2 text-zinc-600 dark:text-zinc-400">
+            <p>ISO/IEC 18004 — QR Code Bar Code Symbology Specification (<a href="https://www.iso.org/standard/62021.html" className="text-blue-600 hover:underline dark:text-blue-400">iso.org/standard/62021.html</a>)</p>
+            <p>JIS X 0510 — Two-dimensional symbol — QR Code — Basic specification (<a href="https://www.jisc.go.jp/eng/" className="text-blue-600 hover:underline dark:text-blue-400">jisc.go.jp/eng/</a>)</p>
+            <p>Denso Wave — QR Code Standardization (<a href="https://www.qrcode.com/en/about/standards.html" className="text-blue-600 hover:underline dark:text-blue-400">qrcode.com/en/about/standards.html</a>)</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-zinc-200 py-16 dark:border-zinc-800 sm:py-20">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <FaqSection items={faqItems} title="Frequently Asked Questions About QR Code Generation" />
         </div>
       </section>

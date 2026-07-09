@@ -5,17 +5,17 @@ import { breadcrumbSchema, webPageSchema, faqSchema, type FaqItem } from "@/lib/
 import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Best Free Image Tools Online — Resize, Compress, Convert | ToolVerse",
+  title: "Best Free Image Tools Online — Resize, Compress, Convert | Nuvora",
   description:
-    "Compare the best free online image tools. Resize, compress, and convert images. We review TinyPNG, Compressor.io, Img2Go, ILoveIMG, ImageOptim, and ToolVerse Image Suite.",
+    "Compare the best free online image tools. Resize, compress, and convert images. We review TinyPNG, Compressor.io, Img2Go, ILoveIMG, ImageOptim, and Nuvora Image Suite.",
   openGraph: {
-    title: "Best Free Image Tools Online — Resize, Compress, Convert | ToolVerse",
+    title: "Best Free Image Tools Online — Resize, Compress, Convert | Nuvora",
     description:
-      "Compare the best free online image tools. Resize, compress, and convert images. We review TinyPNG, Compressor.io, Img2Go, ILoveIMG, ImageOptim, and ToolVerse Image Suite.",
+      "Compare the best free online image tools. Resize, compress, and convert images. We review TinyPNG, Compressor.io, Img2Go, ILoveIMG, ImageOptim, and Nuvora Image Suite.",
     url: `${SITE_URL}/best-online/best-image-tools`,
   },
   twitter: {
-    title: "Best Free Image Tools Online — Resize, Compress, Convert | ToolVerse",
+    title: "Best Free Image Tools Online — Resize, Compress, Convert | Nuvora",
     description:
       "Compare the best free online image tools. Resize, compress, and convert images.",
   },
@@ -32,7 +32,7 @@ const breadcrumbs = [
   { label: "Image Tools" },
 ];
 
-const matrixHeaders = ["Feature", "TinyPNG", "Compressor.io", "Img2Go", "ILoveIMG", "ImageOptim", "ToolVerse Image Suite"];
+const matrixHeaders = ["Feature", "TinyPNG", "Compressor.io", "Img2Go", "ILoveIMG", "ImageOptim", "Nuvora Image Suite"];
 const matrixRows = [
   { feature: "Free Tier Available", values: [true, true, true, true, true, true] },
   { feature: "Max File Size (Free)", values: ["5 MB", "10 MB", "10 MB", "10 MB", "3 MB", "15 MB"] },
@@ -52,17 +52,17 @@ const faqItems: FaqItem[] = [
   {
     question: "Which image compressor offers the best quality-to-size ratio?",
     answer:
-      "TinyPNG is excellent for PNG compression with smart lossy algorithms. For lossless compression, ImageOptim is a top choice. ToolVerse Image Suite (coming soon) will offer both lossy and lossless options with client-side processing.",
+      "TinyPNG is excellent for PNG compression with smart lossy algorithms. For lossless compression, ImageOptim is a top choice. Nuvora Image Suite (coming soon) will offer both lossy and lossless options with client-side processing.",
   },
   {
     question: "Can I convert images to WebP or AVIF format online for free?",
     answer:
-      "Yes. Img2Go and ToolVerse Image Suite support both WebP and AVIF conversion. These modern formats offer significantly better compression than JPEG and PNG while maintaining visual quality.",
+      "Yes. Img2Go and Nuvora Image Suite support both WebP and AVIF conversion. These modern formats offer significantly better compression than JPEG and PNG while maintaining visual quality.",
   },
   {
     question: "Are there any image tools that work entirely in the browser?",
     answer:
-      "Most online image tools upload files to a server for processing. ToolVerse Image Suite (coming soon) will process images entirely on your device using WebAssembly — no uploads needed for privacy-sensitive images.",
+      "Most online image tools upload files to a server for processing. Nuvora Image Suite (coming soon) will process images entirely on your device using WebAssembly — no uploads needed for privacy-sensitive images.",
   },
 ];
 

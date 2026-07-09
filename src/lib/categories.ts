@@ -66,17 +66,58 @@ export const CATEGORIES: Category[] = [
     seoTitle: `Network & Internet Tools - ${SITE_NAME}`,
     seoDescription: `Free online network and internet tools for ${SITE_NAME}. WHOIS lookup, DNS checkers, SSL certificate validators, and network diagnostics.`,
   },
+  {
+    slug: "finance",
+    label: "Finance",
+    icon: "💰",
+    description: "Mortgage calculators, loan calculators, budgeting tools, and financial planning utilities.",
+    seoTitle: `Finance Tools - ${SITE_NAME}`,
+    seoDescription: `Free online finance tools for ${SITE_NAME}. Mortgage calculators, loan amortization, compound interest, salary converters, and financial planning utilities.`,
+  },
+  {
+    slug: "calculators",
+    label: "Calculators",
+    icon: "🧮",
+    description: "BMI calculators, calorie counters, age calculators, date calculators, and general math utilities.",
+    seoTitle: `Online Calculators - ${SITE_NAME}`,
+    seoDescription: `Free online calculators for ${SITE_NAME}. BMI, calorie, age, date, time, unit, scientific, and general math calculators for everyday use.`,
+  },
+  {
+    slug: "security",
+    label: "Security",
+    icon: "🔒",
+    description: "Password strength checkers, breach checkers, CSRF generators, SSL tests, and security scanners.",
+    seoTitle: `Security Tools - ${SITE_NAME}`,
+    seoDescription: `Free online security tools for ${SITE_NAME}. Password strength checkers, data breach checks, SSL testers, CSP validators, and XSS scanners.`,
+  },
+  {
+    slug: "ai",
+    label: "AI",
+    icon: "🤖",
+    description: "AI text summarizers, rewriters, grammar checkers, sentiment analyzers, and content generation tools.",
+    seoTitle: `AI Tools - ${SITE_NAME}`,
+    seoDescription: `Free online AI tools for ${SITE_NAME}. Text summarization, rewriting, grammar checking, sentiment analysis, keyword extraction, and plagiarism detection.`,
+  },
+  {
+    slug: "seo",
+    label: "SEO",
+    icon: "📈",
+    description: "Keyword density checkers, SEO audits, page speed tests, backlink checkers, and SERP preview tools.",
+    seoTitle: `SEO Tools - ${SITE_NAME}`,
+    seoDescription: `Free online SEO tools for ${SITE_NAME}. Keyword density analyzers, SEO audits, SERP previews, backlink checkers, and page speed testers.`,
+  },
+  {
+    slug: "converters",
+    label: "Converters",
+    icon: "🔄",
+    description: "CSV, JSON, XML, YAML, Markdown, HTML, and image format converters for data transformation.",
+    seoTitle: `File & Data Converters - ${SITE_NAME}`,
+    seoDescription: `Free online converters for ${SITE_NAME}. CSV to JSON, JSON to XML, Markdown to HTML, image format converters, and data transformation tools.`,
+  },
 ];
 
 export function getCategoryBySlug(slug: string): Category | undefined {
   return CATEGORIES.find((c) => c.slug === slug);
 }
 
-export const CATEGORY_SLUG_TO_URL: Record<string, string> = {
-  "text-writing": "/text-tools",
-  "code-dev": "/developer-tools",
-  "data-analytics": "/data-tools",
-  "image-design": "/design-tools",
-  "audio-video": "/media-tools",
-  "productivity": "/productivity-tools",
-};
+

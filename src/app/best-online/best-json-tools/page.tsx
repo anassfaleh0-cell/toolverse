@@ -5,17 +5,17 @@ import { breadcrumbSchema, webPageSchema, faqSchema, type FaqItem } from "@/lib/
 import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Best Free JSON Tools Online — Formatter, Validator, Converter | ToolVerse",
+  title: "Best Free JSON Tools Online — Formatter, Validator, Converter | Nuvora",
   description:
-    "Compare the best free online JSON tools. Format, validate, view tree structures, and convert between CSV, XML, and YAML. We review JSONLint, JSONFormatter, JSONGen, JSON Viewer, JSON Compare, and ToolVerse JSON Formatter.",
+    "Compare the best free online JSON tools. Format, validate, view tree structures, and convert between CSV, XML, and YAML. We review JSONLint, JSONFormatter, JSONGen, JSON Viewer, JSON Compare, and Nuvora JSON Formatter.",
   openGraph: {
-    title: "Best Free JSON Tools Online — Formatter, Validator, Converter | ToolVerse",
+    title: "Best Free JSON Tools Online — Formatter, Validator, Converter | Nuvora",
     description:
       "Compare the best free online JSON tools. Format, validate, view tree structures, and convert between CSV, XML, and YAML.",
     url: `${SITE_URL}/best-online/best-json-tools`,
   },
   twitter: {
-    title: "Best Free JSON Tools Online — Formatter, Validator, Converter | ToolVerse",
+    title: "Best Free JSON Tools Online — Formatter, Validator, Converter | Nuvora",
     description:
       "Compare the best free online JSON tools. Format, validate, view tree structures, and convert between CSV, XML, and YAML.",
   },
@@ -32,7 +32,7 @@ const breadcrumbs = [
   { label: "JSON Tools" },
 ];
 
-const matrixHeaders = ["Feature", "JSONLint", "JSONFormatter", "JSONGen", "JSON Viewer", "JSON Compare", "ToolVerse JSON Formatter"];
+const matrixHeaders = ["Feature", "JSONLint", "JSONFormatter", "JSONGen", "JSON Viewer", "JSON Compare", "Nuvora JSON Formatter"];
 const matrixRows = [
   { feature: "Free Tier Available", values: [true, true, true, true, true, true] },
   { feature: "JSON Formatting/Beautify", values: [true, true, true, true, false, true] },
@@ -52,17 +52,17 @@ const faqItems: FaqItem[] = [
   {
     question: "What is the best free JSON validator?",
     answer:
-      "JSONLint is the most popular free JSON validator — fast and reliable. ToolVerse JSON Formatter also offers validation with detailed error messages plus formatting, tree view, and format conversion in one place.",
+      "JSONLint is the most popular free JSON validator — fast and reliable. Nuvora JSON Formatter also offers validation with detailed error messages plus formatting, tree view, and format conversion in one place.",
   },
   {
     question: "Can I convert JSON to CSV or XML online?",
     answer:
-      "Yes. ToolVerse JSON Formatter supports JSON to CSV, XML, and YAML conversion. JSONGen also supports XML and YAML output. These tools handle nested structures intelligently.",
+      "Yes. Nuvora JSON Formatter supports JSON to CSV, XML, and YAML conversion. JSONGen also supports XML and YAML output. These tools handle nested structures intelligently.",
   },
   {
     question: "Which JSON tool works entirely client-side?",
     answer:
-      "JSONLint and ToolVerse JSON Formatter both process JSON entirely in your browser — no data is sent to any server. This is important when working with sensitive data.",
+      "JSONLint and Nuvora JSON Formatter both process JSON entirely in your browser — no data is sent to any server. This is important when working with sensitive data.",
   },
 ];
 

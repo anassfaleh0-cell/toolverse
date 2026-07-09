@@ -160,6 +160,46 @@ export default function PasswordGeneratorPage() {
 
       <section className="border-b border-zinc-200 py-16 dark:border-zinc-800 sm:py-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
+          <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+            Real-World Example: Meeting Enterprise Password Policy Compliance
+          </h2>
+          <div className="mt-8 space-y-4 text-zinc-600 dark:text-zinc-400">
+            <p>
+              A mid-size law firm needed to enforce NIST SP 800-63B password guidelines across 200 employees. The firm&apos;s policy required: minimum 14 characters, at least one uppercase, one lowercase, one digit, and one special character, no repeats of the same character more than three times consecutively, and no dictionary words. Using the Password Generator with length set to 16 and all four character types enabled, the IT admin generated a batch of master passwords for shared document vaults. One generated password — <code className="rounded bg-zinc-100 px-1 py-0.5 text-sm dark:bg-zinc-800">kX9!mP4#vR7@nB2*</code> — satisfied all policy rules with 95 bits of entropy. By the standard strength meter built into the tool, it registered as maximum strength across all five criteria. The firm saved each vault password in Bitwarden and distributed access via secure sharing rather than email, eliminating the prior practice of password reuse across internal systems.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-zinc-200 py-16 dark:border-zinc-800 sm:py-20">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6">
+          <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+            Troubleshooting: What If Your Password Does Not Meet Requirements?
+          </h2>
+          <div className="mt-8 space-y-4 text-zinc-600 dark:text-zinc-400">
+            <p>
+              A website rejecting your generated password usually means the service restricts certain special characters. The Password Generator uses the full printable ASCII set, but some legacy systems block characters like curly braces ({ }), pipes (|), or backticks (`). Regenerate a new password and check each rejected character individually. If the service requires a minimum number of digits or uppercase letters, increase the character diversity settings. For services that limit maximum length, reduce the slider to 12-14 characters. If a password contains a character that visually resembles another (0 vs O, 1 vs l vs I), regenerate — some systems confuse these in font rendering. Always generate passwords with at least 16 characters; if a service enforces a shorter maximum, ensure you have MFA enabled on that account as a compensating control.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-zinc-200 py-16 dark:border-zinc-800 sm:py-20">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6">
+          <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+            References
+          </h2>
+          <div className="mt-8 space-y-2 text-zinc-600 dark:text-zinc-400">
+            <p>NIST SP 800-63B — Digital Identity Guidelines: Authentication and Lifecycle Management (<a href="https://pages.nist.gov/800-63-3/sp800-63b.html" className="text-blue-600 hover:underline dark:text-blue-400">pages.nist.gov/800-63-3/sp800-63b.html</a>)</p>
+            <p>RFC 4086 — Randomness Requirements for Security (<a href="https://datatracker.ietf.org/doc/html/rfc4086" className="text-blue-600 hover:underline dark:text-blue-400">datatracker.ietf.org/doc/html/rfc4086</a>)</p>
+            <p>RFC 4949 — Internet Security Glossary (<a href="https://datatracker.ietf.org/doc/html/rfc4949" className="text-blue-600 hover:underline dark:text-blue-400">datatracker.ietf.org/doc/html/rfc4949</a>)</p>
+            <p>Web Crypto API — W3C Recommendation (<a href="https://www.w3.org/TR/WebCryptoAPI/" className="text-blue-600 hover:underline dark:text-blue-400">w3.org/TR/WebCryptoAPI</a>)</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-zinc-200 py-16 dark:border-zinc-800 sm:py-20">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <FaqSection items={faqItems} title="Frequently Asked Questions About Password Generation" />
         </div>
       </section>

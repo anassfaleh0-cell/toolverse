@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getCategories } from "@/lib/registry";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
+import { JsonLd } from "@/components/shared";
+import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: `Categories - ${SITE_NAME}`,
@@ -11,11 +13,18 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE_URL}/categories` },
 };
 
+const breadcrumbs = [
+  { label: "Home", href: SITE_URL },
+  { label: "Categories" },
+];
+
 export default function CategoriesPage() {
   const categories = getCategories();
 
   return (
     <>
+      <JsonLd data={webPageSchema({ name: `Categories - ${SITE_NAME}`, description: `Browse tool categories on ${SITE_NAME}.`, url: `${SITE_URL}/categories`, breadcrumbs })} />
+      <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <section className="border-b border-zinc-200 dark:border-zinc-800">
         <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
           <nav aria-label="Breadcrumb" className="text-sm text-zinc-500 dark:text-zinc-400">

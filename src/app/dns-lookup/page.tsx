@@ -7,6 +7,8 @@ import {
   RelatedTools,
   RelatedContent,
   JsonLd,
+  FeaturedSnippet,
+  ComparisonTable,
 } from "@/components/shared";
 import {
   faqSchema,
@@ -151,11 +153,11 @@ export default function DnsLookupPage() {
       <section className="border-b border-zinc-200 py-16 dark:border-zinc-800 sm:py-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
-            Common DNS Lookup and Configuration Errors
+            Real-World Example: Debugging a Migration with dig
           </h2>
           <div className="mt-8 space-y-4 text-zinc-600 dark:text-zinc-400">
             <p>
-              The most frequent error is forgetting to increment the SOA serial number after zone changes. If the serial does not increase, secondary name servers will not trigger a zone transfer, leaving changes broken for hours. Another pervasive mistake is misaligning CNAMEs with other record types: a CNAME must be the sole record type for a given name, so adding MX or TXT to a CNAME target causes unpredictable behavior. Never configure a CNAME at the zone apex; use A or AAAA or an ALIAS record instead. Finally, do not ignore TTL values: too high slows propagation; too low overloads authoritative servers.
+              A real estate company migrating from AWS to Google Cloud needed to verify DNS was correct before flipping the switch. Using the DNS Lookup tool, the team queried the A record for www.example-realty.com and found it still resolving to the old AWS IP (54.123.45.67). After updating the zone file at the new provider, they ran a lookup with the Google Public DNS resolver (8.8.8.8) — the record still showed the old IP due to TTL caching. The original TTL was set to 86400 seconds (24 hours), which would delay propagation. The team lowered the TTL to 300 seconds (5 minutes) 48 hours before the planned cutover. Two hours after the final change, the dig output confirmed the new IP (35.123.45.67) was resolving consistently across all queried resolvers. The MX records, checked simultaneously, showed the new Google Workspace mail server configuration was already propagating, confirming email would not be disrupted.
             </p>
           </div>
         </div>
@@ -164,12 +166,26 @@ export default function DnsLookupPage() {
       <section className="border-b border-zinc-200 py-16 dark:border-zinc-800 sm:py-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
-            When to Run a DNS Record Lookup
+            Troubleshooting: DNS Propagation Has Not Completed
           </h2>
           <div className="mt-8 space-y-4 text-zinc-600 dark:text-zinc-400">
             <p>
-              Use a DNS lookup when diagnosing website connectivity issues. Verify the A record resolves to the correct IP. Before switching email providers, check MX records to confirm current routing. Security teams query TXT records to audit SPF, DKIM, and DMARC posture. After migrating to new hosting, confirm NS records point to the correct authoritative servers. During incident response, identify DNS-based takedowns or redirect attacks by comparing current records against known-good values.
+              If you have updated a DNS record but some users still see the old value, your change has not fully propagated. First, verify the SOA serial number has been incremented — this is the most common cause of changes not taking effect. Use the DNS Lookup tool to query different resolvers: Google (8.8.8.8), Cloudflare (1.1.1.1), and your ISP&apos;s resolver. If some resolvers show the new record and others show the old, propagation is in progress. Check the TTL of the previous record — changes can take up to the full TTL value to propagate globally. Use the <Link href="/dns-propagation-checker" className="text-blue-600 hover:underline dark:text-blue-400">DNS Propagation Checker</Link> to see propagation status across multiple global locations simultaneously. If propagation has not started after 24 hours, verify the DNS change was saved at your registrar (not just your hosting provider) and that the NS records at the registrar point to the correct name servers.
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-zinc-200 py-16 dark:border-zinc-800 sm:py-20">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6">
+          <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+            References
+          </h2>
+          <div className="mt-8 space-y-2 text-zinc-600 dark:text-zinc-400">
+            <p>RFC 1034 — Domain Names - Concepts and Facilities (<a href="https://datatracker.ietf.org/doc/html/rfc1034" className="text-blue-600 hover:underline dark:text-blue-400">datatracker.ietf.org/doc/html/rfc1034</a>)</p>
+            <p>RFC 1035 — Domain Names - Implementation and Specification (<a href="https://datatracker.ietf.org/doc/html/rfc1035" className="text-blue-600 hover:underline dark:text-blue-400">datatracker.ietf.org/doc/html/rfc1035</a>)</p>
+            <p>RFC 2181 — Clarifications to the DNS Specification (<a href="https://datatracker.ietf.org/doc/html/rfc2181" className="text-blue-600 hover:underline dark:text-blue-400">datatracker.ietf.org/doc/html/rfc2181</a>)</p>
+            <p>RFC 6891 — Extension Mechanisms for DNS (EDNS(0)) (<a href="https://datatracker.ietf.org/doc/html/rfc6891" className="text-blue-600 hover:underline dark:text-blue-400">datatracker.ietf.org/doc/html/rfc6891</a>)</p>
           </div>
         </div>
       </section>

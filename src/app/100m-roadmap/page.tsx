@@ -5,9 +5,9 @@ import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: `100M Monthly Visits Roadmap — Growth Strategy | ${SITE_NAME}`,
-  description: "A data-driven plan to scale ToolVerse from 1M to 100M monthly visits through content, SEO, product, and distribution strategies.",
-  openGraph: { title: `100M Monthly Visits Roadmap`, description: "A data-driven plan to scale ToolVerse from 1M to 100M monthly visits." },
-  twitter: { title: `100M Monthly Visits Roadmap`, description: "A data-driven plan to scale ToolVerse." },
+  description: "A data-driven plan to scale Nuvora from 1M to 100M monthly visits through content, SEO, product, and distribution strategies.",
+  openGraph: { title: `100M Monthly Visits Roadmap`, description: "A data-driven plan to scale Nuvora from 1M to 100M monthly visits." },
+  twitter: { title: `100M Monthly Visits Roadmap`, description: "A data-driven plan to scale Nuvora." },
   alternates: { canonical: `${SITE_URL}/100m-roadmap` },
 };
 
@@ -133,14 +133,14 @@ function MilestoneCard({ period, target, color, strategies, metrics, rationale }
 export default function HundredMRoadmapPage() {
   return (
     <>
-      <JsonLd data={webPageSchema({ name: `100M Monthly Visits Roadmap — ${SITE_NAME}`, description: "A data-driven plan to scale ToolVerse from 1M to 100M monthly visits.", url: `${SITE_URL}/100m-roadmap`, breadcrumbs })} />
+      <JsonLd data={webPageSchema({ name: `100M Monthly Visits Roadmap — ${SITE_NAME}`, description: "A data-driven plan to scale Nuvora from 1M to 100M monthly visits.", url: `${SITE_URL}/100m-roadmap`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <section className="border-b border-zinc-200 bg-zinc-50 py-12 dark:border-zinc-800 dark:bg-zinc-900/50 sm:py-16">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <Breadcrumbs items={breadcrumbs} />
           <h1 className="mt-4 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">100M Monthly Visits Roadmap</h1>
           <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
-            A phased, data-driven plan to scale ToolVerse from 1M to 100M monthly visits through content, SEO, product, and distribution.
+            A phased, data-driven plan to scale Nuvora from 1M to 100M monthly visits through content, SEO, product, and distribution.
           </p>
         </div>
       </section>
@@ -203,11 +203,11 @@ export default function HundredMRoadmapPage() {
                 <tr><td className="py-2 pr-4 text-zinc-900 dark:text-zinc-100">iLovePDF</td><td className="py-2 pr-4 text-zinc-600">~60M</td><td className="py-2 pr-4 text-zinc-600">25+</td><td className="py-2 text-zinc-600">86</td></tr>
                 <tr><td className="py-2 pr-4 text-zinc-900 dark:text-zinc-100">CloudConvert</td><td className="py-2 pr-4 text-zinc-600">~25M</td><td className="py-2 pr-4 text-zinc-600">200+</td><td className="py-2 text-zinc-600">74</td></tr>
                 <tr><td className="py-2 pr-4 text-zinc-900 dark:text-zinc-100">TinyWow</td><td className="py-2 pr-4 text-zinc-600">~15M</td><td className="py-2 pr-4 text-zinc-600">100+</td><td className="py-2 text-zinc-600">68</td></tr>
-                <tr><td className="py-2 pr-4 text-zinc-900 dark:text-zinc-100">ToolVerse (target)</td><td className="py-2 pr-4 font-bold text-blue-600 dark:text-blue-400">100M</td><td className="py-2 pr-4 text-zinc-600">500+</td><td className="py-2 text-blue-600 dark:text-blue-400">75+</td></tr>
+                <tr><td className="py-2 pr-4 text-zinc-900 dark:text-zinc-100">Nuvora (target)</td><td className="py-2 pr-4 font-bold text-blue-600 dark:text-blue-400">100M</td><td className="py-2 pr-4 text-zinc-600">500+</td><td className="py-2 text-blue-600 dark:text-blue-400">75+</td></tr>
               </tbody>
             </table>
           </div>
-          <p className="mt-3 text-xs text-zinc-500">Traffic estimates from Similarweb (2026). ToolVerse targets exceed current benchmarks through broader tool catalog, programmatic SEO at scale, API platform, and community marketplace — strategies no single competitor combines.</p>
+          <p className="mt-3 text-xs text-zinc-500">Traffic estimates from Similarweb (2026). Nuvora targets exceed current benchmarks through broader tool catalog, programmatic SEO at scale, API platform, and community marketplace — strategies no single competitor combines.</p>
         </div>
       </section>
     </>

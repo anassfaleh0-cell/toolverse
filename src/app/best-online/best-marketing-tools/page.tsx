@@ -5,17 +5,17 @@ import { breadcrumbSchema, webPageSchema, faqSchema, type FaqItem } from "@/lib/
 import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Best Free Marketing Tools Online — SEO, Analytics, Content | ToolVerse",
+  title: "Best Free Marketing Tools Online — SEO, Analytics, Content | Nuvora",
   description:
     "Compare the best free online marketing tools. Keyword analysis, content optimization, and social media tools. Find free marketing utilities that deliver results.",
   openGraph: {
-    title: "Best Free Marketing Tools Online — SEO, Analytics, Content | ToolVerse",
+    title: "Best Free Marketing Tools Online — SEO, Analytics, Content | Nuvora",
     description:
       "Compare the best free online marketing tools. Keyword analysis, content optimization, and social media tools.",
     url: `${SITE_URL}/best-online/best-marketing-tools`,
   },
   twitter: {
-    title: "Best Free Marketing Tools Online — SEO, Analytics, Content | ToolVerse",
+    title: "Best Free Marketing Tools Online — SEO, Analytics, Content | Nuvora",
     description:
       "Compare the best free online marketing tools. Keyword analysis, content optimization, and social media tools.",
   },
@@ -32,7 +32,7 @@ const breadcrumbs = [
   { label: "Marketing Tools" },
 ];
 
-const matrixHeaders = ["Feature", "ToolVerse", "Ahrefs Free", "SEMrush Free", "Moz Free", "Canva Free", "Buffer Free"];
+const matrixHeaders = ["Feature", "Nuvora", "Ahrefs Free", "SEMrush Free", "Moz Free", "Canva Free", "Buffer Free"];
 const matrixRows = [
   { feature: "Free Tier Available", values: [true, true, true, true, true, true] },
   { feature: "Keyword Analysis", values: [true, true, true, true, false, false] },
@@ -52,17 +52,17 @@ const faqItems: FaqItem[] = [
   {
     question: "What is the best free marketing tool suite for small businesses?",
     answer:
-      "ToolVerse offers free SEO audits, keyword analysis, website monitoring, and competitor research — all without registration. For social media scheduling, Buffer Free is excellent. Canva Free covers graphic design needs.",
+      "Nuvora offers free SEO audits, keyword analysis, website monitoring, and competitor research — all without registration. For social media scheduling, Buffer Free is excellent. Canva Free covers graphic design needs.",
   },
   {
     question: "Can I do keyword research online for free?",
     answer:
-      "Yes. Ahrefs Free, SEMrush Free, Moz Free, and ToolVerse all offer free keyword analysis tools. ToolVerse also includes content optimization and SEO auditing in a single free platform.",
+      "Yes. Ahrefs Free, SEMrush Free, Moz Free, and Nuvora all offer free keyword analysis tools. Nuvora also includes content optimization and SEO auditing in a single free platform.",
   },
   {
     question: "Which free marketing tools work without registration?",
     answer:
-      "ToolVerse and Canva Free offer substantial functionality without requiring an account. Most other marketing tools (Ahrefs, SEMrush, Moz, Buffer) require a free registration.",
+      "Nuvora and Canva Free offer substantial functionality without requiring an account. Most other marketing tools (Ahrefs, SEMrush, Moz, Buffer) require a free registration.",
   },
 ];
 

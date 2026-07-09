@@ -5,17 +5,17 @@ import { breadcrumbSchema, webPageSchema, faqSchema, type FaqItem } from "@/lib/
 import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Best Free Security Tools Online — SSL, Headers, Scanner | ToolVerse",
+  title: "Best Free Security Tools Online — SSL, Headers, Scanner | Nuvora",
   description:
-    "Compare the best free online security tools. SSL certificate checking, HTTP headers auditing, and port scanning. We review SSL Labs, Mozilla Observatory, SecurityHeaders, Hardenize, ImmuniWeb, and ToolVerse Security.",
+    "Compare the best free online security tools. SSL certificate checking, HTTP headers auditing, and port scanning. We review SSL Labs, Mozilla Observatory, SecurityHeaders, Hardenize, ImmuniWeb, and Nuvora Security.",
   openGraph: {
-    title: "Best Free Security Tools Online — SSL, Headers, Scanner | ToolVerse",
+    title: "Best Free Security Tools Online — SSL, Headers, Scanner | Nuvora",
     description:
       "Compare the best free online security tools. SSL certificate checking, HTTP headers auditing, and port scanning.",
     url: `${SITE_URL}/best-online/best-security-tools`,
   },
   twitter: {
-    title: "Best Free Security Tools Online — SSL, Headers, Scanner | ToolVerse",
+    title: "Best Free Security Tools Online — SSL, Headers, Scanner | Nuvora",
     description:
       "Compare the best free online security tools. SSL certificate checking, HTTP headers auditing, and port scanning.",
   },
@@ -32,7 +32,7 @@ const breadcrumbs = [
   { label: "Security Tools" },
 ];
 
-const matrixHeaders = ["Feature", "SSL Labs", "Mozilla Observatory", "SecurityHeaders", "Hardenize", "ImmuniWeb", "ToolVerse Security"];
+const matrixHeaders = ["Feature", "SSL Labs", "Mozilla Observatory", "SecurityHeaders", "Hardenize", "ImmuniWeb", "Nuvora Security"];
 const matrixRows = [
   { feature: "Free Tier Available", values: [true, true, true, true, true, true] },
   { feature: "SSL/TLS Certificate Check", values: [true, true, false, true, true, true] },
@@ -51,17 +51,17 @@ const faqItems: FaqItem[] = [
   {
     question: "What is the most comprehensive free SSL checker?",
     answer:
-      "SSL Labs offers the most detailed SSL/TLS analysis including certificate chain, cipher suites, and protocol support. ToolVerse Security provides a quick SSL check with grade, expiration, and chain details — no registration needed.",
+      "SSL Labs offers the most detailed SSL/TLS analysis including certificate chain, cipher suites, and protocol support. Nuvora Security provides a quick SSL check with grade, expiration, and chain details — no registration needed.",
   },
   {
     question: "Which free tool audits HTTP security headers?",
     answer:
-      "SecurityHeaders.com and Mozilla Observatory both provide excellent free HTTP security header audits. ToolVerse Security also includes security headers inspection alongside SSL and port checks.",
+      "SecurityHeaders.com and Mozilla Observatory both provide excellent free HTTP security header audits. Nuvora Security also includes security headers inspection alongside SSL and port checks.",
   },
   {
     question: "Can I scan my website for open ports for free?",
     answer:
-      "Yes. Hardenize, ImmuniWeb, and ToolVerse Security all include port scanning in their free tiers. Port scanning helps identify unnecessary open ports that could be attack vectors.",
+      "Yes. Hardenize, ImmuniWeb, and Nuvora Security all include port scanning in their free tiers. Port scanning helps identify unnecessary open ports that could be attack vectors.",
   },
 ];
 

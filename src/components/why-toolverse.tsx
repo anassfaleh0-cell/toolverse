@@ -1,3 +1,5 @@
+import { SITE_NAME } from "@/lib/constants";
+
 export function WhyToolverse() {
   const values = [
     {
@@ -72,27 +74,27 @@ export function WhyToolverse() {
   ];
 
   return (
-    <section className="border-b border-zinc-200 dark:border-zinc-800">
+    <section className="border-b border-border-subtle">
       <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-20">
         <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
-            Why ToolVerse?
+          <h2 className="text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
+            Why {SITE_NAME}?
           </h2>
-          <p className="mt-4 text-zinc-600 dark:text-zinc-400">
-            Built different. Free forever.
+          <p className="mt-4 text-text-secondary">
+            Built different. Free forever. Privacy by design.
           </p>
         </div>
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {values.map((v) => (
             <div
               key={v.title}
-              className="group rounded-xl border border-zinc-200 bg-white p-6 transition-all hover:border-zinc-300 hover:shadow-sm dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-600"
+              className="group rounded-xl border border-border-subtle bg-surface p-6 transition-all hover:shadow-md hover:-translate-y-0.5"
             >
-              <span className="flex size-10 items-center justify-center rounded-lg bg-blue-50 text-blue-600 transition-colors group-hover:bg-blue-100 dark:bg-blue-950/50 dark:text-blue-400 dark:group-hover:bg-blue-950">
+              <span className="flex size-10 items-center justify-center rounded-lg bg-nuvora-100 text-nuvora-600 transition-colors group-hover:bg-nuvora-200 dark:bg-nuvora-900/50 dark:text-nuvora-400 dark:group-hover:bg-nuvora-900/70">
                 {v.icon}
               </span>
-              <h3 className="mt-4 font-semibold text-zinc-900 dark:text-zinc-50">{v.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{v.description}</p>
+              <h3 className="mt-4 font-semibold text-text-primary">{v.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-text-secondary">{v.description}</p>
             </div>
           ))}
         </div>

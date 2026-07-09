@@ -10,12 +10,29 @@ import {
   faqSchema,
   breadcrumbSchema,
   webPageSchema,
+  articleSchema,
   type FaqItem,
 } from "@/lib/seo";
 import { SITE_URL } from "@/lib/constants";
 import { getRelatedContent } from "@/lib/content/registry";
 import { getToolBySlug } from "@/lib/registry";
+import { AUTHORS } from "@/lib/content/authors";
 import { ContentTracker } from "./content-tracker";
+import { CrossLinks } from "./cross-links";
+
+const TYPE_ROUTE: Record<string, string> = {
+  guide: "guides",
+  article: "blog",
+  tutorial: "learn",
+  comparison: "compare",
+  "cheat-sheet": "cheat-sheets",
+  examples: "examples",
+  errors: "errors",
+  reference: "reference",
+  "best-practices": "best-practices",
+  commands: "commands",
+  "use-cases": "use-cases",
+};
 
 function getContentBreadcrumbs(piece: ContentPiece) {
   const typeLabel: Record<string, string> = {
@@ -32,17 +49,11 @@ function getContentBreadcrumbs(piece: ContentPiece) {
     commands: "Commands",
     "use-cases": "Use Cases",
   };
-  const typeRoute: Record<string, string> = {
-    guide: "guides",
-    article: "blog",
-    tutorial: "learn",
-    "cheat-sheet": "cheat-sheets",
-  };
   return [
     { label: "Home", href: SITE_URL },
     {
       label: typeLabel[piece.type] || "Resources",
-      href: `${SITE_URL}/${typeRoute[piece.type] ?? piece.type}`,
+      href: `${SITE_URL}/${TYPE_ROUTE[piece.type] ?? piece.type}`,
     },
     { label: piece.title },
   ];
@@ -56,7 +67,7 @@ export function ContentPage({ piece }: { piece: ContentPiece }) {
     .slice(0, 5)
     .map((s) => ({ question: s.heading, answer: s.body.slice(0, 300) }));
 
-  const typeUrl = piece.type === "article" ? "blog" : piece.type;
+  const typeUrl = TYPE_ROUTE[piece.type] ?? piece.type;
   const typeLabel =
     piece.type.charAt(0).toUpperCase() + piece.type.slice(1);
   const readingMins = Math.max(1, Math.round(piece.sections.reduce((acc, s) => acc + s.body.split(/\s+/).length, 0) / 200));
@@ -67,23 +78,34 @@ export function ContentPage({ piece }: { piece: ContentPiece }) {
       <JsonLd data={webPageSchema({ name: piece.title, description: piece.description, url: `${SITE_URL}/${typeUrl}/${piece.slug}`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       {schemaFaq.length > 1 && <JsonLd data={faqSchema(schemaFaq)} />}
+      <JsonLd data={articleSchema({
+        type: piece.type === "article" ? "Article" : "TechArticle",
+        headline: piece.title,
+        description: piece.description,
+        url: `${SITE_URL}/${typeUrl}/${piece.slug}`,
+        publishedAt: piece.publishedAt,
+        updatedAt: piece.updatedAt,
+        authorName: piece.author?.name ?? AUTHORS.team.name,
+        authorUrl: piece.author?.url ?? AUTHORS.team.url,
+        imageUrl: piece.sections.length > 0 ? `${SITE_URL}/og-image.svg` : undefined,
+      })} />
       {piece.schema && <JsonLd data={piece.schema} />}
 
       <article>
-        <header className="border-b border-zinc-200 bg-zinc-50 py-12 dark:border-zinc-800 dark:bg-zinc-900/50 sm:py-16">
+        <header className="border-b border-border-subtle bg-surface-secondary/50 py-12 sm:py-16">
           <div className="mx-auto max-w-3xl px-4 sm:px-6">
             <Breadcrumbs items={breadcrumbs} />
             <Badge variant="info" className="mt-4">
               {typeLabel}
             </Badge>
-            <h1 className="mt-4 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+            <h1 className="mt-4 text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
               {piece.title}
             </h1>
-            <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
+            <p className="mt-4 text-lg text-text-secondary">
               {piece.description}
             </p>
-            <div className="mt-4 flex flex-wrap gap-4 text-sm text-zinc-500 dark:text-zinc-500">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-zinc-100 px-3 py-1 text-xs font-medium text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400">
+            <div className="mt-4 flex flex-wrap gap-4 text-sm text-text-tertiary">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-surface-secondary px-3 py-1 text-xs font-medium text-text-secondary">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-3.5" aria-hidden="true">
                   <circle cx="12" cy="12" r="10" />
                   <polyline points="12 6 12 12 16 14" />
@@ -117,7 +139,7 @@ export function ContentPage({ piece }: { piece: ContentPiece }) {
                     <Link
                       key={slug}
                       href={tool.url}
-                      className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-600 hover:bg-blue-100 dark:bg-blue-950 dark:text-blue-400 dark:hover:bg-blue-900"
+                      className="inline-flex items-center gap-1 rounded-full bg-nuvora-100 px-3 py-1 text-xs font-medium text-nuvora-600 hover:bg-nuvora-200 dark:bg-nuvora-900/50 dark:text-nuvora-400 dark:hover:bg-nuvora-900/70"
                     >
                       {tool.name}
                     </Link>
@@ -129,8 +151,8 @@ export function ContentPage({ piece }: { piece: ContentPiece }) {
         </header>
 
         {piece.sections.length > 1 && (
-          <nav className="mb-12 rounded-lg border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900/50 hidden md:block">
-            <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+          <nav className="mb-12 rounded-xl border border-border-subtle bg-surface-secondary/50 p-4 hidden md:block">
+            <h3 className="text-sm font-semibold text-text-primary">
               Table of Contents
             </h3>
             <ul className="mt-2 space-y-1">
@@ -138,7 +160,7 @@ export function ContentPage({ piece }: { piece: ContentPiece }) {
                 <li key={i}>
                   <a
                     href={`#section-${i}`}
-                    className="text-sm text-zinc-600 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400"
+                    className="text-sm text-text-secondary hover:text-nuvora-600 dark:hover:text-nuvora-400"
                   >
                     {section.heading}
                   </a>
@@ -161,10 +183,10 @@ export function ContentPage({ piece }: { piece: ContentPiece }) {
               />
               {piece.sections.map((section, i) => (
                 <section key={i} id={`section-${i}`}>
-                  <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+                  <h2 className="text-2xl font-bold tracking-tight text-text-primary">
                     {section.heading}
                   </h2>
-                  <div className="mt-4 space-y-4 text-zinc-600 dark:text-zinc-400">
+                  <div className="mt-4 space-y-4 text-text-secondary">
                     {section.body.split("\n").map((paragraph, j) => {
                       const trimmed = paragraph.trim();
                       const tipMatch = trimmed.match(/^(?:tip|Tip):\s*(.*)$/);
@@ -189,10 +211,10 @@ export function ContentPage({ piece }: { piece: ContentPiece }) {
             <div className="space-y-10">
               {piece.sections.map((section, i) => (
                 <section key={i} id={`section-${i}`}>
-                  <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+                  <h2 className="text-2xl font-bold tracking-tight text-text-primary">
                     {section.heading}
                   </h2>
-                  <div className="mt-4 space-y-4 text-zinc-600 dark:text-zinc-400">
+                  <div className="mt-4 space-y-4 text-text-secondary">
                     {section.body.split("\n").map((paragraph, j) => {
                       const trimmed = paragraph.trim();
                       const tipMatch = trimmed.match(/^(?:tip|Tip):\s*(.*)$/);
@@ -216,8 +238,8 @@ export function ContentPage({ piece }: { piece: ContentPiece }) {
           )}
 
           {piece.toolSlugs.length > 0 && (
-            <section className="mt-16 rounded-lg border border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
-              <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-50">
+            <section className="mt-16 rounded-xl border border-border-subtle bg-surface-secondary/50 p-6">
+              <h3 className="text-lg font-bold text-text-primary">
                 Use Our Tools
               </h3>
               <div className="mt-4 flex flex-wrap gap-3">
@@ -227,7 +249,7 @@ export function ContentPage({ piece }: { piece: ContentPiece }) {
                     <Link
                       key={slug}
                       href={tool.url}
-                      className="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white hover:bg-zinc-700 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
+                      className="rounded-lg bg-nuvora-600 px-4 py-2 text-sm font-medium text-white hover:bg-nuvora-700 active:scale-[0.97]"
                     >
                       {tool.name} →
                     </Link>
@@ -239,23 +261,23 @@ export function ContentPage({ piece }: { piece: ContentPiece }) {
 
           {related.length > 0 && (
             <section className="mt-16">
-              <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-50">
+              <h3 className="text-xl font-bold text-text-primary">
                 Related Resources
               </h3>
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 {related.map((r) => (
                   <Link
                     key={r.slug}
-                    href={`/${r.type === "article" ? "blog" : r.type}/${r.slug}`}
-                    className="rounded-lg border border-zinc-200 p-4 transition-colors hover:border-blue-300 dark:border-zinc-800 dark:hover:border-blue-700"
+                    href={`/${TYPE_ROUTE[r.type] ?? r.type}/${r.slug}`}
+                    className="rounded-xl border border-border-subtle bg-surface p-4 transition-all hover:shadow-sm hover:border-nuvora-300 dark:hover:border-nuvora-700"
                   >
-                    <span className="text-xs font-medium uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                    <span className="text-xs font-medium uppercase tracking-wider text-nuvora-600 dark:text-nuvora-400">
                       {r.type}
                     </span>
-                    <h4 className="mt-1 font-semibold text-zinc-900 dark:text-zinc-50">
+                    <h4 className="mt-1 font-semibold text-text-primary">
                       {r.title}
                     </h4>
-                    <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400 line-clamp-2">
+                    <p className="mt-1 text-sm text-text-secondary line-clamp-2">
                       {r.description}
                     </p>
                   </Link>
@@ -263,6 +285,10 @@ export function ContentPage({ piece }: { piece: ContentPiece }) {
               </div>
             </section>
           )}
+        </div>
+
+        <div className="mx-auto max-w-3xl px-4 sm:px-6">
+          <CrossLinks contentSlug={piece.slug} />
         </div>
       </article>
     </>

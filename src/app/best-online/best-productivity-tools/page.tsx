@@ -5,17 +5,17 @@ import { breadcrumbSchema, webPageSchema, faqSchema, type FaqItem } from "@/lib/
 import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Best Free Productivity Tools Online — Calculators, Converters | ToolVerse",
+  title: "Best Free Productivity Tools Online — Calculators, Converters | Nuvora",
   description:
     "Compare the best free online productivity tools. IP lookup, password generators, calculators, unit converters, and more. Find tools that boost your daily workflow.",
   openGraph: {
-    title: "Best Free Productivity Tools Online — Calculators, Converters | ToolVerse",
+    title: "Best Free Productivity Tools Online — Calculators, Converters | Nuvora",
     description:
       "Compare the best free online productivity tools. IP lookup, password generators, calculators, unit converters, and more.",
     url: `${SITE_URL}/best-online/best-productivity-tools`,
   },
   twitter: {
-    title: "Best Free Productivity Tools Online — Calculators, Converters | ToolVerse",
+    title: "Best Free Productivity Tools Online — Calculators, Converters | Nuvora",
     description:
       "Compare the best free online productivity tools. IP lookup, password generators, calculators, unit converters, and more.",
   },
@@ -32,7 +32,7 @@ const breadcrumbs = [
   { label: "Productivity Tools" },
 ];
 
-const matrixHeaders = ["Feature", "ToolVerse", "Calculator.net", "UnitConverters.net", "Online-Convert", "RapidTables", "PureCalculators"];
+const matrixHeaders = ["Feature", "Nuvora", "Calculator.net", "UnitConverters.net", "Online-Convert", "RapidTables", "PureCalculators"];
 const matrixRows = [
   { feature: "Free Tier Available", values: [true, true, true, true, true, true] },
   { feature: "What Is My IP", values: [true, false, false, false, false, false] },
@@ -52,17 +52,17 @@ const faqItems: FaqItem[] = [
   {
     question: "What are the most useful free productivity tools?",
     answer:
-      "A What-Is-My-IP tool, password generator, unit converter, and scientific calculator cover the most common daily needs. ToolVerse combines all of these with text utilities and UUID generation — all free with no sign-up.",
+      "A What-Is-My-IP tool, password generator, unit converter, and scientific calculator cover the most common daily needs. Nuvora combines all of these with text utilities and UUID generation — all free with no sign-up.",
   },
   {
     question: "Which free tool suite includes a password generator?",
     answer:
-      "ToolVerse and Calculator.net both include free password generators. ToolVerse offers customizable length, character types, and bulk generation options.",
+      "Nuvora and Calculator.net both include free password generators. Nuvora offers customizable length, character types, and bulk generation options.",
   },
   {
     question: "Can I find my public IP address online for free?",
     answer:
-      "Yes. ToolVerse What Is My IP shows your public IPv4 and IPv6 address, ISP, location, and user agent — instantly with no ads or tracking.",
+      "Yes. Nuvora What Is My IP shows your public IPv4 and IPv6 address, ISP, location, and user agent — instantly with no ads or tracking.",
   },
 ];
 

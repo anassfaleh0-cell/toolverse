@@ -10,12 +10,20 @@ export function UnlockPdf() {
   const [result, setResult] = useState<Uint8Array | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [notEncrypted, setNotEncrypted] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   async function handleLoad(f: File) {
     setFile(f);
     setResult(null);
     setError(null);
+    setNotEncrypted(false);
+    const arrayBuffer = await f.arrayBuffer();
+    const { isEncrypted } = await import("@pdfsmaller/pdf-decrypt");
+    const info = await isEncrypted(new Uint8Array(arrayBuffer));
+    if (!info.encrypted) {
+      setNotEncrypted(true);
+    }
   }
 
   function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -34,17 +42,16 @@ export function UnlockPdf() {
     setLoading(true);
     setError(null);
     try {
-      const { PDFDocument } = await import("pdf-lib");
       const arrayBuffer = await file.arrayBuffer();
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const pdf = await PDFDocument.load(arrayBuffer, { ignoreEncryption: true } as any);
-      const pdfBytes = await pdf.save();
-      setResult(pdfBytes);
+      const { decryptPDF } = await import("@pdfsmaller/pdf-decrypt");
+      const decryptedBytes = await decryptPDF(new Uint8Array(arrayBuffer), password);
+      setResult(decryptedBytes);
     } catch (err) {
-      if (err instanceof Error && err.message.includes("encrypted")) {
+      const msg = err instanceof Error ? err.message : "Failed to unlock PDF";
+      if (msg.includes("password") || msg.includes("decrypt")) {
         setError("Incorrect password. The PDF could not be decrypted.");
       } else {
-        setError(err instanceof Error ? err.message : "Failed to unlock PDF");
+        setError(msg);
       }
     } finally {
       setLoading(false);
@@ -53,7 +60,7 @@ export function UnlockPdf() {
 
   function handleDownload() {
     if (!result) return;
-    const blob = new Blob([result.slice(0)], { type: "application/pdf" });
+    const blob = new Blob([new Uint8Array(result)], { type: "application/pdf" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
@@ -91,6 +98,12 @@ export function UnlockPdf() {
         <Button variant="secondary" size="sm" className="ml-auto" onClick={() => { setFile(null); setResult(null); setPassword(""); }}>Change File</Button>
       </div>
 
+      {notEncrypted && (
+        <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-700 dark:border-amber-800 dark:bg-amber-950 dark:text-amber-400" role="alert">
+          This PDF is not password-protected. No unlocking needed.
+        </div>
+      )}
+
       <div>
         <label htmlFor="pdf-password" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Document Password</label>
         <div className="mt-1 flex gap-3">
@@ -99,10 +112,10 @@ export function UnlockPdf() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter the PDF password"
+            placeholder={notEncrypted ? "No password needed" : "Enter the PDF password"}
             className="flex-1"
           />
-          <Button onClick={handleUnlock} disabled={loading || !password}>
+          <Button onClick={handleUnlock} disabled={loading || (!password && !notEncrypted)}>
             {loading ? "Unlocking..." : "Unlock"}
           </Button>
         </div>

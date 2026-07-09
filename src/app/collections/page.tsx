@@ -10,16 +10,27 @@ function subscribeToCollections(cb: () => void) {
   return () => window.removeEventListener("storage", cb);
 }
 
+let _cachedCollections: Collection[] = [];
+let _collectionsDirty = true;
+
 function getSnapshot(): Collection[] {
-  try {
-    return JSON.parse(localStorage.getItem("tv_collections") || "[]");
-  } catch {
-    return [];
+  if (_collectionsDirty) {
+    try {
+      _cachedCollections = JSON.parse(localStorage.getItem("tv_collections") || "[]");
+    } catch {
+      _cachedCollections = [];
+    }
+    _collectionsDirty = false;
   }
+  return _cachedCollections;
+}
+
+function getCollectionsServerSnapshot(): Collection[] {
+  return [];
 }
 
 export function CollectionsContent() {
-  const collections = useSyncExternalStore(subscribeToCollections, getSnapshot, () => []);
+  const collections = useSyncExternalStore(subscribeToCollections, getSnapshot, getCollectionsServerSnapshot);
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
 

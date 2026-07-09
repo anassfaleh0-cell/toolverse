@@ -7,6 +7,7 @@ import {
   RelatedTools,
   RelatedContent,
   JsonLd,
+  FeaturedSnippet,
 } from "@/components/shared";
 import {
   faqSchema,
@@ -130,6 +131,17 @@ export default function WhoisLookupPage() {
         </ToolLayout>
       </section>
 
+      <FeaturedSnippet
+        toolName="WHOIS Lookup"
+        answer="WHOIS lookup retrieves domain registration metadata including registrar, creation and expiration dates, name server delegation, and registrant contact information. Under GDPR, personal data for natural persons is redacted, but organization names, registrar details, and registration dates remain public. WHOIS is essential for verifying domain ownership, detecting expiry risks, investigating suspicious domains, and brand protection monitoring."
+        keyTakeaways={[
+          "WHOIS reveals registrar, registration dates, name servers, and domain status codes",
+          "GDPR mandates redaction of personal data — organization and registrar info remain visible",
+          "Cross-reference WHOIS with DNS to detect compromised domains or typo-squatting",
+          "RDAP is the modern JSON-based replacement for the legacy WHOIS protocol",
+        ]}
+      />
+
       <section className="border-b border-zinc-200 py-16 dark:border-zinc-800 sm:py-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
@@ -157,32 +169,6 @@ export default function WhoisLookupPage() {
             </p>
             <p>
               This does not render WHOIS useless. The administrative contact email is often replaced by an anonymized forwarding address that still works for abuse reports. Registrar information remains fully visible, which is critical for understanding who to contact for suspension or transfer issues. Creation and expiration dates are always public, enabling domain age analysis and expiry monitoring. For legal entities, organization names and addresses remain visible unless the entity also uses privacy services. Cross-reference WHOIS results with <Link href="/reverse-dns-lookup" className="text-blue-600 hover:underline dark:text-blue-400">Reverse DNS Lookup</Link> to verify PTR records match the registrant&apos;s stated hosting provider, another verification layer that privacy protections do not obscure.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b border-zinc-200 py-16 dark:border-zinc-800 sm:py-20">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6">
-          <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
-            Common WHOIS Lookup Pitfalls
-          </h2>
-          <div className="mt-8 space-y-4 text-zinc-600 dark:text-zinc-400">
-            <p>
-              The most prevalent mistake is assuming a domain with WHOIS privacy is suspicious. Many legitimate businesses use privacy services to avoid spam. Conversely, never trust a registrant field at face value; sophisticated squatters use fake but consistent organization names. Another common error is checking WHOIS only once. Domains often change ownership, registrars, or name servers within hours. Always check <Link href="/dns-propagation-checker" className="text-blue-600 hover:underline dark:text-blue-400">DNS Propagation Checker</Link> alongside WHOIS to build a complete picture. Finally, do not confuse the registrar with the registry: GoDaddy is a registrar, Verisign is the .com registry.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b border-zinc-200 py-16 dark:border-zinc-800 sm:py-20">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6">
-          <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
-            When to Perform a WHOIS Domain Lookup
-          </h2>
-          <div className="mt-8 space-y-4 text-zinc-600 dark:text-zinc-400">
-            <p>
-              Run a WHOIS lookup when vetting a domain before purchase to verify creation date and ownership history. Security analysts use it during incident response to identify when a suspicious domain was registered and by which registrar. Use it for brand protection by monitoring WHOIS on domains similar to yours to catch typo-squatters. Before transferring a domain, verify the registrar lock status and expiration date via WHOIS to avoid unexpected service disruption.
             </p>
           </div>
         </div>

@@ -29,6 +29,49 @@ const TYPE_COLORS: Record<string, string> = {
 };
 
 const GROUP_ORDER = ["Tools", "Content", "FAQs", "Categories"];
+const TRENDING_KEY = "tv_trending_searches";
+
+function getTrendingSearches(): string[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const raw = localStorage.getItem(TRENDING_KEY);
+    return raw ? (JSON.parse(raw) as string[]) : [];
+  } catch {
+    return [];
+  }
+}
+
+function recordTrending(query: string): void {
+  if (typeof window === "undefined" || query.length < 2) return;
+  try {
+    const trending = getTrendingSearches();
+    const updated = trending.filter((t) => t !== query);
+    updated.unshift(query);
+    localStorage.setItem(TRENDING_KEY, JSON.stringify(updated.slice(0, 15)));
+  } catch {
+    /* ignore */
+  }
+}
+
+function fuzzyMatch(text: string, query: string): boolean {
+  const lower = text.toLowerCase();
+  const q = query.toLowerCase();
+  let qi = 0;
+  for (let i = 0; i < lower.length && qi < q.length; i++) {
+    if (lower[i] === q[qi]) qi++;
+  }
+  return qi === q.length;
+}
+
+function fuzzyScore(text: string, query: string): number {
+  const lower = text.toLowerCase();
+  const q = query.toLowerCase();
+  if (lower === q) return 100;
+  if (lower.startsWith(q)) return 80;
+  if (lower.includes(q)) return 60;
+  if (fuzzyMatch(text, query)) return 40;
+  return 0;
+}
 
 export function CommandPalette() {
   const [open, setOpen] = useState(false);
@@ -41,7 +84,23 @@ export function CommandPalette() {
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
-  const controllerRef = useRef<AbortController | null>(null);
+
+  const localData = useRef<SearchResult[] | null>(null);
+
+  useEffect(() => {
+    if (localData.current) return;
+    import("@/lib/registry").then((mod) => {
+      const tools = mod.getAllTools().map((t: { slug: string; name: string; url: string; category: string }) => ({
+        slug: t.slug,
+        name: t.name,
+        url: t.url,
+        category: t.category,
+        type: "tool" as const,
+        match: t.name,
+      }));
+      localData.current = tools;
+    });
+  }, []);
 
   useEffect(() => {
     function handleKey(e: KeyboardEvent) {
@@ -65,21 +124,30 @@ export function CommandPalette() {
   }, [open]);
 
   useEffect(() => {
-    if (!open) return;
-    if (query.trim().length < 1) {
+    if (!open || !query.trim()) {
       return;
     }
-    controllerRef.current?.abort();
-    const controller = new AbortController();
-    controllerRef.current = controller;
-    fetch(`/api/search?q=${encodeURIComponent(query.trim())}`, { signal: controller.signal })
-      .then((r) => (r.ok ? r.json() : []))
-      .then((data: SearchResult[]) => {
-        setResults(data);
-        setSelectedIndex(0);
-      })
-      .catch(() => {});
-    return () => controller.abort();
+    const q = query.trim();
+    const index = localData.current;
+    if (!index) return;
+
+    const scored: SearchResult[] = [];
+    for (const item of index) {
+      const nameScore = fuzzyScore(item.name, q);
+      if (nameScore > 0) {
+        scored.push({ ...item, match: item.name });
+      }
+    }
+
+    scored.sort((a, b) => {
+      const scoreA = fuzzyScore(a.name, q);
+      const scoreB = fuzzyScore(b.name, q);
+      if (scoreB !== scoreA) return scoreB - scoreA;
+      return a.name.length - b.name.length;
+    });
+
+    setResults(scored.slice(0, 12));
+    setSelectedIndex(0);
   }, [query, open]);
 
   const groups = useMemo(() => {
@@ -106,6 +174,7 @@ export function CommandPalette() {
 
   function select(result: SearchResult) {
     addSearchQuery(query.trim() || result.name);
+    recordTrending(query.trim() || result.name);
     setOpen(false);
     setQuery("");
     router.push(result.url);
@@ -117,6 +186,7 @@ export function CommandPalette() {
 
   function selectLocal(item: { slug: string; name: string; url: string }) {
     addSearchQuery(item.name);
+    recordTrending(item.name);
     setOpen(false);
     setQuery("");
     router.push(item.url);
@@ -143,6 +213,7 @@ export function CommandPalette() {
   const showRecent = query.trim().length === 0;
   const hasLocalResults = recentlyViewed.length > 0 || bookmarked.length > 0;
   const totalResults = flatResults.length;
+  const trending = getTrendingSearches();
 
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/50 pt-[15vh]" onClick={() => setOpen(false)}>
@@ -160,7 +231,7 @@ export function CommandPalette() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Search tools, guides, articles..."
+            placeholder="Search tools..."
             className="flex-1 bg-transparent text-base text-zinc-900 outline-none placeholder:text-zinc-400 dark:text-zinc-50"
             autoFocus
           />
@@ -168,7 +239,6 @@ export function CommandPalette() {
         </div>
 
         <div ref={listRef} className="max-h-96 overflow-y-auto">
-          {/* Empty state: recent searches + recently viewed + bookmarks */}
           {showRecent && (
             <>
               {recentSearches.length > 0 && (
@@ -182,6 +252,24 @@ export function CommandPalette() {
                     >
                       <svg className="size-4 shrink-0 text-zinc-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
                         <path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0z" /><path d="M12 7v5l3 3" />
+                      </svg>
+                      {sq}
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {trending.length > 0 && (
+                <div className="px-4 pt-3">
+                  <p className="mb-1 px-2 text-xs font-medium uppercase tracking-wider text-zinc-400">Trending</p>
+                  {trending.slice(0, 5).map((sq) => (
+                    <button
+                      key={sq}
+                      onClick={() => selectRecentSearch(sq)}
+                      className="flex w-full items-center gap-3 rounded-lg px-2 py-2 text-sm text-zinc-600 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
+                    >
+                      <svg className="size-4 shrink-0 text-zinc-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" />
                       </svg>
                       {sq}
                     </button>
@@ -225,15 +313,14 @@ export function CommandPalette() {
                 </div>
               )}
 
-              {!hasLocalResults && recentSearches.length === 0 && (
+              {!hasLocalResults && recentSearches.length === 0 && trending.length === 0 && (
                 <div className="px-4 py-8 text-center text-sm text-zinc-400">
-                  Press <kbd className="rounded border border-zinc-200 px-1.5 py-0.5 dark:border-zinc-600">⌘K</kbd> to start searching
+                  Press <kbd className="rounded border border-zinc-200 px-1.5 py-0.5 dark:border-zinc-600">K</kbd> to start searching
                 </div>
               )}
             </>
           )}
 
-          {/* Search results */}
           {!showRecent && totalResults > 0 && (
             <div className="px-4 py-3">
               {GROUP_ORDER.map((group) => {
@@ -266,15 +353,14 @@ export function CommandPalette() {
             </div>
           )}
 
-          {/* No results */}
           {!showRecent && totalResults === 0 && (
             <div className="px-4 py-8 text-center text-sm text-zinc-400">No results found for &quot;{query}&quot;</div>
           )}
         </div>
 
         <div className="flex items-center gap-4 border-t border-zinc-200 px-5 py-3 text-xs text-zinc-400 dark:border-zinc-700">
-          <span><kbd className="rounded border border-zinc-200 px-1.5 py-0.5 dark:border-zinc-600">↑↓</kbd> Navigate</span>
-          <span><kbd className="rounded border border-zinc-200 px-1.5 py-0.5 dark:border-zinc-600">↵</kbd> Open</span>
+          <span><kbd className="rounded border border-zinc-200 px-1.5 py-0.5 dark:border-zinc-600">T</kbd><kbd className="ml-0.5 rounded border border-zinc-200 px-1.5 py-0.5 dark:border-zinc-600">T</kbd> Navigate</span>
+          <span><kbd className="rounded border border-zinc-200 px-1.5 py-0.5 dark:border-zinc-600">Enter</kbd> Open</span>
           <span><kbd className="rounded border border-zinc-200 px-1.5 py-0.5 dark:border-zinc-600">Esc</kbd> Close</span>
         </div>
       </div>

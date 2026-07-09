@@ -9,12 +9,7 @@ interface ToolHeroProps {
   children?: ReactNode;
 }
 
-export function ToolHero({
-  title,
-  description,
-  breadcrumbs,
-  children,
-}: ToolHeroProps) {
+export function ToolHero({ title, description, breadcrumbs, children }: ToolHeroProps) {
   return (
     <div className="text-center">
       <Breadcrumbs items={breadcrumbs} />
@@ -24,7 +19,7 @@ export function ToolHero({
       <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
         {description}
       </p>
-      {children && <div className="mt-10">{children}</div>}
+      {children && <div className="mt-10" role="region" aria-label="Tool interface">{children}</div>}
     </div>
   );
 }

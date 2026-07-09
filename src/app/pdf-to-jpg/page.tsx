@@ -1,9 +1,17 @@
 import type { Metadata } from "next";
-import { PdfToJpg } from "@/components/pdf-suite/pdf-to-jpg";
+import dynamic from "next/dynamic";
 import { ToolLayout, ToolHero, FaqSection, RelatedContent, JsonLd } from "@/components/shared";
 import { faqSchema, webPageSchema, breadcrumbSchema, softwareAppSchema, type FaqItem } from "@/lib/seo";
 import { SITE_URL } from "@/lib/constants";
 import { getToolBySlug, generateToolBreadcrumbs } from "@/lib/registry";
+
+const PdfToJpg = dynamic(() => import("@/components/pdf-suite/pdf-to-jpg").then((m) => ({ default: m.PdfToJpg })), {
+  loading: () => (
+    <div className="flex items-center justify-center rounded-xl border border-zinc-200 p-12 dark:border-zinc-800" role="status">
+      <div className="animate-shimmer h-6 w-48 rounded" />
+    </div>
+  ),
+});
 
 const slug = "pdf-to-jpg";
 const tool = getToolBySlug(slug)!;

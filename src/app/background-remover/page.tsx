@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { BackgroundRemover } from "@/components/image-suite/background-remover";
+import dynamic from "next/dynamic";
 import {
   ToolLayout,
   ToolHero,
@@ -16,12 +16,19 @@ import {
   type FaqItem,
 } from "@/lib/seo";
 import { SITE_URL } from "@/lib/constants";
-import Link from "next/link";
+
+const BackgroundRemover = dynamic(() => import("@/components/image-suite/background-remover").then((m) => ({ default: m.BackgroundRemover })), {
+  loading: () => (
+    <div className="flex items-center justify-center rounded-xl border border-zinc-200 p-12 dark:border-zinc-800" role="status">
+      <div className="animate-shimmer h-6 w-48 rounded" />
+    </div>
+  ),
+});
 
 const slug = "background-remover";
 const pageTitle = "Background Remover - Remove Image Backgrounds Online Free";
 const pageDescription =
-  "Remove backgrounds from images using chroma key (green/blue screen) technology. API-ready architecture for integrating AI-powered background removal. Free and private.";
+  "Remove image backgrounds instantly with AI or chroma key. Free online tool with no uploads required — processing happens entirely in your browser.";
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -38,12 +45,12 @@ const breadcrumbs = [
 ];
 
 const faqItems: FaqItem[] = [
-  { question: "How does chroma key background removal work?", answer: "Chroma key removal analyzes each pixel&apos;s color and makes pixels transparent if they match a target color (green or blue) within a certain tolerance. The tolerance setting controls how close a pixel must be to the chroma key color to be removed. Higher tolerance removes more of the background but may also remove parts of the subject that contain similar colors. Lower tolerance preserves the subject better but may leave background remnants." },
-  { question: "What is the difference between chroma key and AI background removal?", answer: "Chroma key works by matching specific colors (green or blue) and requires a solid-colored background. AI background removal uses machine learning models trained on millions of images to identify and separate subjects from any background â€” no special screen required. AI services like Remove.bg, rembg, and @imgly/background-removal provide much better results for general images but require an API key or local processing library." },
-  { question: "Why do my results have green edges around the subject?", answer: "Green spill (or color spill) occurs when light reflects from the green screen onto the subject, tinting edges with the chroma key color. The tolerance setting tries to compensate, but high tolerance can also remove green tones from the subject itself. Professional chroma key setups use separate lighting for the background and subject to minimize spill." },
-  { question: "How do I get the best results with chroma key?", answer: "Use a well-lit, evenly lit green or blue screen without shadows or wrinkles. Keep the subject at least 3 feet from the background to minimize color spill. Avoid clothing that matches the chroma key color. Use the lowest tolerance setting that still removes the background cleanly. Blue screens are better for subjects with green tones (like plants) and vice versa." },
-  { question: "Can I remove backgrounds without a green screen?", answer: "This tool&apos;s chroma key feature requires a solid green or blue background. For removing backgrounds from arbitrary photos, you need an AI-based solution. The architecture note in the tool shows how to integrate services like Remove.bp (API key required), rembg (self-hosted Python), or @imgly/background-removal (client-side WASM). Each has different trade-offs in accuracy, speed, and cost." },
-  { question: "Is my image uploaded to a server?", answer: "The chroma key processing in this tool runs entirely in your browser â€” no image data is uploaded. If you choose to integrate an external AI API using the architecture shown in the tool, your image would be sent to that third-party service for processing." },
+  { question: "How does the AI background removal work?", answer: "The AI mode uses a deep neural network (ISNet) trained on millions of images to identify and separate foreground subjects from any background. No green screen or special setup is required. The model runs entirely in your browser using ONNX runtime and WebAssembly, so your images never leave your device." },
+  { question: "What is chroma key and when should I use it?", answer: "Chroma key (green/blue screen removal) works by matching specific colors and making them transparent. Use chroma key when you have a controlled green or blue screen setup — it's faster and doesn't require the initial AI model download. Use AI mode for photos with any background." },
+  { question: "Are my images uploaded to a server?", answer: "No. Both AI and chroma key processing happen entirely in your browser. Your image data is never sent to any server. The AI model is downloaded once and cached locally." },
+  { question: "Why does the AI model take time to load initially?", answer: "The first run downloads the AI model (~30MB) and sets up the ONNX inference engine in your browser. This is a one-time download — subsequent uses are instant. The model is cached by your browser for future sessions." },
+  { question: "What image formats are supported?", answer: "All common image formats are supported including JPEG, PNG, WebP, GIF, BMP, and TIFF. The result is always downloaded as PNG to preserve transparency." },
+  { question: "How accurate is the AI background removal?", answer: "The ISNet model provides state-of-the-art accuracy for general-purpose background removal. It handles complex edges like hair and fur well. For best results, use images with clear contrast between the subject and background." },
 ];
 
 export default function BackgroundRemoverPage() {
@@ -64,20 +71,10 @@ export default function BackgroundRemoverPage() {
 
       <section className="border-b border-zinc-200 py-16 dark:border-zinc-800 sm:py-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
-          <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">Chroma Key vs AI Background Removal</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">AI-Powered Background Removal in Your Browser</h2>
           <div className="mt-8 space-y-4 text-zinc-600 dark:text-zinc-400">
-            <p>Chroma key (green/blue screen removal) is the traditional technique used in filmmaking, television, and photography. It works by selecting a specific color range to make transparent. The technique is fast, predictable, and requires no external APIs or machine learning models. However, it requires a controlled environment with a solid-colored background and even lighting. The results are limited by color spill, shadows, and the subject&apos;s clothing colors â€” anything matching the chroma key color will also become transparent.</p>
-            <p>AI-powered background removal has revolutionized the field by enabling background removal from any image â€” indoor photos, outdoor scenes, product shots on any surface â€” without special equipment. Models like u2-net and isnet are trained on diverse datasets and can identify subjects with remarkable accuracy, including complex edges like hair and fur. The trade-offs are computational cost (most run on servers or require GPU-accelerated WASM) and potential privacy concerns of uploading images to third-party services. For product photography and e-commerce listings, the <Link href="/image-resizer" className="text-blue-600 hover:underline dark:text-blue-400">Image Resizer</Link> can help standardize the output dimensions after background removal.</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b border-zinc-200 py-16 dark:border-zinc-800 sm:py-20">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6">
-          <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">Architecture: Integrating Background Removal APIs</h2>
-          <div className="mt-8 space-y-4 text-zinc-600 dark:text-zinc-400">
-            <p>The tool includes an architecture section that demonstrates how to integrate real AI background removal services. The three main approaches are: cloud APIs like Remove.bg and Adobe Photoshop API (simple but require API keys and have per-image costs), self-hosted solutions like rembg (free but require Python server infrastructure), and client-side WASM libraries like @imgly/background-removal (runs in the browser but requires significant initial download and GPU support).</p>
-            <p>For production applications, the choice depends on your volume, latency requirements, and privacy needs. Low-volume applications with privacy-sensitive data benefit from client-side WASM. High-volume commercial applications typically use cloud APIs for their accuracy and scalability. Development teams can start with rembg for prototyping and testing before committing to a paid API. For preparing training data or mockups with clean backgrounds, the <Link href="/crop-image" className="text-blue-600 hover:underline dark:text-blue-400">Crop Image</Link> tool can help refine the composition of your output images.</p>
+            <p>Traditional background removal required green screens, specialized lighting, or uploading your images to third-party servers. Background removal now runs directly in your browser using advanced AI. The ISNet deep learning model analyzes every pixel to identify foreground subjects and separate them from the background with pixel-level precision.</p>
+            <p>The tool offers two modes: AI Smart Remove for any image without special equipment, and Chroma Key for controlled green/blue screen environments. Both modes process entirely on your device — your images never leave your computer. This makes it suitable for sensitive images where privacy matters.</p>
           </div>
         </div>
       </section>
@@ -92,10 +89,10 @@ export default function BackgroundRemoverPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "âš«", title: "Image Grayscale", description: "Convert images to grayscale or sepia effects", href: "/image-grayscale" },
-              { icon: "âœ‚ï¸", title: "Crop Image", description: "Crop and reframe your background-free images", href: "/crop-image" },
-              { icon: "ðŸ“", title: "Image Resizer", description: "Resize background-free images for e-commerce", href: "/image-resizer" },
-              { icon: "ðŸ“¦", title: "Image Compressor", description: "Compress images for faster web delivery", href: "/image-compressor" },
+              { icon: "⚫", title: "Image Grayscale", description: "Convert images to grayscale or sepia effects", href: "/image-grayscale" },
+              { icon: "✂️", title: "Crop Image", description: "Crop and reframe your background-free images", href: "/crop-image" },
+              { icon: "📐", title: "Image Resizer", description: "Resize background-free images for e-commerce", href: "/image-resizer" },
+              { icon: "📦", title: "Image Compressor", description: "Compress images for faster web delivery", href: "/image-compressor" },
             ]}
             title="Related Image Tools"
           />

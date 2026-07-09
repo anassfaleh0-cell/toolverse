@@ -5,19 +5,19 @@ import { breadcrumbSchema, webPageSchema, faqSchema, type FaqItem } from "@/lib/
 import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Best Free Online Tools — Complete Directory of Free Utilities | ToolVerse",
+  title: "Best Free Online Tools — Complete Directory of Free Utilities | Nuvora",
   description:
-    "The complete directory of free online tools. Compare ToolVerse, iLovePDF, TinyWow, Online-Convert, Convertio, and 123Apps. Find tools for PDF, images, video, audio, and more.",
+    "The complete directory of free online tools. Compare Nuvora, iLovePDF, TinyWow, Online-Convert, Convertio, and 123Apps. Find tools for PDF, images, video, audio, and more.",
   openGraph: {
-    title: "Best Free Online Tools — Complete Directory of Free Utilities | ToolVerse",
+    title: "Best Free Online Tools — Complete Directory of Free Utilities | Nuvora",
     description:
-      "The complete directory of free online tools. Compare ToolVerse, iLovePDF, TinyWow, Online-Convert, Convertio, and 123Apps.",
+      "The complete directory of free online tools. Compare Nuvora, iLovePDF, TinyWow, Online-Convert, Convertio, and 123Apps.",
     url: `${SITE_URL}/best-online/best-free-online-tools`,
   },
   twitter: {
-    title: "Best Free Online Tools — Complete Directory of Free Utilities | ToolVerse",
+    title: "Best Free Online Tools — Complete Directory of Free Utilities | Nuvora",
     description:
-      "The complete directory of free online tools. Compare ToolVerse, iLovePDF, TinyWow, Online-Convert, Convertio, and 123Apps.",
+      "The complete directory of free online tools. Compare Nuvora, iLovePDF, TinyWow, Online-Convert, Convertio, and 123Apps.",
   },
   alternates: { canonical: `${SITE_URL}/best-online/best-free-online-tools` },
 };
@@ -32,7 +32,7 @@ const breadcrumbs = [
   { label: "Free Online Tools Directory" },
 ];
 
-const matrixHeaders = ["Feature", "ToolVerse", "iLovePDF", "TinyWow", "Online-Convert", "Convertio", "123Apps"];
+const matrixHeaders = ["Feature", "Nuvora", "iLovePDF", "TinyWow", "Online-Convert", "Convertio", "123Apps"];
 const matrixRows = [
   { feature: "PDF Tools", values: ["Coming Soon", true, true, true, true, true] },
   { feature: "Image Tools", values: [true, true, true, true, true, true] },
@@ -52,17 +52,17 @@ const faqItems: FaqItem[] = [
   {
     question: "What is the best all-around free online tools platform?",
     answer:
-      "ToolVerse offers the widest variety of categories — developer, network, security, SEO, text, and image tools — all with no sign-up, no daily limits, and dark mode. For specialized PDF or media conversion, iLovePDF and Convertio are excellent choices.",
+      "Nuvora offers the widest variety of categories — developer, network, security, SEO, text, and image tools — all with no sign-up, no daily limits, and dark mode. For specialized PDF or media conversion, iLovePDF and Convertio are excellent choices.",
   },
   {
     question: "Which free tool platform has no daily usage limits?",
     answer:
-      "ToolVerse and TinyWow offer unlimited daily usage on their free tiers. Convertio and Online-Convert impose file size and conversion limits. iLovePDF allows about 25 tasks per day on its free plan.",
+      "Nuvora and TinyWow offer unlimited daily usage on their free tiers. Convertio and Online-Convert impose file size and conversion limits. iLovePDF allows about 25 tasks per day on its free plan.",
   },
   {
     question: "Which platforms do not require registration?",
     answer:
-      "ToolVerse, TinyWow, and Online-Convert allow you to use most features without creating an account. Convertio and 123Apps require sign-up for some functionality.",
+      "Nuvora, TinyWow, and Online-Convert allow you to use most features without creating an account. Convertio and 123Apps require sign-up for some functionality.",
   },
 ];
 

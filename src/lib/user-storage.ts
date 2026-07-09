@@ -243,20 +243,42 @@ interface ContinueReadingItem {
   viewedAt: string;
 }
 
+let _continueReading: ContinueReadingItem[] = [];
+let _continueDirty = true;
+
+function _readContinue(): void {
+  if (typeof window === "undefined") return;
+  try {
+    const raw = localStorage.getItem(CONTINUE_READING_KEY);
+    _continueReading = raw ? (JSON.parse(raw) as ContinueReadingItem[]) : [];
+  } catch {
+    _continueReading = [];
+  }
+  _continueDirty = false;
+}
+
 export function addContinueReading(item: Omit<ContinueReadingItem, "viewedAt">): void {
   const list = safeGet<ContinueReadingItem[]>(CONTINUE_READING_KEY, []).filter(
     (i) => i.slug !== item.slug,
   );
   list.unshift({ ...item, viewedAt: new Date().toISOString() });
   safeSet(CONTINUE_READING_KEY, list.slice(0, MAX_CONTINUE));
+  _continueReading = list;
 }
 
 export function getContinueReading(): ContinueReadingItem[] {
-  return safeGet<ContinueReadingItem[]>(CONTINUE_READING_KEY, []);
+  if (typeof window === "undefined") return [];
+  if (_continueDirty) _readContinue();
+  return _continueReading;
+}
+
+export function invalidateContinueReading(): void {
+  _continueDirty = true;
 }
 
 export function clearContinueReading(): void {
   safeSet(CONTINUE_READING_KEY, []);
+  _continueReading = [];
 }
 
 /* Result History */

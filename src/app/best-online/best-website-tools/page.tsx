@@ -5,17 +5,17 @@ import { breadcrumbSchema, webPageSchema, faqSchema, type FaqItem } from "@/lib/
 import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Best Free Website Tools Online — Check, Audit, Fix | ToolVerse",
+  title: "Best Free Website Tools Online — Check, Audit, Fix | Nuvora",
   description:
-    "Compare the best free website monitoring and analysis tools. Uptime monitoring, performance testing, SEO audits, and security checks. We review GTmetrix, Pingdom, Google PageSpeed, Site24x7, UptimeRobot, and ToolVerse Website Check.",
+    "Compare the best free website monitoring and analysis tools. Uptime monitoring, performance testing, SEO audits, and security checks. We review GTmetrix, Pingdom, Google PageSpeed, Site24x7, UptimeRobot, and Nuvora Website Check.",
   openGraph: {
-    title: "Best Free Website Tools Online — Check, Audit, Fix | ToolVerse",
+    title: "Best Free Website Tools Online — Check, Audit, Fix | Nuvora",
     description:
       "Compare the best free website monitoring and analysis tools. Uptime monitoring, performance testing, SEO audits, and security checks.",
     url: `${SITE_URL}/best-online/best-website-tools`,
   },
   twitter: {
-    title: "Best Free Website Tools Online — Check, Audit, Fix | ToolVerse",
+    title: "Best Free Website Tools Online — Check, Audit, Fix | Nuvora",
     description:
       "Compare the best free website monitoring and analysis tools. Uptime monitoring, performance testing, SEO audits, and security checks.",
   },
@@ -32,7 +32,7 @@ const breadcrumbs = [
   { label: "Website Tools" },
 ];
 
-const matrixHeaders = ["Feature", "GTmetrix", "Pingdom", "Google PageSpeed", "Site24x7", "UptimeRobot", "ToolVerse Website Check"];
+const matrixHeaders = ["Feature", "GTmetrix", "Pingdom", "Google PageSpeed", "Site24x7", "UptimeRobot", "Nuvora Website Check"];
 const matrixRows = [
   { feature: "Free Tier Available", values: [true, true, true, true, true, true] },
   { feature: "Uptime Monitoring (Free)", values: ["—", true, "—", true, true, "—"] },
@@ -52,17 +52,17 @@ const faqItems: FaqItem[] = [
   {
     question: "What is the best free website performance testing tool?",
     answer:
-      "Google PageSpeed Insights provides authoritative Core Web Vitals data directly from Chrome UX reports. GTmetrix offers detailed waterfall charts. ToolVerse Website Check combines performance, HTTP headers, SSL, and DNS checks in one place with no registration.",
+      "Google PageSpeed Insights provides authoritative Core Web Vitals data directly from Chrome UX reports. GTmetrix offers detailed waterfall charts. Nuvora Website Check combines performance, HTTP headers, SSL, and DNS checks in one place with no registration.",
   },
   {
     question: "Which free tool monitors website uptime?",
     answer:
-      "Site24x7 (1 monitor free) and UptimeRobot (50 monitors free) both offer free uptime monitoring with email alerts. ToolVerse Website Check provides on-demand status checks without ongoing monitoring.",
+      "Site24x7 (1 monitor free) and UptimeRobot (50 monitors free) both offer free uptime monitoring with email alerts. Nuvora Website Check provides on-demand status checks without ongoing monitoring.",
   },
   {
     question: "Can I check HTTP headers and SSL certificates for free?",
     answer:
-      "Yes. ToolVerse Website Check includes HTTP headers inspection, SSL certificate validation, and DNS analysis in a single free tool — no account needed.",
+      "Yes. Nuvora Website Check includes HTTP headers inspection, SSL certificate validation, and DNS analysis in a single free tool — no account needed.",
   },
 ];
 

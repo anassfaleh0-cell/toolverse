@@ -5,17 +5,17 @@ import { breadcrumbSchema, webPageSchema, faqSchema, type FaqItem } from "@/lib/
 import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Best Free SEO Tools Online — Audit, Optimize, Analyze | ToolVerse",
+  title: "Best Free SEO Tools Online — Audit, Optimize, Analyze | Nuvora",
   description:
-    "Compare the best free online SEO tools. Audit meta tags, headers, schema markup, sitemaps, and redirects. We review Google Search Console, Ahrefs Free, SEMrush Free, Moz Free, SEO Site Checkup, and ToolVerse SEO Suite.",
+    "Compare the best free online SEO tools. Audit meta tags, headers, schema markup, sitemaps, and redirects. We review Google Search Console, Ahrefs Free, SEMrush Free, Moz Free, SEO Site Checkup, and Nuvora SEO Suite.",
   openGraph: {
-    title: "Best Free SEO Tools Online — Audit, Optimize, Analyze | ToolVerse",
+    title: "Best Free SEO Tools Online — Audit, Optimize, Analyze | Nuvora",
     description:
       "Compare the best free online SEO tools. Audit meta tags, headers, schema markup, sitemaps, and redirects.",
     url: `${SITE_URL}/best-online/best-seo-tools`,
   },
   twitter: {
-    title: "Best Free SEO Tools Online — Audit, Optimize, Analyze | ToolVerse",
+    title: "Best Free SEO Tools Online — Audit, Optimize, Analyze | Nuvora",
     description:
       "Compare the best free online SEO tools. Audit meta tags, headers, schema markup, sitemaps, and redirects.",
   },
@@ -32,7 +32,7 @@ const breadcrumbs = [
   { label: "SEO Tools" },
 ];
 
-const matrixHeaders = ["Feature", "Google Search Console", "Ahrefs Free", "SEMrush Free", "Moz Free", "SEO Site Checkup", "ToolVerse SEO Suite"];
+const matrixHeaders = ["Feature", "Google Search Console", "Ahrefs Free", "SEMrush Free", "Moz Free", "SEO Site Checkup", "Nuvora SEO Suite"];
 const matrixRows = [
   { feature: "Free Tier Available", values: [true, true, true, true, true, true] },
   { feature: "Meta Tag Analysis", values: [true, true, true, true, true, true] },
@@ -52,17 +52,17 @@ const faqItems: FaqItem[] = [
   {
     question: "Which free SEO tool is best for technical audits?",
     answer:
-      "ToolVerse SEO Suite (coming soon) and SEO Site Checkup are excellent for quick technical audits without requiring an account. Google Search Console is essential for Core Web Vitals and index coverage data.",
+      "Nuvora SEO Suite (coming soon) and SEO Site Checkup are excellent for quick technical audits without requiring an account. Google Search Console is essential for Core Web Vitals and index coverage data.",
   },
   {
     question: "Can I check schema markup for free?",
     answer:
-      "Yes. Google Search Console's Rich Results report, Ahrefs Free Webmaster Tools, and ToolVerse SEO Suite all provide free schema markup validation.",
+      "Yes. Google Search Console's Rich Results report, Ahrefs Free Webmaster Tools, and Nuvora SEO Suite all provide free schema markup validation.",
   },
   {
     question: "Do I need an account to use free SEO tools?",
     answer:
-      "SEO Site Checkup and ToolVerse SEO Suite allow instant checks without registration. Others like Ahrefs Free, SEMrush Free, and Google Search Console require a free account.",
+      "SEO Site Checkup and Nuvora SEO Suite allow instant checks without registration. Others like Ahrefs Free, SEMrush Free, and Google Search Console require a free account.",
   },
 ];
 

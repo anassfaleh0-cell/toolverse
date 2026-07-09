@@ -43,13 +43,10 @@ export function ProtectPdf() {
     setLoading(true);
     setError(null);
     try {
-      const { PDFDocument } = await import("pdf-lib");
       const arrayBuffer = await file.arrayBuffer();
-      const pdf = await PDFDocument.load(arrayBuffer);
-      pdf.setProducer("ToolVerse");
-      pdf.setCreator("ToolVerse PDF Protector");
-      const pdfBytes = await pdf.save();
-      setResult(pdfBytes);
+      const { encryptPDF } = await import("@pdfsmaller/pdf-encrypt-lite");
+      const encryptedBytes = await encryptPDF(new Uint8Array(arrayBuffer), userPassword);
+      setResult(encryptedBytes);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to protect PDF");
     } finally {
@@ -59,7 +56,7 @@ export function ProtectPdf() {
 
   function handleDownload() {
     if (!result) return;
-    const blob = new Blob([result.slice(0)], { type: "application/pdf" });
+    const blob = new Blob([new Uint8Array(result)], { type: "application/pdf" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;

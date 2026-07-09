@@ -26,6 +26,7 @@ const TOOL_LOOKUP: Record<string, { name: string }> = {
   "what-is-my-ip": { name: "What Is My IP" },
   "ip-lookup": { name: "IP Lookup" },
   "password-generator": { name: "Password Generator" },
+  "pdf-to-word": { name: "PDF to Word" },
   "lorem-ipsum-generator": { name: "Lorem Ipsum Generator" },
   "word-counter": { name: "Word Counter" },
   "text-diff-checker": { name: "Text Diff Checker" },

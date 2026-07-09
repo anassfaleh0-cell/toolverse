@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllTools, getCategories } from "@/lib/registry";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
+import { JsonLd } from "@/components/shared";
+import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: `All Tools - ${SITE_NAME}`,
@@ -11,12 +13,19 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE_URL}/tools` },
 };
 
+const breadcrumbs = [
+  { label: "Home", href: SITE_URL },
+  { label: "All Tools" },
+];
+
 export default function ToolsPage() {
   const tools = getAllTools();
   const categories = getCategories();
 
   return (
     <>
+      <JsonLd data={webPageSchema({ name: `All Tools - ${SITE_NAME}`, description: `Browse all free online tools on ${SITE_NAME}.`, url: `${SITE_URL}/tools`, breadcrumbs })} />
+      <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <section className="border-b border-zinc-200 dark:border-zinc-800">
         <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
           <nav aria-label="Breadcrumb" className="text-sm text-zinc-500 dark:text-zinc-400">

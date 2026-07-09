@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { CompressPdf } from "@/components/pdf-suite/compress-pdf";
-import { ToolLayout, ToolHero, FaqSection, RelatedContent, JsonLd } from "@/components/shared";
+import { ToolLayout, ToolHero, FaqSection, RelatedContent, JsonLd, FeaturedSnippet } from "@/components/shared";
 import { faqSchema, webPageSchema, breadcrumbSchema, softwareAppSchema, type FaqItem } from "@/lib/seo";
 import { SITE_URL } from "@/lib/constants";
 import { getToolBySlug, generateToolBreadcrumbs } from "@/lib/registry";
@@ -44,6 +44,17 @@ export default function CompressPdfPage() {
           </ToolHero>
         </ToolLayout>
       </section>
+
+      <FeaturedSnippet
+        toolName="Compress PDF"
+        answer="PDF compression reduces file size by optimizing internal structure and removing metadata without re-encoding page content. Typical reduction ranges from 5% to 30% depending on embedded metadata, fonts, and redundant objects. The compression is fully lossless — text, images, and vector graphics retain their original quality. All processing happens in your browser using pdf-lib, so your files never leave your device."
+        keyTakeaways={[
+          "Lossless compression preserves all visible content — text, images, and vectors unchanged",
+          "Typical file size reduction of 5–30% depending on metadata and embedded objects",
+          "Removes metadata, duplicate objects, and enables cross-reference stream compression",
+          "All processing is client-side — no files are uploaded to any server",
+        ]}
+      />
 
       <section className="border-b border-zinc-200 py-12 dark:border-zinc-800 sm:py-16">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">

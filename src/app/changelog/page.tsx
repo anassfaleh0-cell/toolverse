@@ -95,7 +95,7 @@ export default function ChangelogPage() {
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <Breadcrumbs items={breadcrumbs} />
           <h1 className="mt-4 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">Changelog</h1>
-          <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">Every update, improvement, and new tool. Track the evolution of ToolVerse.</p>
+          <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">Every update, improvement, and new tool. Track the evolution of Nuvora.</p>
         </div>
       </section>
 

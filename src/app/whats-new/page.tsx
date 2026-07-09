@@ -16,6 +16,20 @@ export const metadata: Metadata = {
 
 const breadcrumbs = [{ label: "Home", href: SITE_URL }, { label: "What&apos;s New" }];
 
+const TYPE_ROUTE: Record<string, string> = {
+  guide: "guides",
+  article: "blog",
+  tutorial: "learn",
+  comparison: "compare",
+  "cheat-sheet": "cheat-sheets",
+  examples: "examples",
+  errors: "errors",
+  reference: "reference",
+  "best-practices": "best-practices",
+  commands: "commands",
+  "use-cases": "use-cases",
+};
+
 export default function WhatsNewPage() {
   const allTools = getAllTools();
   const latestContent = getLatestContent(10);
@@ -50,7 +64,7 @@ export default function WhatsNewPage() {
           <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">Recently Published Content</h2>
           <div className="space-y-4">
             {latestContent.map((item) => (
-              <Link key={item.slug} href={`/${item.type}/${item.slug}`} className="block rounded-lg border border-zinc-200 bg-white p-4 transition-colors hover:border-blue-300 dark:border-zinc-700 dark:bg-zinc-900 dark:hover:border-blue-700">
+              <Link key={item.slug} href={`/${TYPE_ROUTE[item.type] ?? item.type}/${item.slug}`} className="block rounded-lg border border-zinc-200 bg-white p-4 transition-colors hover:border-blue-300 dark:border-zinc-700 dark:bg-zinc-900 dark:hover:border-blue-700">
                 <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">{item.title}</h3>
                 <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">{item.description}</p>
                 <p className="mt-2 text-xs text-zinc-500">{new Date(item.publishedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</p>

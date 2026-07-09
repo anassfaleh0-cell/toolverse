@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { useSyncExternalStore } from "react";
-import { getContinueReading, clearContinueReading, invalidateRecentlyViewed } from "@/lib/user-storage";
+import { getContinueReading, clearContinueReading, invalidateContinueReading } from "@/lib/user-storage";
 
 function subscribe(cb: () => void) {
-  const handler = () => { invalidateRecentlyViewed(); cb(); };
+  const handler = () => { invalidateContinueReading(); cb(); };
   window.addEventListener("storage", handler);
   return () => window.removeEventListener("storage", handler);
 }
@@ -18,7 +18,7 @@ export function ContinueReading() {
     <section className="py-8">
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <div className="flex items-center justify-between">
-          <h2 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+          <h2 className="text-sm font-semibold text-text-primary">
             Continue Reading
           </h2>
           <button
@@ -26,7 +26,7 @@ export function ContinueReading() {
               clearContinueReading();
               window.dispatchEvent(new Event("storage"));
             }}
-            className="text-xs text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300"
+            className="text-xs text-text-tertiary hover:text-text-secondary"
           >
             Clear
           </button>
@@ -36,15 +36,15 @@ export function ContinueReading() {
             <Link
               key={`${item.type}-${item.slug}`}
               href={item.url}
-              className="rounded-xl border border-zinc-200 p-4 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:hover:bg-zinc-900"
+              className="rounded-xl border border-border-subtle bg-surface p-4 transition-all hover:shadow-sm"
             >
-              <span className="text-[10px] font-medium uppercase tracking-wider text-zinc-400">
+              <span className="text-[10px] font-medium uppercase tracking-wider text-text-tertiary">
                 {item.typeLabel}
               </span>
-              <p className="mt-1 text-sm font-medium text-zinc-900 line-clamp-2 dark:text-zinc-50">
+              <p className="mt-1 text-sm font-medium text-text-primary line-clamp-2">
                 {item.title}
               </p>
-              <p className="mt-1 text-xs text-zinc-500">
+              <p className="mt-1 text-xs text-text-tertiary">
                 {item.readingTimeMinutes} min read
               </p>
             </Link>

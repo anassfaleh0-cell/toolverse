@@ -5,19 +5,19 @@ import { breadcrumbSchema, webPageSchema, faqSchema, type FaqItem } from "@/lib/
 import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Best Free PDF Tools Online — Merge, Split, Compress, Convert | ToolVerse",
+  title: "Best Free PDF Tools Online — Merge, Split, Compress, Convert | Nuvora",
   description:
-    "Compare the best free online PDF tools. Merge, split, compress, and convert PDFs. We review iLovePDF, SmallPDF, PDF24, Sejda, PDF Candy, and ToolVerse.",
+    "Compare the best free online PDF tools. Merge, split, compress, and convert PDFs. We review iLovePDF, SmallPDF, PDF24, Sejda, PDF Candy, and Nuvora.",
   openGraph: {
-    title: "Best Free PDF Tools Online — Merge, Split, Compress, Convert | ToolVerse",
+    title: "Best Free PDF Tools Online — Merge, Split, Compress, Convert | Nuvora",
     description:
-      "Compare the best free online PDF tools. Merge, split, compress, and convert PDFs. We review iLovePDF, SmallPDF, PDF24, Sejda, PDF Candy, and ToolVerse.",
+      "Compare the best free online PDF tools. Merge, split, compress, and convert PDFs. We review iLovePDF, SmallPDF, PDF24, Sejda, PDF Candy, and Nuvora.",
     url: `${SITE_URL}/best-online/best-pdf-tools`,
   },
   twitter: {
-    title: "Best Free PDF Tools Online — Merge, Split, Compress, Convert | ToolVerse",
+    title: "Best Free PDF Tools Online — Merge, Split, Compress, Convert | Nuvora",
     description:
-      "Compare the best free online PDF tools. Merge, split, compress, and convert PDFs. We review iLovePDF, SmallPDF, PDF24, Sejda, PDF Candy, and ToolVerse.",
+      "Compare the best free online PDF tools. Merge, split, compress, and convert PDFs. We review iLovePDF, SmallPDF, PDF24, Sejda, PDF Candy, and Nuvora.",
   },
   alternates: { canonical: `${SITE_URL}/best-online/best-pdf-tools` },
 };
@@ -32,7 +32,7 @@ const breadcrumbs = [
   { label: "PDF Tools" },
 ];
 
-const matrixHeaders = ["Feature", "iLovePDF", "SmallPDF", "PDF24", "Sejda", "PDF Candy", "ToolVerse (soon)"];
+const matrixHeaders = ["Feature", "iLovePDF", "SmallPDF", "PDF24", "Sejda", "PDF Candy", "Nuvora (soon)"];
 const matrixRows = [
   { feature: "Free Tier Available", values: [true, true, true, true, true, true] },
   { feature: "Max File Size (Free)", values: ["10 MB", "5 MB", "50 MB", "50 MB", "100 MB", "25 MB"] },
@@ -51,7 +51,7 @@ const faqItems: FaqItem[] = [
   {
     question: "Which free PDF tool has the highest file size limit?",
     answer:
-      "PDF Candy offers up to 100 MB per file on its free tier, followed by PDF24 and Sejda at 50 MB. ToolVerse (coming soon) will support up to 25 MB with no daily limit.",
+      "PDF Candy offers up to 100 MB per file on its free tier, followed by PDF24 and Sejda at 50 MB. Nuvora (coming soon) will support up to 25 MB with no daily limit.",
   },
   {
     question: "Are there completely unlimited free PDF tools?",
@@ -61,7 +61,7 @@ const faqItems: FaqItem[] = [
   {
     question: "Can I edit PDFs online without uploading to a server?",
     answer:
-      "Most online PDF tools require file uploads to their servers. ToolVerse (coming soon) will process PDFs entirely client-side — no uploads needed for basic operations like merging and splitting.",
+      "Most online PDF tools require file uploads to their servers. Nuvora (coming soon) will process PDFs entirely client-side — no uploads needed for basic operations like merging and splitting.",
   },
 ];
 

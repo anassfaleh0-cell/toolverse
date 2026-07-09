@@ -9,6 +9,7 @@ import { Footer } from "@/components/footer";
 import { CookieConsent } from "@/components/shared/cookie-consent";
 import { Analytics } from "@/components/shared/analytics";
 import { JsonLd } from "@/components/shared";
+import { BRAND } from "@/lib/nuvora/brand";
 
 const UniversalWorkspace = dynamic(() => import("@/components/shared/universal-workspace").then((m) => ({ default: m.UniversalWorkspace })));
 const CommandPalette = dynamic(() => import("@/components/shared/command-palette").then((m) => ({ default: m.CommandPalette })));
@@ -17,40 +18,36 @@ import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/constants";
 import "./globals.css";
 
 const geistSans = GeistSans;
-
 const geistMono = GeistMono;
 
 export const metadata: Metadata = {
   title: {
-    default: SITE_NAME,
+    default: `${SITE_NAME} — Smart Tools for Everything You Do`,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
   keywords: [
-    "IP lookup", "WHOIS", "DNS lookup", "reverse DNS", "ping test",
-    "port checker", "SSL checker", "network tools", "what is my IP",
-    "DNS propagation", "HTTP headers", "user agent parser",
-    "website status", "online network utilities",
+    "Nuvora", "online tools", "free tools", "AI tools", "browser tools",
+    "DNS lookup", "WHOIS", "SSL checker", "PDF tools", "image editor",
+    "developer tools", "network diagnostics", "security tools",
+    "privacy tools", "browser utilities", "smart workspace",
   ],
   metadataBase: new URL(SITE_URL),
   openGraph: {
     type: "website",
     locale: "en_US",
     siteName: SITE_NAME,
-    title: SITE_NAME,
+    title: `${SITE_NAME} — Smart Tools for Everything You Do`,
     description: SITE_DESCRIPTION,
     images: [{ url: `${SITE_URL}/og-image.svg`, width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: SITE_NAME,
+    title: `${SITE_NAME} — Smart Tools for Everything You Do`,
     description: SITE_DESCRIPTION,
     images: [`${SITE_URL}/og-image.svg`],
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
   other: {
     "color-scheme": "light dark",
     "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || "",
@@ -62,8 +59,8 @@ export const metadata: Metadata = {
     statusBarStyle: "black-translucent",
   },
   icons: {
-    icon: { url: "/icon.svg", type: "image/svg+xml" },
-    apple: { url: "/icon.svg", sizes: "180x180", type: "image/svg+xml" },
+    icon: { url: "/favicon.svg", type: "image/svg+xml" },
+    apple: { url: "/apple-icon.svg", sizes: "180x180", type: "image/svg+xml" },
   },
 };
 
@@ -71,34 +68,28 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+    { media: "(prefers-color-scheme: light)", color: "#fafafa" },
+    { media: "(prefers-color-scheme: dark)", color: "#08090b" },
   ],
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable}`}
-    >
+    <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable}`}>
+      <head />
       <body className="flex min-h-screen flex-col bg-background font-sans antialiased">
         <JsonLd data={{
           "@context": "https://schema.org",
           "@type": "Organization",
           name: SITE_NAME,
           url: SITE_URL,
-          logo: `${SITE_URL}/icon.svg`,
+          logo: `${SITE_URL}/favicon.svg`,
           description: SITE_DESCRIPTION,
-          foundingDate: "2023",
+          foundingDate: BRAND.founded,
+          slogan: BRAND.tagline,
           contactPoint: {
             "@type": "ContactPoint",
-            email: "hello@toolverse.dev",
+            email: BRAND.email,
             contactType: "customer support",
           },
           sameAs: [],
@@ -118,7 +109,7 @@ export default function RootLayout({
             "query-input": "required name=search_term_string",
           },
         }} />
-        <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-blue-600 focus:px-4 focus:py-2 focus:text-white">
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-nuvora-600 focus:px-4 focus:py-2 focus:text-white">
           Skip to main content
         </a>
         <ThemeProvider>
@@ -126,15 +117,9 @@ export default function RootLayout({
           <main id="main-content" className="flex-1">{children}</main>
           <Footer />
           <CookieConsent />
-          <Suspense fallback={null}>
-            <Analytics />
-          </Suspense>
-          <Suspense fallback={null}>
-            <UniversalWorkspace />
-          </Suspense>
-          <Suspense fallback={null}>
-            <CommandPalette />
-          </Suspense>
+          <Suspense fallback={null}><Analytics /></Suspense>
+          <Suspense fallback={null}><UniversalWorkspace /></Suspense>
+          <Suspense fallback={null}><CommandPalette /></Suspense>
         </ThemeProvider>
       </body>
     </html>
