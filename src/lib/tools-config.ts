@@ -1284,7 +1284,7 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "http-headers-checker": {
     fields: [{ name: "input", type: "text", label: "URL", placeholder: "https://example.com" }],
     buttonText: "Check Headers",
-    apiEndpoint: "/api/tools/dns-lookup",
+    apiEndpoint: "/api/tools/http-headers",
     howTo: [
       { action: "Enter", desc: "Paste the full URL (including https://) of the page to check." },
       { action: "Check", desc: "Click 'Check Headers' to fetch HTTP response headers." },
@@ -1322,7 +1322,7 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "website-status-checker": {
     fields: [{ name: "input", type: "text", label: "URL", placeholder: "https://example.com" }],
     buttonText: "Check Status",
-    apiEndpoint: "/api/tools/dns-lookup",
+    apiEndpoint: "/api/tools/website-status",
   },
   "uptime-checker": {
     fields: [{ name: "input", type: "text", label: "URL", placeholder: "https://example.com" }],
@@ -1371,7 +1371,7 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "redirect-checker": {
     fields: [{ name: "input", type: "text", label: "URL", placeholder: "https://example.com" }],
     buttonText: "Check Redirects",
-    apiEndpoint: "/api/tools/dns-lookup",
+    apiEndpoint: "/api/tools/redirect-checker",
   },
   "user-agent-parser": {
     fields: [{ name: "input", type: "textarea", label: "User-Agent string", placeholder: "Mozilla/5.0 (Windows NT 10.0; ..." }],
@@ -1688,6 +1688,22 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "keyword-density": {
     fields: [{ name: "input", type: "textarea", label: "Text to analyze", placeholder: "Paste your content here to check keyword density..." }],
     buttonText: "Analyze",
+    process: (v) => {
+      const text = v.input?.trim();
+      if (!text || text.length < 10) return { error: "Enter at least 10 characters of text to analyze." };
+      const words = text.toLowerCase().replace(/[^a-z\s'-]/g, "").split(/\s+/).filter(w => w.length > 2);
+      const totalWords = words.length;
+      const freq: Record<string, number> = {};
+      for (const w of words) { freq[w] = (freq[w] || 0) + 1; }
+      const sorted = Object.entries(freq).sort((a, b) => b[1] - a[1]).slice(0, 20);
+      return {
+        "Total Words": `${totalWords}`,
+        "Unique Words": `${Object.keys(freq).length}`,
+        "Keyword Density": sorted.map(([w, c]) => `${w}: ${c} (${(c / totalWords * 100).toFixed(1)}%)`).join("\n"),
+        "Top Keywords": sorted.slice(0, 5).map(([w]) => w).join(", "),
+        "Tip": "A healthy keyword density is 1-3%. Higher may be considered keyword stuffing.",
+      };
+    },
   },
   "robots-txt-generator": {
     fields: [
@@ -1697,6 +1713,17 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "sitemap", type: "text", label: "Sitemap URL", placeholder: "https://example.com/sitemap.xml" },
     ],
     buttonText: "Generate robots.txt",
+    process: (v) => {
+      let output = `User-agent: ${v.userAgent || "*"}\n`;
+      if (v.disallow?.trim()) { for (const p of v.disallow.split(",").map(s => s.trim()).filter(Boolean)) output += `Disallow: ${p}\n`; }
+      if (v.allow?.trim()) { for (const p of v.allow.split(",").map(s => s.trim()).filter(Boolean)) output += `Allow: ${p}\n`; }
+      if (v.sitemap?.trim()) output += `\nSitemap: ${v.sitemap.trim()}\n`;
+      return {
+        "robots.txt": output,
+        "Lines": `${output.split("\n").length}`,
+        "Tip": "Test your robots.txt using the Robots.txt Validator tool.",
+      };
+    },
   },
   "sitemap-generator": {
     fields: [
@@ -1708,14 +1735,43 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       ]},
     ],
     buttonText: "Generate Sitemap",
+    process: (v) => {
+      const urls = v.urls?.split("\n").map(s => s.trim()).filter(Boolean) || [];
+      if (urls.length === 0) return { error: "Enter at least one URL." };
+      const freq = v.changefreq || "monthly";
+      const now = new Date().toISOString().split("T")[0];
+      let xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+      for (const url of urls) { xml += `  <url>\n    <loc>${url}</loc>\n    <lastmod>${now}</lastmod>\n    <changefreq>${freq}</changefreq>\n  </url>\n`; }
+      xml += "</urlset>";
+      return {
+        "XML Sitemap": xml,
+        "URLs Included": `${urls.length}`,
+        "Tip": "Submit your sitemap to Google Search Console for indexing.",
+      };
+    },
   },
   "meta-tag-generator": {
     fields: [
       { name: "title", type: "text", label: "Page title", placeholder: "My Amazing Page" },
       { name: "description", type: "textarea", label: "Meta description", placeholder: "A brief description of the page..." },
       { name: "keywords", type: "text", label: "Keywords (comma-separated)", placeholder: "keyword1, keyword2" },
+      { name: "url", type: "url", label: "Page URL", placeholder: "https://example.com/page" },
     ],
     buttonText: "Generate Meta Tags",
+    process: (v) => {
+      const title = v.title || "Page Title";
+      const desc = v.description || "";
+      const keywords = v.keywords || "";
+      const url = v.url || "";
+      const fullHtml = `<!-- Meta Tags -->\n<title>${title}</title>\n<meta name="description" content="${desc}" />\n<meta name="keywords" content="${keywords}" />\n${url ? `<link rel="canonical" href="${url}" />` : ""}\n\n<!-- Open Graph -->\n<meta property="og:title" content="${title}" />\n<meta property="og:description" content="${desc}" />\n${url ? `<meta property="og:url" content="${url}" />` : ""}\n<meta property="og:type" content="website" />\n\n<!-- Twitter -->\n<meta name="twitter:card" content="summary_large_image" />\n<meta name="twitter:title" content="${title}" />\n<meta name="twitter:description" content="${desc}" />`;
+      return {
+        "Title Tag": `<title>${title}</title>`,
+        "Meta Description": `<meta name="description" content="${desc}" />`,
+        "Meta Keywords": `<meta name="keywords" content="${keywords}" />`,
+        "Full HTML": fullHtml,
+        "Character Count": `Title: ${title.length} chars | Description: ${desc.length} chars`,
+      };
+    },
   },
   "open-graph-generator": {
     fields: [
@@ -1725,6 +1781,21 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "url", type: "text", label: "Page URL", placeholder: "https://example.com/page" },
     ],
     buttonText: "Generate OG Tags",
+    process: (v) => {
+      const og = [
+        `<meta property="og:title" content="${v.title || "Page Title"}" />`,
+        `<meta property="og:description" content="${v.description || ""}" />`,
+        v.image ? `<meta property="og:image" content="${v.image}" />` : "",
+        v.url ? `<meta property="og:url" content="${v.url}" />` : "",
+        `<meta property="og:type" content="website" />`,
+      ].filter(Boolean).join("\n");
+      return {
+        "Open Graph Tags": og,
+        "Preview Title": v.title || "Page Title",
+        "Preview Description": v.description || "",
+        "Tip": "Test your OG tags using the Social Media Preview tool.",
+      };
+    },
   },
   "schema-generator": {
     fields: [
@@ -1740,6 +1811,26 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "description", type: "textarea", label: "Description", placeholder: "A brief description..." },
     ],
     buttonText: "Generate Schema",
+    process: (v) => {
+      const type = v.type || "Article";
+      const name = v.name || "";
+      const desc = v.description || "";
+      const context = "https://schema.org";
+      let schema: Record<string, unknown> = { "@context": context, "@type": type, name, description: desc };
+      if (type === "Article") schema = { ...schema, author: { "@type": "Person", name: "Author" }, datePublished: new Date().toISOString().split("T")[0] };
+      if (type === "Product") schema = { ...schema, offers: { "@type": "Offer", price: "0.00", priceCurrency: "USD" } };
+      if (type === "LocalBusiness") schema = { ...schema, address: { "@type": "PostalAddress", streetAddress: "123 Main St" }, telephone: "+1-555-555-5555" };
+      if (type === "FAQPage") {
+        schema = { "@context": context, "@type": "FAQPage", mainEntity: [{ "@type": "Question", name: "Question 1", acceptedAnswer: { "@type": "Answer", text: "Answer to question 1." } }] };
+      }
+      if (type === "Event") schema = { ...schema, startDate: new Date().toISOString(), location: { "@type": "Place", name: "Venue Name" } };
+      if (type === "Review") schema = { ...schema, itemReviewed: { "@type": "Thing", name: name || "Item Name" }, reviewRating: { "@type": "Rating", ratingValue: "5" } };
+      return {
+        "JSON-LD Schema": JSON.stringify(schema, null, 2),
+        "Schema Type": type,
+        "Embed Code": `<script type="application/ld+json">\n${JSON.stringify(schema, null, 2)}\n</script>`,
+      };
+    },
   },
   "hreflang-generator": {
     fields: [
@@ -1747,10 +1838,40 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "langs", type: "textarea", label: "Language codes and URLs (lang:url per line)", placeholder: "en:https://example.com/en/page\nfr:https://example.com/fr/page\nde:https://example.com/de/page" },
     ],
     buttonText: "Generate Hreflang Tags",
+    process: (v) => {
+      const baseUrl = v.baseUrl?.trim() || "";
+      const lines = v.langs?.split("\n").map(s => s.trim()).filter(Boolean) || [];
+      if (lines.length === 0) return { error: "Enter at least one language:URL pair." };
+      const tags: string[] = [];
+      const errors: string[] = [];
+      for (const line of lines) {
+        const sep = line.includes(":") ? line.indexOf(":") : -1;
+        if (sep < 1) { errors.push(`Invalid line: "${line}"`); continue; }
+        const lang = line.substring(0, sep).trim();
+        const url = line.substring(sep + 1).trim();
+        if (!lang || !url) { errors.push(`Invalid line: "${line}"`); continue; }
+        tags.push(`<link rel="alternate" hreflang="${lang}" href="${url}" />`);
+      }
+      if (baseUrl) tags.push(`<link rel="alternate" hreflang="x-default" href="${baseUrl}" />`);
+      return {
+        "Hreflang Tags": tags.join("\n"),
+        "Languages": `${tags.length} language tag(s)`,
+        ...(errors.length ? { "Errors": errors.join("\n") } : {}),
+      };
+    },
   },
   "canonical-generator": {
     fields: [{ name: "url", type: "text", label: "Canonical URL", placeholder: "https://example.com/page" }],
     buttonText: "Generate Canonical Tag",
+    process: (v) => {
+      const url = v.url?.trim();
+      if (!url) return { error: "Enter a canonical URL." };
+      return {
+        "Canonical Tag": `<link rel="canonical" href="${url}" />`,
+        "URL": url,
+        "Tip": "Place this tag in the <head> section of your page to prevent duplicate content issues.",
+      };
+    },
   },
   "seo-title-preview": {
     fields: [
@@ -1758,10 +1879,44 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "description", type: "textarea", label: "Meta description", placeholder: "A brief description..." },
     ],
     buttonText: "Preview",
+    process: (v) => {
+      const title = v.title?.trim() || "Title";
+      const desc = v.description?.trim() || "Description";
+      const pixelWidth = title.length * 9;
+      const titleOk = title.length <= 60;
+      const descOk = desc.length <= 160;
+      return {
+        "Google SERP Preview": `\n  ${title.length > 60 ? title.substring(0, 57) + "..." : title}\n  ${v.url || "https://example.com/page"}  \n  ${desc.length > 160 ? desc.substring(0, 157) + "..." : desc}\n`,
+        "Title": `${title} (${title.length}/60 chars ${titleOk ? "✓" : "✗"})`,
+        "Description": `${desc} (${desc.length}/160 chars ${descOk ? "✓" : "✗"})`,
+        "Recommendation": !titleOk ? "Title is too long. Google may truncate titles over 60 characters." : !descOk ? "Description is too long. Google may truncate descriptions over 160 characters." : "Your title and description lengths look great for Google SERP display!",
+      };
+    },
   },
   "robots-txt-validator": {
     fields: [{ name: "input", type: "textarea", label: "robots.txt content", placeholder: "User-agent: *\nDisallow: /admin" }],
     buttonText: "Validate",
+    process: (v) => {
+      const content = v.input?.trim();
+      if (!content) return { error: "Paste robots.txt content to validate." };
+      const lines = content.split("\n");
+      const issues: string[] = [];
+      const validDirs = ["user-agent", "disallow", "allow", "sitemap", "crawl-delay", "host", "clean-param"];
+      for (let i = 0; i < lines.length; i++) {
+        const line = lines[i].trim();
+        if (!line || line.startsWith("#")) continue;
+        const colonIdx = line.indexOf(":");
+        if (colonIdx === -1) { issues.push(`Line ${i + 1}: Missing colon — "${line}"`); continue; }
+        const dir = line.substring(0, colonIdx).trim().toLowerCase();
+        if (!validDirs.includes(dir)) { issues.push(`Line ${i + 1}: Unknown directive "${dir}"`); }
+      }
+      return {
+        "Status": issues.length === 0 ? "✅ Valid robots.txt — no issues found." : `⚠️ ${issues.length} issue(s) found`,
+        "Issues": issues.length > 0 ? issues.join("\n") : "None",
+        "Lines": `${lines.length}`,
+        "Tip": "Use the robots.txt Generator to create a valid file from scratch.",
+      };
+    },
   },
   "social-preview": {
     fields: [
@@ -1770,6 +1925,19 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "description", type: "textarea", label: "OG description", placeholder: "Description..." },
     ],
     buttonText: "Preview",
+    process: (v) => {
+      const title = v.title?.trim() || "Page Title";
+      const desc = v.description?.trim() || "";
+      const url = v.url?.trim() || "";
+      return {
+        "Facebook Preview": `\n  ┌${"─".repeat(50)}┐\n  │ ${title.substring(0, 46)} │\n  │ ${desc.substring(0, 46)} │\n  │ ${url.substring(0, 46)} │\n  └${"─".repeat(50)}┘\n`,
+        "Twitter Preview": `\n  ${title.substring(0, 60)}\n  ${desc.substring(0, 120)}\n  ${url}\n`,
+        "Title": title,
+        "Description": desc,
+        "OG Tags Present": url ? "Yes (URL provided)" : "No URL provided",
+        "Tip": "Upload an OG image to make your shared links more engaging.",
+      };
+    },
   },
   "spf-generator": {
     fields: [
