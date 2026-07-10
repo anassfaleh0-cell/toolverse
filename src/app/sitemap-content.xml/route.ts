@@ -16,7 +16,10 @@ export async function GET() {
 
   const urls = allContent.map((c) => {
     const route = TYPE_ROUTE[c.type] ?? c.type;
-    return `  <url><loc>${baseUrl}/${route}/${c.slug}</loc><lastmod>${now}</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>`;
+    const isPillar = c.slug.startsWith("ultimate-guide") || c.title.startsWith("Ultimate Guide");
+    const priority = route === "blog" ? (isPillar ? "0.8" : "0.7") : "0.6";
+    const changefreq = route === "blog" ? "monthly" : "weekly";
+    return `  <url><loc>${baseUrl}/${route}/${c.slug}</loc><lastmod>${now}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`;
   }).join("\n");
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

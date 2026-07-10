@@ -1,6 +1,26 @@
 import type { ContentPiece } from "../types";
+import { CLUSTER_1_ARTICLES } from "./articles-cluster-1";
+import { CLUSTER_2_ARTICLES } from "./articles-cluster-2";
+import { CLUSTER_3_ARTICLES } from "./articles-cluster-3";
+import { CLUSTER_4_ARTICLES } from "./articles-cluster-4";
+import { CLUSTER_5_ARTICLES } from "./articles-cluster-5";
+import { CLUSTER_6_ARTICLES } from "./articles-cluster-6";
+import { CLUSTER_7_ARTICLES } from "./articles-cluster-7";
+import { CLUSTER_8_ARTICLES } from "./articles-cluster-8";
+import { CLUSTER_9_ARTICLES } from "./articles-cluster-9";
+import { CLUSTER_10_ARTICLES } from "./articles-cluster-10";
 
 export const ARTICLES: ContentPiece[] = [
+  ...CLUSTER_1_ARTICLES,
+  ...CLUSTER_2_ARTICLES,
+  ...CLUSTER_3_ARTICLES,
+  ...CLUSTER_4_ARTICLES,
+  ...CLUSTER_5_ARTICLES,
+  ...CLUSTER_6_ARTICLES,
+  ...CLUSTER_7_ARTICLES,
+  ...CLUSTER_8_ARTICLES,
+  ...CLUSTER_9_ARTICLES,
+  ...CLUSTER_10_ARTICLES,
   {
     slug: "understanding-dns-record-types",
     type: "article",
@@ -354,92 +374,8 @@ export const ARTICLES: ContentPiece[] = [
       { heading: "Step 1: Baseline Your Connection", body: "Before troubleshooting, establish baseline latency. Run our Ping Test to a well-known fast server (1.1.1.1, 8.8.8.8, or your local city's known server). Test at different times of day to capture variability. Your baseline should be consistent within 10-20% for the same time of day. If baseline is already high (above 50ms to a nearby server), the problem is on your end." },
       { heading: "Step 2: Isolate Local vs. Remote Issues", body: "Ping multiple destinations. If all show high latency, the issue is local (your Wi-Fi, router, or ISP). If only one destination shows high latency, the issue is on that path or server. Use our Website Status Checker to test web servers — if the website loads fast but the ping is slow, the problem might be a specific network hop rather than the application server." },
       { heading: "Step 3: DNS Resolution Latency", body: "DNS resolution adds 10-100ms to every new domain lookup. Use our DNS Lookup tool to measure resolution time for your domain. If DNS takes more than 50ms, consider switching to a faster DNS provider or enabling DNS caching on your network. Slow DNS is often overlooked as a latency source because browsers cache results after the first lookup." },
-      { heading: "Step 4: Testing Through a VPN", body: "VPNs add 5-20ms under ideal conditions, but poorly configured VPNs can add 100ms+. Test latency with and without your VPN using our Ping Test. If the VPN adds excessive latency, try a closer server or a different VPN protocol (WireGuard is typically faster than OpenVPN). Some VPNs route traffic inefficiently due to server location or protocol overhead." },
-      { heading: "Step 5: Application-Level Latency", body: "If network ping is low but the application feels slow, the bottleneck is in the application stack. Use our Website Status Checker for response time. Use our HTTP Headers Checker to see caching headers — uncached dynamic sites are slower. Use our Port Checker to verify the service is running on the expected port. Slow database queries, insufficient server resources, or unoptimized code are common application-level causes." },
-    ],
-  },
-  {
-    slug: "port-security-audit",
-    type: "article",
-    title: "Port Security Audit: How to Scan and Secure Open Ports on Your Servers",
-    description:
-      "Systematic approach to auditing open ports on your infrastructure. Learn how to discover, assess, and secure exposed services before attackers do.",
-    difficulty: "intermediate",
-    category: "network-internet",
-    toolSlugs: ["port-checker", "ping-test", "ssl-certificate-checker"],
-    relatedContent: ["port-checker-beginners", "port-checker-troubleshooting", "port-checker-vs-firewall"],
-    readingTimeMinutes: 12,
-    publishedAt: "2026-07-03",
-    updatedAt: "2026-07-05",
-    sections: [
-      { heading: "Discovering Open Ports on Your Infrastructure", body: "Use our Port Checker tool to scan your public IP addresses. Start with the top 20 most targeted ports (21, 22, 23, 25, 53, 80, 110, 143, 443, 445, 993, 995, 1433, 1521, 3306, 3389, 5432, 5900, 6379, 8080). Document every open port and identify which service is listening. For each open port, determine whether it needs to be publicly accessible. If not, close it." },
-      { heading: "Hardening SSH Access (Port 22)", body: "SSH is the most attacked port on the internet. Secure it by disabling password authentication (use SSH keys only), changing the default port (optional, security by obscurity is not real security), and using fail2ban or similar for rate limiting. Restrict SSH access to specific IP ranges using firewall rules. Use our Port Checker to verify SSH is only accessible from authorized networks." },
-      { heading: "Database Ports: Never Expose to the Internet", body: "Database ports like 3306 (MySQL), 5432 (PostgreSQL), 1433 (MSSQL), 6379 (Redis), and 27017 (MongoDB) should never be publicly accessible. Applications should connect to databases over private networks or VPNs. If our Port Checker shows any database port as open on your public IP, this is a critical security finding. Close it immediately in both cloud security groups and OS firewalls." },
-      { heading: "Web Service Ports: 80, 443, and 8080", body: "Port 80 (HTTP) should redirect to port 443 (HTTPS). Port 443 should serve your application with a valid SSL certificate. Port 8080 is often used as an alternative HTTP port — ensure it serves the same content or redirects to the main site. Use our SSL Certificate Checker to verify certificates on all HTTPS ports. Use our Port Checker to confirm only expected web ports are open." },
-      { heading: "Regular Scanning and Continuous Monitoring", body: "Port configurations change over time. New services, temporary configurations, and deployment scripts can open ports unintentionally. Run our Port Checker tool weekly on all public IPs and set up automated port scanning using dedicated tools. Integrate port audit findings into your vulnerability management workflow. Any unauthorized open port should trigger an investigation." },
-    ],
-  },
-  {
-    slug: "user-agent-analytics-guide",
-    type: "article",
-    title: "Using User Agent Data in Web Analytics: Browser and Device Analysis",
-    description:
-      "How to analyze User-Agent data from your web server logs. Identify browser market share, device types, and bot traffic using our User Agent Parser.",
-    difficulty: "beginner",
-    category: "network-internet",
-    toolSlugs: ["user-agent-parser"],
-    relatedContent: ["user-agent-beginners", "user-agent-vs-fingerprinting", "http-headers-beginners"],
-    readingTimeMinutes: 9,
-    publishedAt: "2026-07-04",
-    updatedAt: "2026-07-05",
-    sections: [
-      { heading: "Collecting User-Agent Data from Server Logs", body: "Web server access logs (Apache, Nginx, IIS) record the User-Agent header for every request. Extract the UA field from your logs for analysis. For Nginx, the $http_user_agent variable captures the UA. For Apache, the %{User-agent}i log format directive is used. Export a sample of UAs from a representative time period (typically 24-48 hours) and analyze them using our User Agent Parser." },
-      { heading: "Identifying Browser and OS Market Share", body: "Parse a large sample of UAs from your logs using our User Agent Parser to determine browser, engine, and OS distribution. This data informs your development priorities: if 80% of visitors use Chrome, ensure Chrome compatibility first. Track changes over time to spot trends like declining legacy browser usage or emerging mobile platforms." },
-      { heading: "Detecting Bot and Crawler Traffic", body: "Known search engine bots (Googlebot, Bingbot, DuckDuckBot, Yandex) send identifiable User-Agent strings. Parse your UAs to separate human traffic from bots. If a significant percentage of traffic comes from unknown or suspicious UAs, further investigation is warranted. Combine UA analysis with IP Lookup to verify that Googlebot UAs originate from Google's published IP ranges." },
-      { heading: "Device Type Analysis for Mobile Optimization", body: "Our User Agent Parser extracts device information from UA strings, including mobile vs. desktop classification and specific device models. Use this data to optimize your site for the most common devices. If mobile traffic exceeds desktop, prioritize mobile-first design and test on the most common devices in your analytics." },
-      { heading: "Using UA Data for Content Negotiation", body: "Server-side content negotiation uses UA data to serve optimized content (different image sizes, feature detection, polyfill loading). However, UA-based content negotiation has drawbacks: user agents can be spoofed, and modern browsers converge on similar capabilities. Use feature detection (Modernizr, @supports CSS) as a primary strategy, with UA data as a fallback for known browser-specific issues." },
-    ],
-  },
-  {
-    slug: "website-security-checklist",
-    type: "article",
-    title: "Website Security Checklist: SSL, HTTP Headers, DNS, and Port Auditing",
-    description:
-      "Complete security audit checklist covering SSL certificates, HTTP security headers, DNS configuration, open port management, and more.",
-    difficulty: "intermediate",
-    category: "network-internet",
-    toolSlugs: ["ssl-certificate-checker", "http-headers-checker", "dns-lookup", "port-checker"],
-    relatedContent: ["website-status-beginners", "ssl-certificate-beginners", "http-headers-beginners"],
-    readingTimeMinutes: 16,
-    publishedAt: "2026-07-05",
-    updatedAt: "2026-07-05",
-    sections: [
-      { heading: "SSL/TLS Certificate Checklist", body: "Use our SSL Certificate Checker to verify: certificate is not expired (30+ days remaining), certificate chain is complete (leaf + intermediates + root), all domain names are covered in SANs, certificate uses SHA-256 or stronger signature algorithm, TLS 1.2 and 1.3 are enabled, TLS 1.0 and 1.1 are disabled, key type is RSA 2048+ or ECDSA P-256+, OCSP stapling is enabled, and the certificate uses a trusted CA." },
-      { heading: "HTTP Security Headers Checklist", body: "Use our HTTP Headers Checker to verify: Strict-Transport-Security with max-age 31536000+, Content-Security-Policy is restrictive, X-Frame-Options: DENY or SAMEORIGIN, X-Content-Type-Options: nosniff, Referrer-Policy: strict-origin-when-cross-origin, Permissions-Policy blocks unnecessary features, and no Server header leaking version information." },
-      { heading: "DNS Security Checklist", body: "Use our DNS Lookup tool to verify: DNSSEC is enabled and chain of trust is valid, CAA records restrict certificate issuance, SPF/DKIM/DMARC TXT records are published for email domains, NS records point to correct authoritative servers (no lame delegation), and TTL values are appropriate for each record type." },
-      { heading: "Port and Firewall Checklist", body: "Use our Port Checker to verify: only expected ports are open (80, 443 typically), SSH is not exposed or is restricted to trusted IPs, database ports are closed to the public internet, administrative interfaces (phpMyAdmin, cPanel) are not exposed, and our Ping Test shows the host is reachable but ICMP is optional." },
-      { heading: "Ongoing Monitoring and Maintenance", body: "Schedule recurring security audits: SSL certificates daily (automated renewal monitoring), HTTP headers weekly (after any deployment), DNS records monthly, and port scans monthly. Use our tools as part of a larger security monitoring stack. Document baseline configurations and alert on deviations. Security is not a one-time setup — it requires continuous attention." },
-    ],
-  },
-  {
-    slug: "understanding-http-status-codes",
-    type: "article",
-    title: "Understanding HTTP Status Codes: A Developer's Complete Reference",
-    description:
-      "Complete reference to every HTTP status code category. Learn what 1xx, 2xx, 3xx, 4xx, and 5xx codes mean and how to handle them in your applications.",
-    difficulty: "beginner",
-    category: "network-internet",
-    toolSlugs: ["website-status-checker", "http-headers-checker"],
-    relatedContent: ["website-status-beginners", "website-status-troubleshooting", "http-headers-beginners"],
-    readingTimeMinutes: 11,
-    publishedAt: "2026-07-05",
-    updatedAt: "2026-07-05",
-    sections: [
-      { heading: "1xx Informational Responses", body: "1xx status codes are provisional responses. 100 Continue tells the client to continue sending the request body. 101 Switching Protocols upgrades the connection (WebSocket). 103 Early Hints provides preload instructions for the browser. These codes are rarely seen by end users but are critical for efficient protocol communication." },
-      { heading: "2xx Success Codes", body: "200 OK is the standard success response. 201 Created indicates a new resource was created (POST). 202 Accepted acknowledges the request but processing is asynchronous. 204 No Content succeeds but returns no body (useful for DELETE operations). Use our Website Status Checker to confirm your site returns 200 for critical pages." },
-      { heading: "3xx Redirection Codes", body: "301 Moved Permanently tells browsers to update bookmarks. 302 Found is a temporary redirect. 307 Temporary Redirect preserves the HTTP method. 308 Permanent Redirect is the permanent version of 307. Too many redirects (3+) hurt performance. Use our HTTP Headers Checker to audit your redirect chains." },
-      { heading: "4xx Client Error Codes", body: "400 Bad Request means malformed syntax. 401 Unauthorized requires authentication. 403 Forbidden means the server understood but refuses. 404 Not Found is the most recognized error. 429 Too Many Requests indicates rate limiting. Use our Website Status Checker to identify 4xx errors on your pages." },
-      { heading: "5xx Server Error Codes", body: "500 Internal Server Error is a generic server failure. 502 Bad Gateway means an upstream server is unreachable. 503 Service Unavailable means temporary overload or maintenance. 504 Gateway Timeout means an upstream server took too long. Use our Website Status Checker to detect 5xx errors and our Ping Test to differentiate server issues from network problems." },
+      { heading: "Step 4: Last-Mile Connection Quality", body: "Test your local connection quality using multiple metrics beyond ping. Packet loss above 1% causes noticeable degradation. Jitter (latency variation) above 20ms disrupts real-time applications like video calls. Use our Ping Test with extended runs (50+ pings) to measure loss and jitter. If these are elevated, the issue is likely your Wi-Fi signal, router overload, or ISP congestion." },
+      { heading: "Step 5: Server-Side Performance", body: "If your connection is clean but a specific website is slow, the issue is on the server side. Check the website's response time using our Website Status Checker. A slow TTFB indicates server processing delays, database queries, or upstream API calls. Compare with our Ping Test to separate network latency from server processing time." },
     ],
   },
 ];
