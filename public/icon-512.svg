@@ -1,12 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
-  <rect width="512" height="512" rx="112" fill="url(#i-512)"/>
-  <path d="M256 80l177 102v204L256 432 79 386V182l177-102z" stroke="white" stroke-width="24" stroke-linejoin="round" fill="white" fill-opacity="0.15"/>
-  <path d="M192 272l64 64 128-128" stroke="white" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
   <defs>
-    <linearGradient id="i-512" x1="0" y1="0" x2="512" y2="512">
-      <stop stop-color="#7c3aed"/>
-      <stop offset=".5" stop-color="#3b82f6"/>
-      <stop offset="1" stop-color="#06b6d4"/>
+    <linearGradient id="nv-g" x1="0" y1="0" x2="512" y2="512">
+      <stop stop-color="#6366f1"/>
+      <stop offset=".55" stop-color="#4f46e5"/>
+      <stop offset="1" stop-color="#4338ca"/>
     </linearGradient>
   </defs>
+  <rect x="8" y="8" width="496" height="496" rx="128" fill="url(#nv-g)"/>
+  <rect x="8" y="8" width="496" height="496" rx="128" stroke="white" stroke-opacity="0.1" stroke-width="8"/>
+  <path d="M256 80 L416 176 L416 336 L256 432 L96 336 L96 176 Z" stroke="white" stroke-width="22" stroke-linejoin="round" fill="white" fill-opacity="0.12"/>
+  <path d="M264 112 L176 256 L232 256 L184 392 L336 208 L272 208 Z" fill="white"/>
 </svg>

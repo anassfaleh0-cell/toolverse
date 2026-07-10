@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
+let nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   compress: true,
@@ -61,4 +61,10 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default async function loadConfig() {
+  if (process.env.ANALYZE === "true") {
+    const withBundleAnalyzer = (await import("@next/bundle-analyzer")).default({ enabled: true });
+    return withBundleAnalyzer(nextConfig);
+  }
+  return nextConfig;
+}

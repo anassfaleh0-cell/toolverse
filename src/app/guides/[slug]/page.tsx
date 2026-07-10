@@ -9,6 +9,8 @@ import { Breadcrumbs, JsonLd, FaqSection } from "@/components/shared";
 import { breadcrumbSchema, faqSchema, howToSchema, webPageSchema } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
+export const revalidate = 86400;
+
 type Props = { params: Promise<{ slug: string }> };
 
 function formatLabel(text: string): string {

@@ -1,12 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" fill="none">
-  <rect width="192" height="192" rx="42" fill="url(#i-192)"/>
-  <path d="M96 30l66 38v76l-66 38-66-38V68l66-38z" stroke="white" stroke-width="9" stroke-linejoin="round" fill="white" fill-opacity="0.15"/>
-  <path d="M72 102l24 24 48-48" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
   <defs>
-    <linearGradient id="i-192" x1="0" y1="0" x2="192" y2="192">
-      <stop stop-color="#7c3aed"/>
-      <stop offset=".5" stop-color="#3b82f6"/>
-      <stop offset="1" stop-color="#06b6d4"/>
+    <linearGradient id="nv-g" x1="0" y1="0" x2="192" y2="192">
+      <stop stop-color="#6366f1"/>
+      <stop offset=".55" stop-color="#4f46e5"/>
+      <stop offset="1" stop-color="#4338ca"/>
     </linearGradient>
   </defs>
+  <rect x="3" y="3" width="186" height="186" rx="48" fill="url(#nv-g)"/>
+  <rect x="3" y="3" width="186" height="186" rx="48" stroke="white" stroke-opacity="0.1" stroke-width="3"/>
+  <path d="M96 30 L156 66 L156 126 L96 162 L36 126 L36 66 Z" stroke="white" stroke-width="8" stroke-linejoin="round" fill="white" fill-opacity="0.12"/>
+  <path d="M99 42 L66 96 L87 96 L69 147 L126 78 L102 78 Z" fill="white"/>
 </svg>

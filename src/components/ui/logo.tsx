@@ -1,74 +1,85 @@
+"use client";
+
+import { useId } from "react";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
+
 interface LogoProps {
+  variant?: "horizontal" | "vertical" | "icon";
   className?: string;
   size?: "sm" | "md" | "lg" | "xl";
-  showWordmark?: boolean;
+  href?: string;
 }
 
-const sizeMap = { sm: 8, md: 10, lg: 14, xl: 20 };
+const ICON_SIZES = { sm: 24, md: 32, lg: 48, xl: 64 } as const;
+const TEXT_SIZES = { sm: "text-base", md: "text-xl", lg: "text-3xl", xl: "text-5xl" } as const;
 
-export function Logo({ className = "", size = "md", showWordmark = true }: LogoProps) {
-  const s = sizeMap[size];
+function LogoIcon({ size, gradientId }: { size: number; gradientId: string }) {
   return (
-    <div className={`inline-flex items-center gap-2.5 ${className}`}>
-      <svg
-        viewBox="0 0 40 40"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="shrink-0 dark:hidden"
-        style={{ width: s * 4, height: s * 4 }}
-        aria-hidden="true"
-      >
-        <defs>
-          <linearGradient id="logo-light" x1="0" y1="0" x2="40" y2="40">
-            <stop stopColor="#7c3aed" />
-            <stop offset=".5" stopColor="#3b82f6" />
-            <stop offset="1" stopColor="#06b6d4" />
-          </linearGradient>
-        </defs>
-        <rect width="40" height="40" rx="10" fill="url(#logo-light)" />
-        <path d="M20 6l12 7v14l-12 7-12-7V13l12-7z" stroke="white" strokeWidth="2" strokeLinejoin="round" fill="white" fillOpacity="0.15" />
-        <path d="M16 22l4 4 8-8" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-      <svg
-        viewBox="0 0 40 40"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="hidden shrink-0 dark:block"
-        style={{ width: s * 4, height: s * 4 }}
-        aria-hidden="true"
-      >
-        <defs>
-          <linearGradient id="logo-dark" x1="0" y1="0" x2="40" y2="40">
-            <stop stopColor="#a78bfa" />
-            <stop offset=".5" stopColor="#60a5fa" />
-            <stop offset="1" stopColor="#22d3ee" />
-          </linearGradient>
-        </defs>
-        <rect width="40" height="40" rx="10" fill="url(#logo-dark)" />
-        <path d="M20 6l12 7v14l-12 7-12-7V13l12-7z" stroke="white" strokeWidth="2" strokeLinejoin="round" fill="white" fillOpacity="0.2" />
-        <path d="M16 22l4 4 8-8" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-      {showWordmark && (
-        <span className={`font-bold tracking-tight bg-gradient-to-r from-nuvora-600 via-blue-500 to-cyan-500 bg-clip-text text-transparent dark:from-nuvora-400 dark:via-blue-400 dark:to-cyan-400 ${size === "sm" ? "text-base" : size === "md" ? "text-lg" : size === "lg" ? "text-xl" : "text-3xl"}`}>
-          Nuvora
-        </span>
-      )}
-    </div>
+    <svg
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="shrink-0"
+      style={{ width: size, height: size }}
+      aria-hidden="true"
+    >
+      <defs>
+        <linearGradient id={gradientId} x1="0" y1="0" x2="32" y2="32">
+          <stop stopColor="#6366f1" />
+          <stop offset=".55" stopColor="#4f46e5" />
+          <stop offset="1" stopColor="#4338ca" />
+        </linearGradient>
+      </defs>
+      <rect x="0.5" y="0.5" width="31" height="31" rx="8" fill={`url(#${gradientId})`} />
+      <rect x="0.5" y="0.5" width="31" height="31" rx="8" stroke="white" strokeOpacity={0.15} strokeWidth="0.5" />
+      <path d="M16 5 L26 11 L26 21 L16 27 L6 21 L6 11 Z" stroke="white" strokeWidth="1.4" strokeLinejoin="round" fill="white" fillOpacity={0.12} />
+      <path d="M16.5 7 L11 16 L14.5 16 L11.5 24.5 L21 13 L17 13 Z" fill="white" />
+    </svg>
   );
 }
 
-export function NuvoraLogo({ className = "" }: { className?: string }) {
+export function Logo({ variant = "horizontal", className, size = "md", href }: LogoProps) {
+  const gradientId = useId();
+  const iconSize = ICON_SIZES[size];
+  const textSize = TEXT_SIZES[size];
+
+  const icon = <LogoIcon size={iconSize} gradientId={gradientId} />;
+  const wordmark = (
+    <span className={cn(
+      "font-bold tracking-tight bg-gradient-to-r from-nuvora-600 via-nuvora-500 to-nuvora-700 bg-clip-text text-transparent dark:from-nuvora-400 dark:via-nuvora-300 dark:to-nuvora-400",
+      textSize,
+    )}>
+      NuVora
+    </span>
+  );
+
+  const inner = () => {
+    switch (variant) {
+      case "horizontal":
+        return <div className={cn("inline-flex items-center gap-2.5", className)}>{icon}{wordmark}</div>;
+      case "vertical":
+        return <div className={cn("inline-flex flex-col items-center gap-1.5", className)}>{icon}{wordmark}</div>;
+      case "icon":
+        return <div className={className}>{icon}</div>;
+    }
+  };
+
+  if (href) {
+    return <Link href={href} aria-label="NuVora home">{inner()}</Link>;
+  }
+
+  return inner();
+}
+
+export function NuvoraLogo({ className, animated }: { className?: string; animated?: boolean }) {
+  const gid = useId();
   return (
-    <a href="/" className={`group inline-flex items-center gap-2.5 ${className}`} aria-label="Nuvora home">
-      <span className="flex size-9 items-center justify-center rounded-xl bg-gradient-to-br from-nuvora-500 via-blue-500 to-cyan-500 shadow-sm ring-1 ring-nuvora-500/20 transition-shadow group-hover:shadow-md group-hover:ring-nuvora-500/40 dark:from-nuvora-400 dark:via-blue-400 dark:to-cyan-400">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth={2.5} className="size-5" aria-hidden="true">
-          <path d="M12 3l9 5.5v11L12 21l-9-5.5v-11L12 3z" />
-          <path d="M9 14l3 3 6-6" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </span>
+    <Link href="/" className={cn("group inline-flex items-center gap-2.5", className)} aria-label="NuVora home">
+      <LogoIcon size={36} gradientId={gid} />
       <span className="text-lg font-bold tracking-tight bg-gradient-to-r from-nuvora-600 via-blue-500 to-cyan-500 bg-clip-text text-transparent dark:from-nuvora-400 dark:via-blue-400 dark:to-cyan-400">
         Nuvora
       </span>
-    </a>
+    </Link>
   );
 }

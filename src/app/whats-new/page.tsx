@@ -51,7 +51,7 @@ export default function WhatsNewPage() {
         <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">Recently Added Tools</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           {latestTools.map((tool) => (
-            <Link key={tool.id} href={tool.url} className="rounded-lg border border-zinc-200 bg-white p-4 transition-colors hover:border-blue-300 hover:bg-blue-50 dark:border-zinc-700 dark:bg-zinc-900 dark:hover:border-blue-700 dark:hover:bg-blue-950">
+            <Link key={tool.id} href={`/tools/${tool.slug}`} className="rounded-lg border border-zinc-200 bg-white p-4 transition-colors hover:border-blue-300 hover:bg-blue-50 dark:border-zinc-700 dark:bg-zinc-900 dark:hover:border-blue-700 dark:hover:bg-blue-950">
               <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">{tool.name}</h3>
               <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">{tool.description}</p>
             </Link>

@@ -12,6 +12,9 @@ export { Callout } from "./callout";
 export { MetricCard } from "./metric-card";
 export { ToolSummary } from "./tool-summary";
 export { Toast } from "./toast";
+export { Logo, NuvoraLogo } from "./logo";
+export { ScrollAnimation, StaggerGroup } from "./scroll-animation";
+export { LoadingSkeleton } from "./loading-skeleton";
 export {
   NetworkIllustration,
   CodeIllustration,
