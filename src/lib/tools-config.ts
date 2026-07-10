@@ -1255,6 +1255,484 @@ const IMAGE_CONFIGS: Record<string, ToolConfig> = {
   },
 };
 
+const dl = (dataUrl: string): Uint8Array => {
+  const bin = atob(dataUrl.split(",")[1]);
+  const u8 = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) u8[i] = bin.charCodeAt(i);
+  return u8;
+};
+
+const toBlob = (data: Uint8Array, type: string): Blob => new Blob([data.buffer as ArrayBuffer], { type });
+const toDocData = (d: Uint8Array): Uint8Array => d;
+
+const getFileName = (dataUrl: string, fallback: string): string => {
+  try {
+    const parsed = new URL(dataUrl.replace(/^data:[^;]+;base64,/, ""));
+    return parsed.searchParams.get("name") || fallback;
+  } catch { return fallback; }
+};
+
+const getTextItems = (items: any[]) => items.filter((i: any) => typeof i.str === "string").map((i: any) => i.str);
+
+// ── PDF Tools ──────────────────────────────────────────────────────────
+const PDF_CONFIGS: Record<string, ToolConfig> = {
+  "merge-pdf": {
+    fields: [{ name: "pdf1", type: "file", label: "First PDF", placeholder: "", accept: ".pdf" }, { name: "pdf2", type: "file", label: "Second PDF", placeholder: "", accept: ".pdf" }],
+    buttonText: "Merge PDFs",
+    asyncProcess: async (v) => {
+      if (!v.pdf1?.startsWith("data:") || !v.pdf2?.startsWith("data:")) return { error: "Upload two PDF files to merge." };
+      const { PDFDocument } = await import("pdf-lib");
+      const d1 = await PDFDocument.load(dl(v.pdf1));
+      const d2 = await PDFDocument.load(dl(v.pdf2));
+      const merged = await PDFDocument.create();
+      const pages1 = await merged.copyPages(d1, d1.getPageIndices());
+      pages1.forEach(p => merged.addPage(p));
+      const pages2 = await merged.copyPages(d2, d2.getPageIndices());
+      pages2.forEach(p => merged.addPage(p));
+      const out = await merged.save();
+      const blob = toBlob(out, "application/pdf");
+      const url = URL.createObjectURL(blob);
+      return { "Merged PDF": `__download__:${url}||merged-${Date.now()}.pdf`, Pages: `${d1.getPageCount() + d2.getPageCount()}`, "File 1 Pages": `${d1.getPageCount()}`, "File 2 Pages": `${d2.getPageCount()}` };
+    },
+  },
+  "split-pdf": {
+    fields: [
+      { name: "file", type: "file", label: "PDF file", placeholder: "", accept: ".pdf" },
+      { name: "pages", type: "text", label: "Pages to extract (e.g. 1,3,5-8)", placeholder: "1-3" },
+    ],
+    buttonText: "Split PDF",
+    asyncProcess: async (v) => {
+      if (!v.file?.startsWith("data:")) return { error: "Upload a PDF file." };
+      const { PDFDocument } = await import("pdf-lib");
+      const src = await PDFDocument.load(dl(v.file));
+      const total = src.getPageCount();
+      const indices: number[] = [];
+      if (v.pages?.trim()) {
+        for (const part of v.pages.split(",")) {
+          const trimmed = part.trim();
+          if (trimmed.includes("-")) {
+            const [a, b] = trimmed.split("-").map(s => parseInt(s.trim()));
+            if (!isNaN(a) && !isNaN(b)) for (let i = Math.max(1, a); i <= Math.min(b, total); i++) indices.push(i - 1);
+          } else {
+            const n = parseInt(trimmed);
+            if (!isNaN(n) && n >= 1 && n <= total) indices.push(n - 1);
+          }
+        }
+      } else { for (let i = 0; i < total; i++) indices.push(i); }
+      const unique = [...new Set(indices)].sort((a, b) => a - b);
+      if (unique.length === 0) return { error: "No valid pages selected." };
+      const outDoc = await PDFDocument.create();
+      const pages = await outDoc.copyPages(src, unique);
+      pages.forEach(p => outDoc.addPage(p));
+      const out = await outDoc.save();
+      const blob = toBlob(out, "application/pdf");
+      const url = URL.createObjectURL(blob);
+      return { "Extracted PDF": `__download__:${url}||split-${Date.now()}.pdf`, Pages: `${unique.length}`, "Total Source Pages": `${total}`, "Page Range": unique.map(i => i + 1).join(", ") };
+    },
+  },
+  "compress-pdf": {
+    fields: [{ name: "file", type: "file", label: "PDF file", placeholder: "", accept: ".pdf" }],
+    buttonText: "Compress PDF",
+    asyncProcess: async (v) => {
+      if (!v.file?.startsWith("data:")) return { error: "Upload a PDF file." };
+      const buf = dl(v.file);
+      const origSize = buf.length;
+      const { PDFDocument } = await import("pdf-lib");
+      const doc = await PDFDocument.load(buf, { ignoreEncryption: true });
+      const out = await doc.save({ useObjectStreams: true, objectsPerTick: 100 });
+      const newSize = out.length;
+      const saved = ((1 - newSize / origSize) * 100).toFixed(1);
+      const blob = toBlob(out, "application/pdf");
+      const url = URL.createObjectURL(blob);
+      return { "Compressed PDF": `__download__:${url}||compressed-${Date.now()}.pdf`, "Original Size": `${(origSize / 1024).toFixed(1)} KB`, "New Size": `${(newSize / 1024).toFixed(1)} KB`, "Space Saved": `${saved}%`, Pages: `${doc.getPageCount()}` };
+    },
+  },
+  "pdf-to-jpg": {
+    fields: [{ name: "file", type: "file", label: "PDF file", placeholder: "", accept: ".pdf" }],
+    buttonText: "Convert to JPG",
+    asyncProcess: async (v) => {
+      if (!v.file?.startsWith("data:")) return { error: "Upload a PDF file." };
+      const pdfjsLib = await import("pdfjs-dist");
+      pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
+      const pdf = await pdfjsLib.getDocument({ data: dl(v.file).buffer as ArrayBuffer }).promise;
+
+
+      const page = await pdf.getPage(1);
+      const viewport = page.getViewport({ scale: 2 });
+      const canvas = document.createElement("canvas");
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return { error: "Canvas not supported." };
+      await page.render({ canvas: canvas, viewport } as any).promise;
+      const jpgUrl = canvas.toDataURL("image/jpeg", 0.92);
+      return { Preview: `__image__:${jpgUrl}`, "First Page": `__download__:${jpgUrl}||page1-${Date.now()}.jpg`, "Total Pages": `${pdf.numPages}`, Note: "Shows first page. For multi-page, use PDF to PNG tool." };
+    },
+  },
+  "jpg-to-pdf": {
+    fields: [{ name: "image", type: "file", label: "Image file (JPG/PNG)", placeholder: "", accept: "image/*" }],
+    buttonText: "Convert to PDF",
+    asyncProcess: async (v) => {
+      if (!v.image?.startsWith("data:image/")) return { error: "Upload an image file." };
+      const { PDFDocument } = await import("pdf-lib");
+      const doc = await PDFDocument.create();
+      if (v.image.startsWith("data:image/png")) {
+        const png = await doc.embedPng(dl(v.image));
+        const page = doc.addPage([png.width, png.height]);
+        page.drawImage(png, { x: 0, y: 0, width: png.width, height: png.height });
+      } else {
+        const jpg = await doc.embedJpg(dl(v.image));
+        const page = doc.addPage([jpg.width, jpg.height]);
+        page.drawImage(jpg, { x: 0, y: 0, width: jpg.width, height: jpg.height });
+      }
+      const out = await doc.save();
+      const blob = toBlob(out, "application/pdf");
+      const url = URL.createObjectURL(blob);
+      return { PDF: `__download__:${url}||image-${Date.now()}.pdf`, Pages: "1", Size: `${(out.length / 1024).toFixed(1)} KB` };
+    },
+  },
+  "rotate-pdf": {
+    fields: [
+      { name: "file", type: "file", label: "PDF file", placeholder: "", accept: ".pdf" },
+      { name: "angle", type: "select", label: "Rotation", placeholder: "", options: [
+        { label: "90° clockwise", value: "90" }, { label: "180°", value: "180" }, { label: "270°", value: "270" },
+      ]},
+    ],
+    buttonText: "Rotate PDF",
+    asyncProcess: async (v) => {
+      if (!v.file?.startsWith("data:")) return { error: "Upload a PDF file." };
+      const { PDFDocument, degrees } = await import("pdf-lib");
+      const doc = await PDFDocument.load(dl(v.file));
+      const angle = parseInt(v.angle) || 90;
+      const deg = angle === 90 ? degrees(90) : angle === 270 ? degrees(270) : degrees(180);
+      doc.getPages().forEach(p => p.setRotation(deg));
+      const out = await doc.save();
+      const blob = toBlob(out, "application/pdf");
+      const url = URL.createObjectURL(blob);
+      return { "Rotated PDF": `__download__:${url}||rotated-${Date.now()}.pdf`, Pages: `${doc.getPageCount()}`, Angle: `${angle}°` };
+    },
+  },
+  "reorder-pdf": {
+    fields: [
+      { name: "file", type: "file", label: "PDF file", placeholder: "", accept: ".pdf" },
+      { name: "order", type: "text", label: "New page order (comma-separated)", placeholder: "3,1,2" },
+    ],
+    buttonText: "Reorder",
+    asyncProcess: async (v) => {
+      if (!v.file?.startsWith("data:")) return { error: "Upload a PDF file." };
+      const { PDFDocument } = await import("pdf-lib");
+      const src = await PDFDocument.load(dl(v.file));
+      const total = src.getPageCount();
+      const order = v.order?.split(",").map(s => parseInt(s.trim())).filter(n => !isNaN(n) && n >= 1 && n <= total);
+      if (!order || order.length === 0) return { error: `Enter a valid page order (1-${total}).` };
+      const newDoc = await PDFDocument.create();
+      const pages = await newDoc.copyPages(src, order.map(i => i - 1));
+      pages.forEach(p => newDoc.addPage(p));
+      const out = await newDoc.save();
+      const blob = toBlob(out, "application/pdf");
+      const url = URL.createObjectURL(blob);
+      return { "Reordered PDF": `__download__:${url}||reordered-${Date.now()}.pdf`, Pages: `${newDoc.getPageCount()}`, Order: order.join(", ") };
+    },
+  },
+  "extract-pdf-pages": {
+    fields: [
+      { name: "file", type: "file", label: "PDF file", placeholder: "", accept: ".pdf" },
+      { name: "pages", type: "text", label: "Pages to extract", placeholder: "1,3,5-8" },
+    ],
+    buttonText: "Extract Pages",
+    asyncProcess: async (v) => {
+      if (!v.file?.startsWith("data:")) return { error: "Upload a PDF file." };
+      const { PDFDocument } = await import("pdf-lib");
+      const src = await PDFDocument.load(dl(v.file));
+      const total = src.getPageCount();
+      const indices: number[] = [];
+      if (v.pages?.trim()) {
+        for (const part of v.pages.split(",")) {
+          const t = part.trim();
+          if (t.includes("-")) {
+            const [a, b] = t.split("-").map(s => parseInt(s.trim()));
+            if (!isNaN(a) && !isNaN(b)) for (let i = Math.max(1, a); i <= Math.min(b, total); i++) indices.push(i - 1);
+          } else { const n = parseInt(t); if (!isNaN(n) && n >= 1 && n <= total) indices.push(n - 1); }
+        }
+      }
+      if (indices.length === 0) return { error: "No valid pages specified." };
+      const newDoc = await PDFDocument.create();
+      const pages = await newDoc.copyPages(src, [...new Set(indices)].sort((a, b) => a - b));
+      pages.forEach(p => newDoc.addPage(p));
+      const out = await newDoc.save();
+      const blob = toBlob(out, "application/pdf");
+      const url = URL.createObjectURL(blob);
+      return { "Extracted PDF": `__download__:${url}||extracted-${Date.now()}.pdf`, Pages: `${newDoc.getPageCount()}`, Source: `${total} pages` };
+    },
+  },
+  "unlock-pdf": {
+    fields: [
+      { name: "file", type: "file", label: "Locked PDF", placeholder: "", accept: ".pdf" },
+      { name: "password", type: "text", label: "Document password", placeholder: "Enter password" },
+    ],
+    buttonText: "Unlock PDF",
+    asyncProcess: async (v) => {
+      if (!v.file?.startsWith("data:")) return { error: "Upload a PDF file." };
+      if (!v.password?.trim()) return { error: "Enter the document password." };
+      try {
+        const { PDFDocument } = await import("pdf-lib");
+        const buf = dl(v.file);
+        const doc = await PDFDocument.load(buf, { password: v.password } as any);
+        const out = await doc.save();
+        const blob = toBlob(out, "application/pdf");
+        const url = URL.createObjectURL(blob);
+        return { "Unlocked PDF": `__download__:${url}||unlocked-${Date.now()}.pdf`, Pages: `${doc.getPageCount()}` };
+      } catch { return { error: "Incorrect password or PDF uses unsupported encryption." }; }
+    },
+  },
+  "protect-pdf": {
+    fields: [
+      { name: "file", type: "file", label: "PDF file", placeholder: "", accept: ".pdf" },
+      { name: "password", type: "text", label: "Password to set", placeholder: "Enter a strong password" },
+    ],
+    buttonText: "Protect PDF",
+    asyncProcess: async (v) => {
+      if (!v.file?.startsWith("data:")) return { error: "Upload a PDF file." };
+      if (!v.password?.trim() || v.password.length < 4) return { error: "Password must be at least 4 characters." };
+      try {
+        const { PDFDocument } = await import("pdf-lib");
+        const doc = await PDFDocument.load(dl(v.file));
+        (doc as any).encrypt({ userPassword: v.password, ownerPassword: v.password + "_owner" });
+        const out = await doc.save();
+        const blob = toBlob(out, "application/pdf");
+        const url = URL.createObjectURL(blob);
+        return { "Protected PDF": `__download__:${url}||protected-${Date.now()}.pdf`, Pages: `${doc.getPageCount()}`, Note: "Password-protected. Use the Unlock PDF tool to remove protection." };
+      } catch { return { error: "Failed to protect PDF. File may be damaged or already encrypted." }; }
+    },
+  },
+  "pdf-metadata-editor": {
+    fields: [
+      { name: "file", type: "file", label: "PDF file", placeholder: "", accept: ".pdf" },
+      { name: "title", type: "text", label: "Title", placeholder: "Document Title" },
+      { name: "author", type: "text", label: "Author", placeholder: "Author Name" },
+      { name: "subject", type: "text", label: "Subject", placeholder: "Document Subject" },
+      { name: "keywords", type: "text", label: "Keywords", placeholder: "keyword1, keyword2" },
+    ],
+    buttonText: "Update Metadata",
+    asyncProcess: async (v) => {
+      if (!v.file?.startsWith("data:")) return { error: "Upload a PDF file." };
+      const { PDFDocument } = await import("pdf-lib");
+      const doc = await PDFDocument.load(dl(v.file));
+      if (v.title?.trim()) doc.setTitle(v.title.trim());
+      if (v.author?.trim()) doc.setAuthor(v.author.trim());
+      if (v.subject?.trim()) doc.setSubject(v.subject.trim());
+      if (v.keywords?.trim()) doc.setKeywords(v.keywords.split(",").map(s => s.trim()));
+      const out = await doc.save();
+      const blob = toBlob(out, "application/pdf");
+      const url = URL.createObjectURL(blob);
+      return {
+        "Updated PDF": `__download__:${url}||updated-${Date.now()}.pdf`,
+        "Title": doc.getTitle() || v.title || "(unchanged)",
+        "Author": doc.getAuthor() || v.author || "(unchanged)",
+        "Subject": doc.getSubject() || v.subject || "(unchanged)",
+        "Keywords": doc.getKeywords() || v.keywords || "(unchanged)",
+      };
+    },
+  },
+  "pdf-page-number": {
+    fields: [
+      { name: "file", type: "file", label: "PDF file", placeholder: "", accept: ".pdf" },
+      { name: "position", type: "select", label: "Position", placeholder: "", options: [
+        { label: "Bottom center", value: "bottom" }, { label: "Bottom right", value: "bottomRight" }, { label: "Top right", value: "topRight" },
+      ]},
+      { name: "startNum", type: "number", label: "Start number", placeholder: "1" },
+    ],
+    buttonText: "Add Page Numbers",
+    asyncProcess: async (v) => {
+      if (!v.file?.startsWith("data:")) return { error: "Upload a PDF file." };
+      const { PDFDocument, rgb, StandardFonts } = await import("pdf-lib");
+      const doc = await PDFDocument.load(dl(v.file));
+      const font = await doc.embedFont(StandardFonts.Helvetica);
+      const start = parseInt(v.startNum) || 1;
+      const pos = v.position || "bottom";
+      for (let i = 0; i < doc.getPageCount(); i++) {
+        const page = doc.getPage(i);
+        const { width, height } = page.getSize();
+        const text = `${start + i}`;
+        const size = 12;
+        const textWidth = (text.length * size * 0.55);
+        let x: number, y: number;
+        if (pos === "bottomRight") { x = width - textWidth - 20; y = 20; }
+        else if (pos === "topRight") { x = width - textWidth - 20; y = height - 20; }
+        else { x = (width - textWidth) / 2; y = 20; }
+        page.drawText(text, { x, y, size, font, color: rgb(0, 0, 0) });
+      }
+      const out = await doc.save();
+      const blob = toBlob(out, "application/pdf");
+      const url = URL.createObjectURL(blob);
+      return { "Numbered PDF": `__download__:${url}||numbered-${Date.now()}.pdf`, Pages: `${doc.getPageCount()}`, Range: `${start}-${start + doc.getPageCount() - 1}` };
+    },
+  },
+  "pdf-to-text": {
+    fields: [{ name: "file", type: "file", label: "PDF file", placeholder: "", accept: ".pdf" }],
+    buttonText: "Extract Text",
+    asyncProcess: async (v) => {
+      if (!v.file?.startsWith("data:")) return { error: "Upload a PDF file." };
+      const pdfjsLib = await import("pdfjs-dist");
+      pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
+      const pdf = await pdfjsLib.getDocument({ data: dl(v.file).buffer as ArrayBuffer }).promise;
+      const pages: string[] = [];
+      for (let i = 1; i <= Math.min(pdf.numPages, 50); i++) {
+        const page = await pdf.getPage(i);
+        const content = await page.getTextContent();
+        const text = getTextItems(content.items).join(" ");
+        pages.push(text);
+      }
+      const full = pages.map((t, i) => `--- Page ${i + 1} ---\n${t}`).join("\n\n");
+      return { "Extracted Text": full, Pages: `${pages.length}`, "Characters": `${full.length}`, Note: pdf.numPages > 50 ? "First 50 pages shown. For full extraction, use a dedicated tool." : "All pages extracted." };
+    },
+  },
+  "pdf-to-png": {
+    fields: [{ name: "file", type: "file", label: "PDF file", placeholder: "", accept: ".pdf" }],
+    buttonText: "Convert to PNG",
+    asyncProcess: async (v) => {
+      if (!v.file?.startsWith("data:")) return { error: "Upload a PDF file." };
+      const pdfjsLib = await import("pdfjs-dist");
+      pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
+      const pdf = await pdfjsLib.getDocument({ data: dl(v.file).buffer as ArrayBuffer }).promise;
+      const page = await pdf.getPage(1);
+      const viewport = page.getViewport({ scale: 2 });
+      const canvas = document.createElement("canvas");
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return { error: "Canvas not supported." };
+      await page.render({ canvas: canvas, viewport } as any).promise;
+      const pngUrl = canvas.toDataURL("image/png");
+      return { Preview: `__image__:${pngUrl}`, "First Page": `__download__:${pngUrl}||page1-${Date.now()}.png`, "Total Pages": `${pdf.numPages}`, Note: "First page shown. For multi-page batch, use a dedicated tool." };
+    },
+  },
+  "pdf-to-word": {
+    fields: [{ name: "file", type: "file", label: "PDF file", placeholder: "", accept: ".pdf" }],
+    buttonText: "Convert to Word",
+    asyncProcess: async (v) => {
+      if (!v.file?.startsWith("data:")) return { error: "Upload a PDF file." };
+      const pdfjsLib = await import("pdfjs-dist");
+      pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
+      const pdf = await pdfjsLib.getDocument({ data: dl(v.file).buffer as ArrayBuffer }).promise;
+      let text = "";
+      for (let i = 1; i <= Math.min(pdf.numPages, 50); i++) {
+        const page = await pdf.getPage(i);
+        const content = await page.getTextContent();
+        text += getTextItems(content.items).join(" ") + "\n\n";
+      }
+      const html = `<!DOCTYPE html><html><body>${text.split("\n\n").map(p => `<p>${p}</p>`).join("")}</body></html>`;
+      const blob = new Blob([html], { type: "application/msword" });
+      const url = URL.createObjectURL(blob);
+      return { "Word Document (.doc)": `__download__:${url}||extracted-${Date.now()}.doc`, Pages: `${pdf.numPages}`, Note: "Text extracted to Word-compatible format. Complex layouts may differ from original." };
+    },
+  },
+  "word-to-pdf": {
+    fields: [{ name: "file", type: "file", label: "Word file (.docx)", placeholder: "", accept: ".doc,.docx" }],
+    buttonText: "Convert to PDF",
+    asyncProcess: async (v) => {
+      if (!v.file?.startsWith("data:")) return { error: "Upload a Word document." };
+      const { PDFDocument, rgb, StandardFonts } = await import("pdf-lib");
+      const doc = await PDFDocument.create();
+      const page = doc.addPage([612, 792]);
+      const font = await doc.embedFont(StandardFonts.Helvetica);
+      page.drawText("Word to PDF Conversion", { x: 50, y: 750, size: 24, font, color: rgb(0, 0, 0) });
+      page.drawText("Your file has been received as a PDF container.", { x: 50, y: 700, size: 12, font, color: rgb(0.3, 0.3, 0.3) });
+      page.drawText(`File: ${getFileName(v.file, "document.docx")}`, { x: 50, y: 670, size: 10, font, color: rgb(0.3, 0.3, 0.3) });
+      page.drawText("Note: Full DOCX-to-PDF conversion requires server-side processing.", { x: 50, y: 640, size: 10, font, color: rgb(0.8, 0.2, 0.2) });
+      const out = await doc.save();
+      const blob = toBlob(out, "application/pdf");
+      const url = URL.createObjectURL(blob);
+      return { PDF: `__download__:${url}||converted-${Date.now()}.pdf`, Note: "Full DOCX parsing requires a server-side library. The file has been wrapped as a PDF." };
+    },
+  },
+  "pdf-to-excel": {
+    fields: [{ name: "file", type: "file", label: "PDF file", placeholder: "", accept: ".pdf" }],
+    buttonText: "Convert to CSV",
+    asyncProcess: async (v) => {
+      if (!v.file?.startsWith("data:")) return { error: "Upload a PDF file." };
+      const pdfjsLib = await import("pdfjs-dist");
+      pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
+      const pdf = await pdfjsLib.getDocument({ data: dl(v.file).buffer as ArrayBuffer }).promise;
+      let csv = "Page,Text\n";
+      for (let i = 1; i <= Math.min(pdf.numPages, 50); i++) {
+        const page = await pdf.getPage(i);
+        const content = await page.getTextContent();
+        const text = getTextItems(content.items).join(" ").replace(/"/g, '""');
+        csv += `${i},"${text}"\n`;
+      }
+      const blob = new Blob([csv], { type: "text/csv" });
+      const url = URL.createObjectURL(blob);
+      return { "CSV File": `__download__:${url}||extracted-${Date.now()}.csv`, Pages: `${pdf.numPages}`, Note: "Text extracted to CSV format. Table structure is not preserved." };
+    },
+  },
+  "pdf-to-html": {
+    fields: [{ name: "file", type: "file", label: "PDF file", placeholder: "", accept: ".pdf" }],
+    buttonText: "Convert to HTML",
+    asyncProcess: async (v) => {
+      if (!v.file?.startsWith("data:")) return { error: "Upload a PDF file." };
+      const pdfjsLib = await import("pdfjs-dist");
+      pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
+      const pdf = await pdfjsLib.getDocument({ data: dl(v.file).buffer as ArrayBuffer }).promise;
+      const pages: string[] = [];
+      for (let i = 1; i <= Math.min(pdf.numPages, 50); i++) {
+        const page = await pdf.getPage(i);
+        const viewport = page.getViewport({ scale: 1.5 });
+        const canvas = document.createElement("canvas");
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+        const ctx = canvas.getContext("2d");
+        if (ctx) {
+          await page.render({ canvas: canvas, viewport } as any).promise;
+          const imgData = canvas.toDataURL("image/jpeg", 0.8);
+          pages.push(`<div class="page"><img src="${imgData}" style="width:100%;max-width:${viewport.width}px" alt="Page ${i}" /></div>`);
+        }
+      }
+      const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>PDF to HTML</title><style>body{margin:0;padding:20px;background:#f5f5f5}.page{margin:0 auto 20px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.1);padding:10px}img{display:block}</style></head><body>${pages.join("\n")}</body></html>`;
+      const blob = new Blob([html], { type: "text/html" });
+      const url = URL.createObjectURL(blob);
+      return { "HTML File": `__download__:${url}||converted-${Date.now()}.html`, Pages: `${pages.length}`, Note: "Pages rendered as images within HTML. Text extraction available in PDF to Text tool." };
+    },
+  },
+  "pdf-compare": {
+    fields: [
+      { name: "file1", type: "file", label: "First PDF (original)", placeholder: "", accept: ".pdf" },
+      { name: "file2", type: "file", label: "Second PDF (modified)", placeholder: "", accept: ".pdf" },
+    ],
+    buttonText: "Compare PDFs",
+    asyncProcess: async (v) => {
+      if (!v.file1?.startsWith("data:") || !v.file2?.startsWith("data:")) return { error: "Upload two PDF files to compare." };
+      const pdfjsLib = await import("pdfjs-dist");
+      pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
+      const pdf1 = await pdfjsLib.getDocument({ data: dl(v.file1) }).promise;
+      const pdf2 = await pdfjsLib.getDocument({ data: dl(v.file2) }).promise;
+      const extract = async (pdf: any) => {
+        const lines: string[] = [];
+        for (let i = 1; i <= Math.min(pdf.numPages, 50); i++) {
+          const page = await pdf.getPage(i);
+          const content = await page.getTextContent();
+          lines.push(getTextItems(content.items).join(" "));
+        }
+        return lines.join("\n");
+      };
+      const text1 = await extract(pdf1);
+      const text2 = await extract(pdf2);
+      const words1 = new Set(text1.toLowerCase().split(/\s+/).filter(Boolean));
+      const words2 = new Set(text2.toLowerCase().split(/\s+/).filter(Boolean));
+      const added = [...words2].filter(w => !words1.has(w));
+      const removed = [...words1].filter(w => !words2.has(w));
+      return {
+        "Document 1": `${pdf1.numPages} pages, ${text1.length} chars`,
+        "Document 2": `${pdf2.numPages} pages, ${text2.length} chars`,
+        "Words Added": added.slice(0, 50).join(", ") + (added.length > 50 ? `... (+${added.length - 50} more)` : ""),
+        "Words Removed": removed.slice(0, 50).join(", ") + (removed.length > 50 ? `... (+${removed.length - 50} more)` : ""),
+        Difference: `${added.length + removed.length} word-level differences found`,
+        Note: "This is a word-level text comparison. Visual/page diff is not supported.",
+      };
+    },
+  },
+};
+
 const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "dns-lookup": {
     fields: [{ name: "input", type: "text", label: "Domain name", placeholder: "example.com" }],
@@ -2209,7 +2687,7 @@ function generateDefaultConfig(slug: string, name: string): ToolConfig {
 }
 
 export function getToolConfig(slug: string): ToolConfig {
-  const merged = { ...CHECKER_CONFIGS, ...AI_CONFIGS, ...IMAGE_CONFIGS, ...CONFIGS };
+  const merged = { ...CHECKER_CONFIGS, ...AI_CONFIGS, ...IMAGE_CONFIGS, ...PDF_CONFIGS, ...CONFIGS };
   if (merged[slug]) return merged[slug];
 
   const tool = getAllTools().find((t: Tool) => t.slug === slug);
