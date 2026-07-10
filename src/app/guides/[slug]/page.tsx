@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getHowToSlugs } from "@/lib/content/programmatic-slugs";
 import { generateHowToGuide, generateMetaForGuide } from "@/lib/content/programmatic-content";
+import { getGuides } from "@/lib/content/registry";
+import { ArticleLayout } from "@/components/blog/article-layout";
 import { Breadcrumbs, JsonLd, FaqSection } from "@/components/shared";
 import { breadcrumbSchema, faqSchema, howToSchema, webPageSchema } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
@@ -14,13 +16,26 @@ function formatLabel(text: string): string {
 }
 
 export function generateStaticParams() {
-  return getHowToSlugs().map((p) => ({ slug: p.slug }));
+  const howTo = getHowToSlugs().map((p) => ({ slug: p.slug }));
+  const content = getGuides().map((g) => ({ slug: g.slug }));
+  return [...howTo, ...content];
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
+  const contentGuide = getGuides().find((g) => g.slug === slug);
+  if (contentGuide) {
+    return {
+      title: contentGuide.title,
+      description: contentGuide.description,
+      openGraph: { title: contentGuide.title, description: contentGuide.description, url: `${SITE_URL}/guides/${slug}` },
+      alternates: { canonical: `${SITE_URL}/guides/${slug}` },
+      robots: { index: true, follow: true },
+    };
+  }
   const entry = getHowToSlugs().find((s) => s.slug === slug);
-  const topic = entry?.topic ?? slug.replace(/-/g, " ");
+  if (!entry) return {};
+  const topic = entry.topic ?? slug.replace(/-/g, " ");
   const meta = generateMetaForGuide(topic);
   return {
     title: meta.title,
@@ -33,6 +48,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function GuidePage({ params }: Props) {
   const { slug } = await params;
+
+  const contentGuide = getGuides().find((g) => g.slug === slug);
+  if (contentGuide) {
+    return <ArticleLayout piece={contentGuide} basePath="guides" />;
+  }
+
   const slugs = getHowToSlugs();
   const entry = slugs.find((s) => s.slug === slug);
   if (!entry) notFound();

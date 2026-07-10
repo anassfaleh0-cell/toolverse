@@ -86,10 +86,10 @@ function ArticleBody({ sections }: { sections: ContentPiece["sections"] }) {
   );
 }
 
-export function ArticleLayout({ piece }: { piece: ContentPiece }) {
+export function ArticleLayout({ piece, basePath = "blog" }: { piece: ContentPiece; basePath?: string }) {
   const readingMins = piece.readingTimeMinutes || Math.max(1, Math.round(piece.sections.reduce((a, s) => a + s.body.split(/\s+/).length, 0) / 200));
   const related = getRelatedContent(piece, 3);
-  const canonicalUrl = `${SITE_URL}/blog/${piece.slug}`;
+  const canonicalUrl = `${SITE_URL}/${basePath}/${piece.slug}`;
   const typeLabel = TYPE_LABEL[piece.type] ?? "Article";
   const authorKey = piece.author?.name.toLowerCase().replace(/\s+/g, "");
   const author = (authorKey && AUTHORS[authorKey]) ? AUTHORS[authorKey] : { name: piece.author?.name ?? AUTHORS.team.name, title: "Contributor", bio: AUTHORS.team.bio, url: AUTHORS.team.url };
@@ -97,7 +97,8 @@ export function ArticleLayout({ piece }: { piece: ContentPiece }) {
   const isPillar = piece.slug.startsWith("ultimate-guide") || piece.title.startsWith("Ultimate Guide");
   const imgSrc = generateArticleSvg(piece.title);
   const relatedTools = piece.toolSlugs.map(s => getToolBySlug(s)).filter(Boolean) as NonNullable<ReturnType<typeof getToolBySlug>>[];
-  const breacrumbsArr = [{ label: "Home", href: SITE_URL }, { label: "Blog", href: `${SITE_URL}/blog` }, { label: piece.title }];
+  const sectionLabel = basePath === "guides" ? "Guides" : "Blog";
+  const breacrumbsArr = [{ label: "Home", href: SITE_URL }, { label: sectionLabel, href: `${SITE_URL}/${basePath}` }, { label: piece.title }];
   const artSchema = articleSchema({ type: isPillar ? "TechArticle" : "Article", headline: piece.title, description: piece.description, url: canonicalUrl, publishedAt: piece.publishedAt, updatedAt: piece.updatedAt, authorName: author.name, authorUrl: author.url, imageUrl: imgSrc });
 
   return (
@@ -112,7 +113,7 @@ export function ArticleLayout({ piece }: { piece: ContentPiece }) {
         <nav className="mb-3 text-xs text-text-tertiary">
           <Link href="/" className="hover:text-nuvora-600 transition-colors">Home</Link>
           <span className="mx-1.5">/</span>
-          <Link href="/blog" className="hover:text-nuvora-600 transition-colors">Blog</Link>
+          <Link href={`/${basePath}`} className="hover:text-nuvora-600 transition-colors">{sectionLabel}</Link>
           <span className="mx-1.5">/</span>
           <span className="text-text-secondary">{piece.title}</span>
         </nav>
