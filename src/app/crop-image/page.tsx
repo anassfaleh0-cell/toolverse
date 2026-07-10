@@ -92,10 +92,10 @@ export default function CropImagePage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "ðŸ“", title: "Image Resizer", description: "Resize images to exact pixel dimensions", href: "/image-resizer" },
-              { icon: "ðŸ”„", title: "Image Converter", description: "Convert between JPEG, PNG, WebP, GIF, and BMP formats", href: "/image-converter" },
-              { icon: "ðŸ“¦", title: "Image Compressor", description: "Compress images to reduce file size for web", href: "/image-compressor" },
-              { icon: "ðŸŽ¨", title: "Color Converter", description: "Convert colors between HEX, RGB, and HSL formats", href: "/color-converter" },
+              { icon: "\uD83D\uDCD0", title: "Image Resizer", description: "Resize images to exact pixel dimensions", href: "/image-resizer" },
+              { icon: "\uD83D\uDD04", title: "Image Converter", description: "Convert between JPEG, PNG, WebP, GIF, and BMP formats", href: "/image-converter" },
+              { icon: "\uD83D\uDCE6", title: "Image Compressor", description: "Compress images to reduce file size for web", href: "/image-compressor" },
+              { icon: "\uD83C\uDFA8", title: "Color Converter", description: "Convert colors between HEX, RGB, and HSL formats", href: "/color-converter" },
             ]}
             title="Related Image Tools"
           />

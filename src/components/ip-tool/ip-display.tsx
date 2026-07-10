@@ -2,10 +2,11 @@
 
 import { useReducer, useEffect, useCallback, startTransition, useState } from "react";
 import Link from "next/link";
-import { ToolResultCard, ToolSkeleton, ToolError, CopyButton, ShareButton, DashboardSummary, StatusBadge, ScoreGauge, ToolFaqSection } from "@/components/shared";
+import { ToolResultCard, ToolSkeleton, ToolError, CopyButton, ShareButton, DashboardSummary, StatusBadge, ScoreGauge, GradeBadge, ToolFaqSection } from "@/components/shared";
 import { TOOL_FAQS } from "@/lib/tool-faqs";
 import { Card, Button } from "@/components/ui";
 import { RefreshButton } from "./refresh-button";
+import { DnsLeakCheck } from "./dns-leak-check";
 import {
   getBrowserData,
   getDeviceEmoji,
@@ -13,6 +14,7 @@ import {
   getBrowserEmoji,
   type IpGeoData,
   type BrowserData,
+  type PrivacyData,
 } from "@/lib/ip-utils";
 
 interface IpDisplayProps {
@@ -21,6 +23,7 @@ interface IpDisplayProps {
 
 interface IpApiResponse {
   geo: IpGeoData | null;
+  privacy: PrivacyData | null;
   ipv4: string | null;
   ipv6: string | null;
   error: string | null;
@@ -28,6 +31,7 @@ interface IpApiResponse {
 
 interface State {
   geo: IpGeoData | null;
+  privacy: PrivacyData | null;
   ipv4: string | null;
   ipv6: string | null;
   browser: BrowserData | null;
@@ -37,7 +41,7 @@ interface State {
 
 type Action =
   | { type: "FETCH_START" }
-  | { type: "FETCH_SUCCESS"; geo: IpGeoData | null; ipv4: string | null; ipv6: string | null }
+  | { type: "FETCH_SUCCESS"; geo: IpGeoData | null; privacy: PrivacyData | null; ipv4: string | null; ipv6: string | null }
   | { type: "FETCH_ERROR"; error: string }
   | { type: "SET_BROWSER"; browser: BrowserData };
 
@@ -46,7 +50,7 @@ function reducer(state: State, action: Action): State {
     case "FETCH_START":
       return { ...state, loading: true, error: null };
     case "FETCH_SUCCESS":
-      return { ...state, geo: action.geo, ipv4: action.ipv4, ipv6: action.ipv6, loading: false };
+      return { ...state, geo: action.geo, privacy: action.privacy, ipv4: action.ipv4, ipv6: action.ipv6, loading: false };
     case "FETCH_ERROR":
       return { ...state, error: action.error, loading: false };
     case "SET_BROWSER":
@@ -56,6 +60,7 @@ function reducer(state: State, action: Action): State {
 
 const initialState: State = {
   geo: null,
+  privacy: null,
   ipv4: null,
   ipv6: null,
   browser: null,
@@ -166,6 +171,7 @@ export function IpDisplay({ pageUrl }: IpDisplayProps) {
             dispatch({
               type: "FETCH_SUCCESS",
               geo: data.geo,
+              privacy: data.privacy,
               ipv4: data.ipv4,
               ipv6: data.ipv6,
             });
@@ -208,7 +214,7 @@ export function IpDisplay({ pageUrl }: IpDisplayProps) {
     return <ToolSkeleton count={12} columns={3} />;
   }
 
-  const { geo, ipv4, ipv6, browser } = state;
+  const { geo, privacy, ipv4, ipv6, browser } = state;
   const displayIp = geo?.ip || ipv4 || ipv6 || "\u2014";
   const allText = formatAllData(geo, browser, ipv4, ipv6, displayIp);
 
@@ -312,6 +318,54 @@ export function IpDisplay({ pageUrl }: IpDisplayProps) {
         )}
       </div>
 
+      {privacy && (
+        <Card variant="elevated" className="p-5">
+          <div className="flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+                VPN & Proxy Detection
+              </h3>
+              <p className="mt-0.5 text-xs text-zinc-500">
+                Privacy analysis via server-side proxy — powered by HackMyIP
+              </p>
+            </div>
+            <div className="flex items-center gap-3">
+              <ScoreGauge score={privacy.score} size={56} label={privacy.grade ? `Grade ${privacy.grade}` : "Score"} />
+              <GradeBadge grade={privacy.grade} size={48} />
+            </div>
+          </div>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <StatusBadge
+              status={privacy.isVpn ? "critical" : "good"}
+              label={privacy.isVpn ? "VPN Detected" : "No VPN"}
+            />
+            <StatusBadge
+              status={privacy.isDatacenter ? "warning" : "good"}
+              label={privacy.isDatacenter ? "Datacenter IP" : "Residential IP"}
+            />
+            {privacy.proxy !== null && (
+              <StatusBadge
+                status={privacy.proxy ? "critical" : "good"}
+                label={privacy.proxy ? "Proxy Detected" : "No Proxy"}
+              />
+            )}
+            <StatusBadge
+              status={privacy.type === "residential" ? "good" : privacy.type === "vpn" ? "critical" : "warning"}
+              label={`Type: ${privacy.type.charAt(0).toUpperCase() + privacy.type.slice(1)}`}
+            />
+          </div>
+          <p className="mt-3 text-xs text-zinc-500">
+            Connection classification: <span className="font-medium text-zinc-700 dark:text-zinc-300">{privacy.type}</span>
+            {" \u00B7 "}Fraud risk score: <span className="font-medium text-zinc-700 dark:text-zinc-300">{privacy.score}/100</span>
+            {" \u00B7 "}Grade: <span className="font-medium text-zinc-700 dark:text-zinc-300">{privacy.grade}</span>
+          </p>
+        </Card>
+      )}
+
+      <Card variant="elevated" className="p-5">
+        <DnsLeakCheck publicIp={displayIp} />
+      </Card>
+
       <div className="space-y-4">
         <div className="rounded-xl border border-zinc-200 p-5 text-sm dark:border-zinc-800">
           <h3 className="mb-2 font-medium text-zinc-900 dark:text-zinc-50">Understanding Your Results</h3>
@@ -332,7 +386,7 @@ export function IpDisplay({ pageUrl }: IpDisplayProps) {
             </div>
             <div>
               <p className="font-medium text-zinc-800 dark:text-zinc-200">VPN & Proxy Detection Limits</p>
-              <p className="mt-0.5">This tool shows the IP your browser exposes. If a VPN is active, you will see the VPN server&apos;s IP, not your real one. However, WebRTC, IPv6, and DNS leaks can bypass the VPN and reveal your actual IP. Run <Link href="/ip-lookup" className="text-blue-600 hover:underline dark:text-blue-400">IP Lookup</Link> on your address for deeper threat analysis.</p>
+              <p className="mt-0.5">VPN/proxy detection and fraud risk scoring use a server-side proxy (HackMyIP) so your IP is shared with our server during the check. The DNS leak test runs entirely in your browser and does not send data to our server. If a VPN is active, you will see the VPN server&apos;s IP. WebRTC, IPv6, and DNS leaks can bypass the VPN and reveal your actual IP.</p>
             </div>
           </div>
         </div>

@@ -92,10 +92,10 @@ export default function WatermarkImagePage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "ðŸ“¦", title: "Image Compressor", description: "Compress watermarked images for web delivery", href: "/image-compressor" },
-              { icon: "ðŸ”„", title: "Image Converter", description: "Convert watermarked images to different formats", href: "/image-converter" },
-              { icon: "ðŸ“‹", title: "Image Metadata Viewer", description: "View EXIF and metadata of your images", href: "/image-metadata-viewer" },
-              { icon: "âš«", title: "Image Grayscale", description: "Convert images to grayscale or sepia effects", href: "/image-grayscale" },
+              { icon: "\uD83D\uDCE6", title: "Image Compressor", description: "Compress watermarked images for web delivery", href: "/image-compressor" },
+              { icon: "\uD83D\uDD04", title: "Image Converter", description: "Convert watermarked images to different formats", href: "/image-converter" },
+              { icon: "\uD83D\uDCCB", title: "Image Metadata Viewer", description: "View EXIF and metadata of your images", href: "/image-metadata-viewer" },
+              { icon: "\u26AB", title: "Image Grayscale", description: "Convert images to grayscale or sepia effects", href: "/image-grayscale" },
             ]}
             title="Related Image Tools"
           />

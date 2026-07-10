@@ -141,10 +141,10 @@ export default function RemoveDuplicateLinesPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "ðŸ”¤", title: "Sort Lines", description: "Sort lines alphabetically A-Z or Z-A with various options", href: "/sort-lines" },
-              { icon: "ðŸ“", title: "Line Counter", description: "Count lines with detailed real-time statistics", href: "/line-counter" },
-              { icon: "ðŸ§¹", title: "Remove Empty Lines", description: "Remove blank and whitespace-only lines from text", href: "/remove-empty-lines" },
-              { icon: "ðŸ”—", title: "Text Joiner", description: "Join multiple lines with custom separators", href: "/text-joiner" },
+              { icon: "\uD83D\uDD24", title: "Sort Lines", description: "Sort lines alphabetically A-Z or Z-A with various options", href: "/sort-lines" },
+              { icon: "\uD83D\uDCCF", title: "Line Counter", description: "Count lines with detailed real-time statistics", href: "/line-counter" },
+              { icon: "\uD83E\uDDF9", title: "Remove Empty Lines", description: "Remove blank and whitespace-only lines from text", href: "/remove-empty-lines" },
+              { icon: "\uD83D\uDD17", title: "Text Joiner", description: "Join multiple lines with custom separators", href: "/text-joiner" },
             ]}
             title="Related Text & Writing Tools"
           />

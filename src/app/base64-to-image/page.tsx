@@ -92,10 +92,10 @@ export default function Base64ToImagePage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "ðŸ”—", title: "Image to Base64", description: "Convert images to Base64 data URI strings", href: "/image-to-base64" },
-              { icon: "ðŸ“‹", title: "Image Metadata Viewer", description: "View EXIF and metadata from encoded images", href: "/image-metadata-viewer" },
-              { icon: "ðŸ”„", title: "Image Converter", description: "Convert decoded images to other formats", href: "/image-converter" },
-              { icon: "ðŸ”", title: "Base64 Encoder", description: "Encode and decode text-based Base64 strings", href: "/base64-encoder" },
+              { icon: "\uD83D\uDD17", title: "Image to Base64", description: "Convert images to Base64 data URI strings", href: "/image-to-base64" },
+              { icon: "\uD83D\uDCCB", title: "Image Metadata Viewer", description: "View EXIF and metadata from encoded images", href: "/image-metadata-viewer" },
+              { icon: "\uD83D\uDD04", title: "Image Converter", description: "Convert decoded images to other formats", href: "/image-converter" },
+              { icon: "\uD83D\uDD10", title: "Base64 Encoder", description: "Encode and decode text-based Base64 strings", href: "/base64-encoder" },
             ]}
             title="Related Image Tools"
           />

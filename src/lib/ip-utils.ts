@@ -24,8 +24,21 @@ export interface BrowserData {
   userAgent: string;
 }
 
+export interface PrivacyData {
+  type: string;
+  score: number;
+  grade: string;
+  isVpn: boolean;
+  isDatacenter: boolean;
+  isResidential: boolean;
+  proxy: boolean | null;
+  hosting: boolean | null;
+  mobile: boolean | null;
+}
+
 export interface IpInfoData {
   geo: IpGeoData | null;
+  privacy: PrivacyData | null;
   browser: BrowserData | null;
   ipv4: string | null;
   ipv6: string | null;

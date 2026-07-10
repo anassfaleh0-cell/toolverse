@@ -125,10 +125,10 @@ export default function ReverseTextPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "ðŸ“‹", title: "Remove Duplicate Lines", description: "Remove duplicate lines and keep only unique entries", href: "/remove-duplicate-lines" },
-              { icon: "ðŸ”¤", title: "Sort Lines", description: "Sort lines alphabetically A-Z or Z-A", href: "/sort-lines" },
-              { icon: "ðŸ§¹", title: "Remove Empty Lines", description: "Remove blank and whitespace-only lines from text", href: "/remove-empty-lines" },
-              { icon: "ðŸ”„", title: "Case Converter", description: "Convert text between different letter cases", href: "/case-converter" },
+              { icon: "\uD83D\uDCCB", title: "Remove Duplicate Lines", description: "Remove duplicate lines and keep only unique entries", href: "/remove-duplicate-lines" },
+              { icon: "\uD83D\uDD24", title: "Sort Lines", description: "Sort lines alphabetically A-Z or Z-A", href: "/sort-lines" },
+              { icon: "\uD83E\uDDF9", title: "Remove Empty Lines", description: "Remove blank and whitespace-only lines from text", href: "/remove-empty-lines" },
+              { icon: "\uD83D\uDD04", title: "Case Converter", description: "Convert text between different letter cases", href: "/case-converter" },
             ]}
             title="Related Text & Writing Tools"
           />
