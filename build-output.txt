@@ -8,9 +8,9 @@
   ┬À optimizePackageImports
 
   Creating an optimized production build ...
-Ô£ô Compiled successfully in 61s
+Ô£ô Compiled successfully in 78s
   Running TypeScript ...
-  Finished TypeScript in 42s ...
+  Finished TypeScript in 39.2s ...
   Collecting page data using 3 workers ...
 node.exe : ÔÜá Using edge runtime on a page currently disables static generation for that page
 At line:1 char:1
@@ -20,16 +20,15 @@ At line:1 char:1
     + FullyQualifiedErrorId : NativeCommandError
  
   Generating static pages using 3 workers (0/9812) ...
-  Generating static pages using 3 workers (1593/9812) 
+  Generating static pages using 3 workers (1393/9812) 
   Generating static pages using 3 workers (2453/9812) 
-  Generating static pages using 3 workers (4057/9812) 
-  Generating static pages using 3 workers (4881/9812) 
+  Generating static pages using 3 workers (4121/9812) 
   Generating static pages using 3 workers (4906/9812) 
-  Generating static pages using 3 workers (6216/9812) 
+  Generating static pages using 3 workers (6609/9812) 
   Generating static pages using 3 workers (7359/9812) 
-  Generating static pages using 3 workers (8601/9812) 
-  Generating static pages using 3 workers (9695/9812) 
-Ô£ô Generating static pages using 3 workers (9812/9812) in 7.7min
+  Generating static pages using 3 workers (8952/9812) 
+  Generating static pages using 3 workers (9639/9812) 
+Ô£ô Generating static pages using 3 workers (9812/9812) in 7.0min
   Finalizing page optimization ...
 
 Route (app)
@@ -103,7 +102,7 @@ Route (app)
 Ôö£ Ôùï /blacklist-check
 Ôö£ Ôùï /blog
 Ôö£ ÔùÅ /blog/[slug]
-Ôöé Ôö£ /blog/ultimate-guide-pdf-tools-2025
+Ôöé Ôö£ /blog/ultimate-guide-pdf-tools-2026
 Ôöé Ôö£ /blog/compress-pdf-without-losing-quality
 Ôöé Ôö£ /blog/pdf-merge-vs-split
 Ôöé Ôöö [+428 more paths]

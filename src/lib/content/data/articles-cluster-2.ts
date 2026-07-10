@@ -4,7 +4,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
   {
     slug: "ultimate-guide-image-optimization-web",
     type: "article",
-    title: "Ultimate Guide to Image Optimization for Web in 2025",
+    title: "Ultimate Guide to Image Optimization for Web in 2026",
     description:
       "Master web image optimization with modern formats, responsive techniques, lazy loading, and compression strategies to boost Core Web Vitals and page speed.",
     difficulty: "advanced",
@@ -17,8 +17,8 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     author: { name: "Alex Chen" },
     sections: [
       {
-        heading: "The State of Web Images in 2025",
-        body: "Images account for over 50% of the average webpage's total weight. As web experiences grow richer with high-resolution displays and immersive visuals, optimization has never been more critical. Google's Core Web Vitals — specifically Largest Contentful Paint (LCP) — penalize sites with slow-loading hero images. Modern browsers now support AVIF and WebP with near-universal adoption, while JPEG XL is gaining traction. This guide covers every aspect of image optimization: format selection, compression, responsive delivery, lazy loading, and CDN strategies for 2025."
+        heading: "The State of Web Images in 2026",
+        body: "Images account for over 50% of the average webpage's total weight. As web experiences grow richer with high-resolution displays and immersive visuals, optimization has never been more critical. Google's Core Web Vitals — specifically Largest Contentful Paint (LCP) — penalize sites with slow-loading hero images. Modern browsers now support AVIF and WebP with near-universal adoption, while JPEG XL is gaining traction. This guide covers every aspect of image optimization: format selection, compression, responsive delivery, lazy loading, and CDN strategies for 2026."
       },
       {
         heading: "Choosing the Right Image Format",
@@ -113,9 +113,9 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     ],
   },
   {
-    slug: "best-free-image-resizers-2025",
+    slug: "best-free-image-resizers-2026",
     type: "article",
-    title: "10 Best Free Image Resizers Online in 2025",
+    title: "10 Best Free Image Resizers Online in 2026",
     description:
       "Compare the top free online image resizers. Resize images for social media, web, and print without installing software. Maintain quality with intelligent algorithms.",
     difficulty: "beginner",
@@ -129,7 +129,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     sections: [
       {
         heading: "Why You Need a Good Image Resizer",
-        body: "Image resizing might seem trivial, but poor resizing degrades quality, distorts proportions, and wastes bandwidth. Whether you are preparing images for Instagram (1080x1080), Facebook (1200x630), Twitter (1200x675), or a website hero (1920x1080), using the right resizer with proper algorithms matters. Free online resizers eliminate the need for Photoshop subscriptions, work on any device, and process images in seconds. This guide evaluates the top free options for 2025 based on quality, speed, features, and limitations."
+        body: "Image resizing might seem trivial, but poor resizing degrades quality, distorts proportions, and wastes bandwidth. Whether you are preparing images for Instagram (1080x1080), Facebook (1200x630), Twitter (1200x675), or a website hero (1920x1080), using the right resizer with proper algorithms matters. Free online resizers eliminate the need for Photoshop subscriptions, work on any device, and process images in seconds. This guide evaluates the top free options for 2026 based on quality, speed, features, and limitations."
       },
       {
         heading: "1. Nuvora Image Resizer (Best Overall)",
@@ -269,7 +269,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     difficulty: "beginner",
     category: "image-design",
     toolSlugs: ["crop-image", "image-resizer", "image-compressor", "background-remover", "add-text-to-image-online"],
-    relatedContent: ["best-free-image-resizers-2025", "remove-background-from-image-free", "crop-image-perfectly"],
+    relatedContent: ["best-free-image-resizers-2026", "remove-background-from-image-free", "crop-image-perfectly"],
     readingTimeMinutes: 9,
     publishedAt: "2026-02-22",
     updatedAt: "2026-07-08",
@@ -306,7 +306,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     difficulty: "beginner",
     category: "image-design",
     toolSlugs: ["crop-image", "image-resizer"],
-    relatedContent: ["best-free-image-editors-online", "resize-image-social-media", "best-free-image-resizers-2025"],
+    relatedContent: ["best-free-image-editors-online", "resize-image-social-media", "best-free-image-resizers-2026"],
     readingTimeMinutes: 7,
     publishedAt: "2026-02-26",
     updatedAt: "2026-07-10",
@@ -417,7 +417,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     difficulty: "beginner",
     category: "image-design",
     toolSlugs: ["image-resizer", "crop-image"],
-    relatedContent: ["best-free-image-resizers-2025", "crop-image-perfectly", "best-free-image-editors-online"],
+    relatedContent: ["best-free-image-resizers-2026", "crop-image-perfectly", "best-free-image-editors-online"],
     readingTimeMinutes: 7,
     publishedAt: "2026-03-10",
     updatedAt: "2026-07-18",
@@ -428,11 +428,11 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
         body: "Each social media platform has specific image dimension requirements. Uploading a wrongly sized image leads to awkward cropping, poor resolution, or rejected uploads. A properly sized profile picture appears sharp on both mobile and desktop. A correctly dimensioned cover photo displays fully without being cropped on certain devices. Feed posts with optimal dimensions get 30-40% more engagement because they display fully in the feed without requiring users to tap to expand. Knowing the right sizes ensures your content looks professional everywhere."
       },
       {
-        heading: "Instagram Image Sizes 2025",
+        heading: "Instagram Image Sizes 2026",
         body: "Instagram supports multiple post formats. Square feed post: 1080x1080 pixels (1:1). Portrait feed post: 1080x1350 pixels (4:5) — this takes up more vertical space in the feed. Landscape feed post: 1080x566 pixels (1.91:1). Instagram Stories and Reels: 1080x1920 pixels (9:16 portrait). Profile picture: 320x320 pixels (displays at 110x110 but use 320 for Retina). Our Image Resizer includes all Instagram presets. For Stories, ensure text and key visuals stay within the safe zone (center 80% of the frame) to avoid being covered by platform UI elements."
       },
       {
-        heading: "Facebook Image Sizes 2025",
+        heading: "Facebook Image Sizes 2026",
         body: "Facebook's primary image formats: Feed post (landscape): 1200x630 pixels (1.91:1). Feed post (portrait): 1200x1500 pixels (4:5). Cover photo: 820x312 pixels on desktop, 640x360 on mobile — design for the desktop size and test mobile cropping. Profile picture: 180x180 pixels minimum (upload 720x720 for Retina). Event cover: 1200x628 pixels. For shared link previews, the og:image meta tag should be 1200x630 pixels. Facebook compresses images aggressively — upload PNG files for text-heavy graphics to minimize compression artifacts."
       },
       {
@@ -446,9 +446,9 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     ],
   },
   {
-    slug: "best-free-stock-photo-sites-2025",
+    slug: "best-free-stock-photo-sites-2026",
     type: "article",
-    title: "Best Free Stock Photo Sites for 2025 (Commercial Use)",
+    title: "Best Free Stock Photo Sites for 2026 (Commercial Use)",
     description:
       "Curated list of the best free stock photo websites offering high-quality images for commercial use. Find stunning visuals without copyright concerns or attribution requirements.",
     difficulty: "beginner",
@@ -461,7 +461,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     author: { name: "Nuvora Team" },
     sections: [
       {
-        heading: "The State of Free Stock Photography in 2025",
+        heading: "The State of Free Stock Photography in 2026",
         body: "The stock photography landscape has evolved significantly. While premium sites like Shutterstock and Getty Images still dominate paid licensing, the quality of free stock photo sites has risen dramatically. Many photographers now contribute to free platforms for exposure, and AI-generated imagery has created new categories of stock content. However, licensing terms vary widely — some sites require attribution, others restrict commercial use, and AI-generated images may have unresolved copyright questions. This guide covers vetted sites with clear commercial-use licensing."
       },
       {
@@ -470,7 +470,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
       },
       {
         heading: "AI-Generated Stock Images: New Opportunities",
-        body: "2025 has seen an explosion of AI-generated stock imagery. Sites like Lexica, Craiyon, and Leonardo AI allow searching or generating unique images. Licensing varies: some platforms release AI images into the public domain, others restrict commercial use or require disclosure. The advantage: you can generate exactly the image you need rather than searching for approximations. The risk: AI-generated images may contain trademarked elements or produce similar outputs for different users. For unique branding, combine AI generation with our Image Editor for customization."
+        body: "2026 has seen an explosion of AI-generated stock imagery. Sites like Lexica, Craiyon, and Leonardo AI allow searching or generating unique images. Licensing varies: some platforms release AI images into the public domain, others restrict commercial use or require disclosure. The advantage: you can generate exactly the image you need rather than searching for approximations. The risk: AI-generated images may contain trademarked elements or produce similar outputs for different users. For unique branding, combine AI generation with our Image Editor for customization."
       },
       {
         heading: "Matching Stock Photos to Your Brand Colors",
@@ -565,7 +565,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     difficulty: "beginner",
     category: "image-design",
     toolSlugs: ["image-flipper", "image-rotator", "crop-image"],
-    relatedContent: ["best-free-image-editors-online", "crop-image-perfectly", "best-free-image-resizers-2025"],
+    relatedContent: ["best-free-image-editors-online", "crop-image-perfectly", "best-free-image-resizers-2026"],
     readingTimeMinutes: 6,
     publishedAt: "2026-03-26",
     updatedAt: "2026-07-28",
@@ -596,7 +596,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
   {
     slug: "best-image-compressors-photographers",
     type: "article",
-    title: "Best Image Compressors for Photographers in 2025",
+    title: "Best Image Compressors for Photographers in 2026",
     description:
       "Professional image compression tools that preserve photographic quality. Reduce file sizes for client delivery, portfolio sites, and email without visible quality loss.",
     difficulty: "intermediate",
