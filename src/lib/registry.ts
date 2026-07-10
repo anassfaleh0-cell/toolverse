@@ -103,19 +103,17 @@ export function generateToolBreadcrumbs(tool: Tool) {
 }
 
 export function generateToolMetadata(tool: Tool): Metadata {
-  const title = tool.name.includes(SITE_NAME)
-    ? tool.name
-    : `${tool.name} - ${SITE_NAME}`;
   const keywords = TOOL_KEYWORDS[tool.slug];
   const richDescription = keywords
     ? `Free ${keywords.primary} tool. ${tool.description} ${keywords.secondary.slice(0, 3).join(", ")}. Use our online ${keywords.primary} tool instantly — no signup, no tracking.`
     : tool.description;
+  const ogTitle = `${tool.name} - ${SITE_NAME}`;
   return {
-    title,
+    title: tool.name,
     description: richDescription,
     keywords: keywords ? [keywords.primary, ...keywords.secondary.slice(0, 5)].join(", ") : undefined,
-    openGraph: { title, description: richDescription, url: `${SITE_URL}${tool.url}` },
-    twitter: { card: "summary_large_image", title, description: richDescription },
+    openGraph: { title: ogTitle, description: richDescription, url: `${SITE_URL}${tool.url}` },
+    twitter: { card: "summary_large_image", title: ogTitle, description: richDescription },
     alternates: { canonical: `${SITE_URL}${tool.url}` },
     robots: { index: true, follow: true },
   };

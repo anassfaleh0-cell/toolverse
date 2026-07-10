@@ -15,6 +15,7 @@ export interface ToolConfig {
   buttonText: string;
   apiEndpoint?: string;
   process?: (values: Record<string, string>) => Record<string, unknown>;
+  howTo?: { action: string; desc: string }[];
 }
 
 const CLIENT_TOOLS: Record<string, (v: Record<string, string>) => Record<string, unknown>> = {
@@ -179,6 +180,11 @@ const CONFIGS: Record<string, ToolConfig> = {
     buttonText: "Generate Password",
     apiEndpoint: "/api/tools/password-generator",
     process: CLIENT_TOOLS["password-generator"],
+    howTo: [
+      { action: "Set", desc: "Choose your desired password length (4-128 characters)." },
+      { action: "Generate", desc: "Click 'Generate Password' to create a cryptographically random password." },
+      { action: "Copy", desc: "Copy the generated password — it includes uppercase, lowercase, digits, and special characters." },
+    ],
   },
   "bmi-calculator": {
     fields: [
@@ -188,6 +194,11 @@ const CONFIGS: Record<string, ToolConfig> = {
     buttonText: "Calculate BMI",
     apiEndpoint: "/api/tools/bmi-calculator",
     process: CLIENT_TOOLS["bmi-calculator"],
+    howTo: [
+      { action: "Enter", desc: "Type your height in centimeters and weight in kilograms." },
+      { action: "Calculate", desc: "Click 'Calculate BMI' to compute your body mass index." },
+      { action: "Review", desc: "Check your BMI value and weight category (underweight, normal, overweight, obese)." },
+    ],
   },
   "percentage-calculator": {
     fields: [
@@ -201,6 +212,11 @@ const CONFIGS: Record<string, ToolConfig> = {
     ],
     buttonText: "Calculate",
     apiEndpoint: "/api/tools/percentage-calculator",
+    howTo: [
+      { action: "Choose", desc: "Select the type of percentage calculation you need." },
+      { action: "Enter", desc: "Input your values (X and Y)." },
+      { action: "Calculate", desc: "Click 'Calculate' to get instant results and an explanation." },
+    ],
     process: (v: Record<string, string>) => {
       const a = parseFloat(v.a || "0"), b = parseFloat(v.b || "0");
       if (v.mode === "what-percent") return { result: `${((a / b) * 100).toFixed(2)}%`, explanation: `${a} is ${((a / b) * 100).toFixed(2)}% of ${b}` };
@@ -214,6 +230,11 @@ const CONFIGS: Record<string, ToolConfig> = {
     buttonText: "Format JSON",
     apiEndpoint: "/api/tools/json-formatter",
     process: CLIENT_TOOLS["json-formatter"],
+    howTo: [
+      { action: "Paste", desc: "Paste or type your raw JSON data into the input area." },
+      { action: "Format", desc: "Click 'Format JSON' to parse and pretty-print with 2-space indentation." },
+      { action: "Copy", desc: "Copy the formatted JSON or fix any syntax errors shown." },
+    ],
   },
   "base64-encoder": {
     fields: [{ name: "input", type: "textarea", label: "Text to encode", placeholder: "Enter text to encode as Base64..." }],
@@ -232,6 +253,11 @@ const CONFIGS: Record<string, ToolConfig> = {
     buttonText: "Count Words",
     apiEndpoint: "/api/tools/word-counter",
     process: CLIENT_TOOLS["word-counter"],
+    howTo: [
+      { action: "Paste", desc: "Paste or type your text into the input area." },
+      { action: "Analyze", desc: "Click 'Count Words' to get instant stats." },
+      { action: "Review", desc: "Review word count, characters, sentences, paragraphs, and estimated reading time." },
+    ],
   },
   "character-counter": {
     fields: [{ name: "input", type: "textarea", label: "Text to analyze", placeholder: "Type or paste text..." }],
@@ -243,6 +269,11 @@ const CONFIGS: Record<string, ToolConfig> = {
     buttonText: "Convert Color",
     apiEndpoint: "/api/tools/color-converter",
     process: CLIENT_TOOLS["color-converter"],
+    howTo: [
+      { action: "Enter", desc: "Type a color value in HEX (#ff6600), RGB, or HSL format." },
+      { action: "Convert", desc: "Click 'Convert Color' to see the color in all three formats." },
+      { action: "Copy", desc: "Copy the converted value in your preferred format." },
+    ],
   },
   "loan-calculator": {
     fields: [
@@ -253,6 +284,11 @@ const CONFIGS: Record<string, ToolConfig> = {
     buttonText: "Calculate Loan",
     apiEndpoint: "/api/tools/loan-calculator",
     process: CLIENT_TOOLS["loan-calculator"],
+    howTo: [
+      { action: "Enter", desc: "Input the loan amount, annual interest rate, and term in years." },
+      { action: "Calculate", desc: "Click 'Calculate Loan' to compute your payments." },
+      { action: "Review", desc: "See monthly payment, total payment, and total interest over the loan term." },
+    ],
   },
   "mortgage-calculator": {
     fields: [
@@ -299,6 +335,10 @@ const CONFIGS: Record<string, ToolConfig> = {
     fields: [],
     buttonText: "Generate UUID",
     process: CLIENT_TOOLS["uuid-generator"],
+    howTo: [
+      { action: "Generate", desc: "Click 'Generate UUID' to create a random UUID v4." },
+      { action: "Copy", desc: "Copy the generated UUID for use in your code or database." },
+    ],
   },
   "case-converter": {
     fields: [
@@ -335,6 +375,11 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
     fields: [{ name: "input", type: "text", label: "Domain name", placeholder: "example.com" }],
     buttonText: "Look Up DNS",
     apiEndpoint: "/api/tools/dns-lookup",
+    howTo: [
+      { action: "Enter", desc: "Type the domain name you want to check (e.g. example.com)." },
+      { action: "Look Up", desc: "Click 'Look Up DNS' to fetch all DNS records." },
+      { action: "Review", desc: "Review A, AAAA, MX, NS, TXT, and other returned records." },
+    ],
   },
   "reverse-dns-lookup": {
     fields: [{ name: "input", type: "text", label: "IP address", placeholder: "8.8.8.8" }],
@@ -345,16 +390,31 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
     fields: [{ name: "input", type: "text", label: "Domain name", placeholder: "example.com" }],
     buttonText: "Look Up WHOIS",
     apiEndpoint: "/api/tools/dns-lookup",
+    howTo: [
+      { action: "Enter", desc: "Type the domain name you want to investigate." },
+      { action: "Look Up", desc: "Click 'Look Up WHOIS' to fetch domain registration details." },
+      { action: "Review", desc: "Check registrar, creation/expiry dates, name servers, and contact info." },
+    ],
   },
   "http-headers-checker": {
     fields: [{ name: "input", type: "text", label: "URL", placeholder: "https://example.com" }],
     buttonText: "Check Headers",
     apiEndpoint: "/api/tools/dns-lookup",
+    howTo: [
+      { action: "Enter", desc: "Paste the full URL (including https://) of the page to check." },
+      { action: "Check", desc: "Click 'Check Headers' to fetch HTTP response headers." },
+      { action: "Review", desc: "Examine security headers, caching directives, content-type, and server info." },
+    ],
   },
   "ssl-certificate-checker": {
     fields: [{ name: "input", type: "text", label: "Domain name", placeholder: "example.com" }],
     buttonText: "Check SSL",
     apiEndpoint: "/api/tools/dns-lookup",
+    howTo: [
+      { action: "Enter", desc: "Type the domain name whose SSL certificate you want to check." },
+      { action: "Check", desc: "Click 'Check SSL' to analyze the certificate chain." },
+      { action: "Review", desc: "Check expiry date, issuer, SANs, and any security warnings." },
+    ],
   },
   "ping-test": {
     fields: [{ name: "input", type: "text", label: "Hostname or IP", placeholder: "example.com" }],
@@ -368,6 +428,11 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
     ],
     buttonText: "Check Port",
     apiEndpoint: "/api/tools/dns-lookup",
+    howTo: [
+      { action: "Enter", desc: "Type the hostname or IP and the port number to test." },
+      { action: "Check", desc: "Click 'Check Port' to test if the port is open and reachable." },
+      { action: "Review", desc: "See whether the port is open, closed, or filtered." },
+    ],
   },
   "website-status-checker": {
     fields: [{ name: "input", type: "text", label: "URL", placeholder: "https://example.com" }],
@@ -387,16 +452,31 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
     fields: [{ name: "input", type: "text", label: "Domain name", placeholder: "example.com" }],
     buttonText: "Look Up SPF",
     apiEndpoint: "/api/tools/dns-lookup",
+    howTo: [
+      { action: "Enter", desc: "Type the domain to check for SPF records." },
+      { action: "Look Up", desc: "Click 'Look Up SPF' to fetch the SPF TXT record." },
+      { action: "Review", desc: "Review allowed senders, IP ranges, and the enforcement policy." },
+    ],
   },
   "dkim-lookup": {
     fields: [{ name: "input", type: "text", label: "Domain name", placeholder: "example.com" }],
     buttonText: "Look Up DKIM",
     apiEndpoint: "/api/tools/dns-lookup",
+    howTo: [
+      { action: "Enter", desc: "Type the domain and selector to check for DKIM records." },
+      { action: "Look Up", desc: "Click 'Look Up DKIM' to fetch the DKIM public key." },
+      { action: "Review", desc: "Verify the DKIM key is properly published and matches your email signer." },
+    ],
   },
   "dmarc-lookup": {
     fields: [{ name: "input", type: "text", label: "Domain name", placeholder: "example.com" }],
     buttonText: "Look Up DMARC",
     apiEndpoint: "/api/tools/dns-lookup",
+    howTo: [
+      { action: "Enter", desc: "Type the domain to check for DMARC policy." },
+      { action: "Look Up", desc: "Click 'Look Up DMARC' to fetch the DMARC TXT record." },
+      { action: "Review", desc: "Review the DMARC policy (none/quarantine/reject) and reporting addresses." },
+    ],
   },
   "mx-lookup": {
     fields: [{ name: "input", type: "text", label: "Domain name", placeholder: "example.com" }],
@@ -978,6 +1058,11 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
     ],
     buttonText: "Convert",
     apiEndpoint: "/api/tools/currency-converter",
+    howTo: [
+      { action: "Enter", desc: "Type the amount and select the source currency." },
+      { action: "Select", desc: "Choose the target currency to convert to." },
+      { action: "Convert", desc: "Click 'Convert' to get the latest exchange rate and converted amount." },
+    ],
   },
   "unit-converter": {
     fields: [

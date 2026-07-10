@@ -10,6 +10,7 @@ import { getContentForTool } from "@/lib/content/registry";
 import { howToSchema, qaPageSchema } from "@/lib/seo";
 import { SITE_URL, SITE_NAME } from "@/lib/constants";
 import { TOOL_KEYWORDS } from "@/lib/seo/keywords";
+import { getToolConfig } from "@/lib/tools-config";
 import type { ReactNode } from "react";
 
 interface FaqItem {
@@ -58,16 +59,36 @@ export function ToolLayout({ children, toolSlug, faqItems, useCases, relatedTool
   const tool = toolSlug ? getToolBySlug(toolSlug) : undefined;
   const cat = tool?.category;
 
-  const howTo = tool ? {
-    name: `How to Use ${tool.name}`,
-    description: `Step-by-step guide for using the ${tool.name} tool on ${SITE_NAME}.`,
-    steps: [
-      { name: "Enter Your Input", text: `Enter the required data into the input field.` },
-      { name: "Configure Options", text: `Adjust any available settings to customize the output.` },
-      { name: "Run the Tool", text: `Click the process button to start.` },
-      { name: "Review and Export", text: `Review the results and copy or download them.` },
-    ],
-  } : null;
+  const howTo = tool ? (() => {
+    const config = getToolConfig(tool.slug);
+    if (config.howTo && config.howTo.length > 0) {
+      return {
+        name: `How to Use ${tool.name}`,
+        description: `Step-by-step guide for using the ${tool.name} tool on ${SITE_NAME}.`,
+        steps: config.howTo.map(s => ({ name: s.action, text: s.desc })),
+      };
+    }
+    if (config.fields.length > 0) {
+      return {
+        name: `How to Use ${tool.name}`,
+        description: `Step-by-step guide for using the ${tool.name} tool on ${SITE_NAME}.`,
+        steps: [
+          { name: "Enter Input", text: `Provide ${config.fields.map(f => f.label.toLowerCase()).join(" and ")}.` },
+          { name: "Configure", text: "Adjust any available settings to customize the output." },
+          { name: "Run", text: `Click "${config.buttonText}" to process.` },
+          { name: "Review", text: "Review the results and copy or download them." },
+        ],
+      };
+    }
+    return {
+      name: `How to Use ${tool.name}`,
+      description: `Step-by-step guide for using the ${tool.name} tool on ${SITE_NAME}.`,
+      steps: [
+        { name: "Run", text: `Click "${config.buttonText}".` },
+        { name: "Review", text: "View results instantly." },
+      ],
+    };
+  })() : null;
 
   const relatedTools = relatedToolSlugs
     ? relatedToolSlugs.map(slug => getToolBySlug(slug)).filter((t): t is NonNullable<typeof t> => t != null)
@@ -120,25 +141,43 @@ export function ToolLayout({ children, toolSlug, faqItems, useCases, relatedTool
 
             {/* How to Use — compact steps */}
             {(() => {
-              const keywords = TOOL_KEYWORDS[tool.slug];
-              return keywords ? (
+              const config = getToolConfig(tool.slug);
+              let steps: { action: string; desc: string }[] | null = null;
+
+              // Use config-driven howTo if available
+              if (config.howTo && config.howTo.length > 0) {
+                steps = config.howTo;
+              } else if (config.fields.length > 0) {
+                // Derive from config fields
+                const inputLabels = config.fields.map(f => f.label.toLowerCase()).join(" and ");
+                const btn = config.buttonText.toLowerCase();
+                steps = [
+                  { action: "Enter", desc: `Provide the ${inputLabels} in the input fields.` },
+                  { action: "Configure", desc: "Adjust any available options for your needs." },
+                  { action: "Run", desc: `Click "${config.buttonText}" to ${btn}.` },
+                  { action: "Review", desc: "View the results and copy or download them." },
+                ];
+              } else {
+                // No fields — one-click tool
+                steps = [
+                  { action: "Run", desc: `Click "${config.buttonText}" to start.` },
+                  { action: "Review", desc: "View the results instantly on screen." },
+                ];
+              }
+
+              return (
                 <section className="mb-8">
                   <h2 className="text-base font-bold text-text-primary mb-3">How to Use {tool.name}</h2>
                   <div className="space-y-2">
-                    {[
-                      ["Paste", `Enter your ${keywords.primary} data in the input box.`],
-                      ["Configure", "Adjust any settings for your needs."],
-                      ["Run", "Click the process button to get instant results."],
-                      ["Copy", `Copy the output or download the result.`],
-                    ].map(([action, desc], i) => (
+                    {steps.map((s, i) => (
                       <div key={i} className="flex items-start gap-3 rounded-lg border border-border-subtle bg-surface px-4 py-3">
                         <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-nuvora-100 text-xs font-bold text-nuvora-600 dark:bg-nuvora-900/50 dark:text-nuvora-400">{i + 1}</span>
-                        <p className="text-sm text-text-secondary"><strong className="text-text-primary">{action}.</strong> {desc}</p>
+                        <p className="text-sm text-text-secondary"><strong className="text-text-primary">{s.action}.</strong> {s.desc}</p>
                       </div>
                     ))}
                   </div>
                 </section>
-              ) : null;
+              );
             })()}
 
             {/* Use Cases from props */}
@@ -306,7 +345,7 @@ export function ToolLayout({ children, toolSlug, faqItems, useCases, relatedTool
             {/* Report Issue link */}
             <section className="mb-4">
               <a
-                href={`${SITE_URL}/contact?subject=Issue%20with%20${tool.name}&ref=${toolSlug}`}
+                href={`${SITE_URL}/contact?subject=Issue%20with%20${encodeURIComponent(tool.name)}&ref=${toolSlug}`}
                 className="inline-flex items-center gap-1.5 text-xs text-text-tertiary hover:text-nuvora-600 transition-colors"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-3.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>

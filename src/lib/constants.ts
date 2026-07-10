@@ -1,7 +1,7 @@
 export const SITE_NAME = "Nuvora";
 export const SITE_DESCRIPTION =
   "Free online tools for everyone — DNS lookup, PDF conversion, image editing, security checks, and developer utilities. No signup, no tracking, 100% browser-based.";
-export const SITE_URL = "https://nuvora.tools";
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://toolverse-omega.vercel.app";
 
 export const HERO_TAGLINE = "Smart Tools, Simply Done";
 export const HERO_SUBTITLE = "Free Online Tools — No Signup, No Tracking, Just Results";

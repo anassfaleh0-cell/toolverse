@@ -76,7 +76,7 @@ export function videoSchema({
   duration,
   uploadDate,
   publisherName = "Nuvora",
-  publisherUrl = "https://nuvora.tools",
+  publisherUrl,
 }: {
   name: string;
   description: string;
@@ -181,8 +181,8 @@ export function articleSchema({
     publisher: {
       "@type": "Organization",
       name: "Nuvora",
-      url: "https://nuvora.tools",
-      logo: { "@type": "ImageObject", url: "https://nuvora.tools/icon.svg" },
+      url: "https://toolverse-omega.vercel.app",
+      logo: { "@type": "ImageObject", url: "https://toolverse-omega.vercel.app/icon.svg" },
     },
   };
   if (imageUrl) {
