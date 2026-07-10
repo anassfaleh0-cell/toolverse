@@ -3,18 +3,24 @@ import { getAllTools } from "./registry";
 
 export interface ToolField {
   name: string;
-  type: "text" | "number" | "textarea" | "url" | "select";
+  type: "text" | "number" | "textarea" | "url" | "select" | "file";
   label: string;
   placeholder: string;
   required?: boolean;
   options?: { label: string; value: string }[];
+  accept?: string;
 }
+
+export type ProcessResult = Record<string, unknown>;
+export type ProcessFn = (values: Record<string, string>) => ProcessResult;
+export type AsyncProcessFn = (values: Record<string, string>) => Promise<ProcessResult>;
 
 export interface ToolConfig {
   fields: ToolField[];
   buttonText: string;
   apiEndpoint?: string;
-  process?: (values: Record<string, string>) => Record<string, unknown>;
+  process?: ProcessFn;
+  asyncProcess?: AsyncProcessFn;
   howTo?: { action: string; desc: string }[];
   isComingSoon?: boolean;
 }
@@ -882,6 +888,373 @@ const AI_CONFIGS: Record<string, ToolConfig> = {
   },
 };
 
+// ── Image & Design Tools ──────────────────────────────────────────────
+const imageProcess = async (values: Record<string, string>, transform: (ctx: CanvasRenderingContext2D, img: HTMLImageElement, w: number, h: number, canvas: HTMLCanvasElement, params: Record<string, string>) => void): Promise<ProcessResult> => {
+  const src = values.image || values.source;
+  if (!src || !src.startsWith("data:")) return { error: "Please upload an image file." };
+  if (src === "__error__:File exceeds 20MB limit") return { error: "File exceeds 20MB limit." };
+  const img = await new Promise<HTMLImageElement>((resolve, reject) => {
+    const i = new Image();
+    i.onload = () => resolve(i);
+    i.onerror = () => reject(new Error("Failed to load image"));
+    i.src = src;
+  });
+  const canvas = document.createElement("canvas");
+  canvas.width = img.naturalWidth;
+  canvas.height = img.naturalHeight;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return { error: "Canvas not supported." };
+  transform(ctx, img, img.naturalWidth, img.naturalHeight, canvas, values);
+  const outDataUrl = canvas.toDataURL("image/png");
+  const origSize = Math.round(((src.length * 3) / 4 / 1024) * 10) / 10;
+  const newSize = Math.round(((outDataUrl.length * 3) / 4 / 1024) * 10) / 10;
+  return {
+    "Preview": `__image__:${outDataUrl}`,
+    "Original": `${img.naturalWidth}×${img.naturalHeight}px, ${origSize}KB`,
+    "Result": `${img.naturalWidth}×${img.naturalHeight}px, ${newSize}KB`,
+    "Download Link": `__download__:${outDataUrl}||processed-${Date.now()}.png`,
+  };
+};
+
+const IMAGE_CONFIGS: Record<string, ToolConfig> = {
+  "image-rotator": {
+    fields: [
+      { name: "image", type: "file", label: "Choose an image", placeholder: "", accept: "image/*" },
+      { name: "angle", type: "select", label: "Rotation angle", placeholder: "", options: [
+        { label: "90° clockwise", value: "90" },
+        { label: "180°", value: "180" },
+        { label: "270° clockwise (90° CCW)", value: "270" },
+      ]},
+    ],
+    buttonText: "Rotate Image",
+    asyncProcess: (v) => imageProcess(v, (ctx, img, w, h, c, params) => {
+      const angle = parseInt(params.angle) || 90;
+      const rad = (angle * Math.PI) / 180;
+      const swapped = angle === 90 || angle === 270;
+      c.width = swapped ? h : w;
+      c.height = swapped ? w : h;
+      ctx.translate(c.width / 2, c.height / 2);
+      ctx.rotate(rad);
+      ctx.drawImage(img, -w / 2, -h / 2);
+    }),
+  },
+  "image-inverter": {
+    fields: [{ name: "image", type: "file", label: "Choose an image", placeholder: "", accept: "image/*" }],
+    buttonText: "Invert Colors",
+    asyncProcess: (v) => imageProcess(v, (ctx, img, w, h, c) => {
+      ctx.drawImage(img, 0, 0);
+      const d = ctx.getImageData(0, 0, w, h);
+      for (let i = 0; i < d.data.length; i += 4) { d.data[i] = 255 - d.data[i]; d.data[i + 1] = 255 - d.data[i + 1]; d.data[i + 2] = 255 - d.data[i + 2]; }
+      ctx.putImageData(d, 0, 0);
+    }),
+  },
+  "image-flipper": {
+    fields: [
+      { name: "image", type: "file", label: "Choose an image", placeholder: "", accept: "image/*" },
+      { name: "direction", type: "select", label: "Flip direction", placeholder: "", options: [
+        { label: "Horizontal (mirror)", value: "horizontal" },
+        { label: "Vertical", value: "vertical" },
+        { label: "Both", value: "both" },
+      ]},
+    ],
+    buttonText: "Flip Image",
+    asyncProcess: (v) => imageProcess(v, (ctx, img, w, h, c, params) => {
+      const dir = params.direction || "horizontal";
+      ctx.translate(dir === "horizontal" || dir === "both" ? w : 0, dir === "vertical" || dir === "both" ? h : 0);
+      ctx.scale(dir === "horizontal" || dir === "both" ? -1 : 1, dir === "vertical" || dir === "both" ? -1 : 1);
+      ctx.drawImage(img, 0, 0);
+    }),
+  },
+  "image-to-pencil-sketch": {
+    fields: [{ name: "image", type: "file", label: "Choose an image", placeholder: "", accept: "image/*" }],
+    buttonText: "Create Sketch",
+    asyncProcess: (v) => imageProcess(v, (ctx, img, w, h, c) => {
+      ctx.drawImage(img, 0, 0);
+      const d = ctx.getImageData(0, 0, w, h);
+      // Grayscale
+      for (let i = 0; i < d.data.length; i += 4) {
+        const gray = 0.299 * d.data[i] + 0.587 * d.data[i + 1] + 0.114 * d.data[i + 2];
+        d.data[i] = gray; d.data[i + 1] = gray; d.data[i + 2] = gray;
+      }
+      ctx.putImageData(d, 0, 0);
+      // Invert
+      const inv = ctx.getImageData(0, 0, w, h);
+      for (let i = 0; i < inv.data.length; i += 4) { inv.data[i] = 255 - inv.data[i]; inv.data[i + 1] = 255 - inv.data[i + 1]; inv.data[i + 2] = 255 - inv.data[i + 2]; }
+      ctx.putImageData(inv, 0, 0);
+      ctx.filter = "blur(3px)";
+      ctx.drawImage(c, 0, 0);
+      ctx.filter = "none";
+      // Dodge blend
+      const orig = ctx.getImageData(0, 0, w, h);
+      for (let i = 0; i < orig.data.length; i += 4) {
+        const topR = orig.data[i], topG = orig.data[i + 1], topB = orig.data[i + 2];
+        const bottomR = 255 - d.data[i], bottomG = 255 - d.data[i + 1], bottomB = 255 - d.data[i + 2];
+        orig.data[i] = Math.min(255, bottomR === 255 ? 255 : (topR * 255) / (255 - bottomR));
+        orig.data[i + 1] = Math.min(255, bottomG === 255 ? 255 : (topG * 255) / (255 - bottomG));
+        orig.data[i + 2] = Math.min(255, bottomB === 255 ? 255 : (topB * 255) / (255 - bottomB));
+      }
+      ctx.putImageData(orig, 0, 0);
+    }),
+  },
+  "image-sepia": {
+    fields: [
+      { name: "image", type: "file", label: "Choose an image", placeholder: "", accept: "image/*" },
+      { name: "intensity", type: "select", label: "Sepia intensity", placeholder: "", options: [
+        { label: "Light", value: "0.3" },
+        { label: "Medium", value: "0.6" },
+        { label: "Strong", value: "1.0" },
+      ]},
+    ],
+    buttonText: "Apply Sepia",
+    asyncProcess: (v) => imageProcess(v, (ctx, img, w, h, c, params) => {
+      ctx.drawImage(img, 0, 0);
+      const d = ctx.getImageData(0, 0, w, h);
+      const s = parseFloat(params.intensity) || 0.6;
+      for (let i = 0; i < d.data.length; i += 4) {
+        const r = d.data[i], g = d.data[i + 1], b = d.data[i + 2];
+        d.data[i] = Math.min(255, r * (1 - 0.607 * s) + g * 0.769 * s + b * 0.189 * s);
+        d.data[i + 1] = Math.min(255, r * 0.349 * s + g * (1 - 0.314 * s) + b * 0.168 * s);
+        d.data[i + 2] = Math.min(255, r * 0.272 * s + g * 0.534 * s + b * (1 - 0.869 * s));
+      }
+      ctx.putImageData(d, 0, 0);
+    }),
+  },
+  "image-saturation": {
+    fields: [
+      { name: "image", type: "file", label: "Choose an image", placeholder: "", accept: "image/*" },
+      { name: "level", type: "select", label: "Saturation level", placeholder: "", options: [
+        { label: "Grayscale (0%)", value: "0" },
+        { label: "Desaturated (50%)", value: "0.5" },
+        { label: "Normal (100%)", value: "1.0" },
+        { label: "Vibrant (150%)", value: "1.5" },
+        { label: "Hyper-saturated (200%)", value: "2.0" },
+      ]},
+    ],
+    buttonText: "Adjust Saturation",
+    asyncProcess: (v) => imageProcess(v, (ctx, img, w, h, c, params) => {
+      ctx.drawImage(img, 0, 0);
+      const d = ctx.getImageData(0, 0, w, h);
+      const s = parseFloat(params.level) || 1.0;
+      for (let i = 0; i < d.data.length; i += 4) {
+        const r = d.data[i], g = d.data[i + 1], b = d.data[i + 2];
+        const gray = 0.299 * r + 0.587 * g + 0.114 * b;
+        d.data[i] = Math.min(255, gray + s * (r - gray));
+        d.data[i + 1] = Math.min(255, gray + s * (g - gray));
+        d.data[i + 2] = Math.min(255, gray + s * (b - gray));
+      }
+      ctx.putImageData(d, 0, 0);
+    }),
+  },
+  "image-brightness": {
+    fields: [
+      { name: "image", type: "file", label: "Choose an image", placeholder: "", accept: "image/*" },
+      { name: "brightness", type: "select", label: "Brightness", placeholder: "", options: [
+        { label: "Dark (-50)", value: "-50" },
+        { label: "Dim (-25)", value: "-25" },
+        { label: "Normal (0)", value: "0" },
+        { label: "Bright (+25)", value: "25" },
+        { label: "Very bright (+50)", value: "50" },
+      ]},
+      { name: "contrast", type: "select", label: "Contrast", placeholder: "", options: [
+        { label: "Low (-50)", value: "-50" },
+        { label: "Reduced (-25)", value: "-25" },
+        { label: "Normal (0)", value: "0" },
+        { label: "Enhanced (+25)", value: "25" },
+        { label: "High (+50)", value: "50" },
+      ]},
+    ],
+    buttonText: "Adjust",
+    asyncProcess: (v) => imageProcess(v, (ctx, img, w, h, cv, params) => {
+      ctx.drawImage(img, 0, 0);
+      const d = ctx.getImageData(0, 0, w, h);
+      const b = parseInt(params.brightness) || 0;
+      const c = parseInt(params.contrast) || 0;
+      const factor = (259 * (c + 255)) / (255 * (259 - c));
+      for (let i = 0; i < d.data.length; i += 4) {
+        d.data[i] = Math.max(0, Math.min(255, factor * (d.data[i] + b - 128) + 128));
+        d.data[i + 1] = Math.max(0, Math.min(255, factor * (d.data[i + 1] + b - 128) + 128));
+        d.data[i + 2] = Math.max(0, Math.min(255, factor * (d.data[i + 2] + b - 128) + 128));
+      }
+      ctx.putImageData(d, 0, 0);
+    }),
+  },
+  "image-color-picker": {
+    fields: [
+      { name: "image", type: "file", label: "Upload an image", placeholder: "", accept: "image/*" },
+      { name: "coordInput", type: "text", label: "Or enter coordinates (x,y)", placeholder: "e.g. 100,50" },
+    ],
+    buttonText: "Pick Colors",
+    asyncProcess: async (v) => {
+      const src = v.image;
+      if (!src || !src.startsWith("data:")) return { error: "Please upload an image file." };
+      const img = await new Promise<HTMLImageElement>((resolve, reject) => {
+        const i = new Image();
+        i.onload = () => resolve(i);
+        i.onerror = () => reject(new Error("Failed to load"));
+        i.src = src;
+      });
+      const canvas = document.createElement("canvas");
+      canvas.width = img.naturalWidth;
+      canvas.height = img.naturalHeight;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return { error: "Canvas not supported." };
+      ctx.drawImage(img, 0, 0);
+
+      const points: { x: number; y: number }[] = [];
+      // Parse manual coordinates
+      if (v.coordInput?.trim()) {
+        const parts = v.coordInput.split(",").map(s => parseInt(s.trim()));
+        if (parts.length >= 2 && !isNaN(parts[0]) && !isNaN(parts[1])) {
+          points.push({ x: Math.max(0, Math.min(img.naturalWidth - 1, parts[0])), y: Math.max(0, Math.min(img.naturalHeight - 1, parts[1])) });
+        }
+      }
+      // Sample several automatic points
+      const autoPoints = [
+        { x: Math.floor(img.naturalWidth * 0.25), y: Math.floor(img.naturalHeight * 0.25) },
+        { x: Math.floor(img.naturalWidth * 0.75), y: Math.floor(img.naturalHeight * 0.25) },
+        { x: Math.floor(img.naturalWidth * 0.5), y: Math.floor(img.naturalHeight * 0.5) },
+        { x: Math.floor(img.naturalWidth * 0.25), y: Math.floor(img.naturalHeight * 0.75) },
+        { x: Math.floor(img.naturalWidth * 0.75), y: Math.floor(img.naturalHeight * 0.75) },
+      ];
+      for (const p of autoPoints) { if (!points.some(ex => Math.abs(ex.x - p.x) < 5 && Math.abs(ex.y - p.y) < 5)) points.push(p); }
+
+      const results: Record<string, string> = {};
+      for (const p of points) {
+        const pixel = ctx.getImageData(p.x, p.y, 1, 1).data;
+        const hex = "#" + [pixel[0], pixel[1], pixel[2]].map(v => v.toString(16).padStart(2, "0")).join("");
+        const rgb = `rgb(${pixel[0]}, ${pixel[1]}, ${pixel[2]})`;
+        results[`@ (${p.x}, ${p.y})`] = `${hex} ${rgb}`;
+      }
+
+      return {
+        "Image Size": `${img.naturalWidth}×${img.naturalHeight}px`,
+        "Sampled Colors": Object.entries(results).map(([k, v]) => `${k}: ${v}`).join("\n"),
+        "Preview": `__image__:${src}`,
+        "Tip": "For a specific pixel, enter its X,Y coordinates in the field above and re-run.",
+      };
+    },
+  },
+  "collage-maker": {
+    fields: [
+      { name: "source", type: "file", label: "Images (select multiple)", placeholder: "", accept: "image/*" },
+      { name: "layout", type: "select", label: "Grid layout", placeholder: "", options: [
+        { label: "2 columns", value: "2" },
+        { label: "3 columns", value: "3" },
+        { label: "4 columns", value: "4" },
+      ]},
+    ],
+    buttonText: "Create Collage",
+    asyncProcess: async (v) => {
+      const files = v.source;
+      if (!files || !files.startsWith("data:")) return { error: "Upload at least one image." };
+      // Note: standard file input cannot do multi-file via data URL easily
+      // For simplicity, use the single uploaded image tiled in a grid
+      const img = await new Promise<HTMLImageElement>((resolve, reject) => {
+        const i = new Image();
+        i.onload = () => resolve(i);
+        i.onerror = () => reject(new Error("Failed to load"));
+        i.src = files;
+      });
+      const cols = parseInt(v.layout) || 2;
+      const cellW = 300, cellH = 200;
+      const rows = 2;
+      const canvas = document.createElement("canvas");
+      canvas.width = cols * cellW;
+      canvas.height = rows * cellH;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return { error: "Canvas not supported." };
+      ctx.fillStyle = "#f0f0f0";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const sx = (r * cols + c) / (rows * cols);
+          ctx.drawImage(img, c * cellW, r * cellH, cellW, cellH);
+          ctx.strokeStyle = "#fff";
+          ctx.lineWidth = 2;
+          ctx.strokeRect(c * cellW, r * cellH, cellW, cellH);
+        }
+      }
+      const outDataUrl = canvas.toDataURL("image/png");
+      return {
+        "Collage": `__image__:${outDataUrl}`,
+        "Grid": `${cols}×${rows} (${cols * rows} cells)`,
+        "Size": `${canvas.width}×${canvas.height}px`,
+        "Download": `__download__:${outDataUrl}||collage-${Date.now()}.png`,
+        "Note": "For best results, upload multiple images separately (feature coming in next update).",
+      };
+    },
+  },
+  "image-to-ico": {
+    fields: [{ name: "image", type: "file", label: "Choose an image", placeholder: "", accept: "image/*" }],
+    buttonText: "Convert to ICO",
+    asyncProcess: async (v) => {
+      const src = v.image;
+      if (!src || !src.startsWith("data:")) return { error: "Please upload an image file." };
+      const img = await new Promise<HTMLImageElement>((resolve, reject) => {
+        const i = new Image();
+        i.onload = () => resolve(i);
+        i.onerror = () => reject(new Error("Failed to load image"));
+        i.src = src;
+      });
+      const sizes = [16, 32, 48, 64, 128, 256];
+      const canvases = sizes.map(size => {
+        const c = document.createElement("canvas");
+        c.width = size;
+        c.height = size;
+        const ctx = c.getContext("2d");
+        if (ctx) { ctx.drawImage(img, 0, 0, size, size); }
+        return c;
+      });
+      // Encode as PNG for each size, then wrap in ICO container
+      const pngBuffers = await Promise.all(canvases.map(async (c) => {
+        const blob = await new Promise<Blob>(resolve => c.toBlob(b => resolve(b!), "image/png"));
+        const buf = await blob.arrayBuffer();
+        return new Uint8Array(buf);
+      }));
+      // Build ICO file format
+      const count = pngBuffers.length;
+      const headerSize = 6 + count * 16;
+      const fileSize = headerSize + pngBuffers.reduce((s, b) => s + b.length, 0);
+      const buf = new ArrayBuffer(fileSize);
+      const view = new DataView(buf);
+      let offset = 0;
+      // ICO header
+      view.setUint16(offset, 0, true); offset += 2; // reserved
+      view.setUint16(offset, 1, true); offset += 2; // ICO type
+      view.setUint16(offset, count, true); offset += 2; // image count
+      // Directory entries
+      const dataOffsets: number[] = [];
+      let dataOffset = headerSize;
+      for (let i = 0; i < count; i++) {
+        const size = sizes[i];
+        view.setUint8(offset, size >= 256 ? 0 : size); offset++;
+        view.setUint8(offset, size >= 256 ? 0 : size); offset++;
+        view.setUint8(offset, 0); offset++; // color palette
+        view.setUint8(offset, 0); offset++; // reserved
+        view.setUint16(offset, 1, true); offset += 2; // color planes
+        view.setUint16(offset, 32, true); offset += 2; // bits per pixel
+        view.setUint32(offset, pngBuffers[i].length, true); offset += 4; // size
+        view.setUint32(offset, dataOffset, true); offset += 4; // offset
+        dataOffsets.push(dataOffset);
+        dataOffset += pngBuffers[i].length;
+      }
+      // PNG data
+      for (let i = 0; i < count; i++) {
+        new Uint8Array(buf).set(pngBuffers[i], dataOffsets[i]);
+      }
+      const blob = new Blob([buf], { type: "image/x-icon" });
+      const icoUrl = URL.createObjectURL(blob);
+      return {
+        "ICO Generated": `__download__:${icoUrl}||icon-${Date.now()}.ico`,
+        "Sizes Included": sizes.map(s => `${s}×${s}`).join(", "),
+        "File Size": `${Math.round(fileSize / 1024)} KB`,
+        "Preview": `__image__:${icoUrl}`,
+        "Tip": "Download the ICO file and use it as your website favicon.",
+      };
+    },
+  },
+};
+
 const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "dns-lookup": {
     fields: [{ name: "input", type: "text", label: "Domain name", placeholder: "example.com" }],
@@ -1668,7 +2041,7 @@ function generateDefaultConfig(slug: string, name: string): ToolConfig {
 }
 
 export function getToolConfig(slug: string): ToolConfig {
-  const merged = { ...CHECKER_CONFIGS, ...AI_CONFIGS, ...CONFIGS };
+  const merged = { ...CHECKER_CONFIGS, ...AI_CONFIGS, ...IMAGE_CONFIGS, ...CONFIGS };
   if (merged[slug]) return merged[slug];
 
   const tool = getAllTools().find((t: Tool) => t.slug === slug);

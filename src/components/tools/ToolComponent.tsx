@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Input, Button, Alert, Card, Textarea } from "@/components/ui";
 import { CopyButton } from "@/components/shared";
 import { getToolBySlug } from "@/lib/registry";
@@ -19,6 +19,40 @@ function FieldRenderer({
   value: string;
   onChange: (name: string, value: string) => void;
 }) {
+  const fileRef = useRef<HTMLInputElement>(null);
+
+  if (field.type === "file") {
+    const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      if (file.size > 20 * 1024 * 1024) { onChange(field.name, "__error__:File exceeds 20MB limit"); return; }
+      const reader = new FileReader();
+      reader.onload = () => onChange(field.name, reader.result as string);
+      reader.readAsDataURL(file);
+    };
+    return (
+      <div>
+        <input
+          ref={fileRef}
+          type="file"
+          accept={field.accept || "*/*"}
+          onChange={handleFile}
+          className="block w-full text-sm text-zinc-500 file:mr-4 file:rounded-lg file:border-0 file:bg-nuvora-50 file:px-4 file:py-2.5 file:text-sm file:font-medium file:text-nuvora-700 hover:file:bg-nuvora-100 dark:file:bg-nuvora-900/50 dark:file:text-nuvora-300 dark:hover:file:bg-nuvora-900/70"
+          aria-label={field.label}
+        />
+        {value && value.startsWith("data:") && (
+          <p className="mt-1 text-xs text-green-600 dark:text-green-400">File loaded ({Math.round(((value.length * 3) / 4 / 1024))} KB)</p>
+        )}
+        {value === "__error__:File exceeds 20MB limit" && (
+          <p className="mt-1 text-xs text-red-600 dark:text-red-400">File exceeds 20MB limit. Please choose a smaller file.</p>
+        )}
+        {value && value.startsWith("data:image/") && (
+          <img src={value} alt="Preview" className="mt-2 max-h-40 rounded-lg border border-zinc-200 object-contain dark:border-zinc-700" />
+        )}
+      </div>
+    );
+  }
+
   if (field.type === "textarea") {
     return (
       <Textarea
@@ -73,8 +107,11 @@ function ResultRenderer({ data }: { data: Record<string, unknown> }) {
       )}
       {entries.map(([key, val]) => {
         const strVal = typeof val === "object" ? JSON.stringify(val, null, 2) : String(val);
-        const isCode = key === "formatted" || key === "encoded" || key === "decoded" || key === "binary" || key === "hex" || key === "octal" || key === "html" || key === "cleaned" || key === "css-prefixer" || strVal.length > 60;
+        const isImageResult = typeof val === "string" && val.startsWith("__image__:");
+        const isDownload = typeof val === "string" && val.startsWith("__download__:");
+        const isCode = !isImageResult && !isDownload && (key === "formatted" || key === "encoded" || key === "decoded" || key === "binary" || key === "hex" || key === "octal" || key === "html" || key === "cleaned" || key === "css-prefixer" || strVal.length > 60);
         const isError = key === "error";
+        const imageUrl = isImageResult ? strVal.replace("__image__:", "") : null;
 
         return (
           <Card key={key} variant="default" className="p-4">
@@ -82,10 +119,20 @@ function ResultRenderer({ data }: { data: Record<string, unknown> }) {
               <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
                 {key.replace(/-/g, " ")}
               </p>
-              {!isError && <CopyButton text={strVal} />}
+              {!isError && !isImageResult && !isDownload && <CopyButton text={strVal} />}
             </div>
             {isError ? (
               <p className="text-sm text-red-600 dark:text-red-400">{strVal}</p>
+            ) : isImageResult && imageUrl ? (
+              <img src={imageUrl} alt={key} className="max-h-64 rounded-lg border border-zinc-200 object-contain dark:border-zinc-700" />
+            ) : isDownload ? (
+              <a
+                href={strVal.replace(/__download__:/, "").replace(/\|\|.*$/, "")}
+                download={strVal.includes("||") ? strVal.split("||").pop() : "download"}
+                className="inline-block rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+              >
+                Download File
+              </a>
             ) : isCode ? (
               <pre className="max-h-64 overflow-x-auto rounded-lg bg-zinc-50 p-3 font-mono text-sm text-zinc-700 dark:bg-zinc-900 dark:text-zinc-300">
                 {strVal}
@@ -127,7 +174,15 @@ export function ToolComponent({ slug }: ToolComponentProps) {
     setResult(null);
 
     try {
-      if (config.process) {
+      if (config.asyncProcess) {
+        setLoading(true);
+        const res = await config.asyncProcess(values);
+        if (res && "error" in res && res.error) {
+          setError(String(res.error));
+        } else if (res) {
+          setResult(res);
+        }
+      } else if (config.process) {
         await new Promise((r) => setTimeout(r, 200));
         const res = config.process(values);
 
