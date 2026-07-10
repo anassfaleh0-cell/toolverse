@@ -7,7 +7,7 @@ import { UserAgentsClient } from "./client";
 import { TrustSignal } from "@/components/shared/trust-signal";
 
 export const metadata: Metadata = {
-  title: "User Agent Database — Browser UA String Reference | ToolVerse",
+  title: "User Agent Database — Browser UA String Reference | Nuvora",
   description: "Comprehensive database of user agent strings for browsers, bots, mobile devices, and tools. Search by browser name, engine, OS, or category.",
   openGraph: { title: "User Agent Database — Browser UA String Reference", description: "Comprehensive database of user agent strings for browsers, bots, and mobile devices." },
   twitter: { title: "User Agent Database", description: "Comprehensive database of user agent strings." },

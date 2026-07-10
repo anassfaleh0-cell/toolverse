@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getCategories } from "@/lib/registry";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
-import { JsonLd } from "@/components/shared";
+import { Breadcrumbs, JsonLd } from "@/components/shared";
 import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
+import { getCategories } from "@/lib/registry";
 
 export const metadata: Metadata = {
-  title: `Categories - ${SITE_NAME}`,
-  description: `Browse tool categories on ${SITE_NAME}. Find tools for text, design, code, data, audio, video, and productivity.`,
-  openGraph: { title: `Categories - ${SITE_NAME}`, description: `Browse tool categories on ${SITE_NAME}.`, url: `${SITE_URL}/categories` },
-  twitter: { card: "summary_large_image", title: `Categories - ${SITE_NAME}`, description: `Browse tool categories on ${SITE_NAME}.` },
+  title: `All Tool Categories — ${SITE_NAME}`,
+  description: `Browse all tool categories on ${SITE_NAME}. Find the right tool for every task — from network diagnostics and security to AI, SEO, and design.`,
+  openGraph: { title: `All Tool Categories — ${SITE_NAME}`, description: `Browse every tool category on ${SITE_NAME} and find the perfect tool.`, url: `${SITE_URL}/categories` },
   alternates: { canonical: `${SITE_URL}/categories` },
 };
 
@@ -23,45 +22,36 @@ export default function CategoriesPage() {
 
   return (
     <>
-      <JsonLd data={webPageSchema({ name: `Categories - ${SITE_NAME}`, description: `Browse tool categories on ${SITE_NAME}.`, url: `${SITE_URL}/categories`, breadcrumbs })} />
+      <JsonLd data={webPageSchema({ name: `All Tool Categories — ${SITE_NAME}`, description: `Browse all tool categories on ${SITE_NAME}.`, url: `${SITE_URL}/categories`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
-      <section className="border-b border-zinc-200 dark:border-zinc-800">
-        <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
-          <nav aria-label="Breadcrumb" className="text-sm text-zinc-500 dark:text-zinc-400">
-            <ol className="flex items-center gap-2">
-              <li><Link href="/" className="hover:text-zinc-900 dark:hover:text-zinc-50">Home</Link></li>
-              <li aria-hidden="true">/</li>
-              <li className="text-zinc-900 dark:text-zinc-50" aria-current="page">Categories</li>
-            </ol>
-          </nav>
-
-          <h1 className="mt-6 text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-5xl">
+      <section className="border-b border-border-subtle bg-gradient-to-b from-nuvora-50/30 to-surface dark:from-nuvora-950/20">
+        <div className="mx-auto max-w-5xl px-4 py-20 sm:px-6 sm:py-28">
+          <Breadcrumbs items={breadcrumbs} />
+          <h1 className="mt-6 text-4xl font-bold tracking-tight text-text-primary sm:text-5xl">
             Tool Categories
           </h1>
-          <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
-            Browse tools by category to find exactly what you need.
+          <p className="mt-4 text-xl text-text-secondary">
+            Browse {categories.length} categories to find the perfect tool for every task.
           </p>
         </div>
       </section>
 
-      <section className="py-12 sm:py-16">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6">
+      <section className="border-b border-border-subtle">
+        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {categories.map((cat) => (
+            {categories.map((c) => (
               <Link
-                key={cat.slug}
-                href={`/category/${cat.slug}`}
-                className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900"
+                key={c.slug}
+                href={`/category/${c.slug}`}
+                className="group rounded-2xl border border-border-subtle bg-surface p-6 transition hover:border-nuvora-300 hover:shadow-md dark:hover:border-nuvora-700"
               >
-                <span className="text-3xl">{cat.icon}</span>
-                <h2 className="mt-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50">
-                  {cat.label}
-                </h2>
-                <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                  {cat.description}
-                </p>
-                <span className="mt-3 inline-block text-sm font-medium text-zinc-500 dark:text-zinc-400">
-                  {cat.toolCount} tool{cat.toolCount !== 1 ? "s" : ""}
+                <span className="text-3xl">{c.icon}</span>
+                <h3 className="mt-3 font-semibold text-text-primary group-hover:text-nuvora-600 dark:group-hover:text-nuvora-400">
+                  {c.label}
+                </h3>
+                <p className="mt-1 text-sm text-text-secondary">{c.description}</p>
+                <span className="mt-3 inline-block text-xs font-medium text-nuvora-600 dark:text-nuvora-400">
+                  {c.toolCount} tool{c.toolCount !== 1 ? "s" : ""}
                 </span>
               </Link>
             ))}

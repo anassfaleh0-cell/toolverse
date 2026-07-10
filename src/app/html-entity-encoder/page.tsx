@@ -55,7 +55,7 @@ const faqItems: FaqItem[] = [
   {
     question: "What is the difference between named entities and numeric entities?",
     answer:
-      "Named entities use descriptive names like &amp; for ampersand, &lt; for less-than, and &eacute; for é. They are easier to read in source code but not every Unicode character has a named entity. Numeric entities use decimal or hexadecimal references like &#8212; or &#x2014; for an em dash. They can represent any Unicode character, making them more comprehensive. Browsers render both forms identically. ToolVerse supports both encoding styles in its output.",
+      "Named entities use descriptive names like &amp; for ampersand, &lt; for less-than, and &eacute; for é. They are easier to read in source code but not every Unicode character has a named entity. Numeric entities use decimal or hexadecimal references like &#8212; or &#x2014; for an em dash. They can represent any Unicode character, making them more comprehensive. Browsers render both forms identically. Nuvora supports both encoding styles in its output.",
   },
   {
     question: "How does HTML entity encoding prevent XSS attacks?",

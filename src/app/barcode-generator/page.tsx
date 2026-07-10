@@ -21,7 +21,7 @@ import Link from "next/link";
 const slug = "barcode-generator";
 const pageTitle = "Barcode Generator - Generate Code 128, EAN-13, UPC-A Barcodes Online";
 const pageDescription =
-  "Generate Code 128, EAN-13, and UPC-A barcodes instantly with ToolVerse. Create printable barcodes for inventory tracking, product labeling, and supply chain management. Free online barcode generator.";
+  "Generate Code 128, EAN-13, and UPC-A barcodes instantly with Nuvora. Create printable barcodes for inventory tracking, product labeling, and supply chain management. Free online barcode generator.";
 
 export const metadata: Metadata = {
   title: pageTitle,

@@ -80,7 +80,7 @@ const faqItems: FaqItem[] = [
   {
     question: "How does Base64 relate to JWT token encoding?",
     answer:
-      "JWT uses Base64URL encoding (not standard Base64) for its header and payload sections. The JWT format takes a JSON object, serializes it, then Base64URL-encodes the result. The trailing padding is typically stripped. You can decode each JWT segment independently using a Base64 decoder. Use ToolVerse&apos;s <Link href=\"/jwt-decoder\" className=\"text-blue-600 hover:underline dark:text-blue-400\">JWT Decoder</Link> to inspect the full token structure, including the header, payload, and signature verification hints.",
+      "JWT uses Base64URL encoding (not standard Base64) for its header and payload sections. The JWT format takes a JSON object, serializes it, then Base64URL-encodes the result. The trailing padding is typically stripped. You can decode each JWT segment independently using a Base64 decoder. Use Nuvora&apos;s <Link href=\"/jwt-decoder\" className=\"text-blue-600 hover:underline dark:text-blue-400\">JWT Decoder</Link> to inspect the full token structure, including the header, payload, and signature verification hints.",
   },
   {
     question: "What characters are in the Base64 alphabet?",
@@ -139,7 +139,7 @@ export default function Base64EncoderPage() {
               Base64 encoding solves a fundamental problem: many transport mechanisms and data formats only support printable ASCII characters. Email (SMTP) was designed for 7-bit ASCII, so MIME uses Base64 to attach images and documents. JSON and XML cannot contain raw binary bytes, so Base64 is the standard way to embed file contents, cryptographic keys, and hashes inside structured data. The web platform itself uses Base64 for data URIs, letting you inline small images and fonts directly in HTML and CSS without additional HTTP requests.
             </p>
             <p>
-              In modern development, Base64 is ubiquitous in authentication flows. JWT tokens use Base64URL encoding for their header and payload segments. Basic Authentication headers concatenate username:password and Base64-encode the result (though this is not secure over HTTP). Single-page applications frequently Base64-encode binary blobs for localStorage, IndexedDB, or API payloads. When working with JWT tokens specifically, ToolVerse&apos;s <Link href="/jwt-decoder" className="text-blue-600 hover:underline dark:text-blue-400">JWT Decoder</Link> provides a dedicated interface for inspecting the decoded header, payload, and signature claims beyond what a generic Base64 decoder offers.
+              In modern development, Base64 is ubiquitous in authentication flows. JWT tokens use Base64URL encoding for their header and payload segments. Basic Authentication headers concatenate username:password and Base64-encode the result (though this is not secure over HTTP). Single-page applications frequently Base64-encode binary blobs for localStorage, IndexedDB, or API payloads. When working with JWT tokens specifically, Nuvora&apos;s <Link href="/jwt-decoder" className="text-blue-600 hover:underline dark:text-blue-400">JWT Decoder</Link> provides a dedicated interface for inspecting the decoded header, payload, and signature claims beyond what a generic Base64 decoder offers.
             </p>
           </div>
         </div>
@@ -171,7 +171,7 @@ export default function Base64EncoderPage() {
               Base64 sits in a spectrum of binary-to-text encodings alongside hexadecimal, Base32, Base85 (also called Ascii85), and Base36. Hexadecimal is the simplest, mapping each byte to two hex characters, but is the least efficient at 100% overhead. Base32 is case-insensitive and omits ambiguous characters like 1 and l, making it suitable for manual entry scenarios like TOTP setup keys. Base85 is more efficient than Base64 with only 25% overhead but is less widely supported. The choice depends on your constraints: efficiency, readability, character set restrictions, and library support across your target platforms.
             </p>
             <p>
-              In URLs, standard Base64 conflicts because plus and forward slash have special meanings in URL path and query string syntax. Base64URL solves this by substituting hyphen for plus and underscore for forward slash, and omitting padding characters entirely. When you encode data for URL parameters, always use Base64URL to avoid the need for additional percent-encoding of the Base64 output. You can also use ToolVerse&apos;s <Link href="/url-encoder" className="text-blue-600 hover:underline dark:text-blue-400">URL Encoder</Link> to percent-encode any special characters that remain in your final URL.
+              In URLs, standard Base64 conflicts because plus and forward slash have special meanings in URL path and query string syntax. Base64URL solves this by substituting hyphen for plus and underscore for forward slash, and omitting padding characters entirely. When you encode data for URL parameters, always use Base64URL to avoid the need for additional percent-encoding of the Base64 output. You can also use Nuvora&apos;s <Link href="/url-encoder" className="text-blue-600 hover:underline dark:text-blue-400">URL Encoder</Link> to percent-encode any special characters that remain in your final URL.
             </p>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import { SITE_NAME } from "@/lib/constants";
 
-export function WhyToolverse() {
+export function WhyNuvora() {
   const values = [
     {
       title: "Blazing Fast",

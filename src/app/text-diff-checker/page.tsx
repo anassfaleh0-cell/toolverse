@@ -61,7 +61,7 @@ const faqItems: FaqItem[] = [
   {
     question: "Is my text uploaded to any server during comparison?",
     answer:
-      "No. The diff checker runs entirely in your browser using client-side JavaScript. Both the original and modified texts remain on your device throughout the entire comparison process. No data is transmitted to ToolVerse servers, stored in databases, or logged. This makes the tool safe for comparing sensitive content including proprietary code, confidential documents, legal contracts, and unpublished drafts. You can verify this by disconnecting from the internet after loading the page — the tool will continue to work normally.",
+      "No. The diff checker runs entirely in your browser using client-side JavaScript. Both the original and modified texts remain on your device throughout the entire comparison process. No data is transmitted to Nuvora servers, stored in databases, or logged. This makes the tool safe for comparing sensitive content including proprietary code, confidential documents, legal contracts, and unpublished drafts. You can verify this by disconnecting from the internet after loading the page — the tool will continue to work normally.",
   },
   {
     question: "How should I interpret the diff results?",

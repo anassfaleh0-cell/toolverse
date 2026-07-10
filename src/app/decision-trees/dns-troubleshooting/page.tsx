@@ -76,31 +76,31 @@ const nodes: Record<string, { id: string; question?: string; options?: { label: 
     id: "finalFlushCache",
     isFinal: true,
     answer:
-      "Flush your DNS cache. On Windows run 'ipconfig /flushdns', on macOS run 'sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder', on Linux run 'sudo systemd-resolve --flush-caches'. After flushing, restart your browser and try accessing the site again. Use the DNS Lookup tool (toolverse.dev/dns-lookup) to verify resolution after flushing.",
+      "Flush your DNS cache. On Windows run 'ipconfig /flushdns', on macOS run 'sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder', on Linux run 'sudo systemd-resolve --flush-caches'. After flushing, restart your browser and try accessing the site again. Use the DNS Lookup tool (Nuvora.dev/dns-lookup) to verify resolution after flushing.",
   },
   finalDnsConfigCheck: {
     id: "finalDnsConfigCheck",
     isFinal: true,
     answer:
-      "Check your network DNS server configuration. Ensure your DNS server addresses are correct in your network settings. Try switching to a public DNS resolver like Google (8.8.8.8, 8.8.4.4) or Cloudflare (1.1.1.1). Use the DNS Propagation Checker (toolverse.dev/dns-propagation-checker) to verify global resolution.",
+      "Check your network DNS server configuration. Ensure your DNS server addresses are correct in your network settings. Try switching to a public DNS resolver like Google (8.8.8.8, 8.8.4.4) or Cloudflare (1.1.1.1). Use the DNS Propagation Checker (Nuvora.dev/dns-propagation-checker) to verify global resolution.",
   },
   finalFirewallCheck: {
     id: "finalFirewallCheck",
     isFinal: true,
     answer:
-      "Your firewall or security software may be blocking DNS traffic. Check that UDP port 53 is not blocked by your firewall. Temporarily disable any third-party security software to test. Also verify that your router is not intercepting DNS queries (DNS hijacking). Use a Reverse DNS Lookup (toolverse.dev/reverse-dns-lookup) to verify PTR records if email delivery is affected.",
+      "Your firewall or security software may be blocking DNS traffic. Check that UDP port 53 is not blocked by your firewall. Temporarily disable any third-party security software to test. Also verify that your router is not intercepting DNS queries (DNS hijacking). Use a Reverse DNS Lookup (Nuvora.dev/reverse-dns-lookup) to verify PTR records if email delivery is affected.",
   },
   finalDnsServerCheck: {
     id: "finalDnsServerCheck",
     isFinal: true,
     answer:
-      "Your DNS server appears to be unreachable or not responding. Try switching to a public DNS resolver such as Google DNS (8.8.8.8, 8.8.4.4), Cloudflare (1.1.1.1), or Quad9 (9.9.9.9). If the problem persists, contact your ISP — there may be a regional outage. Use DNS Lookup (toolverse.dev/dns-lookup) to test multiple resolvers.",
+      "Your DNS server appears to be unreachable or not responding. Try switching to a public DNS resolver such as Google DNS (8.8.8.8, 8.8.4.4), Cloudflare (1.1.1.1), or Quad9 (9.9.9.9). If the problem persists, contact your ISP — there may be a regional outage. Use DNS Lookup (Nuvora.dev/dns-lookup) to test multiple resolvers.",
   },
   finalNoIssue: {
     id: "finalNoIssue",
     isFinal: true,
     answer:
-      "No DNS issues detected based on your answers. If you are still experiencing problems, consider using our DNS Lookup tool (toolverse.dev/dns-lookup) for a deeper inspection, or check DNS Propagation (toolverse.dev/dns-propagation-checker) if you recently made DNS changes.",
+      "No DNS issues detected based on your answers. If you are still experiencing problems, consider using our DNS Lookup tool (Nuvora.dev/dns-lookup) for a deeper inspection, or check DNS Propagation (Nuvora.dev/dns-propagation-checker) if you recently made DNS changes.",
   },
 };
 

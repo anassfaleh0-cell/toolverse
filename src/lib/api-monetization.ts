@@ -1,5 +1,5 @@
 /**
- * API monetization architecture for ToolVerse.
+ * API monetization architecture for Nuvora.
  *
  * Supports rate limiting, API key authentication, and usage tiers.
  * Integrates with Next.js route handlers via middleware or per-route checks.

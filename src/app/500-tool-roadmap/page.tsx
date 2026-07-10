@@ -5,14 +5,14 @@ import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: `500+ Tool Expansion Roadmap — From 88 to 500 Tools | ${SITE_NAME}`,
-  description: "Comprehensive roadmap detailing ToolVerse's planned expansion from 88 to 500+ tools across 21 categories including PDF, image, SEO, AI, network, security, developer, and more.",
+  description: "Comprehensive roadmap detailing Nuvora's planned expansion from 88 to 500+ tools across 21 categories including PDF, image, SEO, AI, network, security, developer, and more.",
   openGraph: {
     title: `500+ Tool Expansion Roadmap — From 88 to 500 Tools | ${SITE_NAME}`,
-    description: "Comprehensive roadmap detailing ToolVerse's planned expansion from 88 to 500+ tools across 21 categories.",
+    description: "Comprehensive roadmap detailing Nuvora's planned expansion from 88 to 500+ tools across 21 categories.",
   },
   twitter: {
     title: `500+ Tool Expansion Roadmap — From 88 to 500 Tools | ${SITE_NAME}`,
-    description: "Comprehensive roadmap detailing ToolVerse's planned expansion from 88 to 500+ tools across 21 categories.",
+    description: "Comprehensive roadmap detailing Nuvora's planned expansion from 88 to 500+ tools across 21 categories.",
   },
   alternates: { canonical: `${SITE_URL}/500-tool-roadmap` },
 };
@@ -480,7 +480,7 @@ export default function FiveHundredToolRoadmapPage() {
         data={webPageSchema({
           name: `500+ Tool Expansion Roadmap — From 88 to 500 Tools | ${SITE_NAME}`,
           description:
-            "Comprehensive roadmap detailing ToolVerse's planned expansion from 88 to 500+ tools across 21 categories.",
+            "Comprehensive roadmap detailing Nuvora's planned expansion from 88 to 500+ tools across 21 categories.",
           url: `${SITE_URL}/500-tool-roadmap`,
           breadcrumbs,
         })}

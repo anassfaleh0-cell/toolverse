@@ -1,0 +1,397 @@
+﻿
+> Nuvora@0.1.0 build
+> next build
+
+Ôû▓ Next.js 16.2.10 (Turbopack)
+- Environments: .env.local
+- Experiments (use with caution):
+  ┬À optimizePackageImports
+
+  Creating an optimized production build ...
+Ô£ô Compiled successfully in 73s
+  Running TypeScript ...
+  Finished TypeScript in 75s ...
+  Collecting page data using 3 workers ...
+node.exe : ÔÜá Using edge runtime on a page currently disables static generation for that page
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (ÔÜá Using edge ...n for that page:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  Generating static pages using 3 workers (0/9616) ...
+  Generating static pages using 3 workers (593/9616) 
+  Generating static pages using 3 workers (1377/9616) 
+  Generating static pages using 3 workers (2297/9616) 
+  Generating static pages using 3 workers (2404/9616) 
+  Generating static pages using 3 workers (3257/9616) 
+  Generating static pages using 3 workers (4129/9616) 
+  Generating static pages using 3 workers (4808/9616) 
+  Generating static pages using 3 workers (5705/9616) 
+  Generating static pages using 3 workers (6537/9616) 
+  Generating static pages using 3 workers (7212/9616) 
+  Generating static pages using 3 workers (8033/9616) 
+  Generating static pages using 3 workers (8815/9616) 
+  Generating static pages using 3 workers (9519/9616) 
+Ô£ô Generating static pages using 3 workers (9616/9616) in 12.2min
+  Finalizing page optimization ...
+
+Route (app)
+Ôöî Ôùï /
+Ôö£ Ôùï /_not-found
+Ôö£ ÔùÅ /[slug]
+Ôöé Ôö£ /tools-for-developers
+Ôöé Ôö£ /tools-for-designers
+Ôöé Ôö£ /tools-for-marketers
+Ôöé Ôöö [+231 more paths]
+Ôö£ Ôùï /100m-roadmap
+Ôö£ Ôùï /500-tool-roadmap
+Ôö£ Ôùï /about
+Ôö£ Ôùï /about-nuvora
+Ôö£ Ôùï /about-our-research
+Ôö£ ÔùÅ /alternatives/[tool]
+Ôöé Ôö£ /alternatives/domain-report
+Ôöé Ôö£ /alternatives/dns-lookup
+Ôöé Ôö£ /alternatives/reverse-dns-lookup
+Ôöé Ôöö [+211 more paths]
+Ôö£ Ôùï /api
+Ôö£ ãÆ /api/dns
+Ôö£ ãÆ /api/dns-lookup
+Ôö£ ãÆ /api/dns-propagation
+Ôö£ ãÆ /api/email
+Ôö£ ãÆ /api/http-headers
+Ôö£ ãÆ /api/indexnow
+Ôö£ ãÆ /api/ip-info
+Ôö£ ãÆ /api/ip-lookup
+Ôö£ ãÆ /api/ping-test
+Ôö£ ãÆ /api/port-checker
+Ôö£ ãÆ /api/reverse-dns
+Ôö£ ãÆ /api/search
+Ôö£ ãÆ /api/ssl-certificate
+Ôö£ ãÆ /api/website-status
+Ôö£ ãÆ /api/whois
+Ôö£ Ôùï /asn-lookup
+Ôö£ Ôùï /authors
+Ôö£ Ôùï /authors/alex-chen
+Ôö£ Ôùï /authors/james-wilson
+Ôö£ Ôùï /authors/priya-patel
+Ôö£ Ôùï /authors/sarah-mitchell
+Ôö£ Ôùï /background-remover
+Ôö£ Ôùï /barcode-generator
+Ôö£ Ôùï /base64-encoder
+Ôö£ Ôùï /base64-to-image
+Ôö£ Ôùï /benchmarks/dns-performance
+Ôö£ Ôùï /best-online/best-ai-tools
+Ôö£ Ôùï /best-online/best-developer-tools
+Ôö£ Ôùï /best-online/best-dns-tools
+Ôö£ Ôùï /best-online/best-free-online-tools
+Ôö£ Ôùï /best-online/best-image-tools
+Ôö£ Ôùï /best-online/best-json-tools
+Ôö£ Ôùï /best-online/best-marketing-tools
+Ôö£ Ôùï /best-online/best-pdf-tools
+Ôö£ Ôùï /best-online/best-productivity-tools
+Ôö£ Ôùï /best-online/best-security-tools
+Ôö£ Ôùï /best-online/best-seo-tools
+Ôö£ Ôùï /best-online/best-website-tools
+Ôö£ ÔùÅ /best-practices/[slug]
+Ôöé Ôö£ /best-practices/domain-report-best-practices
+Ôöé Ôö£ /best-practices/dns-lookup-best-practices
+Ôöé Ôö£ /best-practices/reverse-dns-lookup-best-practices
+Ôöé Ôöö [+211 more paths]
+Ôö£ ÔùÅ /best/[slug]
+Ôöé Ôö£ /best/best-text-writing-for-daily-use
+Ôöé Ôö£ /best/best-text-writing-for-productivity
+Ôöé Ôö£ /best/best-text-writing-for-beginners
+Ôöé Ôöö [+387 more paths]
+Ôö£ Ôùï /bimi-lookup
+Ôö£ Ôùï /blacklist-check
+Ôö£ Ôùï /blog
+Ôö£ ÔùÅ /blog/[slug]
+Ôöé Ôö£ /blog/understanding-dns-record-types
+Ôöé Ôö£ /blog/how-to-reduce-dns-lookup-time
+Ôöé Ôö£ /blog/dns-security-best-practices
+Ôöé Ôöö [+232 more paths]
+Ôö£ Ôùï /blur-image
+Ôö£ Ôùï /bookmarks
+Ôö£ Ôùï /brand
+Ôö£ Ôùï /broken-link-checker
+Ôö£ Ôùï /caa-lookup
+Ôö£ Ôùï /canonical-generator
+Ôö£ Ôùï /case-converter
+Ôö£ Ôùï /case-studies
+Ôö£ Ôùï /categories
+Ôö£ ÔùÅ /category/[slug]
+Ôöé Ôö£ /category/text-writing
+Ôöé Ôö£ /category/image-design
+Ôöé Ôö£ /category/code-dev
+Ôöé Ôöö [+10 more paths]
+Ôö£ Ôùï /changelog
+Ôö£ ÔùÅ /cheat-sheets/[slug]
+Ôöé Ôö£ /cheat-sheets/domain-report-cheat-sheet
+Ôöé Ôö£ /cheat-sheets/dns-lookup-cheat-sheet
+Ôöé Ôö£ /cheat-sheets/reverse-dns-lookup-cheat-sheet
+Ôöé Ôöö [+211 more paths]
+Ôö£ Ôùï /cheat-sheets/developer-dns
+Ôö£ Ôùï /cheat-sheets/developer-ssl-tls
+Ôö£ Ôùï /choose-the-right-tool
+Ôö£ Ôùï /collections
+Ôö£ Ôùï /color-converter
+Ôö£ Ôùï /color-names
+Ôö£ ÔùÅ /commands/[slug]
+Ôöé Ôö£ /commands/domain-report-commands
+Ôöé Ôö£ /commands/dns-lookup-commands
+Ôöé Ôö£ /commands/reverse-dns-lookup-commands
+Ôöé Ôöö [+211 more paths]
+Ôö£ Ôùï /community-templates
+Ôö£ Ôùï /compare
+Ôö£ Ôùï /compare-dns
+Ôö£ ÔùÅ /compare/[slug]
+Ôöé Ôö£ /compare/dns-lookup-vs-whois
+Ôöé Ôö£ /compare/dns-propagation-vs-dns-lookup
+Ôöé Ôö£ /compare/reverse-dns-vs-forward-dns
+Ôöé Ôöö [+223 more paths]
+Ôö£ Ôùï /compare/dns-providers
+Ôö£ Ôùï /compare/ssl-certificate-types
+Ôö£ Ôùï /compress-pdf
+Ôö£ Ôùï /contact
+Ôö£ ÔùÅ /convert/[slug]
+Ôöé Ôö£ /convert/jpg-to-png
+Ôöé Ôö£ /convert/jpg-to-webp
+Ôöé Ôö£ /convert/jpg-to-svg
+Ôöé Ôöö [+314 more paths]
+Ôö£ Ôùï /crop-image
+Ôö£ Ôùï /css-gradient-generator
+Ôö£ Ôùï /css-minifier
+Ôö£ Ôùï /decision-trees/dns-troubleshooting
+Ôö£ Ôùï /decision-trees/seo-diagnostics
+Ôö£ Ôùï /decision-trees/ssl-troubleshooting
+Ôö£ Ôùï /dkim-lookup
+Ôö£ Ôùï /dkim-validator
+Ôö£ Ôùï /dmarc-generator
+Ôö£ Ôùï /dmarc-lookup
+Ôö£ Ôùï /dns-lookup
+Ôö£ Ôùï /dns-propagation-checker
+Ôö£ Ôùï /dns-record-types
+Ôö£ Ôùï /dns-zone-validator
+Ôö£ Ôùï /dnssec-checker
+Ôö£ Ôùï /domain-report
+Ôö£ Ôùï /editor-picks
+Ôö£ Ôùï /editorial-guidelines
+Ôö£ Ôùï /email-deliverability-checker
+Ôö£ ÔùÅ /errors/[slug]
+Ôöé Ôö£ /errors/dns-lookup-errors
+Ôöé Ôö£ /errors/ssl-certificate-checker-errors
+Ôöé Ôö£ /errors/port-checker-errors
+Ôöé Ôöö [+211 more paths]
+Ôö£ ÔùÅ /examples/[slug]
+Ôöé Ôö£ /examples/dns-lookup-examples
+Ôöé Ôö£ /examples/ssl-certificate-checker-examples
+Ôöé Ôö£ /examples/whois-lookup-examples
+Ôöé Ôöö [+211 more paths]
+Ôö£ Ôùï /excerpt-generator
+Ôö£ Ôùï /extract-pdf-pages
+Ôö£ Ôùï /feed.xml
+Ôö£ Ôùï /find-and-replace
+Ôö£ ÔùÅ /for/[slug]
+Ôöé Ôö£ /for/tools-for-students
+Ôöé Ôö£ /for/tools-for-developers
+Ôöé Ôö£ /for/tools-for-designers
+Ôöé Ôöö [+34 more paths]
+Ôö£ Ôùï /glossary
+Ôö£ ÔùÅ /glossary/[term]
+Ôöé Ôö£ /glossary/api
+Ôöé Ôö£ /glossary/algorithm
+Ôöé Ôö£ /glossary/array
+Ôöé Ôöö [+205 more paths]
+Ôö£ Ôùï /guides
+Ôö£ ÔùÅ /guides/[slug]
+Ôöé Ôö£ /guides/use-domain-report
+Ôöé Ôö£ /guides/how-to-domain-report
+Ôöé Ôö£ /guides/use-dns-lookup
+Ôöé Ôöö [+535 more paths]
+Ôö£ Ôùï /hash-algorithms
+Ôö£ Ôùï /how-it-works
+Ôö£ Ôùï /how-we-test-tools
+Ôö£ Ôùï /hreflang-generator
+Ôö£ Ôùï /html-entities
+Ôö£ Ôùï /html-entity-encoder
+Ôö£ Ôùï /html-minifier
+Ôö£ Ôùï /html-preview
+Ôö£ Ôùï /http-headers
+Ôö£ Ôùï /http-headers-checker
+Ôö£ Ôùï /http-status-codes
+Ôö£ Ôùï /image-compressor
+Ôö£ Ôùï /image-converter
+Ôö£ Ôùï /image-grayscale
+Ôö£ Ôùï /image-metadata-viewer
+Ôö£ Ôùï /image-resizer
+Ôö£ Ôùï /image-to-base64
+Ôö£ ãÆ /indexnow-key.txt
+Ôö£ Ôùï /ip-lookup
+Ôö£ Ôùï /jpg-to-pdf
+Ôö£ Ôùï /js-minifier
+Ôö£ Ôùï /json-formatter
+Ôö£ Ôùï /json-path-search
+Ôö£ Ôùï /json-to-csv
+Ôö£ Ôùï /jwt-decoder
+Ôö£ Ôùï /learn
+Ôö£ ÔùÅ /learn/[slug]
+Ôöé Ôö£ /learn/dns-lookup-beginners
+Ôöé Ôö£ /learn/reverse-dns-beginners
+Ôöé Ôö£ /learn/what-is-dns-propagation
+Ôöé Ôöö [+9 more paths]
+Ôö£ Ôùï /learning-paths/dns-fundamentals
+Ôö£ Ôùï /line-counter
+Ôö£ Ôùï /link-to-us
+Ôö£ Ôùï /list-randomizer
+Ôö£ Ôùï /lorem-ipsum-generator
+Ôö£ Ôùï /manifest.webmanifest
+Ôö£ Ôùï /markdown-preview
+Ôö£ Ôùï /md5-hash-generator
+Ôö£ Ôùï /merge-pdf
+Ôö£ Ôùï /meta-tag-generator
+Ôö£ Ôùï /methodology
+Ôö£ Ôùï /mime-types
+Ôö£ Ôùï /mta-sts-lookup
+Ôö£ Ôùï /mx-lookup
+Ôö£ Ôùï /nameserver-analyzer
+Ôö£ Ôùï /new
+Ôö£ Ôùï /number-base-converter
+Ôö£ Ôùï /nuvora-ai
+Ôö£ Ôùï /nuvora-api
+Ôö£ Ôùï /nuvora-extension
+Ôö£ Ôùï /nuvora-mobile
+Ôö£ Ôùï /nuvora-pro
+Ôö£ Ôùï /open-graph-generator
+Ôö£ Ôùï /open-source
+Ôö£ ãÆ /opengraph-image
+Ôö£ Ôùï /our-mission
+Ôö£ Ôùï /password-generator
+Ôö£ Ôùï /pdf-to-jpg
+Ôö£ Ôùï /pdf-to-word
+Ôö£ Ôùï /ping-test
+Ôö£ Ôùï /popular
+Ôö£ Ôùï /port-checker
+Ôö£ Ôùï /port-numbers
+Ôö£ Ôùï /press
+Ôö£ Ôùï /privacy
+Ôö£ Ôùï /privacy-controls
+Ôö£ Ôùï /pro
+Ôö£ Ôùï /protect-pdf
+Ôö£ Ôùï /protocols/dns-protocols
+Ôö£ Ôùï /protocols/http-versus-https
+Ôö£ Ôùï /qr-code-generator
+Ôö£ Ôùï /redirect-checker
+Ôö£ ÔùÅ /reference/[slug]
+Ôöé Ôö£ /reference/http-status-codes
+Ôöé Ôö£ /reference/dns-record-types
+Ôöé Ôö£ /reference/port-numbers
+Ôöé Ôöö [+221 more paths]
+Ôö£ Ôùï /regex-patterns
+Ôö£ Ôùï /regex-tester
+Ôö£ Ôùï /remove-duplicate-lines
+Ôö£ Ôùï /remove-empty-lines
+Ôö£ Ôùï /reorder-pdf
+Ôö£ Ôùï /research
+Ôö£ Ôùï /resources
+Ôö£ Ôùï /reverse-dns-lookup
+Ôö£ Ôùï /reverse-text
+Ôö£ Ôùï /roadmap
+Ôö£ Ôùï /robots-txt-generator
+Ôö£ Ôùï /robots.txt
+Ôö£ Ôùï /rotate-pdf
+Ôö£ Ôùï /schema-generator
+Ôö£ ãÆ /search
+Ôö£ Ôùï /security
+Ôö£ Ôùï /serp-preview
+Ôö£ Ôùï /sha-hash-generator
+Ôö£ Ôùï /sitemap
+Ôö£ ãÆ /sitemap-alternatives.xml
+Ôö£ ãÆ /sitemap-best.xml
+Ôö£ ãÆ /sitemap-content.xml
+Ôö£ ãÆ /sitemap-convert.xml
+Ôö£ ãÆ /sitemap-for.xml
+Ôö£ Ôùï /sitemap-generator
+Ôö£ ãÆ /sitemap-glossary.xml
+Ôö£ ãÆ /sitemap-guides.xml
+Ôö£ ãÆ /sitemap-landing.xml
+Ôö£ ãÆ /sitemap-static.xml
+Ôö£ ãÆ /sitemap-tools.xml
+Ôö£ ãÆ /sitemap-vs.xml
+Ôö£ Ôùï /sitemap.xml
+Ôö£ Ôùï /sort-lines
+Ôö£ Ôùï /spf-generator
+Ôö£ Ôùï /spf-lookup
+Ôö£ Ôùï /split-pdf
+Ôö£ Ôùï /sql-formatter
+Ôö£ Ôùï /srv-lookup
+Ôö£ Ôùï /ssl-certificate-checker
+Ôö£ Ôùï /subnet-calculator
+Ôö£ Ôùï /tag
+Ôö£ ÔùÅ /tag/[slug]
+Ôöé Ôö£ /tag/dns
+Ôöé Ôö£ /tag/ip
+Ôöé Ôö£ /tag/http
+Ôöé Ôöö [+11 more paths]
+Ôö£ Ôùï /technical-flow/dns-resolution
+Ôö£ Ôùï /technical-flow/ssl-tls-handshake
+Ôö£ Ôùï /terms
+Ôö£ Ôùï /text-cleaner
+Ôö£ Ôùï /text-diff-checker
+Ôö£ Ôùï /text-joiner
+Ôö£ Ôùï /text-splitter
+Ôö£ Ôùï /text-to-slug
+Ôö£ Ôùï /timestamp-converter
+Ôö£ Ôùï /tls-versions
+Ôö£ Ôùï /tlsrpt-lookup
+Ôö£ Ôùï /tool-comparisons/network-diagnostics
+Ôö£ Ôùï /toolkits/developer
+Ôö£ Ôùï /toolkits/network
+Ôö£ Ôùï /toolkits/security
+Ôö£ Ôùï /toolkits/seo
+Ôö£ Ôùï /tools
+Ôö£ Ôùï /transparency
+Ôö£ Ôùï /trending
+Ôö£ Ôùï /troubleshooting/dns-propagation
+Ôö£ Ôùï /troubleshooting/ssl-certificate
+Ôö£ Ôùï /ultimate-guides/dns
+Ôö£ Ôùï /ultimate-guides/http
+Ôö£ Ôùï /ultimate-guides/json
+Ôö£ Ôùï /ultimate-guides/networking
+Ôö£ Ôùï /ultimate-guides/seo
+Ôö£ Ôùï /ultimate-guides/ssl-tls
+Ôö£ Ôùï /unlock-pdf
+Ôö£ Ôùï /url-encoder
+Ôö£ Ôùï /url-parser
+Ôö£ ÔùÅ /use-cases/[slug]
+Ôöé Ôö£ /use-cases/domain-report-use-cases
+Ôöé Ôö£ /use-cases/dns-lookup-use-cases
+Ôöé Ôö£ /use-cases/reverse-dns-lookup-use-cases
+Ôöé Ôöö [+211 more paths]
+Ôö£ Ôùï /user-agent-parser
+Ôö£ Ôùï /user-agents
+Ôö£ Ôùï /uuid-generator
+Ôö£ ÔùÅ /vs/[slug]
+Ôöé Ôö£ /vs/domain-report-vs-dns-lookup
+Ôöé Ôö£ /vs/domain-report-vs-reverse-dns-lookup
+Ôöé Ôö£ /vs/domain-report-vs-dns-propagation-checker
+Ôöé Ôöö [+5538 more paths]
+Ôö£ Ôùï /watermark-image
+Ôö£ Ôùï /website-status-checker
+Ôö£ Ôùï /what-is-my-ip
+Ôö£ Ôùï /whats-new
+Ôö£ Ôùï /whois-lookup
+Ôö£ Ôùï /widgets
+Ôö£ Ôùï /word-counter
+Ôö£ Ôùï /word-to-pdf
+Ôö£ Ôùï /workflow/website-health-check
+Ôö£ Ôùï /xml-to-json
+Ôöö Ôùï /yaml-to-json
+
+
+ãÆ Proxy (Middleware)
+
+Ôùï  (Static)   prerendered as static content
+ÔùÅ  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ãÆ  (Dynamic)  server-rendered on demand
+

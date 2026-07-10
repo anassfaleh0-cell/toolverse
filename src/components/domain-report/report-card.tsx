@@ -212,7 +212,7 @@ export function DomainReportCard() {
 
   const handleShare = async () => {
     const shareUrl = `${window.location.origin}/domain-report?domain=${encodeURIComponent(searchedDomain)}`;
-    const text = `I checked ${searchedDomain} and it scored ${results?.overallGrade} (${results?.overallScore}%) on ToolVerse Domain Report Card! Check yours →`;
+    const text = `I checked ${searchedDomain} and it scored ${results?.overallGrade} (${results?.overallScore}%) on Nuvora Domain Report Card! Check yours →`;
     if (navigator.share) {
       try { await navigator.share({ title: `${searchedDomain} Domain Report`, text, url: shareUrl }); return; } catch { }
     }

@@ -21,7 +21,7 @@ import Link from "next/link";
 const slug = "json-formatter";
 const pageTitle = "JSON Formatter - Validate, Beautify, and Minify JSON Online";
 const pageDescription =
-  "Format, validate, and minify JSON with ToolVerse&apos;s free online JSON formatter. Beautify messy JSON, catch syntax errors, and copy clean output for API debugging and development.";
+  "Format, validate, and minify JSON with Nuvora&apos;s free online JSON formatter. Beautify messy JSON, catch syntax errors, and copy clean output for API debugging and development.";
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -50,7 +50,7 @@ const faqItems: FaqItem[] = [
   {
     question: "What is the difference between JSON formatting and JSON validation?",
     answer:
-      "Validation checks whether a JSON string conforms to the JSON specification by testing syntax, structure, and data types. Formatting (beautifying) applies indentation and line breaks for human readability. A valid JSON string can be minified or pretty-printed interchangeably, but an invalid string cannot be formatted at all. ToolVerse runs validation automatically when you format or minify, so you always know if your JSON is structurally sound.",
+      "Validation checks whether a JSON string conforms to the JSON specification by testing syntax, structure, and data types. Formatting (beautifying) applies indentation and line breaks for human readability. A valid JSON string can be minified or pretty-printed interchangeably, but an invalid string cannot be formatted at all. Nuvora runs validation automatically when you format or minify, so you always know if your JSON is structurally sound.",
   },
   {
     question: "Why does my JSON fail validation when it looks correct?",
@@ -70,7 +70,7 @@ const faqItems: FaqItem[] = [
   {
     question: "How do I handle large JSON files in a browser formatter?",
     answer:
-      "Browser-based formatters parse the entire JSON string in memory, so extremely large files (over 50 MB) may cause performance issues or tab crashes. For production-scale JSON, use command-line tools like jq or the built-in formatter in VS Code. ToolVerse works well for API responses, configuration files, and data samples up to several megabytes.",
+      "Browser-based formatters parse the entire JSON string in memory, so extremely large files (over 50 MB) may cause performance issues or tab crashes. For production-scale JSON, use command-line tools like jq or the built-in formatter in VS Code. Nuvora works well for API responses, configuration files, and data samples up to several megabytes.",
   },
   {
     question: "Why would I minify JSON instead of formatting it?",
@@ -95,7 +95,7 @@ const faqItems: FaqItem[] = [
   {
     question: "Can JSON contain duplicate keys and how are they handled?",
     answer:
-      "The JSON specification does not prohibit duplicate keys, but it strongly recommends against them. Parsers handle duplicates differently: most browsers and Node.js keep the last occurrence, while some parsers reject them or merge values. ToolVerse does not silently drop duplicates, so you can identify them manually during formatting.",
+      "The JSON specification does not prohibit duplicate keys, but it strongly recommends against them. Parsers handle duplicates differently: most browsers and Node.js keep the last occurrence, while some parsers reject them or merge values. Nuvora does not silently drop duplicates, so you can identify them manually during formatting.",
   },
   {
     question: "How do I escape special characters in JSON strings?",
@@ -105,7 +105,7 @@ const faqItems: FaqItem[] = [
   {
     question: "What is the relationship between JSON and Base64 encoding?",
     answer:
-      "JSON natively supports strings, so binary data must be encoded as text for transport. Base64 is the standard way to embed binary data like images, file contents, or cryptographic keys inside a JSON payload. Use ToolVerse&apos;s <Link href=\"/base64-encoder\" className=\"text-blue-600 hover:underline dark:text-blue-400\">Base64 Encoder</Link> to encode binary data before including it in JSON structures.",
+      "JSON natively supports strings, so binary data must be encoded as text for transport. Base64 is the standard way to embed binary data like images, file contents, or cryptographic keys inside a JSON payload. Use Nuvora&apos;s <Link href=\"/base64-encoder\" className=\"text-blue-600 hover:underline dark:text-blue-400\">Base64 Encoder</Link> to encode binary data before including it in JSON structures.",
   },
 ];
 

@@ -8,7 +8,15 @@ interface SectionProps {
   description?: string;
   action?: ReactNode;
   id?: string;
+  background?: "default" | "muted" | "brand" | "gradient";
 }
+
+const bgStyles: Record<string, string> = {
+  default: "bg-background",
+  muted: "bg-surface-secondary/50",
+  brand: "bg-nuvora-50 dark:bg-nuvora-950/30",
+  gradient: "bg-gradient-to-b from-surface to-background",
+};
 
 export function Section({
   children,
@@ -17,31 +25,29 @@ export function Section({
   description,
   action,
   id,
+  background = "default",
 }: SectionProps) {
   return (
     <section
       id={id}
-      className={cn(
-        "border-b border-zinc-200 py-16 dark:border-zinc-800 sm:py-20",
-        className,
-      )}
+      className={cn("border-b border-border-subtle py-20 sm:py-24", bgStyles[background], className)}
     >
-      <div className="mx-auto max-w-5xl px-4 sm:px-6">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         {(title || description || action) && (
-          <div className="mb-10 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
-            <div>
+          <div className="mb-12 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
+            <div className="max-w-2xl">
               {title && (
-                <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+                <h2 className="text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
                   {title}
                 </h2>
               )}
               {description && (
-                <p className="mt-2 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
+                <p className="mt-3 text-lg text-text-secondary">
                   {description}
                 </p>
               )}
             </div>
-            {action && <div>{action}</div>}
+            {action && <div className="shrink-0">{action}</div>}
           </div>
         )}
         {children}
@@ -62,7 +68,7 @@ export function SectionHeading({
   return (
     <Tag
       className={cn(
-        "text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50",
+        "text-2xl font-bold tracking-tight text-text-primary",
         className,
       )}
     >

@@ -15,10 +15,10 @@ export function OpenGraphGenerator() {
   const [image, setImage] = useState("https://example.com/og-image.png");
   const [url, setUrl] = useState("https://example.com");
   const [ogType, setOgType] = useState("website");
-  const [siteName, setSiteName] = useState("ToolVerse");
+  const [siteName, setSiteName] = useState("Nuvora");
   const [locale, setLocale] = useState("en_US");
   const [twitterCard, setTwitterCard] = useState("summary_large_image");
-  const [twitterSite, setTwitterSite] = useState("@toolverse");
+  const [twitterSite, setTwitterSite] = useState("@Nuvora");
 
   function generateTags() {
     const tags: string[] = [];

@@ -1,11 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <rect width="32" height="32" rx="8" fill="url(#nuvora-gradient)"/>
-  <path d="M8 17s2-1.5 5-1.5 6 2.5 9 2.5 5-1 5-1V6s-2 1-5 1-6-2.5-9-2.5S8 5.5 8 5.5z" stroke="white" stroke-width="2.5" stroke-linejoin="round"/>
-  <line x1="8" y1="28" x2="8" y2="17" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <rect width="32" height="32" rx="7" fill="url(#nv-g)"/>
+  <path d="M16 5l11 6.5v13L16 27 5 20.5v-13L16 5z" stroke="white" stroke-width="1.5" stroke-linejoin="round" fill="white" fill-opacity="0.15"/>
+  <path d="M12 17l4 4 8-8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   <defs>
-    <linearGradient id="nuvora-gradient" x1="0" y1="0" x2="32" y2="32">
-      <stop stop-color="#6366f1"/>
-      <stop offset="1" stop-color="#4338ca"/>
+    <linearGradient id="nv-g" x1="0" y1="0" x2="32" y2="32">
+      <stop stop-color="#7c3aed"/>
+      <stop offset=".5" stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#06b6d4"/>
     </linearGradient>
   </defs>
 </svg>

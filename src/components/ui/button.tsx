@@ -12,19 +12,19 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles: Record<Variant, string> = {
   primary:
-    "bg-zinc-900 text-white hover:bg-zinc-700 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200",
+    "bg-nuvora-600 text-white hover:bg-nuvora-700 active:scale-[0.97] shadow-sm shadow-nuvora-600/20 dark:bg-nuvora-500 dark:hover:bg-nuvora-400 dark:shadow-nuvora-500/20",
   secondary:
-    "border border-zinc-300 bg-white text-zinc-900 hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-50 dark:hover:bg-zinc-900",
+    "border border-border-subtle bg-surface text-text-primary hover:bg-surface-secondary active:scale-[0.97]",
   ghost:
-    "text-zinc-600 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800",
+    "text-text-secondary hover:bg-surface-secondary hover:text-text-primary",
   danger:
-    "bg-red-600 text-white hover:bg-red-500 dark:bg-red-700 dark:text-white dark:hover:bg-red-600",
+    "bg-red-600 text-white hover:bg-red-500 active:scale-[0.97] dark:bg-red-700 dark:hover:bg-red-600",
 };
 
 const sizeStyles: Record<Size, string> = {
-  sm: "h-9 px-4 text-xs",
-  md: "h-11 px-6 text-sm",
-  lg: "h-12 px-8 text-base",
+  sm: "h-9 px-4 text-xs rounded-lg",
+  md: "h-11 px-6 text-sm rounded-xl",
+  lg: "h-12 px-8 text-base rounded-xl",
 };
 
 export function Button({
@@ -38,7 +38,7 @@ export function Button({
   return (
     <button
       className={cn(
-        "inline-flex items-center justify-center rounded-lg font-medium transition-colors",
+        "inline-flex items-center justify-center font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nuvora-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-950",
         variantStyles[variant],
         sizeStyles[size],
         disabled && "pointer-events-none opacity-50",

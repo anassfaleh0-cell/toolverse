@@ -10,10 +10,10 @@ export interface Author {
 export const AUTHORS: Record<string, Author> = {
   team: {
     id: "team",
-    name: "ToolVerse Team",
+    name: "Nuvora Team",
     url: "/about",
-    title: "ToolVerse Editorial Team",
-    bio: "The ToolVerse team researches, builds, and maintains free online network diagnostic tools and educational content for developers, sysadmins, and IT professionals.",
+    title: "Nuvora Editorial Team",
+    bio: "The Nuvora team researches, builds, and maintains free online network diagnostic tools and educational content for developers, sysadmins, and IT professionals.",
   },
   alex: {
     id: "alex",

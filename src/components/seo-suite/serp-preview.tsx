@@ -20,9 +20,9 @@ function formatUrlBreadcrumb(url: string) {
 }
 
 export function SerpPreview() {
-  const [title, setTitle] = useState("10 Best SEO Tools to Boost Your Rankings in 2026 | ToolVerse");
+  const [title, setTitle] = useState("10 Best SEO Tools to Boost Your Rankings in 2026 | Nuvora");
   const [description, setDescription] = useState("Discover the top free SEO tools to improve your website's search rankings. Compare features, pricing, and performance of the best SEO software available.");
-  const [url, setUrl] = useState("https://toolverse.dev/seo-tools");
+  const [url, setUrl] = useState("https://Nuvora.dev/seo-tools");
   const [mode, setMode] = useState<"desktop" | "mobile">("desktop");
 
   const titleMax = 60;

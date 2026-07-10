@@ -33,7 +33,7 @@ export async function GET(request: Request) {
       redirect: "manual",
       signal: AbortSignal.timeout(10000),
       headers: {
-        "User-Agent": "ToolVerse-HTTP-Headers-Checker/1.0",
+        "User-Agent": "Nuvora-HTTP-Headers-Checker/1.0",
       },
     });
     const endTime = performance.now();

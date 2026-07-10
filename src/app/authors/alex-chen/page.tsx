@@ -42,7 +42,7 @@ export default function AlexChenPage() {
           name: SITE_NAME,
         },
         url: `${SITE_URL}/authors/alex-chen`,
-        description: "Senior Network Engineer at ToolVerse with 12 years of infrastructure experience, ex-Cloudflare. Builds DNS, network diagnostic, and infrastructure tools.",
+        description: "Senior Network Engineer at Nuvora with 12 years of infrastructure experience, ex-Cloudflare. Builds DNS, network diagnostic, and infrastructure tools.",
         knowsAbout: ["DNS", "BGP Routing", "Network Security", "Infrastructure", "Cloudflare"],
       }} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
@@ -71,13 +71,13 @@ export default function AlexChenPage() {
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <div className="space-y-6 text-zinc-600 dark:text-zinc-400">
             <p>
-              Alex Chen is a Senior Network Engineer at ToolVerse with over 12 years of experience designing, building, and maintaining large-scale network infrastructure. Before joining ToolVerse, Alex spent five years at Cloudflare, where he worked on the global Anycast network, DNS infrastructure, and DDoS mitigation systems that handle millions of requests per second.
+              Alex Chen is a Senior Network Engineer at Nuvora with over 12 years of experience designing, building, and maintaining large-scale network infrastructure. Before joining Nuvora, Alex spent five years at Cloudflare, where he worked on the global Anycast network, DNS infrastructure, and DDoS mitigation systems that handle millions of requests per second.
             </p>
             <p>
               Alex&apos;s expertise spans the full stack of network protocols — from DNS resolution and BGP routing to TCP/IP tuning and TLS termination. He has designed and implemented monitoring systems for multi-region network deployments and has contributed to open-source networking tools used by thousands of engineers worldwide.
             </p>
             <p>
-              At ToolVerse, Alex leads the development of all network diagnostic tools. He is the engineer behind the DNS Lookup tool, ensuring it returns accurate results that match authoritative name servers, and the Ping Test tool, which measures real-world latency across multiple geographic regions. Every tool Alex builds undergoes rigorous validation against reference command-line tools like <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">dig</code>, <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">nslookup</code>, <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">ping</code>, and <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">traceroute</code>.
+              At Nuvora, Alex leads the development of all network diagnostic tools. He is the engineer behind the DNS Lookup tool, ensuring it returns accurate results that match authoritative name servers, and the Ping Test tool, which measures real-world latency across multiple geographic regions. Every tool Alex builds undergoes rigorous validation against reference command-line tools like <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">dig</code>, <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">nslookup</code>, <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">ping</code>, and <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">traceroute</code>.
             </p>
             <p>
               Alex is passionate about making complex networking concepts accessible to everyone. He regularly writes guides on DNS fundamentals, network troubleshooting, and performance optimization — translating years of hands-on experience into practical advice for developers, sysadmins, and IT professionals.
@@ -88,7 +88,7 @@ export default function AlexChenPage() {
               Contributions
             </h2>
             <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-500">
-              Tools built and maintained by Alex at ToolVerse:
+              Tools built and maintained by Alex at Nuvora:
             </p>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               {contributions.map((tool) => (

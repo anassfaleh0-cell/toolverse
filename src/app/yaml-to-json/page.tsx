@@ -65,7 +65,7 @@ const faqItems: FaqItem[] = [
   {
     question: "Can YAML files be parsed as JSON?",
     answer:
-      "Yes. Because YAML is a superset of JSON, any valid JSON file can be parsed by a YAML parser. However, the reverse is not true: YAML files with features like comments, anchors, aliases, multi-line strings, and custom data types cannot be parsed by a JSON parser. ToolVerse handles these conversions by using the js-yaml library, which properly converts YAML-specific features to their JSON equivalents.",
+      "Yes. Because YAML is a superset of JSON, any valid JSON file can be parsed by a YAML parser. However, the reverse is not true: YAML files with features like comments, anchors, aliases, multi-line strings, and custom data types cannot be parsed by a JSON parser. Nuvora handles these conversions by using the js-yaml library, which properly converts YAML-specific features to their JSON equivalents.",
   },
   {
     question: "What are YAML anchors and aliases?",
@@ -129,7 +129,7 @@ export default function YamlToJsonPage() {
               YAML has emerged as the dominant format for configuration files in modern DevOps and application development because it prioritizes human readability. Unlike JSON with its braces, brackets, and mandatory double quotes, YAML uses indentation to represent structure, making it feel more like a natural document than a data serialization format. Tools like Kubernetes, Docker Compose, Ansible, GitHub Actions, and CircleCI all use YAML for their configuration files, cementing its place in the developer toolchain.
             </p>
             <p>
-              The readability advantage of YAML is significant for configuration files that are frequently edited by humans. Comments let you document why particular values are set, which is critical for infrastructure-as-code where the reasoning behind configuration choices matters as much as the values themselves. Multi-line strings are handled naturally without escaping, and the ability to use anchors and aliases reduces duplication in complex configurations. When you need to convert these YAML configurations to JSON for consumption by tools that require it, ToolVerse makes the transformation seamless. For validating the converted JSON output, use the <Link href="/json-formatter" className="text-blue-600 hover:underline dark:text-blue-400">JSON Formatter</Link> to ensure structural correctness.
+              The readability advantage of YAML is significant for configuration files that are frequently edited by humans. Comments let you document why particular values are set, which is critical for infrastructure-as-code where the reasoning behind configuration choices matters as much as the values themselves. Multi-line strings are handled naturally without escaping, and the ability to use anchors and aliases reduces duplication in complex configurations. When you need to convert these YAML configurations to JSON for consumption by tools that require it, Nuvora makes the transformation seamless. For validating the converted JSON output, use the <Link href="/json-formatter" className="text-blue-600 hover:underline dark:text-blue-400">JSON Formatter</Link> to ensure structural correctness.
             </p>
           </div>
         </div>
@@ -161,7 +161,7 @@ export default function YamlToJsonPage() {
               YAML is the backbone of modern CI/CD and infrastructure-as-code. GitHub Actions workflows are defined in .yml files in the .github/workflows directory. GitLab CI uses .gitlab-ci.yml. CircleCI uses .circleci/config.yml. Docker Compose uses docker-compose.yml. Kubernetes uses YAML for every resource definition from Pods to Deployments to Services. Understanding YAML is no longer optional for developers working in cloud-native environments.
             </p>
             <p>
-              When migrating between CI/CD platforms or converting infrastructure definitions between tools, you often need to translate YAML configuration into JSON or vice versa. ToolVerse&apos;s bidirectional converter handles this translation while preserving data integrity. For debugging complex pipeline configurations, convert your YAML to JSON and use the JSON Formatter to inspect the parsed structure. The <Link href="/case-converter" className="text-blue-600 hover:underline dark:text-blue-400">Case Converter</Link> helps normalize property names if your target platform uses a different naming convention than your source files.
+              When migrating between CI/CD platforms or converting infrastructure definitions between tools, you often need to translate YAML configuration into JSON or vice versa. Nuvora&apos;s bidirectional converter handles this translation while preserving data integrity. For debugging complex pipeline configurations, convert your YAML to JSON and use the JSON Formatter to inspect the parsed structure. The <Link href="/case-converter" className="text-blue-600 hover:underline dark:text-blue-400">Case Converter</Link> helps normalize property names if your target platform uses a different naming convention than your source files.
             </p>
           </div>
         </div>

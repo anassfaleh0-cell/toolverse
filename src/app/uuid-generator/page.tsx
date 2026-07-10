@@ -85,7 +85,7 @@ const faqItems: FaqItem[] = [
   {
     question: "How are UUIDs generated securely in the browser?",
     answer:
-      "The Crypto API provides crypto.randomUUID() which generates UUID v4 with cryptographically strong randomness. It is available in all modern browsers and is the recommended method for client-side UUID generation. For older browsers or non-browser environments, you can fall back to Math.random(), but this produces weaker randomness and is not suitable for security-critical applications. ToolVerse uses cryptographically secure random number generation for all UUIDs.",
+      "The Crypto API provides crypto.randomUUID() which generates UUID v4 with cryptographically strong randomness. It is available in all modern browsers and is the recommended method for client-side UUID generation. For older browsers or non-browser environments, you can fall back to Math.random(), but this produces weaker randomness and is not suitable for security-critical applications. Nuvora uses cryptographically secure random number generation for all UUIDs.",
   },
   {
     question: "What is the difference between UUID, ULID, and NanoID?",
@@ -105,7 +105,7 @@ const faqItems: FaqItem[] = [
   {
     question: "Why does my UUID sometimes have lowercase and sometimes uppercase letters?",
     answer:
-      "The UUID specification uses hexadecimal digits, which are conventionally written in lowercase. However, many generators produce uppercase hex digits by default or as an option. UUID comparison should always be case-insensitive per the specification. ToolVerse generates lowercase UUIDs following the RFC convention. If your application requires case-insensitive storage, normalize UUIDs to lowercase before storing them to avoid duplicate entries caused by case differences.",
+      "The UUID specification uses hexadecimal digits, which are conventionally written in lowercase. However, many generators produce uppercase hex digits by default or as an option. UUID comparison should always be case-insensitive per the specification. Nuvora generates lowercase UUIDs following the RFC convention. If your application requires case-insensitive storage, normalize UUIDs to lowercase before storing them to avoid duplicate entries caused by case differences.",
   },
 ];
 

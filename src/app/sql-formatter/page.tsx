@@ -53,7 +53,7 @@ const faqItems: FaqItem[] = [
       "Well-formatted SQL is easier to read, review, and maintain. Formatting enforces consistent capitalization of keywords, proper indentation of clauses, and logical line breaks that mirror the query&apos;s execution flow. In code reviews, formatted SQL lets reviewers focus on query logic rather than deciphering a wall of text. Teams that adopt a consistent SQL formatting style reduce merge conflicts in version control and make it easier to spot syntax errors and performance issues during review.",
   },
   {
-    question: "What formatting rules does the ToolVerse SQL formatter apply?",
+    question: "What formatting rules does the Nuvora SQL formatter apply?",
     answer:
       "The formatter capitalizes all SQL keywords including SELECT, FROM, WHERE, JOIN, GROUP BY, ORDER BY, and HAVING. It adds newlines before major clauses, indents subclauses like AND and OR with two spaces, inserts spaces around parentheses and operators, and preserves string literals and quoted identifiers. The output is designed to match common SQL formatting conventions used in professional database development.",
   },

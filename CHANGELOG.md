@@ -1,4 +1,4 @@
-# ToolVerse Changelog
+# Nuvora Changelog
 
 ## v1.0.0 — Production Release (July 2026)
 

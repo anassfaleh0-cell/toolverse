@@ -6,7 +6,7 @@ import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: `Community Templates — Reusable Configurations | ${SITE_NAME}`,
-  description: "Community-contributed templates and configurations for DNS, SSL, SEO, and network tools. Save time with pre-built setups from the ToolVerse community.",
+  description: "Community-contributed templates and configurations for DNS, SSL, SEO, and network tools. Save time with pre-built setups from the Nuvora community.",
   openGraph: { title: `Community Templates`, description: "Community-contributed templates for DNS, SSL, SEO, and network tools." },
   twitter: { title: `Community Templates`, description: "Community-contributed templates." },
   alternates: { canonical: `${SITE_URL}/community-templates` },
@@ -90,7 +90,7 @@ export default function CommunityTemplatesPage() {
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <Breadcrumbs items={breadcrumbs} />
           <h1 className="mt-4 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">Community Templates</h1>
-          <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">Pre-built templates contributed by the ToolVerse community. Use them to speed up your workflow.</p>
+          <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">Pre-built templates contributed by the Nuvora community. Use them to speed up your workflow.</p>
         </div>
       </section>
 

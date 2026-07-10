@@ -5,11 +5,11 @@ import { Breadcrumbs, JsonLd, SocialShare } from "@/components/shared";
 import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `Authors — Meet the ToolVerse Team | ${SITE_NAME}`,
+  title: `Authors — Meet the Nuvora Team | ${SITE_NAME}`,
   description: `Meet the team behind ${SITE_NAME}: network engineers, security researchers, developers, and content strategists building free online tools.`,
   alternates: { canonical: `${SITE_URL}/authors` },
   openGraph: {
-    title: `Authors — Meet the ToolVerse Team | ${SITE_NAME}`,
+    title: `Authors — Meet the Nuvora Team | ${SITE_NAME}`,
     description: `Learn about the experts building and maintaining ${SITE_NAME}'s network diagnostic tools and educational content.`,
   },
 };
@@ -24,7 +24,7 @@ const authors = [
     slug: "alex-chen",
     name: "Alex Chen",
     title: "Senior Network Engineer",
-    bio: "Alex is a senior network engineer with 12 years of experience in DNS, BGP routing, and network infrastructure. Formerly at Cloudflare, he now leads tool development at ToolVerse, building accurate and reliable network diagnostic tools.",
+    bio: "Alex is a senior network engineer with 12 years of experience in DNS, BGP routing, and network infrastructure. Formerly at Cloudflare, he now leads tool development at Nuvora, building accurate and reliable network diagnostic tools.",
     expertise: ["DNS", "BGP Routing", "Network Security", "Infrastructure"],
     initials: "AC",
   },
@@ -40,7 +40,7 @@ const authors = [
     slug: "james-wilson",
     name: "James Wilson",
     title: "Full-Stack Developer",
-    bio: "James is a full-stack developer with 10 years of experience building web applications and developer tools. He maintains several popular open-source libraries and brings deep expertise in JavaScript, TypeScript, and modern web frameworks to ToolVerse.",
+    bio: "James is a full-stack developer with 10 years of experience building web applications and developer tools. He maintains several popular open-source libraries and brings deep expertise in JavaScript, TypeScript, and modern web frameworks to Nuvora.",
     expertise: ["JavaScript", "TypeScript", "React", "Open Source"],
     initials: "JW",
   },
@@ -48,7 +48,7 @@ const authors = [
     slug: "priya-patel",
     name: "Priya Patel",
     title: "Content Strategist & SEO Specialist",
-    bio: "Priya is a content strategist with 7 years of experience creating technical content that ranks. Formerly at Moz, she develops content strategies that balance technical depth with readability, ensuring ToolVerse guides meet both user needs and search best practices.",
+    bio: "Priya is a content strategist with 7 years of experience creating technical content that ranks. Formerly at Moz, she develops content strategies that balance technical depth with readability, ensuring Nuvora guides meet both user needs and search best practices.",
     expertise: ["SEO", "Content Strategy", "Technical Writing", "Analytics"],
     initials: "PP",
   },
@@ -57,19 +57,19 @@ const authors = [
 export default function AuthorsPage() {
   return (
     <>
-      <JsonLd data={webPageSchema({ name: `Authors — Meet the ToolVerse Team | ${SITE_NAME}`, description: `Meet the team behind ${SITE_NAME}.`, url: `${SITE_URL}/authors`, breadcrumbs })} />
+      <JsonLd data={webPageSchema({ name: `Authors — Meet the Nuvora Team | ${SITE_NAME}`, description: `Meet the team behind ${SITE_NAME}.`, url: `${SITE_URL}/authors`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <section className="border-b border-zinc-200 bg-zinc-50 py-12 dark:border-zinc-800 dark:bg-zinc-900/50 sm:py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <Breadcrumbs items={breadcrumbs} />
           <h1 className="mt-4 text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-            Meet the ToolVerse Team
+            Meet the Nuvora Team
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
             Our team combines decades of experience in network engineering, web security, software development, and content strategy to build tools you can trust.
           </p>
           <div className="mt-6">
-            <SocialShare url={`${SITE_URL}/authors`} title={`Authors — Meet the ToolVerse Team | ${SITE_NAME}`} />
+            <SocialShare url={`${SITE_URL}/authors`} title={`Authors — Meet the Nuvora Team | ${SITE_NAME}`} />
           </div>
         </div>
       </section>

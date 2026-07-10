@@ -1,15 +1,17 @@
 {
-  "name": "Nuvora — Smart Tools for Everything You Do",
+  "name": "Nuvora — Smart Tools, Simply Done",
   "short_name": "Nuvora",
-  "description": "Nuvora is an intelligent digital workspace with powerful AI-powered tools for network diagnostics, security analysis, PDF processing, image editing, and developer utilities.",
+  "description": "Free online tools for everyone — DNS lookup, PDF conversion, image editing, security checks, and developer utilities. No signup, no tracking.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#fafafa",
-  "theme_color": "#4f46e5",
+  "background_color": "#0f0f1a",
+  "theme_color": "#7c3aed",
   "categories": ["developer-tools", "utilities", "networking", "productivity"],
   "lang": "en-US",
   "orientation": "any",
   "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
     { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
   ]
 }

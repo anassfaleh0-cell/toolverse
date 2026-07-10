@@ -1,12 +1,12 @@
-# Microsoft Clarity Setup — ToolVerse
+# Microsoft Clarity Setup — Nuvora
 
 ## Create Project
 
 1. Go to [clarity.microsoft.com](https://clarity.microsoft.com)
 2. Sign in with Microsoft account
 3. Click **Create Project**
-4. Project name: `ToolVerse`
-5. Website URL: `https://toolverse.dev`
+4. Project name: `Nuvora`
+5. Website URL: `https://Nuvora.dev`
 6. Click **Create**
 
 ## Get Project ID

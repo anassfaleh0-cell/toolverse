@@ -35,7 +35,7 @@ const PAPERS = [
   {
     title: "IPv6 Adoption Trends in Network Tool Usage",
     date: "April 2026",
-    summary: "IPv6 adoption among ToolVerse users reached 42% (up from 31% in 2025). Dual-stack deployment is now the standard, with 67% of domains having both A and AAAA records.",
+    summary: "IPv6 adoption among Nuvora users reached 42% (up from 31% in 2025). Dual-stack deployment is now the standard, with 67% of domains having both A and AAAA records.",
     tags: ["IPv6", "Network", "Trends"],
   },
   {
@@ -61,7 +61,7 @@ export default function ResearchPage() {
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <Breadcrumbs items={breadcrumbs} />
           <h1 className="mt-4 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">Research</h1>
-          <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">Technical research, benchmarks, and analysis by the ToolVerse engineering team.</p>
+          <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">Technical research, benchmarks, and analysis by the Nuvora engineering team.</p>
         </div>
       </section>
 

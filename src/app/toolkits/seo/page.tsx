@@ -5,7 +5,7 @@ import { JsonLd, Breadcrumbs, FaqSection } from "@/components/shared";
 import { webPageSchema, breadcrumbSchema, faqSchema, type FaqItem } from "@/lib/seo";
 
 const slug = "toolkits/seo";
-const pageTitle = "SEO Toolkit \u2014 Free SEO Tools for Website Optimization \u2014 ToolVerse";
+const pageTitle = "SEO Toolkit \u2014 Free SEO Tools for Website Optimization \u2014 Nuvora";
 const pageDescription =
   "Curated collection of free SEO tools for technical analysis, content optimization, and website performance monitoring. Improve your search rankings today.";
 

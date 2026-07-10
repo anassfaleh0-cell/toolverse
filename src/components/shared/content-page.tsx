@@ -59,6 +59,24 @@ function getContentBreadcrumbs(piece: ContentPiece) {
   ];
 }
 
+function AuthorCard({ piece }: { piece: ContentPiece }) {
+  if (!piece.author) return null;
+  return (
+    <div className="flex items-center gap-3 rounded-xl border border-border-subtle bg-surface-secondary/50 p-4">
+      <div className="flex size-10 items-center justify-center rounded-full bg-nuvora-100 text-xs font-bold text-nuvora-600 dark:bg-nuvora-900/50 dark:text-nuvora-400">
+        {piece.author.name.split(" ").map(n => n[0]).join("").slice(0, 2)}
+      </div>
+      <div>
+        <p className="text-sm font-semibold text-text-primary">{piece.author.name}</p>
+        <p className="text-xs text-text-tertiary">
+          Published {new Date(piece.publishedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+          {piece.updatedAt !== piece.publishedAt && ` · Updated ${new Date(piece.updatedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}`}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export function ContentPage({ piece }: { piece: ContentPiece }) {
   const breadcrumbs = getContentBreadcrumbs(piece);
   const related = getRelatedContent(piece, 4);
@@ -92,44 +110,28 @@ export function ContentPage({ piece }: { piece: ContentPiece }) {
       {piece.schema && <JsonLd data={piece.schema} />}
 
       <article>
-        <header className="border-b border-border-subtle bg-surface-secondary/50 py-12 sm:py-16">
+        <header className="border-b border-border-subtle bg-surface-secondary/30 py-16 sm:py-20">
           <div className="mx-auto max-w-3xl px-4 sm:px-6">
             <Breadcrumbs items={breadcrumbs} />
-            <Badge variant="info" className="mt-4">
-              {typeLabel}
-            </Badge>
-            <h1 className="mt-4 text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
-              {piece.title}
-            </h1>
-            <p className="mt-4 text-lg text-text-secondary">
-              {piece.description}
-            </p>
-            <div className="mt-4 flex flex-wrap gap-4 text-sm text-text-tertiary">
+            <div className="mt-4 flex flex-wrap items-center gap-3">
+              <Badge variant="info">{typeLabel}</Badge>
               <span className="inline-flex items-center gap-1.5 rounded-full bg-surface-secondary px-3 py-1 text-xs font-medium text-text-secondary">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-3.5" aria-hidden="true">
                   <circle cx="12" cy="12" r="10" />
                   <polyline points="12 6 12 12 16 14" />
                 </svg>
-                {piece.readingTimeMinutes} min read
+                {readingMins} min read
               </span>
-              <span>
-                Published: {new Date(piece.publishedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
-              </span>
-              {piece.updatedAt !== piece.publishedAt && (
-                <span className="text-amber-600 dark:text-amber-400">
-                  Updated: {new Date(piece.updatedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
-                </span>
-              )}
-              {piece.author && (
-                <span>
-                  By {piece.author.url ? (
-                    <a href={piece.author.url} className="text-blue-600 hover:underline dark:text-blue-400" target="_blank" rel="author noopener">{piece.author.name}</a>
-                  ) : piece.author.name}
-                </span>
-              )}
-              <Badge variant="neutral">
-                {piece.difficulty}
-              </Badge>
+              <Badge variant="neutral">{piece.difficulty}</Badge>
+            </div>
+            <h1 className="mt-4 text-3xl font-bold tracking-tight text-text-primary sm:text-4xl lg:text-5xl">
+              {piece.title}
+            </h1>
+            <p className="mt-4 text-lg text-text-secondary leading-relaxed">
+              {piece.description}
+            </p>
+            <div className="mt-6">
+              <AuthorCard piece={piece} />
             </div>
             {piece.toolSlugs.length > 0 && (
               <div className="mt-4 flex flex-wrap gap-2">
@@ -151,23 +153,30 @@ export function ContentPage({ piece }: { piece: ContentPiece }) {
         </header>
 
         {piece.sections.length > 1 && (
-          <nav className="mb-12 rounded-xl border border-border-subtle bg-surface-secondary/50 p-4 hidden md:block">
-            <h3 className="text-sm font-semibold text-text-primary">
-              Table of Contents
-            </h3>
-            <ul className="mt-2 space-y-1">
-              {piece.sections.map((section, i) => (
-                <li key={i}>
-                  <a
-                    href={`#section-${i}`}
-                    className="text-sm text-text-secondary hover:text-nuvora-600 dark:hover:text-nuvora-400"
-                  >
-                    {section.heading}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <div className="mx-auto max-w-3xl px-4 sm:px-6 -mt-4">
+            <nav className="mb-12 rounded-2xl border border-border-subtle bg-surface p-5 shadow-sm hidden md:block">
+              <div className="flex items-center gap-2 mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4 text-nuvora-600 dark:text-nuvora-400">
+                  <path d="M4 6h16" /><path d="M4 12h16" /><path d="M4 18h16" />
+                </svg>
+                <h3 className="text-sm font-semibold text-text-primary">
+                  Table of Contents
+                </h3>
+              </div>
+              <ul className="space-y-1.5">
+                {piece.sections.map((section, i) => (
+                  <li key={i}>
+                    <a
+                      href={`#section-${i}`}
+                      className="text-sm text-text-secondary hover:text-nuvora-600 dark:hover:text-nuvora-400 transition-colors"
+                    >
+                      {section.heading}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
         )}
 
         <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
@@ -186,7 +195,7 @@ export function ContentPage({ piece }: { piece: ContentPiece }) {
                   <h2 className="text-2xl font-bold tracking-tight text-text-primary">
                     {section.heading}
                   </h2>
-                  <div className="mt-4 space-y-4 text-text-secondary">
+                  <div className="mt-4 space-y-4 text-text-secondary leading-relaxed">
                     {section.body.split("\n").map((paragraph, j) => {
                       const trimmed = paragraph.trim();
                       const tipMatch = trimmed.match(/^(?:tip|Tip):\s*(.*)$/);
@@ -214,7 +223,7 @@ export function ContentPage({ piece }: { piece: ContentPiece }) {
                   <h2 className="text-2xl font-bold tracking-tight text-text-primary">
                     {section.heading}
                   </h2>
-                  <div className="mt-4 space-y-4 text-text-secondary">
+                  <div className="mt-4 space-y-4 text-text-secondary leading-relaxed">
                     {section.body.split("\n").map((paragraph, j) => {
                       const trimmed = paragraph.trim();
                       const tipMatch = trimmed.match(/^(?:tip|Tip):\s*(.*)$/);
@@ -238,10 +247,18 @@ export function ContentPage({ piece }: { piece: ContentPiece }) {
           )}
 
           {piece.toolSlugs.length > 0 && (
-            <section className="mt-16 rounded-xl border border-border-subtle bg-surface-secondary/50 p-6">
-              <h3 className="text-lg font-bold text-text-primary">
-                Use Our Tools
-              </h3>
+            <section className="mt-16 rounded-2xl border border-border-subtle bg-gradient-to-br from-surface to-nuvora-50/30 p-6 dark:from-surface dark:to-nuvora-950/20">
+              <div className="flex items-center gap-3">
+                <div className="flex size-10 items-center justify-center rounded-xl bg-nuvora-100 text-nuvora-600 dark:bg-nuvora-900/50 dark:text-nuvora-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-5"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></svg>
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-text-primary">
+                    Try it yourself
+                  </h3>
+                  <p className="text-sm text-text-secondary">Use our free tools to get started right now</p>
+                </div>
+              </div>
               <div className="mt-4 flex flex-wrap gap-3">
                 {piece.toolSlugs.map((slug) => {
                   const tool = getToolBySlug(slug);
@@ -249,9 +266,10 @@ export function ContentPage({ piece }: { piece: ContentPiece }) {
                     <Link
                       key={slug}
                       href={tool.url}
-                      className="rounded-lg bg-nuvora-600 px-4 py-2 text-sm font-medium text-white hover:bg-nuvora-700 active:scale-[0.97]"
+                      className="inline-flex items-center gap-2 rounded-xl bg-nuvora-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-nuvora-700 active:scale-[0.97]"
                     >
-                      {tool.name} →
+                      {tool.name}
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
                     </Link>
                   ) : null;
                 })}
@@ -269,17 +287,21 @@ export function ContentPage({ piece }: { piece: ContentPiece }) {
                   <Link
                     key={r.slug}
                     href={`/${TYPE_ROUTE[r.type] ?? r.type}/${r.slug}`}
-                    className="rounded-xl border border-border-subtle bg-surface p-4 transition-all hover:shadow-sm hover:border-nuvora-300 dark:hover:border-nuvora-700"
+                    className="group rounded-2xl border border-border-subtle bg-surface p-5 transition-all hover:shadow-lg hover:-translate-y-0.5"
                   >
-                    <span className="text-xs font-medium uppercase tracking-wider text-nuvora-600 dark:text-nuvora-400">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-nuvora-600 dark:text-nuvora-400">
                       {r.type}
                     </span>
-                    <h4 className="mt-1 font-semibold text-text-primary">
+                    <h4 className="mt-2 font-semibold text-text-primary group-hover:text-nuvora-600 dark:group-hover:text-nuvora-400 transition-colors">
                       {r.title}
                     </h4>
-                    <p className="mt-1 text-sm text-text-secondary line-clamp-2">
+                    <p className="mt-1.5 text-sm text-text-secondary leading-relaxed line-clamp-2">
                       {r.description}
                     </p>
+                    <div className="mt-3 flex items-center gap-1 text-xs font-medium text-text-tertiary group-hover:text-nuvora-600 dark:group-hover:text-nuvora-400 transition-colors">
+                      Read more
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-3"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                    </div>
                   </Link>
                 ))}
               </div>
@@ -287,7 +309,7 @@ export function ContentPage({ piece }: { piece: ContentPiece }) {
           )}
         </div>
 
-        <div className="mx-auto max-w-3xl px-4 sm:px-6">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 pb-12">
           <CrossLinks contentSlug={piece.slug} />
         </div>
       </article>

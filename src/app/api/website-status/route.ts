@@ -26,7 +26,7 @@ export async function GET(request: Request) {
       method: "HEAD",
       redirect: "follow",
       signal: AbortSignal.timeout(15000),
-      headers: { "User-Agent": "ToolVerse-Status-Checker/1.0" },
+      headers: { "User-Agent": "Nuvora-Status-Checker/1.0" },
     });
     const endTime = performance.now();
 

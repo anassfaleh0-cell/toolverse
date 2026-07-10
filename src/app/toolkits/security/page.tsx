@@ -5,7 +5,7 @@ import { JsonLd, Breadcrumbs, FaqSection } from "@/components/shared";
 import { webPageSchema, breadcrumbSchema, faqSchema, type FaqItem } from "@/lib/seo";
 
 const slug = "toolkits/security";
-const pageTitle = "Security Toolkit \u2014 Free Online Security Tools \u2014 ToolVerse";
+const pageTitle = "Security Toolkit \u2014 Free Online Security Tools \u2014 Nuvora";
 const pageDescription =
   "Curated collection of free online security tools for SSL checking, port scanning, WHOIS lookups, and password generation. Secure your infrastructure with ease.";
 

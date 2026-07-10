@@ -65,12 +65,12 @@ const faqItems: FaqItem[] = [
   {
     question: "Why does my CSV data show incorrect column alignment?",
     answer:
-      "Column alignment issues in CSV usually stem from unescaped commas within quoted values, inconsistent quoting, or mismatched header and data column counts. Some CSV exports do not properly quote fields containing commas, causing parsers to split the field into multiple columns. ToolVerse follows the RFC 4180 CSV standard and properly handles quoted fields with embedded commas, newlines, and double-quotes to ensure correct data mapping.",
+      "Column alignment issues in CSV usually stem from unescaped commas within quoted values, inconsistent quoting, or mismatched header and data column counts. Some CSV exports do not properly quote fields containing commas, causing parsers to split the field into multiple columns. Nuvora follows the RFC 4180 CSV standard and properly handles quoted fields with embedded commas, newlines, and double-quotes to ensure correct data mapping.",
   },
   {
     question: "Can I convert large JSON files to CSV in the browser?",
     answer:
-      "Browser-based conversion is limited by available memory. JSON files up to several megabytes work well, but very large files (over 50 MB) may cause performance issues. For production-scale data conversion, consider using command-line tools like jq combined with csvkit, or write a script using your language of choice. ToolVerse is ideal for API responses, configuration data, and moderate datasets that need quick conversion.",
+      "Browser-based conversion is limited by available memory. JSON files up to several megabytes work well, but very large files (over 50 MB) may cause performance issues. For production-scale data conversion, consider using command-line tools like jq combined with csvkit, or write a script using your language of choice. Nuvora is ideal for API responses, configuration data, and moderate datasets that need quick conversion.",
   },
   {
     question: "What are common use cases for JSON to CSV conversion?",
@@ -85,17 +85,17 @@ const faqItems: FaqItem[] = [
   {
     question: "What is RFC 4180 and why does it matter for CSV?",
     answer:
-      "RFC 4180 is the formal specification for CSV format published by the Internet Engineering Task Force. It defines standards for field quoting, escaping, line termination, and header handling. Not all CSV producers and consumers follow this standard, leading to compatibility issues. ToolVerse follows RFC 4180 for both reading and writing CSV, ensuring maximum compatibility with spreadsheet applications and data processing tools.",
+      "RFC 4180 is the formal specification for CSV format published by the Internet Engineering Task Force. It defines standards for field quoting, escaping, line termination, and header handling. Not all CSV producers and consumers follow this standard, leading to compatibility issues. Nuvora follows RFC 4180 for both reading and writing CSV, ensuring maximum compatibility with spreadsheet applications and data processing tools.",
   },
   {
     question: "Can I convert JSON with nested objects to CSV?",
     answer:
-      "JSON with nested objects can be converted by flattening the nested structure, but ToolVerse handles this by stringifying nested values as JSON strings within the CSV cells. For proper conversion, you should preprocess your JSON to flatten nested structures before conversion, or use a tool that supports nested path flattening (e.g., converting address.city to a separate column). Flat arrays of flat objects produce the cleanest CSV output.",
+      "JSON with nested objects can be converted by flattening the nested structure, but Nuvora handles this by stringifying nested values as JSON strings within the CSV cells. For proper conversion, you should preprocess your JSON to flatten nested structures before conversion, or use a tool that supports nested path flattening (e.g., converting address.city to a separate column). Flat arrays of flat objects produce the cleanest CSV output.",
   },
   {
     question: "What encoding does the CSV output use?",
     answer:
-      "ToolVerse outputs CSV as UTF-8 encoded text. UTF-8 supports all Unicode characters, including international characters, emojis, and special symbols. Some older spreadsheet applications on Windows expect CSV in the system&apos;s default encoding (e.g., Windows-1252 or Shift-JIS) and may display UTF-8 characters incorrectly. In such cases, you can open the CSV in a text editor and re-save with the appropriate encoding, or import it into the spreadsheet using the Data Import wizard rather than double-clicking the file.",
+      "Nuvora outputs CSV as UTF-8 encoded text. UTF-8 supports all Unicode characters, including international characters, emojis, and special symbols. Some older spreadsheet applications on Windows expect CSV in the system&apos;s default encoding (e.g., Windows-1252 or Shift-JIS) and may display UTF-8 characters incorrectly. In such cases, you can open the CSV in a text editor and re-save with the appropriate encoding, or import it into the spreadsheet using the Data Import wizard rather than double-clicking the file.",
   },
 ];
 
@@ -129,7 +129,7 @@ export default function JsonToCsvPage() {
               JSON and CSV serve different but complementary roles in the data ecosystem. JSON is the standard format for APIs, configuration files, and programmatic data exchange because it preserves data types and hierarchical structure. CSV is the universal format for data analysis, reporting, and spreadsheet processing because it is flat, simple, and compatible with every analytics tool from Excel to Pandas to Google Sheets. The ability to convert between these formats is essential for data engineers, analysts, and developers who need to move data between systems.
             </p>
             <p>
-              A typical workflow involves fetching JSON data from a REST API, converting it to CSV for analysis in a spreadsheet or data visualization tool, sharing the results with stakeholders, and potentially importing the cleaned data back into a system as JSON. Without a reliable converter, this workflow requires writing custom scripts for each transformation. ToolVerse eliminates that overhead with a browser-based converter that handles both directions. For validating the JSON before conversion, use the <Link href="/json-formatter" className="text-blue-600 hover:underline dark:text-blue-400">JSON Formatter</Link> to check for syntax errors and structure inconsistencies.
+              A typical workflow involves fetching JSON data from a REST API, converting it to CSV for analysis in a spreadsheet or data visualization tool, sharing the results with stakeholders, and potentially importing the cleaned data back into a system as JSON. Without a reliable converter, this workflow requires writing custom scripts for each transformation. Nuvora eliminates that overhead with a browser-based converter that handles both directions. For validating the JSON before conversion, use the <Link href="/json-formatter" className="text-blue-600 hover:underline dark:text-blue-400">JSON Formatter</Link> to check for syntax errors and structure inconsistencies.
             </p>
           </div>
         </div>
@@ -161,7 +161,7 @@ export default function JsonToCsvPage() {
               While JSON and CSV are the two most common data interchange formats, modern workflows often involve multiple formats. YAML is frequently used for configuration files because it supports comments and is more human-readable than JSON. XML remains important in enterprise systems and document markup. TSV (Tab-Separated Values) is an alternative to CSV that avoids comma-escaping issues. Understanding how to move data between these formats is a core skill for data professionals.
             </p>
             <p>
-              ToolVerse&apos;s bidirectional JSON↔CSV converter complements the YAML↔JSON converter to cover the most common format conversion scenarios. For deeply nested JSON data that needs to be flattened before conversion to CSV, preprocessing with the JSON Formatter helps you understand the structure and plan the flattening strategy. The <Link href="/yaml-to-json" className="text-blue-600 hover:underline dark:text-blue-400">YAML to JSON Converter</Link> extends your data transformation toolkit to cover configuration file formats commonly used in DevOps and application development.
+              Nuvora&apos;s bidirectional JSON↔CSV converter complements the YAML↔JSON converter to cover the most common format conversion scenarios. For deeply nested JSON data that needs to be flattened before conversion to CSV, preprocessing with the JSON Formatter helps you understand the structure and plan the flattening strategy. The <Link href="/yaml-to-json" className="text-blue-600 hover:underline dark:text-blue-400">YAML to JSON Converter</Link> extends your data transformation toolkit to cover configuration file formats commonly used in DevOps and application development.
             </p>
           </div>
         </div>

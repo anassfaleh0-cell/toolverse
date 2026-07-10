@@ -3,6 +3,7 @@ import { CATEGORIES, type Category } from "@/lib/categories";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import type { Metadata } from "next";
 import type { FaqItem } from "@/lib/seo";
+import { TOOL_KEYWORDS } from "@/lib/seo/keywords";
 
 export interface Tool extends ToolBase {
   slug: string;
@@ -105,11 +106,16 @@ export function generateToolMetadata(tool: Tool): Metadata {
   const title = tool.name.includes(SITE_NAME)
     ? tool.name
     : `${tool.name} - ${SITE_NAME}`;
+  const keywords = TOOL_KEYWORDS[tool.slug];
+  const richDescription = keywords
+    ? `Free ${keywords.primary} tool. ${tool.description} ${keywords.secondary.slice(0, 3).join(", ")}. Use our online ${keywords.primary} tool instantly — no signup, no tracking.`
+    : tool.description;
   return {
     title,
-    description: tool.description,
-    openGraph: { title, description: tool.description, url: `${SITE_URL}${tool.url}` },
-    twitter: { card: "summary_large_image", title, description: tool.description },
+    description: richDescription,
+    keywords: keywords ? [keywords.primary, ...keywords.secondary.slice(0, 5)].join(", ") : undefined,
+    openGraph: { title, description: richDescription, url: `${SITE_URL}${tool.url}` },
+    twitter: { card: "summary_large_image", title, description: richDescription },
     alternates: { canonical: `${SITE_URL}${tool.url}` },
     robots: { index: true, follow: true },
   };
@@ -126,6 +132,16 @@ export function generateCategoryMetadata(category: Category): Metadata {
 }
 
 export function generateToolFaq(tool: Tool): FaqItem[] {
+  const keywords = TOOL_KEYWORDS[tool.slug];
+  if (keywords && keywords.questions.length >= 3) {
+    const ans = `Use our free ${keywords.primary} tool. ${tool.description} No signup required, and your data never leaves your browser.`;
+    return keywords.questions.slice(0, 5).map((q) => ({
+      question: q,
+      answer: q.startsWith("What") || q.startsWith("How") || q.startsWith("Why")
+        ? `${q.replace("?", "")}. ${ans}`
+        : ans,
+    }));
+  }
   return [
     {
       question: `What is ${tool.name}?`,
@@ -138,6 +154,14 @@ export function generateToolFaq(tool: Tool): FaqItem[] {
     {
       question: `How does ${tool.name} work?`,
       answer: `${tool.name} processes your input directly in your browser or through our secure server. No data is stored or shared with third parties.`,
+    },
+    {
+      question: `Why should I use ${SITE_NAME} for ${tool.name}?`,
+      answer: `${SITE_NAME} provides a fast, private, and reliable ${tool.name} tool that works entirely in your browser. No data is uploaded to any server, and no signup is required.`,
+    },
+    {
+      question: `Can I use ${tool.name} on mobile devices?`,
+      answer: `Yes, ${tool.name} is fully responsive and works on all modern browsers including Chrome, Firefox, Safari, and Edge on both desktop and mobile devices.`,
     },
   ];
 }

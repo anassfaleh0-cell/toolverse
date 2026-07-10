@@ -5,7 +5,7 @@ import { SITE_URL } from "@/lib/constants";
 import { ColorNamesClient } from "./client";
 
 export const metadata: Metadata = {
-  title: "CSS Color Names — Full List of Named Colors | ToolVerse",
+  title: "CSS Color Names — Full List of Named Colors | Nuvora",
   description: "Complete list of CSS named colors with hex codes, RGB values, and color previews. Search and filter 147+ CSS color names including all CSS3/4 named colors.",
   openGraph: { title: "CSS Color Names — Full List of Named Colors", description: "Complete list of CSS named colors with hex codes and RGB values." },
   twitter: { title: "CSS Color Names", description: "Complete list of CSS named colors with hex codes and RGB values." },

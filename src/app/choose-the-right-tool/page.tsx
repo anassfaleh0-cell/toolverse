@@ -428,7 +428,7 @@ export default function ChooseTheRightToolPage() {
                 Choose the Right Tool
               </h1>
               <p className="mt-2 text-lg text-zinc-600 dark:text-zinc-400">
-                Find the perfect ToolVerse tool for your task. Answer a couple of questions and we&apos;ll recommend the best fit.
+                Find the perfect Nuvora tool for your task. Answer a couple of questions and we&apos;ll recommend the best fit.
               </p>
             </div>
             <SocialShare url={`${SITE_URL}/choose-the-right-tool`} title="Choose the Right Tool — Find the Perfect Tool for Your Task" />

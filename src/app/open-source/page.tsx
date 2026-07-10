@@ -4,17 +4,17 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: `Open Source — ToolVerse Is Built in Public`,
-  description: "ToolVerse is built in public. View our open source philosophy, contributing guidelines, and how we build free online tools transparently.",
-  openGraph: { title: `Open Source — Built in Public`, description: "ToolVerse is built in public. View our open source philosophy." },
-  twitter: { title: `Open Source`, description: "ToolVerse is built in public." },
+  title: `Open Source — Nuvora Is Built in Public`,
+  description: "Nuvora is built in public. View our open source philosophy, contributing guidelines, and how we build free online tools transparently.",
+  openGraph: { title: `Open Source — Built in Public`, description: "Nuvora is built in public. View our open source philosophy." },
+  twitter: { title: `Open Source`, description: "Nuvora is built in public." },
   alternates: { canonical: `${SITE_URL}/open-source` },
 };
 
 const breadcrumbs = [{ label: "Home", href: SITE_URL }, { label: "Open Source" }];
 
 const REPOS = [
-  { name: "ToolVerse Core", url: "https://github.com/toolverse/toolverse", desc: "Main repository with all tools, pages, and infrastructure. Next.js 16 + TypeScript + Tailwind v4.", stars: "1.2k", language: "TypeScript" },
+  { name: "Nuvora Core", url: "https://github.com/Nuvora/Nuvora", desc: "Main repository with all tools, pages, and infrastructure. Next.js 16 + TypeScript + Tailwind v4.", stars: "1.2k", language: "TypeScript" },
   { name: "DNS Libraries", url: "#", desc: "Shared DNS resolution libraries used by DNS Lookup, Propagation Checker, and other network tools.", language: "TypeScript" },
   { name: "IP Utilities", url: "#", desc: "IP address parsing, validation, and geolocation utilities.", language: "TypeScript" },
   { name: "SSL/TLS Tooling", url: "#", desc: "Certificate parsing, validation, and chain verification libraries.", language: "TypeScript" },
@@ -24,13 +24,13 @@ const REPOS = [
 export default function OpenSourcePage() {
   return (
     <>
-      <JsonLd data={webPageSchema({ name: `Open Source — ${SITE_NAME}`, description: "ToolVerse is built in public.", url: `${SITE_URL}/open-source`, breadcrumbs })} />
+      <JsonLd data={webPageSchema({ name: `Open Source — ${SITE_NAME}`, description: "Nuvora is built in public.", url: `${SITE_URL}/open-source`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <section className="border-b border-zinc-200 bg-zinc-50 py-12 dark:border-zinc-800 dark:bg-zinc-900/50 sm:py-16">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <Breadcrumbs items={breadcrumbs} />
           <h1 className="mt-4 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">Open Source</h1>
-          <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">ToolVerse is built in public. Every tool, every component, every line of code is open for the world to see, use, and improve.</p>
+          <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">Nuvora is built in public. Every tool, every component, every line of code is open for the world to see, use, and improve.</p>
         </div>
       </section>
 

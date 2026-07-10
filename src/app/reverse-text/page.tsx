@@ -43,7 +43,7 @@ const faqItems: FaqItem[] = [
   },
   {
     question: "What is word-level reversal and when would I use it?",
-    answer: "Word-level reversal splits the text into individual words (by whitespace) and reverses their order while keeping each word&apos;s characters intact. For example, &apos;Hello World from ToolVerse&apos; becomes &apos;ToolVerse from World Hello&apos;. This is different from character reversal because words remain readable but their sequence changes. Word reversal is useful for rearranging sentence structures, creating stylistic effects in writing, analyzing how word order affects meaning, and preparing text for certain types of word games or cryptography puzzles.",
+    answer: "Word-level reversal splits the text into individual words (by whitespace) and reverses their order while keeping each word&apos;s characters intact. For example, &apos;Hello World from Nuvora&apos; becomes &apos;Nuvora from World Hello&apos;. This is different from character reversal because words remain readable but their sequence changes. Word reversal is useful for rearranging sentence structures, creating stylistic effects in writing, analyzing how word order affects meaning, and preparing text for certain types of word games or cryptography puzzles.",
   },
   {
     question: "How does line-level reversal differ from other modes?",

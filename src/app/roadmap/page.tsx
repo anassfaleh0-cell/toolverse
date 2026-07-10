@@ -5,9 +5,9 @@ import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: `Roadmap — Product Development Plan | ${SITE_NAME}`,
-  description: "See what is coming next to ToolVerse. Our product roadmap shows planned features, tools, and improvements.",
-  openGraph: { title: `Roadmap — Product Development Plan`, description: "See what is coming next to ToolVerse." },
-  twitter: { title: `Roadmap`, description: "See what is coming next to ToolVerse." },
+  description: "See what is coming next to Nuvora. Our product roadmap shows planned features, tools, and improvements.",
+  openGraph: { title: `Roadmap — Product Development Plan`, description: "See what is coming next to Nuvora." },
+  twitter: { title: `Roadmap`, description: "See what is coming next to Nuvora." },
   alternates: { canonical: `${SITE_URL}/roadmap` },
 };
 
@@ -58,7 +58,7 @@ const PHASES = [
 export default function RoadmapPage() {
   return (
     <>
-      <JsonLd data={webPageSchema({ name: `Roadmap — ${SITE_NAME}`, description: "See what is coming next to ToolVerse.", url: `${SITE_URL}/roadmap`, breadcrumbs })} />
+      <JsonLd data={webPageSchema({ name: `Roadmap — ${SITE_NAME}`, description: "See what is coming next to Nuvora.", url: `${SITE_URL}/roadmap`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <section className="border-b border-zinc-200 bg-zinc-50 py-12 dark:border-zinc-800 dark:bg-zinc-900/50 sm:py-16">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">

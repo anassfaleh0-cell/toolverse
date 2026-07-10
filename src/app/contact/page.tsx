@@ -6,9 +6,9 @@ import { ContactForm } from "@/components/contact-form";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Get in touch with the ToolVerse team. Send feedback, report issues, or suggest new tools.",
-  openGraph: { title: "Contact", description: "Get in touch with the ToolVerse team.", url: `${SITE_URL}/contact` },
-  twitter: { card: "summary_large_image", title: "Contact", description: "Get in touch with the ToolVerse team." },
+  description: "Get in touch with the Nuvora team. Send feedback, report issues, or suggest new tools.",
+  openGraph: { title: "Contact", description: "Get in touch with the Nuvora team.", url: `${SITE_URL}/contact` },
+  twitter: { card: "summary_large_image", title: "Contact", description: "Get in touch with the Nuvora team." },
   alternates: { canonical: `${SITE_URL}/contact` },
 };
 
@@ -20,7 +20,7 @@ const breadcrumbs = [
 export default function Contact() {
   return (
     <>
-      <JsonLd data={webPageSchema({ name: "Contact", description: "Get in touch with the ToolVerse team.", url: `${SITE_URL}/contact`, breadcrumbs })} />
+      <JsonLd data={webPageSchema({ name: "Contact", description: "Get in touch with the Nuvora team.", url: `${SITE_URL}/contact`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24">
         <Breadcrumbs items={breadcrumbs} />

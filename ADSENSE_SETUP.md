@@ -1,4 +1,4 @@
-# Google AdSense Setup — ToolVerse
+# Google AdSense Setup — Nuvora
 
 ## Prerequisites
 - Google account
@@ -10,7 +10,7 @@
 
 1. Go to [adsense.google.com](https://adsense.google.com)
 2. Click **Sign Up Now**
-3. Enter website URL: `https://toolverse.dev`
+3. Enter website URL: `https://Nuvora.dev`
 4. Select account type: **Individual** (or Business if applicable)
 5. Complete the application form
 

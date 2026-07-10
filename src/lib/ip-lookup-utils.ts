@@ -165,7 +165,7 @@ export interface HistoryEntry {
   isp: string;
 }
 
-const HISTORY_KEY = "toolverse-ip-lookups";
+const HISTORY_KEY = "Nuvora-ip-lookups";
 const MAX_HISTORY = 10;
 
 export function getHistory(): HistoryEntry[] {

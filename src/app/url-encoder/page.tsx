@@ -65,7 +65,7 @@ const faqItems: FaqItem[] = [
   {
     question: "What is the difference between URL encoding and HTML encoding?",
     answer:
-      "URL encoding (percent-encoding) is used to make data safe for URLs using % followed by hex codes. HTML encoding uses &entity; or &#decimal; syntax to make text safe for HTML documents. The same character may encode differently: a space is %20 in URLs but &nbsp; in HTML. An ampersand is %26 in URLs but &amp; in HTML. They serve different purposes and should not be confused. Use ToolVerse&apos;s <Link href=\"/html-entity-encoder\" className=\"text-blue-600 hover:underline dark:text-blue-400\">HTML Entity Encoder</Link> when you need HTML-safe text rather than URL-safe text.",
+      "URL encoding (percent-encoding) is used to make data safe for URLs using % followed by hex codes. HTML encoding uses &entity; or &#decimal; syntax to make text safe for HTML documents. The same character may encode differently: a space is %20 in URLs but &nbsp; in HTML. An ampersand is %26 in URLs but &amp; in HTML. They serve different purposes and should not be confused. Use Nuvora&apos;s <Link href=\"/html-entity-encoder\" className=\"text-blue-600 hover:underline dark:text-blue-400\">HTML Entity Encoder</Link> when you need HTML-safe text rather than URL-safe text.",
   },
   {
     question: "Why does my URL break when it contains special characters?",
@@ -95,7 +95,7 @@ const faqItems: FaqItem[] = [
   {
     question: "What is the difference between URL encoding and Base64 encoding?",
     answer:
-      "URL encoding makes arbitrary text safe for URLs by percent-encoding each special character individually. Base64 encodes arbitrary binary data into a compact ASCII representation. Base64 output often contains + and / characters, which need further URL encoding if placed in a URL. Base64URL is a variant that avoids this by using - and _ instead. Choose URL encoding for text going directly into a URL, and Base64 for embedding binary data in text-only contexts. ToolVerse&apos;s <Link href=\"/base64-encoder\" className=\"text-blue-600 hover:underline dark:text-blue-400\">Base64 Encoder</Link> handles the latter.",
+      "URL encoding makes arbitrary text safe for URLs by percent-encoding each special character individually. Base64 encodes arbitrary binary data into a compact ASCII representation. Base64 output often contains + and / characters, which need further URL encoding if placed in a URL. Base64URL is a variant that avoids this by using - and _ instead. Choose URL encoding for text going directly into a URL, and Base64 for embedding binary data in text-only contexts. Nuvora&apos;s <Link href=\"/base64-encoder\" className=\"text-blue-600 hover:underline dark:text-blue-400\">Base64 Encoder</Link> handles the latter.",
   },
 ];
 
@@ -161,7 +161,7 @@ export default function UrlEncoderPage() {
               URL encoding touches nearly every web request. When you submit a search form, the search terms are encoded into the URL. When you share a link with UTM tracking parameters, the campaign values must be encoded to survive the redirect chain. When an API redirects you to an authorization endpoint with a callback URL as a parameter, that callback URL is encoded inside the outer URL. Social media platforms and URL shorteners depend on correct encoding to parse shared links without breaking on special characters like parentheses or apostrophes in article titles.
             </p>
             <p>
-              In automated testing, URL encoding is critical for setting up mock server responses. If your test framework sends requests with improperly encoded query parameters, the mock assertions fail not because of the logic under test but because of encoding mismatch. Similarly, when scraping or crawling websites, URLs must be normalized: decoded for analysis and encoded for requests. The interaction between URL encoding and other encodings like Base64 also arises frequently, particularly in single-page application routing where Base64-encoded state is embedded in the URL fragment. Use ToolVerse&apos;s <Link href="/case-converter" className="text-blue-600 hover:underline dark:text-blue-400">Case Converter</Link> to normalize and transform text data before or after encoding it for URLs.
+              In automated testing, URL encoding is critical for setting up mock server responses. If your test framework sends requests with improperly encoded query parameters, the mock assertions fail not because of the logic under test but because of encoding mismatch. Similarly, when scraping or crawling websites, URLs must be normalized: decoded for analysis and encoded for requests. The interaction between URL encoding and other encodings like Base64 also arises frequently, particularly in single-page application routing where Base64-encoded state is embedded in the URL fragment. Use Nuvora&apos;s <Link href="/case-converter" className="text-blue-600 hover:underline dark:text-blue-400">Case Converter</Link> to normalize and transform text data before or after encoding it for URLs.
             </p>
           </div>
         </div>

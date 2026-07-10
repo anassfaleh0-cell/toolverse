@@ -61,7 +61,7 @@ const faqItems: FaqItem[] = [
   {
     question: "Is my text saved or transmitted to any server?",
     answer:
-      "No. The word counter processes all text entirely in your browser using client-side JavaScript. No data is sent to any server, stored in any database, or transmitted over the network. Your text remains private and is immediately discarded when you close the page or clear the input. This is consistent with ToolVerse's privacy-first approach to all tools. You can paste sensitive or confidential content — including draft contracts, unpublished articles, or personal writing — with complete confidence that it never leaves your device.",
+      "No. The word counter processes all text entirely in your browser using client-side JavaScript. No data is sent to any server, stored in any database, or transmitted over the network. Your text remains private and is immediately discarded when you close the page or clear the input. This is consistent with Nuvora's privacy-first approach to all tools. You can paste sensitive or confidential content — including draft contracts, unpublished articles, or personal writing — with complete confidence that it never leaves your device.",
   },
   {
     question: "What is a good reading time for blog posts and articles?",

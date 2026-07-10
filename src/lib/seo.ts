@@ -143,9 +143,9 @@ export function articleSchema({
     mainEntityOfPage: url,
     publisher: {
       "@type": "Organization",
-      name: "ToolVerse",
-      url: "https://toolverse.dev",
-      logo: { "@type": "ImageObject", url: "https://toolverse.dev/icon.svg" },
+      name: "Nuvora",
+      url: "https://Nuvora.dev",
+      logo: { "@type": "ImageObject", url: "https://Nuvora.dev/icon.svg" },
     },
   };
   if (imageUrl) {

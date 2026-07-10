@@ -383,7 +383,7 @@ export function EmailAuthLookup({ lookupType, title, description, placeholder, s
         }
       }
 
-      addLine("ToolVerse — Email Auth Report", { bold: true, size: 18, color: [0.1, 0.1, 0.1] });
+      addLine("Nuvora — Email Auth Report", { bold: true, size: 18, color: [0.1, 0.1, 0.1] });
       addLine("");
       addLine(`Report generated: ${new Date().toLocaleString()}`, { size: 9, color: [0.5, 0.5, 0.5] });
       addLine("");

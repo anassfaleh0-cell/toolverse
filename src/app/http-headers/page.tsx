@@ -7,7 +7,7 @@ import { HttpHeadersClient } from "./client";
 import { TrustSignal } from "@/components/shared/trust-signal";
 
 export const metadata: Metadata = {
-  title: "HTTP Headers Reference — Complete List of HTTP Headers | ToolVerse",
+  title: "HTTP Headers Reference — Complete List of HTTP Headers | Nuvora",
   description: "Complete reference of HTTP request, response, general, entity, CORS, and security headers. Includes descriptions, examples, and RFC specifications.",
   openGraph: { title: "HTTP Headers Reference — Complete List", description: "Complete reference of HTTP headers with descriptions and examples." },
   twitter: { title: "HTTP Headers Reference", description: "Complete reference of HTTP headers with descriptions and examples." },

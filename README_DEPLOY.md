@@ -1,4 +1,4 @@
-# ToolVerse — Production Deployment Guide
+# Nuvora — Production Deployment Guide
 
 ## Vercel Deployment
 
@@ -6,13 +6,13 @@
 - Push the project to GitHub/GitLab
 - Go to [vercel.com](https://vercel.com) and import the repository
 - Framework preset: **Next.js**
-- Root directory: `./toolverse` (if monorepo)
+- Root directory: `./Nuvora` (if monorepo)
 
 ### 2. Environment Variables
 
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `NEXT_PUBLIC_SITE_URL` | Yes | Production URL (e.g., `https://toolverse.dev`) |
+| `NEXT_PUBLIC_SITE_URL` | Yes | Production URL (e.g., `https://Nuvora.dev`) |
 | `NEXT_PUBLIC_GA4_ID` | No | Google Analytics 4 measurement ID |
 | `NEXT_PUBLIC_CLARITY_ID` | No | Microsoft Clarity project ID |
 | `NEXT_PUBLIC_ADSENSE_ID` | No | Google AdSense publisher ID |
@@ -29,7 +29,7 @@ Set these in **Vercel Dashboard → Project → Settings → Environment Variabl
 
 ### 4. Custom Domain
 1. Go to **Vercel Dashboard → Project → Domains**
-2. Add your domain (e.g., `toolverse.dev`)
+2. Add your domain (e.g., `Nuvora.dev`)
 3. Follow Vercel's DNS configuration instructions
 4. Ensure the domain has:
    - A record pointing to `76.76.21.21` (Vercel proxy IP)
@@ -51,10 +51,10 @@ Set these in **Vercel Dashboard → Project → Settings → Environment Variabl
 
 #### Google Search Console
 1. Add property in [search.google.com/search-console](https://search.google.com/search-console)
-2. Choose **URL prefix** with `https://toolverse.dev`
+2. Choose **URL prefix** with `https://Nuvora.dev`
 3. Verify ownership via DNS TXT record or HTML file
 4. For HTML verification: set `NEXT_PUBLIC_GOOGLE_VERIFICATION` env var
-5. Submit sitemap: `https://toolverse.dev/sitemap.xml`
+5. Submit sitemap: `https://Nuvora.dev/sitemap.xml`
 
 #### Bing Webmaster
 1. Add site in [bing.com/webmasters](https://bing.com/webmasters)
@@ -65,14 +65,14 @@ Set these in **Vercel Dashboard → Project → Settings → Environment Variabl
 ### 7. IndexNow
 1. Generate an API key (any random 32-char hex string)
 2. Save as `INDEXNOW_KEY` environment variable
-3. Verify key is accessible at `https://toolverse.dev/{key}.txt`
-4. Submit URLs: `https://api.indexnow.org/indexnow?url=https://toolverse.dev/sitemap.xml&key={key}`
+3. Verify key is accessible at `https://Nuvora.dev/{key}.txt`
+4. Submit URLs: `https://api.indexnow.org/indexnow?url=https://Nuvora.dev/sitemap.xml&key={key}`
 
 ### 8. Post-Deploy Verification
-- [ ] Visit `https://toolverse.dev` — loads correctly
-- [ ] Check `https://toolverse.dev/robots.txt`
-- [ ] Check `https://toolverse.dev/sitemap.xml`
-- [ ] Check `https://toolverse.dev/sitemap-tools.xml`
+- [ ] Visit `https://Nuvora.dev` — loads correctly
+- [ ] Check `https://Nuvora.dev/robots.txt`
+- [ ] Check `https://Nuvora.dev/sitemap.xml`
+- [ ] Check `https://Nuvora.dev/sitemap-tools.xml`
 - [ ] Test a tool page (e.g., `/dns-lookup`)
 - [ ] Test a content page (e.g., `/guides/dns-introduction`)
 - [ ] Verify HTTPS (auto by Vercel)

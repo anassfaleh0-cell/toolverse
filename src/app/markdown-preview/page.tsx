@@ -21,7 +21,7 @@ import Link from "next/link";
 const slug = "markdown-preview";
 const pageTitle = "Markdown Preview - Live Markdown Editor & HTML Preview Online";
 const pageDescription =
-  "Write and preview Markdown in real time with ToolVerse&apos;s live Markdown preview tool. Render GitHub-flavored Markdown to HTML instantly with a split-pane editor.";
+  "Write and preview Markdown in real time with Nuvora&apos;s live Markdown preview tool. Render GitHub-flavored Markdown to HTML instantly with a split-pane editor.";
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -55,7 +55,7 @@ const faqItems: FaqItem[] = [
   {
     question: "What is the difference between standard Markdown and GitHub-Flavored Markdown?",
     answer:
-      "GitHub-Flavored Markdown (GFM) extends standard Markdown with additional features including tables, task lists, strikethrough, autolinking URLs, fenced code blocks with syntax highlighting, and emoji support. Standard Markdown only supports basic formatting like headings, lists, bold, italic, and links. ToolVerse uses GFM rendering via the marked library, so you get the full feature set including tables, code blocks, and strikethrough formatting.",
+      "GitHub-Flavored Markdown (GFM) extends standard Markdown with additional features including tables, task lists, strikethrough, autolinking URLs, fenced code blocks with syntax highlighting, and emoji support. Standard Markdown only supports basic formatting like headings, lists, bold, italic, and links. Nuvora uses GFM rendering via the marked library, so you get the full feature set including tables, code blocks, and strikethrough formatting.",
   },
   {
     question: "Can I use Markdown preview for writing documentation or blog posts?",
@@ -158,7 +158,7 @@ export default function MarkdownPreviewPage() {
           </h2>
           <div className="mt-8 space-y-4 text-zinc-600 dark:text-zinc-400">
             <p>
-              GitHub-Flavored Markdown extends the original specification with features that modern documentation requires. Tables with alignment support let you present structured data without HTML. Task lists with checkboxes enable progress tracking directly in Markdown files. Fenced code blocks with optional language identifiers enable syntax highlighting in rendered output. Strikethrough, autolinks, and emoji shortcodes round out the feature set. ToolVerse uses the marked library with GFM mode enabled, giving you access to all these extensions in the preview pane.
+              GitHub-Flavored Markdown extends the original specification with features that modern documentation requires. Tables with alignment support let you present structured data without HTML. Task lists with checkboxes enable progress tracking directly in Markdown files. Fenced code blocks with optional language identifiers enable syntax highlighting in rendered output. Strikethrough, autolinks, and emoji shortcodes round out the feature set. Nuvora uses the marked library with GFM mode enabled, giving you access to all these extensions in the preview pane.
             </p>
             <p>
               Beyond the standard GFM extensions, many Markdown processors support footnotes, definition lists, abbr eviations, and math expressions through additional plugins. The marked library is plugin-based, so additional extensions can be added as needed. For documentation that includes data tables generated from other formats, the <Link href="/base64-encoder" className="text-blue-600 hover:underline dark:text-blue-400">Base64 Encoder</Link> helps embed binary data and images inline within your Markdown documents using data URIs.

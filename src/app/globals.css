@@ -64,7 +64,34 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans, Arial, Helvetica, sans-serif);
-  font-display: optional;
+  font-display: swap;
+}
+
+/* Prevent layout shift from font loading */
+html {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+/* Fallback font matching for CLS prevention */
+@font-face {
+  font-family: 'Geist Sans Fallback';
+  src: local('Arial');
+  size-adjust: 95%;
+  ascent-override: 92%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Geist Mono Fallback';
+  src: local('Courier New');
+  size-adjust: 90%;
+  ascent-override: 90%;
+  descent-override: 25%;
+  line-gap-override: 0%;
 }
 
 /* ── Animations ── */
@@ -132,3 +159,37 @@ body {
 
 /* ── Focus ── */
 :focus-visible { outline: 2px solid var(--color-nuvora-500); outline-offset: 2px; border-radius: 4px; }
+
+/* ── CLS Prevention ── */
+img, video, iframe, embed, object {
+  max-width: 100%;
+  height: auto;
+}
+
+.aspect-square { aspect-ratio: 1 / 1; }
+.aspect-video { aspect-ratio: 16 / 9; }
+.aspect-portrait { aspect-ratio: 3 / 4; }
+.aspect-widescreen { aspect-ratio: 21 / 9; }
+.aspect-card { aspect-ratio: 4 / 3; }
+
+/* ── Tap target minimum ── */
+button, a, input, select, textarea {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Content-visibility for below-fold sections ── */
+.section-below-fold {
+  content-visibility: auto;
+  contain-intrinsic-size: 500px;
+}

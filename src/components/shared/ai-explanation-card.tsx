@@ -108,7 +108,7 @@ export function AIExplanationCard({
   const fixText =
     kb?.howToFix || (issueSummary ? `Address these issues: ${issueSummary}` : "");
   const nextText =
-    kb?.nextStep || "Explore related tools on Toolverse for deeper analysis.";
+    kb?.nextStep || "Explore related tools on Nuvora for deeper analysis.";
 
   const tabs: { key: TabKey; label: string }[] = [
     { key: "explain", label: "Explain this result" },

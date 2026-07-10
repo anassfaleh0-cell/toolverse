@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "home": "Home",
+    "tools": "Tools",
+    "guides": "Guides",
+    "blog": "Blog",
+    "about": "About",
+    "allTools": "All Tools",
+    "searchPlaceholder": "Search tools..."
+  },
+  "hero": {
+    "badge": "500+ free tools — 100% browser-based • No signup",
+    "title": "Smart tools for everything you do",
+    "subtitle": "Free Online Tools — No Signup, No Tracking, Just Results",
+    "exploreTools": "Explore All Tools",
+    "howItWorks": "How It Works",
+    "trust1": "Privacy First",
+    "trust2": "Instant Results",
+    "trust3": "100% Free",
+    "trust4": "Works on Mobile"
+  },
+  "footer": {
+    "tagline": "Smart Tools, Simply Done",
+    "description": "Nuvora provides powerful free online tools for everyone.",
+    "copyright": "All rights reserved.",
+    "builtWith": "Built with privacy at its core — everything runs in your browser."
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "subtitle": "Everything you need to know about Nuvora",
+    "items": [
+      {
+        "question": "What is Nuvora?",
+        "answer": "Nuvora is a free online tool platform providing browser-based utilities for network diagnostics, PDF processing, image editing, and more. All tools run in your browser — nothing leaves your device."
+      },
+      {
+        "question": "Are the tools really free?",
+        "answer": "Yes. All Nuvora tools are completely free with no limits, no signup, and no hidden fees."
+      },
+      {
+        "question": "Is my data private?",
+        "answer": "Absolutely. Every tool runs locally in your browser. Your files and data never leave your device. No servers, no uploads, no tracking."
+      },
+      {
+        "question": "How is Nuvora different?",
+        "answer": "Nuvora combines powerful tools with AI-powered analysis, all while keeping your data completely private. No signup required."
+      },
+      {
+        "question": "Can I suggest a new tool?",
+        "answer": "Yes! Use our Contact page to submit suggestions. We review every request."
+      }
+    ]
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "download": "Download",
+    "share": "Share"
+  },
+  "tool": {
+    "whatIsThis": "What is this?",
+    "howToUse": "How to Use",
+    "useCases": "Use Cases",
+    "relatedTools": "Related Tools",
+    "reportIssue": "Report Issue",
+    "faq": "Frequently Asked Questions"
+  },
+  "blog": {
+    "readMore": "Read More",
+    "relatedArticles": "Related Articles",
+    "tableOfContents": "Table of Contents",
+    "estimatedReadTime": "min read",
+    "byAuthor": "by"
+  },
+  "newsletter": {
+    "title": "Get notified about new tools",
+    "subtitle": "New tools, features, and launches. No spam — unsubscribe anytime.",
+    "placeholder": "you@example.com",
+    "button": "Subscribe"
+  }
+}

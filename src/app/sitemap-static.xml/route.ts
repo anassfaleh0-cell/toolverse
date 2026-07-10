@@ -15,6 +15,7 @@ export async function GET() {
     "/research", "/glossary", "/case-studies",
     "/community-templates", "/choose-the-right-tool",
     "/benchmarks/dns-performance", "/learning-paths/dns-fundamentals",
+    "/how-it-works",
   ];
 
   const bestOfPaths = [

@@ -8,7 +8,7 @@ export function MetaTagGenerator() {
   const [title, setTitle] = useState("My Amazing Website | Best SEO Tools");
   const [description, setDescription] = useState("Discover the best free SEO tools to optimize your website. Boost rankings, improve visibility, and drive more traffic with our comprehensive toolkit.");
   const [keywords, setKeywords] = useState("SEO, meta tags, website optimization, free tools");
-  const [author, setAuthor] = useState("ToolVerse");
+  const [author, setAuthor] = useState("Nuvora");
   const [viewport, setViewport] = useState("width=device-width, initial-scale=1.0");
   const [robots, setRobots] = useState("index, follow");
   const [ogTitle, setOgTitle] = useState("");

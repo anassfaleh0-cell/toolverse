@@ -41,7 +41,7 @@ export default function JamesWilsonPage() {
           name: SITE_NAME,
         },
         url: `${SITE_URL}/authors/james-wilson`,
-        description: "Full-Stack Developer at ToolVerse with 10 years of experience, open-source maintainer. Builds developer utility tools, formatters, and minifiers.",
+        description: "Full-Stack Developer at Nuvora with 10 years of experience, open-source maintainer. Builds developer utility tools, formatters, and minifiers.",
         knowsAbout: ["JavaScript", "TypeScript", "React", "Node.js", "Open Source"],
       }} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
@@ -70,16 +70,16 @@ export default function JamesWilsonPage() {
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <div className="space-y-6 text-zinc-600 dark:text-zinc-400">
             <p>
-              James Wilson is a Full-Stack Developer at ToolVerse with 10 years of experience building web applications, developer tools, and open-source software. He is the maintainer of several popular open-source projects on GitHub, including a widely used React component library and a TypeScript utility toolkit that collectively receive millions of monthly downloads on npm.
+              James Wilson is a Full-Stack Developer at Nuvora with 10 years of experience building web applications, developer tools, and open-source software. He is the maintainer of several popular open-source projects on GitHub, including a widely used React component library and a TypeScript utility toolkit that collectively receive millions of monthly downloads on npm.
             </p>
             <p>
               James&apos;s career spans startups and established tech companies, where he has led frontend architecture, designed RESTful and GraphQL APIs, and built developer tooling that improved team productivity. He is proficient in JavaScript, TypeScript, React, Node.js, and modern CSS, and he brings deep expertise in web performance optimization, accessibility, and cross-browser compatibility to every project he undertakes.
             </p>
             <p>
-              At ToolVerse, James develops and maintains the developer utility tools. He built the JSON Formatter, which handles deeply nested JSON structures with syntax highlighting and error detection, and the Base64 Encoder, which supports both encoding and decoding with Unicode and binary data handling. He also developed the URL Encoder, HTML Minifier, and CSS Minifier — each tool designed to provide instant, accurate results that match the behavior of standard command-line utilities.
+              At Nuvora, James develops and maintains the developer utility tools. He built the JSON Formatter, which handles deeply nested JSON structures with syntax highlighting and error detection, and the Base64 Encoder, which supports both encoding and decoding with Unicode and binary data handling. He also developed the URL Encoder, HTML Minifier, and CSS Minifier — each tool designed to provide instant, accurate results that match the behavior of standard command-line utilities.
             </p>
             <p>
-              James is a strong advocate for the open-source community. He believes that developer tools should be freely available, well-documented, and built to the highest standards of quality. At ToolVerse, he channels this philosophy into every tool he creates, ensuring they are fast, reliable, and accessible to developers of all skill levels.
+              James is a strong advocate for the open-source community. He believes that developer tools should be freely available, well-documented, and built to the highest standards of quality. At Nuvora, he channels this philosophy into every tool he creates, ensuring they are fast, reliable, and accessible to developers of all skill levels.
             </p>
           </div>
           <div className="mt-12">
@@ -87,7 +87,7 @@ export default function JamesWilsonPage() {
               Contributions
             </h2>
             <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-500">
-              Tools built and maintained by James at ToolVerse:
+              Tools built and maintained by James at Nuvora:
             </p>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               {contributions.map((tool) => (

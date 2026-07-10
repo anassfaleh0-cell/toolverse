@@ -7,7 +7,7 @@ import { MimeTypesClient } from "./client";
 import { TrustSignal } from "@/components/shared/trust-signal";
 
 export const metadata: Metadata = {
-  title: "MIME Types Reference — Complete List of Media Types | ToolVerse",
+  title: "MIME Types Reference — Complete List of Media Types | Nuvora",
   description: "Complete reference of MIME types (media types) organized by category. Includes text, image, audio, video, application, and font MIME types with file extensions.",
   openGraph: { title: "MIME Types Reference — Complete List", description: "Complete reference of MIME types organized by category." },
   twitter: { title: "MIME Types Reference", description: "Complete reference of MIME types organized by category." },

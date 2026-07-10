@@ -1,12 +1,14 @@
 export const SITE_NAME = "Nuvora";
 export const SITE_DESCRIPTION =
-  "Nuvora is an intelligent digital workspace with powerful AI-powered tools for network diagnostics, security analysis, PDF processing, image editing, and developer utilities — all free, all in your browser.";
-export const SITE_URL = "https://toolverse.dev";
+  "Free online tools for everyone — DNS lookup, PDF conversion, image editing, security checks, and developer utilities. No signup, no tracking, 100% browser-based.";
+export const SITE_URL = "https://nuvora.tools";
+
+export const HERO_TAGLINE = "Smart Tools, Simply Done";
+export const HERO_SUBTITLE = "Free Online Tools — No Signup, No Tracking, Just Results";
 
 export const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/tools", label: "Tools" },
-  { href: "/nuvora-ai", label: "Nuvora AI" },
   { href: "/whats-new", label: "What's New" },
   { href: "/trending", label: "Trending" },
   { href: "/guides", label: "Guides" },
@@ -18,22 +20,22 @@ export const FAQ_ITEMS = [
   {
     question: "What is Nuvora?",
     answer:
-      "Nuvora is an intelligent digital workspace that provides powerful AI-powered tools and utilities for everyone. From DNS lookups to PDF conversion, every tool runs entirely in your browser.",
+      "Nuvora is a free online tool platform providing browser-based utilities for network diagnostics, PDF processing, image editing, and more. All tools run in your browser — nothing leaves your device.",
   },
   {
     question: "Are the tools really free?",
     answer:
-      "Yes. All Nuvora tools are completely free to use with no hidden fees, no usage limits, and no signup required. Our Pro plan adds advanced features for power users.",
+      "Yes. All Nuvora tools are completely free to use with no hidden fees, no usage limits, and no signup required.",
+  },
+  {
+    question: "Is my data private?",
+    answer:
+      "Absolutely. Every tool runs locally in your browser. Your files and data never leave your device. No servers, no uploads, no tracking.",
   },
   {
     question: "How is Nuvora different from other tool sites?",
     answer:
-      "Nuvora combines AI-powered result analysis, browser-local privacy (no data leaves your device), and a unified workspace experience. Every tool is designed with the same premium attention to detail.",
-  },
-  {
-    question: "Does Nuvora use AI?",
-    answer:
-      "Yes. Nuvora AI analyzes your results to provide intelligent explanations, detect issues, and suggest next steps — all processed locally in your browser.",
+      "Nuvora combines powerful tools with AI-powered analysis, all while keeping your data completely private. No signup required, no limits.",
   },
   {
     question: "Can I suggest a new tool?",
@@ -43,7 +45,7 @@ export const FAQ_ITEMS = [
   {
     question: "Is there an API or Pro plan?",
     answer:
-      "Nuvora API and Nuvora Pro are coming soon. The API will provide programmatic access to all tools, and Pro will add team workspaces, priority support, and advanced features.",
+      "Nuvora API and Nuvora Pro are coming soon. The API will provide programmatic access to all tools.",
   },
 ] as const;
 
@@ -52,8 +54,7 @@ export const FOOTER_LINKS = [
     heading: "Nuvora",
     links: [
       { href: "/", label: "Home" },
-      { href: "/about-nuvora", label: "About Nuvora" },
-      { href: "/nuvora-ai", label: "Nuvora AI" },
+      { href: "/about-nuvora", label: "About" },
       { href: "/roadmap", label: "Roadmap" },
       { href: "/changelog", label: "Changelog" },
       { href: "/contact", label: "Contact" },
@@ -65,12 +66,12 @@ export const FOOTER_LINKS = [
     links: [
       { href: "/tools", label: "All Tools" },
       { href: "/categories", label: "Categories" },
+      { href: "/popular", label: "Popular Tools" },
+      { href: "/new", label: "New Tools" },
       { href: "/what-is-my-ip", label: "What Is My IP" },
       { href: "/dns-lookup", label: "DNS Lookup" },
       { href: "/ssl-certificate-checker", label: "SSL Checker" },
       { href: "/password-generator", label: "Password Generator" },
-      { href: "/pdf-to-word", label: "PDF to Word" },
-      { href: "/background-remover", label: "Background Remover" },
     ],
   },
   {
@@ -81,19 +82,20 @@ export const FOOTER_LINKS = [
       { href: "/blog", label: "Blog" },
       { href: "/compare", label: "Comparisons" },
       { href: "/glossary", label: "Glossary" },
+      { href: "/sitemap", label: "Sitemap" },
       { href: "/ultimate-guides/dns", label: "DNS Guide" },
       { href: "/ultimate-guides/ssl-tls", label: "SSL Guide" },
-      { href: "/ultimate-guides/http", label: "HTTP Guide" },
     ],
   },
   {
-    heading: "Products",
+    heading: "More",
     links: [
-      { href: "/nuvora-ai", label: "Nuvora AI" },
-      { href: "/nuvora-pro", label: "Nuvora Pro" },
-      { href: "/nuvora-api", label: "Nuvora API" },
-      { href: "/nuvora-extension", label: "Nuvora Extension" },
-      { href: "/nuvora-mobile", label: "Nuvora Mobile" },
+      { href: "/widgets", label: "Widgets" },
+      { href: "/press", label: "Press Kit" },
+      { href: "/link-to-us", label: "Link to Us" },
+      { href: "/brand", label: "Brand Guidelines" },
+      { href: "/pro", label: "Nuvora Pro" },
+      { href: "/api", label: "Nuvora API" },
     ],
   },
   {

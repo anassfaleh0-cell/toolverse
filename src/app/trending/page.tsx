@@ -7,9 +7,9 @@ import { getInternalTools } from "@/lib/registry";
 
 export const metadata: Metadata = {
   title: `Trending Tools — Most Popular Online Tools | ${SITE_NAME}`,
-  description: "Discover the most popular tools on ToolVerse. See what other users are using for DNS lookup, IP lookup, SSL checks, and more.",
-  openGraph: { title: `Trending Tools — Most Popular Online Tools | ${SITE_NAME}`, description: "Most popular tools on ToolVerse.", url: `${SITE_URL}/trending` },
-  twitter: { card: "summary_large_image", title: `Trending Tools — Most Popular Online Tools | ${SITE_NAME}`, description: "Most popular tools on ToolVerse." },
+  description: "Discover the most popular tools on Nuvora. See what other users are using for DNS lookup, IP lookup, SSL checks, and more.",
+  openGraph: { title: `Trending Tools — Most Popular Online Tools | ${SITE_NAME}`, description: "Most popular tools on Nuvora.", url: `${SITE_URL}/trending` },
+  twitter: { card: "summary_large_image", title: `Trending Tools — Most Popular Online Tools | ${SITE_NAME}`, description: "Most popular tools on Nuvora." },
   alternates: { canonical: `${SITE_URL}/trending` },
 };
 
@@ -22,13 +22,13 @@ export default function TrendingPage() {
 
   return (
     <>
-      <JsonLd data={webPageSchema({ name: `Trending Tools — ${SITE_NAME}`, description: "Most popular tools on ToolVerse.", url: `${SITE_URL}/trending`, breadcrumbs })} />
+      <JsonLd data={webPageSchema({ name: `Trending Tools — ${SITE_NAME}`, description: "Most popular tools on Nuvora.", url: `${SITE_URL}/trending`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <section className="border-b border-zinc-200 bg-zinc-50 py-12 dark:border-zinc-800 dark:bg-zinc-900/50 sm:py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <Breadcrumbs items={breadcrumbs} />
           <h1 className="mt-4 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">Trending Tools</h1>
-          <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">The most popular tools on ToolVerse, ranked by usage and community favorites.</p>
+          <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">The most popular tools on Nuvora, ranked by usage and community favorites.</p>
         </div>
       </section>
 

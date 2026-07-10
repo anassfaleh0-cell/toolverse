@@ -7,7 +7,7 @@ import { HtmlEntitiesClient } from "./client";
 import { TrustSignal } from "@/components/shared/trust-signal";
 
 export const metadata: Metadata = {
-  title: "HTML Entities Reference — Complete List of HTML Character Entities | ToolVerse",
+  title: "HTML Entities Reference — Complete List of HTML Character Entities | Nuvora",
   description: "Complete reference of HTML named character entities including punctuation, Latin letters, Greek letters, math symbols, arrows, and special characters with code points.",
   openGraph: { title: "HTML Entities Reference — Complete List", description: "Complete reference of HTML named character entities." },
   twitter: { title: "HTML Entities Reference", description: "Complete reference of HTML named character entities." },

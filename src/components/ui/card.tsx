@@ -3,16 +3,18 @@ import type { HTMLAttributes, ReactNode } from "react";
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
-  variant?: "default" | "elevated" | "interactive";
+  variant?: "default" | "elevated" | "interactive" | "premium";
 }
 
 const variantStyles = {
   default:
-    "rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900",
+    "rounded-xl border border-border-subtle bg-surface",
   elevated:
-    "rounded-xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900",
+    "rounded-xl border border-border-subtle bg-surface shadow-sm",
   interactive:
-    "rounded-xl border border-zinc-200 bg-white shadow-sm transition-all hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900",
+    "rounded-xl border border-border-subtle bg-surface shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5 active:scale-[0.98]",
+  premium:
+    "rounded-2xl border border-border-subtle bg-gradient-to-br from-surface to-surface-secondary/50 shadow-sm transition-all hover:shadow-lg hover:-translate-y-0.5",
 };
 
 export function Card({

@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "tools": "Herramientas",
+    "guides": "Guías",
+    "blog": "Blog",
+    "about": "Acerca de",
+    "allTools": "Todas las herramientas",
+    "searchPlaceholder": "Buscar herramientas..."
+  },
+  "hero": {
+    "badge": "Más de 500 herramientas gratis — 100% en el navegador • Sin registro",
+    "title": "Herramientas inteligentes para todo lo que haces",
+    "subtitle": "Herramientas gratuitas en línea — Sin registro, sin seguimiento, solo resultados",
+    "exploreTools": "Explorar todas las herramientas",
+    "howItWorks": "Cómo funciona",
+    "trust1": "Privacidad ante todo",
+    "trust2": "Resultados instantáneos",
+    "trust3": "100% gratuito",
+    "trust4": "Funciona en móvil"
+  },
+  "footer": {
+    "tagline": "Herramientas inteligentes, simplemente hechas",
+    "description": "Nuvora proporciona potentes herramientas gratuitas en línea para todos.",
+    "copyright": "Todos los derechos reservados.",
+    "builtWith": "Construido con la privacidad como pilar — todo funciona en tu navegador."
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "subtitle": "Todo lo que necesitas saber sobre Nuvora",
+    "items": [
+      {
+        "question": "¿Qué es Nuvora?",
+        "answer": "Nuvora es una plataforma de herramientas gratuitas en línea que ofrece utilidades basadas en navegador para diagnósticos de red, procesamiento de PDF, edición de imágenes y más. Todas las herramientas funcionan en tu navegador — nada sale de tu dispositivo."
+      },
+      {
+        "question": "¿Las herramientas son realmente gratis?",
+        "answer": "Sí. Todas las herramientas de Nuvora son completamente gratuitas, sin límites, sin registro y sin cargos ocultos."
+      },
+      {
+        "question": "¿Mis datos son privados?",
+        "answer": "Absolutamente. Cada herramienta se ejecuta localmente en tu navegador. Tus archivos y datos nunca salen de tu dispositivo. Sin servidores, sin cargas, sin seguimiento."
+      },
+      {
+        "question": "¿Cómo es diferente Nuvora?",
+        "answer": "Nuvora combina herramientas potentes con análisis impulsado por IA, todo mientras mantiene tus datos completamente privados. No requiere registro."
+      },
+      {
+        "question": "¿Puedo sugerir una nueva herramienta?",
+        "answer": "¡Sí! Usa nuestra página de Contacto para enviar sugerencias. Revisamos cada solicitud."
+      }
+    ]
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Algo salió mal",
+    "copy": "Copiar",
+    "copied": "¡Copiado!",
+    "download": "Descargar",
+    "share": "Compartir"
+  },
+  "tool": {
+    "whatIsThis": "¿Qué es esto?",
+    "howToUse": "Cómo usar",
+    "useCases": "Casos de uso",
+    "relatedTools": "Herramientas relacionadas",
+    "reportIssue": "Reportar problema",
+    "faq": "Preguntas frecuentes"
+  },
+  "blog": {
+    "readMore": "Leer más",
+    "relatedArticles": "Artículos relacionados",
+    "tableOfContents": "Tabla de contenidos",
+    "estimatedReadTime": "min de lectura",
+    "byAuthor": "por"
+  },
+  "newsletter": {
+    "title": "Recibe notificaciones sobre nuevas herramientas",
+    "subtitle": "Nuevas herramientas, funciones y lanzamientos. Sin spam — cancela cuando quieras.",
+    "placeholder": "tu@ejemplo.com",
+    "button": "Suscribirse"
+  }
+}

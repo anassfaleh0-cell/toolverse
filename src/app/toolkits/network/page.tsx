@@ -5,7 +5,7 @@ import { JsonLd, Breadcrumbs, FaqSection } from "@/components/shared";
 import { webPageSchema, breadcrumbSchema, faqSchema, type FaqItem } from "@/lib/seo";
 
 const slug = "toolkits/network";
-const pageTitle = "Network Toolkit \u2014 Free Network Diagnostic Tools \u2014 ToolVerse";
+const pageTitle = "Network Toolkit \u2014 Free Network Diagnostic Tools \u2014 Nuvora";
 const pageDescription =
   "Curated collection of free network diagnostic tools for DNS lookup, ping testing, port checking, IP lookup, and more. Troubleshoot network issues like a pro.";
 

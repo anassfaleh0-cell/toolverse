@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" fill="none">
+  <rect width="180" height="180" rx="40" fill="url(#ai)"/>
+  <path d="M90 28l62 36v72l-62 36-62-36V64l62-36z" stroke="white" stroke-width="8" stroke-linejoin="round" fill="white" fill-opacity="0.15"/>
+  <path d="M68 96l22 22 44-44" stroke="white" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <defs>
+    <linearGradient id="ai" x1="0" y1="0" x2="180" y2="180">
+      <stop stop-color="#7c3aed"/>
+      <stop offset=".5" stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+</svg>

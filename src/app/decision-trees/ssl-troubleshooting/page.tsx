@@ -86,49 +86,49 @@ const nodes: Record<string, { id: string; question?: string; options?: { label: 
     id: "finalRenewCert",
     isFinal: true,
     answer:
-      "Your SSL certificate has expired. Renew it with your certificate authority (CA) immediately. Most CAs allow renewal up to 30 days before expiry. After renewal, install the new certificate on your server and verify using the SSL Certificate Checker (toolverse.dev/ssl-certificate-checker). Set up calendar reminders to renew before expiry next time.",
+      "Your SSL certificate has expired. Renew it with your certificate authority (CA) immediately. Most CAs allow renewal up to 30 days before expiry. After renewal, install the new certificate on your server and verify using the SSL Certificate Checker (Nuvora.dev/ssl-certificate-checker). Set up calendar reminders to renew before expiry next time.",
   },
   finalNameMismatch: {
     id: "finalNameMismatch",
     isFinal: true,
     answer:
-      "The certificate's common name (CN) or Subject Alternative Names (SANs) do not match the domain in the browser's address bar. Obtain a new certificate that covers the correct domain name. Wildcard certificates (*.example.com) cover subdomains but not the bare domain. Verify coverage with the SSL Certificate Checker (toolverse.dev/ssl-certificate-checker).",
+      "The certificate's common name (CN) or Subject Alternative Names (SANs) do not match the domain in the browser's address bar. Obtain a new certificate that covers the correct domain name. Wildcard certificates (*.example.com) cover subdomains but not the bare domain. Verify coverage with the SSL Certificate Checker (Nuvora.dev/ssl-certificate-checker).",
   },
   finalChainIssue: {
     id: "finalChainIssue",
     isFinal: true,
     answer:
-      "The certificate issuer (CA) is not trusted by the browser, or intermediate certificates are missing. Ensure you installed all intermediate certificates provided by your CA. Some CAs require specific chain ordering. Use the SSL Certificate Checker (toolverse.dev/ssl-certificate-checker) to inspect the full chain. Compare with TLS/SSL Versions (toolverse.dev/tls-versions) for protocol support.",
+      "The certificate issuer (CA) is not trusted by the browser, or intermediate certificates are missing. Ensure you installed all intermediate certificates provided by your CA. Some CAs require specific chain ordering. Use the SSL Certificate Checker (Nuvora.dev/ssl-certificate-checker) to inspect the full chain. Compare with TLS/SSL Versions (Nuvora.dev/tls-versions) for protocol support.",
   },
   finalChainFix: {
     id: "finalChainFix",
     isFinal: true,
     answer:
-      "Your server is missing intermediate certificates. Download the CA bundle (intermediate certificates) from your certificate authority and install them on your server. For Apache, set SSLCertificateChainFile. For Nginx, concatenate intermediates with your certificate. Verify the fix using the SSL Certificate Checker (toolverse.dev/ssl-certificate-checker).",
+      "Your server is missing intermediate certificates. Download the CA bundle (intermediate certificates) from your certificate authority and install them on your server. For Apache, set SSLCertificateChainFile. For Nginx, concatenate intermediates with your certificate. Verify the fix using the SSL Certificate Checker (Nuvora.dev/ssl-certificate-checker).",
   },
   finalRevocationCheck: {
     id: "finalRevocationCheck",
     isFinal: true,
     answer:
-      "Your certificate may have been revoked by the CA. Check the certificate's revocation status via OCSP or CRL. If revoked, you must obtain a new certificate immediately. Use the SSL Certificate Checker (toolverse.dev/ssl-certificate-checker) to verify revocation status. Learn about SSL vs TLS (toolverse.dev/tls-versions) to ensure your server supports modern protocols.",
+      "Your certificate may have been revoked by the CA. Check the certificate's revocation status via OCSP or CRL. If revoked, you must obtain a new certificate immediately. Use the SSL Certificate Checker (Nuvora.dev/ssl-certificate-checker) to verify revocation status. Learn about SSL vs TLS (Nuvora.dev/tls-versions) to ensure your server supports modern protocols.",
   },
   finalMixedContent: {
     id: "finalMixedContent",
     isFinal: true,
     answer:
-      "Mixed content warnings occur when HTTPS pages load HTTP resources (scripts, images, stylesheets). Browsers block or warn about these resources. Update all resource URLs to use HTTPS. Use relative protocol URLs (//example.com/file.js) or update absolute URLs. The SSL Certificate Checker (toolverse.dev/ssl-certificate-checker) can help verify your setup after fixes.",
+      "Mixed content warnings occur when HTTPS pages load HTTP resources (scripts, images, stylesheets). Browsers block or warn about these resources. Update all resource URLs to use HTTPS. Use relative protocol URLs (//example.com/file.js) or update absolute URLs. The SSL Certificate Checker (Nuvora.dev/ssl-certificate-checker) can help verify your setup after fixes.",
   },
   finalProtocolCheck: {
     id: "finalProtocolCheck",
     isFinal: true,
     answer:
-      "Your server may support outdated TLS versions or weak cipher suites. Ensure TLS 1.2 and 1.3 are enabled and TLS 1.0/1.1 are disabled. Use the SSL Certificate Checker (toolverse.dev/ssl-certificate-checker) to check supported protocols. Review the TLS Versions Guide (toolverse.dev/tls-versions) for recommended configuration.",
+      "Your server may support outdated TLS versions or weak cipher suites. Ensure TLS 1.2 and 1.3 are enabled and TLS 1.0/1.1 are disabled. Use the SSL Certificate Checker (Nuvora.dev/ssl-certificate-checker) to check supported protocols. Review the TLS Versions Guide (Nuvora.dev/tls-versions) for recommended configuration.",
   },
   finalNoIssue: {
     id: "finalNoIssue",
     isFinal: true,
     answer:
-      "No SSL issues detected based on your answers. If problems persist, run a full audit using the SSL Certificate Checker (toolverse.dev/ssl-certificate-checker) and review the SSL vs TLS comparison (toolverse.dev/tls-versions) for best practices.",
+      "No SSL issues detected based on your answers. If problems persist, run a full audit using the SSL Certificate Checker (Nuvora.dev/ssl-certificate-checker) and review the SSL vs TLS comparison (Nuvora.dev/tls-versions) for best practices.",
   },
 };
 

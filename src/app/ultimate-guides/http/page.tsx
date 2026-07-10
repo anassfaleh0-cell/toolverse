@@ -124,7 +124,7 @@ export default function UltimateHttpGuidePage() {
                 ]}
               />
               <div className="mt-4 space-y-4 text-zinc-600 dark:text-zinc-400">
-                <p><strong>2xx Success</strong> codes indicate the request was accepted and processed. <strong>3xx Redirection</strong> tells the client to take additional action, usually following a redirect. <strong>4xx Client Error</strong> means the request was malformed or unauthorized — the client needs to fix something. <strong>5xx Server Error</strong> indicates a server-side failure. For a complete reference, see <Link href="/http-status-codes" className="text-blue-600 hover:underline dark:text-blue-400">ToolVerse HTTP Status Codes</Link>.</p>
+                <p><strong>2xx Success</strong> codes indicate the request was accepted and processed. <strong>3xx Redirection</strong> tells the client to take additional action, usually following a redirect. <strong>4xx Client Error</strong> means the request was malformed or unauthorized — the client needs to fix something. <strong>5xx Server Error</strong> indicates a server-side failure. For a complete reference, see <Link href="/http-status-codes" className="text-blue-600 hover:underline dark:text-blue-400">Nuvora HTTP Status Codes</Link>.</p>
               </div>
             </section>
 
@@ -138,7 +138,7 @@ export default function UltimateHttpGuidePage() {
                 <p>Sent by the server: <strong>Content-Type</strong> (media type of response), <strong>Content-Length</strong> (response size), <strong>Set-Cookie</strong> (set cookies), <strong>Cache-Control</strong> (caching policies), <strong>Server</strong> (server software), <strong>Location</strong> (redirect URL), <strong>WWW-Authenticate</strong> (authentication challenge).</p>
                 <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Security Headers</h3>
                 <p>These headers enable browser security features and protect against common attacks. See the dedicated section below.</p>
-                <p>Inspect any website&apos;s HTTP headers using <Link href="/http-headers-checker" className="text-blue-600 hover:underline dark:text-blue-400">ToolVerse HTTP Headers Checker</Link>. Browse our complete <Link href="/http-headers" className="text-blue-600 hover:underline dark:text-blue-400">HTTP Headers Reference</Link> for detailed documentation.</p>
+                <p>Inspect any website&apos;s HTTP headers using <Link href="/http-headers-checker" className="text-blue-600 hover:underline dark:text-blue-400">Nuvora HTTP Headers Checker</Link>. Browse our complete <Link href="/http-headers" className="text-blue-600 hover:underline dark:text-blue-400">HTTP Headers Reference</Link> for detailed documentation.</p>
               </div>
             </section>
 
@@ -172,7 +172,7 @@ export default function UltimateHttpGuidePage() {
                   <li><strong>Authentication:</strong> The server presents a TLS certificate issued by a trusted Certificate Authority, proving its identity. This prevents man-in-the-middle attacks.</li>
                   <li><strong>Integrity:</strong> Data cannot be modified in transit without detection. TLS includes message authentication codes (MACs) that verify data integrity.</li>
                 </ul>
-                <p>Google has used HTTPS as a ranking signal since 2014, and modern browsers mark HTTP pages as &quot;Not Secure.&quot; There is no reason to run a website without HTTPS today. Services like Let&apos;s Encrypt provide free TLS certificates with automated renewal. Check your site&apos;s HTTPS configuration with <Link href="/ssl-certificate-checker" className="text-blue-600 hover:underline dark:text-blue-400">ToolVerse SSL Certificate Checker</Link>.</p>
+                <p>Google has used HTTPS as a ranking signal since 2014, and modern browsers mark HTTP pages as &quot;Not Secure.&quot; There is no reason to run a website without HTTPS today. Services like Let&apos;s Encrypt provide free TLS certificates with automated renewal. Check your site&apos;s HTTPS configuration with <Link href="/ssl-certificate-checker" className="text-blue-600 hover:underline dark:text-blue-400">Nuvora SSL Certificate Checker</Link>.</p>
               </div>
             </section>
 
@@ -194,14 +194,14 @@ export default function UltimateHttpGuidePage() {
                 ]}
               />
               <div className="mt-4 text-zinc-600 dark:text-zinc-400">
-                <p>Audit your security headers with <Link href="/http-headers-checker" className="text-blue-600 hover:underline dark:text-blue-400">ToolVerse HTTP Headers Checker</Link>. Our tool checks for all essential security headers and provides recommendations.</p>
+                <p>Audit your security headers with <Link href="/http-headers-checker" className="text-blue-600 hover:underline dark:text-blue-400">Nuvora HTTP Headers Checker</Link>. Our tool checks for all essential security headers and provides recommendations.</p>
               </div>
             </section>
 
             <section id="http-tools">
               <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">8. HTTP Tools</h2>
               <div className="mt-4 space-y-4 text-zinc-600 dark:text-zinc-400">
-                <p>ToolVerse offers a comprehensive suite of HTTP diagnostic tools:</p>
+                <p>Nuvora offers a comprehensive suite of HTTP diagnostic tools:</p>
                 <ul className="list-disc space-y-2 pl-5">
                   <li><Link href="/http-headers-checker" className="text-blue-600 hover:underline dark:text-blue-400">HTTP Headers Checker</Link> — Inspect all request and response headers, including security headers, cache policies, and server information.</li>
                   <li><Link href="/redirect-checker" className="text-blue-600 hover:underline dark:text-blue-400">Redirect Checker</Link> — Trace redirect chains and identify redirect loops, broken URLs, and non-optimal redirect types.</li>

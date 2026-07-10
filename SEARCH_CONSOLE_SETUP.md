@@ -1,11 +1,11 @@
-# Google Search Console Setup — ToolVerse
+# Google Search Console Setup — Nuvora
 
 ## Add Property
 
 1. Go to [search.google.com/search-console](https://search.google.com/search-console)
 2. Click **Start Now**
 3. Select **URL prefix** method
-4. Enter: `https://toolverse.dev`
+4. Enter: `https://Nuvora.dev`
 
 ## Verify Ownership
 
@@ -29,7 +29,7 @@
 ## Submit Sitemap
 
 1. In Search Console → **Sitemaps**
-2. Enter sitemap URL: `https://toolverse.dev/sitemap.xml`
+2. Enter sitemap URL: `https://Nuvora.dev/sitemap.xml`
 3. Click **Submit**
 4. Verify all 4 sub-sitemaps are discovered:
    - `sitemap-tools.xml`
@@ -57,9 +57,9 @@
 
 1. Go to [bing.com/webmasters](https://bing.com/webmasters)
 2. Sign in with Microsoft account
-3. Add site: `https://toolverse.dev`
+3. Add site: `https://Nuvora.dev`
 4. Import from Google Search Console (quickest setup)
-5. Submit sitemap: `https://toolverse.dev/sitemap.xml`
+5. Submit sitemap: `https://Nuvora.dev/sitemap.xml`
 
 ## IndexNow (Bing)
 

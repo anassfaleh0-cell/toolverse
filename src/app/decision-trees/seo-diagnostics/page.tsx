@@ -108,43 +108,43 @@ const nodes: Record<string, { id: string; question?: string; options?: { label: 
     id: "finalOnPageSeo",
     isFinal: true,
     answer:
-      "Optimize your on-page SEO elements. Ensure each page has a unique title tag (50-60 characters), a compelling meta description (150-160 characters), and proper heading hierarchy (H1 for the main title, H2/H3 for subsections). Use semantic HTML and include target keywords naturally. Our Sitemap Generator (toolverse.dev/sitemap-generator) can help with site structure.",
+      "Optimize your on-page SEO elements. Ensure each page has a unique title tag (50-60 characters), a compelling meta description (150-160 characters), and proper heading hierarchy (H1 for the main title, H2/H3 for subsections). Use semantic HTML and include target keywords naturally. Our Sitemap Generator (Nuvora.dev/sitemap-generator) can help with site structure.",
   },
   finalTechnicalSeo: {
     id: "finalTechnicalSeo",
     isFinal: true,
     answer:
-      "Check for technical SEO issues: crawl errors in Google Search Console, broken links, slow page speed, missing canonical tags, improper redirect chains, and blocked resources in robots.txt. Use the Redirect Checker (toolverse.dev/redirect-checker) to audit redirects and HTTP Headers Checker (toolverse.dev/http-headers-checker) to review headers. Ensure your SSL certificate (toolverse.dev/ssl-certificate-checker) is valid.",
+      "Check for technical SEO issues: crawl errors in Google Search Console, broken links, slow page speed, missing canonical tags, improper redirect chains, and blocked resources in robots.txt. Use the Redirect Checker (Nuvora.dev/redirect-checker) to audit redirects and HTTP Headers Checker (Nuvora.dev/http-headers-checker) to review headers. Ensure your SSL certificate (Nuvora.dev/ssl-certificate-checker) is valid.",
   },
   finalPageSpeed: {
     id: "finalPageSpeed",
     isFinal: true,
     answer:
-      "Slow page speed directly impacts rankings and user experience. Optimize images, leverage browser caching, minify CSS/JS, and consider a CDN. Use Google PageSpeed Insights and our HTTP Headers Checker (toolverse.dev/http-headers-checker) to review caching headers. Compress images with our Image Compressor (toolverse.dev/image-compressor) and minify code.",
+      "Slow page speed directly impacts rankings and user experience. Optimize images, leverage browser caching, minify CSS/JS, and consider a CDN. Use Google PageSpeed Insights and our HTTP Headers Checker (Nuvora.dev/http-headers-checker) to review caching headers. Compress images with our Image Compressor (Nuvora.dev/image-compressor) and minify code.",
   },
   finalBacklinks: {
     id: "finalBacklinks",
     isFinal: true,
     answer:
-      "Build high-quality backlinks to improve domain authority and rankings. Create linkable assets (guides, original research, infographics), guest post on relevant sites, and fix broken backlinks. Monitor your backlink profile and disavow toxic links. Use our Redirect Checker (toolverse.dev/redirect-checker) to ensure any 301 redirects from old URLs pass link equity correctly.",
+      "Build high-quality backlinks to improve domain authority and rankings. Create linkable assets (guides, original research, infographics), guest post on relevant sites, and fix broken backlinks. Monitor your backlink profile and disavow toxic links. Use our Redirect Checker (Nuvora.dev/redirect-checker) to ensure any 301 redirects from old URLs pass link equity correctly.",
   },
   finalContentStrategy: {
     id: "finalContentStrategy",
     isFinal: true,
     answer:
-      "Develop a consistent content strategy. Publish in-depth, original content that matches search intent. Update existing pages with fresh information and add internal links between related articles. Target long-tail keywords with lower competition. Use our Sitemap Generator (toolverse.dev/sitemap-generator) to help search engines discover new content faster.",
+      "Develop a consistent content strategy. Publish in-depth, original content that matches search intent. Update existing pages with fresh information and add internal links between related articles. Target long-tail keywords with lower competition. Use our Sitemap Generator (Nuvora.dev/sitemap-generator) to help search engines discover new content faster.",
   },
   finalWaitIndex: {
     id: "finalWaitIndex",
     isFinal: true,
     answer:
-      "It can take days to weeks for Google to index new sites after sitemap submission. Ensure your site is accessible to crawlers: check robots.txt is not blocking Googlebot, verify your server returns 200 (not 5xx), and submit individual page URLs in Google Search Console for faster indexing. Use our Website Status Checker (toolverse.dev/website-status-checker) to verify server response.",
+      "It can take days to weeks for Google to index new sites after sitemap submission. Ensure your site is accessible to crawlers: check robots.txt is not blocking Googlebot, verify your server returns 200 (not 5xx), and submit individual page URLs in Google Search Console for faster indexing. Use our Website Status Checker (Nuvora.dev/website-status-checker) to verify server response.",
   },
   finalSitemap: {
     id: "finalSitemap",
     isFinal: true,
     answer:
-      "Create and submit an XML sitemap to Google Search Console and Bing Webmaster Tools. Your sitemap should include all important pages with lastmod dates and priority hints. Use our Sitemap Generator (toolverse.dev/sitemap-generator) to create one quickly. After submission, monitor the index coverage report in Search Console for errors.",
+      "Create and submit an XML sitemap to Google Search Console and Bing Webmaster Tools. Your sitemap should include all important pages with lastmod dates and priority hints. Use our Sitemap Generator (Nuvora.dev/sitemap-generator) to create one quickly. After submission, monitor the index coverage report in Search Console for errors.",
   },
 };
 
@@ -188,7 +188,7 @@ export default function SeoDiagnosticsPage() {
               This interactive decision tree helps you diagnose SEO ranking issues. Answer each question based on your site&apos;s current performance. The tree covers indexation problems, on-page SEO gaps, technical issues, page speed, content quality, and backlink profiles.
             </p>
             <p>
-              Use the <strong>Back</strong> button to revisit previous answers and <strong>Restart</strong> for a fresh session. Each recommendation links to relevant tools on ToolVerse for deeper analysis.
+              Use the <strong>Back</strong> button to revisit previous answers and <strong>Restart</strong> for a fresh session. Each recommendation links to relevant tools on Nuvora for deeper analysis.
             </p>
             <p>
               For best results, verify your findings using tools like Google Search Console, Google Analytics, and our technical SEO tools before implementing changes.

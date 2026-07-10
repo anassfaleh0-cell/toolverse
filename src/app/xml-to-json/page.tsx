@@ -21,7 +21,7 @@ import Link from "next/link";
 const slug = "xml-to-json";
 const pageTitle = "XML to JSON Converter - Convert XML to JSON and JSON to XML Online";
 const pageDescription =
-  "Convert XML to JSON and JSON to XML instantly with ToolVerse. Parse XML documents to JSON objects or generate XML from JSON data. Free online converter for developers.";
+  "Convert XML to JSON and JSON to XML instantly with Nuvora. Parse XML documents to JSON objects or generate XML from JSON data. Free online converter for developers.";
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -60,7 +60,7 @@ const faqItems: FaqItem[] = [
   {
     question: "How does the XML to JSON conversion handle XML attributes?",
     answer:
-      "XML attributes are stored under a special @attributes key in the output JSON object. For example, <item id=\"123\" type=\"product\"> becomes {\"item\": {\"@attributes\": {\"id\": \"123\", \"type\": \"product\"}}}. This preserves the distinction between attributes and child elements while keeping the JSON structure valid. Some converters offer options to merge attributes with child elements, but ToolVerse keeps them separate for maximum fidelity.",
+      "XML attributes are stored under a special @attributes key in the output JSON object. For example, <item id=\"123\" type=\"product\"> becomes {\"item\": {\"@attributes\": {\"id\": \"123\", \"type\": \"product\"}}}. This preserves the distinction between attributes and child elements while keeping the JSON structure valid. Some converters offer options to merge attributes with child elements, but Nuvora keeps them separate for maximum fidelity.",
   },
   {
     question: "What happens when XML has multiple child elements with the same name?",
@@ -85,7 +85,7 @@ const faqItems: FaqItem[] = [
   {
     question: "Why does my converted XML include an XML declaration?",
     answer:
-      "When converting JSON to XML, ToolVerse adds the standard XML declaration (<?xml version=\"1.0\" encoding=\"UTF-8\"?>) at the top of the output. This declaration is required by the XML specification and ensures that parsers correctly interpret the document as UTF-8 encoded XML. You can remove the declaration if your application does not need it, but it is best practice to include it for well-formed XML documents.",
+      "When converting JSON to XML, Nuvora adds the standard XML declaration (<?xml version=\"1.0\" encoding=\"UTF-8\"?>) at the top of the output. This declaration is required by the XML specification and ensures that parsers correctly interpret the document as UTF-8 encoded XML. You can remove the declaration if your application does not need it, but it is best practice to include it for well-formed XML documents.",
   },
   {
     question: "What are the limitations of browser-based XML to JSON conversion?",

@@ -58,7 +58,7 @@ export function ResultExport({ rawData, fileName, displayName, formatAsText, for
     const text = formatAsText();
     if (navigator.share) {
       try {
-        await navigator.share({ title: `${displayName} - ToolVerse`, text, url: window.location.href });
+        await navigator.share({ title: `${displayName} - Nuvora`, text, url: window.location.href });
       } catch { /* noop */ }
     } else {
       await navigator.clipboard.writeText(text);

@@ -1,5 +1,5 @@
 /**
- * Revenue slot components for ToolVerse.
+ * Revenue slot components for Nuvora.
  *
  * These are structural placeholders that prepare the layout for revenue
  * integrations without inserting actual ad or affiliate code.

@@ -80,7 +80,7 @@ const faqItems: FaqItem[] = [
   {
     question: "What is the difference between regex in JavaScript, Python, and PCRE?",
     answer:
-      "JavaScript regex follows the ECMAScript specification, which lacks some features available in PCRE (Perl Compatible Regular Expressions) and Python. PCRE supports atomic groups, possessive quantifiers, recursive patterns, and (?(condition)then|else) conditional patterns. Python adds named groups with (?P&lt;name&gt;...) syntax and supports the VERBOSE flag for readable multi-line patterns. JavaScript has caught up with Unicode property escapes (\\p{L}) and lookbehind in ES2018, but still lacks atomic groups and recursion. ToolVerse tests JavaScript-style regex.",
+      "JavaScript regex follows the ECMAScript specification, which lacks some features available in PCRE (Perl Compatible Regular Expressions) and Python. PCRE supports atomic groups, possessive quantifiers, recursive patterns, and (?(condition)then|else) conditional patterns. Python adds named groups with (?P&lt;name&gt;...) syntax and supports the VERBOSE flag for readable multi-line patterns. JavaScript has caught up with Unicode property escapes (\\p{L}) and lookbehind in ES2018, but still lacks atomic groups and recursion. Nuvora tests JavaScript-style regex.",
   },
   {
     question: "How do I validate an email address with regex?",
@@ -95,7 +95,7 @@ const faqItems: FaqItem[] = [
   {
     question: "How do I test a regex pattern against multiple test cases?",
     answer:
-      "Write a list of strings that should match and a list of strings that should not match. For each test case, apply the regex and verify the result. This is called a test-driven approach to regex development. Start with the simplest possible pattern that passes all your positive test cases, then incrementally refine it to reject the negative cases. ToolVerse&apos;s tester supports this workflow by showing all matches highlighted in the input text, making it easy to see exactly which portions of your test strings are captured by the pattern.",
+      "Write a list of strings that should match and a list of strings that should not match. For each test case, apply the regex and verify the result. This is called a test-driven approach to regex development. Start with the simplest possible pattern that passes all your positive test cases, then incrementally refine it to reject the negative cases. Nuvora&apos;s tester supports this workflow by showing all matches highlighted in the input text, making it easy to see exactly which portions of your test strings are captured by the pattern.",
   },
   {
     question: "What is the difference between match, exec, and test in JavaScript regex?",
@@ -171,7 +171,7 @@ export default function RegexTesterPage() {
                The most common regex mistake is overusing the dot (.) metacharacter with the greedy star quantifier (.*). This combination matches everything it can and then backtracks character by character to satisfy the rest of the pattern. On a long input string, this backtracking can take exponential time. The classic example is using ({'<'}.*{'>'}) to match HTML tags: on input &quot;{'<'}div{'>'}content{'<'}/div{'>'}&quot;, it matches the entire string instead of just the first tag because .* is greedy. The fix is to use a negated character class ({'<'}[{'>'}]*{'>'}) or a lazy quantifier ({'<'}.*?{'>'}).
             </p>
             <p>
-                             Another frequent issue is forgetting to escape special characters in the pattern. Characters like ., +, *, ?, ^, $, {'{'}, {'}'}, [, ], (, ), |, and \\ all have special meanings in regex and must be escaped with a backslash to match them literally. A related trap is assuming regex behavior is consistent across programming languages. JavaScript regex differs from Python, which differs from PCRE, which differs from grep. The same pattern can produce different results in different engines. Always test your regex in the environment where it will run, and use ToolVerse&apos;s tester as a quick iteration tool before finalizing. For encoding special characters in test strings or output, the <Link href="/url-encoder" className="text-blue-600 hover:underline dark:text-blue-400">URL Encoder</Link> helps you prepare encoded test data for patterns that process URL components.
+                             Another frequent issue is forgetting to escape special characters in the pattern. Characters like ., +, *, ?, ^, $, {'{'}, {'}'}, [, ], (, ), |, and \\ all have special meanings in regex and must be escaped with a backslash to match them literally. A related trap is assuming regex behavior is consistent across programming languages. JavaScript regex differs from Python, which differs from PCRE, which differs from grep. The same pattern can produce different results in different engines. Always test your regex in the environment where it will run, and use Nuvora&apos;s tester as a quick iteration tool before finalizing. For encoding special characters in test strings or output, the <Link href="/url-encoder" className="text-blue-600 hover:underline dark:text-blue-400">URL Encoder</Link> helps you prepare encoded test data for patterns that process URL components.
             </p>
           </div>
         </div>

@@ -41,7 +41,7 @@ const faqItems: FaqItem[] = [
   },
   {
     question: "How do I validate JSON?",
-    answer: "Use ToolVerse's JSON Formatter to validate JSON data. The tool checks for syntax errors, trailing commas, missing quotes, and malformed structures. It formats the output with proper indentation and provides detailed error messages with line numbers for quick debugging."
+    answer: "Use Nuvora's JSON Formatter to validate JSON data. The tool checks for syntax errors, trailing commas, missing quotes, and malformed structures. It formats the output with proper indentation and provides detailed error messages with line numbers for quick debugging."
   },
   {
     question: "Can JSON contain comments?",
@@ -110,7 +110,7 @@ export default function UltimateJsonGuidePage() {
                 <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Booleans and Null</h3>
                 <p>Booleans are the literal values true and false (without quotes). Null represents the absence of a value and is written as null (without quotes). These are distinct from string representations &quot;true&quot; or &quot;null&quot;.</p>
                 <p><strong>Critical syntax rules:</strong> Keys and string values must use double quotes (not single quotes). No trailing commas allowed after the last element in an object or array. No comments are permitted. File encoding must be UTF-8. Numbers must be base-10 (no hex or octal).</p>
-                <p>Validate your JSON syntax with <Link href="/json-formatter" className="text-blue-600 hover:underline dark:text-blue-400">ToolVerse JSON Formatter</Link>.</p>
+                <p>Validate your JSON syntax with <Link href="/json-formatter" className="text-blue-600 hover:underline dark:text-blue-400">Nuvora JSON Formatter</Link>.</p>
               </div>
             </section>
 
@@ -136,7 +136,7 @@ export default function UltimateJsonGuidePage() {
                 ]}
               />
               <div className="mt-4 space-y-4 text-zinc-600 dark:text-zinc-400">
-                <p>JSON strikes the best balance for web APIs and data exchange. YAML is preferred for configuration files (Docker Compose, Kubernetes, CI/CD pipelines) because of its readability. XML remains important for document-centric applications, enterprise integration (SOAP), and formats like RSS/Atom feeds. Convert between formats using <Link href="/json-to-csv" className="text-blue-600 hover:underline dark:text-blue-400">ToolVerse JSON to CSV</Link>, <Link href="/yaml-to-json" className="text-blue-600 hover:underline dark:text-blue-400">YAML to JSON Converter</Link>, and <Link href="/xml-to-json" className="text-blue-600 hover:underline dark:text-blue-400">XML to JSON Converter</Link>.</p>
+                <p>JSON strikes the best balance for web APIs and data exchange. YAML is preferred for configuration files (Docker Compose, Kubernetes, CI/CD pipelines) because of its readability. XML remains important for document-centric applications, enterprise integration (SOAP), and formats like RSS/Atom feeds. Convert between formats using <Link href="/json-to-csv" className="text-blue-600 hover:underline dark:text-blue-400">Nuvora JSON to CSV</Link>, <Link href="/yaml-to-json" className="text-blue-600 hover:underline dark:text-blue-400">YAML to JSON Converter</Link>, and <Link href="/xml-to-json" className="text-blue-600 hover:underline dark:text-blue-400">XML to JSON Converter</Link>.</p>
               </div>
             </section>
 
@@ -151,7 +151,7 @@ export default function UltimateJsonGuidePage() {
                   <li><strong>Unescaped control characters:</strong> Characters like tabs or newlines must be escaped within strings.</li>
                   <li><strong>Duplicate keys:</strong> While some parsers accept duplicate keys (using the last value), they violate the specification.</li>
                 </ul>
-                <p>Formatting (also called beautifying or pretty-printing) makes JSON human-readable by adding indentation and line breaks. Minification removes unnecessary whitespace to reduce file size for transmission. <Link href="/json-formatter" className="text-blue-600 hover:underline dark:text-blue-400">ToolVerse JSON Formatter</Link> handles both operations with syntax highlighting, line numbers, and detailed error reporting with exact positions of syntax issues.</p>
+                <p>Formatting (also called beautifying or pretty-printing) makes JSON human-readable by adding indentation and line breaks. Minification removes unnecessary whitespace to reduce file size for transmission. <Link href="/json-formatter" className="text-blue-600 hover:underline dark:text-blue-400">Nuvora JSON Formatter</Link> handles both operations with syntax highlighting, line numbers, and detailed error reporting with exact positions of syntax issues.</p>
               </div>
             </section>
 
@@ -164,7 +164,7 @@ export default function UltimateJsonGuidePage() {
                 <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">GraphQL APIs</h3>
                 <p>GraphQL uses JSON for both queries and responses. The query is a JSON-like string sent via POST, and the response is always a JSON object with a &quot;data&quot; field (and optionally an &quot;errors&quot; field). GraphQL&apos;s single-endpoint approach relies entirely on JSON structure for communication.</p>
                 <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">JSON Web Tokens (JWT)</h3>
-                <p>JWTs use JSON to encode claims (authentication data, permissions, metadata) in a compact, URL-safe token format. The token consists of three base64url-encoded JSON segments (header, payload, signature). Decode and inspect JWTs with <Link href="/jwt-decoder" className="text-blue-600 hover:underline dark:text-blue-400">ToolVerse JWT Decoder</Link>.</p>
+                <p>JWTs use JSON to encode claims (authentication data, permissions, metadata) in a compact, URL-safe token format. The token consists of three base64url-encoded JSON segments (header, payload, signature). Decode and inspect JWTs with <Link href="/jwt-decoder" className="text-blue-600 hover:underline dark:text-blue-400">Nuvora JWT Decoder</Link>.</p>
                 <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">API Response Best Practices</h3>
                 <ul className="list-disc space-y-1 pl-5">
                   <li>Use consistent key naming (camelCase or snake_case, never mix)</li>
@@ -180,7 +180,7 @@ export default function UltimateJsonGuidePage() {
             <section id="json-tools">
               <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">6. JSON Tools</h2>
               <div className="mt-4 space-y-4 text-zinc-600 dark:text-zinc-400">
-                <p>ToolVerse provides a complete set of JSON processing tools for developers:</p>
+                <p>Nuvora provides a complete set of JSON processing tools for developers:</p>
                 <ul className="list-disc space-y-2 pl-5">
                   <li><Link href="/json-formatter" className="text-blue-600 hover:underline dark:text-blue-400">JSON Formatter</Link> — Format, validate, and minify JSON data with syntax highlighting, error detection, and line numbers.</li>
                   <li><Link href="/json-to-csv" className="text-blue-600 hover:underline dark:text-blue-400">JSON to CSV Converter</Link> — Convert JSON data to CSV format and back. Handles nested objects and arrays with custom delimiters.</li>

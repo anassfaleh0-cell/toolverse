@@ -100,7 +100,7 @@ function formatAllData(
   ipv6: string | null,
   displayIp: string,
 ): string {
-  const lines: string[] = ["What Is My IP - ToolVerse", ""];
+  const lines: string[] = ["What Is My IP - Nuvora", ""];
   lines.push(`IP: ${displayIp}`);
   if (ipv6 && ipv6 !== displayIp) lines.push(`IPv6: ${ipv6}`);
   if (geo) {
@@ -274,7 +274,7 @@ export function IpDisplay({ pageUrl }: IpDisplayProps) {
           Export JSON
         </Button>
         <ShareButton
-          title="What Is My IP - ToolVerse"
+          title="What Is My IP - Nuvora"
           text="Find your public IP address with detailed geolocation and browser information."
           url={pageUrl}
         />
@@ -369,7 +369,7 @@ export function IpDisplay({ pageUrl }: IpDisplayProps) {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebPage",
-            name: "What Is My IP - ToolVerse",
+            name: "What Is My IP - Nuvora",
             description:
               "Find your public IPv4 and IPv6 address with detailed geolocation and browser information.",
             url: pageUrl,

@@ -38,7 +38,7 @@ function examplesFor(tool: Tool): { heading: string; body: string }[] {
     return [
       { heading: `Basic ${name} Example`, body: `Paste or type your text into the input area and click the process button. The tool immediately transforms your text according to the selected operation and displays the result in the output area.` },
       { heading: `Processing Large ${name} Inputs`, body: `The tool can handle large text blocks, making it suitable for processing entire documents, log files, or datasets. Paste up to several hundred kilobytes of text at once for batch processing.` },
-      { heading: `Combining ${name} With Other Tools`, body: `Copy the output and use it as input for another text tool to perform multi-step transformations. For example, clean text first, then format it, then analyze it — all within ToolVerse.` },
+      { heading: `Combining ${name} With Other Tools`, body: `Copy the output and use it as input for another text tool to perform multi-step transformations. For example, clean text first, then format it, then analyze it — all within Nuvora.` },
     ];
   }
   if (cat === "code-dev") {
@@ -92,7 +92,7 @@ function bestPracticesFor(tool: Tool): { heading: string; body: string }[] {
     return [
       { heading: "Verify Input Accuracy", body: `Always double-check domain names and IP addresses for typos. A single mistyped character can return results for the wrong server or fail entirely. Copy-paste from authoritative sources when possible.` },
       { heading: "Understand Rate Limits", body: `If using the tool repeatedly for automated checks, respect rate limits. Rapid-fire queries may trigger rate limiting on the underlying APIs. Space out bulk checks by a few seconds between requests.` },
-      { heading: "Cross-Reference Results", body: `For critical network diagnostics, cross-reference results from multiple tools. Use ${name} alongside other ToolVerse network tools for a complete picture of your infrastructure's health.` },
+      { heading: "Cross-Reference Results", body: `For critical network diagnostics, cross-reference results from multiple tools. Use ${name} alongside other Nuvora network tools for a complete picture of your infrastructure's health.` },
     ];
   }
   if (cat === "image-design") {
@@ -103,7 +103,7 @@ function bestPracticesFor(tool: Tool): { heading: string; body: string }[] {
   }
   return [
     { heading: "Review Output Carefully", body: `Always review the tool output before using it in production. Automated processing can introduce subtle errors.${cat === "text-writing" ? " For text transformations, read a sample of the output to verify correctness." : ""}` },
-    { heading: "Combine With Related Tools", body: `For best results, use ${name} in combination with other ToolVerse tools. Chaining complementary tools often produces better results than any single tool alone.` },
+    { heading: "Combine With Related Tools", body: `For best results, use ${name} in combination with other Nuvora tools. Chaining complementary tools often produces better results than any single tool alone.` },
   ];
 }
 
@@ -206,7 +206,7 @@ function faqFor(tool: Tool): { heading: string; body: string }[] {
     { heading: `Does ${name} store my data?`, body: `No, your data never leaves your device. ${name} processes everything client-side in your browser whenever possible — files are not uploaded to any server. For tools that require server-side operations, data is processed temporarily in memory and never written to disk, logged, or stored; it is discarded immediately after the operation completes. Your privacy is guaranteed by design, not by policy.` },
     { heading: `What are the limitations of ${name}?`, body: `${name} is designed for typical use cases and everyday input sizes. Extremely large inputs — images over 50MB or text files over 100,000 words — may be limited by available browser memory rather than artificial restrictions. For network tools, rate limiting may apply to prevent abuse of upstream services, but normal interactive usage stays well within these limits. The tool handles the vast majority of real-world professional and personal use cases without issue.` },
     { heading: `How accurate is ${name}?`, body: `${name} uses authoritative data sources and well-established APIs to ensure accuracy. Network tools query live DNS servers, WHOIS databases, and certificate authorities in real-time, returning the same results you would get from command-line utilities. Image and text tools apply battle-tested algorithms used in production environments, delivering consistent results with no unexpected variations.` },
-    { heading: `Can I use ${name} programmatically?`, body: `Some tools in the ToolVerse suite support direct API access for integration into your applications. Check the individual tool's documentation for available API endpoints, authentication requirements, and rate limits. For client-side tools that operate entirely in the browser, you can integrate them into your workflow using automation frameworks like Puppeteer or Playwright, or simply bookmark them for quick manual access whenever needed.` },
+    { heading: `Can I use ${name} programmatically?`, body: `Some tools in the Nuvora suite support direct API access for integration into your applications. Check the individual tool's documentation for available API endpoints, authentication requirements, and rate limits. For client-side tools that operate entirely in the browser, you can integrate them into your workflow using automation frameworks like Puppeteer or Playwright, or simply bookmark them for quick manual access whenever needed.` },
   ];
 }
 
@@ -296,7 +296,7 @@ function competitorComparisonFor(tool: Tool): { heading: string; body: string }[
     return [
       { heading: "vs Dedicated Text Editors", body: `VS Code and Sublime Text offer rich editing experiences with syntax highlighting, extensions, and project management. ${name} is purpose-built for specific text transformations, making it faster for focused tasks without the overhead of a full editor.` },
       { heading: "vs CLI Text Tools", body: `Tools like sed and awk provide powerful text processing from the terminal with infinite customization. ${name} offers a visual interface that is more approachable for users who prefer not to use command-line syntax.` },
-      { heading: "vs Other Online Utilities", body: `Many online text tools offer similar functionality but often include ads and limited features. ${name} provides a clean, ad-free experience with consistent quality across all ToolVerse text tools.` },
+      { heading: "vs Other Online Utilities", body: `Many online text tools offer similar functionality but often include ads and limited features. ${name} provides a clean, ad-free experience with consistent quality across all Nuvora text tools.` },
     ];
   }
   if (cat === "code-dev") {
@@ -315,7 +315,7 @@ function competitorComparisonFor(tool: Tool): { heading: string; body: string }[
   }
   return [
     { heading: "vs Desktop Applications", body: `Desktop applications generally offer more features and better performance for complex tasks. ${name} compensates with instant browser-based access and no installation requirements.` },
-    { heading: "vs Other Web Tools", body: `While many web tools offer similar functionality, ${name} distinguishes itself with a clean interface, no ads, and integration with the broader ToolVerse ecosystem of complementary tools.` },
+    { heading: "vs Other Web Tools", body: `While many web tools offer similar functionality, ${name} distinguishes itself with a clean interface, no ads, and integration with the broader Nuvora ecosystem of complementary tools.` },
     { heading: "vs Manual Methods", body: `Performing these operations manually or with general-purpose tools is time-consuming and error-prone. ${name} automates the process with consistent, reliable results every time.` },
   ];
 }
@@ -564,7 +564,7 @@ function enrichmentFor(tool: Tool, ktIndex: number): { heading: string; body: st
     case 7:
       return [{
         heading: "Getting the Most From This FAQ",
-        body: `The answers above cover the most common questions about ${name}. If your specific use case is not addressed, try experimenting with the tool directly — most features are intuitive. The ToolVerse team also welcomes feedback to improve documentation.`,
+        body: `The answers above cover the most common questions about ${name}. If your specific use case is not addressed, try experimenting with the tool directly — most features are intuitive. The Nuvora team also welcomes feedback to improve documentation.`,
       }];
     case 8:
       return [{
@@ -584,7 +584,7 @@ function enrichmentFor(tool: Tool, ktIndex: number): { heading: string; body: st
     case 11:
       return [{
         heading: "Pro Tips",
-        body: `Expert tips: (1) Bookmark ${name} and use keyboard shortcuts for rapid access during your workflow. (2) Combine it with complementary ToolVerse tools for multi-step operations. (3) Use the built-in copy and export features to integrate seamlessly with your team's tools. These small optimizations compound into significant time savings.`,
+        body: `Expert tips: (1) Bookmark ${name} and use keyboard shortcuts for rapid access during your workflow. (2) Combine it with complementary Nuvora tools for multi-step operations. (3) Use the built-in copy and export features to integrate seamlessly with your team's tools. These small optimizations compound into significant time savings.`,
       }];
     case 12:
       return [{
@@ -776,7 +776,7 @@ export function generateKnowledgePieces(tool: Tool): ContentPiece[] {
       readingTimeMinutes: Math.max(3, allSections.length),
       publishedAt: "2026-07-01",
       updatedAt: "2026-07-10",
-      author: { name: "ToolVerse Team", url: "https://toolverse.dev/about" },
+      author: { name: "Nuvora Team", url: "https://Nuvora.dev/about" },
       schema,
     });
   }

@@ -39,7 +39,7 @@ export default function SarahMitchellPage() {
           name: SITE_NAME,
         },
         url: `${SITE_URL}/authors/sarah-mitchell`,
-        description: "Web Security Researcher at ToolVerse with 8 years of experience, OWASP contributor. Builds SSL, TLS, and HTTP security checking tools.",
+        description: "Web Security Researcher at Nuvora with 8 years of experience, OWASP contributor. Builds SSL, TLS, and HTTP security checking tools.",
         knowsAbout: ["SSL/TLS", "Web Security", "Cryptography", "OWASP", "HTTP Security Headers"],
       }} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
@@ -68,16 +68,16 @@ export default function SarahMitchellPage() {
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <div className="space-y-6 text-zinc-600 dark:text-zinc-400">
             <p>
-              Sarah Mitchell is a Web Security Researcher at ToolVerse with 8 years of experience in web application security, SSL/TLS protocols, and cryptographic standards. She is an active contributor to the Open Web Application Security Project (OWASP), where she has contributed to the OWASP Top Ten, the OWASP Testing Guide, and several security cheat sheets that are referenced by security professionals worldwide.
+              Sarah Mitchell is a Web Security Researcher at Nuvora with 8 years of experience in web application security, SSL/TLS protocols, and cryptographic standards. She is an active contributor to the Open Web Application Security Project (OWASP), where she has contributed to the OWASP Top Ten, the OWASP Testing Guide, and several security cheat sheets that are referenced by security professionals worldwide.
             </p>
             <p>
-              Before joining ToolVerse, Sarah worked as a security engineer at several fintech companies, where she conducted penetration testing, security audits, and vulnerability assessments for web applications handling sensitive financial data. She holds the Certified Information Systems Security Professional (CISSP) certification and has presented at security conferences including BSides and OWASP AppSec on topics ranging from TLS 1.3 adoption to HTTP security headers.
+              Before joining Nuvora, Sarah worked as a security engineer at several fintech companies, where she conducted penetration testing, security audits, and vulnerability assessments for web applications handling sensitive financial data. She holds the Certified Information Systems Security Professional (CISSP) certification and has presented at security conferences including BSides and OWASP AppSec on topics ranging from TLS 1.3 adoption to HTTP security headers.
             </p>
             <p>
-              At ToolVerse, Sarah is responsible for all security-related tools and content. She built the SSL Certificate Checker from the ground up, implementing raw TLS connections that validate certificate chains, check expiration dates, and verify Subject Alternative Names against industry standards. She also developed the HTTP Headers Checker, which evaluates security headers like Content-Security-Policy, Strict-Transport-Security, and X-Frame-Options against OWASP recommendations.
+              At Nuvora, Sarah is responsible for all security-related tools and content. She built the SSL Certificate Checker from the ground up, implementing raw TLS connections that validate certificate chains, check expiration dates, and verify Subject Alternative Names against industry standards. She also developed the HTTP Headers Checker, which evaluates security headers like Content-Security-Policy, Strict-Transport-Security, and X-Frame-Options against OWASP recommendations.
             </p>
             <p>
-              Sarah is committed to demystifying web security for developers and system administrators. Through her guides on SSL/TLS best practices, security header configuration, and certificate lifecycle management, she helps teams build more secure web applications. Her work at ToolVerse reflects her belief that security tools should be accessible, accurate, and free for everyone.
+              Sarah is committed to demystifying web security for developers and system administrators. Through her guides on SSL/TLS best practices, security header configuration, and certificate lifecycle management, she helps teams build more secure web applications. Her work at Nuvora reflects her belief that security tools should be accessible, accurate, and free for everyone.
             </p>
           </div>
           <div className="mt-12">
@@ -85,7 +85,7 @@ export default function SarahMitchellPage() {
               Contributions
             </h2>
             <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-500">
-              Tools built and maintained by Sarah at ToolVerse:
+              Tools built and maintained by Sarah at Nuvora:
             </p>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               {contributions.map((tool) => (

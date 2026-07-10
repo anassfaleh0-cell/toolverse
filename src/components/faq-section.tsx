@@ -66,7 +66,7 @@ export function FaqSection() {
             Frequently Asked Questions
           </h2>
           <p className="mt-4 text-zinc-600 dark:text-zinc-400">
-            Everything you need to know about ToolVerse
+            Everything you need to know about Nuvora
           </p>
         </div>
         <div className="mt-12 divide-y divide-zinc-200 dark:divide-zinc-800">

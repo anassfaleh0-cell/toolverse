@@ -64,7 +64,7 @@ export function generateBestForSlotPages(): ProgrammaticPage[] {
 
       pages.push({
         slug,
-        title: `Best ${catName} Tools for ${slot.name} (2026) — Free Online Tools | ToolVerse`,
+        title: `Best ${catName} Tools for ${slot.name} (2026) — Free Online Tools | Nuvora`,
         description: `Discover the best free ${catName.toLowerCase()} tools for ${slot.desc}. ${catTools.length} hand-picked tools for ${slot.name.toLowerCase()} to ${CATEGORY_DESC[category] || "get work done"}.`,
         h1: `Best ${catName} Tools for ${slot.name}`,
         intro: generateToolIntro(category, catTools.length),

@@ -86,7 +86,7 @@ const faqItems: FaqItem[] = [
   {
     question: "Is my list data stored or transmitted during randomization?",
     answer:
-      "No. The entire randomization process happens in your browser using client-side JavaScript. Your list items are never sent to any server, stored in any database, or transmitted over the network. This means you can use the list randomizer for sensitive data like contest entries, confidential team assignments, or any other information you want to keep private. Close the page or refresh, and all trace of your data is gone. This is consistent with ToolVerse's commitment to user privacy across all tools.",
+      "No. The entire randomization process happens in your browser using client-side JavaScript. Your list items are never sent to any server, stored in any database, or transmitted over the network. This means you can use the list randomizer for sensitive data like contest entries, confidential team assignments, or any other information you want to keep private. Close the page or refresh, and all trace of your data is gone. This is consistent with Nuvora's commitment to user privacy across all tools.",
   },
 ];
 

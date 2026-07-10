@@ -1,5 +1,5 @@
 /**
- * Affiliate configuration for ToolVerse.
+ * Affiliate configuration for Nuvora.
  *
  * Map tool slugs or content types to affiliate programs.
  * Add entries as affiliate partnerships are established.

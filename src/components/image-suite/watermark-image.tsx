@@ -8,7 +8,7 @@ const POSITIONS = ["top-left", "top-right", "bottom-left", "bottom-right", "cent
 export function WatermarkImage() {
   const [originalImage, setOriginalImage] = useState<HTMLImageElement | null>(null);
   const [watermarkedDataUrl, setWatermarkedDataUrl] = useState<string | null>(null);
-  const [text, setText] = useState("© ToolVerse");
+  const [text, setText] = useState("© Nuvora");
   const [opacity, setOpacity] = useState(0.5);
   const [fontSize, setFontSize] = useState(32);
   const [position, setPosition] = useState<typeof POSITIONS[number]>("bottom-right");

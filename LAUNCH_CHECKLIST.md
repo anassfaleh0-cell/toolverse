@@ -1,8 +1,8 @@
-# ToolVerse — Production Launch Checklist
+# Nuvora — Production Launch Checklist
 
 ## Pre-Launch
 
-- [ ] Buy domain name (e.g., toolverse.dev)
+- [ ] Buy domain name (e.g., Nuvora.dev)
 - [ ] Configure domain DNS for Vercel
 - [ ] Connect Vercel project to Git repository
 - [ ] Set all environment variables in Vercel
@@ -14,17 +14,17 @@
 - [ ] A record: `@` → `76.76.21.21`
 - [ ] CNAME record: `www` → `cname.vercel-dns.com`
 - [ ] HTTPS certificate provisioned (automatic via Vercel)
-- [ ] WWW redirect configured (toolverse.dev → www or vice versa)
+- [ ] WWW redirect configured (Nuvora.dev → www or vice versa)
 
 ## Search Engines
 
 - [ ] Google Search Console property added
 - [ ] Domain verified (DNS TXT record)
-- [ ] Sitemap submitted: `https://toolverse.dev/sitemap.xml`
+- [ ] Sitemap submitted: `https://Nuvora.dev/sitemap.xml`
 - [ ] Bing Webmaster Tools site added
 - [ ] Sitemap submitted to Bing
 - [ ] IndexNow key generated and deployed
-- [ ] IndexNow key file accessible: `https://toolverse.dev/{key}.txt`
+- [ ] IndexNow key file accessible: `https://Nuvora.dev/{key}.txt`
 - [ ] Request initial indexing (Google → URL Inspection → Request Indexing)
 
 ## Analytics & Monitoring
@@ -45,7 +45,7 @@
 
 ## Site Verification
 
-- [ ] `robots.txt` accessible: `https://toolverse.dev/robots.txt`
+- [ ] `robots.txt` accessible: `https://Nuvora.dev/robots.txt`
 - [ ] `sitemap.xml` accessible and valid
 - [ ] `favicon` displays in browser tab
 - [ ] `manifest.webmanifest` accessible

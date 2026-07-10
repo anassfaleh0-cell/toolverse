@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "tools": "Werkzeuge",
+    "guides": "Leitfäden",
+    "blog": "Blog",
+    "about": "Über uns",
+    "allTools": "Alle Werkzeuge",
+    "searchPlaceholder": "Werkzeuge suchen..."
+  },
+  "hero": {
+    "badge": "500+ kostenlose Werkzeuge — 100% browserbasiert • Keine Anmeldung",
+    "title": "Intelligente Werkzeuge für alles, was du tust",
+    "subtitle": "Kostenlose Online-Werkzeuge — Keine Anmeldung, kein Tracking, nur Ergebnisse",
+    "exploreTools": "Alle Werkzeuge entdecken",
+    "howItWorks": "So funktioniert's",
+    "trust1": "Datenschutz zuerst",
+    "trust2": "Sofortige Ergebnisse",
+    "trust3": "100% kostenlos",
+    "trust4": "Funktioniert auf Mobilgeräten"
+  },
+  "footer": {
+    "tagline": "Intelligente Werkzeuge, einfach gemacht",
+    "description": "Nuvora bietet leistungsstarke kostenlose Online-Werkzeuge für alle.",
+    "copyright": "Alle Rechte vorbehalten.",
+    "builtWith": "Entwickelt mit Datenschutz als Kern — alles läuft in deinem Browser."
+  },
+  "faq": {
+    "title": "Häufig gestellte Fragen",
+    "subtitle": "Alles, was du über Nuvora wissen musst",
+    "items": [
+      {
+        "question": "Was ist Nuvora?",
+        "answer": "Nuvora ist eine kostenlose Online-Tool-Plattform mit browserbasierten Hilfsprogrammen für Netzwerkdiagnose, PDF-Verarbeitung, Bildbearbeitung und mehr. Alle Werkzeuge laufen in deinem Browser — nichts verlässt dein Gerät."
+      },
+      {
+        "question": "Sind die Werkzeuge wirklich kostenlos?",
+        "answer": "Ja. Alle Nuvora-Werkzeuge sind vollständig kostenlos, ohne Limits, ohne Anmeldung und ohne versteckte Gebühren."
+      },
+      {
+        "question": "Sind meine Daten privat?",
+        "answer": "Absolut. Jedes Werkzeug läuft lokal in deinem Browser. Deine Dateien und Daten verlassen niemals dein Gerät. Keine Server, keine Uploads, kein Tracking."
+      },
+      {
+        "question": "Was macht Nuvora anders?",
+        "answer": "Nuvora vereint leistungsstarke Werkzeuge mit KI-gestützter Analyse, während deine Daten vollständig privat bleiben. Keine Anmeldung erforderlich."
+      },
+      {
+        "question": "Kann ich ein neues Werkzeug vorschlagen?",
+        "answer": "Ja! Nutze unsere Kontaktseite, um Vorschläge einzureichen. Wir prüfen jede Anfrage."
+      }
+    ]
+  },
+  "common": {
+    "loading": "Wird geladen...",
+    "error": "Etwas ist schief gelaufen",
+    "copy": "Kopieren",
+    "copied": "Kopiert!",
+    "download": "Herunterladen",
+    "share": "Teilen"
+  },
+  "tool": {
+    "whatIsThis": "Was ist das?",
+    "howToUse": "Anleitung",
+    "useCases": "Anwendungsfälle",
+    "relatedTools": "Verwandte Werkzeuge",
+    "reportIssue": "Problem melden",
+    "faq": "Häufig gestellte Fragen"
+  },
+  "blog": {
+    "readMore": "Weiterlesen",
+    "relatedArticles": "Verwandte Artikel",
+    "tableOfContents": "Inhaltsverzeichnis",
+    "estimatedReadTime": "Min. Lesezeit",
+    "byAuthor": "von"
+  },
+  "newsletter": {
+    "title": "Benachrichtigungen über neue Werkzeuge erhalten",
+    "subtitle": "Neue Werkzeuge, Funktionen und Veröffentlichungen. Kein Spam — jederzeit kündbar.",
+    "placeholder": "du@beispiel.de",
+    "button": "Abonnieren"
+  }
+}

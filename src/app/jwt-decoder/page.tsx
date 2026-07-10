@@ -60,7 +60,7 @@ const faqItems: FaqItem[] = [
   {
     question: "What is the difference between JWS and JWE?",
     answer:
-      "JWS (JSON Web Signature) provides integrity and authenticity through digital signatures but the payload is readable by anyone who decodes it. JWE (JSON Web Encryption) encrypts the payload so only the intended recipient can decrypt and read it. Most JWTs in web applications are JWS tokens because they do not contain secrets. JWE is used when the payload itself is confidential. ToolVerse decodes JWS tokens; encrypted JWE tokens cannot be decoded without the decryption key.",
+      "JWS (JSON Web Signature) provides integrity and authenticity through digital signatures but the payload is readable by anyone who decodes it. JWE (JSON Web Encryption) encrypts the payload so only the intended recipient can decrypt and read it. Most JWTs in web applications are JWS tokens because they do not contain secrets. JWE is used when the payload itself is confidential. Nuvora decodes JWS tokens; encrypted JWE tokens cannot be decoded without the decryption key.",
   },
   {
     question: "What are standard JWT claims and what do they mean?",
@@ -70,7 +70,7 @@ const faqItems: FaqItem[] = [
   {
     question: "Why does my JWT have a long string of characters in the payload?",
     answer:
-      "The JWT payload may contain Base64-encoded binary data, such as user profile images, cryptographic keys, or serialized objects. The payload should be relatively compact because JWTs are often passed in HTTP headers with size limits. If your JWT is very large, consider whether all the claims are necessary, or if you can offload some data to a user info endpoint. Use ToolVerse&apos;s <Link href=\"/base64-encoder\" className=\"text-blue-600 hover:underline dark:text-blue-400\">Base64 Encoder</Link> to inspect individual Base64-encoded values within the decoded payload.",
+      "The JWT payload may contain Base64-encoded binary data, such as user profile images, cryptographic keys, or serialized objects. The payload should be relatively compact because JWTs are often passed in HTTP headers with size limits. If your JWT is very large, consider whether all the claims are necessary, or if you can offload some data to a user info endpoint. Use Nuvora&apos;s <Link href=\"/base64-encoder\" className=\"text-blue-600 hover:underline dark:text-blue-400\">Base64 Encoder</Link> to inspect individual Base64-encoded values within the decoded payload.",
   },
   {
     question: "What signing algorithms can JWTs use?",
@@ -105,7 +105,7 @@ const faqItems: FaqItem[] = [
   {
     question: "How do I verify a JWT signature?",
     answer:
-      "Verification requires the correct key or secret. For HS256, use the shared secret to recompute the HMAC and compare it to the signature. For RS256, fetch the public key from the issuer&apos;s JWKS endpoint, use it to verify the RSA signature against the header and payload segments. Most programming languages have JWT libraries that handle this automatically. Never manually implement signature verification, because subtle implementation differences can introduce security vulnerabilities. ToolVerse decodes the payload but does not verify signatures, as that requires the signing key.",
+      "Verification requires the correct key or secret. For HS256, use the shared secret to recompute the HMAC and compare it to the signature. For RS256, fetch the public key from the issuer&apos;s JWKS endpoint, use it to verify the RSA signature against the header and payload segments. Most programming languages have JWT libraries that handle this automatically. Never manually implement signature verification, because subtle implementation differences can introduce security vulnerabilities. Nuvora decodes the payload but does not verify signatures, as that requires the signing key.",
   },
 ];
 
@@ -139,7 +139,7 @@ export default function JwtDecoderPage() {
               A JSON Web Token is not a mysterious opaque string, despite its appearance. The three dot-separated segments each serve a distinct cryptographic purpose. The header typically contains just two fields: alg (the signing algorithm) and typ (set to JWT). The payload contains the claims, which are assertions about the user or entity being authenticated. The signature is the output of applying the algorithm specified in the header to the concatenation of the encoded header and payload.
             </p>
             <p>
-              The most critical thing to understand is that the header and payload are not encrypted, only Base64URL-encoded. This encoding is reversible by anyone. If your application places sensitive information like passwords, credit card numbers, or personal health data in a JWT, that information is exposed to anyone who intercepts or receives the token. Always treat the JWT payload as public data. The signature prevents tampering but does not provide confidentiality. For confidentiality, use JWE (JSON Web Encryption), which encrypts the payload with a public key and is a fundamentally different construction from the common signed JWT format that ToolVerse decodes.
+              The most critical thing to understand is that the header and payload are not encrypted, only Base64URL-encoded. This encoding is reversible by anyone. If your application places sensitive information like passwords, credit card numbers, or personal health data in a JWT, that information is exposed to anyone who intercepts or receives the token. Always treat the JWT payload as public data. The signature prevents tampering but does not provide confidentiality. For confidentiality, use JWE (JSON Web Encryption), which encrypts the payload with a public key and is a fundamentally different construction from the common signed JWT format that Nuvora decodes.
             </p>
           </div>
         </div>

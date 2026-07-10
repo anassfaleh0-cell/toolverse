@@ -107,13 +107,13 @@ const steps = {
     id: "checkPropagationTool",
     checkLabel: "Check with DNS Propagation Checker tool",
     isYesFix: true,
-    yesFix: "Run your domain through the DNS Propagation Checker at toolverse.dev/dns-propagation-checker. This tool queries resolvers worldwide and shows which locations have picked up your changes and which still show old cached records.",
+    yesFix: "Run your domain through the DNS Propagation Checker at Nuvora.dev/dns-propagation-checker. This tool queries resolvers worldwide and shows which locations have picked up your changes and which still show old cached records.",
   },
   waitTtlExpiryFix: {
     id: "waitTtlExpiryFix",
     isYesFix: true,
     checkLabel: "Wait for TTL to expire",
-    yesFix: "Wait for the full TTL duration to pass. Most DNS resolvers respect the TTL value and will not query the authoritative server for a new record until the cached entry expires. Check again after the TTL window has passed. Use the DNS Propagation Checker (toolverse.dev/dns-propagation-checker) to monitor progress.",
+    yesFix: "Wait for the full TTL duration to pass. Most DNS resolvers respect the TTL value and will not query the authoritative server for a new record until the cached entry expires. Check again after the TTL window has passed. Use the DNS Propagation Checker (Nuvora.dev/dns-propagation-checker) to monitor progress.",
   },
   reduceTtlFix: {
     id: "reduceTtlFix",
@@ -125,13 +125,13 @@ const steps = {
     id: "waitPropagation",
     isYesFix: true,
     checkLabel: "Wait for propagation to complete",
-    yesFix: "With your current TTL settings, propagation may take several hours. The maximum propagation time is 72 hours but most changes resolve within 1–4 hours. Check back periodically using the DNS Propagation Checker (toolverse.dev/dns-propagation-checker). Consider reducing TTL before making future changes.",
+    yesFix: "With your current TTL settings, propagation may take several hours. The maximum propagation time is 72 hours but most changes resolve within 1–4 hours. Check back periodically using the DNS Propagation Checker (Nuvora.dev/dns-propagation-checker). Consider reducing TTL before making future changes.",
   },
   dnsIssueFix: {
     id: "dnsIssueFix",
     isYesFix: true,
     checkLabel: "Check DNS Lookup tool",
-    yesFix: "If you are not troubleshooting propagation of a recent change, your issue may be caused by incorrect DNS configuration rather than propagation delay. Use the DNS Lookup tool (toolverse.dev/dns-lookup) to verify your current DNS records are configured correctly. Check for typos in hostnames, missing records, or incorrect values.",
+    yesFix: "If you are not troubleshooting propagation of a recent change, your issue may be caused by incorrect DNS configuration rather than propagation delay. Use the DNS Lookup tool (Nuvora.dev/dns-lookup) to verify your current DNS records are configured correctly. Check for typos in hostnames, missing records, or incorrect values.",
   },
   authoritativeCheckFix: {
     id: "authoritativeCheckFix",

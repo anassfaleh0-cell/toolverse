@@ -37,7 +37,7 @@ const faqItems: FaqItem[] = [
   },
   {
     question: "How long does DNS propagation take?",
-    answer: "DNS propagation typically takes anywhere from a few minutes to 48 hours, though most changes propagate within 1–2 hours. The time depends on the TTL (Time to Live) value set on your DNS records and how frequently recursive resolvers cache those records. You can check propagation status using ToolVerse's DNS Propagation Checker."
+    answer: "DNS propagation typically takes anywhere from a few minutes to 48 hours, though most changes propagate within 1–2 hours. The time depends on the TTL (Time to Live) value set on your DNS records and how frequently recursive resolvers cache those records. You can check propagation status using Nuvora's DNS Propagation Checker."
   },
   {
     question: "What is the difference between A and AAAA records?",
@@ -49,7 +49,7 @@ const faqItems: FaqItem[] = [
   },
   {
     question: "Which DNS resolver is the fastest?",
-    answer: "Based on independent benchmarks, Cloudflare's 1.1.1.1 typically offers the fastest query times globally, followed closely by Google DNS (8.8.8.8) and Quad9 (9.9.9.9). However, performance varies by geographic region and ISP. Use ToolVerse's DNS Lookup tool to compare response times from different resolvers."
+    answer: "Based on independent benchmarks, Cloudflare's 1.1.1.1 typically offers the fastest query times globally, followed closely by Google DNS (8.8.8.8) and Quad9 (9.9.9.9). However, performance varies by geographic region and ISP. Use Nuvora's DNS Lookup tool to compare response times from different resolvers."
   }
 ];
 
@@ -135,7 +135,7 @@ export default function UltimateDnsGuidePage() {
                 ]}
               />
               <div className="mt-4 space-y-4 text-zinc-600 dark:text-zinc-400">
-                <p>Use <Link href="/dns-lookup" className="text-blue-600 hover:underline dark:text-blue-400">ToolVerse DNS Lookup</Link> to query any of these record types for your domain. Our tool supports all 16 record types listed above in a single query.</p>
+                <p>Use <Link href="/dns-lookup" className="text-blue-600 hover:underline dark:text-blue-400">Nuvora DNS Lookup</Link> to query any of these record types for your domain. Our tool supports all 16 record types listed above in a single query.</p>
               </div>
             </section>
 
@@ -154,7 +154,7 @@ export default function UltimateDnsGuidePage() {
                   <li><strong>Authoritative Server Query:</strong> The resolver queries the authoritative nameserver for the specific DNS record (e.g., A record for example.com), receiving the final IP address.</li>
                   <li><strong>Response and Caching:</strong> The resolver returns the IP address to your device, caches it according to the TTL, and your browser connects to the server to load the page.</li>
                 </ol>
-                <p className="mt-4">This entire process typically completes in 10–50 milliseconds. You can trace this flow yourself using <Link href="/dns-lookup" className="text-blue-600 hover:underline dark:text-blue-400">ToolVerse DNS Lookup</Link> to see which records are returned and identify potential bottlenecks.</p>
+                <p className="mt-4">This entire process typically completes in 10–50 milliseconds. You can trace this flow yourself using <Link href="/dns-lookup" className="text-blue-600 hover:underline dark:text-blue-400">Nuvora DNS Lookup</Link> to see which records are returned and identify potential bottlenecks.</p>
               </div>
             </section>
 
@@ -178,9 +178,9 @@ export default function UltimateDnsGuidePage() {
               <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">6. Common DNS Issues</h2>
               <div className="mt-4 space-y-4 text-zinc-600 dark:text-zinc-400">
                 <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Propagation Delay</h3>
-                <p>After updating DNS records, changes must propagate across the global DNS infrastructure. This can take anywhere from minutes to 48 hours depending on your TTL settings. Always lower TTL to 300 seconds (5 minutes) before making changes, then raise it back after propagation. Use <Link href="/dns-propagation-checker" className="text-blue-600 hover:underline dark:text-blue-400">ToolVerse DNS Propagation Checker</Link> to monitor propagation in real time across multiple global locations.</p>
+                <p>After updating DNS records, changes must propagate across the global DNS infrastructure. This can take anywhere from minutes to 48 hours depending on your TTL settings. Always lower TTL to 300 seconds (5 minutes) before making changes, then raise it back after propagation. Use <Link href="/dns-propagation-checker" className="text-blue-600 hover:underline dark:text-blue-400">Nuvora DNS Propagation Checker</Link> to monitor propagation in real time across multiple global locations.</p>
                 <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Misconfigured Records</h3>
-                <p>Common mistakes include: missing trailing dots in fully qualified domain names, incorrect MX priority values, CNAME records at the zone apex (which violates RFC standards), and conflicting TXT records for SPF/DKIM/DMARC. Validate your configuration with <Link href="/dns-lookup" className="text-blue-600 hover:underline dark:text-blue-400">ToolVerse DNS Lookup</Link>.</p>
+                <p>Common mistakes include: missing trailing dots in fully qualified domain names, incorrect MX priority values, CNAME records at the zone apex (which violates RFC standards), and conflicting TXT records for SPF/DKIM/DMARC. Validate your configuration with <Link href="/dns-lookup" className="text-blue-600 hover:underline dark:text-blue-400">Nuvora DNS Lookup</Link>.</p>
                 <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">TTL Problems</h3>
                 <p>TTL (Time to Live) determines how long resolvers cache your DNS records. High TTL values (86400 seconds / 24 hours) improve performance but slow down propagation. Low TTL values increase query load on your nameservers. Balance is key — we recommend 300–3600 seconds for production.</p>
                 <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">DNS Hijacking</h3>
@@ -214,7 +214,7 @@ export default function UltimateDnsGuidePage() {
             <section id="dns-tools">
               <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">8. Best DNS Tools</h2>
               <div className="mt-4 space-y-4 text-zinc-600 dark:text-zinc-400">
-                <p>ToolVerse provides a complete suite of DNS diagnostic and management tools. Here are the most essential ones:</p>
+                <p>Nuvora provides a complete suite of DNS diagnostic and management tools. Here are the most essential ones:</p>
                 <ul className="list-disc space-y-2 pl-5">
                   <li><Link href="/dns-lookup" className="text-blue-600 hover:underline dark:text-blue-400">DNS Lookup</Link> — Query all DNS record types (A, AAAA, CNAME, MX, TXT, NS, SOA, SRV, CAA, PTR, DS, DNSKEY, RRSIG, NSEC, NSEC3) for any domain in a single request.</li>
                   <li><Link href="/dns-propagation-checker" className="text-blue-600 hover:underline dark:text-blue-400">DNS Propagation Checker</Link> — Verify that your DNS changes have propagated to servers worldwide, including Google, Cloudflare, Quad9, and OpenDNS.</li>

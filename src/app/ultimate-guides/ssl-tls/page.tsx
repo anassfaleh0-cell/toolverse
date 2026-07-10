@@ -37,7 +37,7 @@ const faqItems: FaqItem[] = [
   },
   {
     question: "How do I check if my SSL certificate is valid?",
-    answer: "Use ToolVerse's SSL Certificate Checker to verify your certificate's validity. Enter your domain and we'll check the issuer, expiration date, subject alternative names, certificate chain completeness, and security grade. You'll also get warnings about expiring certificates and configuration issues."
+    answer: "Use Nuvora's SSL Certificate Checker to verify your certificate's validity. Enter your domain and we'll check the issuer, expiration date, subject alternative names, certificate chain completeness, and security grade. You'll also get warnings about expiring certificates and configuration issues."
   },
   {
     question: "What is the difference between DV, OV, and EV certificates?",
@@ -94,7 +94,7 @@ export default function UltimateSslTlsGuidePage() {
                 <p>A TLS certificate is a digital document that binds a cryptographic public key to an organization or domain. Certificates are issued by Certificate Authorities (CAs) like Let&apos;s Encrypt, DigiCert, Sectigo, and GlobalSign. The CA acts as a trusted third party, verifying that the certificate requester genuinely controls the domain.</p>
                 <p>Certificates follow the X.509 standard and contain: the subject domain name, the issuer (CA) name, the public key, the validity period (not before / not after), the serial number, the signature algorithm, Subject Alternative Names (SANs) for additional domains, and key usage constraints. The CA digitally signs the certificate, creating a cryptographic chain of trust.</p>
                 <p>This chain of trust starts with root CA certificates that are pre-installed in your operating system and browser. Intermediate CAs are signed by root CAs, and end-entity (leaf) certificates are signed by intermediate CAs. Your browser verifies the entire chain back to a trusted root before accepting a certificate as valid. This is why installing the full certificate chain (including intermediate certificates) on your server is critical.</p>
-                <p>Use <Link href="/ssl-certificate-checker" className="text-blue-600 hover:underline dark:text-blue-400">ToolVerse SSL Certificate Checker</Link> to inspect the complete certificate chain for any domain, including issuer details, SANs, and expiration dates.</p>
+                <p>Use <Link href="/ssl-certificate-checker" className="text-blue-600 hover:underline dark:text-blue-400">Nuvora SSL Certificate Checker</Link> to inspect the complete certificate chain for any domain, including issuer details, SANs, and expiration dates.</p>
               </div>
             </section>
 
@@ -154,7 +154,7 @@ export default function UltimateSslTlsGuidePage() {
                 ]}
               />
               <div className="mt-4 text-zinc-600 dark:text-zinc-400">
-                <p>TLS 1.3 represents a significant security and performance improvement over TLS 1.2. Every modern website should support TLS 1.3. Check which TLS versions your server supports with <Link href="/ssl-certificate-checker" className="text-blue-600 hover:underline dark:text-blue-400">ToolVerse SSL Certificate Checker</Link>. Our <Link href="/tls-versions" className="text-blue-600 hover:underline dark:text-blue-400">TLS versions reference page</Link> has more details.</p>
+                <p>TLS 1.3 represents a significant security and performance improvement over TLS 1.2. Every modern website should support TLS 1.3. Check which TLS versions your server supports with <Link href="/ssl-certificate-checker" className="text-blue-600 hover:underline dark:text-blue-400">Nuvora SSL Certificate Checker</Link>. Our <Link href="/tls-versions" className="text-blue-600 hover:underline dark:text-blue-400">TLS versions reference page</Link> has more details.</p>
               </div>
             </section>
 
@@ -168,7 +168,7 @@ export default function UltimateSslTlsGuidePage() {
                 <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Incomplete Certificate Chain</h3>
                 <p>If your server doesn&apos;t send intermediate certificates along with the leaf certificate, some browsers (especially older ones) may not be able to complete the chain of trust to a trusted root CA. Always install the full certificate chain on your server.</p>
                 <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Mixed Content</h3>
-                <p>A page loaded over HTTPS that includes resources (images, scripts, stylesheets) over HTTP. Modern browsers block mixed active content (scripts, iframes) by default. Use a tool like <Link href="/http-headers-checker" className="text-blue-600 hover:underline dark:text-blue-400">ToolVerse HTTP Headers Checker</Link> to audit your pages for mixed content issues.</p>
+                <p>A page loaded over HTTPS that includes resources (images, scripts, stylesheets) over HTTP. Modern browsers block mixed active content (scripts, iframes) by default. Use a tool like <Link href="/http-headers-checker" className="text-blue-600 hover:underline dark:text-blue-400">Nuvora HTTP Headers Checker</Link> to audit your pages for mixed content issues.</p>
                 <p>For systematic resolution, visit our <Link href="/troubleshooting/ssl-certificate" className="text-blue-600 hover:underline dark:text-blue-400">SSL Troubleshooter</Link> and <Link href="/decision-trees/ssl-troubleshooting" className="text-blue-600 hover:underline dark:text-blue-400">SSL Decision Tree</Link>.</p>
               </div>
             </section>
@@ -182,7 +182,7 @@ export default function UltimateSslTlsGuidePage() {
                   <li><strong>Use modern cipher suites:</strong> Prefer AEAD ciphers like AES-GCM and ChaCha20-Poly1305. Disable CBC mode ciphers and RC4.</li>
                   <li><strong>Implement forward secrecy:</strong> Use ECDHE key exchange so that compromising the server&apos;s private key doesn&apos;t compromise past sessions.</li>
                   <li><strong>Keep certificates short-lived:</strong> 90-day certificates (like those from Let&apos;s Encrypt) encourage automation and reduce the impact of key compromise.</li>
-                  <li><strong>Monitor certificate expiry:</strong> Use <Link href="/ssl-certificate-checker" className="text-blue-600 hover:underline dark:text-blue-400">ToolVerse SSL Certificate Checker</Link> to regularly check your certificates and get early warnings before expiry.</li>
+                  <li><strong>Monitor certificate expiry:</strong> Use <Link href="/ssl-certificate-checker" className="text-blue-600 hover:underline dark:text-blue-400">Nuvora SSL Certificate Checker</Link> to regularly check your certificates and get early warnings before expiry.</li>
                   <li><strong>Use strong key sizes:</strong> 2048-bit RSA or 256-bit ECDSA keys are the minimum recommended. 4096-bit RSA or 384-bit ECDSA for higher security requirements.</li>
                 </ul>
                 <p className="mt-4">For more best practices, see our <Link href="/cheat-sheets/developer-ssl-tls" className="text-blue-600 hover:underline dark:text-blue-400">SSL/TLS Cheat Sheet</Link>.</p>
@@ -192,7 +192,7 @@ export default function UltimateSslTlsGuidePage() {
             <section id="ssl-tools">
               <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">8. SSL Tools</h2>
               <div className="mt-4 space-y-4 text-zinc-600 dark:text-zinc-400">
-                <p>ToolVerse offers a powerful SSL certificate checker and related tools to help you manage and troubleshoot your TLS configuration:</p>
+                <p>Nuvora offers a powerful SSL certificate checker and related tools to help you manage and troubleshoot your TLS configuration:</p>
                 <ul className="list-disc space-y-2 pl-5">
                   <li><Link href="/ssl-certificate-checker" className="text-blue-600 hover:underline dark:text-blue-400">SSL Certificate Checker</Link> — Check certificate details, issuer, validity, SANs, chain completeness, and security grade for any domain.</li>
                   <li><Link href="/domain-report" className="text-blue-600 hover:underline dark:text-blue-400">Domain Report Card</Link> — Comprehensive domain audit covering SSL, DNS, HTTP headers, and WHOIS in one unified report.</li>

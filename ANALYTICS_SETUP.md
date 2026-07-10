@@ -1,10 +1,10 @@
-# Google Analytics 4 Setup — ToolVerse
+# Google Analytics 4 Setup — Nuvora
 
 ## Create GA4 Property
 
 1. Go to [analytics.google.com](https://analytics.google.com)
 2. Click **Start Measuring** (or Admin → Create Property)
-3. Property name: `ToolVerse`
+3. Property name: `Nuvora`
 4. Reporting time zone: Your local timezone
 5. Currency: USD
 6. Click **Create**
@@ -13,8 +13,8 @@
 
 1. In GA4 Admin → **Data Streams**
 2. Click **Add Stream** → **Web**
-3. Website URL: `https://toolverse.dev`
-4. Stream name: `ToolVerse Web`
+3. Website URL: `https://Nuvora.dev`
+4. Stream name: `Nuvora Web`
 5. Click **Create Stream**
 
 ## Copy Measurement ID

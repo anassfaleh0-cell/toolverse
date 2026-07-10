@@ -55,12 +55,12 @@ const faqItems: FaqItem[] = [
   {
     question: "How do I know if a timestamp is in seconds or milliseconds?",
     answer:
-      "ToolVerse automatically detects whether your timestamp is in seconds or milliseconds. As a rule of thumb: if the number has 10 digits (e.g. 1719878400), it is in seconds. If it has 13 digits (e.g. 1719878400000), it is in milliseconds. The converter checks the resulting date to determine the correct precision and adjusts accordingly. Most Unix systems and APIs use seconds, while JavaScript&apos;s Date.now() returns milliseconds.",
+      "Nuvora automatically detects whether your timestamp is in seconds or milliseconds. As a rule of thumb: if the number has 10 digits (e.g. 1719878400), it is in seconds. If it has 13 digits (e.g. 1719878400000), it is in milliseconds. The converter checks the resulting date to determine the correct precision and adjusts accordingly. Most Unix systems and APIs use seconds, while JavaScript&apos;s Date.now() returns milliseconds.",
   },
   {
     question: "What is the range of valid Unix timestamps?",
     answer:
-      "The range depends on the platform. On 32-bit systems, timestamps range from December 13, 1901 to January 19, 2038 (the Year 2038 problem). On 64-bit systems, the range is effectively unlimited, covering billions of years. ToolVerse uses JavaScript&apos;s Date object which supports timestamps from approximately -271,821 to 275,760 years relative to the epoch, covering all practical use cases for modern applications.",
+      "The range depends on the platform. On 32-bit systems, timestamps range from December 13, 1901 to January 19, 2038 (the Year 2038 problem). On 64-bit systems, the range is effectively unlimited, covering billions of years. Nuvora uses JavaScript&apos;s Date object which supports timestamps from approximately -271,821 to 275,760 years relative to the epoch, covering all practical use cases for modern applications.",
   },
   {
     question: "Why do I get different dates for the same timestamp in different timezones?",
@@ -75,7 +75,7 @@ const faqItems: FaqItem[] = [
   {
     question: "How do I get the current Unix timestamp in different programming languages?",
     answer:
-      "In JavaScript, use Math.floor(Date.now() / 1000) for seconds or Date.now() for milliseconds. In Python, use int(time.time()). In PHP, use time(). In Go, use time.Now().Unix(). In Rust, use std::time::SystemTime::now().duration_since(UNIX_EPOCH). Most languages have built-in functions for getting the current timestamp, and the ToolVerse converter lets you verify your results.",
+      "In JavaScript, use Math.floor(Date.now() / 1000) for seconds or Date.now() for milliseconds. In Python, use int(time.time()). In PHP, use time(). In Go, use time.Now().Unix(). In Rust, use std::time::SystemTime::now().duration_since(UNIX_EPOCH). Most languages have built-in functions for getting the current timestamp, and the Nuvora converter lets you verify your results.",
   },
   {
     question: "What is the difference between ISO 8601 and Unix timestamps?",
@@ -85,12 +85,12 @@ const faqItems: FaqItem[] = [
   {
     question: "Can I use negative Unix timestamps?",
     answer:
-      "Yes. Negative timestamps represent dates before January 1, 1970. For example, timestamp 0 is January 1, 1970, and timestamp -86400 is December 31, 1969. JavaScript&apos;s Date object supports negative timestamps, so ToolVerse can convert dates from the early 20th century and earlier. Negative timestamps are commonly used in historical data analysis and legacy system migrations.",
+      "Yes. Negative timestamps represent dates before January 1, 1970. For example, timestamp 0 is January 1, 1970, and timestamp -86400 is December 31, 1969. JavaScript&apos;s Date object supports negative timestamps, so Nuvora can convert dates from the early 20th century and earlier. Negative timestamps are commonly used in historical data analysis and legacy system migrations.",
   },
   {
     question: "Why do some APIs return timestamps with decimals?",
     answer:
-      "Decimal timestamps include fractional seconds for sub-second precision. For example, 1719878400.500 represents 500 milliseconds past the second. These are commonly used in high-frequency trading, telemetry data, and scientific applications where millisecond or microsecond precision is required. ToolVerse converts the integer part as the timestamp and the decimal portion represents the fractional second.",
+      "Decimal timestamps include fractional seconds for sub-second precision. For example, 1719878400.500 represents 500 milliseconds past the second. These are commonly used in high-frequency trading, telemetry data, and scientific applications where millisecond or microsecond precision is required. Nuvora converts the integer part as the timestamp and the decimal portion represents the fractional second.",
   },
   {
     question: "What happens to timestamps during leap seconds?",
@@ -142,7 +142,7 @@ export default function TimestampConverterPage() {
           </h2>
           <div className="mt-8 space-y-4 text-zinc-600 dark:text-zinc-400">
             <p>
-              The most common mistake is confusing seconds and milliseconds. JavaScript&apos;s Date.now() returns milliseconds, while most backend APIs and databases (including MySQL&apos;s UNIX_TIMESTAMP and PostgreSQL&apos;s EXTRACT(EPOCH)) return seconds. Multiplying or dividing by 1000 in the wrong direction yields dates that are off by decades. ToolVerse handles this automatically by detecting the precision of your input, but it is important to know which unit your data source uses.
+              The most common mistake is confusing seconds and milliseconds. JavaScript&apos;s Date.now() returns milliseconds, while most backend APIs and databases (including MySQL&apos;s UNIX_TIMESTAMP and PostgreSQL&apos;s EXTRACT(EPOCH)) return seconds. Multiplying or dividing by 1000 in the wrong direction yields dates that are off by decades. Nuvora handles this automatically by detecting the precision of your input, but it is important to know which unit your data source uses.
             </p>
             <p>
               Another frequent issue is timezone confusion during timestamp-to-date conversion. A timestamp represents a fixed point in time, but displaying it as a date requires choosing a timezone. UTC is the standard for internal systems, but users expect to see dates in their local timezone. Always store timestamps in UTC and convert to local time only for display. When analyzing data patterns across different systems, the <Link href="/number-base-converter" className="text-blue-600 hover:underline dark:text-blue-400">Number Base Converter</Link> helps you work with timestamps in hex or binary representations for low-level debugging.

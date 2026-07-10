@@ -3,8 +3,9 @@
 import Script from "next/script";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useRef } from "react";
+import { inject } from "@vercel/analytics";
 import { getAnalyticsConsent, trackPageView, reportWebVitals, type PageView } from "@/lib/analytics";
-import { getCLS, getFCP, getLCP, getTTFB } from "web-vitals";
+import { onCLS, onFCP, onLCP, onTTFB } from "web-vitals";
 
 const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID || "";
 const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID || "";
@@ -14,6 +15,13 @@ export function Analytics() {
   const searchParams = useSearchParams();
   const consent = getAnalyticsConsent();
   const vitalsReported = useRef(false);
+  const vercelInjected = useRef(false);
+
+  useEffect(() => {
+    if (vercelInjected.current) return;
+    vercelInjected.current = true;
+    try { inject({ mode: "auto" }); } catch { /* analytics not available */ }
+  }, []);
 
   useEffect(() => {
     if (consent !== true) return;
@@ -31,10 +39,12 @@ export function Analytics() {
     const report = (metric: { id: string; name: string; value: number }) => {
       reportWebVitals(metric.id, metric.name, metric.value, "good");
     };
-    getCLS(report);
-    getFCP(report);
-    getLCP(report);
-    getTTFB(report);
+    try {
+      onCLS(report);
+      onFCP(report);
+      onLCP(report);
+      onTTFB(report);
+    } catch { /* web-vitals not available */ }
   }, [consent]);
 
   if (!GA4_ID && !CLARITY_ID) return null;

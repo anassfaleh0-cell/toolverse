@@ -41,7 +41,7 @@ const faqItems: FaqItem[] = [
   },
   {
     question: "What is CIDR notation?",
-    answer: "CIDR (Classless Inter-Domain Routing) notation specifies an IP address and its subnet mask using a suffix like /24 (IPv4) or /64 (IPv6). For example, 192.168.1.0/24 means the first 24 bits are the network portion, leaving 8 bits for host addresses (256 total, 254 usable). Use ToolVerse's Subnet Calculator to compute network ranges."
+    answer: "CIDR (Classless Inter-Domain Routing) notation specifies an IP address and its subnet mask using a suffix like /24 (IPv4) or /64 (IPv6). For example, 192.168.1.0/24 means the first 24 bits are the network portion, leaving 8 bits for host addresses (256 total, 254 usable). Use Nuvora's Subnet Calculator to compute network ranges."
   },
   {
     question: "What port does HTTPS use?",
@@ -49,7 +49,7 @@ const faqItems: FaqItem[] = [
   },
   {
     question: "How do I test if a port is open on a remote server?",
-    answer: "Use ToolVerse's Port Checker to test if any port is open on a remote host. Enter the hostname or IP address and port number, and the tool will attempt a TCP connection and report whether the port is open, closed, or filtered. You can also scan common ports to identify running services."
+    answer: "Use Nuvora's Port Checker to test if any port is open on a remote host. Enter the hostname or IP address and port number, and the tool will attempt a TCP connection and report whether the port is open, closed, or filtered. You can also scan common ports to identify running services."
   }
 ];
 
@@ -103,8 +103,8 @@ export default function UltimateNetworkingGuidePage() {
                 <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">IPv6</h3>
                 <p>IPv6 addresses are 128-bit numbers written as eight hexadecimal groups separated by colons (e.g., 2001:0db8:85a3:0000:0000:8a2e:0370:7334). Leading zeros can be omitted, and consecutive zero groups can be replaced with :: (once per address). IPv6 provides 340 undecillion addresses — enough for every device on earth to have billions of addresses each. IPv6 also includes mandatory IPsec support and eliminates the need for NAT.</p>
                 <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">CIDR and Subnetting</h3>
-                <p>Classless Inter-Domain Routing (CIDR) notation specifies a network prefix length: 192.168.1.0/24 means the first 24 bits are the network identifier. Common IPv4 CIDR prefixes: /32 (single host), /24 (254 hosts), /16 (65,534 hosts), /8 (~16 million hosts). Subnetting divides a network into smaller subnetworks for better management and security. Use <Link href="/subnet-calculator" className="text-blue-600 hover:underline dark:text-blue-400">ToolVerse Subnet Calculator</Link> to compute network addresses, broadcast addresses, usable host ranges, and subnet masks.</p>
-                <p>Find your own IP address with <Link href="/what-is-my-ip" className="text-blue-600 hover:underline dark:text-blue-400">ToolVerse What Is My IP</Link> or look up any IP with <Link href="/ip-lookup" className="text-blue-600 hover:underline dark:text-blue-400">IP Lookup</Link> to get location, ISP, and ASN information.</p>
+                <p>Classless Inter-Domain Routing (CIDR) notation specifies a network prefix length: 192.168.1.0/24 means the first 24 bits are the network identifier. Common IPv4 CIDR prefixes: /32 (single host), /24 (254 hosts), /16 (65,534 hosts), /8 (~16 million hosts). Subnetting divides a network into smaller subnetworks for better management and security. Use <Link href="/subnet-calculator" className="text-blue-600 hover:underline dark:text-blue-400">Nuvora Subnet Calculator</Link> to compute network addresses, broadcast addresses, usable host ranges, and subnet masks.</p>
+                <p>Find your own IP address with <Link href="/what-is-my-ip" className="text-blue-600 hover:underline dark:text-blue-400">Nuvora What Is My IP</Link> or look up any IP with <Link href="/ip-lookup" className="text-blue-600 hover:underline dark:text-blue-400">IP Lookup</Link> to get location, ISP, and ASN information.</p>
               </div>
             </section>
 
@@ -119,7 +119,7 @@ export default function UltimateNetworkingGuidePage() {
                   <li><strong>Authoritative nameservers:</strong> The final authority for a domain&apos;s DNS records.</li>
                   <li><strong>Common record types:</strong> A (IPv4), AAAA (IPv6), CNAME (alias), MX (mail), TXT (text), NS (nameserver), SOA (zone authority).</li>
                 </ul>
-                <p>Use <Link href="/dns-lookup" className="text-blue-600 hover:underline dark:text-blue-400">ToolVerse DNS Lookup</Link> to query any DNS record type or <Link href="/dns-propagation-checker" className="text-blue-600 hover:underline dark:text-blue-400">DNS Propagation Checker</Link> to verify worldwide propagation.</p>
+                <p>Use <Link href="/dns-lookup" className="text-blue-600 hover:underline dark:text-blue-400">Nuvora DNS Lookup</Link> to query any DNS record type or <Link href="/dns-propagation-checker" className="text-blue-600 hover:underline dark:text-blue-400">DNS Propagation Checker</Link> to verify worldwide propagation.</p>
               </div>
             </section>
 
@@ -152,24 +152,24 @@ export default function UltimateNetworkingGuidePage() {
                 ]}
               />
               <div className="mt-4 text-zinc-600 dark:text-zinc-400">
-                <p>Test if a port is open on any host with <Link href="/port-checker" className="text-blue-600 hover:underline dark:text-blue-400">ToolVerse Port Checker</Link>. Browse our complete <Link href="/port-numbers" className="text-blue-600 hover:underline dark:text-blue-400">port numbers reference</Link> for all assigned ports.</p>
+                <p>Test if a port is open on any host with <Link href="/port-checker" className="text-blue-600 hover:underline dark:text-blue-400">Nuvora Port Checker</Link>. Browse our complete <Link href="/port-numbers" className="text-blue-600 hover:underline dark:text-blue-400">port numbers reference</Link> for all assigned ports.</p>
               </div>
             </section>
 
             <section id="network-diagnostics">
               <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">5. Network Diagnostics</h2>
               <div className="mt-4 space-y-4 text-zinc-600 dark:text-zinc-400">
-                <p>Network diagnostics help identify connectivity issues, performance bottlenecks, and configuration problems. ToolVerse provides a complete set of diagnostic tools for every layer of the network stack.</p>
+                <p>Network diagnostics help identify connectivity issues, performance bottlenecks, and configuration problems. Nuvora provides a complete set of diagnostic tools for every layer of the network stack.</p>
                 <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Ping Test</h3>
-                <p>Ping measures network latency and packet loss by sending ICMP echo requests to a target host. It reports minimum, average, and maximum round-trip times. High latency indicates network congestion or distance. Packet loss indicates connectivity issues. Use <Link href="/ping-test" className="text-blue-600 hover:underline dark:text-blue-400">ToolVerse Ping Test</Link> to test connectivity to any host.</p>
+                <p>Ping measures network latency and packet loss by sending ICMP echo requests to a target host. It reports minimum, average, and maximum round-trip times. High latency indicates network congestion or distance. Packet loss indicates connectivity issues. Use <Link href="/ping-test" className="text-blue-600 hover:underline dark:text-blue-400">Nuvora Ping Test</Link> to test connectivity to any host.</p>
                 <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">DNS Lookup</h3>
-                <p>DNS diagnostics verify that domain names resolve correctly. Use <Link href="/dns-lookup" className="text-blue-600 hover:underline dark:text-blue-400">ToolVerse DNS Lookup</Link> to test all record types and identify misconfiguration, missing records, or propagation delays.</p>
+                <p>DNS diagnostics verify that domain names resolve correctly. Use <Link href="/dns-lookup" className="text-blue-600 hover:underline dark:text-blue-400">Nuvora DNS Lookup</Link> to test all record types and identify misconfiguration, missing records, or propagation delays.</p>
                 <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Port Checking</h3>
-                <p>Port scanning verifies which services are accessible on a remote host. Use <Link href="/port-checker" className="text-blue-600 hover:underline dark:text-blue-400">ToolVerse Port Checker</Link> to test if specific ports are open and responding. This is essential for firewall testing and service deployment verification.</p>
+                <p>Port scanning verifies which services are accessible on a remote host. Use <Link href="/port-checker" className="text-blue-600 hover:underline dark:text-blue-400">Nuvora Port Checker</Link> to test if specific ports are open and responding. This is essential for firewall testing and service deployment verification.</p>
                 <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">HTTP Headers Check</h3>
-                <p>Inspect HTTP response headers to verify web server configuration, security headers, caching policies, and redirect chains. Use <Link href="/http-headers-checker" className="text-blue-600 hover:underline dark:text-blue-400">ToolVerse HTTP Headers Checker</Link> for comprehensive header analysis.</p>
+                <p>Inspect HTTP response headers to verify web server configuration, security headers, caching policies, and redirect chains. Use <Link href="/http-headers-checker" className="text-blue-600 hover:underline dark:text-blue-400">Nuvora HTTP Headers Checker</Link> for comprehensive header analysis.</p>
                 <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Website Status</h3>
-                <p>Check if a website is online, measure response time, and get detailed status information including server software, content type, and response headers. Use <Link href="/website-status-checker" className="text-blue-600 hover:underline dark:text-blue-400">ToolVerse Website Status Checker</Link>.</p>
+                <p>Check if a website is online, measure response time, and get detailed status information including server software, content type, and response headers. Use <Link href="/website-status-checker" className="text-blue-600 hover:underline dark:text-blue-400">Nuvora Website Status Checker</Link>.</p>
               </div>
             </section>
 
@@ -182,7 +182,7 @@ export default function UltimateNetworkingGuidePage() {
                 <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">VPNs (Virtual Private Networks)</h3>
                 <p>VPNs create encrypted tunnels between devices and remote networks, providing privacy and security over public networks. Common VPN protocols include WireGuard (fastest, modern), OpenVPN (widely supported), IPsec (enterprise standard), and IKEv2 (mobile-friendly). VPNs protect against eavesdropping on public Wi-Fi and allow secure remote access to corporate networks.</p>
                 <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">SSL/TLS</h3>
-                <p>TLS encrypts data in transit for web traffic, email, and other application protocols. Every website should use HTTPS with a valid TLS certificate. Check your certificate with <Link href="/ssl-certificate-checker" className="text-blue-600 hover:underline dark:text-blue-400">ToolVerse SSL Certificate Checker</Link>. For a complete treatment, see our <Link href="/ultimate-guides/ssl-tls" className="text-blue-600 hover:underline dark:text-blue-400">Ultimate SSL/TLS Guide</Link>.</p>
+                <p>TLS encrypts data in transit for web traffic, email, and other application protocols. Every website should use HTTPS with a valid TLS certificate. Check your certificate with <Link href="/ssl-certificate-checker" className="text-blue-600 hover:underline dark:text-blue-400">Nuvora SSL Certificate Checker</Link>. For a complete treatment, see our <Link href="/ultimate-guides/ssl-tls" className="text-blue-600 hover:underline dark:text-blue-400">Ultimate SSL/TLS Guide</Link>.</p>
                 <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Best Practices</h3>
                 <ul className="list-disc space-y-1 pl-5">
                   <li>Close unnecessary ports and disable unused services</li>
@@ -191,7 +191,7 @@ export default function UltimateNetworkingGuidePage() {
                   <li>Use DNSSEC to protect DNS integrity</li>
                   <li>Enable logging and monitoring (SIEM systems)</li>
                   <li>Apply the principle of least privilege for network access</li>
-                  <li>Regularly audit network configuration with tools like <Link href="/domain-report" className="text-blue-600 hover:underline dark:text-blue-400">ToolVerse Domain Report Card</Link></li>
+                  <li>Regularly audit network configuration with tools like <Link href="/domain-report" className="text-blue-600 hover:underline dark:text-blue-400">Nuvora Domain Report Card</Link></li>
                 </ul>
               </div>
             </section>
@@ -199,7 +199,7 @@ export default function UltimateNetworkingGuidePage() {
             <section id="network-tools">
               <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">7. Network Tools</h2>
               <div className="mt-4 space-y-4 text-zinc-600 dark:text-zinc-400">
-                <p>ToolVerse offers the most comprehensive collection of free network diagnostic tools available online. Here are all our network tools:</p>
+                <p>Nuvora offers the most comprehensive collection of free network diagnostic tools available online. Here are all our network tools:</p>
                 <div className="grid gap-3 sm:grid-cols-2">
                   <Link href="/dns-lookup" className="rounded-lg border border-zinc-200 p-3 text-sm hover:border-blue-300 dark:border-zinc-700 dark:hover:border-blue-700">
                     <span className="font-medium text-zinc-900 dark:text-zinc-50">DNS Lookup</span>

@@ -7,7 +7,7 @@ import { RegexPatternsClient } from "./client";
 import { TrustSignal } from "@/components/shared/trust-signal";
 
 export const metadata: Metadata = {
-  title: "Regex Patterns Reference — Common Regular Expressions | ToolVerse",
+  title: "Regex Patterns Reference — Common Regular Expressions | Nuvora",
   description: "Library of common regex patterns for validation, text processing, security, log analysis, and more. Each pattern includes examples and explanations.",
   openGraph: { title: "Regex Patterns Reference — Common Regular Expressions", description: "Library of common regex patterns with examples and explanations." },
   twitter: { title: "Regex Patterns Reference", description: "Library of common regex patterns with examples and explanations." },

@@ -1,20 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" fill="none">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0f172a"/>
-      <stop offset="100%" stop-color="#1e293b"/>
-    </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#3b82f6"/>
-      <stop offset="100%" stop-color="#6366f1"/>
+    <linearGradient id="og-bg" x1="0" y1="0" x2="1200" y2="630">
+      <stop stop-color="#7c3aed"/>
+      <stop offset=".5" stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#06b6d4"/>
     </linearGradient>
   </defs>
-  <rect width="1200" height="630" fill="url(#bg)"/>
-  <circle cx="1000" cy="140" r="280" fill="#3b82f6" opacity="0.08"/>
-  <circle cx="200" cy="500" r="200" fill="#6366f1" opacity="0.06"/>
-  <rect x="200" y="200" width="64" height="64" rx="16" fill="url(#accent)"/>
-  <text x="218" y="246" font-family="system-ui" font-size="36" font-weight="bold" fill="white">TV</text>
-  <text x="200" y="330" font-family="system-ui" font-size="56" font-weight="bold" fill="white">Free Online Tools</text>
-  <text x="200" y="390" font-family="system-ui" font-size="28" fill="#94a3b8">DNS, IP Lookup, SSL, Ping &amp; 500+ Utilities</text>
-  <text x="200" y="470" font-family="system-ui" font-size="18" fill="#64748b">toolverse.dev</text>
+  <rect width="1200" height="630" fill="url(#og-bg)"/>
+  <circle cx="950" cy="150" r="320" fill="white" opacity="0.04"/>
+  <circle cx="300" cy="500" r="260" fill="white" opacity="0.03"/>
+  <circle cx="1000" cy="450" r="180" fill="white" opacity="0.03"/>
+  <g transform="translate(600, 220) scale(9)">
+    <path d="M16 5l11 6.5v13L16 27 5 20.5v-13L16 5z" stroke="white" stroke-width="1.5" stroke-linejoin="round" fill="white" fill-opacity="0.2"/>
+    <path d="M12 17l4 4 8-8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="600" y="370" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="80" font-weight="800" fill="white" letter-spacing="2">Nuvora</text>
+  <text x="600" y="430" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#c7d2fe" letter-spacing="6">Smart Tools, Simply Done</text>
+  <text x="600" y="565" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" fill="#a5b4fc" letter-spacing="3">nuvora.tools</text>
 </svg>

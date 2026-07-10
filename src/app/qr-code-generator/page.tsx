@@ -21,7 +21,7 @@ import Link from "next/link";
 const slug = "qr-code-generator";
 const pageTitle = "QR Code Generator - Generate QR Codes for URLs, Text, and Data Online";
 const pageDescription =
-  "Generate QR codes instantly with ToolVerse. Create scannable QR codes for URLs, text, WiFi credentials, and contact information. Free online QR code generator with download as PNG.";
+  "Generate QR codes instantly with Nuvora. Create scannable QR codes for URLs, text, WiFi credentials, and contact information. Free online QR code generator with download as PNG.";
 
 export const metadata: Metadata = {
   title: pageTitle,
