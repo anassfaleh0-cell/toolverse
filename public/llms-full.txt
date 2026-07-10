@@ -1,0 +1,109 @@
+# Nuvora — Smart Tools, Simply Done
+
+Nuvora provides 200+ free browser-based tools for network diagnostics, PDF manipulation, image editing, security analysis, development, SEO, and more. All tools run entirely in your browser — no signup, no tracking, no data uploads.
+
+## Tools
+
+### Network & Internet
+- [/dns-lookup](https://nuvora.tools/dns-lookup) — DNS Lookup tool for querying A, AAAA, CNAME, MX, NS, TXT, SOA, and other DNS record types. Supports DNSSEC validation and multiple public resolvers.
+- [/ssl-certificate-checker](https://nuvora.tools/ssl-certificate-checker) — SSL Certificate Checker that validates certificate chains, checks expiration dates, and inspects encryption parameters.
+- [/whois-lookup](https://nuvora.tools/whois-lookup) — WHOIS Lookup for domain registration data including registrar info, creation/expiration dates, and RDAP support.
+- [/ip-lookup](https://nuvora.tools/ip-lookup) — IP Lookup providing geolocation data, ISP information, ASN details, and threat intelligence.
+- [/what-is-my-ip](https://nuvora.tools/what-is-my-ip) — Shows your public IPv4 and IPv6 addresses with location, ISP, WebRTC leak detection, and VPN detection.
+- [/reverse-dns-lookup](https://nuvora.tools/reverse-dns-lookup) — Reverse DNS Lookup to find PTR records for IP addresses.
+- [/dns-propagation-checker](https://nuvora.tools/dns-propagation-checker) — Checks DNS propagation across global resolvers.
+- [/http-headers-checker](https://nuvora.tools/http-headers-checker) — Inspects HTTP response headers including security, cache, and CORS headers.
+- [/ping-test](https://nuvora.tools/ping-test) — Network ping test measuring latency, packet loss, and jitter.
+- [/port-checker](https://nuvora.tools/port-checker) — Tests TCP port availability and checks for open ports.
+- [/website-status-checker](https://nuvora.tools/website-status-checker) — Monitors website uptime and response time.
+- [/user-agent-parser](https://nuvora.tools/user-agent-parser) — Parses and analyzes browser user agent strings.
+- [/subnet-calculator](https://nuvora.tools/subnet-calculator) — CIDR subnet calculator with network address, broadcast, and usable host range.
+- [/traceroute](https://nuvora.tools/traceroute) — Traces network path to destination with hop-by-hop latency.
+- [/speed-test](https://nuvora.tools/speed-test) — Internet speed test measuring download, upload, and ping.
+- [/uptime-checker](https://nuvora.tools/uptime-checker) — Website uptime monitoring and availability checking.
+
+### Security & Privacy
+- [/password-generator](https://nuvora.tools/password-generator) — Generates strong passwords and passphrases with customizable length and character sets.
+- [/password-strength-checker](https://nuvora.tools/password-strength-checker) — Analyzes password entropy and estimates crack time.
+- [/data-breach-checker](https://nuvora.tools/data-breach-checker) — Checks if email addresses appear in known data breaches.
+- [/ssl-test](https://nuvora.tools/ssl-test) — Comprehensive SSL/TLS configuration analysis.
+- [/cors-checker](https://nuvora.tools/cors-checker) — Tests CORS headers for web security.
+- [/content-security-policy](https://nuvora.tools/content-security-policy) — Analyzes Content Security Policy headers.
+- [/xss-scanner](https://nuvora.tools/xss-scanner) — Scans for cross-site scripting vulnerabilities.
+- [/ssl-expiry-checker](https://nuvora.tools/ssl-expiry-checker) — Checks SSL certificate expiration dates.
+- [/csrf-token-generator](https://nuvora.tools/csrf-token-generator) — Generates secure CSRF tokens.
+- [/hash-comparison](https://nuvora.tools/hash-comparison) — Compares hash values for data integrity verification.
+- [/api-key-generator](https://nuvora.tools/api-key-generator) — Generates secure API keys with configurable formats.
+
+### PDF Tools
+- [/merge-pdf](https://nuvora.tools/merge-pdf) — Merge multiple PDF files into one document.
+- [/split-pdf](https://nuvora.tools/split-pdf) — Split PDF into separate pages or extract specific pages.
+- [/compress-pdf](https://nuvora.tools/compress-pdf) — Compress PDF files to reduce file size while maintaining quality.
+- [/protect-pdf](https://nuvora.tools/protect-pdf) — Add password protection and permissions to PDF files.
+- [/unlock-pdf](https://nuvora.tools/unlock-pdf) — Remove password protection from PDF files.
+- [/pdf-to-word](https://nuvora.tools/pdf-to-word) — Convert PDF documents to editable Word (DOCX) format.
+- [/pdf-to-jpg](https://nuvora.tools/pdf-to-jpg) — Convert PDF pages to JPG images.
+- [/word-to-pdf](https://nuvora.tools/word-to-pdf) — Convert Word documents to PDF format.
+- [/pdf-to-text](https://nuvora.tools/pdf-to-text) — Extract text content from PDF files.
+- [/pdf-to-excel](https://nuvora.tools/pdf-to-excel) — Convert PDF tables to Excel spreadsheets.
+- [/pdf-to-html](https://nuvora.tools/pdf-to-html) — Convert PDF to HTML format.
+- [/pdf-metadata-editor](https://nuvora.tools/pdf-metadata-editor) — View and edit PDF metadata.
+- [/pdf-compare](https://nuvora.tools/pdf-compare) — Compare two PDF files for differences.
+- [/pdf-to-png](https://nuvora.tools/pdf-to-png) — Convert PDF pages to PNG images.
+
+### Developer Tools
+- [/json-formatter](https://nuvora.tools/json-formatter) — Format, validate, and minify JSON data with tree view.
+- [/base64-encoder](https://nuvora.tools/base64-encoder) — Encode and decode Base64 strings.
+- [/url-encoder](https://nuvora.tools/url-encoder) — URL encode and decode text.
+- [/html-entity-encoder](https://nuvora.tools/html-entity-encoder) — Encode HTML special characters.
+- [/jwt-decoder](https://nuvora.tools/jwt-decoder) — Decode and inspect JWT tokens with header and payload analysis.
+- [/uuid-generator](https://nuvora.tools/uuid-generator) — Generate UUID v4 and v7 identifiers.
+- [/regex-tester](https://nuvora.tools/regex-tester) — Test regular expressions with live matching.
+- [/md5-hash-generator](https://nuvora.tools/md5-hash-generator) — Generate MD5 hashes.
+- [/sha-hash-generator](https://nuvora.tools/sha-hash-generator) — Generate SHA-1, SHA-256, SHA-512 hashes.
+- [/html-minifier](https://nuvora.tools/html-minifier) — Minify HTML by removing whitespace and comments.
+- [/css-minifier](https://nuvora.tools/css-minifier) — Minify CSS stylesheets.
+- [/js-minifier](https://nuvora.tools/js-minifier) — Minify JavaScript code.
+- [/sql-formatter](https://nuvora.tools/sql-formatter) — Format SQL queries with customizable indentation.
+- [/markdown-preview](https://nuvora.tools/markdown-preview) — Live preview markdown rendering.
+- [/json-to-csv](https://nuvora.tools/json-to-csv) — Convert JSON data to CSV format.
+- [/yaml-to-json](https://nuvora.tools/yaml-to-json) — Convert YAML to JSON.
+- [/xml-to-json](https://nuvora.tools/xml-to-json) — Convert XML to JSON.
+- [/text-to-slug](https://nuvora.tools/text-to-slug) — Convert text to SEO-friendly URL slugs.
+
+### Image Tools
+- [/image-compressor](https://nuvora.tools/image-compressor) — Compress JPEG, PNG, and WebP images.
+- [/image-converter](https://nuvora.tools/image-converter) — Convert images between formats.
+- [/crop-image](https://nuvora.tools/crop-image) — Crop images with custom dimensions.
+- [/background-remover](https://nuvora.tools/background-remover) — Remove backgrounds from images using AI.
+- [/watermark-image](https://nuvora.tools/watermark-image) — Add text or image watermarks.
+- [/qr-code-generator](https://nuvora.tools/qr-code-generator) — Generate QR codes with custom colors and sizes.
+- [/barcode-generator](https://nuvora.tools/barcode-generator) — Generate various barcode formats.
+
+### SEO Tools
+- [/robots-txt-generator](https://nuvora.tools/robots-txt-generator) — Generate robots.txt files.
+- [/sitemap-generator](https://nuvora.tools/sitemap-generator) — Generate XML sitemaps.
+- [/meta-tag-generator](https://nuvora.tools/meta-tag-generator) — Generate SEO meta tags.
+- [/open-graph-generator](https://nuvora.tools/open-graph-generator) — Generate Open Graph tags.
+- [/schema-generator](https://nuvora.tools/schema-generator) — Generate JSON-LD structured data.
+- [/redirect-checker](https://nuvora.tools/redirect-checker) — Trace and analyze HTTP redirects.
+- [/broken-link-checker](https://nuvora.tools/broken-link-checker) — Find broken links on websites.
+- [/serp-preview](https://nuvora.tools/serp-preview) — Preview Google search result appearance.
+- [/keyword-density](https://nuvora.tools/keyword-density) — Analyze keyword density in text.
+- [/seo-audit](https://nuvora.tools/seo-audit) — Comprehensive SEO audit tool.
+- [/page-speed-checker](https://nuvora.tools/page-speed-checker) — Check website page speed.
+- [/backlink-checker](https://nuvora.tools/backlink-checker) — Analyze website backlinks.
+
+## Pages
+- [/about-nuvora](https://nuvora.tools/about-nuvora) — Learn about Nuvora's mission, values, and team.
+- [/how-it-works](https://nuvora.tools/how-it-works) — How Nuvora tools work: privacy-first, browser-local processing.
+- [/contact](https://nuvora.tools/contact) — Get in touch with the Nuvora team.
+- [/privacy](https://nuvora.tools/privacy) — Privacy policy: no tracking, no data storage, no signup.
+- [/terms](https://nuvora.tools/terms) — Terms of service for using Nuvora tools.
+- [/brand](https://nuvora.tools/brand) — Nuvora brand guidelines and assets.
+- [/open-source](https://nuvora.tools/open-source) — Nuvora's open source commitment and repositories.
+- [/roadmap](https://nuvora.tools/roadmap) — Nuvora product roadmap and upcoming features.
+- [/youtube](https://nuvora.tools/youtube) — Nuvora YouTube channel with tool tutorials.
+- [/share](https://nuvora.tools/share) — Share Nuvora with others on social media.
+- [/sitemap](https://nuvora.tools/sitemap) — Complete sitemap of all Nuvora pages.
+- [/blog](https://nuvora.tools/blog) — Nuvora blog with 200+ articles about tools and productivity.

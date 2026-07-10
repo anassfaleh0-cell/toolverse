@@ -53,6 +53,14 @@ export const metadata: Metadata = {
   other: {
     "color-scheme": "light dark",
     "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || "",
+    "msvalidate.01": process.env.NEXT_PUBLIC_BING_VERIFICATION || "",
+    "yandex-verification": process.env.NEXT_PUBLIC_YANDEX_VERIFICATION || "",
+    "p:domain_verify": process.env.NEXT_PUBLIC_PINTEREST_VERIFICATION || "",
+    "pinterest-rich-pin": "true",
+    "chatgpt-1d": "all",
+    "perplexity-allow": "all",
+    "reddit:title": SITE_NAME,
+    "reddit:description": SITE_DESCRIPTION,
   },
   manifest: "/manifest.webmanifest",
   appleWebApp: {
@@ -104,7 +112,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               email: BRAND.email,
               contactType: "customer support",
             },
-            sameAs: [],
+            sameAs: [
+              "https://twitter.com/NuvoraHQ",
+              "https://github.com/NuvoraHQ",
+              "https://linkedin.com/company/NuvoraHQ",
+              "https://youtube.com/@NuvoraHQ",
+              "https://pinterest.com/NuvoraHQ",
+            ],
           }} />
           <JsonLd data={{
             "@context": "https://schema.org",

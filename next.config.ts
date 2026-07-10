@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   compress: true,
   productionBrowserSourceMaps: false,
+  serverExternalPackages: [],
   logging: {
     fetches: { fullUrl: false },
   },

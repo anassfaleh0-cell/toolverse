@@ -7,7 +7,7 @@ import { ReadingProgress } from "@/components/shared/reading-progress";
 import { SocialShare } from "@/components/shared/social-share";
 import { FeaturedImage } from "@/components/shared/featured-image";
 import { JsonLd } from "@/components/shared/json-ld";
-import { faqSchema } from "@/lib/seo";
+import { faqSchema, videoSchema, articleSchema } from "@/lib/seo";
 import { AUTHORS } from "@/lib/content/authors";
 import Link from "next/link";
 
@@ -52,6 +52,28 @@ export default async function BlogArticlePage({ params }: Props) {
     bio: AUTHORS.team.bio,
     url: piece.author?.url ?? AUTHORS.team.url,
   };
+
+  const isPillar = slug.startsWith("ultimate-guide") || piece.title.startsWith("Ultimate Guide");
+  const articleSchemaData = articleSchema({
+    type: isPillar ? "TechArticle" : "Article",
+    headline: piece.title,
+    description: piece.description,
+    url: canonicalUrl,
+    publishedAt: piece.publishedAt,
+    updatedAt: piece.updatedAt,
+    authorName: author.name,
+    authorUrl: author.url,
+    imageUrl: featuredImage,
+  });
+
+  const videoSchemaData = isPillar ? videoSchema({
+    name: piece.title,
+    description: `Video guide: ${piece.description}`,
+    url: canonicalUrl,
+    thumbnailUrl: featuredImage,
+    duration: `PT${readingMins}M`,
+    uploadDate: piece.publishedAt,
+  }) : null;
 
   return (
     <>
@@ -191,6 +213,8 @@ export default async function BlogArticlePage({ params }: Props) {
       </div>
 
       {faqItems.length > 1 && <JsonLd data={faqSchema(faqItems)} />}
+      <JsonLd data={articleSchemaData} />
+      {videoSchemaData && <JsonLd data={videoSchemaData} />}
     </>
   );
 }

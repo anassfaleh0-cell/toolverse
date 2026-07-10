@@ -68,6 +68,43 @@ export function webPageSchema({
   return schema as WithContext<Thing>;
 }
 
+export function videoSchema({
+  name,
+  description,
+  url,
+  thumbnailUrl,
+  duration,
+  uploadDate,
+  publisherName = "Nuvora",
+  publisherUrl = "https://nuvora.tools",
+}: {
+  name: string;
+  description: string;
+  url: string;
+  thumbnailUrl: string;
+  duration: string;
+  uploadDate: string;
+  publisherName?: string;
+  publisherUrl?: string;
+}): WithContext<Thing> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name,
+    description,
+    thumbnailUrl,
+    uploadDate,
+    duration,
+    contentUrl: url,
+    embedUrl: url,
+    publisher: {
+      "@type": "Organization",
+      name: publisherName,
+      url: publisherUrl,
+    },
+  } as WithContext<Thing>;
+}
+
 export function howToSchema({
   name,
   description,

@@ -1,49 +1,77 @@
 import { NextRequest, NextResponse } from "next/server";
 import { SITE_URL } from "@/lib/constants";
 
-const INDEXNOW_URL = "https://api.indexnow.org/indexnow";
+const INDEXNOW_KEY = "a4b8K2pX9mL7qR3wV5nY1tC6sD8fG0hJ2kL4mN6pQ8rS";
+const BING_INDEXNOW_URL = "https://api.indexnow.org/indexnow";
 
-export async function POST(request: NextRequest) {
+export async function GET(request: NextRequest) {
+  const { searchParams } = new URL(request.url);
+  const key = searchParams.get("key");
+
+  if (key === INDEXNOW_KEY) {
+    return new NextResponse(INDEXNOW_KEY);
+  }
+
+  const url = searchParams.get("url");
+  if (url) {
+    const urls = [url];
+    return handleSubmission(urls);
+  }
+
+  return NextResponse.json({ status: "ok", key: INDEXNOW_KEY });
+}
+
+async function handleSubmission(urls: string[]) {
+  if (urls.length === 0) {
+    return NextResponse.json({ error: "No URLs provided" }, { status: 400 });
+  }
+
+  if (urls.length > 100) {
+    return NextResponse.json({ error: "Maximum 100 URLs per request" }, { status: 400 });
+  }
+
+  const payload = {
+    host: new URL(SITE_URL).host,
+    key: INDEXNOW_KEY,
+    keyLocation: `${SITE_URL}/indexnow-key.txt`,
+    urlList: urls,
+  };
+
   try {
-    const body: { urlList?: string[] } = await request.json();
-    const urlList = body.urlList;
-
-    if (!urlList || !Array.isArray(urlList) || urlList.length === 0) {
-      return NextResponse.json(
-        { error: "urlList must be a non-empty array of URLs" },
-        { status: 400 },
-      );
-    }
-
-    const indexNowKey = process.env.INDEXNOW_KEY || "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6";
-    const payload = {
-      host: new URL(SITE_URL).hostname,
-      key: indexNowKey,
-      keyLocation: `${SITE_URL}/indexnow-key.txt`,
-      urlList: urlList.map((url) =>
-        url.startsWith("http") ? url : `${SITE_URL}${url.startsWith("/") ? url : `/${url}`}`,
-      ),
-    };
-
-    const response = await fetch(INDEXNOW_URL, {
+    const response = await fetch(BING_INDEXNOW_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json; charset=utf-8" },
       body: JSON.stringify(payload),
     });
 
-    if (!response.ok) {
-      const text = await response.text();
-      return NextResponse.json(
-        { error: `IndexNow API error: ${response.status}`, details: text },
-        { status: response.status },
-      );
+    if (response.ok) {
+      return NextResponse.json({ submitted: urls.length, status: "accepted" });
     }
 
-    return NextResponse.json({ submitted: true, count: urlList.length });
-  } catch (err) {
-    return NextResponse.json(
-      { error: err instanceof Error ? err.message : "Unknown error" },
-      { status: 500 },
-    );
+    return NextResponse.json({
+      submitted: urls.length,
+      status: response.status,
+      message: await response.text().catch(() => "Unknown error"),
+    }, { status: response.status });
+  } catch (error) {
+    return NextResponse.json({
+      error: "Failed to submit to IndexNow",
+      details: error instanceof Error ? error.message : "Unknown error",
+    }, { status: 500 });
+  }
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json();
+    const urls: string[] = body.urls ?? (body.url ? [body.url] : []);
+
+    if (!Array.isArray(urls) || urls.length === 0) {
+      return NextResponse.json({ error: "Provide 'urls' array or 'url' string" }, { status: 400 });
+    }
+
+    return handleSubmission(urls);
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
   }
 }

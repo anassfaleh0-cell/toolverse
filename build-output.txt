@@ -8,9 +8,9 @@
   ┬À optimizePackageImports
 
   Creating an optimized production build ...
-Ô£ô Compiled successfully in 78s
+Ô£ô Compiled successfully in 42s
   Running TypeScript ...
-  Finished TypeScript in 39.2s ...
+  Finished TypeScript in 47s ...
   Collecting page data using 3 workers ...
 node.exe : ÔÜá Using edge runtime on a page currently disables static generation for that page
 At line:1 char:1
@@ -19,16 +19,15 @@ At line:1 char:1
     + CategoryInfo          : NotSpecified: (ÔÜá Using edge ...n for that page:String) [], RemoteException
     + FullyQualifiedErrorId : NativeCommandError
  
-  Generating static pages using 3 workers (0/9812) ...
-  Generating static pages using 3 workers (1393/9812) 
-  Generating static pages using 3 workers (2453/9812) 
-  Generating static pages using 3 workers (4121/9812) 
-  Generating static pages using 3 workers (4906/9812) 
-  Generating static pages using 3 workers (6609/9812) 
-  Generating static pages using 3 workers (7359/9812) 
-  Generating static pages using 3 workers (8952/9812) 
-  Generating static pages using 3 workers (9639/9812) 
-Ô£ô Generating static pages using 3 workers (9812/9812) in 7.0min
+  Generating static pages using 3 workers (0/9814) ...
+  Generating static pages using 3 workers (1545/9814) 
+  Generating static pages using 3 workers (2453/9814) 
+  Generating static pages using 3 workers (4017/9814) 
+  Generating static pages using 3 workers (4906/9814) 
+  Generating static pages using 3 workers (6620/9814) 
+  Generating static pages using 3 workers (7360/9814) 
+  Generating static pages using 3 workers (9049/9814) 
+Ô£ô Generating static pages using 3 workers (9814/9814) in 6.5min
   Finalizing page optimization ...
 
 Route (app)
@@ -300,6 +299,7 @@ Route (app)
 Ôö£ Ôùï /security
 Ôö£ Ôùï /serp-preview
 Ôö£ Ôùï /sha-hash-generator
+Ôö£ Ôùï /share
 Ôö£ Ôùï /sitemap
 Ôö£ ãÆ /sitemap-alternatives.xml
 Ôö£ ãÆ /sitemap-best.xml
@@ -381,7 +381,8 @@ Route (app)
 Ôö£ Ôùï /word-to-pdf
 Ôö£ Ôùï /workflow/website-health-check
 Ôö£ Ôùï /xml-to-json
-Ôöö Ôùï /yaml-to-json
+Ôö£ Ôùï /yaml-to-json
+Ôöö Ôùï /youtube
 
 
 ãÆ Proxy (Middleware)
