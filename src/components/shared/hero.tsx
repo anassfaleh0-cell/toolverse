@@ -23,12 +23,14 @@ const floatingIcons = [
   { icon: "⚡", x: -60, y: 130, intensity: 1.1 },
 ];
 
-const stats = [
-  { value: "11,000+", label: "Free Tools" },
-  { value: "100% Free", label: "No Hidden Fees" },
-  { value: "No Signup", label: "Just Results" },
-  { value: "Privacy First", label: "Zero Tracking" },
-];
+function getStats(toolCount: number) {
+  return [
+    { value: `${toolCount.toLocaleString()}+`, label: "Free Tools" },
+    { value: "100% Free", label: "No Hidden Fees" },
+    { value: "No Signup", label: "Just Results" },
+    { value: "Privacy First", label: "Zero Tracking" },
+  ];
+}
 
 export function Hero() {
   const toolCount = getRegisteredToolCount();
@@ -188,7 +190,7 @@ export function Hero() {
       <div className="border-t border-border-subtle bg-surface/60 backdrop-blur-sm dark:bg-background/60">
         <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6">
           <div className="grid grid-cols-2 gap-4 text-center sm:grid-cols-4 sm:gap-8">
-            {stats.map((stat) => (
+            {getStats(toolCount).map((stat) => (
               <div key={stat.label}>
                 <p className="text-sm font-bold text-nuvora-700 dark:text-nuvora-300">{stat.value}</p>
                 <p className="mt-0.5 text-xs text-text-tertiary">{stat.label}</p>

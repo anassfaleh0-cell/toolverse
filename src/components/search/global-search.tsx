@@ -99,7 +99,7 @@ export function GlobalSearch() {
             value={query}
             onChange={e => setQuery(e.target.value)}
             onKeyDown={onKeyDown}
-            placeholder="Search 11,000+ tools..."
+            placeholder="Search tools..."
             className="flex-1 bg-transparent py-4 text-base outline-none text-text-primary placeholder:text-text-tertiary"
             autoComplete="off"
           />
