@@ -371,6 +371,517 @@ const CONFIGS: Record<string, ToolConfig> = {
   },
 };
 
+// ── AI Tools ──────────────────────────────────────────────────────────
+const AI_CONFIGS: Record<string, ToolConfig> = {
+  "ai-readability-score": {
+    fields: [{ name: "input", type: "textarea", label: "Text to analyze", placeholder: "Paste or type your text here to measure its readability..." }],
+    buttonText: "Analyze Readability",
+    process: (v) => {
+      const text = v.input?.trim();
+      if (!text || text.length < 20) return { error: "Enter at least 20 characters for meaningful readability analysis." };
+      const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
+      const words = text.trim().split(/\s+/).filter(w => w.length > 0);
+      const chars = text.replace(/\s/g, "").length;
+      const syllables = words.reduce((sum, w) => {
+        w = w.toLowerCase().replace(/[^a-z]/g, "");
+        if (w.length <= 3) return sum + 1;
+        let count = 0; const vowels = "aeiouy";
+        for (let i = 0; i < w.length; i++) { if (vowels.includes(w[i])) count++; }
+        if (w.endsWith("e")) count--;
+        if (w.endsWith("le") && w.length > 2) count++;
+        if (count === 0) count = 1;
+        return sum + count;
+      }, 0);
+      const avgWordsPerSent = words.length / Math.max(sentences.length, 1);
+      const avgSyllablesPerWord = syllables / Math.max(words.length, 1);
+      const avgCharsPerWord = chars / Math.max(words.length, 1);
+      const complexWords = words.filter(w => { const wc = w.toLowerCase().replace(/[^a-z]/g, ""); let c = 0; const v = "aeiouy"; for (let i = 0; i < wc.length; i++) { if (v.includes(wc[i])) c++; } if (wc.endsWith("e")) c--; if (c === 0) c = 1; return c >= 3; }).length;
+      const pctComplex = (complexWords / Math.max(words.length, 1)) * 100;
+
+      const flesch = 206.835 - 1.015 * avgWordsPerSent - 84.6 * avgSyllablesPerWord;
+      const fkGrade = 0.39 * avgWordsPerSent + 11.8 * avgSyllablesPerWord - 15.59;
+      const gunningFog = 0.4 * (avgWordsPerSent + pctComplex);
+      const smog = 1.043 * Math.sqrt(complexWords * (30 / Math.max(sentences.length, 1))) + 3.1291;
+      const colemanLiau = 5.89 * avgCharsPerWord - 0.3 * (sentences.length / Math.max(words.length, 1) * 100) - 15.8;
+      const ari = 4.71 * avgCharsPerWord + 0.5 * avgWordsPerSent - 21.43;
+      const avgGrade = (fkGrade + gunningFog + smog + colemanLiau + ari) / 5;
+
+      const gradeLabel = (g: number) => g <= 1 ? "Kindergarten" : g <= 2 ? "1st-2nd Grade" : g <= 3 ? "3rd Grade" : g <= 5 ? "4th-5th Grade" : g <= 8 ? "Middle School" : g <= 10 ? "High School" : g <= 12 ? "High School Senior" : g <= 14 ? "College (Undergraduate)" : g <= 16 ? "College (Graduate)" : "Post-Graduate";
+      const difficulty = avgGrade <= 6 ? "Easy to read" : avgGrade <= 10 ? "Moderately difficult" : "Difficult to read";
+      const fleschLabel = flesch >= 90 ? "Very Easy" : flesch >= 80 ? "Easy" : flesch >= 70 ? "Fairly Easy" : flesch >= 60 ? "Plain English" : flesch >= 50 ? "Fairly Difficult" : flesch >= 30 ? "Difficult" : "Very Confusing";
+
+      return {
+        "Flesch Reading Ease": `${flesch.toFixed(1)} / 100 — ${fleschLabel}`,
+        "Flesch-Kincaid Grade": `${fkGrade.toFixed(1)} — ${gradeLabel(fkGrade)}`,
+        "Gunning Fog Index": `${gunningFog.toFixed(1)} — ${gradeLabel(gunningFog)}`,
+        "SMOG Index": `${smog.toFixed(1)} — ${gradeLabel(smog)}`,
+        "Coleman-Liau Index": `${colemanLiau.toFixed(1)} — ${gradeLabel(colemanLiau)}`,
+        "Automated Readability Index": `${ari.toFixed(1)} — ${gradeLabel(ari)}`,
+        "Average Grade Level": `${avgGrade.toFixed(1)} — ${gradeLabel(avgGrade)}`,
+        "Overall Difficulty": difficulty,
+        "Stats": `${words.length} words, ${sentences.length} sentences, ${syllables} syllables, ${complexWords} complex words`,
+      };
+    },
+  },
+  "ai-sentiment-analysis": {
+    fields: [{ name: "input", type: "textarea", label: "Text to analyze", placeholder: "Paste text to analyze its emotional tone..." }],
+    buttonText: "Analyze Sentiment",
+    process: (v) => {
+      const text = v.input?.trim();
+      if (!text || text.length < 3) return { error: "Enter at least 3 characters of text to analyze." };
+      const words = text.toLowerCase().replace(/[^a-z\s'-]/g, "").split(/\s+/).filter(Boolean);
+      const positive = ["good", "great", "excellent", "amazing", "wonderful", "fantastic", "happy", "love", "beautiful", "best", "awesome", "brilliant", "outstanding", "superb", "delightful", "joy", "perfect", "positive", "pleased", "glad", "nice", "helpful", "kind", "grateful", "thankful", "bright", "hope", "success", "win", "celebrate", "exciting", "fun", "enjoy", "peace", "harmony", "progress", "improve", "better", "strong", "safe", "free", "fresh", "sweet", "gentle", "rich", "lucky", "proud", "brave", "clever", "easy", "fast", "smart", "generous", "cheerful", "friendly", "warm", "cozy", "comfy"];
+      const negative = ["bad", "terrible", "horrible", "awful", "hate", "worst", "poor", "ugly", "angry", "sad", "hurt", "pain", "sick", "dangerous", "wrong", "evil", "cruel", "nasty", "disgusting", "shame", "fail", "loss", "damage", "destroy", "kill", "death", "fear", "anxiety", "stress", "crisis", "tragedy", "disaster", "horror", "terrifying", "brutal", "violent", "harsh", "bitter", "rotten", "selfish", "lazy", "stupid", "dull", "boring", "waste", "broken", "stuck", "ugly", "cold", "dark", "empty", "lonely", "hopeless", "jealous", "greedy"];
+      let score = 0, posCount = 0, negCount = 0;
+      for (const w of words) {
+        if (positive.includes(w)) { score++; posCount++; }
+        else if (negative.includes(w)) { score--; negCount++; }
+      }
+      const total = words.length;
+      const intensity = Math.abs(score) / Math.max(total, 1);
+      const label = score > 0 ? "Positive" : score < 0 ? "Negative" : "Neutral";
+      const strength = intensity > 0.15 ? "Strongly" : intensity > 0.05 ? "Moderately" : "Slightly";
+
+      const emotionalTone = (() => {
+        const excitement = ["exciting", "amazing", "fantastic", "wonderful", "thrilling", "incredible"];
+        const anger = ["angry", "furious", "outraged", "hate", "terrible", "horrible"];
+        const sadness = ["sad", "unhappy", "depressed", "grief", "lonely", "hopeless"];
+        const fear = ["fear", "scared", "terrified", "anxious", "worry", "panic"];
+        if (words.some(w => excitement.includes(w))) return "Excitement / Enthusiasm";
+        if (words.some(w => anger.includes(w))) return "Anger / Frustration";
+        if (words.some(w => sadness.includes(w))) return "Sadness / Melancholy";
+        if (words.some(w => fear.includes(w))) return "Fear / Anxiety";
+        return score >= 0 ? "Contentment / Satisfaction" : "Dissatisfaction / Displeasure";
+      })();
+
+      const ratio = total > 0 ? ((posCount - negCount) / total * 100).toFixed(1) : "0.0";
+      return {
+        "Overall Sentiment": score === 0 ? "Neutral 😐" : score > 0 ? `${strength} Positive 😊` : `${strength} Negative 😞`,
+        "Score": `${score > 0 ? "+" : ""}${score} (ratio: ${ratio}%)`,
+        "Tone": emotionalTone,
+        "Positive Words": `${posCount}`,
+        "Negative Words": `${negCount}`,
+        "Total Words Analyzed": `${total}`,
+      };
+    },
+  },
+  "ai-keyword-extractor": {
+    fields: [{ name: "input", type: "textarea", label: "Text to analyze", placeholder: "Paste your content to extract keywords..." }],
+    buttonText: "Extract Keywords",
+    process: (v) => {
+      const text = v.input?.trim();
+      if (!text || text.length < 10) return { error: "Enter at least 10 characters of text for keyword extraction." };
+      const stopWords = new Set(["the","a","an","and","or","but","in","on","at","to","for","of","with","by","from","up","about","into","over","after","is","are","was","were","be","been","being","have","has","had","do","does","did","will","would","could","should","may","might","shall","can","need","dare","ought","used","i","you","he","she","it","we","they","me","him","her","us","them","my","your","his","its","our","their","mine","yours","hers","ours","theirs","this","that","these","those","what","which","who","whom","when","where","why","how","all","each","every","both","few","more","most","other","some","such","no","nor","not","only","own","same","so","than","too","very","just","also","as","if","then","else","like","because","while","during","before","after","since","until","once","here","there","about","above","below","under","between","through","without","within","along","around","behind","beyond","down","near","off","out","past","still","yet","already","ago","ever","never","always","sometimes","often","usually","maybe","perhaps","well","really","quite","almost","hardly","nearly","certainly","surely","definitely","absolutely","indeed","ok","yes","no","thanks","please","hello","hi","hey"]);
+      const words = text.toLowerCase().replace(/[^a-z\s'-]/g, "").split(/\s+/).filter(w => w.length > 2 && !stopWords.has(w));
+      const freq: Record<string, number> = {};
+      for (const w of words) { freq[w] = (freq[w] || 0) + 1; }
+
+      // Build bigrams
+      const bigrams: Record<string, number> = {};
+      for (let i = 0; i < words.length - 1; i++) {
+        const bg = words[i] + " " + words[i + 1];
+        if (!stopWords.has(words[i]) || !stopWords.has(words[i + 1])) { bigrams[bg] = (bigrams[bg] || 0) + 1; }
+      }
+
+      const sortedUnigrams = Object.entries(freq).sort((a, b) => b[1] - a[1]).slice(0, 20);
+      const sortedBigrams = Object.entries(bigrams).sort((a, b) => b[1] - a[1]).slice(0, 10);
+      const sortedAll = Object.entries(freq).sort((a, b) => b[1] - a[1]);
+      const totalWords = words.length;
+
+      const result: Record<string, unknown> = {
+        "Keywords Found": `${sortedUnigrams.length}`,
+        "Total Words Analyzed": `${totalWords} (excluding stop words)`,
+        "Top Keywords": sortedUnigrams.slice(0, 10).map(([w, c]) => `${w} (${c}x)`).join(", "),
+      };
+      if (sortedBigrams.length > 0) {
+        result["Top Key Phrases (2-word)"] = sortedBigrams.slice(0, 5).map(([p, c]) => `${p} (${c}x)`).join(", ");
+      }
+      result["Keyword Density (full list)"] = sortedAll.map(([w, c]) => `${w}: ${c}`).join("\n");
+      return result;
+    },
+  },
+  "ai-text-summarizer": {
+    fields: [{ name: "input", type: "textarea", label: "Text to summarize", placeholder: "Paste a long article, document, or passage to extract key sentences..." }],
+    buttonText: "Summarize",
+    process: (v) => {
+      const text = v.input?.trim();
+      if (!text || text.length < 50) return { error: "Enter at least 50 characters for meaningful summarization." };
+      const sentences = text.match(/[^.!?\n]+[.!?]*/g)?.map(s => s.trim()).filter(Boolean) || [];
+      if (sentences.length < 3) return { error: "Need at least 3 sentences to generate a summary." };
+
+      const words = text.toLowerCase().replace(/[^a-z\s]/g, "").split(/\s+/).filter(Boolean);
+      const stopWords = new Set(["the","a","an","and","or","but","in","on","at","to","for","of","with","by","from","is","are","was","were","be","been","being","have","has","had","do","does","did","will","would","could","should","may","might","i","you","he","she","it","we","they","me","him","her","us","them","my","your","his","its","our","their","this","that","these","those","what","which","who","whom","when","where","why","how","all","each","every","both","few","more","most","other","some","such","no","nor","not","only","own","same","so","than","too","very","just","also","as","if","then","else","like","because","while","during","before","after","since","until","once","here","there","about","above","below","under","between","without","within","along","around","behind","beyond","near","off","out","past","still","yet","already","ago","ever","never","always","sometimes","often","usually","well","really","quite","almost","hardly","nearly"]);
+      const wordFreq: Record<string, number> = {};
+      for (const w of words) { if (!stopWords.has(w)) wordFreq[w] = (wordFreq[w] || 0) + 1; }
+      const maxFreq = Math.max(...Object.values(wordFreq), 1);
+
+      const sentenceScores: { sentence: string; score: number; idx: number }[] = sentences.map((s, i) => {
+        const sWords = s.toLowerCase().replace(/[^a-z\s]/g, "").split(/\s+/).filter(Boolean);
+        let score = 0;
+        for (const w of sWords) { if (!stopWords.has(w)) score += (wordFreq[w] || 0) / maxFreq; }
+        // Bonus for first sentence
+        if (i === 0) score *= 1.3;
+        // Bonus for sentences with title-like words
+        if (s.length < 100) score *= 1.1;
+        return { sentence: s, score, idx: i };
+      });
+
+      sentenceScores.sort((a, b) => b.score - a.score);
+      const summaryCount = Math.max(2, Math.ceil(sentences.length * 0.3));
+      const topSentences = sentenceScores.slice(0, summaryCount).sort((a, b) => a.idx - b.idx);
+
+      const originalLength = text.length;
+      const summaryLength = topSentences.reduce((sum, s) => sum + s.sentence.length, 0);
+      const compression = ((1 - summaryLength / originalLength) * 100).toFixed(0);
+
+      return {
+        "Summary": topSentences.map(s => s.sentence).join(" "),
+        "Original Length": `${originalLength} characters (${sentences.length} sentences)`,
+        "Summary Length": `${summaryLength} characters (${topSentences.length} sentences)`,
+        "Compression": `${compression}% reduction`,
+      };
+    },
+  },
+  "ai-rewriter": {
+    fields: [{ name: "input", type: "textarea", label: "Text to rewrite", placeholder: "Paste text to paraphrase and rewrite..." }],
+    buttonText: "Rewrite",
+    process: (v) => {
+      const text = v.input?.trim();
+      if (!text || text.length < 10) return { error: "Enter at least 10 characters of text to rewrite." };
+      const synonyms: Record<string, string[]> = {
+        "good": ["excellent", "superb", "outstanding", "quality", "fine"], "bad": ["poor", "inferior", "substandard", "unsatisfactory"], "big": ["large", "substantial", "considerable", "significant"], "small": ["tiny", "compact", "diminutive", "minor"], "fast": ["quick", "rapid", "swift", "speedy"], "slow": ["gradual", "leisurely", "unhurried"], "new": ["fresh", "novel", "modern", "recent"], "old": ["ancient", "vintage", "antique", "aged"], "important": ["crucial", "vital", "essential", "critical"], "happy": ["delighted", "pleased", "content", "joyful"], "sad": ["unhappy", "melancholy", "sorrowful", "downcast"], "hard": ["difficult", "challenging", "demanding", "tough"], "easy": ["simple", "straightforward", "effortless", "basic"], "help": ["assist", "aid", "support", "facilitate"], "use": ["utilize", "employ", "leverage", "apply"], "make": ["create", "produce", "craft", "generate"], "change": ["modify", "adjust", "alter", "transform"], "think": ["believe", "consider", "deem", "reckon"], "show": ["demonstrate", "illustrate", "display", "indicate"], "need": ["require", "necessitate", "demand"], "get": ["obtain", "acquire", "secure", "attain"], "give": ["provide", "offer", "supply", "furnish"], "start": ["begin", "commence", "initiate", "launch"], "end": ["conclude", "finish", "terminate", "complete"], "first": ["primary", "initial", "foremost"], "last": ["final", "ultimate", "concluding"], "many": ["numerous", "countless", "abundant", "plentiful"], "some": ["several", "certain", "various"], "very": ["extremely", "exceptionally", "remarkably", "immensely"], "really": ["truly", "genuinely", "honestly"], "always": ["constantly", "consistently", "perpetually"], "never": ["rarely", "seldom", "hardly ever"],
+      };
+      const sentences = text.match(/[^.!?\n]+[.!?]*/g)?.map(s => s.trim()).filter(Boolean) || [text];
+      const rewritten = sentences.map(sentence => {
+        const words = sentence.split(/(\s+)/);
+        let changed = 0;
+        const result = words.map(w => {
+          const clean = w.replace(/^[^a-zA-Z]*|[^a-zA-Z]*$/g, "").toLowerCase();
+          if (clean.length < 3) return w;
+          const syns = synonyms[clean];
+          if (syns && Math.random() > 0.6) {
+            const syn = syns[Math.floor(Math.random() * syns.length)];
+            changed++;
+            return w.replace(new RegExp(clean, "i"), s => clean === s ? syn : syn.charAt(0).toUpperCase() + syn.slice(1));
+          }
+          return w;
+        }).join("");
+        return { text: result, changed };
+      });
+      const totalChanged = rewritten.reduce((sum, r) => sum + r.changed, 0);
+      const rewrittenText = rewritten.map(r => r.text).join(" ");
+      return {
+        "Original": text,
+        "Rewritten Version": rewrittenText,
+        "Changes Made": `${totalChanged} word(s) replaced with synonyms`,
+      };
+    },
+  },
+  "ai-title-generator": {
+    fields: [
+      { name: "input", type: "textarea", label: "Content / Topic description", placeholder: "Describe your content topic, key points, or paste the article text..." },
+      { name: "tone", type: "select", label: "Style", placeholder: "", options: [
+        { label: "Professional", value: "professional" },
+        { label: "How-to / Tutorial", value: "howto" },
+        { label: "Listicle", value: "listicle" },
+        { label: "Question", value: "question" },
+        { label: "Bold / Opinion", value: "bold" },
+        { label: "Ultimate Guide", value: "guide" },
+        { label: "Comparison", value: "comparison" },
+        { label: "Number / Statistics", value: "stats" },
+      ]},
+    ],
+    buttonText: "Generate Titles",
+    process: (v) => {
+      const input = v.input?.trim();
+      if (!input || input.length < 5) return { error: "Enter at least 5 characters describing your topic." };
+      const words = input.toLowerCase().replace(/[^a-z\s-]/g, "").split(/\s+/).filter(w => w.length > 2 && !["the","and","for","with","that","this","from","your","have","will","what","about","which","their","would","could","should","been","into","just","also","than","then","very","when","where","while","after","before","between","still"].includes(w));
+      const topWords = [...new Set(words)].slice(0, 4);
+      const topic = topWords.join(", ");
+      const titleWord = topWords[0] || "this";
+      const titles: string[] = [];
+      if (v.tone === "howto" || v.tone === "all") {
+        titles.push(`How to ${titleWord}: A Complete Guide for Beginners`);
+        titles.push(`How to Master ${titleWord} in ${Math.floor(Math.random() * 5) + 3} Simple Steps`);
+        titles.push(`${titleWord} 101: Everything You Need to Know`);
+        titles.push(`Step-by-Step Guide to ${words.slice(0, 2).join(" ")}`);
+      }
+      if (v.tone === "listicle" || v.tone === "all") {
+        titles.push(`10 Proven Ways to ${titleWord} Better Results`);
+        titles.push(`5 ${titleWord} Strategies That Actually Work`);
+        titles.push(`7 ${titleWord} Tips Experts Swear By`);
+        titles.push(`Top ${Math.floor(Math.random() * 5) + 10} ${titleWord} Tools and Resources`);
+      }
+      if (v.tone === "question" || v.tone === "all") {
+        titles.push(`Is ${titleWord} Worth It? An Honest Review`);
+        titles.push(`What Everyone Gets Wrong About ${titleWord}`);
+        titles.push(`Why ${titleWord} Matters More Than You Think`);
+        titles.push(`Are You Making These ${titleWord} Mistakes?`);
+      }
+      if (v.tone === "bold" || v.tone === "all") {
+        titles.push(`Why ${titleWord} Is the Future of ${topic}`);
+        titles.push(`The Truth About ${titleWord} Nobody Tells You`);
+        titles.push(`${titleWord}: Why Most People Get It Wrong`);
+        titles.push(`Stop Doing ${titleWord} Wrong — Here's How`);
+      }
+      if (v.tone === "professional" || v.tone === "all") {
+        titles.push(`A Comprehensive Guide to ${topic}`);
+        titles.push(`Understanding ${topic}: Key Insights and Best Practices`);
+        titles.push(`${topic}: A Strategic Overview`);
+        titles.push(`The Essential Handbook for ${topic}`);
+      }
+      if (v.tone === "guide" || v.tone === "all") {
+        titles.push(`The Ultimate Guide to ${topic}`);
+        titles.push(`The Complete Resource for ${topic}`);
+        titles.push(`Mastering ${topic}: From Basics to Advanced`);
+        titles.push(`The Definitive Guide to ${topic}`);
+      }
+      if (v.tone === "comparison" || v.tone === "all") {
+        const alt = topWords[1] || "alternatives";
+        titles.push(`${titleWord} vs ${alt}: Which One Should You Choose?`);
+        titles.push(`${titleWord} Compared: Features, Pricing, and More`);
+        titles.push(`${titleWord} vs ${alt}: A Side-by-Side Comparison`);
+      }
+      if (v.tone === "stats" || v.tone === "all") {
+        titles.push(`${topic}: Statistics and Trends You Need to Know`);
+        titles.push(`The State of ${topic} in ${new Date().getFullYear()}: Key Numbers`);
+        titles.push(`${topic} by the Numbers: Data-Driven Insights`);
+      }
+
+      return {
+        "Generated Titles": titles.slice(0, 8).map((t, i) => `${i + 1}. ${t}`).join("\n"),
+        "Topic Keywords": topic || "N/A",
+        "Style": v.tone,
+        "Tip": `${titles.length} titles generated. Pick the one that best matches your audience and click "Copy" next to it.`,
+      };
+    },
+  },
+  "ai-meta-description": {
+    fields: [{ name: "input", type: "textarea", label: "Page content / description", placeholder: "Paste your article, page content, or a brief description of your page..." }],
+    buttonText: "Generate Meta Description",
+    process: (v) => {
+      const input = v.input?.trim();
+      if (!input || input.length < 15) return { error: "Enter at least 15 characters of content to generate a meta description." };
+      const sentences = input.match(/[^.!?\n]+[.!?]*/g)?.map(s => s.trim()).filter(Boolean) || [input];
+      const maxLen = 155;
+      const candidates: string[] = [];
+
+      // Try first sentence
+      if (sentences[0] && sentences[0].length <= maxLen) candidates.push(sentences[0]);
+      // Try first two sentences
+      if (sentences.length >= 2) {
+        const two = sentences[0] + " " + sentences[1];
+        if (two.length <= maxLen) candidates.push(two);
+      }
+      // Extract first meaningful segment within limit
+      let current = "";
+      for (const s of sentences) {
+        if ((current + " " + s).trim().length <= maxLen) {
+          current = (current + " " + s).trim();
+        } else break;
+      }
+      if (current.length > 40 && !candidates.includes(current)) candidates.push(current);
+
+      // Also try key sentences from later
+      for (let i = 1; i < Math.min(sentences.length, 5); i++) {
+        const s = sentences[i];
+        if (s.length <= maxLen && s.length > 30 && !candidates.includes(s)) {
+          candidates.push(s);
+        }
+      }
+
+      // Format within limit
+      const formatMeta = (text: string): string => {
+        if (text.length <= maxLen) return text;
+        return text.substring(0, maxLen - 3).replace(/\s+\S*$/, "") + "...";
+      };
+
+      return {
+        "Meta Description (recommended)": formatMeta(candidates[0] || input.substring(0, maxLen - 3).replace(/\s+\S*$/, "") + "..."),
+        "Character Count": `${candidates[0]?.length || 0} / ${maxLen} (${candidates[0]?.length > maxLen ? "too long, trimmed" : candidates[0]?.length > 120 ? "optimal" : "could be longer"})`,
+        "SEO Preview": `<meta name="description" content="${formatMeta(candidates[0] || input.substring(0, maxLen - 3).replace(/\s+\S*$/, "") + "...")}" />`,
+        "Alternatives": candidates.slice(1, 4).map((c, i) => `Option ${i+1}: ${formatMeta(c)}`).join("\n"),
+      };
+    },
+  },
+  "ai-hashtag-generator": {
+    fields: [
+      { name: "input", type: "textarea", label: "Content or topic", placeholder: "Paste your content, post, or describe your topic to generate relevant hashtags..." },
+      { name: "platform", type: "select", label: "Platform", placeholder: "", options: [
+        { label: "All", value: "all" },
+        { label: "Instagram", value: "instagram" },
+        { label: "Twitter / X", value: "twitter" },
+        { label: "LinkedIn", value: "linkedin" },
+        { label: "TikTok", value: "tiktok" },
+      ]},
+    ],
+    buttonText: "Generate Hashtags",
+    process: (v) => {
+      const input = v.input?.trim();
+      if (!input || input.length < 3) return { error: "Enter some content or a topic description to generate hashtags." };
+      const words = input.toLowerCase().replace(/[^a-z\s]/g, "").split(/\s+/).filter(w => w.length > 2 && !["the","and","for","with","that","this","from","your","have","will","what","about","which","their","would","could","should","been","into","just","also","than","then","very","when","where","while","after","before","between","still","been","being","have","has","had","does","doesnt"].includes(w));
+      const freq: Record<string, number> = {};
+      for (const w of words) { freq[w] = (freq[w] || 0) + 1; }
+      const ranked = Object.entries(freq).sort((a, b) => b[1] - a[1]).map(([w]) => w);
+
+      const allTags = ranked.map(w => `#${w}${w.endsWith("s") ? "" : ""}`);
+      const maxTags = v.platform === "instagram" ? 15 : v.platform === "tiktok" ? 12 : v.platform === "twitter" ? 5 : 8;
+      const selected = allTags.slice(0, maxTags);
+
+      // Generate compound tags
+      const compounds: string[] = [];
+      for (let i = 0; i < Math.min(ranked.length, 5); i++) {
+        for (let j = i + 1; j < Math.min(ranked.length, 5); j++) {
+          if (compounds.length < 5) compounds.push(`#${ranked[i]}${ranked[j]}`);
+        }
+      }
+
+      return {
+        [`Top Hashtags (${v.platform})`]: selected.join(" "),
+        "Count": `${selected.length} hashtags generated for ${v.platform}`,
+        "Compound Tags": compounds.slice(0, 3).join(" "),
+        "Copy-Friendly": selected.join(" "),
+        "Tip": `For ${v.platform === "instagram" ? "Instagram: use all 15 for maximum reach. Mix broad and niche tags." : v.platform === "tiktok" ? "TikTok: use 3-5 highly relevant tags plus trending ones." : v.platform === "twitter" ? "Twitter/X: 2-3 tags max for best engagement." : "LinkedIn: 3-5 professional tags work best."}`,
+      };
+    },
+  },
+  "ai-grammar-checker": {
+    fields: [{ name: "input", type: "textarea", label: "Text to check", placeholder: "Paste text to check for grammar, spelling, and stylistic issues..." }],
+    buttonText: "Check Grammar",
+    process: (v) => {
+      const text = v.input?.trim();
+      if (!text || text.length < 3) return { error: "Enter at least 3 characters of text to check." };
+      const issues: string[] = [];
+      const words = text.split(/\s+/);
+      const sentences = text.match(/[^.!?\n]+[.!?]*/g)?.map(s => s.trim()).filter(Boolean) || [];
+
+      // Check: multiple spaces
+      if (/\s{2,}/.test(text)) issues.push("Multiple consecutive spaces found. Use single spaces between words.");
+
+      // Check: sentence case (first word capitalized)
+      for (const s of sentences) {
+        const trimmed = s.trim();
+        if (trimmed.length > 1 && /^[a-z]/.test(trimmed)) {
+          issues.push(`Sentence may need capitalization: "${trimmed.substring(0, 40)}${trimmed.length > 40 ? "..." : ""}"`);
+          break;
+        }
+      }
+
+      // Check: common misspellings
+      const commonMistakes: Record<string, string> = {
+        "alot": "a lot", "cant": "can't", "dont": "don't", "wont": "won't", "wasnt": "wasn't", "isnt": "isn't", "arent": "aren't", "couldnt": "couldn't", "wouldnt": "wouldn't", "shouldnt": "shouldn't", "doesnt": "doesn't", "didnt": "didn't", "havent": "haven't", "hasnt": "hasn't", "theres": "there's", "theyll": "they'll", "theyre": "they're", "its": "it's", "youre": "you're", "your": "you're", "recieve": "receive", "wierd": "weird", "beleive": "believe", "occured": "occurred", "occuring": "occurring", "seperate": "separate", "definately": "definitely", "humour": "humor", "colour": "color", "centre": "center", "theatre": "theater", "licence": "license", "practise": "practice", "defence": "defense", "organise": "organize", "realise": "realize", "recognise": "recognize",
+      };
+      for (const [wrong, right] of Object.entries(commonMistakes)) {
+        const regex = new RegExp(`\\b${wrong}\\b`, "gi");
+        const match = text.match(regex);
+        if (match) issues.push(`"${match[0]}" may be misspelled. Did you mean "${right}"? (${match.length} occurrence${match.length > 1 ? "s" : ""})`);
+      }
+
+      // Check: passive voice indicators
+      const passiveMarkers = /\b(am|is|are|was|were|be|been|being)\s+\w+ed\b/gi;
+      const passiveMatches = text.match(passiveMarkers);
+      if (passiveMatches && passiveMatches.length > 2) issues.push(`Passive voice detected (${passiveMatches.length} instances). Consider active voice for stronger writing.`);
+
+      // Check: repeated words
+      const repeatRegex = /\b(\w+)\s+\1\b/gi;
+      const repeatMatch = text.match(repeatRegex);
+      if (repeatMatch) issues.push(`Repeated word${repeatMatch.length > 1 ? "s" : ""} found: "${repeatMatch.join('", "')}". Remove duplicate${repeatMatch.length > 1 ? "s" : ""}.`);
+
+      // Check: long sentences
+      for (const s of sentences) {
+        const wc = s.split(/\s+/).length;
+        if (wc > 35) issues.push(`Very long sentence (${wc} words). Consider breaking it into shorter sentences for readability.`);
+      }
+
+      // Check: comma splices
+      for (const s of sentences) {
+        if (/^[^,]*,[^,;,]*,[^,;,]*,[^,;,]*,[^,;]/i.test(s) && s.split(/\s+/).length < 25) {
+          issues.push("Possible comma splice — multiple independent clauses joined only by commas. Consider using semicolons or periods.");
+          break;
+        }
+      }
+
+      // Check: empty parentheses  
+      if (/\(\s*\)/.test(text)) issues.push("Empty parentheses found. Remove or fill in the missing content.");
+
+      // Check: ellipsis overuse
+      const ellipsisCount = (text.match(/\.{3,}/g) || []).length;
+      if (ellipsisCount > 3) issues.push(`Ellipsis (...) used ${ellipsisCount} times. Overuse can make writing seem informal.`);
+
+      if (issues.length === 0) {
+        issues.push("No obvious grammar or spelling issues detected. Your text looks good!");
+      }
+
+      return {
+        "Issues Found": `${issues.length}`,
+        "Details": issues.map((iss, i) => `${i + 1}. ${iss}`).join("\n"),
+        "Word Count": `${words.length} words, ${sentences.length} sentences`,
+        "Readability Note": sentences.some(s => s.split(/\s+/).length > 25) ? "Some sentences are long — consider shortening for better readability." : "Sentence lengths look good.",
+      };
+    },
+  },
+  "ai-plagiarism-checker": {
+    fields: [
+      { name: "text1", type: "textarea", label: "Original text", placeholder: "Paste the original / source text here..." },
+      { name: "text2", type: "textarea", label: "Text to compare", placeholder: "Paste the text you want to check for similarity..." },
+    ],
+    buttonText: "Check Similarity",
+    process: (v) => {
+      const text1 = v.text1?.trim();
+      const text2 = v.text2?.trim();
+      if (!text1 || text1.length < 20) return { error: "Enter at least 20 characters in the original text field." };
+      if (!text2 || text2.length < 20) return { error: "Enter at least 20 characters in the text to compare." };
+
+      const normalize = (t: string) => t.toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ").trim();
+      const n1 = normalize(text1);
+      const n2 = normalize(text2);
+
+      // Word overlap
+      const w1 = n1.split(" ");
+      const w2 = n2.split(" ");
+      const set1 = new Set(w1);
+      const set2 = new Set(w2);
+      const overlap = [...set1].filter(w => set2.has(w)).length;
+      const jaccard = overlap / Math.max(new Set([...w1, ...w2]).size, 1);
+
+      // N-gram overlap (4-gram)
+      const ngrams = (t: string, n: number) => {
+        const grams: string[] = [];
+        for (let i = 0; i <= t.length - n; i++) grams.push(t.substring(i, i + n));
+        return grams;
+      };
+      const g1 = ngrams(n1, 8);
+      const g2 = ngrams(n2, 8);
+      const gSet1 = new Set(g1);
+      const sharedGrams = g2.filter(g => gSet1.has(g)).length;
+      const gramSimilarity = g1.length > 0 && g2.length > 0 ? sharedGrams / Math.max(Math.min(g1.length, g2.length), 1) : 0;
+
+      const overallSimilarity = jaccard * 0.4 + gramSimilarity * 0.6;
+      const pct = (overallSimilarity * 100);
+      const risk = pct > 70 ? "High — texts are very similar; likely copied" : pct > 40 ? "Medium — significant overlap detected; review required" : pct > 15 ? "Low — some common phrases but likely original" : "Minimal — texts appear to be original";
+
+      // Find common phrases
+      const phrases: string[] = [];
+      const p1 = n1.split(".");
+      for (const phrase of p1) {
+        const trimmed = phrase.trim();
+        if (trimmed.length > 20 && n2.includes(trimmed)) {
+          phrases.push(trimmed.substring(0, 80) + (trimmed.length > 80 ? "..." : ""));
+        }
+      }
+
+      return {
+        "Similarity Score": `${pct.toFixed(1)}%`,
+        "Risk Level": risk,
+        "Word Overlap": `${overlap} common words out of ${new Set([...w1, ...w2]).size} unique words (${(jaccard * 100).toFixed(1)}%)`,
+        "Phrase Matches": phrases.length > 0 ? phrases.slice(0, 5).map((p, i) => `${i + 1}. "...${p}..."`).join("\n") : "No significant phrase matches found",
+        "Word Counts": `Original: ${w1.length} words | Compared: ${w2.length} words`,
+        "⚠️ Limitation": "This is a local text-similarity check. A complete plagiarism scanner requires searching against a web-scale index of published content, which needs a third-party API (see notes below).",
+      };
+    },
+  },
+};
+
 const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "dns-lookup": {
     fields: [{ name: "input", type: "text", label: "Domain name", placeholder: "example.com" }],
@@ -1157,7 +1668,7 @@ function generateDefaultConfig(slug: string, name: string): ToolConfig {
 }
 
 export function getToolConfig(slug: string): ToolConfig {
-  const merged = { ...CHECKER_CONFIGS, ...CONFIGS };
+  const merged = { ...CHECKER_CONFIGS, ...AI_CONFIGS, ...CONFIGS };
   if (merged[slug]) return merged[slug];
 
   const tool = getAllTools().find((t: Tool) => t.slug === slug);
