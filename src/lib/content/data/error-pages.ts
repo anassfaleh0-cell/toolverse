@@ -16,8 +16,8 @@ export const ERROR_PAGES: ContentPiece[] = [
     difficulty: "beginner",
     readingTimeMinutes: 6,
     category: "network-internet",
-    publishedAt: "2025-03-10",
-    updatedAt: "2025-06-01",
+    publishedAt: "2026-03-10",
+    updatedAt: "2026-06-01",
   },
   {
     slug: "ssl-certificate-checker-errors",
@@ -34,8 +34,8 @@ export const ERROR_PAGES: ContentPiece[] = [
     difficulty: "beginner",
     readingTimeMinutes: 7,
     category: "network-internet",
-    publishedAt: "2025-03-15",
-    updatedAt: "2025-06-01",
+    publishedAt: "2026-03-15",
+    updatedAt: "2026-06-01",
   },
   {
     slug: "port-checker-errors",
@@ -52,8 +52,8 @@ export const ERROR_PAGES: ContentPiece[] = [
     difficulty: "beginner",
     readingTimeMinutes: 6,
     category: "network-internet",
-    publishedAt: "2025-03-20",
-    updatedAt: "2025-06-01",
+    publishedAt: "2026-03-20",
+    updatedAt: "2026-06-01",
   },
   {
     slug: "ping-test-errors",
@@ -70,8 +70,8 @@ export const ERROR_PAGES: ContentPiece[] = [
     difficulty: "beginner",
     readingTimeMinutes: 5,
     category: "network-internet",
-    publishedAt: "2025-03-25",
-    updatedAt: "2025-06-01",
+    publishedAt: "2026-03-25",
+    updatedAt: "2026-06-01",
   },
   {
     slug: "whois-lookup-errors",
@@ -88,7 +88,7 @@ export const ERROR_PAGES: ContentPiece[] = [
     difficulty: "beginner",
     readingTimeMinutes: 5,
     category: "network-internet",
-    publishedAt: "2025-04-01",
-    updatedAt: "2025-06-01",
+    publishedAt: "2026-04-01",
+    updatedAt: "2026-06-01",
   },
 ];

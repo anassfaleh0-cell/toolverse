@@ -5,7 +5,7 @@ export const BRAND = {
     "Nuvora provides powerful free online tools for everyone — from developers to designers, students to startups. Every tool runs entirely in your browser.",
   url: "https://nuvora.tools",
   email: "hello@nuvora.tools",
-  founded: "2025",
+  founded: "2026",
 
   mission:
     "To empower everyone with intelligent tools that make complex tasks simple, fast, and accessible entirely in the browser.",

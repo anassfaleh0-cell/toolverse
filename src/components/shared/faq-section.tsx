@@ -15,28 +15,25 @@ export function FaqSection({
 
   return (
     <section>
-      <div className="text-center">
-        <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
-          {title}
-        </h2>
-        {description && (
-          <p className="mt-4 text-zinc-600 dark:text-zinc-400">
-            {description}
-          </p>
-        )}
-      </div>
-      <dl className="mt-8 divide-y divide-zinc-200 dark:divide-zinc-800">
+      <h2 className="text-xl font-bold text-text-primary mb-1">{title}</h2>
+      {description && (
+        <p className="mt-2 text-sm text-text-secondary mb-6">{description}</p>
+      )}
+      <div className="space-y-3">
         {items.map((item, i) => (
-          <div key={i} className="py-6 first:pt-0 last:pb-0">
-            <dt className="font-medium text-zinc-900 dark:text-zinc-50">
+          <details key={i} className="group rounded-xl border border-border-subtle bg-surface transition-all hover:shadow-sm [&[open]]:shadow-sm">
+            <summary className="flex cursor-pointer items-center justify-between px-5 py-3.5 text-sm font-medium text-text-primary">
               {item.question}
-            </dt>
-            <dd className="mt-2 text-zinc-600 dark:text-zinc-400">
-              {item.answer}
-            </dd>
-          </div>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4 shrink-0 text-text-tertiary transition-transform group-open:rotate-180">
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </summary>
+            <div className="border-t border-border-subtle px-5 pb-3.5 pt-2.5">
+              <p className="text-sm leading-relaxed text-text-secondary">{item.answer}</p>
+            </div>
+          </details>
         ))}
-      </dl>
+      </div>
     </section>
   );
 }

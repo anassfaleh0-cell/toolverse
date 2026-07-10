@@ -37,6 +37,7 @@ export { DecisionTree } from "./decision-tree";
 export { ComparisonMatrix } from "./comparison-matrix";
 export { TroubleshootingFlow } from "./troubleshooting-flow";
 export { PrintButton } from "./print-button";
+export { LazySection } from "./lazy-section";
 export { BatchInput } from "./batch-input";
 export { CrossLinks } from "./cross-links";
 export { RelatedReading } from "./related-reading";

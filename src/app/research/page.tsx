@@ -23,7 +23,7 @@ const PAPERS = [
   {
     title: "SSL/TLS Protocol Adoption Analysis 2026",
     date: "May 2026",
-    summary: "Analysis of TLS 1.3 adoption across the top 100K websites. TLS 1.3 now at 78% adoption (up from 62% in 2025). 12% still support TLS 1.0/1.1. Average certificate issuance time: 4.2 minutes with ACME.",
+    summary: "Analysis of TLS 1.3 adoption across the top 100K websites. TLS 1.3 now at 78% adoption (up from 62% in 2024). 12% still support TLS 1.0/1.1. Average certificate issuance time: 4.2 minutes with ACME.",
     tags: ["SSL", "TLS", "Security"],
   },
   {
@@ -35,7 +35,7 @@ const PAPERS = [
   {
     title: "IPv6 Adoption Trends in Network Tool Usage",
     date: "April 2026",
-    summary: "IPv6 adoption among Nuvora users reached 42% (up from 31% in 2025). Dual-stack deployment is now the standard, with 67% of domains having both A and AAAA records.",
+    summary: "IPv6 adoption among Nuvora users reached 42% (up from 31% in 2024). Dual-stack deployment is now the standard, with 67% of domains having both A and AAAA records.",
     tags: ["IPv6", "Network", "Trends"],
   },
   {

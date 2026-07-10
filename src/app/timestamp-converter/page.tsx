@@ -80,7 +80,7 @@ const faqItems: FaqItem[] = [
   {
     question: "What is the difference between ISO 8601 and Unix timestamps?",
     answer:
-      "ISO 8601 is a human-readable date format (e.g. 2024-07-01T12:00:00Z) that includes timezone information and is easy to read and parse. Unix timestamps are numeric and timezone-independent, making them ideal for machine-to-machine communication and arithmetic operations. ISO 8601 is better for log files and user interfaces, while timestamps are better for storage, comparison, and duration calculations.",
+      "ISO 8601 is a human-readable date format (e.g. 2026-07-01T12:00:00Z) that includes timezone information and is easy to read and parse. Unix timestamps are numeric and timezone-independent, making them ideal for machine-to-machine communication and arithmetic operations. ISO 8601 is better for log files and user interfaces, while timestamps are better for storage, comparison, and duration calculations.",
   },
   {
     question: "Can I use negative Unix timestamps?",

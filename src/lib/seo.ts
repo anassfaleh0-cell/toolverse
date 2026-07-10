@@ -181,8 +181,8 @@ export function articleSchema({
     publisher: {
       "@type": "Organization",
       name: "Nuvora",
-      url: "https://Nuvora.dev",
-      logo: { "@type": "ImageObject", url: "https://Nuvora.dev/icon.svg" },
+      url: "https://nuvora.tools",
+      logo: { "@type": "ImageObject", url: "https://nuvora.tools/icon.svg" },
     },
   };
   if (imageUrl) {

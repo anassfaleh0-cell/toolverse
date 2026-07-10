@@ -38,7 +38,7 @@ export default function Terms() {
           <p>All content, tool designs, and code on Nuvora are owned by Nuvora unless otherwise noted. You may not reproduce, distribute, or create derivative works without permission.</p>
           <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">Changes</h2>
           <p>We may update these terms periodically. Continued use after changes constitutes acceptance of the new terms.</p>
-          <p className="text-sm text-zinc-400">Last updated: January 1, 2025</p>
+          <p className="text-sm text-zinc-400">Last updated: January 1, 2026</p>
         </div>
       </section>
     </>

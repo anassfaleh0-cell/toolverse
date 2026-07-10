@@ -86,7 +86,7 @@ const faqItems: FaqItem[] = [
   {
     question: "What is the oldest user agent still seen in production logs?",
     answer:
-      "Internet Explorer 6 (Mozilla/4.0...MSIE 6.0) still appears in 2025 logs from unmaintained corporate kiosks and embedded systems. Any application that blocks based on UA version alone risks denying service to legitimate legacy systems.",
+      "Internet Explorer 6 (Mozilla/4.0...MSIE 6.0) still appears in 2026 logs from unmaintained corporate kiosks and embedded systems. Any application that blocks based on UA version alone risks denying service to legitimate legacy systems.",
   },
   {
     question: "Do user agents work on mobile apps?",

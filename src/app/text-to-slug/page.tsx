@@ -85,7 +85,7 @@ const faqItems: FaqItem[] = [
   {
     question: "What is slug collision and how do I prevent it?",
     answer:
-      "Slug collision occurs when two different pages would generate the same URL slug (e.g., two posts titled &quot;Getting Started&quot;). Most CMS platforms handle this by appending a number or UUID to duplicate slugs. To prevent collisions, use unique identifiers like publishing dates (my-post-2024) or include category prefixes (/blog/my-post vs /tutorials/my-post). For APIs, combining a slug with a resource ID (/products/123/my-product-slug) guarantees uniqueness while keeping the URL readable.",
+      "Slug collision occurs when two different pages would generate the same URL slug (e.g., two posts titled &quot;Getting Started&quot;). Most CMS platforms handle this by appending a number or UUID to duplicate slugs. To prevent collisions, use unique identifiers like publishing dates (my-post-2026) or include category prefixes (/blog/my-post vs /tutorials/my-post). For APIs, combining a slug with a resource ID (/products/123/my-product-slug) guarantees uniqueness while keeping the URL readable.",
   },
   {
     question: "How do slugs affect website performance?",
@@ -129,7 +129,7 @@ export default function TextToSlugPage() {
               URL slugs are one of the most visible yet underappreciated elements of web development. A well-crafted slug tells users and search engines exactly what a page contains. Google&apos;s documentation explicitly states that words in URLs are used as ranking signals, and descriptive URLs are displayed in search results, influencing click-through rates. Beyond SEO, clean slugs make URLs easier to read aloud, share verbally, and remember. A slug like /how-to-backup-your-website is immediately understandable; a slug like /p=123 requires context to interpret.
             </p>
             <p>
-              The best slugs are short, contain the primary keyword, and remove unnecessary words. Stop words like a, an, the, of, and in are typically omitted unless they are essential for meaning. Numbers that add no value (like 2024 in a blog post title) can be included if they help distinguish content, but avoid appending random IDs that make URLs look cluttered. For structuring content with consistent naming conventions, the <Link href="/case-converter" className="text-blue-600 hover:underline dark:text-blue-400">Case Converter</Link> helps maintain uniform formatting across your content management workflow.
+              The best slugs are short, contain the primary keyword, and remove unnecessary words. Stop words like a, an, the, of, and in are typically omitted unless they are essential for meaning. Numbers that add no value (like 2026 in a blog post title) can be included if they help distinguish content, but avoid appending random IDs that make URLs look cluttered. For structuring content with consistent naming conventions, the <Link href="/case-converter" className="text-blue-600 hover:underline dark:text-blue-400">Case Converter</Link> helps maintain uniform formatting across your content management workflow.
             </p>
           </div>
         </div>

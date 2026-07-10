@@ -11,15 +11,27 @@ interface ToolHeroProps {
 
 export function ToolHero({ title, description, breadcrumbs, children }: ToolHeroProps) {
   return (
-    <div className="text-center">
-      <Breadcrumbs items={breadcrumbs} />
-      <h1 className="mt-6 text-4xl font-bold tracking-tight text-text-primary sm:text-5xl">
-        {title}
-      </h1>
-      <p className="mx-auto mt-4 max-w-2xl text-lg text-text-secondary leading-relaxed">
-        {description}
-      </p>
-      {children && <div className="mt-10" role="region" aria-label="Tool interface">{children}</div>}
+    <div>
+      {/* Compact breadcrumb */}
+      <div className="mb-3">
+        <Breadcrumbs items={breadcrumbs} />
+      </div>
+      {/* Title + description row */}
+      <div className="flex items-start gap-3 mb-6">
+        <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-nuvora-100 text-nuvora-600 dark:bg-nuvora-900/50 dark:text-nuvora-400">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-5">
+            <path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+          </svg>
+        </div>
+        <div className="min-w-0">
+          <h1 className="text-xl font-bold text-text-primary sm:text-2xl">{title}</h1>
+          <p className="mt-0.5 text-sm text-text-tertiary leading-relaxed">{description}</p>
+        </div>
+      </div>
+      {/* Tool card */}
+      <div className="rounded-2xl border border-border-subtle bg-surface p-4 shadow-sm sm:p-6" role="region" aria-label="Tool interface">
+        {children}
+      </div>
     </div>
   );
 }
