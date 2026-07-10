@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import { JsonLd } from "@/components/shared";
 import { Hero } from "@/components/shared/hero";
+import { HomeSearchBar } from "@/components/search/HomeSearchBar";
 import { webPageSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
 import { SITE_NAME, SITE_URL, SITE_DESCRIPTION, FAQ_ITEMS, HERO_TAGLINE } from "@/lib/constants";
 import { getCategories, getToolsByCategory, getAllTools } from "@/lib/registry";
@@ -262,6 +263,11 @@ export default function Home() {
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <JsonLd data={faqSchema(FAQ_ITEMS.map((item, i) => ({ question: item.question, answer: item.answer })))} />
       <Hero />
+      <section className="border-b border-border-subtle">
+        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+          <HomeSearchBar />
+        </div>
+      </section>
       <TrustBar />
       <AiShowcase />
       <FlagShipTools />
