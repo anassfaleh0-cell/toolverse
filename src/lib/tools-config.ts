@@ -16,6 +16,7 @@ export interface ToolConfig {
   apiEndpoint?: string;
   process?: (values: Record<string, string>) => Record<string, unknown>;
   howTo?: { action: string; desc: string }[];
+  isComingSoon?: boolean;
 }
 
 const CLIENT_TOOLS: Record<string, (v: Record<string, string>) => Record<string, unknown>> = {
@@ -1140,18 +1141,19 @@ function generateDefaultConfig(slug: string, name: string): ToolConfig {
   const hasSort = lower.includes("sort") || lower.includes("alphabet") || lower.includes("random");
   const isTextTool = lower.includes("text") || lower.includes("word") || lower.includes("line") || lower.includes("character") || lower.includes("paragraph");
 
-  if (hasCalculator) return { fields: [{ name: "input", type: "number", label: "Value", placeholder: "Enter a value" }], buttonText: "Calculate" };
+  const base: ToolConfig = { fields: [], buttonText: "Run", isComingSoon: true };
+  if (hasCalculator) return { ...base, fields: [{ name: "input", type: "number", label: "Value", placeholder: "Enter a value" }], buttonText: "Calculate" };
   if (hasGenerator && !lower.includes("sitemap") && !lower.includes("meta") && !lower.includes("schema")) {
-    if (lower.includes("password") || lower.includes("token") || lower.includes("key")) return { fields: [{ name: "length", type: "number", label: "Length", placeholder: "16" }], buttonText: "Generate" };
-    return { fields: [{ name: "input", type: "text", label: "Input", placeholder: `Enter ${name.toLowerCase()} input...` }], buttonText: "Generate" };
+    if (lower.includes("password") || lower.includes("token") || lower.includes("key")) return { ...base, fields: [{ name: "length", type: "number", label: "Length", placeholder: "16" }], buttonText: "Generate" };
+    return { ...base, fields: [{ name: "input", type: "text", label: "Input", placeholder: `Enter ${name.toLowerCase()} input...` }], buttonText: "Generate" };
   }
-  if (hasConverter || hasEncoder) return { fields: [{ name: "input", type: "textarea", label: "Input", placeholder: "Enter value to convert..." }], buttonText: "Convert" };
-  if (hasChecker || hasCompare) return { fields: [{ name: "input", type: "text", label: "Input", placeholder: `Enter ${name.toLowerCase()} input...` }], buttonText: "Check" };
-  if (hasFormatter || hasCleaner) return { fields: [{ name: "input", type: "textarea", label: "Input", placeholder: "Enter content..." }], buttonText: "Process" };
-  if (hasPreview) return { fields: [{ name: "input", type: "textarea", label: "Content", placeholder: "Enter content to preview..." }], buttonText: "Preview" };
-  if (hasSort) return { fields: [{ name: "input", type: "textarea", label: "Items (one per line)", placeholder: "item1\nitem2\nitem3" }], buttonText: "Sort" };
-  if (isTextTool) return { fields: [{ name: "input", type: "textarea", label: "Text", placeholder: "Enter text..." }], buttonText: "Process" };
-  return { fields: [{ name: "input", type: "text", label: "Input", placeholder: "Enter input..." }], buttonText: "Run" };
+  if (hasConverter || hasEncoder) return { ...base, fields: [{ name: "input", type: "textarea", label: "Input", placeholder: "Enter value to convert..." }], buttonText: "Convert" };
+  if (hasChecker || hasCompare) return { ...base, fields: [{ name: "input", type: "text", label: "Input", placeholder: `Enter ${name.toLowerCase()} input...` }], buttonText: "Check" };
+  if (hasFormatter || hasCleaner) return { ...base, fields: [{ name: "input", type: "textarea", label: "Input", placeholder: "Enter content..." }], buttonText: "Process" };
+  if (hasPreview) return { ...base, fields: [{ name: "input", type: "textarea", label: "Content", placeholder: "Enter content to preview..." }], buttonText: "Preview" };
+  if (hasSort) return { ...base, fields: [{ name: "input", type: "textarea", label: "Items (one per line)", placeholder: "item1\nitem2\nitem3" }], buttonText: "Sort" };
+  if (isTextTool) return { ...base, fields: [{ name: "input", type: "textarea", label: "Text", placeholder: "Enter text..." }], buttonText: "Process" };
+  return { ...base, fields: [{ name: "input", type: "text", label: "Input", placeholder: "Enter input..." }], buttonText: "Run" };
 }
 
 export function getToolConfig(slug: string): ToolConfig {

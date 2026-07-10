@@ -7,6 +7,7 @@ import { getAllTools, getToolBySlug, generateToolBreadcrumbs, generateToolMetada
 import { getContentForTool } from "@/lib/content/registry";
 import { JsonLd, Breadcrumbs, SuggestedNextTool, RelatedContent, ToolLayout, FaqSection } from "@/components/shared";
 import { getToolComponent } from "@/lib/tools-registry";
+import { ToolComponent as GenericToolComponent } from "@/components/tools/ToolComponent";
 import { webPageSchema, breadcrumbSchema, faqSchema, softwareAppSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/seo";
 
@@ -244,19 +245,7 @@ function ToolGenericPage({ slug }: { slug: string }) {
       <JsonLd data={softwareAppSchema({ name: tool.name, description: tool.description, url: `${SITE_URL}/${tool.slug}` })} />
 
       <ToolLayout toolSlug={slug}>
-        {ToolComponent ? (
-          <ToolComponent />
-        ) : (
-          <div className="py-8 text-center">
-            <div className="mx-auto flex size-16 items-center justify-center rounded-2xl bg-nuvora-100 text-nuvora-600 dark:bg-nuvora-900/50 dark:text-nuvora-400">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-8">
-                <path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-              </svg>
-            </div>
-            <h1 className="mt-6 text-2xl font-bold text-zinc-900 dark:text-zinc-50">{tool.name}</h1>
-            <p className="mt-2 text-zinc-600 dark:text-zinc-400">{tool.description}</p>
-          </div>
-        )}
+        {ToolComponent ? <ToolComponent /> : <GenericToolComponent slug={slug} />}
       </ToolLayout>
 
       <section className="border-t border-zinc-200 py-12 dark:border-zinc-800 sm:py-16">
