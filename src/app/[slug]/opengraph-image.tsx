@@ -1,14 +1,10 @@
 import { ImageResponse } from "next/og";
-import { getToolBySlug, getAllTools, getCategories } from "@/lib/registry";
+import { getToolBySlug, getCategories } from "@/lib/registry";
 import { SITE_NAME } from "@/lib/constants";
 
 export const runtime = "edge";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-
-export async function generateStaticParams() {
-  return getAllTools().map((tool) => ({ slug: tool.slug }));
-}
 
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
