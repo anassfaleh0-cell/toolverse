@@ -1,17 +1,11 @@
 import { ImageResponse } from "next/og";
-import { ARTICLES } from "@/lib/content/data/articles";
 import { SITE_NAME } from "@/lib/constants";
 
 export const runtime = "edge";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const piece = ARTICLES.find((a) => a.slug === slug);
-  const title = piece?.title ?? SITE_NAME;
-  const description = piece?.description ?? "Free Online Tools";
-
+export default async function Image() {
   return new ImageResponse(
     <div
       style={{
@@ -35,7 +29,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
           lineHeight: 1.2,
         }}
       >
-        {title}
+        {SITE_NAME}
       </div>
       <div
         style={{
@@ -47,7 +41,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
           lineHeight: 1.3,
         }}
       >
-        {description}
+        Free Online Tools & Guides
       </div>
       <div
         style={{
