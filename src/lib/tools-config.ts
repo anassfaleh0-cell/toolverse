@@ -1,11 +1,12 @@
 import type { Tool } from "./registry";
 import { getAllTools } from "./registry";
+import { NEW_TOOL_CONFIGS } from "./new-tools-config";
 
 export interface ToolField {
   name: string;
   type: "text" | "number" | "textarea" | "url" | "select" | "file";
   label: string;
-  placeholder: string;
+  placeholder?: string;
   required?: boolean;
   options?: { label: string; value: string }[];
   accept?: string;
@@ -2687,7 +2688,7 @@ function generateDefaultConfig(slug: string, name: string): ToolConfig {
 }
 
 export function getToolConfig(slug: string): ToolConfig {
-  const merged = { ...CHECKER_CONFIGS, ...AI_CONFIGS, ...IMAGE_CONFIGS, ...PDF_CONFIGS, ...CONFIGS };
+  const merged = { ...NEW_TOOL_CONFIGS, ...CHECKER_CONFIGS, ...AI_CONFIGS, ...IMAGE_CONFIGS, ...PDF_CONFIGS, ...CONFIGS };
   if (merged[slug]) return merged[slug];
 
   const tool = getAllTools().find((t: Tool) => t.slug === slug);
