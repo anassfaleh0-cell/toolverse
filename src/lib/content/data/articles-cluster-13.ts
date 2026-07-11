@@ -12,7 +12,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     toolSlugs: ["json-formatter"],
     relatedContent: ["base64-encoding-decoding-guide", "html-encoder-decoder-guide", "regex-tester-tool-guide"],
     readingTimeMinutes: 10,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-08-10",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
@@ -112,7 +112,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     toolSlugs: ["base64-encoder"],
     relatedContent: ["hash-generator-md5-sha256", "how-to-format-json-code", "html-encoder-decoder-guide"],
     readingTimeMinutes: 10,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-08-10",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
@@ -215,7 +215,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     toolSlugs: ["html-entity-encoder"],
     relatedContent: ["how-to-format-json-code", "base64-encoding-decoding-guide", "how-to-minify-css-and-js"],
     readingTimeMinutes: 10,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-08-11",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
@@ -318,7 +318,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     toolSlugs: ["css-minifier", "js-minifier"],
     relatedContent: ["how-to-format-json-code", "page-speed-optimization-guide", "sql-formatter-guide"],
     readingTimeMinutes: 11,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-08-12",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
@@ -425,7 +425,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     toolSlugs: ["sql-formatter"],
     relatedContent: ["how-to-format-json-code", "how-to-minify-css-and-js", "regex-tester-tool-guide"],
     readingTimeMinutes: 9,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-08-13",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
@@ -528,7 +528,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     toolSlugs: ["md5-hash-generator", "sha-hash-generator"],
     relatedContent: ["base64-encoding-decoding-guide", "how-to-format-json-code", "readme-generator-guide"],
     readingTimeMinutes: 12,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-08-17",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
@@ -635,7 +635,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     toolSlugs: ["api-tester"],
     relatedContent: ["how-to-format-json-code", "base64-encoding-decoding-guide", "regex-tester-tool-guide"],
     readingTimeMinutes: 11,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-08-17",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
@@ -738,7 +738,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     toolSlugs: ["readme-generator"],
     relatedContent: ["hash-generator-md5-sha256", "how-to-format-json-code", "regex-tester-tool-guide"],
     readingTimeMinutes: 10,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-08-17",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
@@ -841,7 +841,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     toolSlugs: ["regex-tester"],
     relatedContent: ["how-to-format-json-code", "sql-formatter-guide", "how-to-use-api-tester-tool"],
     readingTimeMinutes: 12,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-08-18",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
@@ -948,7 +948,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     toolSlugs: ["color-palette", "color-converter"],
     relatedContent: ["color-converter-guide", "how-to-format-json-code", "how-to-minify-css-and-js"],
     readingTimeMinutes: 10,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-08-19",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {

@@ -14,12 +14,13 @@ export async function GET() {
     "best-practices": "best-practices", commands: "commands", "use-cases": "use-cases",
   };
 
-  const urls = allContent.map((c) => {
+  const urls = allContent.filter((c) => !c.noindex).map((c) => {
     const route = TYPE_ROUTE[c.type] ?? c.type;
     const isPillar = c.slug.startsWith("ultimate-guide") || c.title.startsWith("Ultimate Guide");
     const priority = route === "blog" ? (isPillar ? "0.8" : "0.7") : "0.6";
     const changefreq = route === "blog" ? "monthly" : "weekly";
-    return `  <url><loc>${baseUrl}/${route}/${c.slug}</loc><lastmod>${now}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`;
+    const lastmod = c.publishedAt ? c.publishedAt + "T00:00:00Z" : now;
+    return `  <url><loc>${baseUrl}/${route}/${c.slug}</loc><lastmod>${lastmod}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`;
   }).join("\n");
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

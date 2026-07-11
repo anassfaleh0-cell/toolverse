@@ -12,7 +12,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
     toolSlugs: ["ai-text-summarizer"],
     relatedContent: ["ai-rewriter-tool-complete-guide", "how-to-improve-content-readability", "ai-content-generator-guide"],
     readingTimeMinutes: 9,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-08-21",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
@@ -115,7 +115,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
     toolSlugs: ["ai-rewriter"],
     relatedContent: ["how-to-use-ai-text-summarizer", "paraphrasing-tool-guide", "how-to-check-plagiarism"],
     readingTimeMinutes: 9,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-08-24",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
@@ -222,7 +222,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
     toolSlugs: ["keyword-density", "ai-text-summarizer"],
     relatedContent: ["how-to-use-ai-text-summarizer", "grammar-checker-guide", "ai-content-generator-guide"],
     readingTimeMinutes: 10,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-08-24",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
@@ -325,7 +325,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
     toolSlugs: ["ai-sentiment-analysis", "ai-text-summarizer"],
     relatedContent: ["how-to-use-ai-text-summarizer", "ai-content-generator-guide", "grammar-checker-guide"],
     readingTimeMinutes: 10,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-08-24",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
@@ -428,7 +428,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
     toolSlugs: ["ai-grammar-checker"],
     relatedContent: ["how-to-improve-content-readability", "how-to-check-plagiarism", "paraphrasing-tool-guide"],
     readingTimeMinutes: 9,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-08-26",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
@@ -531,7 +531,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
     toolSlugs: ["ai-plagiarism-checker", "ai-rewriter"],
     relatedContent: ["paraphrasing-tool-guide", "ai-rewriter-tool-complete-guide", "grammar-checker-guide"],
     readingTimeMinutes: 10,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-08-27",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
@@ -634,7 +634,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
     toolSlugs: ["ai-paraphrasing-tool", "ai-rewriter"],
     relatedContent: ["how-to-check-plagiarism", "ai-rewriter-tool-complete-guide", "how-to-use-ai-text-summarizer"],
     readingTimeMinutes: 9,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-08-28",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
@@ -741,7 +741,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
     toolSlugs: ["ai-content-generator", "ai-rewriter", "ai-title-generator"],
     relatedContent: ["how-to-use-ai-text-summarizer", "title-generator-guide", "ai-rewriter-tool-complete-guide"],
     readingTimeMinutes: 11,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-08-31",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
@@ -844,7 +844,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
     toolSlugs: ["ai-title-generator", "ai-content-generator"],
     relatedContent: ["ai-content-generator-guide", "hashtag-generator-guide", "how-to-improve-content-readability"],
     readingTimeMinutes: 9,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-08-31",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
@@ -947,7 +947,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
     toolSlugs: ["ai-hashtag-generator"],
     relatedContent: ["title-generator-guide", "ai-content-generator-guide", "sentiment-analysis-tool-guide"],
     readingTimeMinutes: 9,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-09-01",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {

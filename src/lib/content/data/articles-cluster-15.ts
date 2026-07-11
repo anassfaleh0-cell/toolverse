@@ -12,7 +12,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
     toolSlugs: ["bmi-calculator"],
     relatedContent: ["how-to-calculate-age", "how-to-use-percentage-calculator", "word-counter-tool-guide"],
     readingTimeMinutes: 9,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-09-02",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
@@ -112,7 +112,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
     toolSlugs: ["percentage-calculator"],
     relatedContent: ["loan-calculator-guide", "how-to-use-bmi-calculator", "how-to-use-currency-converter"],
     readingTimeMinutes: 8,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-09-03",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
@@ -215,7 +215,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
     toolSlugs: ["loan-calculator"],
     relatedContent: ["how-to-use-percentage-calculator", "how-to-use-currency-converter", "how-to-generate-strong-passwords"],
     readingTimeMinutes: 10,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-09-07",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
@@ -318,7 +318,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
     toolSlugs: ["password-generator", "password-strength-checker"],
     relatedContent: ["how-to-use-bmi-calculator", "loan-calculator-guide", "number-to-words-converter-guide"],
     readingTimeMinutes: 10,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-09-07",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
@@ -425,7 +425,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
     toolSlugs: ["word-counter", "keyword-density"],
     relatedContent: ["how-to-use-bmi-calculator", "how-to-improve-content-readability", "how-to-use-percentage-calculator"],
     readingTimeMinutes: 8,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-09-07",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
@@ -528,7 +528,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
     toolSlugs: ["color-converter", "color-palette"],
     relatedContent: ["how-to-create-color-palette-web-design", "unit-converter-guide", "number-to-words-converter-guide"],
     readingTimeMinutes: 9,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-09-08",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
@@ -631,7 +631,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
     toolSlugs: ["currency-converter"],
     relatedContent: ["unit-converter-guide", "loan-calculator-guide", "how-to-use-percentage-calculator"],
     readingTimeMinutes: 9,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-09-10",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
@@ -738,7 +738,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
     toolSlugs: ["unit-converter"],
     relatedContent: ["color-converter-guide", "how-to-use-currency-converter", "how-to-use-percentage-calculator"],
     readingTimeMinutes: 9,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-09-11",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
@@ -841,7 +841,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
     toolSlugs: ["age-calculator"],
     relatedContent: ["how-to-use-bmi-calculator", "how-to-use-percentage-calculator", "unit-converter-guide"],
     readingTimeMinutes: 8,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-09-14",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
@@ -944,7 +944,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
     toolSlugs: ["number-to-words"],
     relatedContent: ["unit-converter-guide", "how-to-use-percentage-calculator", "how-to-use-bmi-calculator"],
     readingTimeMinutes: 8,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-09-14",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {

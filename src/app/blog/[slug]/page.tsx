@@ -14,9 +14,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const piece = getContentBySlug(slug);
   if (!piece || piece.type !== "article") return {};
+  const robots = piece.noindex ? { index: false, follow: true } : undefined;
   return {
     title: piece.title,
     description: piece.description,
+    robots,
     openGraph: {
       title: piece.title,
       description: piece.description,

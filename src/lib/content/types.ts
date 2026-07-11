@@ -34,6 +34,8 @@ export interface ContentPiece {
   updatedAt: string;
   author?: { name: string; url?: string };
   schema?: Record<string, unknown>;
+  noindex?: boolean;
+  needsReview?: boolean;
 }
 
 export interface TopicCluster {
