@@ -14,6 +14,26 @@ import { CLUSTER_12_ARTICLES } from "./articles-cluster-12";
 import { CLUSTER_13_ARTICLES } from "./articles-cluster-13";
 import { CLUSTER_14_ARTICLES } from "./articles-cluster-14";
 import { CLUSTER_15_ARTICLES } from "./articles-cluster-15";
+import { CLUSTER_16_ARTICLES } from "./articles-cluster-16";
+import { CLUSTER_17_ARTICLES } from "./articles-cluster-17";
+import { CLUSTER_18_ARTICLES } from "./articles-cluster-18";
+import { CLUSTER_19_ARTICLES } from "./articles-cluster-19";
+import { CLUSTER_20_ARTICLES } from "./articles-cluster-20";
+import { CLUSTER_21_ARTICLES } from "./articles-cluster-21";
+import { CLUSTER_22_ARTICLES } from "./articles-cluster-22";
+import { CLUSTER_23_ARTICLES } from "./articles-cluster-23";
+import { CLUSTER_24_ARTICLES } from "./articles-cluster-24";
+import { CLUSTER_25_ARTICLES } from "./articles-cluster-25";
+import { CLUSTER_26_ARTICLES } from "./articles-cluster-26";
+import { CLUSTER_27_ARTICLES } from "./articles-cluster-27";
+import { CLUSTER_28_ARTICLES } from "./articles-cluster-28";
+import { CLUSTER_29_ARTICLES } from "./articles-cluster-29";
+import { CLUSTER_30_ARTICLES } from "./articles-cluster-30";
+import { CLUSTER_31_ARTICLES } from "./articles-cluster-31";
+import { CLUSTER_32_ARTICLES } from "./articles-cluster-32";
+import { CLUSTER_33_ARTICLES } from "./articles-cluster-33";
+import { CLUSTER_34_ARTICLES } from "./articles-cluster-34";
+import { CLUSTER_35_ARTICLES } from "./articles-cluster-35";
 
 export const ARTICLES: ContentPiece[] = [
   ...CLUSTER_1_ARTICLES,
@@ -31,6 +51,26 @@ export const ARTICLES: ContentPiece[] = [
   ...CLUSTER_13_ARTICLES,
   ...CLUSTER_14_ARTICLES,
   ...CLUSTER_15_ARTICLES,
+  ...CLUSTER_16_ARTICLES,
+  ...CLUSTER_17_ARTICLES,
+  ...CLUSTER_18_ARTICLES,
+  ...CLUSTER_19_ARTICLES,
+  ...CLUSTER_20_ARTICLES,
+  ...CLUSTER_21_ARTICLES,
+  ...CLUSTER_22_ARTICLES,
+  ...CLUSTER_23_ARTICLES,
+  ...CLUSTER_24_ARTICLES,
+  ...CLUSTER_25_ARTICLES,
+  ...CLUSTER_26_ARTICLES,
+  ...CLUSTER_27_ARTICLES,
+  ...CLUSTER_28_ARTICLES,
+  ...CLUSTER_29_ARTICLES,
+  ...CLUSTER_30_ARTICLES,
+  ...CLUSTER_31_ARTICLES,
+  ...CLUSTER_32_ARTICLES,
+  ...CLUSTER_33_ARTICLES,
+  ...CLUSTER_34_ARTICLES,
+  ...CLUSTER_35_ARTICLES,
   {
     slug: "understanding-dns-record-types",
     type: "article",
