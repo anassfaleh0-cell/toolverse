@@ -8,6 +8,7 @@ import { getContentForTool } from "@/lib/content/registry";
 import { JsonLd, Breadcrumbs, SuggestedNextTool, RelatedContent, ToolLayout, FaqSection } from "@/components/shared";
 import { getToolComponent } from "@/lib/tools-registry";
 import { ToolComponent as GenericToolComponent } from "@/components/tools/ToolComponent";
+import { ErrorBoundary } from "@/components/tools/ErrorBoundary";
 import { webPageSchema, breadcrumbSchema, faqSchema, softwareAppSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/seo";
 
@@ -245,7 +246,9 @@ function ToolGenericPage({ slug }: { slug: string }) {
       <JsonLd data={softwareAppSchema({ name: tool.name, description: tool.description, url: `${SITE_URL}/${tool.slug}` })} />
 
       <ToolLayout toolSlug={slug}>
-        {ToolComponent ? <ToolComponent /> : <GenericToolComponent slug={slug} />}
+        <ErrorBoundary>
+          {ToolComponent ? <ToolComponent /> : <GenericToolComponent slug={slug} />}
+        </ErrorBoundary>
       </ToolLayout>
 
       <section className="border-t border-zinc-200 py-12 dark:border-zinc-800 sm:py-16">

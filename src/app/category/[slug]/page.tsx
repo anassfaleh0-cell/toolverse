@@ -5,6 +5,7 @@ import { getCategoryWithTools, generateCategoryBreadcrumbs } from "@/lib/registr
 import { JsonLd, FaqSection, RelatedTools } from "@/components/shared";
 import { faqSchema, webPageSchema, type FaqItem } from "@/lib/seo";
 import { generateCategoryFaq, getCategories, getPopularTools } from "@/lib/registry";
+import { BreadcrumbSchema } from "@/components/schema/BreadcrumbSchema";
 import { CATEGORIES } from "@/lib/categories";
 import { SITE_URL } from "@/lib/constants";
 
@@ -41,6 +42,11 @@ export default async function CategoryPage({ params }: Props) {
 
   return (
     <>
+      <BreadcrumbSchema items={[
+        { name: "Home", url: SITE_URL },
+        { name: "Categories", url: `${SITE_URL}/categories` },
+        { name: category.label, url: `${SITE_URL}/category/${slug}` },
+      ]} />
       <JsonLd data={faqSchema(faqItems)} />
       <JsonLd
         data={webPageSchema({
