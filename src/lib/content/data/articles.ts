@@ -9,6 +9,11 @@ import { CLUSTER_7_ARTICLES } from "./articles-cluster-7";
 import { CLUSTER_8_ARTICLES } from "./articles-cluster-8";
 import { CLUSTER_9_ARTICLES } from "./articles-cluster-9";
 import { CLUSTER_10_ARTICLES } from "./articles-cluster-10";
+import { CLUSTER_11_ARTICLES } from "./articles-cluster-11";
+import { CLUSTER_12_ARTICLES } from "./articles-cluster-12";
+import { CLUSTER_13_ARTICLES } from "./articles-cluster-13";
+import { CLUSTER_14_ARTICLES } from "./articles-cluster-14";
+import { CLUSTER_15_ARTICLES } from "./articles-cluster-15";
 
 export const ARTICLES: ContentPiece[] = [
   ...CLUSTER_1_ARTICLES,
@@ -21,6 +26,11 @@ export const ARTICLES: ContentPiece[] = [
   ...CLUSTER_8_ARTICLES,
   ...CLUSTER_9_ARTICLES,
   ...CLUSTER_10_ARTICLES,
+  ...CLUSTER_11_ARTICLES,
+  ...CLUSTER_12_ARTICLES,
+  ...CLUSTER_13_ARTICLES,
+  ...CLUSTER_14_ARTICLES,
+  ...CLUSTER_15_ARTICLES,
   {
     slug: "understanding-dns-record-types",
     type: "article",
