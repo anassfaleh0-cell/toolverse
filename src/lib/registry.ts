@@ -83,7 +83,7 @@ export function getCategories(): (Category & { toolCount: number })[] {
   return CATEGORIES.map((c) => ({
     ...c,
     toolCount: enriched.filter((t) => t.category === c.slug).length,
-  }));
+  })).filter((c) => c.toolCount > 0);
 }
 
 export function getCategoryWithTools(

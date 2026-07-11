@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { getCategoryWithTools, generateCategoryBreadcrumbs } from "@/lib/registry";
 import { JsonLd, FaqSection, RelatedTools } from "@/components/shared";
 import { faqSchema, webPageSchema, type FaqItem } from "@/lib/seo";
@@ -9,16 +9,43 @@ import { BreadcrumbSchema } from "@/components/schema/BreadcrumbSchema";
 import { CATEGORIES } from "@/lib/categories";
 import { SITE_URL } from "@/lib/constants";
 
+const CATEGORY_REDIRECTS: Record<string, string> = {
+  writing: "text-writing",
+  coding: "code-dev",
+  data: "data-analytics",
+  video: "audio-video",
+  audio: "audio-video",
+  "productivity-tools": "productivity",
+  "finance-tools": "finance",
+  marketing: "/categories",
+  performance: "/categories",
+  devops: "/categories",
+  cloud: "/categories",
+  ecommerce: "/categories",
+  analytics: "/categories",
+  conversion: "/categories",
+  email: "/categories",
+  "social-media": "/categories",
+  health: "/categories",
+  education: "/categories",
+};
+
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  return CATEGORIES.map((c) => ({ slug: c.slug }));
+  return CATEGORIES.filter((c) => !CATEGORY_REDIRECTS[c.slug]).map((c) => ({ slug: c.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
+  const redirectTarget = CATEGORY_REDIRECTS[slug];
+  if (redirectTarget) {
+    const target = CATEGORIES.find((c) => c.slug === redirectTarget);
+    if (target) return { title: target.seoTitle, description: target.seoDescription };
+    return { robots: { index: false, follow: true } };
+  }
   const cat = CATEGORIES.find((c) => c.slug === slug);
   if (!cat) return {};
   return {
@@ -32,6 +59,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function CategoryPage({ params }: Props) {
   const { slug } = await params;
+
+  const redirectTarget = CATEGORY_REDIRECTS[slug];
+  if (redirectTarget) {
+    permanentRedirect(redirectTarget.startsWith("/") ? redirectTarget : `/category/${redirectTarget}`);
+  }
+
   const category = getCategoryWithTools(slug);
 
   if (!category) notFound();
