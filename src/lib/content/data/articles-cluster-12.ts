@@ -13,7 +13,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
     toolSlugs: ["dns-lookup", "dns-propagation-checker"],
     relatedContent: ["understanding-dns-record-types", "dns-lookup-beginners", "what-is-dns-propagation"],
     readingTimeMinutes: 18,
-    publishedAt: "2026-07-27",
+    publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://toolverse.com" },
     schema: {
@@ -125,7 +125,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
     toolSlugs: ["dns-lookup", "reverse-dns-lookup", "dns-propagation-checker"],
     relatedContent: ["dns-lookup-beginners", "understanding-dns-record-types"],
     readingTimeMinutes: 12,
-    publishedAt: "2026-07-28",
+    publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://toolverse.com" },
     schema: {
@@ -237,7 +237,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
     toolSlugs: ["what-is-my-ip", "dns-lookup"],
     relatedContent: ["what-is-dns-how-does-it-work", "whois-lookup-guide", "ping-test-guide-webmasters"],
     readingTimeMinutes: 10,
-    publishedAt: "2026-07-29",
+    publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://toolverse.com" },
     schema: {
@@ -345,7 +345,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
     toolSlugs: ["reverse-dns-lookup", "dns-lookup", "whois-lookup"],
     relatedContent: ["reverse-dns-beginners", "email-deliverability-dns"],
     readingTimeMinutes: 12,
-    publishedAt: "2026-07-31",
+    publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://toolverse.com" },
     schema: {
@@ -457,7 +457,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
     toolSlugs: ["dns-lookup", "dns-propagation-checker", "ping-test"],
     relatedContent: ["dns-lookup-beginners", "what-is-dns-propagation"],
     readingTimeMinutes: 15,
-    publishedAt: "2026-08-03",
+    publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://toolverse.com" },
     schema: {
@@ -569,7 +569,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
     toolSlugs: ["dns-propagation-checker", "dns-lookup"],
     relatedContent: ["what-is-dns-propagation", "dns-lookup-beginners"],
     readingTimeMinutes: 12,
-    publishedAt: "2026-08-03",
+    publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://toolverse.com" },
     schema: {
@@ -681,7 +681,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
     toolSlugs: ["ssl-certificate-checker", "dns-lookup", "ping-test"],
     relatedContent: ["ssl-certificate-beginners"],
     readingTimeMinutes: 12,
-    publishedAt: "2026-08-03",
+    publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://toolverse.com" },
     schema: {
@@ -789,7 +789,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
     toolSlugs: ["whois-lookup", "dns-lookup"],
     relatedContent: ["whois-beginners", "dns-lookup-beginners"],
     readingTimeMinutes: 10,
-    publishedAt: "2026-08-05",
+    publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://toolverse.com" },
     schema: {
@@ -897,7 +897,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
     toolSlugs: ["ping-test", "dns-lookup", "what-is-my-ip"],
     relatedContent: ["how-to-troubleshoot-dns-issues", "network-security-guide", "how-to-check-your-ip-address"],
     readingTimeMinutes: 10,
-    publishedAt: "2026-08-06",
+    publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://toolverse.com" },
     schema: {
@@ -1009,7 +1009,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
     toolSlugs: ["network-security", "ssl-certificate-checker", "dns-lookup", "ping-test"],
     relatedContent: ["dns-security-best-practices"],
     readingTimeMinutes: 18,
-    publishedAt: "2026-08-07",
+    publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://toolverse.com" },
     schema: {

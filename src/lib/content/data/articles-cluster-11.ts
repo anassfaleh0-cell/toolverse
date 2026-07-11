@@ -12,7 +12,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
     toolSlugs: ["seo-audit", "keyword-density", "backlink-checker", "serp-preview", "sitemap-generator"],
     relatedContent: ["how-to-do-keyword-research", "complete-backlink-analysis-guide", "technical-seo-checklist-2026"],
     readingTimeMinutes: 25,
-    publishedAt: "2026-07-15",
+    publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://toolverse.app/about" },
     schema: {
@@ -118,7 +118,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
     toolSlugs: ["keyword-density", "serp-preview", "seo-audit"],
     relatedContent: ["ultimate-guide-seo-tools-2026", "technical-seo-checklist-2026", "how-to-audit-your-website-seo"],
     readingTimeMinutes: 15,
-    publishedAt: "2026-07-16",
+    publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://toolverse.app/about" },
     schema: {
@@ -224,7 +224,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
     toolSlugs: ["backlink-checker", "seo-audit"],
     relatedContent: ["ultimate-guide-seo-tools-2026", "technical-seo-checklist-2026", "how-to-audit-your-website-seo"],
     readingTimeMinutes: 15,
-    publishedAt: "2026-07-17",
+    publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://toolverse.app/about" },
     schema: {
@@ -330,7 +330,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
     toolSlugs: ["seo-audit", "page-speed-checker", "robots-txt-generator", "sitemap-generator", "schema-generator"],
     relatedContent: ["how-to-audit-your-website-seo", "schema-markup-guide-beginners", "page-speed-optimization-guide"],
     readingTimeMinutes: 20,
-    publishedAt: "2026-07-20",
+    publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://toolverse.app/about" },
     schema: {
@@ -436,7 +436,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
     toolSlugs: ["seo-audit", "page-speed-checker", "backlink-checker", "google-index-checker"],
     relatedContent: ["technical-seo-checklist-2026", "mobile-friendly-test-guide", "page-speed-optimization-guide"],
     readingTimeMinutes: 18,
-    publishedAt: "2026-07-20",
+    publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://toolverse.app/about" },
     schema: {
@@ -546,7 +546,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
     toolSlugs: ["mobile-friendly-test", "page-speed-checker", "seo-audit"],
     relatedContent: ["page-speed-optimization-guide", "how-to-use-google-search-console", "technical-seo-checklist-2026"],
     readingTimeMinutes: 12,
-    publishedAt: "2026-07-21",
+    publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://toolverse.app/about" },
     schema: {
@@ -652,7 +652,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
     toolSlugs: ["page-speed-checker", "seo-audit"],
     relatedContent: ["technical-seo-checklist-2026", "mobile-friendly-test-guide", "how-to-use-google-search-console"],
     readingTimeMinutes: 18,
-    publishedAt: "2026-07-22",
+    publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://toolverse.app/about" },
     schema: {
@@ -762,7 +762,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
     toolSlugs: ["google-index-checker", "seo-audit", "sitemap-generator"],
     relatedContent: ["technical-seo-checklist-2026", "schema-markup-guide-beginners", "how-to-audit-your-website-seo"],
     readingTimeMinutes: 15,
-    publishedAt: "2026-07-23",
+    publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://toolverse.app/about" },
     schema: {
@@ -872,7 +872,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
     toolSlugs: ["schema-generator", "seo-audit"],
     relatedContent: ["technical-seo-checklist-2026", "how-to-use-google-search-console", "local-seo-tips-small-businesses"],
     readingTimeMinutes: 15,
-    publishedAt: "2026-07-24",
+    publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://toolverse.app/about" },
     schema: {
@@ -978,7 +978,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
     toolSlugs: ["seo-audit", "serp-preview"],
     relatedContent: ["how-to-do-keyword-research", "technical-seo-checklist-2026", "schema-markup-guide-beginners"],
     readingTimeMinutes: 14,
-    publishedAt: "2026-07-27",
+    publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
     author: { name: "Anass Faleh", url: "https://toolverse.app/about" },
     schema: {
