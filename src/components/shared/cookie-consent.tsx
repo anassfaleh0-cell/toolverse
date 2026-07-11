@@ -30,7 +30,7 @@ export function CookieConsent() {
     <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-zinc-200 bg-white p-4 shadow-lg dark:border-zinc-800 dark:bg-zinc-950">
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-4">
         <p className="text-xs text-zinc-600 dark:text-zinc-400">
-          We use cookies and analytics to improve your experience. You can choose to accept or decline.
+          We use cookies for analytics and personalized ads. You can choose to accept or decline.
           {" "}See our{" "}
           <Link href="/privacy" className="text-blue-600 hover:underline dark:text-blue-400">Privacy Policy</Link>.
         </p>

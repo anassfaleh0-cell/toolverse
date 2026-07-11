@@ -93,7 +93,10 @@ export default function Privacy() {
               <li><strong>Cookie consent:</strong> Records your cookie consent preferences</li>
             </ul>
             <p className="mt-2">
-              We do not use tracking cookies for advertising or behavioral targeting. We use privacy-preserving analytics (Plausible or similar) that do not use cookies and do not collect personal data.
+              We use privacy-preserving analytics (Plausible or similar) that do not use cookies and do not collect personal data.
+            </p>
+            <p className="mt-2">
+              <strong>Advertising:</strong> We use Google AdSense to display ads. Google AdSense may use cookies and web beacons to serve ads based on your prior visits to our website or other websites. Google's use of advertising cookies enables it and its partners to serve ads based on your visit to our site and other sites on the Internet. You can opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" className="text-nuvora-600 hover:underline dark:text-nuvora-400">Google Ads Settings</a>.
             </p>
             <p className="mt-2">
               You can control cookie settings through your browser preferences. Disabling essential cookies may affect site functionality.
@@ -108,6 +111,7 @@ export default function Privacy() {
             <ul className="mt-2 list-disc pl-6 space-y-1 text-sm">
               <li><strong>Vercel:</strong> Website hosting and deployment</li>
               <li><strong>Plausible:</strong> Privacy-focused analytics (no cookies)</li>
+              <li><strong>Google AdSense:</strong> Contextual and personalized advertising</li>
             </ul>
             <p className="mt-2">
               We do not sell, trade, or rent your personal information to third parties.

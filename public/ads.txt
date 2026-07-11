@@ -1,1 +1,5 @@
 google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+
+# Replace pub-0000000000000000 with your actual AdSense publisher ID.
+# This file must match exactly what's in your AdSense account:
+#   google.com, pub-YOUR_ID_HERE, DIRECT, f08c47fec0942fa0
