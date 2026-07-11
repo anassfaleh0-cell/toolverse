@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/constants";
 import type { Thing, WithContext } from "schema-dts";
 
 export interface FaqItem {
@@ -181,8 +182,8 @@ export function articleSchema({
     publisher: {
       "@type": "Organization",
       name: "Nuvora",
-      url: "https://toolverse-omega.vercel.app",
-      logo: { "@type": "ImageObject", url: "https://toolverse-omega.vercel.app/icon.svg" },
+      url: SITE_URL,
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/icon.svg` },
     },
   };
   if (imageUrl) {
@@ -203,8 +204,8 @@ export function organizationSchema(): WithContext<Thing> {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Nuvora",
-    url: "https://toolverse-omega.vercel.app",
-    logo: { "@type": "ImageObject", url: "https://toolverse-omega.vercel.app/icon.svg" },
+    url: SITE_URL,
+    logo: { "@type": "ImageObject", url: `${SITE_URL}/icon.svg` },
   } as WithContext<Thing>;
 }
 
@@ -213,12 +214,12 @@ export function webSiteSchema(): WithContext<Thing> {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Nuvora",
-    url: "https://toolverse-omega.vercel.app",
+    url: SITE_URL,
     potentialAction: {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: "https://toolverse-omega.vercel.app/?q={search_term_string}",
+        urlTemplate: `${SITE_URL}/?q={search_term_string}`,
       },
       "query-input": "required name=search_term_string",
     },
