@@ -5,7 +5,7 @@ import { JsonLd, Breadcrumbs, FaqSection } from "@/components/shared";
 import { webPageSchema, breadcrumbSchema, faqSchema, type FaqItem } from "@/lib/seo";
 
 const slug = "toolkits/security";
-const pageTitle = "Security Toolkit \u2014 Free Online Security Tools \u2014 Nuvora";
+const pageTitle = "Security Toolkit — Free Online Security Tools — Nuvora";
 const pageDescription =
   "Curated collection of free online security tools for SSL checking, port scanning, WHOIS lookups, and password generation. Secure your infrastructure with ease.";
 
@@ -25,13 +25,13 @@ export const metadata: Metadata = {
 };
 
 const icons: Record<string, string> = {
-  "ssl-certificate-checker": "\uD83D\uDD12",
-  "port-checker": "\uD83D\uDD0C",
-  "subnet-calculator": "\uD83C\uDF10",
-  "whois-lookup": "\uD83D\uDD0D",
-  "http-headers-checker": "\uD83D\uDCE7",
-  "dns-lookup": "\uD83C\uDF10",
-  "password-generator": "\uD83D\uDD11",
+  "ssl-certificate-checker": "🔒",
+  "port-checker": "🔌",
+  "subnet-calculator": "🌐",
+  "whois-lookup": "🔍",
+  "http-headers-checker": "📧",
+  "dns-lookup": "🌐",
+  "password-generator": "🔑",
 };
 
 const tools = [

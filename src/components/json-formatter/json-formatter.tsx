@@ -324,7 +324,7 @@ export function JsonFormatter() {
                               <span key={j}>{t.text}</span>
                             ),
                           )
-                        : "\u00A0"}
+                        : " "}
                     </div>
                   ))
                 )}

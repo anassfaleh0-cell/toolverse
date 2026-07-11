@@ -51,7 +51,7 @@ const CATEGORIES: ToolCategory[] = [
   {
     id: "image",
     name: "Image Tools",
-    icon: "\u{1F5BC}\uFE0F",
+    icon: "\u{1F5BC}️",
     current: 12,
     planned: 30,
     tools: [
@@ -119,7 +119,7 @@ const CATEGORIES: ToolCategory[] = [
   {
     id: "security",
     name: "Security Tools",
-    icon: "\u{1F6E1}\uFE0F",
+    icon: "\u{1F6E1}️",
     current: 3,
     planned: 26,
     tools: [
@@ -290,7 +290,7 @@ const CATEGORIES: ToolCategory[] = [
       "HTML Entity Encoder/Decoder", "Unicode Escape/Unescape",
       "Hex Encoder/Decoder", "Binary Encoder/Decoder", "Octal Encoder/Decoder",
       "ROT13 Cipher", "ROT47 Cipher", "Caesar Cipher", "Atbash Cipher",
-      "Vigen\u00e8re Cipher", "Morse Code Encoder/Decoder", "Binary to Text",
+      "Vigenère Cipher", "Morse Code Encoder/Decoder", "Binary to Text",
       "Text to Binary", "Decimal to Hex", "Hex to Decimal", "Base32 Encoder",
       "Base85 Encoder", "Quoted-Printable Encoder", "Percent Encoding",
       "ASCII to Binary Converter",
@@ -332,7 +332,7 @@ const CATEGORIES: ToolCategory[] = [
   {
     id: "email",
     name: "Email Tools",
-    icon: "\u{2709}\uFE0F",
+    icon: "\u{2709}️",
     current: 0,
     planned: 21,
     tools: [

@@ -21,11 +21,11 @@ interface PropagationResult {
 const RECORD_TYPES = ["A", "AAAA", "MX", "NS", "TXT", "CNAME"];
 
 const SERVER_GEO: Record<string, { label: string; flag: string }> = {
-  Google: { label: "Google (US)", flag: "\uD83C\uDDFA\uD83C\uDDF8" },
-  Cloudflare: { label: "Cloudflare (Global)", flag: "\uD83C\uDF0D" },
-  Quad9: { label: "Quad9 (Switzerland)", flag: "\uD83C\uDDE8\uD83C\uDDED" },
-  OpenDNS: { label: "OpenDNS (US)", flag: "\uD83C\uDDFA\uD83C\uDDF8" },
-  Mullvad: { label: "Mullvad (Sweden)", flag: "\uD83C\uDDF8\uD83C\uDDEA" },
+  Google: { label: "Google (US)", flag: "🇺🇸" },
+  Cloudflare: { label: "Cloudflare (Global)", flag: "🌍" },
+  Quad9: { label: "Quad9 (Switzerland)", flag: "🇨🇭" },
+  OpenDNS: { label: "OpenDNS (US)", flag: "🇺🇸" },
+  Mullvad: { label: "Mullvad (Sweden)", flag: "🇸🇪" },
 };
 
 function getPropagationStatus(uniqueValues: string[]): {
@@ -193,7 +193,7 @@ export function DnsPropagationChecker() {
                       {geo.label}
                     </span>
                     <span className="text-xs text-zinc-500 dark:text-zinc-400">
-                      {s.values === null ? "\u26A0\uFE0F No response" : s.values.length === 0 ? "\u274C No records" : "\u2705 " + s.values.length + " record(s)"}
+                      {s.values === null ? "⚠️ No response" : s.values.length === 0 ? "❌ No records" : "✅ " + s.values.length + " record(s)"}
                     </span>
                   </div>
                   {s.values && s.values.length > 0 && (
@@ -204,9 +204,9 @@ export function DnsPropagationChecker() {
                           className="flex items-center gap-3 px-5 py-3 font-mono text-sm"
                         >
                           {consistent ? (
-                            <span className="text-emerald-500">\u2713</span>
+                            <span className="text-emerald-500">✓</span>
                           ) : (
-                            <span className="text-amber-500">\u26A0</span>
+                            <span className="text-amber-500">⚠</span>
                           )}
                           <span className="text-zinc-600 dark:text-zinc-400">
                             {val}

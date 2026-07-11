@@ -73,24 +73,24 @@ export function IpLookupResults({
   return (
     <div className="space-y-6">
       {(() => {
-        const hasFullData = data.city !== "\u2014" && data.isp !== "\u2014";
-        const privacyScore = hasFullData ? 40 : data.city !== "\u2014" ? 60 : 80;
+        const hasFullData = data.city !== "—" && data.isp !== "—";
+        const privacyScore = hasFullData ? 40 : data.city !== "—" ? 60 : 80;
         const asnShort = data.asn ? data.asn.replace("AS", "") : "";
         return (
           <DashboardSummary
             title={data.ip}
-            status={data.city !== "\u2014" ? "good" : "warning"}
-            mainFinding={`${data.city}, ${data.country}${data.countryCode}${data.isp !== "\u2014" ? ` \u00B7 ${data.isp}` : ""}`}
+            status={data.city !== "—" ? "good" : "warning"}
+            mainFinding={`${data.city}, ${data.country}${data.countryCode}${data.isp !== "—" ? ` · ${data.isp}` : ""}`}
             riskLevel="low"
             riskLabel={`IPv${data.version}`}
             timestamp={new Date().toISOString()}
-            nextAction={data.isp !== "\u2014" ? "Use this data for network diagnostics. For real-time threat detection, run periodic lookups." : "Some data fields are unavailable. Try a different IP address for more complete results."}
+            nextAction={data.isp !== "—" ? "Use this data for network diagnostics. For real-time threat detection, run periodic lookups." : "Some data fields are unavailable. Try a different IP address for more complete results."}
           >
             <ScoreGauge score={100 - privacyScore} size={60} label="Privacy" />
-            {data.asn !== "\u2014" && <div className="text-center"><p className="text-xs text-zinc-500">ASN</p><p className="text-sm font-bold text-zinc-900 dark:text-zinc-50">{asnShort}</p></div>}
+            {data.asn !== "—" && <div className="text-center"><p className="text-xs text-zinc-500">ASN</p><p className="text-sm font-bold text-zinc-900 dark:text-zinc-50">{asnShort}</p></div>}
             <div className="flex flex-wrap items-center gap-2">
               <StatusBadge status={data.countryCode ? "good" : "neutral"} label={data.countryCode || "No Geo"} />
-              <StatusBadge status={data.isp !== "\u2014" ? "good" : "warning"} label={data.isp !== "\u2014" ? "ISP Known" : "ISP Unknown"} />
+              <StatusBadge status={data.isp !== "—" ? "good" : "warning"} label={data.isp !== "—" ? "ISP Known" : "ISP Unknown"} />
               <StatusBadge status={data.hostname ? "good" : "neutral"} label={data.hostname ? "PTR Record" : "No PTR"} />
             </div>
           </DashboardSummary>

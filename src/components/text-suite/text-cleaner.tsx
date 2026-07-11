@@ -33,9 +33,9 @@ export function TextCleaner() {
     if (opts.removeHtml) text = text.replace(/<[^>]*>/g, "");
     if (opts.smartQuotes) {
       text = text
-        .replace(/\u201C|\u201D/g, '"')
-        .replace(/\u2018|\u2019/g, "'")
-        .replace(/\u2013|\u2014/g, "-");
+        .replace(/“|”/g, '"')
+        .replace(/‘|’/g, "'")
+        .replace(/–|—/g, "-");
     }
     if (opts.removeUrls) text = text.replace(/https?:\/\/[^\s]+/g, "");
     if (opts.removeNumbers) text = text.replace(/\d+/g, "");

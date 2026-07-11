@@ -5,7 +5,7 @@ import { JsonLd, Breadcrumbs, FaqSection } from "@/components/shared";
 import { webPageSchema, breadcrumbSchema, faqSchema, type FaqItem } from "@/lib/seo";
 
 const slug = "toolkits/network";
-const pageTitle = "Network Toolkit \u2014 Free Network Diagnostic Tools \u2014 Nuvora";
+const pageTitle = "Network Toolkit — Free Network Diagnostic Tools — Nuvora";
 const pageDescription =
   "Curated collection of free network diagnostic tools for DNS lookup, ping testing, port checking, IP lookup, and more. Troubleshoot network issues like a pro.";
 
@@ -25,17 +25,17 @@ export const metadata: Metadata = {
 };
 
 const icons: Record<string, string> = {
-  "dns-lookup": "\uD83C\uDF10",
-  "reverse-dns-lookup": "\uD83D\uDD04",
-  "dns-propagation-checker": "\uD83D\uDD04",
-  "ping-test": "\uD83D\uDCE1",
-  "port-checker": "\uD83D\uDD0C",
-  "subnet-calculator": "\uD83C\uDF10",
-  "whois-lookup": "\uD83D\uDD0D",
-  "ip-lookup": "\uD83C\uDF0D",
-  "what-is-my-ip": "\uD83D\uDD11",
-  "website-status-checker": "\uD83D\uDCA1",
-  "user-agent-parser": "\uD83E\uDD16",
+  "dns-lookup": "🌐",
+  "reverse-dns-lookup": "🔄",
+  "dns-propagation-checker": "🔄",
+  "ping-test": "📡",
+  "port-checker": "🔌",
+  "subnet-calculator": "🌐",
+  "whois-lookup": "🔍",
+  "ip-lookup": "🌍",
+  "what-is-my-ip": "🔑",
+  "website-status-checker": "💡",
+  "user-agent-parser": "🤖",
 };
 
 const tools = [

@@ -157,7 +157,7 @@ export function TextDiffChecker() {
                   {typePrefix[line.type]}
                 </div>
                 <div className={`flex-1 py-1 pr-4 ${line.type === "added" ? "text-green-700 dark:text-green-300" : line.type === "removed" ? "text-red-700 dark:text-red-300" : "text-zinc-900 dark:text-zinc-50"}`}>
-                  {line.content || "\u00A0"}
+                  {line.content || " "}
                 </div>
               </div>
             ))}

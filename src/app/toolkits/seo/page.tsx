@@ -5,7 +5,7 @@ import { JsonLd, Breadcrumbs, FaqSection } from "@/components/shared";
 import { webPageSchema, breadcrumbSchema, faqSchema, type FaqItem } from "@/lib/seo";
 
 const slug = "toolkits/seo";
-const pageTitle = "SEO Toolkit \u2014 Free SEO Tools for Website Optimization \u2014 Nuvora";
+const pageTitle = "SEO Toolkit — Free SEO Tools for Website Optimization — Nuvora";
 const pageDescription =
   "Curated collection of free SEO tools for technical analysis, content optimization, and website performance monitoring. Improve your search rankings today.";
 
@@ -25,14 +25,14 @@ export const metadata: Metadata = {
 };
 
 const icons: Record<string, string> = {
-  "ssl-certificate-checker": "\uD83D\uDD12",
-  "http-headers-checker": "\uD83D\uDCE7",
-  "website-status-checker": "\uD83D\uDCA1",
-  "dns-lookup": "\uD83C\uDF10",
-  "dns-propagation-checker": "\uD83D\uDD04",
-  "whois-lookup": "\uD83D\uDD0D",
-  "text-to-slug": "\uD83D\uDD79\uFE0F",
-  "ping-test": "\uD83D\uDCE1",
+  "ssl-certificate-checker": "🔒",
+  "http-headers-checker": "📧",
+  "website-status-checker": "💡",
+  "dns-lookup": "🌐",
+  "dns-propagation-checker": "🔄",
+  "whois-lookup": "🔍",
+  "text-to-slug": "🕹️",
+  "ping-test": "📡",
 };
 
 const tools = [

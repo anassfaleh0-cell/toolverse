@@ -5,7 +5,7 @@ import { JsonLd, Breadcrumbs, FaqSection } from "@/components/shared";
 import { webPageSchema, breadcrumbSchema, faqSchema, type FaqItem } from "@/lib/seo";
 
 const slug = "toolkits/developer";
-const pageTitle = "Developer Toolkit \u2014 Essential Developer Tools \u2014 Nuvora";
+const pageTitle = "Developer Toolkit — Essential Developer Tools — Nuvora";
 const pageDescription =
   "Curated collection of free online developer tools for debugging, encoding, formatting, and security. Everything a software engineer needs in one place.";
 
@@ -25,29 +25,29 @@ export const metadata: Metadata = {
 };
 
 const icons: Record<string, string> = {
-  "dns-lookup": "\uD83C\uDF10",
-  "reverse-dns-lookup": "\uD83D\uDD04",
-  "ping-test": "\uD83D\uDCE1",
-  "port-checker": "\uD83D\uDD0C",
-  "json-formatter": "\uD83D\uDCD1",
-  "regex-tester": "\uD83D\uDD0D",
-  "jwt-decoder": "\uD83D\uDD11",
-  "case-converter": "\uD83D\uDD20",
-  "sql-formatter": "\uD83D\uDCD2",
-  "ssl-certificate-checker": "\uD83D\uDD12",
-  "http-headers-checker": "\uD83D\uDCE7",
-  "website-status-checker": "\uD83D\uDCA1",
-  "html-preview": "\uD83C\uDFA8",
-  "markdown-preview": "\uD83D\uDCDD",
-  "base64-encoder": "\uD83D\uDD22",
-  "url-encoder": "\uD83D\uDD17",
-  "html-entity-encoder": "\uD83D\uDDC4\uFE0F",
-  "text-to-slug": "\uD83D\uDD79\uFE0F",
-  "url-parser": "\uD83D\uDD0D",
-  "password-generator": "\uD83D\uDD11",
-  "js-minifier": "\uD83D\uDCD6",
-  "css-minifier": "\uD83C\uDFA8",
-  "html-minifier": "\uD83C\uDF10",
+  "dns-lookup": "🌐",
+  "reverse-dns-lookup": "🔄",
+  "ping-test": "📡",
+  "port-checker": "🔌",
+  "json-formatter": "📑",
+  "regex-tester": "🔍",
+  "jwt-decoder": "🔑",
+  "case-converter": "🔠",
+  "sql-formatter": "📒",
+  "ssl-certificate-checker": "🔒",
+  "http-headers-checker": "📧",
+  "website-status-checker": "💡",
+  "html-preview": "🎨",
+  "markdown-preview": "📝",
+  "base64-encoder": "🔢",
+  "url-encoder": "🔗",
+  "html-entity-encoder": "🗄️",
+  "text-to-slug": "🕹️",
+  "url-parser": "🔍",
+  "password-generator": "🔑",
+  "js-minifier": "📖",
+  "css-minifier": "🎨",
+  "html-minifier": "🌐",
 };
 
 const tools = [
@@ -343,7 +343,7 @@ export default function DeveloperToolkitPage() {
                 >
                   <div className="flex items-start gap-4">
                     <span className="text-2xl">
-                      {icons[tool.id] ?? "\uD83D\uDD27"}
+                      {icons[tool.id] ?? "🔧"}
                     </span>
                     <div>
                       <h3 className="font-semibold text-zinc-900 group-hover:text-blue-600 dark:text-zinc-50 dark:group-hover:text-blue-400">

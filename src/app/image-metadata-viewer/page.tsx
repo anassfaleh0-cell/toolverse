@@ -92,10 +92,10 @@ export default function ImageMetadataViewerPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "\uD83D\uDD17", title: "Image to Base64", description: "Convert images to Base64 data URI strings", href: "/image-to-base64" },
-              { icon: "\uD83D\uDCD3", title: "Base64 to Image", description: "Decode Base64 strings back to viewable images", href: "/base64-to-image" },
-              { icon: "\uD83D\uDCE6", title: "Image Compressor", description: "Compress images without losing metadata", href: "/image-compressor" },
-              { icon: "\uD83D\uDD04", title: "Image Converter", description: "Convert between image formats preserving metadata", href: "/image-converter" },
+              { icon: "🔗", title: "Image to Base64", description: "Convert images to Base64 data URI strings", href: "/image-to-base64" },
+              { icon: "📓", title: "Base64 to Image", description: "Decode Base64 strings back to viewable images", href: "/base64-to-image" },
+              { icon: "📦", title: "Image Compressor", description: "Compress images without losing metadata", href: "/image-compressor" },
+              { icon: "🔄", title: "Image Converter", description: "Convert between image formats preserving metadata", href: "/image-converter" },
             ]}
             title="Related Image Tools"
           />

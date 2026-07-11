@@ -112,7 +112,7 @@ function formatAllData(
     lines.push(`Country: ${geo.country}`);
     lines.push(`Region: ${geo.regionName}`);
     lines.push(`City: ${geo.city}`);
-    lines.push(`ZIP Code: ${geo.zip || "\u2014"}`);
+    lines.push(`ZIP Code: ${geo.zip || "—"}`);
     lines.push(`ISP: ${geo.isp}`);
     lines.push(`ASN: ${geo.as}`);
     lines.push(`Timezone: ${geo.timezone}`);
@@ -122,7 +122,7 @@ function formatAllData(
   if (browser) {
     lines.push("");
     lines.push(`Browser: ${browser.browser}`);
-    lines.push(`Browser Version: ${browser.browserVersion || "\u2014"}`);
+    lines.push(`Browser Version: ${browser.browserVersion || "—"}`);
     lines.push(`Operating System: ${browser.os}`);
     lines.push(`Device Type: ${browser.deviceType}`);
     lines.push(`Screen Resolution: ${browser.screenResolution}`);
@@ -215,7 +215,7 @@ export function IpDisplay({ pageUrl }: IpDisplayProps) {
   }
 
   const { geo, privacy, ipv4, ipv6, browser } = state;
-  const displayIp = geo?.ip || ipv4 || ipv6 || "\u2014";
+  const displayIp = geo?.ip || ipv4 || ipv6 || "—";
   const allText = formatAllData(geo, browser, ipv4, ipv6, displayIp);
 
   return (
@@ -227,7 +227,7 @@ export function IpDisplay({ pageUrl }: IpDisplayProps) {
           <DashboardSummary
             title="Your Public IP"
             status={geo !== null ? "good" : "warning"}
-            mainFinding={displayIp !== "\u2014" ? `${ipv4 || displayIp}${ipv6 && ipv6 !== displayIp ? ` + IPv6: ${ipv6}` : ""}` : "Could not detect IP"}
+            mainFinding={displayIp !== "—" ? `${ipv4 || displayIp}${ipv6 && ipv6 !== displayIp ? ` + IPv6: ${ipv6}` : ""}` : "Could not detect IP"}
             riskLevel={geo !== null ? "low" : "medium"}
             riskLabel={geo ? `${geo.country || "Unknown"}` : "Unavailable"}
             nextAction={geo ? "Your IP is visible to every website you visit. Use a VPN if you want to mask it." : "Refresh the page to try again. If the issue persists, check your internet connection."}
@@ -293,27 +293,27 @@ export function IpDisplay({ pageUrl }: IpDisplayProps) {
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {geo && (
           <>
-            <ToolResultCard label="IP Address" value={geo.ip} icon="\uD83C\uDF10" mono />
-            <ToolResultCard label="Country" value={geo.country} icon="\uD83D\uDDFA\uFE0F" />
-            <ToolResultCard label="Region" value={geo.regionName} icon="\uD83D\uDCCD" />
-            <ToolResultCard label="City" value={geo.city} icon="\uD83C\uDFD9\uFE0F" />
-            <ToolResultCard label="ZIP Code" value={geo.zip || "\u2014"} icon="\uD83D\uDCEA" />
-            <ToolResultCard label="ISP" value={geo.isp} icon="\uD83D\uDD0C" />
-            <ToolResultCard label="ASN" value={geo.as} icon="\uD83C\uDFF7\uFE0F" />
-            <ToolResultCard label="Timezone" value={geo.timezone} icon="\uD83D\uDD50" />
-            <ToolResultCard label="Latitude" value={String(geo.lat)} icon="\uD83D\uDCD0" />
-            <ToolResultCard label="Longitude" value={String(geo.lon)} icon="\uD83D\uDCD0" />
+            <ToolResultCard label="IP Address" value={geo.ip} icon="🌐" mono />
+            <ToolResultCard label="Country" value={geo.country} icon="🗺️" />
+            <ToolResultCard label="Region" value={geo.regionName} icon="📍" />
+            <ToolResultCard label="City" value={geo.city} icon="🏙️" />
+            <ToolResultCard label="ZIP Code" value={geo.zip || "—"} icon="📮" />
+            <ToolResultCard label="ISP" value={geo.isp} icon="🏢" />
+            <ToolResultCard label="ASN" value={geo.as} icon="🏷️" />
+            <ToolResultCard label="Timezone" value={geo.timezone} icon="🕐" />
+            <ToolResultCard label="Latitude" value={String(geo.lat)} icon="📍" />
+            <ToolResultCard label="Longitude" value={String(geo.lon)} icon="📍" />
           </>
         )}
         {browser && (
           <>
             <ToolResultCard label="Browser" value={browser.browser} icon={getBrowserEmoji(browser.browser)} />
-            <ToolResultCard label="Browser Version" value={browser.browserVersion || "\u2014"} icon="\uD83D\uDD22" />
+            <ToolResultCard label="Browser Version" value={browser.browserVersion || "—"} icon="🔢" />
             <ToolResultCard label="Operating System" value={browser.os} icon={getOsEmoji(browser.os)} />
             <ToolResultCard label="Device Type" value={browser.deviceType} icon={getDeviceEmoji(browser.deviceType)} />
-            <ToolResultCard label="Screen Resolution" value={browser.screenResolution} icon="\uD83D\uDDA5\uFE0F" />
-            <ToolResultCard label="Language" value={browser.language} icon="\uD83D\uDD24" />
-            <ToolResultCard label="User Agent" value={browser.userAgent.slice(0, 80) + "..."} icon="\uD83E\uDD16" />
+            <ToolResultCard label="Screen Resolution" value={browser.screenResolution} icon="🖥️" />
+            <ToolResultCard label="Language" value={browser.language} icon="🌍" />
+            <ToolResultCard label="User Agent" value={browser.userAgent.slice(0, 80) + "..."} icon="🤖" />
           </>
         )}
       </div>
@@ -356,8 +356,8 @@ export function IpDisplay({ pageUrl }: IpDisplayProps) {
           </div>
           <p className="mt-3 text-xs text-zinc-500">
             Connection classification: <span className="font-medium text-zinc-700 dark:text-zinc-300">{privacy.type}</span>
-            {" \u00B7 "}Fraud risk score: <span className="font-medium text-zinc-700 dark:text-zinc-300">{privacy.score}/100</span>
-            {" \u00B7 "}Grade: <span className="font-medium text-zinc-700 dark:text-zinc-300">{privacy.grade}</span>
+            {" · "}Fraud risk score: <span className="font-medium text-zinc-700 dark:text-zinc-300">{privacy.score}/100</span>
+            {" · "}Grade: <span className="font-medium text-zinc-700 dark:text-zinc-300">{privacy.grade}</span>
           </p>
         </Card>
       )}

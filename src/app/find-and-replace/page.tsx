@@ -125,10 +125,10 @@ export default function FindAndReplacePage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "\uD83D\uDD0D", title: "Regex Tester", description: "Test regular expressions with live matching and capture groups", href: "/regex-tester" },
-              { icon: "\uD83E\uDDF9", title: "Text Cleaner", description: "Clean text with extra spaces, special chars, and HTML tags", href: "/text-cleaner" },
-              { icon: "\uD83D\uDD04", title: "Case Converter", description: "Convert text between different letter cases", href: "/case-converter" },
-              { icon: "\uD83D\uDD17", title: "URL Encoder", description: "Percent-encode and decode URLs and query string parameters", href: "/url-encoder" },
+              { icon: "🔍", title: "Regex Tester", description: "Test regular expressions with live matching and capture groups", href: "/regex-tester" },
+              { icon: "🧹", title: "Text Cleaner", description: "Clean text with extra spaces, special chars, and HTML tags", href: "/text-cleaner" },
+              { icon: "🔄", title: "Case Converter", description: "Convert text between different letter cases", href: "/case-converter" },
+              { icon: "🔗", title: "URL Encoder", description: "Percent-encode and decode URLs and query string parameters", href: "/url-encoder" },
             ]}
             title="Related Text & Writing Tools"
           />
