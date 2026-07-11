@@ -92,7 +92,7 @@ export function ArticleLayout({ piece, basePath = "blog" }: { piece: ContentPiec
   const canonicalUrl = `${SITE_URL}/${basePath}/${piece.slug}`;
   const typeLabel = TYPE_LABEL[piece.type] ?? "Article";
   const authorKey = piece.author?.name.toLowerCase().replace(/\s+/g, "");
-  const author = (authorKey && AUTHORS[authorKey]) ? AUTHORS[authorKey] : { name: piece.author?.name ?? AUTHORS.founder.name, title: "Contributor", bio: AUTHORS.founder.bio, url: `${SITE_URL}/authors/founder` };
+  const author = (authorKey && AUTHORS[authorKey]) ? AUTHORS[authorKey] : { name: piece.author?.name ?? AUTHORS.founder.name, title: "Contributor", bio: AUTHORS.founder.bio, url: `${SITE_URL}/authors/founder`, avatarUrl: AUTHORS.founder.avatarUrl };
   const faqItems: FaqItem[] = piece.sections.filter(s => s.body.length > 80).slice(0, 5).map(s => ({ question: s.heading, answer: s.body.slice(0, 300) }));
   const isPillar = piece.slug.startsWith("ultimate-guide") || piece.title.startsWith("Ultimate Guide");
   const imgSrc = generateArticleSvg(piece.title);
@@ -201,9 +201,13 @@ export function ArticleLayout({ piece, basePath = "blog" }: { piece: ContentPiec
         <LazySection rootMargin="200px" minHeight="120px">
           <section className="mt-10 rounded-xl border border-border-subtle bg-surface p-5">
             <div className="flex items-start gap-4">
-              <div className="flex size-11 shrink-0 items-center justify-center rounded-full bg-nuvora-100 text-xs font-bold text-nuvora-600 dark:bg-nuvora-900/50 dark:text-nuvora-400">
-                {author.name.split(" ").map(n => n[0]).join("").slice(0, 2)}
-              </div>
+              {author.avatarUrl ? (
+                <img src={author.avatarUrl} alt={author.name} className="size-11 shrink-0 rounded-full object-cover" />
+              ) : (
+                <div className="flex size-11 shrink-0 items-center justify-center rounded-full bg-nuvora-100 text-xs font-bold text-nuvora-600 dark:bg-nuvora-900/50 dark:text-nuvora-400">
+                  {author.name.split(" ").map(n => n[0]).join("").slice(0, 2)}
+                </div>
+              )}
               <div className="min-w-0">
                 <p className="text-sm font-semibold text-text-primary">{author.name}</p>
                 <p className="text-xs text-text-tertiary">{author.title}</p>

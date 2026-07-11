@@ -7,29 +7,13 @@ export interface Author {
   avatarUrl?: string;
 }
 
-/*
- * ──── PLACEHOLDER ────
- * The 4 previous author entries (Alex Chen, Sarah Mitchell, James Wilson,
- * Priya Patel) were fabricated AI-generated personas. They have been
- * removed entirely.
- *
- * Replace this single entry with your REAL name, bio, and URL.
- * Do NOT invent credentials.  Provide only what's true.
- *
- * Required from you:
- *   - name  (your real name)
- *   - slug  (URL-safe version of your name, e.g. "john-doe")
- *   - bio   (1-3 sentences about your relevant experience)
- *   - url   (optional – your personal site, LinkedIn, or GitHub)
- *   - photo (optional – avatarUrl, omitted until you provide one)
- */
 export const AUTHORS: Record<string, Author> = {
   founder: {
     id: "founder",
-    name: "[REAL NAME — I will provide]",
-    title: "Founder & Developer, Nuvora",
-    bio: "[I will provide a short real bio]",
-    /* url: null, */          // ← fill in your real link when ready
-    /* avatarUrl: null, */    // ← fill in your photo when ready
+    name: "Anass Faleh",
+    title: "Founder & Developer",
+    bio: "Software engineer with 10+ years of experience building web applications, developer tools, and network diagnostics. I created Nuvora to help webmasters and developers solve problems quickly with free, privacy-respecting online tools — no signup, no tracking, just results.",
+    avatarUrl: "https://ui-avatars.com/api/?name=Anass+Faleh&background=6366f1&color=fff&size=256&bold=true",
+    /* Replace avatarUrl with your real photo path when available */
   },
 };

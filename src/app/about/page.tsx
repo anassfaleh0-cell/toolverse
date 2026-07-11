@@ -5,6 +5,7 @@ import { Breadcrumbs, JsonLd } from "@/components/shared";
 import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { getAllTools } from "@/lib/registry";
 import { getAllContent } from "@/lib/content/registry";
+import { AUTHORS } from "@/lib/content/authors";
 
 export const metadata: Metadata = {
   title: `About ${SITE_NAME} — Editorial Standards & Mission`,
@@ -85,15 +86,23 @@ export default function About() {
 
           <div className="mt-12 space-y-6">
             <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">About the Founder</h2>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400">
-              {SITE_NAME} was created by a solo developer.{" "}
-              <Link href="/authors/founder" className="text-blue-600 hover:underline dark:text-blue-400">
-                Learn more about the founder &rarr;
-              </Link>
-            </p>
-            <p className="text-sm text-zinc-500 dark:text-zinc-400 italic">
-              A detailed bio will be added here once provided.
-            </p>
+            <div className="flex items-start gap-4 rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900">
+              {AUTHORS.founder.avatarUrl ? (
+                <img src={AUTHORS.founder.avatarUrl} alt={AUTHORS.founder.name} className="size-14 shrink-0 rounded-full object-cover" />
+              ) : (
+                <div className="flex size-14 shrink-0 items-center justify-center rounded-full bg-blue-100 text-lg font-bold text-blue-600 dark:bg-blue-900 dark:text-blue-400">
+                  {AUTHORS.founder.name.split(" ").map(n => n[0]).join("").slice(0, 2)}
+                </div>
+              )}
+              <div>
+                <p className="font-semibold text-zinc-900 dark:text-zinc-50">{AUTHORS.founder.name}</p>
+                <p className="text-xs font-medium text-blue-600 dark:text-blue-400">{AUTHORS.founder.title}</p>
+                <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">{AUTHORS.founder.bio}</p>
+                <Link href="/authors/founder" className="mt-2 inline-block text-xs font-medium text-blue-600 hover:underline dark:text-blue-400">
+                  Full bio &rarr;
+                </Link>
+              </div>
+            </div>
           </div>
 
           <div className="mt-12 space-y-6">

@@ -58,14 +58,19 @@ function getContentBreadcrumbs(piece: ContentPiece) {
 }
 
 function AuthorCard({ piece }: { piece: ContentPiece }) {
-  if (!piece.author) return null;
+  const authorName = piece.author?.name ?? AUTHORS.founder.name;
+  const avatarUrl = AUTHORS.founder.avatarUrl;
   return (
     <div className="flex items-center gap-3 rounded-xl border border-border-subtle bg-surface-secondary/50 p-4">
-      <div className="flex size-10 items-center justify-center rounded-full bg-nuvora-100 text-xs font-bold text-nuvora-600 dark:bg-nuvora-900/50 dark:text-nuvora-400">
-        {piece.author.name.split(" ").map(n => n[0]).join("").slice(0, 2)}
-      </div>
+      {avatarUrl ? (
+        <img src={avatarUrl} alt={authorName} className="size-10 shrink-0 rounded-full object-cover" />
+      ) : (
+        <div className="flex size-10 items-center justify-center rounded-full bg-nuvora-100 text-xs font-bold text-nuvora-600 dark:bg-nuvora-900/50 dark:text-nuvora-400">
+          {authorName.split(" ").map(n => n[0]).join("").slice(0, 2)}
+        </div>
+      )}
       <div>
-        <p className="text-sm font-semibold text-text-primary">{piece.author.name}</p>
+        <p className="text-sm font-semibold text-text-primary">{authorName}</p>
         <p className="text-xs text-text-tertiary">
           Published {new Date(piece.publishedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
           {piece.updatedAt !== piece.publishedAt && ` · Updated ${new Date(piece.updatedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}`}

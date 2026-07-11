@@ -6,12 +6,12 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { AUTHORS } from "@/lib/content/authors";
 
 export const metadata: Metadata = {
-  title: `Founder — ${SITE_NAME}`,
-  description: `Meet the founder of ${SITE_NAME}.`,
+  title: `Anass Faleh — Founder & Developer, ${SITE_NAME}`,
+  description: `Meet Anass Faleh, the software engineer and founder behind ${SITE_NAME}. 10+ years building web apps and developer tools.`,
   alternates: { canonical: `${SITE_URL}/authors` },
   openGraph: {
-    title: `Founder — ${SITE_NAME}`,
-    description: `Learn about the person building ${SITE_NAME}.`,
+    title: `Anass Faleh — ${SITE_NAME}`,
+    description: `Meet the founder building ${SITE_NAME}.`,
   },
 };
 
@@ -25,7 +25,7 @@ export default function AuthorsPage() {
 
   return (
     <>
-      <JsonLd data={webPageSchema({ name: `Founder — ${SITE_NAME}`, description: `Meet the founder of ${SITE_NAME}.`, url: `${SITE_URL}/authors`, breadcrumbs })} />
+      <JsonLd data={webPageSchema({ name: `Anass Faleh — Founder & Developer, ${SITE_NAME}`, description: `Meet the founder of ${SITE_NAME}.`, url: `${SITE_URL}/authors`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <section className="border-b border-zinc-200 bg-zinc-50 py-12 dark:border-zinc-800 dark:bg-zinc-900/50 sm:py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
@@ -46,9 +46,17 @@ export default function AuthorsPage() {
               className="group rounded-xl border border-zinc-200 bg-white p-6 transition-colors hover:border-blue-300 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-blue-700 block"
             >
               <div className="flex items-start gap-4">
-                <div className="flex size-14 shrink-0 items-center justify-center rounded-full bg-blue-100 text-lg font-bold text-blue-600 dark:bg-blue-900 dark:text-blue-400">
-                  {author.name.split(" ").map(n => n[0]).join("").slice(0, 2)}
-                </div>
+                {author.avatarUrl ? (
+                  <img
+                    src={author.avatarUrl}
+                    alt={author.name}
+                    className="size-14 shrink-0 rounded-full object-cover"
+                  />
+                ) : (
+                  <div className="flex size-14 shrink-0 items-center justify-center rounded-full bg-blue-100 text-lg font-bold text-blue-600 dark:bg-blue-900 dark:text-blue-400">
+                    {author.name.split(" ").map(n => n[0]).join("").slice(0, 2)}
+                  </div>
+                )}
                 <div className="min-w-0">
                   <h2 className="text-lg font-semibold text-zinc-900 group-hover:text-blue-600 dark:text-zinc-50 dark:group-hover:text-blue-400">
                     {author.name}
@@ -62,9 +70,6 @@ export default function AuthorsPage() {
                 </div>
               </div>
             </Link>
-            <p className="mt-6 text-sm text-zinc-500 dark:text-zinc-400 italic border-t border-zinc-200 dark:border-zinc-800 pt-4">
-              A detailed bio will be added here once provided.
-            </p>
           </div>
         </div>
       </section>
