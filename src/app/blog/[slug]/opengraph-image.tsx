@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { getContentBySlug } from "@/lib/content/registry";
+import { ARTICLES } from "@/lib/content/data/articles";
 import { SITE_NAME } from "@/lib/constants";
 
 export const runtime = "edge";
@@ -8,7 +8,7 @@ export const contentType = "image/png";
 
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const piece = getContentBySlug(slug);
+  const piece = ARTICLES.find((a) => a.slug === slug);
   const title = piece?.title ?? SITE_NAME;
   const description = piece?.description ?? "Free Online Tools";
 

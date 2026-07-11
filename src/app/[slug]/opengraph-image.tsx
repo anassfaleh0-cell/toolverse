@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
-import { getToolBySlug, getCategories } from "@/lib/registry";
+import { tools } from "@/lib/tools";
+import { CATEGORIES } from "@/lib/categories";
 import { SITE_NAME } from "@/lib/constants";
 
 export const runtime = "edge";
@@ -8,9 +9,8 @@ export const contentType = "image/png";
 
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const tool = getToolBySlug(slug);
-  const categories = getCategories();
-  const cat = categories.find((c) => c.slug === tool?.category);
+  const tool = tools.find((t) => t.url === `/${slug}` || t.url === slug);
+  const cat = tool ? CATEGORIES.find((c) => c.slug === tool.category) : undefined;
   const title = tool?.name ?? SITE_NAME;
   const description = tool?.description ?? "Free Online Tool";
   const categoryLabel = cat?.label ?? "";
