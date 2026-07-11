@@ -27,7 +27,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
       datePublished: "2026-07-11",
       mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.com/articles/what-is-dns-how-does-it-work" },
       image: "https://toolverse.com/images/articles/dns-guide.jpg",
-      hasPart: {
+      hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
           {
@@ -71,7 +71,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
             },
           },
         ],
-      },
+      }],
     },
     sections: [
       {
@@ -139,7 +139,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
       datePublished: "2026-07-11",
       mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.com/articles/complete-dns-lookup-guide" },
       image: "https://toolverse.com/images/articles/dns-lookup-guide.jpg",
-      hasPart: {
+      hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
           {
@@ -183,7 +183,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
             },
           },
         ],
-      },
+      }],
     },
     sections: [
       {
@@ -251,7 +251,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
       datePublished: "2026-07-11",
       mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.com/articles/how-to-check-your-ip-address" },
       image: "https://toolverse.com/images/articles/ip-address-guide.jpg",
-      hasPart: {
+      hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
           {
@@ -295,7 +295,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
             },
           },
         ],
-      },
+      }],
     },
     sections: [
       {
@@ -359,7 +359,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
       datePublished: "2026-07-11",
       mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.com/articles/reverse-dns-lookup-explained" },
       image: "https://toolverse.com/images/articles/reverse-dns-lookup.jpg",
-      hasPart: {
+      hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
           {
@@ -403,7 +403,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
             },
           },
         ],
-      },
+      }],
     },
     sections: [
       {
@@ -471,7 +471,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
       datePublished: "2026-07-11",
       mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.com/articles/how-to-troubleshoot-dns-issues" },
       image: "https://toolverse.com/images/articles/troubleshoot-dns.jpg",
-      hasPart: {
+      hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
           {
@@ -515,7 +515,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
             },
           },
         ],
-      },
+      }],
     },
     sections: [
       {
@@ -583,7 +583,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
       datePublished: "2026-07-11",
       mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.com/articles/dns-propagation-complete-guide" },
       image: "https://toolverse.com/images/articles/dns-propagation.jpg",
-      hasPart: {
+      hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
           {
@@ -627,7 +627,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
             },
           },
         ],
-      },
+      }],
     },
     sections: [
       {
@@ -695,7 +695,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
       datePublished: "2026-07-11",
       mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.com/articles/how-to-check-ssl-certificate" },
       image: "https://toolverse.com/images/articles/ssl-checker.jpg",
-      hasPart: {
+      hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
           {
@@ -739,7 +739,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
             },
           },
         ],
-      },
+      }],
     },
     sections: [
       {
@@ -803,7 +803,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
       datePublished: "2026-07-11",
       mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.com/articles/whois-lookup-guide" },
       image: "https://toolverse.com/images/articles/whois-guide.jpg",
-      hasPart: {
+      hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
           {
@@ -847,7 +847,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
             },
           },
         ],
-      },
+      }],
     },
     sections: [
       {
@@ -911,7 +911,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
       datePublished: "2026-07-11",
       mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.com/articles/ping-test-guide-webmasters" },
       image: "https://toolverse.com/images/articles/ping-test-guide.jpg",
-      hasPart: {
+      hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
           {
@@ -955,7 +955,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
             },
           },
         ],
-      },
+      }],
     },
     sections: [
       {
@@ -1023,7 +1023,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
       datePublished: "2026-07-11",
       mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.com/articles/network-security-guide" },
       image: "https://toolverse.com/images/articles/network-security-guide.jpg",
-      hasPart: {
+      hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
           {
@@ -1067,7 +1067,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
             },
           },
         ],
-      },
+      }],
     },
     sections: [
       {

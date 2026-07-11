@@ -14,7 +14,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Sarah Chen", url: "https://toolverse.com/authors/sarah-chen" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -23,7 +23,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
         "Learn to use AI text summarization for research, news, and meetings. Compare extractive vs abstractive summarization, adjust parameters like length and tone, and evaluate output quality effectively.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Sarah Chen", url: "https://toolverse.com/authors/sarah-chen" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": "https://toolverse.com/articles/how-to-use-ai-text-summarizer"
@@ -117,7 +117,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Sarah Chen", url: "https://toolverse.com/authors/sarah-chen" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -126,7 +126,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
         "Master AI rewriting for content creation, SEO, and clarity. Learn the difference between rewriting and paraphrasing, ethical use, and how to maintain original meaning while changing wording.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Sarah Chen", url: "https://toolverse.com/authors/sarah-chen" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": "https://toolverse.com/articles/ai-rewriter-tool-complete-guide"
@@ -224,7 +224,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Priya Kapoor", url: "https://toolverse.com/authors/priya-kapoor" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -233,7 +233,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
         "Improve content readability with Flesch-Kincaid, Gunning Fog, and SMOG scores. Learn best practices for SEO-friendly writing and use readability checkers to measure and enhance your content.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Priya Kapoor", url: "https://toolverse.com/authors/priya-kapoor" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": "https://toolverse.com/articles/how-to-improve-content-readability"
@@ -327,7 +327,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Marcus Webb", url: "https://toolverse.com/authors/marcus-webb" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -336,7 +336,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
         "Learn sentiment analysis for customer feedback, brand monitoring, and social listening. Compare lexicon-based and ML-based approaches, interpret confidence scores, and handle sarcasm.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Marcus Webb", url: "https://toolverse.com/authors/marcus-webb" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": "https://toolverse.com/articles/sentiment-analysis-tool-guide"
@@ -430,7 +430,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Priya Kapoor", url: "https://toolverse.com/authors/priya-kapoor" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -439,7 +439,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
         "Master AI grammar checking for spelling, punctuation, style, and tone. Learn how NLP transformer models catch common grammar mistakes and integrate grammar checking into your writing workflow.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Priya Kapoor", url: "https://toolverse.com/authors/priya-kapoor" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": "https://toolverse.com/articles/grammar-checker-guide"
@@ -533,7 +533,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Sarah Chen", url: "https://toolverse.com/authors/sarah-chen" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -542,7 +542,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
         "Learn to check plagiarism for academic integrity, SEO protection, and professional reputation. Compare detection methods for direct copy, mosaic plagiarism, and AI-generated content.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Sarah Chen", url: "https://toolverse.com/authors/sarah-chen" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": "https://toolverse.com/articles/how-to-check-plagiarism"
@@ -636,7 +636,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Sarah Chen", url: "https://toolverse.com/authors/sarah-chen" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -645,7 +645,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
         "Master paraphrasing for academic, professional, and creative writing. Compare paraphrasing vs summarizing vs rewriting, learn tips for quality output, and use AI tools effectively.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Sarah Chen", url: "https://toolverse.com/authors/sarah-chen" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": "https://toolverse.com/articles/paraphrasing-tool-guide"
@@ -743,7 +743,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 11,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Marcus Webb", url: "https://toolverse.com/authors/marcus-webb" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -752,7 +752,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
         "Learn to generate content with AI using LLMs and GPT architecture. Master prompt engineering, temperature settings, and ethical considerations for blog posts, product descriptions, and more.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Marcus Webb", url: "https://toolverse.com/authors/marcus-webb" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": "https://toolverse.com/articles/ai-content-generator-guide"
@@ -846,7 +846,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Priya Kapoor", url: "https://toolverse.com/authors/priya-kapoor" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -855,7 +855,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
         "Create click-worthy headlines with AI title generation. Learn headline formulas (How to, List, Question, Comparison), A/B testing strategies, and SEO optimization for maximum CTR.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Priya Kapoor", url: "https://toolverse.com/authors/priya-kapoor" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": "https://toolverse.com/articles/title-generator-guide"
@@ -949,7 +949,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Priya Kapoor", url: "https://toolverse.com/authors/priya-kapoor" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -958,7 +958,7 @@ export const CLUSTER_14_ARTICLES: ContentPiece[] = [
         "Boost social media reach with hashtag generation. Learn platform-specific strategies for Instagram, Twitter, LinkedIn, and TikTok, and how to research hashtag performance and avoid banned tags.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Priya Kapoor", url: "https://toolverse.com/authors/priya-kapoor" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": "https://toolverse.com/articles/hashtag-generator-guide"

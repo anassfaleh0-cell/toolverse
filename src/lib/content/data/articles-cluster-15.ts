@@ -14,7 +14,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Priya Kapoor", url: "https://toolverse.com/authors/priya-kapoor" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -23,7 +23,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
         "Calculate and interpret your Body Mass Index. Learn the BMI formula, categories from underweight to obese, limitations for athletes and older adults, and healthy weight management strategies.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Priya Kapoor", url: "https://toolverse.com/authors/priya-kapoor" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.com/articles/how-to-use-bmi-calculator" },
       about: { "@type": "Thing", name: "BMI Calculator" },
       hasPart: [
@@ -114,7 +114,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Alex Rivera", url: "https://toolverse.com/authors/alex-rivera" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -123,7 +123,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
         "Master percentage calculations for shopping discounts, tax, tips, and investment returns. Learn the three basic percentage formulas, mental math shortcuts, and how to use an online calculator.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Alex Rivera", url: "https://toolverse.com/authors/alex-rivera" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": "https://toolverse.com/articles/how-to-use-percentage-calculator"
@@ -217,7 +217,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Marcus Webb", url: "https://toolverse.com/authors/marcus-webb" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -226,7 +226,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
         "Understand loan payments with amortization schedules. Learn how principal, interest rate, term, and extra payments affect total cost. Compare mortgages, auto loans, and personal loans.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Marcus Webb", url: "https://toolverse.com/authors/marcus-webb" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": "https://toolverse.com/articles/loan-calculator-guide"
@@ -320,7 +320,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Marcus Webb", url: "https://toolverse.com/authors/marcus-webb" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -329,7 +329,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
         "Learn to generate strong passwords with length, complexity, and randomness. Compare NIST 2026 guidelines, password managers, passphrases, and 2FA/MFA for comprehensive account security.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Marcus Webb", url: "https://toolverse.com/authors/marcus-webb" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": "https://toolverse.com/articles/how-to-generate-strong-passwords"
@@ -427,7 +427,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Sarah Chen", url: "https://toolverse.com/authors/sarah-chen" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -436,7 +436,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
         "Track word count, reading time, and keyword density for essays, blog posts, and SEO content. Learn writing productivity tips and how to meet length requirements for publications.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Sarah Chen", url: "https://toolverse.com/authors/sarah-chen" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": "https://toolverse.com/articles/word-counter-tool-guide"
@@ -530,7 +530,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Priya Kapoor", url: "https://toolverse.com/authors/priya-kapoor" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -539,7 +539,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
         "Convert between HEX, RGB, HSL, and named color formats for web design. Learn color models, conversion formulas, CSS implementation, and how to use a color converter tool.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Priya Kapoor", url: "https://toolverse.com/authors/priya-kapoor" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": "https://toolverse.com/articles/color-converter-guide"
@@ -633,7 +633,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Alex Rivera", url: "https://toolverse.com/authors/alex-rivera" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -642,7 +642,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
         "Convert currencies for travel, international shopping, and business. Learn how exchange rates work, factors affecting rates, buy/sell spreads, and tips for getting the best exchange rates.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Alex Rivera", url: "https://toolverse.com/authors/alex-rivera" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": "https://toolverse.com/articles/how-to-use-currency-converter"
@@ -740,7 +740,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Alex Rivera", url: "https://toolverse.com/authors/alex-rivera" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -749,7 +749,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
         "Convert measurements across metric and imperial systems for length, mass, volume, temperature, and more. Learn conversion formulas, precision handling, and science/engineering best practices.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Alex Rivera", url: "https://toolverse.com/authors/alex-rivera" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": "https://toolverse.com/articles/unit-converter-guide"
@@ -843,7 +843,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Priya Kapoor", url: "https://toolverse.com/authors/priya-kapoor" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -852,7 +852,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
         "Calculate age accurately in years, months, and days. Learn chronological, biological, and gestational age methods, how leap years affect February 29 birthdays, and age milestone tracking.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Priya Kapoor", url: "https://toolverse.com/authors/priya-kapoor" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": "https://toolverse.com/articles/how-to-calculate-age"
@@ -946,7 +946,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Alex Rivera", url: "https://toolverse.com/authors/alex-rivera" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -955,7 +955,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
         "Convert numbers to words for checks, legal documents, and invoices. Learn number naming conventions, American vs British billion, hyphenation rules, and how to handle decimals and fractions.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Alex Rivera", url: "https://toolverse.com/authors/alex-rivera" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": "https://toolverse.com/articles/number-to-words-converter-guide"

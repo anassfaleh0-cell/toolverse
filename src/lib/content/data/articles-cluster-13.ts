@@ -14,7 +14,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Alex Rivera", url: "https://toolverse.com/authors/alex-rivera" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -23,7 +23,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         "Learn how to format JSON code properly using manual techniques and online tools. Covers common JSON errors, validation, linting, and best practices for cleaner data structures.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Alex Rivera", url: "https://toolverse.com/authors/alex-rivera" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.com/articles/how-to-format-json-code" },
       about: { "@type": "Thing", name: "JSON Formatting" },
       hasPart: [
@@ -114,7 +114,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Alex Rivera", url: "https://toolverse.com/authors/alex-rivera" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -123,7 +123,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         "Master Base64 encoding and decoding with this developer guide. Learn how binary-to-text encoding works, common use cases like JWT and data URIs, and how to use online tools.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Alex Rivera", url: "https://toolverse.com/authors/alex-rivera" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": "https://toolverse.com/articles/base64-encoding-decoding-guide"
@@ -217,7 +217,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Sarah Chen", url: "https://toolverse.com/authors/sarah-chen" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -226,7 +226,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         "Learn HTML encoding to prevent XSS attacks and display code safely on web pages. Covers common HTML entities, encoding user input, decoding, and best practices for secure output.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Sarah Chen", url: "https://toolverse.com/authors/sarah-chen" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": "https://toolverse.com/articles/html-encoder-decoder-guide"
@@ -320,7 +320,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 11,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Marcus Webb", url: "https://toolverse.com/authors/marcus-webb" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -329,7 +329,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         "Learn how to minify CSS and JavaScript files to reduce page load times. Covers build tool integration with webpack and esbuild, source maps, and compression vs minification differences.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Marcus Webb", url: "https://toolverse.com/authors/marcus-webb" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": "https://toolverse.com/articles/how-to-minify-css-and-js"
@@ -427,7 +427,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Priya Kapoor", url: "https://toolverse.com/authors/priya-kapoor" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -436,7 +436,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         "Learn SQL formatting conventions for MySQL, PostgreSQL, and SQLite. Improve query maintainability with uppercase keywords, proper indentation, and formatter tools that catch syntax errors.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Priya Kapoor", url: "https://toolverse.com/authors/priya-kapoor" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": "https://toolverse.com/articles/sql-formatter-guide"
@@ -530,7 +530,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 12,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Marcus Webb", url: "https://toolverse.com/authors/marcus-webb" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -539,7 +539,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         "Understand cryptographic hashing with MD5, SHA-1, SHA-256, and SHA-512. Learn hash generator usage, password storage with salting, file integrity checksums, and HMAC authentication.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Marcus Webb", url: "https://toolverse.com/authors/marcus-webb" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": "https://toolverse.com/articles/hash-generator-md5-sha256"
@@ -637,7 +637,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 11,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Alex Rivera", url: "https://toolverse.com/authors/alex-rivera" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -646,7 +646,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         "Master API testing with HTTP methods, headers, authentication, and response analysis. Learn to test REST APIs using an API tester tool with real-world scenarios and best practices.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Alex Rivera", url: "https://toolverse.com/authors/alex-rivera" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": "https://toolverse.com/articles/how-to-use-api-tester-tool"
@@ -740,7 +740,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Sarah Chen", url: "https://toolverse.com/authors/sarah-chen" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -749,7 +749,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         "Create professional GitHub README files with this complete guide. Learn essential sections, Markdown formatting, badges, and how to use a README generator tool for open-source projects.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Sarah Chen", url: "https://toolverse.com/authors/sarah-chen" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": "https://toolverse.com/articles/readme-generator-guide"
@@ -843,7 +843,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 12,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Marcus Webb", url: "https://toolverse.com/authors/marcus-webb" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -852,7 +852,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         "Master regular expressions with this regex tester guide. Learn regex syntax, common patterns for email/URL/phone validation, real-time matching, and performance optimization.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Marcus Webb", url: "https://toolverse.com/authors/marcus-webb" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": "https://toolverse.com/articles/regex-tester-tool-guide"
@@ -950,7 +950,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Priya Kapoor", url: "https://toolverse.com/authors/priya-kapoor" },
+    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -959,7 +959,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         "Learn to create harmonious color palettes for web design using color theory, harmony rules, and accessibility standards. Covers HSL, HEX, RGB models and WCAG contrast ratios.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Priya Kapoor", url: "https://toolverse.com/authors/priya-kapoor" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": "https://toolverse.com/articles/how-to-create-color-palette-web-design"

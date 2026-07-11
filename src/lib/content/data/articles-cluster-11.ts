@@ -1,4 +1,4 @@
-﻿import type { ContentPiece } from "../types";
+import type { ContentPiece } from "../types";
 
 export const CLUSTER_11_ARTICLES: ContentPiece[] = [
   {
@@ -26,7 +26,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
       datePublished: "2026-07-11",
       mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.app/articles/ultimate-guide-seo-tools-2026" },
       image: "https://toolverse.app/images/articles/ultimate-guide-seo-tools-2026/hero.jpg",
-      hasPart: {
+      hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
           {
@@ -70,7 +70,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
             }
           }
         ]
-      }
+      }]
     },
     sections: [
       {
@@ -132,7 +132,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
       datePublished: "2026-07-11",
       mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.app/articles/how-to-do-keyword-research" },
       image: "https://toolverse.app/images/articles/how-to-do-keyword-research/hero.jpg",
-      hasPart: {
+      hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
           {
@@ -176,7 +176,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
             }
           }
         ]
-      }
+      }]
     },
     sections: [
       {
@@ -238,7 +238,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
       datePublished: "2026-07-11",
       mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.app/articles/complete-backlink-analysis-guide" },
       image: "https://toolverse.app/images/articles/complete-backlink-analysis-guide/hero.jpg",
-      hasPart: {
+      hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
           {
@@ -282,7 +282,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
             }
           }
         ]
-      }
+      }]
     },
     sections: [
       {
@@ -344,7 +344,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
       datePublished: "2026-07-11",
       mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.app/articles/technical-seo-checklist-2026" },
       image: "https://toolverse.app/images/articles/technical-seo-checklist-2026/hero.jpg",
-      hasPart: {
+      hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
           {
@@ -388,7 +388,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
             }
           }
         ]
-      }
+      }]
     },
     sections: [
       {
@@ -450,7 +450,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
       datePublished: "2026-07-11",
       mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.app/articles/how-to-audit-your-website-seo" },
       image: "https://toolverse.app/images/articles/how-to-audit-your-website-seo/hero.jpg",
-      hasPart: {
+      hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
           {
@@ -494,7 +494,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
             }
           }
         ]
-      }
+      }]
     },
     sections: [
       {
@@ -560,7 +560,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
       datePublished: "2026-07-11",
       mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.app/articles/mobile-friendly-test-guide" },
       image: "https://toolverse.app/images/articles/mobile-friendly-test-guide/hero.jpg",
-      hasPart: {
+      hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
           {
@@ -604,7 +604,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
             }
           }
         ]
-      }
+      }]
     },
     sections: [
       {
@@ -666,7 +666,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
       datePublished: "2026-07-11",
       mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.app/articles/page-speed-optimization-guide" },
       image: "https://toolverse.app/images/articles/page-speed-optimization-guide/hero.jpg",
-      hasPart: {
+      hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
           {
@@ -710,7 +710,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
             }
           }
         ]
-      }
+      }]
     },
     sections: [
       {
@@ -776,7 +776,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
       datePublished: "2026-07-11",
       mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.app/articles/how-to-use-google-search-console" },
       image: "https://toolverse.app/images/articles/how-to-use-google-search-console/hero.jpg",
-      hasPart: {
+      hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
           {
@@ -820,7 +820,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
             }
           }
         ]
-      }
+      }]
     },
     sections: [
       {
@@ -886,7 +886,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
       datePublished: "2026-07-11",
       mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.app/articles/schema-markup-guide-beginners" },
       image: "https://toolverse.app/images/articles/schema-markup-guide-beginners/hero.jpg",
-      hasPart: {
+      hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
           {
@@ -930,7 +930,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
             }
           }
         ]
-      }
+      }]
     },
     sections: [
       {
@@ -992,7 +992,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
       datePublished: "2026-07-11",
       mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.app/articles/local-seo-tips-small-businesses" },
       image: "https://toolverse.app/images/articles/local-seo-tips-small-businesses/hero.jpg",
-      hasPart: {
+      hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
           {
@@ -1036,7 +1036,7 @@ export const CLUSTER_11_ARTICLES: ContentPiece[] = [
             }
           }
         ]
-      }
+      }]
     },
     sections: [
       {
