@@ -7,9 +7,9 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: `Blog - ${SITE_NAME}`,
-  description: `Technical articles and guides about network diagnostics, DNS management, SSL/TLS, web security, and performance optimization. ${SITE_DESCRIPTION}`,
-  openGraph: { title: `Blog - ${SITE_NAME}`, description: `Technical articles about network diagnostics, DNS management, SSL/TLS, web security, and performance optimization.`, url: `${SITE_URL}/blog` },
-  twitter: { card: "summary_large_image", title: `Blog - ${SITE_NAME}`, description: `Technical articles about network diagnostics, DNS management, SSL/TLS, and web security.` },
+  description: `Expert guides and articles about SEO tools, DNS management, developer tools, AI tools, calculators, and webmaster resources. ${SITE_DESCRIPTION}`,
+  openGraph: { title: `Blog - ${SITE_NAME}`, description: `Expert guides and articles about SEO tools, DNS management, developer tools, AI tools, calculators, and webmaster resources.`, url: `${SITE_URL}/blog` },
+  twitter: { card: "summary_large_image", title: `Blog - ${SITE_NAME}`, description: `Expert guides about SEO, DNS, developer tools, AI, and calculators.` },
   alternates: { canonical: `${SITE_URL}/blog` },
 };
 
@@ -19,13 +19,13 @@ export default function BlogPage() {
   const articles = getArticles();
   return (
     <>
-      <JsonLd data={webPageSchema({ name: `Blog - ${SITE_NAME}`, description: "Network diagnostics and security articles.", url: `${SITE_URL}/blog`, breadcrumbs })} />
+      <JsonLd data={webPageSchema({ name: `Blog - ${SITE_NAME}`, description: "Expert guides about SEO, DNS, developer tools, AI, and calculators.", url: `${SITE_URL}/blog`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <section className="border-b border-border-subtle bg-surface-secondary/30 py-12 sm:py-16">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <Breadcrumbs items={breadcrumbs} />
           <h1 className="mt-4 text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">Blog</h1>
-          <p className="mt-4 text-lg text-text-secondary">Technical articles about network diagnostics, DNS, SSL/TLS, web security, and performance optimization.</p>
+          <p className="mt-4 text-lg text-text-secondary">Expert articles and guides about SEO tools, DNS management, developer utilities, AI-powered tools, calculators, and webmaster resources.</p>
         </div>
       </section>
       <section className="py-12 sm:py-16">
