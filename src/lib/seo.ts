@@ -198,6 +198,33 @@ export function articleSchema({
   return schema as WithContext<Thing>;
 }
 
+export function organizationSchema(): WithContext<Thing> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Nuvora",
+    url: "https://toolverse-omega.vercel.app",
+    logo: { "@type": "ImageObject", url: "https://toolverse-omega.vercel.app/icon.svg" },
+  } as WithContext<Thing>;
+}
+
+export function webSiteSchema(): WithContext<Thing> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Nuvora",
+    url: "https://toolverse-omega.vercel.app",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: "https://toolverse-omega.vercel.app/?q={search_term_string}",
+      },
+      "query-input": "required name=search_term_string",
+    },
+  } as WithContext<Thing>;
+}
+
 export function softwareAppSchema({
   name,
   description,

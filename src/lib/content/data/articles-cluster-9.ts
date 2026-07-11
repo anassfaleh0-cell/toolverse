@@ -14,7 +14,6 @@ export const CLUSTER_9_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 14,
     publishedAt: "2026-06-01",
     updatedAt: "2026-07-01",
-    author: { name: "Alex Chen", url: "https://github.com/alexchen" },
     sections: [
       { heading: "Why the Right Social Media Tool Stack Matters", body: "Managing a social media presence across multiple platforms without the right tools is a recipe for burnout and inconsistency. The average brand posts on 4 to 6 platforms simultaneously, each with unique content formats, character limits, and optimal posting times. A cohesive tool stack eliminates repetitive manual work, ensures brand consistency, and surfaces data-driven insights that inform content strategy. In 2026, the landscape of social media tools has matured significantly, offering AI-powered features, deeper analytics integrations, and cross-platform publishing capabilities that were previously available only to enterprise teams." },
       { heading: "Essential Scheduling and Publishing Tools", body: "Scheduling remains the backbone of any social media workflow. Modern schedulers like Buffer, Hootsuite, and Later offer drag-and-drop calendars, bulk upload capabilities, and platform-specific previews so you can see exactly how your post will render on Instagram, LinkedIn, Twitter, and Facebook. The best schedulers now include AI-driven best-time-to-post recommendations based on your audience engagement patterns. They also support evergreen content recycling, which automatically re-posts your top-performing content at intervals you define. When evaluating schedulers, prioritize those with robust analytics dashboards and team collaboration features." },
@@ -36,7 +35,6 @@ export const CLUSTER_9_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-06-03",
     updatedAt: "2026-07-02",
-    author: { name: "Sarah Mitchell", url: "https://github.com/sarahmitchell" },
     sections: [
       { heading: "Why Hashtags Still Matter in 2026", body: "Despite algorithm changes and platform evolution, hashtags remain a powerful discovery mechanism on social media. On Instagram, posts with at least one hashtag average 12.6 percent more engagement than those without. TikTok uses hashtags to contextualize content for its For You Page algorithm. Twitter hashtags connect conversations around live events and trending topics. Even LinkedIn, which de-emphasized hashtags in recent UI updates, still uses them for content categorization. The key is using the right hashtags in the right quantity for each platform rather than adopting a one-size-fits-all approach." },
       { heading: "Hashtag Research Strategies for Instagram", body: "Instagram allows up to 30 hashtags per post, but the sweet spot in 2026 is 5 to 10 highly relevant tags. Use a mix of broad tags with millions of posts and niche tags with fewer than 100,000 posts. Broad tags expose your content to large audiences, but competition is fierce. Niche tags give you a better chance of appearing in the top posts section. Create hashtag sets organized by content theme — for example, one set for educational posts, another for behind-the-scenes content, and a third for promotional updates. Rotate these sets to avoid being flagged for repetitive hashtag use." },
@@ -58,7 +56,6 @@ export const CLUSTER_9_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 12,
     publishedAt: "2026-06-05",
     updatedAt: "2026-07-03",
-    author: { name: "James Wilson", url: "https://github.com/jameswilson" },
     sections: [
       { heading: "The Short-Form Video Landscape in 2026", body: "Short-form video dominates social media consumption, with users spending an average of 52 minutes per day on TikTok and 33 minutes on Instagram Reels. Both platforms have converged in features — vertical video, music integration, AR effects, and shopping links — but fundamental differences remain in audience behavior, content discovery, and creator monetization. Understanding these differences is essential for allocating your video production resources effectively. Most successful creators now produce platform-specific content rather than cross-posting identical videos, recognizing that each audience has distinct expectations." },
       { heading: "Algorithm and Content Discovery Differences", body: "TikTok's For You Page algorithm is famously opaque but incredibly effective at surfacing content from unknown creators. It prioritizes completion rate and replays, meaning a video that viewers watch multiple times gets amplified regardless of the creator's follower count. Instagram Reels, by contrast, still factors follower engagement heavily into its Explore page algorithm, making it harder for new creators to break through without an existing audience. However, Instagram's integration with the broader Meta ecosystem allows Reels to appear in Feed, Stories, and Search, providing multiple discovery entry points." },
@@ -80,7 +77,6 @@ export const CLUSTER_9_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-06-07",
     updatedAt: "2026-07-04",
-    author: { name: "Priya Patel", url: "https://github.com/priyapatel" },
     sections: [
       { heading: "Why You Need a Social Media Scheduler", body: "Posting manually on each platform at optimal times is inefficient and prone to inconsistency. A social media scheduler lets you batch-create your weekly or monthly content in one session, then automatically publishes it according to a calendar you define. This consistency is crucial for algorithm favorability — platforms reward accounts that post regularly. A scheduler also provides a bird's-eye view of your content mix, helping you balance promotional, educational, and entertaining posts. The free tiers of most schedulers are surprisingly capable, especially for solopreneurs and small teams." },
       { heading: "Buffer: The Gold Standard for Simplicity", body: "Buffer's free plan supports up to three connected channels and ten scheduled posts per channel. Its clean interface is ideal for beginners who want a straightforward queue-based scheduling system. Buffer excels at simplicity — there are no complex workflows or steep learning curves. The built-in engagement analytics show which posts perform best, and the browser extension makes sharing content from any webpage effortless. The main limitation is the ten-post cap, which works for a weekly schedule but requires upgrading for higher-volume publishing." },
@@ -102,7 +98,6 @@ export const CLUSTER_9_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-06-08",
     updatedAt: "2026-07-04",
-    author: { name: "Nuvora Team", url: "/about" },
     sections: [
       { heading: "Understanding Copyright and Instagram Videos", body: "Every video posted on Instagram is protected by copyright from the moment it is created. Downloading someone else's video without permission is technically copyright infringement, regardless of whether you give credit. However, there are legitimate scenarios for downloading: saving your own videos as backups, downloading content you have written permission to repost, or capturing content under fair use for commentary, criticism, or education. Always assume a video is not free to use unless the creator explicitly grants permission through a Creative Commons license or direct authorization." },
       { heading: "Legal Methods for Downloading Instagram Videos", body: "The simplest legal method is to request a data download from Instagram itself. Go to your Instagram settings, request a download of your data, and Instagram will email you a ZIP file containing all your photos and videos. For videos you have permission to repost, ask the creator to send you the original file directly or use Instagram's collaboration feature, which allows shared ownership of a post. Some third-party tools claim to download videos legally, but their terms of service may violate Instagram's policies, potentially putting your account at risk." },
@@ -124,7 +119,6 @@ export const CLUSTER_9_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-06-10",
     updatedAt: "2026-07-05",
-    author: { name: "Alex Chen", url: "https://github.com/alexchen" },
     sections: [
       { heading: "The Anatomy of a High-Engagement Caption", body: "A great social media caption has three components: a hook that stops the scroll, a body that delivers value or tells a story, and a call to action that tells the reader what to do next. The hook must grab attention within the first two lines — on Instagram, the caption is truncated after 125 characters, so the first sentence is all most viewers see. Hooks can be questions, surprising statistics, bold statements, or relatable observations. The body should expand on the hook with personality, keeping sentences short and readable on mobile screens." },
       { heading: "Proven Hook Frameworks That Work", body: "The curiosity gap hook presents an intriguing premise without revealing everything: 'I tried 10 productivity methods so you do not have to — here is what actually worked.' The problem-solution hook identifies a pain point immediately: 'Struggling with low engagement? The fix is simpler than you think.' The bold statement hook makes a contrarian claim: 'Everything you know about hashtags is wrong.' The relatable observation hook builds connection: 'Is anyone else tired of algorithms changing every week?' Test different hook styles across your posts and track which formats drive the highest completion rates." },
@@ -146,7 +140,6 @@ export const CLUSTER_9_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-06-12",
     updatedAt: "2026-07-05",
-    author: { name: "Sarah Mitchell", url: "https://github.com/sarahmitchell" },
     sections: [
       { heading: "Why Image Dimensions Matter for Social Media", body: "Each social media platform renders images at specific aspect ratios and resolutions. Uploading an image with the wrong dimensions results in awkward cropping, letterboxing, or compression artifacts that make your brand look unprofessional. The correct dimensions ensure your content displays as intended across all devices — desktop, tablet, and mobile. Moreover, platform algorithms may deprioritize poorly formatted media because it degrades the user experience. Taking a few extra seconds to resize images correctly before uploading pays dividends in visual consistency and engagement." },
       { heading: "Instagram Image Size Specifications", body: "Instagram supports three aspect ratios for feed posts: square at 1080 by 1080 pixels, portrait at 1080 by 1350 pixels, and landscape at 1080 by 566 pixels. The portrait ratio (4:5) is the most engaging because it takes up more vertical screen space without requiring users to tap to expand. Instagram Stories and Reels use 1080 by 1920 pixels (9:16). Profile photos display at 320 by 320 pixels as a circle crop, so center your subject. Use our image resizer tool to batch-export your images at these exact specifications before uploading." },
@@ -168,7 +161,6 @@ export const CLUSTER_9_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-06-14",
     updatedAt: "2026-07-06",
-    author: { name: "James Wilson", url: "https://github.com/jameswilson" },
     sections: [
       { heading: "Why Social Media Analytics Matter for Growth", body: "Analytics transform social media from a guessing game into a data-informed discipline. By tracking key performance indicators, you can identify which content types resonate, which posting times drive the most engagement, and which platforms deliver the best return on your time investment. Without analytics, you might double down on a platform that underperforms while neglecting one where your audience is most active. The free analytics tools available in 2026 are surprisingly sophisticated, offering insights that were once locked behind enterprise paywalls." },
       { heading: "Native Platform Analytics: The Starting Point", body: "Every major platform provides a free analytics dashboard. Instagram Insights shows follower demographics, reach, profile visits, and post-level engagement. Twitter Analytics displays tweet impressions, profile visits, and top follower growth periods. LinkedIn Analytics reveals job titles, industries, and company sizes of your audience. Facebook Insights is the most comprehensive, offering page-level data, post reach, and video retention metrics. TikTok Analytics provides video views, follower growth, and content trends. These native tools are free, reliable, and directly integrated into each platform." },
@@ -190,7 +182,6 @@ export const CLUSTER_9_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 11,
     publishedAt: "2026-06-16",
     updatedAt: "2026-07-06",
-    author: { name: "Priya Patel", url: "https://github.com/priyapatel" },
     sections: [
       { heading: "Understanding Video Requirements by Platform", body: "Each social media platform has distinct video specifications. Instagram Reels and Stories require 1080 by 1920 pixels at 30 frames per second maximum. TikTok prefers 1080 by 1920 at 30 fps, but accepts 720p uploads. YouTube handles up to 4K resolution and 60 fps, but most users watch at 1080p. Facebook recommends 1280 by 720 pixels minimum with H.264 compression. Twitter compresses videos aggressively, so starting with high-quality source material preserves more detail after compression. LinkedIn supports videos up to 10 minutes with a maximum file size of 5 GB." },
       { heading: "Video Codecs and Container Formats Explained", body: "The H.264 codec is the universal standard for social media compatibility. It offers excellent compression efficiency while maintaining broad device support. H.265 (HEVC) provides better compression but less universal compatibility. AV1 is the emerging standard offering 30 percent better compression than H.264, but encoding is slower and older devices may not support playback. For container formats, MP4 with H.264 video and AAC audio is the safest choice across all platforms. MOV files work for YouTube but not for Twitter or Instagram direct uploads." },
@@ -212,7 +203,6 @@ export const CLUSTER_9_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-06-18",
     updatedAt: "2026-07-07",
-    author: { name: "Nuvora Team", url: "/about" },
     sections: [
       { heading: "Why a Content Calendar Transforms Your Social Media", body: "Posting spontaneously leads to burnout, inconsistent quality, and gaps in your publishing schedule. A content calendar provides a strategic framework that aligns your social media activity with business goals, seasonal events, and product launches. It ensures a balanced mix of content types — educational, entertaining, promotional, and community-building. A calendar also reduces decision fatigue: when you know Tuesday is tip day and Thursday is behind-the-scenes day, you never wonder what to post. Teams benefit from shared visibility into upcoming content, reducing last-minute scrambling." },
       { heading: "Setting Up Your Content Calendar Structure", body: "Start by choosing your tool. Google Sheets is free and collaborative. Notion offers databases with calendar views and templates. Trello provides card-based workflows for content approval processes. Airtable combines spreadsheet flexibility with database power. Regardless of tool, include these columns: date, time, platform, content type, topic, visual asset link, caption, hashtag set, and status. Set up recurring columns for content pillars — for example, 40 percent educational, 30 percent entertaining, 20 percent promotional, 10 percent community-focused. This prevents accidental over-promotion." },
@@ -234,7 +224,6 @@ export const CLUSTER_9_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 13,
     publishedAt: "2026-06-20",
     updatedAt: "2026-07-07",
-    author: { name: "Alex Chen", url: "https://github.com/alexchen" },
     sections: [
       { heading: "Demographics and Audience Profiles", body: "Facebook maintains the largest user base at nearly 3 billion monthly active users, with strong penetration among users aged 25 to 44. It is ideal for businesses targeting a broad consumer audience. LinkedIn reaches 1 billion professionals, concentrated in decision-making roles across industries. It is the platform for B2B marketing, recruitment, and thought leadership. Twitter has approximately 550 million monthly active users, skewed toward journalists, developers, and early adopters who value real-time conversation. Twitter excels for news-driven brands and community engagement around live events." },
       { heading: "Content Formats and Engagement Patterns", body: "Facebook supports the widest range of content formats: text posts, images, video, Stories, Live broadcasts, and Marketplace listings. Video content, especially Live, receives the highest organic reach on Facebook. LinkedIn favors professional long-form content, with posts between 100 and 200 words performing best. Document posts (PDF carousels) on LinkedIn achieve high engagement because users can swipe through slides easily. Twitter thrives on brevity and timeliness. Threaded tweets allow deeper dives, but single tweets with images or polls often drive the most engagement per character." },
@@ -256,7 +245,6 @@ export const CLUSTER_9_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-06-22",
     updatedAt: "2026-07-08",
-    author: { name: "Sarah Mitchell", url: "https://github.com/sarahmitchell" },
     sections: [
       { heading: "Understanding TikTok Watermarks and Why They Exist", body: "TikTok automatically adds a watermark to all videos downloaded from the app. The watermark displays the creator's username and the TikTok logo, serving both as attribution and as a branding mechanism that drives viewers to the platform. When you upload a video with a TikTok watermark to another platform like Instagram Reels or YouTube Shorts, the watermark signals that the content originated elsewhere. Platform algorithms may deprioritize watermarked content because it sends users off-platform. This creates demand for watermark removal, primarily for your own content." },
       { heading: "Legitimate Reasons to Remove Watermarks", body: "The only legitimate reason to remove a TikTok watermark is if the video is your own original content. You created the video, you own the rights, and you want to repurpose it across platforms without the TikTok branding. Other valid scenarios include removing watermarks from content you have purchased through a licensing agreement or content created under a work-for-hire arrangement where you own the intellectual property. Removing watermarks from someone else's content without permission is copyright violation and violates TikTok's terms of service." },
@@ -278,7 +266,6 @@ export const CLUSTER_9_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 11,
     publishedAt: "2026-06-24",
     updatedAt: "2026-07-08",
-    author: { name: "James Wilson", url: "https://github.com/jameswilson" },
     sections: [
       { heading: "Building Your Free Social Media Management Stack", body: "A social media manager's toolkit includes scheduling, content creation, analytics, reporting, and collaboration tools. The good news is that free tiers of premium tools have improved dramatically. You can build a complete stack without spending a cent by strategically combining free plans. The trade-offs typically involve account limits, post caps, and watermark placement. By understanding the limitations of each free tool, you can design a workflow that works within those boundaries while still producing professional results for your clients or company." },
       { heading: "Free Scheduling and Publishing Tools", body: "Buffer's free plan supports three accounts and ten scheduled posts per account. Later offers thirty posts per profile across Instagram, Twitter, Facebook, Pinterest, and TikTok. Meta Business Suite provides free scheduling for Facebook and Instagram with unlimited posts. TweetDeck remains an indispensable free tool for Twitter management. For social media managers juggling multiple clients, combine Later for visual-first platforms with Meta Business Suite for Facebook and Instagram. Use our QR code generator to create trackable QR codes for offline-to-online campaigns that you can schedule alongside your digital content." },
@@ -300,7 +287,6 @@ export const CLUSTER_9_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 7,
     publishedAt: "2026-06-25",
     updatedAt: "2026-07-09",
-    author: { name: "Priya Patel", url: "https://github.com/priyapatel" },
     sections: [
       { heading: "Understanding YouTube Thumbnail Resolutions", body: "YouTube generates thumbnails at multiple resolutions. The standard resolutions are maxresdefault (1280 by 720 pixels), hqdefault (480 by 360 pixels), mqdefault (320 by 180 pixels), and sddefault (640 by 480 pixels). The maxresdefault version is only generated for videos that have a custom uploaded thumbnail; auto-generated thumbnails may not have this resolution available. Understanding which URL pattern to use for each resolution ensures you get the highest quality version available for any given video." },
       { heading: "Method 1: Using the Video ID URL Pattern", body: "Every YouTube video has a unique video ID — the string after v= in the URL. You can construct thumbnail URLs directly using this ID. The pattern is: https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg. Replace VIDEO_ID with the actual ID. If maxresdefault is not available, try hqdefault.jpg as a fallback. This method requires no tools or accounts. Simply copy the video ID from the URL, paste it into the pattern, and open the resulting URL in your browser to view and save the full-resolution thumbnail." },
@@ -322,7 +308,6 @@ export const CLUSTER_9_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 12,
     publishedAt: "2026-06-27",
     updatedAt: "2026-07-09",
-    author: { name: "Nuvora Team", url: "/about" },
     sections: [
       { heading: "What Is a Social Media Audit and Why Conduct One?", body: "A social media audit is a systematic review of your social media presence across all platforms. It evaluates profile completeness, content performance, audience demographics, engagement metrics, and competitive positioning. Audits reveal what is working, what is not, and where opportunities exist. They should be conducted quarterly for active accounts and annually for passive ones. An audit provides the data foundation for strategy decisions — without it, you are optimizing based on assumptions rather than evidence. Even a 30-minute audit can surface actionable insights." },
       { heading: "Step 1: Profile and Bio Optimization Check", body: "Start by auditing each platform profile for completeness. Check that your profile photo is consistent across platforms, your bio includes relevant keywords, your website link is correct with UTM parameters, and your contact information is up to date. Review your pinned posts — are they still relevant? Check that your handle is consistent or strategically differentiated across platforms. Use our text cleaner to normalize bio text and remove any formatting issues. An optimized profile is the foundation of social media success because it is the first thing potential followers see." },
@@ -344,7 +329,6 @@ export const CLUSTER_9_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-06-28",
     updatedAt: "2026-07-10",
-    author: { name: "Alex Chen", url: "https://github.com/alexchen" },
     sections: [
       { heading: "Why Short URLs Matter for Social Media", body: "Long URLs are visually unappealing, consume precious character counts, and are prone to breaking when pasted into messaging apps. Shortened URLs look cleaner, increase click-through rates, and can include tracking parameters to measure campaign performance. On Twitter, every character counts toward the 280-character limit. On Instagram, long URLs in the bio look unprofessional. On LinkedIn, shortened links appear less spammy than raw URLs. A good short link also provides analytics, showing you exactly how many clicks your content generates." },
       { heading: "Free URL Shortening Tools Compared", body: "Bitly remains the most popular free URL shortener, offering custom back-half slugs and basic click analytics. TinyURL is the simplest option with no account required. Our URL shortener (available on Nuvora) provides branded short links with full click tracking. For more advanced needs, Rebrandly offers custom domain short links on its free tier. When choosing a shortener, consider link lifespan — some free services expire inactive links. Also verify the service's reliability and uptime history. A broken short link is worse than a long one because followers cannot see the destination to assess trust." },
@@ -366,7 +350,6 @@ export const CLUSTER_9_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-07-01",
     updatedAt: "2026-07-10",
-    author: { name: "Sarah Mitchell", url: "https://github.com/sarahmitchell" },
     sections: [
       { heading: "Why You Need a Link in Bio Tool", body: "Instagram and TikTok limit profiles to a single clickable link in the bio. A link-in-bio tool creates a landing page that hosts multiple links, effectively turning one link into a navigation hub. These tools are essential for driving traffic to your latest blog post, product page, YouTube video, newsletter sign-up, and affiliate offers from a single bio link. They also provide analytics showing which links get the most clicks, helping you understand what your audience wants. The best part is that several excellent link-in-bio tools offer robust free tiers." },
       { heading: "Linktree: The Original and Most Popular Option", body: "Linktree pioneered the link-in-bio concept and remains the most widely recognized. Its free tier includes unlimited links, basic customization colors and buttons, and click analytics. The interface is simple to set up in under five minutes. Linktree also supports email sign-up collection and social media icon links. The main limitation is that free accounts display Linktree branding and have limited design control. For most users starting out, Linktree's free plan offers everything needed to create a functional and professional bio link page." },
@@ -388,7 +371,6 @@ export const CLUSTER_9_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-07-02",
     updatedAt: "2026-07-11",
-    author: { name: "James Wilson", url: "https://github.com/jameswilson" },
     sections: [
       { heading: "Why Infographics Drive Engagement and Shares", body: "Infographics combine data and design to present complex information in a visually digestible format. Studies show that infographics are shared three times more than any other type of content on social media. They are inherently saveable — users bookmark them for future reference, which signals high value to platform algorithms. Infographics also work well across platforms: post the full image on Instagram, a preview on Twitter with a link to the full version, and the key takeaway on LinkedIn. Their versatility makes them a cornerstone of content marketing strategies." },
       { heading: "Design Principles for Effective Infographics", body: "Start with a clear narrative structure. Every infographic needs a headline, an introduction, a logical flow of information, and a conclusion. Use a maximum of three typefaces for consistency. Establish a clear visual hierarchy — the most important information should be the largest and most prominent. Use white space generously to prevent visual overwhelm. Our color converter helps you maintain consistent color values across HEX, RGB, and HSL formats. Our CSS gradient generator can create background gradients that add depth without distracting from the data." },
@@ -410,7 +392,6 @@ export const CLUSTER_9_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 11,
     publishedAt: "2026-07-04",
     updatedAt: "2026-07-12",
-    author: { name: "Priya Patel", url: "https://github.com/priyapatel" },
     sections: [
       { heading: "Diagnosing the Root Cause of Low Engagement", body: "Low engagement typically stems from one or more of these factors: content relevance, posting timing, platform algorithm changes, audience targeting, or content format. Start by reviewing your last 30 posts and categorizing them. If all are underperforming, the issue is likely systemic — algorithm penalty, wrong target audience, or poor content-market fit. If only some underperform, analyze what differs between top and bottom performers. Check your account health: have you been shadowbanned or flagged for spammy behavior? Use a methodical approach rather than guessing." },
       { heading: "Content Issues: Lack of Value or Relevance", body: "The most common reason for low engagement is content that does not provide clear value. Every post should educate, entertain, inspire, or connect. Review your content through your audience's eyes: does it solve a problem? Does it make them feel something? Does it invite interaction? Posts that are purely promotional consistently underperform. Use our text cleaner to review your caption quality — are you asking questions, using clear calls to action, and writing in a conversational tone? Our excerpt generator can help repurpose your highest-performing content into fresh posts." },
@@ -432,7 +413,6 @@ export const CLUSTER_9_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-07-06",
     updatedAt: "2026-07-13",
-    author: { name: "Nuvora Team", url: "/about" },
     sections: [
       { heading: "The Case for Content Repurposing", body: "Creating original content for every platform from scratch is unsustainable. Content repurposing — adapting a single piece of content into multiple formats — maximizes your return on content creation effort. One blog post can become a LinkedIn article, five Twitter threads, three Instagram carousels, a TikTok video script, a newsletter issue, and a podcast outline. Repurposing also reinforces your message across touchpoints; people need to see something multiple times before it sticks. The key is adapting the format and tone to each platform rather than copy-pasting." },
       { heading: "The Repurposing Workflow from Long-Form to Short-Form", body: "Start with your longest-form content: a blog post, podcast episode, or video. Extract key quotes, statistics, and takeaways using our excerpt generator. Turn each major section into an individual social post. Create a tip-based carousel from step-by-step instructions. Record a TikTok or Reel summarizing the main point in under 60 seconds. Write a Twitter thread expanding on one compelling statistic. Record a LinkedIn video discussing the topic from a professional angle. This top-down approach ensures consistent messaging while adapting to each platform's strengths." },

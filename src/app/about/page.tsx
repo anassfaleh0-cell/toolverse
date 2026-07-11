@@ -3,8 +3,8 @@ import Link from "next/link";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import { Breadcrumbs, JsonLd } from "@/components/shared";
 import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
-import { Card } from "@/components/ui";
-import { AUTHORS } from "@/lib/content/authors";
+import { getAllTools } from "@/lib/registry";
+import { getAllContent } from "@/lib/content/registry";
 
 export const metadata: Metadata = {
   title: `About ${SITE_NAME} — Editorial Standards & Mission`,
@@ -20,6 +20,9 @@ const breadcrumbs = [
 ];
 
 export default function About() {
+  const toolCount = getAllTools().filter((t) => t.url.startsWith("/")).length;
+  const contentCount = getAllContent().length;
+
   return (
     <>
       <JsonLd data={webPageSchema({ name: `About ${SITE_NAME}`, description: `Learn about ${SITE_NAME}'s editorial policy and methodology.`, url: `${SITE_URL}/about`, breadcrumbs })} />
@@ -37,11 +40,11 @@ export default function About() {
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
             <div className="rounded-xl border border-zinc-200 bg-white p-4 text-center dark:border-zinc-800 dark:bg-zinc-900">
-              <div className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">45+</div>
+              <div className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">{toolCount}+</div>
               <div className="mt-1 text-xs text-zinc-500">Free Tools</div>
             </div>
             <div className="rounded-xl border border-zinc-200 bg-white p-4 text-center dark:border-zinc-800 dark:bg-zinc-900">
-              <div className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">30+</div>
+              <div className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">{contentCount}+</div>
               <div className="mt-1 text-xs text-zinc-500">Guides & Articles</div>
             </div>
             <div className="rounded-xl border border-zinc-200 bg-white p-4 text-center dark:border-zinc-800 dark:bg-zinc-900">
@@ -81,16 +84,16 @@ export default function About() {
           </div>
 
           <div className="mt-12 space-y-6">
-            <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">Our Team</h2>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {Object.values(AUTHORS).map((author) => (
-                <Card key={author.id} variant="default">
-                  <h3 className="font-semibold text-zinc-900 dark:text-zinc-50">{author.name}</h3>
-                  <p className="mt-1 text-xs font-medium text-blue-600 dark:text-blue-400">{author.title}</p>
-                  <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">{author.bio}</p>
-                </Card>
-              ))}
-            </div>
+            <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">About the Founder</h2>
+            <p className="text-sm text-zinc-600 dark:text-zinc-400">
+              {SITE_NAME} was created by a solo developer.{" "}
+              <Link href="/authors/founder" className="text-blue-600 hover:underline dark:text-blue-400">
+                Learn more about the founder &rarr;
+              </Link>
+            </p>
+            <p className="text-sm text-zinc-500 dark:text-zinc-400 italic">
+              A detailed bio will be added here once provided.
+            </p>
           </div>
 
           <div className="mt-12 space-y-6">

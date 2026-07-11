@@ -14,7 +14,6 @@ export const CLUSTER_1_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 15,
     publishedAt: "2026-01-15",
     updatedAt: "2026-06-15",
-    author: { name: "Sarah Mitchell" },
     sections: [
       {
         heading: "Introduction to PDF Management in 2026",
@@ -51,7 +50,6 @@ export const CLUSTER_1_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-01-20",
     updatedAt: "2026-06-18",
-    author: { name: "Alex Chen" },
     sections: [
       {
         heading: "Why PDF Compression Matters More Than You Think",
@@ -88,7 +86,6 @@ export const CLUSTER_1_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 7,
     publishedAt: "2026-01-25",
     updatedAt: "2026-06-20",
-    author: { name: "James Wilson" },
     sections: [
       {
         heading: "Merge vs Split: Two Sides of the Same Coin",
@@ -125,7 +122,6 @@ export const CLUSTER_1_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-02-01",
     updatedAt: "2026-06-22",
-    author: { name: "Priya Patel" },
     sections: [
       {
         heading: "Why No-Signup Tools Matter",
@@ -162,7 +158,6 @@ export const CLUSTER_1_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-02-05",
     updatedAt: "2026-06-25",
-    author: { name: "Alex Chen" },
     sections: [
       {
         heading: "Why Convert PDF to Word?",
@@ -199,7 +194,6 @@ export const CLUSTER_1_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 7,
     publishedAt: "2026-02-10",
     updatedAt: "2026-06-28",
-    author: { name: "Sarah Mitchell" },
     sections: [
       {
         heading: "Understanding PDF Password Types",
@@ -236,7 +230,6 @@ export const CLUSTER_1_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 11,
     publishedAt: "2026-02-15",
     updatedAt: "2026-07-01",
-    author: { name: "Alex Chen" },
     sections: [
       {
         heading: "The Fundamental Difference: Lossy vs Lossless",
@@ -273,7 +266,6 @@ export const CLUSTER_1_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 7,
     publishedAt: "2026-02-20",
     updatedAt: "2026-07-03",
-    author: { name: "James Wilson" },
     sections: [
       {
         heading: "Why Sign PDFs Online?",
@@ -310,7 +302,6 @@ export const CLUSTER_1_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-02-25",
     updatedAt: "2026-07-05",
-    author: { name: "Priya Patel" },
     sections: [
       {
         heading: "What Students Need from a PDF Editor",
@@ -347,7 +338,6 @@ export const CLUSTER_1_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 7,
     publishedAt: "2026-03-01",
     updatedAt: "2026-07-08",
-    author: { name: "James Wilson" },
     sections: [
       {
         heading: "Why Extract PDF Pages?",
@@ -384,7 +374,6 @@ export const CLUSTER_1_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-03-05",
     updatedAt: "2026-07-10",
-    author: { name: "Sarah Mitchell" },
     sections: [
       {
         heading: "What Is PDF/A?",
@@ -421,7 +410,6 @@ export const CLUSTER_1_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-03-10",
     updatedAt: "2026-07-12",
-    author: { name: "Priya Patel" },
     sections: [
       {
         heading: "Why Convert PDF Pages to JPG?",
@@ -458,7 +446,6 @@ export const CLUSTER_1_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-03-15",
     updatedAt: "2026-07-15",
-    author: { name: "Priya Patel" },
     sections: [
       {
         heading: "Why Small Businesses Need Dedicated PDF Tools",
@@ -495,7 +482,6 @@ export const CLUSTER_1_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 11,
     publishedAt: "2026-03-20",
     updatedAt: "2026-07-18",
-    author: { name: "Sarah Mitchell" },
     sections: [
       {
         heading: "Why Redaction Matters More Than Black Boxes",
@@ -532,7 +518,6 @@ export const CLUSTER_1_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-03-25",
     updatedAt: "2026-07-20",
-    author: { name: "Alex Chen" },
     sections: [
       {
         heading: "What Is PDF OCR and Why Do You Need It?",
@@ -569,7 +554,6 @@ export const CLUSTER_1_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-04-01",
     updatedAt: "2026-07-22",
-    author: { name: "James Wilson" },
     sections: [
       {
         heading: "The Challenge of PDF to Excel Conversion",
@@ -606,7 +590,6 @@ export const CLUSTER_1_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-04-05",
     updatedAt: "2026-07-25",
-    author: { name: "Priya Patel" },
     sections: [
       {
         heading: "The Watermark Problem in Free PDF Tools",
@@ -643,7 +626,6 @@ export const CLUSTER_1_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-04-10",
     updatedAt: "2026-07-28",
-    author: { name: "James Wilson" },
     sections: [
       {
         heading: "Why Annotate PDFs Online?",
@@ -680,7 +662,6 @@ export const CLUSTER_1_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 7,
     publishedAt: "2026-04-15",
     updatedAt: "2026-07-30",
-    author: { name: "Nuvora Team" },
     sections: [
       {
         heading: "Understanding Why PDFs Have Size Limits",
@@ -717,7 +698,6 @@ export const CLUSTER_1_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 7,
     publishedAt: "2026-04-20",
     updatedAt: "2026-08-01",
-    author: { name: "Priya Patel" },
     sections: [
       {
         heading: "Why Convert PDF to PowerPoint?",

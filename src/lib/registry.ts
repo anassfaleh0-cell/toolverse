@@ -1,5 +1,6 @@
 import { tools as rawTools, type Tool as ToolBase } from "@/lib/tools";
 import { CATEGORIES, type Category } from "@/lib/categories";
+import { getToolConfig } from "@/lib/tools-config";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import type { Metadata } from "next";
 import type { FaqItem } from "@/lib/seo";
@@ -108,6 +109,7 @@ export function generateToolMetadata(tool: Tool): Metadata {
     ? `Free ${keywords.primary} tool. ${tool.description} ${keywords.secondary.slice(0, 3).join(", ")}. Use our online ${keywords.primary} tool instantly — no signup, no tracking.`
     : tool.description;
   const ogTitle = `${tool.name} - ${SITE_NAME}`;
+  const config = getToolConfig(tool.slug);
   return {
     title: tool.name,
     description: richDescription,
@@ -115,7 +117,7 @@ export function generateToolMetadata(tool: Tool): Metadata {
     openGraph: { title: ogTitle, description: richDescription, url: `${SITE_URL}${tool.url}` },
     twitter: { card: "summary_large_image", title: ogTitle, description: richDescription },
     alternates: { canonical: `${SITE_URL}${tool.url}` },
-    robots: { index: true, follow: true },
+    robots: config.isComingSoon ? { index: false, follow: true } : { index: true, follow: true },
   };
 }
 

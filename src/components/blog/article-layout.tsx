@@ -92,7 +92,7 @@ export function ArticleLayout({ piece, basePath = "blog" }: { piece: ContentPiec
   const canonicalUrl = `${SITE_URL}/${basePath}/${piece.slug}`;
   const typeLabel = TYPE_LABEL[piece.type] ?? "Article";
   const authorKey = piece.author?.name.toLowerCase().replace(/\s+/g, "");
-  const author = (authorKey && AUTHORS[authorKey]) ? AUTHORS[authorKey] : { name: piece.author?.name ?? AUTHORS.team.name, title: "Contributor", bio: AUTHORS.team.bio, url: AUTHORS.team.url };
+  const author = (authorKey && AUTHORS[authorKey]) ? AUTHORS[authorKey] : { name: piece.author?.name ?? AUTHORS.founder.name, title: "Contributor", bio: AUTHORS.founder.bio, url: `${SITE_URL}/authors/founder` };
   const faqItems: FaqItem[] = piece.sections.filter(s => s.body.length > 80).slice(0, 5).map(s => ({ question: s.heading, answer: s.body.slice(0, 300) }));
   const isPillar = piece.slug.startsWith("ultimate-guide") || piece.title.startsWith("Ultimate Guide");
   const imgSrc = generateArticleSvg(piece.title);
@@ -208,7 +208,7 @@ export function ArticleLayout({ piece, basePath = "blog" }: { piece: ContentPiec
                 <p className="text-sm font-semibold text-text-primary">{author.name}</p>
                 <p className="text-xs text-text-tertiary">{author.title}</p>
                 <p className="mt-1.5 text-sm leading-relaxed text-text-secondary">{author.bio}</p>
-                <Link href={author.url} className="mt-2 inline-block text-xs font-medium text-nuvora-600 hover:underline dark:text-nuvora-400">View all articles by {author.name.split(" ")[0]} &rarr;</Link>
+                {author.url && <Link href={author.url} className="mt-2 inline-block text-xs font-medium text-nuvora-600 hover:underline dark:text-nuvora-400">View all articles by {author.name.split(" ")[0]} &rarr;</Link>}
               </div>
             </div>
           </section>

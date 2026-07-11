@@ -776,7 +776,7 @@ export function generateKnowledgePieces(tool: Tool): ContentPiece[] {
       readingTimeMinutes: Math.max(3, allSections.length),
       publishedAt: "2026-07-01",
       updatedAt: "2026-07-10",
-      author: { name: "Nuvora Team", url: "https://Nuvora.dev/about" },
+      // author removed — will use fallback from AUTHORS
       schema,
     });
   }

@@ -14,7 +14,6 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 15,
     publishedAt: "2026-01-18",
     updatedAt: "2026-06-15",
-    author: { name: "Alex Chen" },
     sections: [
       {
         heading: "The State of Web Images in 2026",
@@ -51,7 +50,6 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-01-22",
     updatedAt: "2026-06-18",
-    author: { name: "Sarah Mitchell" },
     sections: [
       {
         heading: "Understanding Visual Quality vs File Size",
@@ -88,7 +86,6 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-01-28",
     updatedAt: "2026-06-22",
-    author: { name: "James Wilson" },
     sections: [
       {
         heading: "The Three Contenders: A Quick Overview",
@@ -125,7 +122,6 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-02-02",
     updatedAt: "2026-06-25",
-    author: { name: "Priya Patel" },
     sections: [
       {
         heading: "Why You Need a Good Image Resizer",
@@ -162,7 +158,6 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-02-08",
     updatedAt: "2026-06-28",
-    author: { name: "James Wilson" },
     sections: [
       {
         heading: "How AI Background Removal Works",
@@ -199,7 +194,6 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 7,
     publishedAt: "2026-02-12",
     updatedAt: "2026-07-01",
-    author: { name: "Priya Patel" },
     sections: [
       {
         heading: "Why Convert WebP to JPG?",
@@ -236,7 +230,6 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-02-18",
     updatedAt: "2026-07-05",
-    author: { name: "Alex Chen" },
     sections: [
       {
         heading: "What Is DPI and Why Does It Matter?",
@@ -273,7 +266,6 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-02-22",
     updatedAt: "2026-07-08",
-    author: { name: "Priya Patel" },
     sections: [
       {
         heading: "The Rise of Browser-Based Image Editing",
@@ -310,7 +302,6 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 7,
     publishedAt: "2026-02-26",
     updatedAt: "2026-07-10",
-    author: { name: "James Wilson" },
     sections: [
       {
         heading: "Why Cropping Is More Important Than You Think",
@@ -347,7 +338,6 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 7,
     publishedAt: "2026-03-02",
     updatedAt: "2026-07-12",
-    author: { name: "Alex Chen" },
     sections: [
       {
         heading: "What Is HEIC and Why Convert It?",
@@ -384,7 +374,6 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-03-06",
     updatedAt: "2026-07-15",
-    author: { name: "Sarah Mitchell" },
     sections: [
       {
         heading: "The Fundamental Trade-Off: Size vs Fidelity",
@@ -421,7 +410,6 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 7,
     publishedAt: "2026-03-10",
     updatedAt: "2026-07-18",
-    author: { name: "Priya Patel" },
     sections: [
       {
         heading: "Why Social Media Image Sizes Matter",
@@ -458,7 +446,6 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-03-14",
     updatedAt: "2026-07-20",
-    author: { name: "Nuvora Team" },
     sections: [
       {
         heading: "The State of Free Stock Photography in 2026",
@@ -495,7 +482,6 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 7,
     publishedAt: "2026-03-18",
     updatedAt: "2026-07-22",
-    author: { name: "James Wilson" },
     sections: [
       {
         heading: "Why Convert SVG to PNG?",
@@ -532,7 +518,6 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-03-22",
     updatedAt: "2026-07-25",
-    author: { name: "Sarah Mitchell" },
     sections: [
       {
         heading: "What Is EXIF Data?",
@@ -569,7 +554,6 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 6,
     publishedAt: "2026-03-26",
     updatedAt: "2026-07-28",
-    author: { name: "James Wilson" },
     sections: [
       {
         heading: "When to Flip or Rotate Images",
@@ -606,7 +590,6 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-04-02",
     updatedAt: "2026-07-30",
-    author: { name: "Alex Chen" },
     sections: [
       {
         heading: "Why Photographers Need Specialized Compressors",
@@ -643,7 +626,6 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 7,
     publishedAt: "2026-04-06",
     updatedAt: "2026-08-01",
-    author: { name: "Priya Patel" },
     sections: [
       {
         heading: "Why Add Text to Images?",
@@ -680,7 +662,6 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-04-12",
     updatedAt: "2026-08-05",
-    author: { name: "Alex Chen" },
     sections: [
       {
         heading: "The Real Cost of Slow Images",
@@ -717,7 +698,6 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 7,
     publishedAt: "2026-04-18",
     updatedAt: "2026-08-08",
-    author: { name: "Nuvora Team" },
     sections: [
       {
         heading: "Why Convert JPG to PDF?",

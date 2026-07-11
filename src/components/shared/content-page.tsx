@@ -7,11 +7,9 @@ import {
 } from "@/components/shared";
 import { Badge, Callout } from "@/components/ui";
 import {
-  faqSchema,
   breadcrumbSchema,
   webPageSchema,
   articleSchema,
-  type FaqItem,
 } from "@/lib/seo";
 import { SITE_URL } from "@/lib/constants";
 import { getRelatedContent } from "@/lib/content/registry";
@@ -80,11 +78,6 @@ function AuthorCard({ piece }: { piece: ContentPiece }) {
 export function ContentPage({ piece }: { piece: ContentPiece }) {
   const breadcrumbs = getContentBreadcrumbs(piece);
   const related = getRelatedContent(piece, 4);
-  const schemaFaq: FaqItem[] = piece.sections
-    .filter((s) => s.body.length > 50)
-    .slice(0, 5)
-    .map((s) => ({ question: s.heading, answer: s.body.slice(0, 300) }));
-
   const typeUrl = TYPE_ROUTE[piece.type] ?? piece.type;
   const typeLabel =
     piece.type.charAt(0).toUpperCase() + piece.type.slice(1);
@@ -95,7 +88,6 @@ export function ContentPage({ piece }: { piece: ContentPiece }) {
       <ContentTracker slug={piece.slug} title={piece.title} url={`/${typeUrl}/${piece.slug}`} type={piece.type} typeLabel={typeLabel} readingTimeMinutes={readingMins} />
       <JsonLd data={webPageSchema({ name: piece.title, description: piece.description, url: `${SITE_URL}/${typeUrl}/${piece.slug}`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
-      {schemaFaq.length > 1 && <JsonLd data={faqSchema(schemaFaq)} />}
       <JsonLd data={articleSchema({
         type: piece.type === "article" ? "Article" : "TechArticle",
         headline: piece.title,
@@ -103,8 +95,8 @@ export function ContentPage({ piece }: { piece: ContentPiece }) {
         url: `${SITE_URL}/${typeUrl}/${piece.slug}`,
         publishedAt: piece.publishedAt,
         updatedAt: piece.updatedAt,
-        authorName: piece.author?.name ?? AUTHORS.team.name,
-        authorUrl: piece.author?.url ?? AUTHORS.team.url,
+        authorName: piece.author?.name ?? AUTHORS.founder.name,
+        authorUrl: piece.author?.url ?? `${SITE_URL}/authors/founder`,
         imageUrl: piece.sections.length > 0 ? `${SITE_URL}/og-image.svg` : undefined,
       })} />
       {piece.schema && <JsonLd data={piece.schema} />}

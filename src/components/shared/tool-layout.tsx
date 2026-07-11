@@ -7,7 +7,7 @@ import { BookmarkButton } from "@/components/shared/bookmark-button";
 import { ShareButton } from "@/components/shared/share-button";
 import { JsonLd } from "@/components/shared/json-ld";
 import { getContentForTool } from "@/lib/content/registry";
-import { howToSchema, qaPageSchema } from "@/lib/seo";
+import { howToSchema } from "@/lib/seo";
 import { SITE_URL, SITE_NAME } from "@/lib/constants";
 import { TOOL_KEYWORDS } from "@/lib/seo/keywords";
 import { getToolConfig } from "@/lib/tools-config";
@@ -113,15 +113,6 @@ export function ToolLayout({ children, toolSlug, faqItems, useCases, relatedTool
   return (
     <>
       {tool && <JsonLd data={howToSchema(howTo!)} />}
-      {tool && <JsonLd data={qaPageSchema({ question: `How does ${tool.name} work?`, answer: `${tool.name} is a free online tool from ${SITE_NAME} that processes your input entirely in your browser. Enter your data, configure options, and get instant results. No data is sent to any server.` })} />}
-      {tool && <JsonLd data={{
-        "@context": "https://schema.org",
-        "@type": "TechArticle",
-        name: tool.name,
-        description: tool.description,
-        proficiencyLevel: "Beginner",
-        timeRequired: "PT1M",
-      } as const} />}
 
       <div className="mx-auto min-h-[60vh] max-w-5xl px-4 py-6 sm:px-6 sm:py-8" role="main" aria-label={tool ? `${tool.name} tool` : "Tool page"}>
 
