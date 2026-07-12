@@ -51,7 +51,7 @@ const faqItems: FaqItem[] = [
   },
   {
     question: "How does HTML tag removal work?",
-    answer: "The HTML removal option strips all content between angle brackets < and >, including opening tags, closing tags, and self-closing tags. This includes standard HTML tags like &lt;div&gt;, &lt;p&gt;, &lt;span&gt;, as well as any other angle-bracket enclosed content. It does not remove HTML entities like &amp;amp; or &amp;nbsp; — those require separate handling. After removing tags, the text content remains but all markup is gone. This is particularly useful when extracting readable text from HTML sources for content analysis, republishing, or text processing. For more specialized HTML work, you might also need the <Link href='/html-entity-encoder' className='text-blue-600 hover:underline dark:text-blue-400'>HTML Entity Encoder</Link> to handle entity conversion.",
+    answer: "The HTML removal option strips all content between angle brackets < and >, including opening tags, closing tags, and self-closing tags. This includes standard HTML tags like &lt;div&gt;, &lt;p&gt;, &lt;span&gt;, as well as any other angle-bracket enclosed content. It does not remove HTML entities like &amp; or &nbsp; — those require separate handling. After removing tags, the text content remains but all markup is gone. This is particularly useful when extracting readable text from HTML sources for content analysis, republishing, or text processing. For more specialized HTML work, you might also need the <Link href='/html-entity-encoder' className='text-blue-600 hover:underline dark:text-blue-400'>HTML Entity Encoder</Link> to handle entity conversion.",
   },
   {
     question: "What is the order of cleaning operations?",

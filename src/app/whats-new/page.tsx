@@ -7,14 +7,14 @@ import { getLatestContent } from "@/lib/content/registry";
 import { getAllTools } from "@/lib/registry";
 
 export const metadata: Metadata = {
-  title: `What&apos;s New — Latest Tools & Content`,
+  title: "What's New — Latest Tools & Content",
   description: "Discover the latest tools, guides, and content added to Nuvora. Stay updated with new releases and improvements.",
-  openGraph: { title: `What&apos;s New — Latest Tools & Content`, description: "Discover the latest tools, guides, and content added to Nuvora. Stay updated with new releases and improvements.", url: `${SITE_URL}/whats-new` },
-  twitter: { card: "summary_large_image", title: `What&apos;s New — Latest Tools & Content`, description: "Discover the latest tools and content on Nuvora." },
+  openGraph: { title: "What's New — Latest Tools & Content", description: "Discover the latest tools, guides, and content added to Nuvora. Stay updated with new releases and improvements.", url: `${SITE_URL}/whats-new` },
+  twitter: { card: "summary_large_image", title: "What's New — Latest Tools & Content", description: "Discover the latest tools and content on Nuvora." },
   alternates: { canonical: `${SITE_URL}/whats-new` },
 };
 
-const breadcrumbs = [{ label: "Home", href: SITE_URL }, { label: "What&apos;s New" }];
+const breadcrumbs = [{ label: "Home", href: SITE_URL }, { label: "What's New" }];
 
 const TYPE_ROUTE: Record<string, string> = {
   guide: "guides",
@@ -37,12 +37,12 @@ export default function WhatsNewPage() {
 
   return (
     <>
-      <JsonLd data={webPageSchema({ name: `What&apos;s New — ${SITE_NAME}`, description: "Discover the latest tools and content on Nuvora.", url: `${SITE_URL}/whats-new`, breadcrumbs })} />
+      <JsonLd data={webPageSchema({ name: `What's New — ${SITE_NAME}`, description: "Discover the latest tools and content on Nuvora.", url: `${SITE_URL}/whats-new`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <section className="border-b border-zinc-200 bg-zinc-50 py-12 dark:border-zinc-800 dark:bg-zinc-900/50 sm:py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <Breadcrumbs items={breadcrumbs} />
-          <h1 className="mt-4 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">What&apos;s New</h1>
+          <h1 className="mt-4 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">What's New</h1>
           <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">Latest tools, guides, and improvements on Nuvora.</p>
         </div>
       </section>
