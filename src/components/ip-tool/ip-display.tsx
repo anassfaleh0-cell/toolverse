@@ -2,8 +2,7 @@
 
 import { useReducer, useEffect, useCallback, startTransition, useState } from "react";
 import Link from "next/link";
-import { ToolResultCard, ToolSkeleton, ToolError, CopyButton, ShareButton, DashboardSummary, StatusBadge, ScoreGauge, GradeBadge, ToolFaqSection } from "@/components/shared";
-import { TOOL_FAQS } from "@/lib/tool-faqs";
+import { ToolResultCard, ToolSkeleton, ToolError, CopyButton, ShareButton, DashboardSummary, StatusBadge, ScoreGauge, GradeBadge } from "@/components/shared";
 import { Card, Button } from "@/components/ui";
 import { RefreshButton } from "./refresh-button";
 import { DnsLeakCheck } from "./dns-leak-check";
@@ -414,9 +413,6 @@ export function IpDisplay({ pageUrl }: IpDisplayProps) {
         </div>
       </div>
 
-      <div className="mt-8">
-        <ToolFaqSection items={TOOL_FAQS["what-is-my-ip"]} toolName="What Is My IP" />
-      </div>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

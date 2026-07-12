@@ -2,21 +2,15 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { getToolBySlug, getRelatedTools, generateToolFaq } from "@/lib/registry";
+import { getToolBySlug, getRelatedTools } from "@/lib/registry";
 import { BookmarkButton } from "@/components/shared/bookmark-button";
 import { ShareButton } from "@/components/shared/share-button";
 import { JsonLd } from "@/components/shared/json-ld";
-import { getContentForTool } from "@/lib/content/registry";
 import { howToSchema } from "@/lib/seo";
 import { SITE_URL, SITE_NAME } from "@/lib/constants";
 import { TOOL_KEYWORDS } from "@/lib/seo/keywords";
 import { getToolConfig } from "@/lib/tools-config";
 import type { ReactNode } from "react";
-
-interface FaqItem {
-  question: string;
-  answer: string;
-}
 
 interface UseCase {
   title: string;
@@ -26,7 +20,6 @@ interface UseCase {
 interface ToolLayoutProps {
   children: ReactNode;
   toolSlug?: string;
-  faqItems?: FaqItem[];
   useCases?: UseCase[];
   relatedToolSlugs?: string[];
 }
@@ -54,7 +47,7 @@ function LazySection({ children, minHeight = "100px", rootMargin = "200px" }: { 
   return <div ref={ref} style={{ minHeight: visible ? "auto" : minHeight }}>{visible ? children : null}</div>;
 }
 
-export function ToolLayout({ children, toolSlug, faqItems, useCases, relatedToolSlugs }: ToolLayoutProps) {
+export function ToolLayout({ children, toolSlug, useCases, relatedToolSlugs }: ToolLayoutProps) {
   const [copied, setCopied] = useState(false);
   const tool = toolSlug ? getToolBySlug(toolSlug) : undefined;
   const cat = tool?.category;
@@ -202,81 +195,6 @@ export function ToolLayout({ children, toolSlug, faqItems, useCases, relatedTool
                 </section>
               ) : null;
             })()}
-
-            {/* FAQ — lazy loaded, collapsed by default */}
-            <LazySection rootMargin="300px" minHeight="200px">
-              {(() => {
-                const faqs = generateToolFaq(tool);
-                const allFaqs = [...faqs, ...(faqItems ?? [])];
-                return allFaqs.length > 0 ? (
-                  <section className="mb-8">
-                    <h2 className="text-base font-bold text-text-primary mb-3">Frequently Asked Questions</h2>
-                    <div className="space-y-2">
-                      {allFaqs.map((faq, i) => (
-                        <details key={i} className="group rounded-lg border border-border-subtle bg-surface transition-all">
-                          <summary className="flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-medium text-text-primary">
-                            {faq.question}
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4 shrink-0 text-text-tertiary transition-transform group-open:rotate-180">
-                              <path d="m6 9 6 6 6-6" />
-                            </svg>
-                          </summary>
-                          <div className="border-t border-border-subtle px-4 pb-3 pt-2">
-                            <p className="text-sm leading-relaxed text-text-secondary">{faq.answer}</p>
-                          </div>
-                        </details>
-                      ))}
-                    </div>
-                  </section>
-                ) : null;
-              })()}
-            </LazySection>
-
-            {/* Related Tools — lazy loaded */}
-            <LazySection rootMargin="200px" minHeight="150px">
-              {relatedTools.length > 0 && (
-                <section className="mb-8">
-                  <h2 className="text-base font-bold text-text-primary mb-3">Related Tools</h2>
-                  <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-border-subtle scrollbar-track-transparent -mx-1 px-1">
-                    {relatedTools.map((rt) => (
-                      <Link
-                        key={rt.slug}
-                        href={rt.url}
-                        className="flex shrink-0 flex-col gap-1 rounded-xl border border-border-subtle bg-surface p-3 transition-all hover:shadow-sm hover:border-nuvora-300 dark:hover:border-nuvora-700 min-w-[160px]"
-                      >
-                        <span className="text-sm font-semibold whitespace-nowrap text-text-primary">{rt.name}</span>
-                        <span className="line-clamp-2 text-xs text-text-tertiary">{rt.description}</span>
-                      </Link>
-                    ))}
-                  </div>
-                </section>
-              )}
-            </LazySection>
-
-            {/* Related Guides & Articles — lazy loaded */}
-            <LazySection rootMargin="200px" minHeight="100px">
-              {(getContentForTool(tool.slug).length > 0) && (
-                <section className="mb-8">
-                  <h2 className="text-base font-bold text-text-primary mb-3">Related Guides & Articles</h2>
-                  <div className="grid gap-2 sm:grid-cols-2">
-                    {getContentForTool(tool.slug).slice(0, 4).map((content) => {
-                      const typeRoutes: Record<string, string> = { guide: "guides", article: "blog", tutorial: "learn", comparison: "compare", "cheat-sheet": "cheat-sheets", "best-practices": "best-practices", commands: "commands", "use-cases": "use-cases" };
-                      return (
-                        <Link
-                          key={content.slug}
-                          href={`/${typeRoutes[content.type] ?? content.type}/${content.slug}`}
-                          className="rounded-lg border border-border-subtle bg-surface p-3 transition-all hover:shadow-sm hover:border-nuvora-300 dark:hover:border-nuvora-700"
-                        >
-                          <span className="text-xs font-semibold uppercase tracking-wider text-nuvora-600 dark:text-nuvora-400">
-                            {content.type === "article" ? "Blog" : content.type}
-                          </span>
-                          <h3 className="mt-0.5 text-sm font-medium text-text-primary">{content.title}</h3>
-                        </Link>
-                      );
-                    })}
-                  </div>
-                </section>
-              )}
-            </LazySection>
 
             {/* Share + bookmark — lazy loaded */}
             <LazySection rootMargin="200px" minHeight="60px">

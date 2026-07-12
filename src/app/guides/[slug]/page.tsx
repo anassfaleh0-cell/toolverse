@@ -72,11 +72,19 @@ export default async function GuidePage({ params }: Props) {
 
   const howToSchemaSteps = steps.map((s) => ({ name: s.title, text: s.body }));
 
+  const faqItems = [
+    { question: `How do I ${formatLabel(entry.topic).toLowerCase()} online for free?`, answer: `Follow the step-by-step instructions above. ${SITE_NAME} provides a free, browser-based tool that requires no signup and processes everything locally on your device.` },
+    { question: `Is it safe to ${formatLabel(entry.topic).toLowerCase()} using online tools?`, answer: `Yes. ${SITE_NAME} tools process everything locally in your browser — your data never leaves your device. No files are uploaded to any server, ensuring complete privacy and security.` },
+    { question: `Do I need any special software or skills?`, answer: `No special software or technical skills are required. The tool is designed for everyone, from beginners to experts. Simply follow the steps above and you will get the job done in minutes.` },
+    { question: `Can I use this tool on mobile devices?`, answer: `Yes, all ${SITE_NAME} tools are fully responsive and work on smartphones, tablets, and desktop browsers with the same functionality.` },
+  ];
+
   return (
     <>
       <JsonLd data={webPageSchema({ name: meta.title, description: meta.description, url: `${SITE_URL}/guides/${slug}`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <JsonLd data={howToSchema({ name: meta.title, description: meta.description, steps: howToSchemaSteps })} />
+      <JsonLd data={faqSchema(faqItems)} />
       <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
         <Breadcrumbs items={breadcrumbs} />
         <h1 className="mt-6 text-4xl font-bold tracking-tight text-text-primary sm:text-5xl">{meta.title}</h1>
@@ -131,12 +139,7 @@ export default async function GuidePage({ params }: Props) {
 
         <section className="mt-12">
           <FaqSection
-            items={[
-              { question: `How do I ${formatLabel(entry.topic).toLowerCase()} online for free?`, answer: `Follow the step-by-step instructions above. ${SITE_NAME} provides a free, browser-based tool that requires no signup and processes everything locally on your device.` },
-              { question: `Is it safe to ${formatLabel(entry.topic).toLowerCase()} using online tools?`, answer: `Yes. ${SITE_NAME} tools process everything locally in your browser — your data never leaves your device. No files are uploaded to any server, ensuring complete privacy and security.` },
-              { question: `Do I need any special software or skills?`, answer: `No special software or technical skills are required. The tool is designed for everyone, from beginners to experts. Simply follow the steps above and you will get the job done in minutes.` },
-              { question: `Can I use this tool on mobile devices?`, answer: `Yes, all ${SITE_NAME} tools are fully responsive and work on smartphones, tablets, and desktop browsers with the same functionality.` },
-            ]}
+            items={faqItems}
             title="Frequently Asked Questions"
           />
         </section>

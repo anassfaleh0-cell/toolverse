@@ -2,8 +2,7 @@
 
 import { useState, useTransition, useCallback } from "react";
 import { Input, Button, Alert, Skeleton } from "@/components/ui";
-import { DashboardSummary, StatusBadge, GradeBadge, Timeline, ToolFaqSection, ResultExport, ResultHistory, ToolMethodology } from "@/components/shared";
-import { TOOL_FAQS } from "@/lib/tool-faqs";
+import { DashboardSummary, StatusBadge, GradeBadge, Timeline, ResultExport, ResultHistory, ToolMethodology } from "@/components/shared";
 import { METHODOLOGY } from "@/lib/methodology";
 import { saveResult } from "@/lib/user-storage";
 
@@ -338,10 +337,7 @@ export function SslCertificateChecker() {
         </div>
       )}
       {result && !loading && (
-        <div className="mt-8 space-y-6">
-          <ToolMethodology sections={METHODOLOGY["ssl-certificate"]} />
-          <ToolFaqSection items={TOOL_FAQS["ssl-certificate-checker"]} toolName="SSL Certificate Checker" />
-        </div>
+        <ToolMethodology sections={METHODOLOGY["ssl-certificate"]} />
       )}
     </div>
   );

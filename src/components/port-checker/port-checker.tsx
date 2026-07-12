@@ -2,8 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { Input, Button, Alert, Skeleton } from "@/components/ui";
-import { CopyButton, DashboardSummary, StatusBadge, CompositeScore, RiskMeter, ToolFaqSection } from "@/components/shared";
-import { TOOL_FAQS } from "@/lib/tool-faqs";
+import { CopyButton, DashboardSummary, StatusBadge, CompositeScore, RiskMeter } from "@/components/shared";
 
 interface PortResult {
   port: number;
@@ -211,11 +210,7 @@ export function PortChecker() {
         </div>
       )}
 
-      {result && !loading && (
-        <div className="mt-8">
-          <ToolFaqSection items={TOOL_FAQS["port-checker"]} toolName="Port Checker" />
-        </div>
-      )}
+
       {!result && !loading && !error && (
         <div className="mt-8 rounded-xl border border-zinc-200 p-8 text-center dark:border-zinc-800">
           <p className="text-zinc-600 dark:text-zinc-400">

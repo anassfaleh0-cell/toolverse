@@ -8,9 +8,7 @@ import {
   DashboardSummary,
   StatusBadge,
   ScoreGauge,
-  ToolFaqSection,
 } from "@/components/shared";
-import { TOOL_FAQS } from "@/lib/tool-faqs";
 import { IpLookupMap } from "./ip-lookup-map";
 import type { IpLookupData } from "@/lib/ip-lookup-utils";
 import { getFlagEmoji } from "@/lib/ip-lookup-utils";
@@ -132,9 +130,6 @@ export function IpLookupResults({
             <strong>VPN/Proxy Detection:</strong> Not available in the current tier. For reliable VPN/proxy detection, use a dedicated threat intelligence feed.
           </li>
         </ul>
-      </div>
-      <div className="mt-8">
-        <ToolFaqSection items={TOOL_FAQS["ip-lookup"]} toolName="IP Lookup" />
       </div>
     </div>
   );

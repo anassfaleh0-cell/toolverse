@@ -2,8 +2,7 @@
 
 import { useState, useTransition, useCallback } from "react";
 import { Input, Button, Alert, Card, Skeleton } from "@/components/ui";
-import { CopyButton, DashboardSummary, StatusBadge, GradeBadge, computeSecurityGrade, CompositeScore, ToolFaqSection, ResultExport, ResultHistory, ToolMethodology } from "@/components/shared";
-import { TOOL_FAQS } from "@/lib/tool-faqs";
+import { CopyButton, DashboardSummary, StatusBadge, GradeBadge, computeSecurityGrade, CompositeScore, ResultExport, ResultHistory, ToolMethodology } from "@/components/shared";
 import { METHODOLOGY } from "@/lib/methodology";
 import { saveResult } from "@/lib/user-storage";
 
@@ -277,10 +276,7 @@ export function HttpHeadersChecker() {
         </div>
       )}
       {result && !loading && (
-        <div className="mt-8 space-y-6">
-          <ToolMethodology sections={METHODOLOGY["http-headers"]} />
-          <ToolFaqSection items={TOOL_FAQS["http-headers-checker"]} toolName="HTTP Headers Checker" />
-        </div>
+        <ToolMethodology sections={METHODOLOGY["http-headers"]} />
       )}
     </div>
   );

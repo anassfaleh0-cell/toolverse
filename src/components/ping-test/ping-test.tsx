@@ -2,8 +2,7 @@
 
 import { useState, useTransition, useCallback } from "react";
 import { Input, Button, Alert, Card, Skeleton } from "@/components/ui";
-import { CopyButton, DashboardSummary, MiniBarChart, CompositeScore, ToolFaqSection, ResultExport, ResultHistory, ToolMethodology } from "@/components/shared";
-import { TOOL_FAQS } from "@/lib/tool-faqs";
+import { CopyButton, DashboardSummary, MiniBarChart, CompositeScore, ResultExport, ResultHistory, ToolMethodology } from "@/components/shared";
 import { METHODOLOGY } from "@/lib/methodology";
 import { saveResult } from "@/lib/user-storage";
 
@@ -243,10 +242,7 @@ export function PingTest() {
         </div>
       )}
       {result && !loading && (
-        <div className="mt-8 space-y-6">
-          <ToolMethodology sections={METHODOLOGY["ping-test"]} />
-          <ToolFaqSection items={TOOL_FAQS["ping-test"]} toolName="Ping Test" />
-        </div>
+        <ToolMethodology sections={METHODOLOGY["ping-test"]} />
       )}
     </div>
   );

@@ -3,8 +3,7 @@
 import { useState, useTransition, useMemo, useCallback } from "react";
 import Link from "next/link";
 import { Input, Button, Alert, Skeleton, Callout } from "@/components/ui";
-import { CopyButton, DashboardSummary, StatusBadge, CompositeScore, ToolFaqSection, ResultExport, ResultHistory, ToolMethodology } from "@/components/shared";
-import { TOOL_FAQS } from "@/lib/tool-faqs";
+import { CopyButton, DashboardSummary, StatusBadge, CompositeScore, ResultExport, ResultHistory, ToolMethodology } from "@/components/shared";
 import { METHODOLOGY } from "@/lib/methodology";
 import { saveResult } from "@/lib/user-storage";
 
@@ -610,10 +609,7 @@ export function DnsLookup() {
       )}
 
       {result && result.records.length > 0 && !loading && (
-        <div className="mt-8 space-y-6">
-          <ToolMethodology sections={METHODOLOGY["dns-lookup"]} />
-          <ToolFaqSection items={TOOL_FAQS["dns-lookup"]} toolName="DNS Lookup" />
-        </div>
+        <ToolMethodology sections={METHODOLOGY["dns-lookup"]} />
       )}
       {result && result.records.length === 0 && !loading && (
         <div className="mt-8 rounded-lg border border-zinc-200 p-8 text-center text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">

@@ -3,8 +3,7 @@
 import { useState, useTransition } from "react";
 import Link from "next/link";
 import { Input, Button, Alert, Skeleton } from "@/components/ui";
-import { CopyButton, DashboardSummary, StatusBadge, ScoreGauge, ToolFaqSection } from "@/components/shared";
-import { TOOL_FAQS } from "@/lib/tool-faqs";
+import { CopyButton, DashboardSummary, StatusBadge, ScoreGauge } from "@/components/shared";
 
 interface ServerResult {
   server: string;
@@ -272,11 +271,7 @@ export function DnsPropagationChecker() {
           </div>
         </div>
       )}
-      {result && !loading && (
-        <div className="mt-8">
-          <ToolFaqSection items={TOOL_FAQS["dns-propagation-checker"]} toolName="DNS Propagation Checker" />
-        </div>
-      )}
+
     </div>
   );
 }
