@@ -4,6 +4,10 @@ import { useState, useCallback, useMemo } from "react";
 import { Button, Input } from "@/components/ui";
 import { ResultExport, AIExplanationCard } from "@/components/shared";
 
+interface BatchResult { input: string; output: Record<string, unknown> }
+interface NameserverInfo { hostname: string; ips: string[]; reachable: boolean }
+interface DnsResult { type?: string; domain?: string; signed?: boolean; records?: string[]; nameservers?: NameserverInfo[]; dnskeys?: string[]; dsRecords?: string[]; issues?: string[]; score?: number; spf?: string[]; dkim?: string[]; dmarc?: string[]; mx?: string[]; ptr?: string[]; error?: string }
+
 interface DnsToolLookupProps {
   lookupType: string;
   title: string;
@@ -16,14 +20,14 @@ interface DnsToolLookupProps {
 export function DnsToolLookup({ lookupType, title, description, placeholder, beginnerGuide, extraFields }: DnsToolLookupProps) {
   const [domain, setDomain] = useState("");
   const [extra, setExtra] = useState<Record<string, string>>({});
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<DnsResult | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showBeginner, setShowBeginner] = useState(true);
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [showBatch, setShowBatch] = useState(false);
   const [batchText, setBatchText] = useState("");
-  const [batchResults, setBatchResults] = useState<{ input: string; output: any }[]>([]);
+  const [batchResults, setBatchResults] = useState<BatchResult[]>([]);
   const [batchLoading, setBatchLoading] = useState(false);
   const [batchProgress, setBatchProgress] = useState(0);
 
@@ -60,7 +64,7 @@ export function DnsToolLookup({ lookupType, title, description, placeholder, beg
   const resultsArray = useMemo(() => {
     if (!result) return [];
     if (result.records) return result.records;
-    if (result.nameservers) return result.nameservers.map((n: any) => `${n.hostname} (${n.ips.join(", ") || "unreachable"})`);
+    if (result.nameservers) return (result.nameservers as NameserverInfo[]).map((n) => `${n.hostname} (${n.ips.join(", ") || "unreachable"})`);
     if (result.dnskeys) return result.dnskeys;
     if (result.dsRecords) return result.dsRecords;
     if (result.issues) return result.issues;
@@ -112,7 +116,7 @@ export function DnsToolLookup({ lookupType, title, description, placeholder, beg
                   if (items.length === 0) return;
                   setBatchLoading(true);
                   setBatchProgress(0);
-                  const results: { input: string; output: any }[] = [];
+                  const results: BatchResult[] = [];
                   for (let i = 0; i < items.length; i++) {
                     try {
                       const params = new URLSearchParams({ type: lookupType, domain: items[i] });
@@ -144,7 +148,7 @@ export function DnsToolLookup({ lookupType, title, description, placeholder, beg
                 {batchResults.map((r, i) => (
                   <div key={i} className="flex items-center justify-between border-b border-zinc-200 px-3 py-2 text-xs last:border-b-0 dark:border-zinc-800">
                     <span className="font-mono text-zinc-900 dark:text-zinc-50">{r.input}</span>
-                    <span className={r.output.error ? "text-red-500" : "text-green-500"}>{r.output.error || "OK"}</span>
+                    <span className={(r.output as Record<string, unknown>).error ? "text-red-500" : "text-green-500"}>{(r.output as Record<string, unknown>).error as string || "OK"}</span>
                   </div>
                 ))}
               </div>
@@ -224,7 +228,7 @@ export function DnsToolLookup({ lookupType, title, description, placeholder, beg
 
           <div className="divide-y divide-zinc-200 dark:divide-zinc-800">
             {result.nameservers ? (
-              result.nameservers.map((ns: any, i: number) => (
+              (result.nameservers as NameserverInfo[]).map((ns, i) => (
                 <div key={i} className="flex items-center justify-between px-5 py-3">
                   <div className="flex items-center gap-3">
                     <span className={`size-2 rounded-full ${ns.reachable ? "bg-green-500" : "bg-red-500"}`} />
@@ -250,7 +254,7 @@ export function DnsToolLookup({ lookupType, title, description, placeholder, beg
                 </div>
                 <div className="px-5 py-3">
                   <p className="text-xs font-medium text-zinc-500">DS Records</p>
-                  {result.dsRecords.length === 0 ? <p className="mt-1 text-sm text-zinc-400">No DS records in parent zone</p> : result.dsRecords.map((d: string, i: number) => <pre key={i} className="mt-1 font-mono text-sm text-zinc-900 dark:text-zinc-50">{d}</pre>)}
+                  {result.dsRecords && result.dsRecords.length === 0 ? <p className="mt-1 text-sm text-zinc-400">No DS records in parent zone</p> : result.dsRecords?.map((d: string, i: number) => <pre key={i} className="mt-1 font-mono text-sm text-zinc-900 dark:text-zinc-50">{d}</pre>)}
                 </div>
                 <div className="px-5 py-3">
                   <p className="text-xs font-medium text-zinc-500">DNSSEC Status</p>

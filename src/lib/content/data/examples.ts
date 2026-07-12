@@ -20,7 +20,7 @@ export const EXAMPLES: ContentPiece[] = [
     category: "network-internet",
     publishedAt: "2026-01-15",
     updatedAt: "2026-06-01",
-  },
+    noindex: false,  },
   {
     slug: "ssl-certificate-checker-examples",
     type: "examples",
@@ -39,7 +39,7 @@ export const EXAMPLES: ContentPiece[] = [
     category: "network-internet",
     publishedAt: "2026-01-20",
     updatedAt: "2026-06-01",
-  },
+    noindex: false,  },
   {
     slug: "whois-lookup-examples",
     type: "examples",
@@ -57,7 +57,7 @@ export const EXAMPLES: ContentPiece[] = [
     category: "network-internet",
     publishedAt: "2026-01-25",
     updatedAt: "2026-06-01",
-  },
+    noindex: false,  },
   {
     slug: "ping-test-examples",
     type: "examples",
@@ -76,7 +76,7 @@ export const EXAMPLES: ContentPiece[] = [
     category: "network-internet",
     publishedAt: "2026-02-01",
     updatedAt: "2026-06-01",
-  },
+    noindex: false,  },
   {
     slug: "json-formatter-examples",
     type: "examples",
@@ -94,7 +94,7 @@ export const EXAMPLES: ContentPiece[] = [
     category: "code-dev",
     publishedAt: "2026-02-05",
     updatedAt: "2026-06-01",
-  },
+    noindex: false,  },
   {
     slug: "password-generator-examples",
     type: "examples",
@@ -112,7 +112,7 @@ export const EXAMPLES: ContentPiece[] = [
     category: "code-dev",
     publishedAt: "2026-02-10",
     updatedAt: "2026-06-01",
-  },
+    noindex: false,  },
   {
     slug: "qr-code-generator-examples",
     type: "examples",
@@ -130,7 +130,7 @@ export const EXAMPLES: ContentPiece[] = [
     category: "code-dev",
     publishedAt: "2026-02-15",
     updatedAt: "2026-06-01",
-  },
+    noindex: false,  },
   {
     slug: "image-resizer-examples",
     type: "examples",
@@ -148,7 +148,7 @@ export const EXAMPLES: ContentPiece[] = [
     category: "code-dev",
     publishedAt: "2026-02-20",
     updatedAt: "2026-06-01",
-  },
+    noindex: false,  },
   {
     slug: "md5-hash-generator-examples",
     type: "examples",
@@ -166,7 +166,7 @@ export const EXAMPLES: ContentPiece[] = [
     category: "code-dev",
     publishedAt: "2026-02-25",
     updatedAt: "2026-06-01",
-  },
+    noindex: false,  },
   {
     slug: "regex-tester-examples",
     type: "examples",
@@ -184,5 +184,5 @@ export const EXAMPLES: ContentPiece[] = [
     category: "code-dev",
     publishedAt: "2026-03-01",
     updatedAt: "2026-06-01",
-  },
+    noindex: false,  },
 ];

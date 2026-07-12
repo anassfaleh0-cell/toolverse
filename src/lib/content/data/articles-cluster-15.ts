@@ -74,7 +74,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
         }
       ]
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is BMI? The Formula Explained",
         body: "Body Mass Index (BMI) is a simple calculation that estimates body fat based on height and weight. The formula was developed in 1832 by Belgian mathematician Adolphe Quetelet and is formally known as the Quetelet Index. The metric formula: BMI = weight (kg) / [height (m)]². For a person weighing 70 kg with a height of 1.75 m: BMI = 70 / (1.75 × 1.75) = 70 / 3.0625 = 22.86. The imperial formula uses a conversion factor: BMI = [weight (lbs) / (height (in))²] × 703. For a person weighing 154 lbs with a height of 69 inches: BMI = (154 / (69 × 69)) × 703 = (154 / 4761) × 703 = 0.03234 × 703 = 22.74. BMI is a continuous scale but is grouped into categories for clinical interpretation. Despite its widespread use (it is the standard screening tool recommended by the WHO, CDC, and NIH), BMI has well-known limitations — it does not measure body composition directly and cannot distinguish between fat, muscle, and bone mass. However, at the population level, BMI correlates strongly with health outcomes. The CDC reports that individuals with a BMI of 30+ have a 50-100% higher risk of mortality from all causes compared to those with a normal BMI."
@@ -177,7 +177,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
         }
       ]
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Are Percentages? A Fraction of 100",
         body: "A percentage is a way of expressing a number as a fraction of 100. The term comes from the Latin \"per centum,\" meaning \"by the hundred.\" Percentages are everywhere in daily life — interest rates, tax rates, discounts, statistical data, survey results, nutritional information, and probability. A percentage represents a ratio: 45% means 45 out of every 100. Mathematically, a percentage is a fraction with a denominator of 100: 45% = 45/100 = 0.45. Percentages make comparisons intuitive because they normalize values to a common scale. Instead of saying \"5 out of 20 doctors prefer brand X,\" we say \"25% of doctors prefer brand X\" — the percentage gives an immediate sense of proportion. Understanding percentage math is essential for personal finance: mortgage rates (currently 6-8% in the US as of 2026), credit card APRs (averaging 24-28%), sales tax (0-10% depending on jurisdiction), and investment returns (S&P 500 average annual return ~10% before inflation). The ToolVerse Percentage Calculator handles all three common percentage operations: X% of Y, X is what % of Y, and percentage change."
@@ -280,7 +280,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
         }
       ]
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "How Loans Work: Principal, Interest Rate, Term, Amortization",
         body: "A loan is a financial agreement where a lender provides funds (the principal) to a borrower, who repays the principal plus interest over a specified period (the term). The interest rate (APR — Annual Percentage Rate) represents the annual cost of borrowing. Loans are amortized — each payment is split between interest (the lender's profit) and principal (reducing the balance). In the early years of a 30-year mortgage, approximately 70-80% of each payment goes to interest. For example, on a $300,000 mortgage at 6% APR: month 1 payment = $1,798.65. Interest = $300,000 × (6%/12) = $1,500.00. Principal = $1,798.65 - $1,500.00 = $298.65. New balance = $299,701.35. By month 180 (15 years), approximately 50% goes to principal. By month 360 (final payment), nearly 100% goes to principal. Understanding this front-loaded interest structure is crucial: the total interest paid over a 30-year mortgage often exceeds the principal itself. At 6% on $300,000, total interest over 30 years = $347,514. The borrower pays back $647,514 total on a $300,000 loan. This is why financial advisors recommend making extra principal payments early in the loan term."
@@ -383,7 +383,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
         }
       ]
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Makes a Password Strong? Length, Randomness, Complexity",
         body: "Password strength is measured in entropy — the number of bits of uncertainty an attacker faces. Each bit doubles the number of guesses required. A password with 40 bits of entropy can be cracked in hours on consumer hardware; 80 bits takes centuries. Three factors determine entropy. (1) Length: This is the most important factor. Each additional character multiplies the search space exponentially. An 8-character lowercase password has 26^8 = 208 billion combinations. A 12-character lowercase password has 26^12 = 90 quadrillion — 400,000 times more. Modern recommendations: minimum 12 characters, ideally 16-20 characters. (2) Character set size: Using mixed case (52 characters), digits (10), and symbols (33) expands the alphabet to 95 characters. A 12-character password using all 95 characters has 95^12 = 540 sextillion combinations. However, NIST now deemphasizes arbitrary complexity requirements because users respond predictably (capitalize first letter, add digit 1, add symbol !) which attackers know and exploit. (3) Randomness: The password must be generated by a cryptographically secure random number generator (CSPRNG), not by a human. Humans are terrible at randomness — we choose patterns, dates, names, and sequences that dramatically reduce entropy. A \"random\" human-chosen 10-character password typically has only 10-20 bits of effective entropy. A CSPRNG-generated 16-character password has ~105 bits. The ToolVerse Password Generator uses the browser's Crypto API (window.crypto.getRandomValues) for true randomness."
@@ -490,7 +490,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
         }
       ]
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Word Counters Measure: Words, Characters, Sentences, Paragraphs, Reading Time",
         body: "A word counter provides instant text statistics that help writers, editors, and content strategists. Essential metrics: (1) Word count — the total number of words. Different counters may count hyphenated words (\"well-known\") as one or two words. The ToolVerse counter counts hyphenated compounds as single words. (2) Character count — with spaces (for Twitter/X) and without spaces (for SMS, metadescriptions). Crucial for social media with strict character limits. (3) Sentences — the number of sentences, detected by terminal punctuation (. ! ?). (4) Paragraphs — the number of paragraph breaks (double newlines). (5) Average words per sentence — a key readability metric. Target 15-20 words per sentence for good readability. (6) Average syllables per word — English averages 1.5 syllables per word. Higher values indicate more complex vocabulary. (7) Reading time — at 200-250 words per minute (the Medium standard is 230 wpm). A 2,000-word article shows \"~8-10 minutes.\" (8) Speaking time — at 130-160 words per minute (comfortable conversation pace). A 2,000-word speech lasts approximately 13-15 minutes. (9) Reading ease score — Flesch Reading Ease (0-100) calculated from sentence length and syllable count. (10) Grade level — Flesch-Kincaid Grade Level. The ToolVerse Word Counter displays all metrics in a single-panel dashboard that updates in real time as you type or paste text."
@@ -593,7 +593,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
         }
       ]
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Color Models Explained: RGB Additive, CMYK Subtractive, HSL Perceptual, HEX Shorthand",
         body: "Understanding color models is essential for any designer or developer. RGB (Red, Green, Blue): The additive color model used by screens. Each pixel emits red, green, and blue light at varying intensities (0-255). Combining full intensity of all three produces white (255,255,255). RGB is the native language of displays. RGB values are device-dependent — the same RGB value may look different on different monitors due to calibration differences. CMYK (Cyan, Magenta, Yellow, Key/Black): The subtractive color model used in printing. Ink absorbs (subtracts) light wavelengths: cyan absorbs red, magenta absorbs green, yellow absorbs blue. White areas are where no ink is applied (paper shows through). Converting RGB to CMYK requires understanding the specific ICC profile of the printer. The naive formula: K = 1 - max(R,G,B), C = (1-R-K)/(1-K), M = (1-G-K)/(1-K), Y = (1-B-K)/(1-K). HSL (Hue, Saturation, Lightness): The most intuitive model for humans. Hue: position on the color wheel (0=red, 120=green, 240=blue). Saturation: color purity (0% = gray, 100% = full color). Lightness: brightness (0% = black, 50% = pure color, 100% = white). HSL is device-independent and perceptually uniform — a 30° hue change feels like a consistent visual step. HEX: A base-16 shorthand for RGB. #RRGGBB where each pair is a hex value (00-FF). #FF0000 is red. Three-digit shorthand (#FFF = #FFFFFF) expands each character by doubling. modern CSS also supports 8-digit hex (#RRGGBBAA) with alpha transparency where AA is the alpha channel (00-FF)."
@@ -696,7 +696,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
         }
       ]
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "How Currency Exchange Works: Floating Rates, Supply and Demand, Forex Market",
         body: "Currency exchange rates are determined primarily by the foreign exchange (forex) market — the world's largest financial market, trading $7.5 trillion per day (BIS Triennial Survey 2022). Most major currencies (USD, EUR, GBP, JPY, AUD, CAD, CHF) use floating exchange rates, meaning their value fluctuates based on supply and demand. When demand for a currency increases (more buyers), its price rises. When demand decreases, its price falls. Exchange rates are quoted in pairs: EUR/USD = 1.10 means 1 euro = 1.10 US dollars. The base currency (EUR) is the first in the pair; the quote currency (USD) is the second. If EUR/USD rises from 1.10 to 1.12, the euro strengthened (it now buys more dollars). The exchange rate you see on Google, Yahoo Finance, or XE.com is the mid-market rate — the average of the bid (buy) and ask (sell) rates from interbank trading. This is the wholesale rate available to banks and large institutions. Retail consumers (individuals, small businesses) always get a rate that is less favorable than the mid-market rate because exchange services add a markup (spread) as their profit. The forex market operates 24 hours a day, 5 days a week, across major financial centers: Sydney, Tokyo, London, New York."
@@ -803,7 +803,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
         }
       ]
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "The Metric System vs Imperial System: SI Base Units and Prefixes",
         body: "The International System of Units (SI, from the French \"Système International\") is the modern form of the metric system and the global standard for measurement. It defines seven base units: meter (length, m), kilogram (mass, kg), second (time, s), ampere (electric current, A), kelvin (temperature, K), mole (amount of substance, mol), and candela (luminous intensity, cd). All other units derive from these — force (newton = kg·m/s²), energy (joule = N·m), pressure (pascal = N/m²), etc. SI prefixes make the system decimal and scalable: kilo- (10³), hecto- (10²), deca- (10¹), deci- (10⁻¹), centi- (10⁻²), milli- (10⁻³), micro- (10⁻⁶), nano- (10⁻⁹), pico- (10⁻¹²), and more. A kilometer is 1,000 meters, a millimeter is 0.001 meters. The imperial system, by contrast, uses inconsistent conversion factors: 12 inches = 1 foot, 3 feet = 1 yard, 1,760 yards = 1 mile. For volume: 3 teaspoons = 1 tablespoon, 2 tablespoons = 1 fluid ounce, 8 fluid ounces = 1 cup, 2 cups = 1 pint, 2 pints = 1 quart, 4 quarts = 1 gallon (US). Only three countries primarily use imperial: the United States, Liberia, and Myanmar. The US officially uses metric for science, medicine, and defense (since the 1975 Metric Conversion Act), but everyday measurements remain imperial. The UK uses a mixed system — miles for road distances, pints for beer, but Celsius for temperature and kilograms for groceries."
@@ -906,7 +906,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
         }
       ]
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Different Ways to Calculate Age: Chronological, Biological, Mental, Developmental, Gestational",
         body: "Age can be measured in several ways, each serving different purposes. (1) Chronological age: The most common — the exact time elapsed since birth, measured in years, months, and days. This is what your driver's license shows. It is calculated by subtracting birth date from current date, accounting for month and day differences. (2) Biological age: How old your body appears based on physiological markers. Measured through epigenetics (DNA methylation patterns — the Horvath clock, GrimAge clock), telomere length (telomeres shorten with age), glycation end products (AGEs), cardiovascular fitness (VO₂ max), and immune system markers. Biological age can be 5-15 years higher or lower than chronological age. (3) Mental age: A psychological measure from intelligence testing — the age level at which an individual functions intellectually. A 10-year-old with mental age 12 performs at the average 12-year-old level. Used in educational assessment and IQ calculation (IQ = mental age / chronological age × 100). (4) Developmental age: Used for children — assesses physical, cognitive, social, and emotional development against age-based milestones. Pediatricians track developmental age at well-child visits using tools like the Denver Developmental Screening Test. (5) Gestational age: The age of a pregnancy, measured from the first day of the mother's last menstrual period (LMP). A full-term pregnancy is 40 weeks (280 days) gestational age. Fetal age (conceptual age) is approximately 2 weeks less. The ToolVerse Age Calculator focuses on chronological age but provides information about other age types."
@@ -1009,7 +1009,7 @@ export const CLUSTER_15_ARTICLES: ContentPiece[] = [
         }
       ]
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "When to Write Numbers as Words: Checks, Legal Documents, Invoices, Formal Writing",
         body: "Writing numbers as words serves two purposes: legal clarity and fraud prevention. Bank checks: Every check has an amount line where the value must be written in words. \"Pay to the order of: John Doe. One thousand two hundred thirty-four and 56/100 dollars.\" The numeric amount ($1,234.56) is also written in the box. The words line is legally binding if the two amounts disagree — most banks follow the written words over the numerals. In 2024, check fraud accounted for $12.5 billion in losses in the US (FINRA), making precise word-form amounts essential. Legal documents: Contracts, deeds, wills, and affidavits typically express monetary amounts and other numbers in both numerals and words to prevent ambiguity and tampering. A contract stating \"Ten thousand dollars ($10,000)\" makes it clear that adding a digit to the numeric field (changing $10,000 to $100,000) would not change the legal amount. Invoices: Most invoice templates include an amount-in-words line. This is especially important for international transactions where the number format may differ (Europe uses comma as decimal: 1.234,56 instead of 1,234.56). Formal writing: Style guides have specific rules. AP Style (journalism): spell out one through nine, use numerals for 10+. Chicago Manual of Style: spell out zero through one hundred. APA Style: spell out numbers at the start of a sentence. Strunk & White: spell out round numbers ('approximately two hundred people')."

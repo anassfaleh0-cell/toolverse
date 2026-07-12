@@ -524,7 +524,7 @@ function paraphraseText(text: string, mode: string, intensity: number): { result
   return { result: final, changes: totalChanges, changedWords: changedWordIndices };
 }
 
-export function AIParaphrasingTool() {
+export function ParaphrasingTool() {
   const [input, setInput] = useState("");
   const [mode, setMode] = useState("Standard");
   const [intensity, setIntensity] = useState(3);
@@ -546,8 +546,6 @@ export function AIParaphrasingTool() {
 
     setLoading(true);
     setError("");
-
-    await new Promise(r => setTimeout(r, 500 + Math.random() * 1000));
 
     try {
       const { result, changes: ch, changedWords: cw } = paraphraseText(

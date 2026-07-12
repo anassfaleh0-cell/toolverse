@@ -14,19 +14,23 @@ async function resolve4(name: string): Promise<string[]> {
 
 // ── Existing DNS tools ─────────────────────────────────────────────
 
+interface DNSKEY { flags: number; algorithm: number; key: string; }
+interface DS { keyTag: number; algorithm: number; digestType: number; digest: string; }
+interface CAA { flags: number; tag: string; value: string; }
+
 async function lookupDNSSEC(domain: string) {
   try {
-    const dnskeys: any = await dns.resolve(domain, "DNSKEY").catch(() => []);
-    const rrsigs: any = await dns.resolve(domain, "RRSIG").catch(() => []);
-    const ds: any = await dns.resolve(domain, "DS").catch(() => []);
+    const dnskeys: DNSKEY[] = await dns.resolve(domain, "DNSKEY").catch(() => []) as DNSKEY[];
+    const rrsigs: unknown[] = await dns.resolve(domain, "RRSIG").catch(() => []) as unknown[];
+    const ds: DS[] = await dns.resolve(domain, "DS").catch(() => []) as DS[];
     return {
       type: "DNSSEC", domain,
       hasDNSKEY: Array.isArray(dnskeys) && dnskeys.length > 0,
       hasRRSIG: Array.isArray(rrsigs) && rrsigs.length > 0,
       hasDS: Array.isArray(ds) && ds.length > 0,
       signed: Array.isArray(dnskeys) && Array.isArray(rrsigs) && dnskeys.length > 0 && rrsigs.length > 0,
-      dnskeys: Array.isArray(dnskeys) ? dnskeys.map((k: any) => `${k.flags} ${k.algorithm} ${k.key}`) : [],
-      dsRecords: Array.isArray(ds) ? ds.map((d: any) => `${d.keyTag} ${d.algorithm} ${d.digestType} ${d.digest}`) : [],
+      dnskeys: Array.isArray(dnskeys) ? dnskeys.map((k) => `${k.flags} ${k.algorithm} ${k.key}`) : [],
+      dsRecords: Array.isArray(ds) ? ds.map((d) => `${d.keyTag} ${d.algorithm} ${d.digestType} ${d.digest}`) : [],
     };
   } catch { return { type: "DNSSEC", domain, signed: false, error: "Unable to resolve DNSSEC records" }; }
 }
@@ -34,7 +38,7 @@ async function lookupDNSSEC(domain: string) {
 async function lookupCAA(domain: string) {
   try {
     const records = await dns.resolveCaa(domain);
-    return { type: "CAA", domain, records: Array.isArray(records) ? records.map((r: any) => `${r.flags} ${r.tag} "${r.value}"`) : [] };
+    return { type: "CAA", domain, records: Array.isArray(records) ? records.map((r) => `${(r as unknown as Record<string, unknown>).flags ?? (r as unknown as Record<string, unknown>).critical} ${(r as unknown as Record<string, unknown>).tag ?? "issue"} "${(r as unknown as Record<string, unknown>).value}"`) : [] };
   } catch { return { type: "CAA", domain, records: [] }; }
 }
 
@@ -55,10 +59,10 @@ async function lookupNameservers(domain: string) {
 }
 
 async function lookupZone(domain: string) {
-  const types = ["A", "AAAA", "MX", "NS", "TXT", "CNAME", "SOA"];
-  const results: Record<string, any> = {};
+  const types: string[] = ["A", "AAAA", "MX", "NS", "TXT", "CNAME", "SOA"];
+  const results: Record<string, unknown> = {};
   for (const t of types) {
-    try { const records = await dns.resolve(domain, t as any); results[t] = records; }
+    try { const records = await dns.resolve(domain, t as string); results[t] = records; }
     catch { results[t] = null; }
   }
   const issues: string[] = [];

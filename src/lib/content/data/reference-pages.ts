@@ -20,7 +20,7 @@ export const REFERENCE_PAGES: ContentPiece[] = [
     category: "code-dev",
     publishedAt: "2026-01-01",
     updatedAt: "2026-06-01",
-  },
+    noindex: false,  },
   {
     slug: "dns-record-types",
     type: "reference",
@@ -43,7 +43,7 @@ export const REFERENCE_PAGES: ContentPiece[] = [
     category: "network-internet",
     publishedAt: "2026-01-05",
     updatedAt: "2026-06-01",
-  },
+    noindex: false,  },
   {
     slug: "port-numbers",
     type: "reference",
@@ -61,7 +61,7 @@ export const REFERENCE_PAGES: ContentPiece[] = [
     category: "network-internet",
     publishedAt: "2026-01-10",
     updatedAt: "2026-06-01",
-  },
+    noindex: false,  },
   {
     slug: "tls-versions",
     type: "reference",
@@ -80,7 +80,7 @@ export const REFERENCE_PAGES: ContentPiece[] = [
     category: "network-internet",
     publishedAt: "2026-01-15",
     updatedAt: "2026-06-01",
-  },
+    noindex: false,  },
   {
     slug: "hash-algorithms",
     type: "reference",
@@ -99,7 +99,7 @@ export const REFERENCE_PAGES: ContentPiece[] = [
     category: "code-dev",
     publishedAt: "2026-01-20",
     updatedAt: "2026-06-01",
-  },
+    noindex: false,  },
   {
     slug: "html-entities",
     type: "reference",
@@ -117,7 +117,7 @@ export const REFERENCE_PAGES: ContentPiece[] = [
     category: "code-dev",
     publishedAt: "2026-07-07",
     updatedAt: "2026-07-07",
-  },
+    noindex: false,  },
   {
     slug: "mime-types",
     type: "reference",
@@ -134,7 +134,7 @@ export const REFERENCE_PAGES: ContentPiece[] = [
     category: "code-dev",
     publishedAt: "2026-07-07",
     updatedAt: "2026-07-07",
-  },
+    noindex: false,  },
   {
     slug: "http-headers",
     type: "reference",
@@ -151,7 +151,7 @@ export const REFERENCE_PAGES: ContentPiece[] = [
     category: "code-dev",
     publishedAt: "2026-07-07",
     updatedAt: "2026-07-07",
-  },
+    noindex: false,  },
   {
     slug: "regex-patterns",
     type: "reference",
@@ -168,7 +168,7 @@ export const REFERENCE_PAGES: ContentPiece[] = [
     category: "code-dev",
     publishedAt: "2026-07-07",
     updatedAt: "2026-07-07",
-  },
+    noindex: false,  },
   {
     slug: "user-agents",
     type: "reference",
@@ -185,6 +185,6 @@ export const REFERENCE_PAGES: ContentPiece[] = [
     category: "code-dev",
     publishedAt: "2026-07-07",
     updatedAt: "2026-07-07",
-  },
+    noindex: false,  },
 ];
 

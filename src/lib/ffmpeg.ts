@@ -19,9 +19,9 @@ export async function getFFmpeg(
   loadPromise = (async () => {
     const instance = new FFmpeg();
 
-    const coreURL = await toBlobURL('/ffmpeg/ffmpeg-core.js', 'text/javascript');
+    const coreURL = await toBlobURL('https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.js', 'text/javascript');
     const wasmURL = await toBlobURL(
-      '/ffmpeg/ffmpeg-core.wasm',
+      'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.wasm',
       'application/wasm',
       true,
       onProgress

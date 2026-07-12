@@ -7,6 +7,7 @@ import { BRAND } from "@/lib/nuvora/brand";
 export const metadata: Metadata = {
   title: `${SITE_NAME} Pro — Coming Soon`,
   description: `${SITE_NAME} Pro is coming soon. Advanced features, priority support, team workspaces, and custom integrations. Join the waitlist.`,
+  robots: { index: false },
   openGraph: { title: `${SITE_NAME} Pro`, description: `${SITE_NAME} Pro — advanced tools, priority support, and team features. Coming soon.`, url: `${SITE_URL}/pro` },
   alternates: { canonical: `${SITE_URL}/pro` },
 };

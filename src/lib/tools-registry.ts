@@ -13,8 +13,8 @@ import { VideoToMP3 } from "@/components/tools/VideoToMP3";
 import { ScreenRecorder } from "@/components/tools/ScreenRecorder";
 import { VideoConverter } from "@/components/tools/VideoConverter";
 import { GIFToMP4 } from "@/components/tools/GIFToMP4";
-import { AIContentGenerator } from "@/components/tools/AIContentGenerator";
-import { AIParaphrasingTool } from "@/components/tools/AIParaphrasingTool";
+import { ContentGenerator } from "@/components/tools/AIContentGenerator";
+import { ParaphrasingTool } from "@/components/tools/AIParaphrasingTool";
 import { DomainStrength } from "@/components/tools/DomainStrength";
 import { SalesTaxCalculator } from "@/components/tools/SalesTaxCalculator";
 import { DiscountCalculator } from "@/components/tools/DiscountCalculator";
@@ -51,8 +51,8 @@ const componentRegistry: Record<string, ComponentType> = {
   "screen-recorder": ScreenRecorder,
   "video-converter": VideoConverter,
   "gif-to-mp4": GIFToMP4,
-  "ai-content-generator": AIContentGenerator,
-  "ai-paraphrasing-tool": AIParaphrasingTool,
+  "ai-content-generator": ContentGenerator,
+  "ai-paraphrasing-tool": ParaphrasingTool,
   "page-authority": DomainStrength,
   "sales-tax-calculator": SalesTaxCalculator,
   "discount-calculator": DiscountCalculator,

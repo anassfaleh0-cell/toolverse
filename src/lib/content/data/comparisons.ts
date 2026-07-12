@@ -13,7 +13,7 @@ export const COMPARISONS: ContentPiece[] = [
     readingTimeMinutes: 7,
     publishedAt: "2026-06-10",
     updatedAt: "2026-07-01",
-    sections: [
+    noindex: false,    sections: [
       { heading: "Different Data Sources", body: "DNS Lookup queries the Domain Name System to resolve domain names to IP addresses and retrieve DNS records. WHOIS Lookup queries domain registration databases to find ownership and registration metadata. DNS shows how a domain is configured to route traffic. WHOIS shows who owns the domain and when it expires. They query completely different systems and return different types of data." },
       { heading: "When to Use DNS Lookup vs. WHOIS", body: "Use DNS Lookup when troubleshooting website access, email delivery, or DNS configuration. Use WHOIS when investigating domain ownership, checking expiration dates, or identifying the registrar. For a complete domain investigation, use both: DNS Lookup for technical configuration and WHOIS Lookup for administrative information." },
       { heading: "How They Complement Each Other", body: "A WHOIS lookup may show that a domain expires in 30 days, explaining why DNS lookups may soon fail. DNS Lookup may show NS records pointing to unexpected servers, which you can verify against WHOIS name server data. Together, they provide a complete picture of a domain's health. Cross-referencing both tools reveals configuration inconsistencies that neither tool alone would expose." },
@@ -31,7 +31,7 @@ export const COMPARISONS: ContentPiece[] = [
     readingTimeMinutes: 6,
     publishedAt: "2026-06-12",
     updatedAt: "2026-07-01",
-    sections: [
+    noindex: false,    sections: [
       { heading: "Single Source vs. Global Perspective", body: "A DNS Lookup queries a single resolver (or the authoritative server) and returns one result. A DNS Propagation Checker queries multiple resolvers around the world and shows each response. The DNS Lookup tells you the current truth from your perspective. The Propagation Checker tells you what the rest of the world sees, revealing whether a recent change has spread globally." },
       { heading: "Stability vs. Change Detection", body: "Use DNS Lookup for day-to-day verification: checking that records are configured correctly. Use DNS Propagation Checker during and after changes: migrating to a new host, updating IP addresses, or changing MX records. The Propagation Checker is specifically designed for the change management workflow." },
       { heading: "Interpreting Results Differently", body: "With DNS Lookup, inconsistent results across queries indicate a problem. With DNS Propagation Checker, inconsistent results across locations are expected during the propagation window. The Propagation Checker shows partial propagation as a normal transitional state, while the DNS Lookup treats inconsistency as an error condition." },
@@ -49,7 +49,7 @@ export const COMPARISONS: ContentPiece[] = [
     readingTimeMinutes: 6,
     publishedAt: "2026-06-14",
     updatedAt: "2026-07-02",
-    sections: [
+    noindex: false,    sections: [
       { heading: "Opposite Lookup Directions", body: "Forward DNS (standard DNS lookup) translates domain names to IP addresses. Reverse DNS translates IP addresses back to hostnames. They use different DNS zone structures: forward zones under .com, .org, etc., and reverse zones under in-addr.arpa (IPv4) or ip6.arpa (IPv6). The record types are different too: forward uses A/AAAA records, reverse uses PTR records." },
       { heading: "Different Administrative Ownership", body: "You control your forward DNS through your domain registrar or DNS hosting provider. You do not control your reverse DNS — it is managed by the owner of the IP block (your ISP or cloud provider). This means fixing reverse DNS issues requires contacting someone else, while forward DNS changes are under your direct control." },
       { heading: "Use Cases for Each Direction", body: "Forward DNS is used daily by every internet user for website access. Reverse DNS is primarily used by email servers for spam filtering, by security tools for threat intelligence, and by system administrators for log analysis. Most users only need forward DNS. Reverse DNS is specialized for email deliverability and security investigations." },
@@ -67,7 +67,7 @@ export const COMPARISONS: ContentPiece[] = [
     readingTimeMinutes: 7,
     publishedAt: "2026-06-16",
     updatedAt: "2026-07-02",
-    sections: [
+    noindex: false,    sections: [
       { heading: "SSL Is Deprecated, TLS Is the Standard", body: "SSL (Secure Sockets Layer) versions 1.0, 2.0, and 3.0 are all deprecated and insecure. TLS (Transport Layer Security) is the modern encryption protocol. Despite common usage, there is no such thing as an 'SSL certificate' — certificates work with both SSL and TLS, but only TLS connections are secure. TLS 1.2 and 1.3 are the only versions you should support." },
       { heading: "TLS Version Comparison: 1.2 vs 1.3", body: "TLS 1.3, finalized in 2018, reduces the handshake from two round trips to one (0-RTT for resumed connections). It removes insecure features like static RSA key exchange and CBC mode ciphers. TLS 1.2 with modern ciphers is still secure but slower to establish connections. Both versions should be enabled, with TLS 1.3 preferred." },
       { heading: "Checking Protocol Support", body: "Use our SSL Certificate Checker to see which TLS versions your server supports. If TLS 1.0 or 1.1 are enabled, disable them immediately. If only TLS 1.2 is supported, consider enabling TLS 1.3 for performance benefits. Modern browsers require TLS 1.2 minimum and prefer TLS 1.3 for faster page loads." },
@@ -85,7 +85,7 @@ export const COMPARISONS: ContentPiece[] = [
     readingTimeMinutes: 6,
     publishedAt: "2026-06-18",
     updatedAt: "2026-07-02",
-    sections: [
+    noindex: false,    sections: [
       { heading: "Protocol Architecture Differences", body: "WHOIS uses a text-based query/response protocol over TCP port 43. RDAP uses HTTPS RESTful web services returning structured JSON. RDAP is easier to parse programmatically, supports internationalization, and provides consistent data formats across all registries. WHOIS responses vary widely between registrars and require custom parsers for each format." },
       { heading: "Privacy and Access Control", body: "WHOIS exposes all registration data publicly or redacts it entirely with no middle ground. RDAP supports tiered access: public data for basic queries, authenticated access for researchers, and higher-level access for law enforcement. This tiered model addresses GDPR concerns while preserving legitimate access to registration data." },
       { heading: "Adoption Status", body: "All gTLD registries are required to support RDAP as of 2024. ccTLD adoption is growing but not universal. WHOIS still works for most domains but may return incomplete data. Our WHOIS Lookup tool queries both systems, returning the best available data from whichever source provides more complete information." },
@@ -103,7 +103,7 @@ export const COMPARISONS: ContentPiece[] = [
     readingTimeMinutes: 6,
     publishedAt: "2026-06-20",
     updatedAt: "2026-07-03",
-    sections: [
+    noindex: false,    sections: [
       { heading: "Different Layers of Protection", body: "SSL/TLS certificates encrypt the connection between browser and server, preventing eavesdropping and tampering. HTTP security headers tell the browser how to behave after the connection is established, preventing XSS, clickjacking, and other application-layer attacks. Encryption (SSL) is the foundation; security headers build on that foundation." },
       { heading: "What Each Protects Against", body: "SSL protects against man-in-the-middle attacks, data interception, and impersonation. HTTP security headers protect against cross-site scripting (CSP), clickjacking (X-Frame-Options), downgrade attacks (HSTS), MIME sniffing (X-Content-Type-Options), and feature abuse (Permissions-Policy). Both are necessary for comprehensive protection." },
       { heading: "Auditing Both Together", body: "Use our SSL Certificate Checker to verify encryption is configured correctly. Use our HTTP Headers Checker to verify security headers are present. A complete security audit must include both. Many sites have valid certificates but missing security headers, or strong security headers but expired certificates." },
@@ -121,7 +121,7 @@ export const COMPARISONS: ContentPiece[] = [
     readingTimeMinutes: 5,
     publishedAt: "2026-06-22",
     updatedAt: "2026-07-03",
-    sections: [
+    noindex: false,    sections: [
       { heading: "Application Layer vs. Network Layer", body: "A Website Status Checker operates at the application layer (Layer 7), making an HTTP request and evaluating the response. A Ping Test operates at the network layer (Layer 3), measuring round-trip time for TCP connections. The Website Status Checker tells you if the web server is working. The Ping Test tells you if the host is reachable at the network level." },
       { heading: "Different Information Provided", body: "Website Status Checker returns HTTP status codes (200, 404, 500), response times, and content type. Ping Test returns latency statistics (min, avg, max), packet loss percentage, and connection success/failure. They provide complementary diagnostic data for different troubleshooting scenarios." },
       { heading: "Using Them Together for Diagnostics", body: "If a website is unreachable, start with the Website Status Checker. If it returns an HTTP error, the application is at fault. If it times out entirely, use the Ping Test to check network reachability. If ping succeeds but the website fails, the web server may be down while the host is up. If both fail, it is likely a network or firewall issue." },
@@ -139,7 +139,7 @@ export const COMPARISONS: ContentPiece[] = [
     readingTimeMinutes: 5,
     publishedAt: "2026-06-24",
     updatedAt: "2026-07-03",
-    sections: [
+    noindex: false,    sections: [
       { heading: "Host vs. Service Checking", body: "A Ping Test checks if a host is reachable by attempting a TCP connection. A Port Checker tests whether a specific port has a service listening. Ping tells you the server is on. Port Checker tells you the service is running. A server can be pingable (host is up) while having a specific port closed (service is down)." },
       { heading: "Scope of Results", body: "Ping Test returns latency and packet loss data for the host. Port Checker returns open/closed/filtered status for each tested port. Use Ping for overall network health assessment. Use Port Checker for service-specific troubleshooting." },
       { heading: "Security Implications", body: "A successful ping tells attackers a host exists. A successful port check tells attackers which services are running. Use both tools defensively on your own infrastructure: ping to verify availability, port scanning to audit your attack surface and ensure only intended services are exposed." },
@@ -157,7 +157,7 @@ export const COMPARISONS: ContentPiece[] = [
     readingTimeMinutes: 5,
     publishedAt: "2026-06-26",
     updatedAt: "2026-07-04",
-    sections: [
+    noindex: false,    sections: [
       { heading: "Data Sources", body: "IP Lookup combines geolocation database results with ISP identification, ASN data, and hostname information. IP geolocation specifically refers to the geographic mapping component. An IP Lookup includes geolocation as one data point alongside network information. A pure geolocation lookup would only return country, region, city, and coordinates." },
       { heading: "Accuracy Differences", body: "Geolocation accuracy varies by IP type. IP Lookup provides context about the IP's network classification (residential, business, hosting, mobile) that helps you interpret geolocation accuracy. An IP from a hosting provider has accurate facility location but tells you nothing about user location. The ISP classification helps you understand the reliability of the location data." },
       { heading: "Combined Value", body: "Use IP Lookup for comprehensive IP intelligence: location, ISP, ASN, hostname, and network type. Use the geolocation data within IP Lookup as one component of your analysis. For security investigations, combine IP Lookup geolocation with WHOIS ownership data and Reverse DNS infrastructure classification for a complete picture." },
@@ -175,7 +175,7 @@ export const COMPARISONS: ContentPiece[] = [
     readingTimeMinutes: 5,
     publishedAt: "2026-06-28",
     updatedAt: "2026-07-04",
-    sections: [
+    noindex: false,    sections: [
       { heading: "Your IP vs. Any IP", body: "What Is My IP automatically detects and displays your own public IP address. IP Lookup lets you enter any IP address to retrieve its information. What Is My IP is for personal privacy checking — seeing what the internet knows about your connection. IP Lookup is for investigating other IPs — checking suspicious traffic origins, verifying server locations, or researching network infrastructure." },
       { heading: "Additional Browser Information", body: "What Is My IP also shows your browser's User-Agent string, helping you understand what identifying information you send to websites. IP Lookup does not include browser information since the target is a remote IP address. What Is My IP provides a privacy audit perspective; IP Lookup provides a network investigation perspective." },
       { heading: "Use Cases", body: "Use What Is My IP when: checking if your VPN is working, verifying your IP after connecting to a new network, or understanding what websites see about your connection. Use IP Lookup when: investigating suspicious IPs in server logs, checking the location of a server before deployment, or researching IP ranges for security analysis." },
@@ -193,7 +193,7 @@ export const COMPARISONS: ContentPiece[] = [
     readingTimeMinutes: 6,
     publishedAt: "2026-06-30",
     updatedAt: "2026-07-05",
-    sections: [
+    noindex: false,    sections: [
       { heading: "Expected vs. Actual Behavior", body: "Your firewall rules define which ports should be open. A port checker reveals which ports are actually accessible from the internet. These often differ due to misconfigured rules, overlapping rule priorities, default-deny vs. default-allow policies, and OS-level firewall settings that operate independently of cloud security groups." },
       { heading: "Layered Firewall Architecture", body: "Modern infrastructure has multiple firewall layers: cloud provider security groups (AWS SG, Azure NSG), instance-level firewalls (iptables, nftables, ufw), and application-level access controls. A Port Checker tests all layers simultaneously. If a port shows filtered, any of these layers could be blocking it. Systematic testing of each layer is needed to identify the blocking rule." },
       { heading: "Firewall Auditing Workflow", body: "Use our Port Checker to scan your public IPs and document all open ports. Compare the results against your intended firewall rule set. Any open port not explicitly permitted is a security finding. Any port that should be open but shows as filtered indicates a misconfiguration. Regular port scanning as part of firewall audits ensures your security controls work as intended." },
@@ -211,7 +211,7 @@ export const COMPARISONS: ContentPiece[] = [
     readingTimeMinutes: 6,
     publishedAt: "2026-07-02",
     updatedAt: "2026-07-05",
-    sections: [
+    noindex: false,    sections: [
       { heading: "Voluntary vs. Passive Identification", body: "User-Agent strings are voluntarily sent by the browser in HTTP headers. Browser fingerprinting passively collects multiple signals (screen resolution, installed fonts, timezone, WebGL renderer) to create a unique device identifier. The User-Agent is just one of dozens of data points used in fingerprinting. Unlike UA strings, fingerprinting can work even when UA spoofing is used." },
       { heading: "Uniqueness and Tracking Potential", body: "User-Agent strings alone identify the browser and OS but not the specific device. Browser fingerprints can uniquely identify a device among millions with high accuracy. Combining UA data with other fingerprinting signals creates a persistent identifier that survives cookie clearing and private browsing modes." },
       { heading: "Privacy Implications", body: "UA spoofing reduces but does not eliminate fingerprinting. The User Agent Parser shows what UA data your browser sends, which is useful for understanding your tracking surface. For better privacy, use anti-fingerprinting browsers (Firefox with resistFingerprinting), browser extensions that randomize fingerprinting signals, or Tor Browser which provides uniform fingerprints across all users." },

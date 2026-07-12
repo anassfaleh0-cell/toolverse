@@ -13,7 +13,7 @@ export const CLUSTER_3_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 12,
     publishedAt: "2026-01-05",
     updatedAt: "2026-06-10",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Why Online Developer Tools Matter",
         body: "Modern web development demands speed and precision. Online developer tools eliminate the need for local installations while providing powerful utilities that run directly in your browser. From validating JSON structures to testing regular expressions, these tools save hours of debugging time. They are especially useful for developers who frequently switch between machines or collaborate across distributed teams. Because they run server-side or via client-side JavaScript, they offer consistent results regardless of your operating system or local configuration. Whether you are minifying assets for production or decoding a JWT token during API debugging, having a curated set of online utilities at your fingertips transforms how quickly you can iterate and ship reliable code."
@@ -48,7 +48,7 @@ export const CLUSTER_3_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-01-12",
     updatedAt: "2026-06-15",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Understanding JSON Syntax Rules",
         body: "JSON, or JavaScript Object Notation, is a lightweight data interchange format that is easy for humans to read and machines to parse. Every valid JSON document must follow strict syntax rules: keys must be double-quoted strings, values can be strings, numbers, booleans, arrays, objects, or null, and trailing commas are not allowed. JSON supports only double quotes for strings; single quotes and unquoted keys produce parse errors. Numbers can be integers or decimals but must not have leading zeros. Understanding these fundamental rules is the first step toward writing valid JSON and debugging malformed documents effectively."
@@ -83,7 +83,7 @@ export const CLUSTER_3_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 14,
     publishedAt: "2026-01-19",
     updatedAt: "2026-06-20",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "JSON: The Web Standard",
         body: "JSON has become the dominant data format on the web due to its simplicity and native compatibility with JavaScript. Its lightweight syntax uses curly braces, colons, and commas to represent key-value pairs and arrays. JSON parsers are available in virtually every programming language, and its compact size makes it ideal for network transmission. The format lacks native support for comments, which encourages cleaner configuration files but can be limiting for complex documentation. JSON is best suited for REST APIs, web application configurations, and any scenario where machine parsing speed and bandwidth efficiency are priorities over human readability."
@@ -118,7 +118,7 @@ export const CLUSTER_3_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 13,
     publishedAt: "2026-01-26",
     updatedAt: "2026-06-25",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Why API Testing Tools Are Essential",
         body: "Modern applications rely on interconnected APIs for data exchange, authentication, and service orchestration. Without dedicated testing tools, developers resort to curl commands or scattered scripts that lack organization, history, and collaborative features. API testing tools provide structured environments for crafting requests, inspecting responses, and managing environment variables across different stages. They also support authentication schemes, request chaining, and automated test suites. Investing time in learning a capable API client pays dividends throughout the development lifecycle by reducing debugging cycles and ensuring that endpoints behave correctly before front-end integration begins."
@@ -153,7 +153,7 @@ export const CLUSTER_3_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-02-02",
     updatedAt: "2026-07-01",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is Base64 Encoding?",
         body: "Base64 is a binary-to-text encoding scheme that represents binary data in an ASCII string format. It uses 64 characters: A-Z, a-z, 0-9, plus, and slash, with the equals sign for padding. The algorithm groups three bytes of binary data into four six-bit characters, resulting in approximately 33 percent size increase. Base64 was originally developed for email attachments via MIME, but today it is used widely for embedding images in HTML and CSS, transmitting binary data in JSON payloads, and encoding credentials in HTTP Basic Authentication headers. Understanding the basics of Base64 helps developers handle data interchange scenarios where only text-safe characters are allowed."
@@ -188,7 +188,7 @@ export const CLUSTER_3_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 11,
     publishedAt: "2026-02-09",
     updatedAt: "2026-07-02",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is Minification and Why Does It Matter?",
         body: "Minification is the process of removing unnecessary characters from source code without affecting its functionality. It strips whitespace, removes comments, shortens variable names where safe, and eliminates dead code. The resulting files are significantly smaller, which translates to faster downloads, reduced bandwidth consumption, and improved page load times. Studies show that a 10 percent reduction in file size can improve load times by up to 15 percent on mobile networks. Minification is a standard step in modern front-end build pipelines and should be applied to all production assets including HTML, CSS, and JavaScript files to deliver the best possible user experience."
@@ -223,7 +223,7 @@ export const CLUSTER_3_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-02-16",
     updatedAt: "2026-07-03",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is a Regular Expression?",
         body: "A regular expression, commonly called regex, is a sequence of characters that defines a search pattern. These patterns are used for string matching, validation, extraction, and replacement in text processing. Regex is supported in virtually every programming language and many text editors. The syntax uses literal characters combined with metacharacters such as the dot, asterisk, and plus sign to create flexible and powerful patterns. While the syntax can appear intimidating at first, learning regex fundamentals unlocks significant productivity gains for tasks ranging from form validation to log file analysis and code refactoring."
@@ -258,7 +258,7 @@ export const CLUSTER_3_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-02-23",
     updatedAt: "2026-07-04",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "The Rise of Browser-Based Code Editors",
         body: "Cloud-based development environments have matured significantly, offering features that rival traditional desktop IDEs. Online code editors eliminate setup time, work on any device with a browser, and simplify team collaboration by providing shared workspaces. They integrate with version control systems, offer language-specific IntelliSense, and support extensions for custom workflows. For developers who frequently switch machines or work on shared computers, an online editor provides a consistent environment that is always available. The growing adoption of remote work has accelerated the development of these platforms, making them viable for both quick edits and full-scale development projects."
@@ -293,7 +293,7 @@ export const CLUSTER_3_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-03-02",
     updatedAt: "2026-07-05",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is a UUID and Why Use It?",
         body: "A UUID, or Universally Unique Identifier, is a 128-bit number used to uniquely identify information in computer systems. UUIDs are standardized by RFC 4122 and come in several versions that use different generation methods. Version 4 UUIDs are randomly generated, while version 1 uses the host MAC address and timestamp. The standard textual representation is 36 characters in the format 8-4-4-4-12. UUIDs eliminate the need for centralized ID generation because the probability of collision is astronomically low. They are widely used as database primary keys, API resource identifiers, session tokens, and distributed system identifiers where uniqueness across independent systems is required."
@@ -328,7 +328,7 @@ export const CLUSTER_3_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-03-09",
     updatedAt: "2026-07-05",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Why Convert CSV to JSON?",
         body: "CSV is a popular format for tabular data exported from spreadsheets and databases, but it lacks the hierarchical structure needed for complex data interchange in modern applications. JSON supports nested objects, arrays, and diverse data types, making it better suited for API payloads, configuration files, and NoSQL databases. Converting CSV to JSON transforms flat rows into structured documents that can include nested relationships. This conversion is essential when migrating data from legacy systems to modern web services, populating databases from spreadsheet exports, or preparing data for visualization libraries that expect JSON input."
@@ -363,7 +363,7 @@ export const CLUSTER_3_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 15,
     publishedAt: "2026-03-16",
     updatedAt: "2026-07-06",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "REST: The Industry Standard",
         body: "REST, or Representational State Transfer, is an architectural style that uses HTTP methods to perform CRUD operations on resources identified by URLs. REST APIs are stateless, cacheable, and follow uniform interface constraints. They return data in multiple formats, with JSON being the most common. REST's simplicity and widespread adoption make it the default choice for public APIs. It works well for resource-oriented models where the client needs straightforward access to collections and individual items. However, REST can suffer from over-fetching or under-fetching because the server defines the response structure, and multiple round trips may be needed to assemble related data."
@@ -398,7 +398,7 @@ export const CLUSTER_3_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-03-23",
     updatedAt: "2026-07-06",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Makes a Great JSON Validator?",
         body: "A great JSON validator combines speed, accuracy, and informative error messages. The best tools parse your JSON instantly and highlight errors with precise line numbers and column positions. They explain what went wrong in plain language, such as missing commas, trailing commas, or unexpected tokens. Beyond basic validation, top-tier tools offer auto-formatting with configurable indentation, collapsible tree views, and search functionality. They also support large documents without performance degradation. The ability to save and share validation results, convert between JSON and other formats, and validate against custom schemas distinguishes the best tools from basic validators."
@@ -433,7 +433,7 @@ export const CLUSTER_3_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 11,
     publishedAt: "2026-03-30",
     updatedAt: "2026-07-07",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Understanding QR Code Structure and Standards",
         body: "QR codes are two-dimensional barcodes that encode data in a matrix of black and white modules. They support four encoding modes: numeric, alphanumeric, byte, and Kanji. QR codes have error correction levels L, M, Q, and H, which allow between 7 and 30 percent of the code to be damaged while remaining readable. Version numbers from 1 to 40 determine the symbol size, with higher versions storing more data. Understanding these parameters helps you choose the right configuration for your use case. For example, higher error correction is recommended for QR codes printed on curved surfaces or in environments where partial obstruction is likely."
@@ -468,7 +468,7 @@ export const CLUSTER_3_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 13,
     publishedAt: "2026-04-06",
     updatedAt: "2026-07-07",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is a JWT and How Does It Work?",
         body: "A JSON Web Token is a compact, URL-safe token format defined by RFC 7519. It consists of three parts separated by dots: a header, a payload, and a signature. The header specifies the token type and signing algorithm. The payload contains claims, which are statements about an entity and additional metadata like expiration time. The signature is created by encoding the header and payload and signing them with a secret key or private key. JWTs are self-contained, meaning all the information needed to verify the token is included in the token itself, eliminating the need for server-side session storage."
@@ -503,7 +503,7 @@ export const CLUSTER_3_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-04-13",
     updatedAt: "2026-07-08",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is URL Encoding?",
         body: "URL encoding, also known as percent-encoding, replaces unsafe ASCII characters with a percent sign followed by two hexadecimal digits. For example, a space becomes %20 and a slash becomes %2F. This is necessary because URLs have a restricted character set and certain characters have special meaning, such as the question mark starting query strings and the hash indicating fragments. Characters that must be encoded include spaces, control characters, non-ASCII characters, and reserved characters when they appear in contexts where they are not meant to have their special meaning. RFC 3986 defines the standard rules for URL encoding that all web browsers and servers follow."
@@ -538,7 +538,7 @@ export const CLUSTER_3_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-04-20",
     updatedAt: "2026-07-08",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Why Write in Markdown?",
         body: "Markdown is a lightweight markup language that uses plain text formatting to create structured documents. It was designed to be easy to read and write in its raw form while converting cleanly to HTML. Markdown has become the standard for documentation, README files, blog posts, note-taking, and forum comments. Its simplicity means you can focus on content without fighting with formatting toolbars. Most modern development platforms, including GitHub, GitLab, and Stack Overflow, render Markdown natively. Learning Markdown is a worthwhile investment for any developer or technical writer because of its ubiquity and minimal learning curve."
@@ -573,7 +573,7 @@ export const CLUSTER_3_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-04-27",
     updatedAt: "2026-07-09",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is a Diff Checker?",
         body: "A diff checker compares two blocks of text and highlights the differences between them. The term diff comes from the Unix diff utility that has been a staple of software development for decades. Online diff checkers provide a graphical interface that shows additions, deletions, and modifications with color coding. They are essential for reviewing code changes before merging, comparing configuration files across environments, identifying unauthorized modifications, and tracking changes in content over time. Most tools support both inline and side-by-side viewing modes, with the side-by-side view being particularly effective for understanding complex changes at a glance."
@@ -608,7 +608,7 @@ export const CLUSTER_3_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-05-04",
     updatedAt: "2026-07-09",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Email Validation Patterns",
         body: "Email validation is one of the most common regex use cases in web forms. A balanced pattern that catches obvious formatting errors without rejecting valid addresses follows the RFC 5322 standard. The basic pattern verifies that the address has a local part followed by an at sign, a domain name, and a top-level domain. However, perfect email validation via regex is notoriously difficult because the full specification allows comments, quoted strings, and characters that most developers do not expect. For practical purposes, use a pattern that validates the general structure and rely on a confirmation email to verify actual deliverability rather than attempting exhaustive regex validation."
@@ -643,7 +643,7 @@ export const CLUSTER_3_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-05-11",
     updatedAt: "2026-07-10",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is cURL and Why Use It Online?",
         body: "cURL is a command-line tool for transferring data using various network protocols, most commonly HTTP. It is essential for API testing because it gives you complete control over requests without the abstraction of graphical tools. Online cURL tools provide a browser interface where you can construct and execute cURL commands without installing anything locally. This is particularly useful when working on a restricted machine, teaching API concepts in a classroom, or quickly sharing executable API examples with colleagues. Online cURL environments typically include syntax highlighting, command history, and response formatting that makes them more accessible than raw terminal usage."
@@ -678,7 +678,7 @@ export const CLUSTER_3_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 7,
     publishedAt: "2026-05-18",
     updatedAt: "2026-07-10",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is a Unix Timestamp?",
         body: "A Unix timestamp is the number of seconds that have elapsed since January 1, 1970 at 00:00:00 UTC, excluding leap seconds. This point in time is known as the Unix epoch. Timestamps are widely used in programming for storing and transmitting dates because they are timezone-independent and easy to compare mathematically. A positive timestamp represents a date after the epoch, while a negative timestamp represents a date before 1970. Most systems use 32-bit or 64-bit integers to store timestamps, with 32-bit timestamps facing the Year 2038 problem when they will overflow and wrap around to negative values."

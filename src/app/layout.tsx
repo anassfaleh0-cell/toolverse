@@ -100,7 +100,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-        <link rel="preload" href="/ffmpeg/ffmpeg-core.wasm" as="fetch" type="application/wasm" crossOrigin="anonymous" />
         <ThemeProvider>
           <JsonLd data={{
             "@context": "https://schema.org",

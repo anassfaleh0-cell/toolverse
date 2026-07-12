@@ -356,7 +356,7 @@ function estimateReadingTime(wordCount: number): string {
   return `${min} min read`;
 }
 
-export function AIContentGenerator() {
+export function ContentGenerator() {
   const [topic, setTopic] = useState("");
   const [contentType, setContentType] = useState<string>("Blog Post");
   const [tone, setTone] = useState<string>("Professional");
@@ -372,9 +372,6 @@ export function AIContentGenerator() {
     setLoading(true);
     setGenerated(null);
     setCopied(false);
-
-    const delay = 800 + Math.random() * 700;
-    await new Promise((r) => setTimeout(r, delay));
 
     const generator = GENERATORS[contentType] || GENERATORS["Blog Post"];
     const result = generator(topic.trim(), tone, length, audience.trim());

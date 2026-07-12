@@ -17,28 +17,6 @@ let nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["pdf-lib", "pdfjs-dist", "docx", "mammoth", "jszip", "marked", "ua-parser-js"],
   },
-  async redirects() {
-    return [
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "www.Nuvora.dev" }],
-        destination: "https://Nuvora.dev/:path*",
-        permanent: true,
-      },
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "www.nuvora.dev" }],
-        destination: "https://Nuvora.dev/:path*",
-        permanent: true,
-      },
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "nuvora.dev" }],
-        destination: "https://Nuvora.dev/:path*",
-        permanent: true,
-      },
-    ];
-  },
   async headers() {
     return [
       {

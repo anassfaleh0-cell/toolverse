@@ -73,7 +73,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
         ],
       }],
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is DNS? The Phonebook of the Internet",
         body: "The Domain Name System (DNS) is a hierarchical and decentralized naming system that maps human-readable domain names to machine-readable IP addresses. Every device connected to the internet - whether a web server, email server, or your laptop - is identified by a numeric IP address such as 104.18.22.42. Humans are far better at remembering words like google.com than strings of numbers. DNS bridges this gap. When you type a domain name into your browser, DNS resolves it to the corresponding IP address in the background, often in under 100 milliseconds. This process involves multiple servers working together in a carefully orchestrated sequence. Without DNS you would need to memorize the IP address of every website you visit - an impossible task given that there are over 1.1 billion websites active as of 2026. DNS has been a core internet infrastructure component since 1983, standardized in RFC 882 and RFC 883 by Paul Mockapetris. Today the system handles trillions of queries per day and employs cryptographic validation through DNSSEC to prevent spoofing and cache poisoning attacks. Understanding how DNS works is foundational knowledge for anyone managing websites, networks, or online services. The system is remarkably resilient due to its distributed architecture - no single server failure can bring down the entire DNS. This reliability is achieved through redundant nameservers, anycast routing, and hierarchical delegation that distributes the workload across thousands of independent operators worldwide.",
@@ -185,7 +185,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
         ],
       }],
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is a DNS Lookup?",
         body: "A DNS lookup is the process of querying the Domain Name System to retrieve DNS records associated with a domain name. Every time you visit a website, your device performs multiple DNS lookups in the background - one for the main domain and additional lookups for embedded resources like images, scripts, and fonts hosted on other domains. A DNS lookup translates human-readable domain names into machine-readable IP addresses and can also retrieve other record types like MX, CNAME, TXT, and NS. The lookup returns the raw DNS records from authoritative nameservers or from cached data stored by recursive resolvers. For diagnostic purposes you can perform DNS lookups manually using command-line tools like nslookup or dig, or through online tools that query multiple resolvers worldwide. DNS lookups are fundamental to network troubleshooting - they reveal whether a domain is resolving correctly, whether recent changes have propagated, and whether DNS configuration errors exist. A single lookup can show you the TTL value which tells you how long the record will be cached. This information is essential for understanding propagation timing and planning DNS changes. Our DNS Lookup tool simplifies this process by running multiple query types simultaneously and presenting results in a readable format with color-coded status indicators.",
@@ -297,7 +297,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
         ],
       }],
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is an IP Address?",
         body: "An IP (Internet Protocol) address is a unique numerical identifier assigned to every device connected to a computer network that uses the Internet Protocol for communication. Think of it as a mailing address for your device - it tells other computers where to send data. When you visit a website, your IP address is used as the return address so the server knows where to send the web page content back. IP addresses come in two versions: IPv4 and IPv6. IPv4 addresses are 32-bit numbers written as four decimal octets separated by dots, like 192.168.1.1. This format provides approximately 4.3 billion unique addresses. IPv6, standardized in 1998, uses 128-bit addresses written as eight groups of four hexadecimal digits separated by colons, like 2001:0db8:85a3::8a2e:0370:7334. IPv6 provides approximately 340 undecillion addresses - enough to assign a unique address to every atom on the surface of the Earth many times over. Every device needs an IP address to communicate on a network - your computer, phone, smart TV, gaming console, and IoT devices all have IP addresses. The two main categories are public (routable on the public internet) and private (used within local networks). Understanding your IP address is fundamental to network troubleshooting, security, and remote access configuration.",
@@ -405,7 +405,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
         ],
       }],
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is Reverse DNS?",
         body: "Reverse DNS (rDNS) is the process of resolving an IP address back to a domain name, the opposite of forward DNS which resolves a domain name to an IP address. While forward DNS answers what is the IP address of example.com, reverse DNS answers what domain name is associated with IP address 192.0.2.1. The reverse lookup uses a PTR (Pointer) record stored in a specialized DNS zone structure: for IPv4 addresses the IP is reversed and placed under the .in-addr.arpa domain. So IP 192.0.2.1 has its PTR record stored at 1.2.0.192.in-addr.arpa. For IPv6 addresses the nibble format is used under .ip6.arpa. Reverse DNS is not automatically configured - PTR records must be explicitly added by the entity that controls the IP address allocation, which is usually your ISP or hosting provider. This means that not every IP address has a reverse DNS entry. Reverse DNS is a critical component of email delivery, network troubleshooting, security forensics, and logging. When you run traceroute or view server log files, the hostnames you see are the result of reverse DNS lookups. Understanding rDNS is essential for anyone managing mail servers or analyzing network traffic.",
@@ -517,7 +517,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
         ],
       }],
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Common DNS Problems and Their Symptoms",
         body: "DNS issues manifest in distinct ways each pointing to a different root cause. The most common error is DNS_PROBE_FINISHED_NXDOMAIN appearing in Google Chrome when the DNS lookup returns Non-Existent Domain. This means the resolver could not find any records for the domain. Possible causes include a mistyped URL, an expired domain registration, a deleted A record, or a corrupted DNS cache. ERR_NAME_NOT_RESOLVED is similar but more generic and appears when DNS resolution fails entirely. DNS_PROBE_FINISHED_NO_INTERNET occurs when DNS works but the connection to the resolved IP fails, often indicating a firewall rule, routing issue, or server outage. Slow DNS resolution manifests as websites taking 10-30 seconds to load initially but working fine once connected - this points to a slow or overloaded DNS resolver. Intermittent resolution where a site works sometimes and fails other times suggests round-robin DNS with one unhealthy IP or inconsistent resolver behavior. On the command line run nslookup example.com - if it returns server can't find example.com: NXDOMAIN the domain itself is not resolving. If it times out the DNS server is unreachable. The first step in any DNS troubleshooting workflow is confirming the problem is DNS-related by testing ping 8.8.8.8 - if this works but ping google.com fails the problem is DNS.",
@@ -629,7 +629,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
         ],
       }],
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is DNS Propagation?",
         body: "DNS propagation is the period between when you make a change to your DNS records on your authoritative nameserver and when all DNS resolvers worldwide have updated their caches with the new information. It is not a physical process - it is simply the time required for cached data at thousands of recursive resolvers around the world to expire according to their TTL settings and fetch fresh data. When you update an A record from 203.0.113.1 to 203.0.113.2, your authoritative nameserver immediately starts serving the new record. However every recursive resolver that previously queried your domain has the old record cached. Those resolvers continue serving the old IP until their cached TTL expires. Only after each resolver re-queries your authoritative server will it get and cache the new record. This means that during propagation different users see different versions of your website - some see the old server, some see the new one. The length of the propagation window is determined primarily by the TTL value set on the old records before the change. DNS propagation affects all record types equally. This is why proper TTL management is critical: the TTL value you choose today determines your propagation speed when you make changes tomorrow.",
@@ -741,7 +741,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
         ],
       }],
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Why SSL Certificates Matter: HTTPS, Trust, and SEO",
         body: "SSL/TLS certificates are the foundation of secure web communication. When a website has a valid SSL certificate, the connection between browser and server is encrypted protecting data from eavesdropping, tampering, and man-in-the-middle attacks. In 2026 HTTPS is the baseline expectation for every website. Google Chrome marks all HTTP pages as Not Secure and over 95% of web traffic globally is now encrypted. SSL certificates serve three critical functions. Encryption: all data is encrypted using asymmetric and symmetric cryptography protecting passwords, credit card numbers, and personal information. Authentication: the certificate verifies the website operator identity through a Certificate Authority. Data integrity: TLS ensures data cannot be modified in transit. Beyond security SSL affects SEO rankings. Google has used HTTPS as a ranking signal since 2014 and sites with valid certificates rank higher. Browser trust indicators are equally important: the padlock icon signals safety while warnings drive visitors away. Studies show 85% of users leave a site showing security warnings. SSL also enables HTTP/2 and HTTP/3 which provide significant performance improvements over HTTP/1.1. Without SSL your website is slower, less trusted, and penalized in search rankings.",
@@ -849,7 +849,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
         ],
       }],
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is WHOIS and How It Works",
         body: "WHOIS is a query and response protocol used for querying databases that store registration information of internet resources, primarily domain names and IP address blocks. The name comes from the phrase who is - the system answers who is responsible for this domain or IP address. WHOIS has been in use since the early 1980s predating the web itself and was standardized in RFC 3912. When you register a domain through a registrar, ICANN requires the registrar to collect and submit your contact information to the appropriate registry WHOIS database. This database is publicly queryable through port 43 or through web-based lookup tools. When you perform a WHOIS query the system first identifies the appropriate TLD registry. The registry WHOIS server returns basic information and may redirect to the registrar WHOIS server for detailed data. The registrar database contains registrant, administrative, and technical contact information along with registration dates, nameservers, and status codes. The WHOIS system includes multiple data sources: domain WHOIS for domain registration, IP WHOIS for IP address block ownership maintained by Regional Internet Registries (ARIN, RIPE NCC, APNIC, LACNIC, AFRINIC), and ASN WHOIS for Autonomous System Numbers. The protocol has limitations - no standardized data format, no encryption, and inconsistent field naming. RDAP (Registration Data Access Protocol) defined in RFC 9082 is the modern replacement with structured JSON responses and HTTPS encryption.",
@@ -957,7 +957,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
         ],
       }],
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is a Ping Test and How It Works",
         body: "A ping test is a network diagnostic tool that sends ICMP (Internet Control Message Protocol) echo request packets to a target host and measures the time it takes for echo reply packets to return. The name comes from submarine sonar which sends out a ping and listens for the echo. Ping was created by Mike Muuss in 1983 and remains one of the most fundamental network troubleshooting tools. When you run ping, your device sends one or more ICMP echo request packets to the destination IP address. The destination device, if reachable and configured to respond, sends back an ICMP echo reply. Ping measures the round-trip time (RTT) for each packet and reports statistics including minimum, maximum, and average latency along with packet loss percentage. Ping uses ICMP protocol which is separate from TCP and UDP. Some networks block ICMP traffic for security reasons which means a failed ping does not necessarily mean the host is down - it may just be blocking ICMP. Ping tests verify three things: reachability (is the host responding?), latency (how fast is the connection?), and packet loss (are packets being dropped?). A healthy connection should show 0% packet loss and consistent latency. Ping is built into every major operating system and requires no installation making it the universal first step in network troubleshooting. The tool works for both domain names and IP addresses allowing you to test DNS resolution and connectivity simultaneously.",
@@ -1069,7 +1069,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
         ],
       }],
     },
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Why Network Security Matters in 2026",
         body: "Network security is more critical in 2026 than ever before. The threat landscape continues to evolve with ransomware attacks increasing 350% since 2020, distributed denial of service attacks exceeding 1 Tbps becoming routine, and supply chain attacks targeting network infrastructure. Remote work remains prevalent with over 60% of workers operating partially or fully remotely, expanding the attack surface beyond traditional perimeter defenses. The average cost of a data breach in 2026 has reached $4.8 million according to IBM research. Small businesses are particularly vulnerable: 43% of cyber attacks target small businesses but only 14% are prepared to defend themselves. Modern threats include DNS tunneling where attackers encode data in DNS queries to bypass firewalls, DNS cache poisoning that redirects users to malicious sites, SSL stripping attacks that downgrade HTTPS connections, and ransomware that encrypts network shares. Regulatory requirements add another dimension: GDPR, CCPA, HIPAA, and PCI DSS all mandate specific network security controls. Non-compliance carries significant fines. The security landscape has shifted from perimeter-based defenses castle-and-moat model to zero trust architecture where no device or user is trusted by default. Every access request must be authenticated, authorized, and encrypted. For small businesses the challenge is balancing security against limited budgets and expertise. The good news is that many effective security measures are low-cost or free to implement. This guide covers the essential security practices that provide the highest return on investment.",

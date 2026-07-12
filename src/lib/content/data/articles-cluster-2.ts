@@ -14,7 +14,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 15,
     publishedAt: "2026-01-18",
     updatedAt: "2026-06-15",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "The State of Web Images in 2026",
         body: "Images account for over 50% of the average webpage's total weight. As web experiences grow richer with high-resolution displays and immersive visuals, optimization has never been more critical. Google's Core Web Vitals — specifically Largest Contentful Paint (LCP) — penalize sites with slow-loading hero images. Modern browsers now support AVIF and WebP with near-universal adoption, while JPEG XL is gaining traction. This guide covers every aspect of image optimization: format selection, compression, responsive delivery, lazy loading, and CDN strategies for 2026."
@@ -50,7 +50,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-01-22",
     updatedAt: "2026-06-18",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Understanding Visual Quality vs File Size",
         body: "The perception of image quality is subjective, but the trade-off between file size and visual fidelity follows predictable patterns. High-frequency details (sharp edges, fine text, noise) degrade first under lossy compression. Low-frequency content (smooth gradients, soft textures, out-of-focus backgrounds) compresses efficiently with minimal perceptual loss. The key is matching compression aggressiveness to image content: a product photo with a blurred background can tolerate higher compression than a screenshot of text-heavy UI elements."
@@ -86,7 +86,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-01-28",
     updatedAt: "2026-06-22",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "The Three Contenders: A Quick Overview",
         body: "PNG (Portable Network Graphics) was created as a patent-free replacement for GIF. It supports lossless compression, transparency (alpha channel), and up to 48-bit color. JPG (or JPEG, Joint Photographic Experts Group) revolutionized photography with adjustable lossy compression, achieving 10:1 ratios with acceptable quality. WebP, developed by Google, aims to replace both: it offers lossy and lossless modes, transparency, and animation — typically 25-35% smaller than equivalent JPEG and PNG files. Each format excels in specific scenarios."
@@ -122,7 +122,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-02-02",
     updatedAt: "2026-06-25",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Why You Need a Good Image Resizer",
         body: "Image resizing might seem trivial, but poor resizing degrades quality, distorts proportions, and wastes bandwidth. Whether you are preparing images for Instagram (1080x1080), Facebook (1200x630), Twitter (1200x675), or a website hero (1920x1080), using the right resizer with proper algorithms matters. Free online resizers eliminate the need for Photoshop subscriptions, work on any device, and process images in seconds. This guide evaluates the top free options for 2026 based on quality, speed, features, and limitations."
@@ -158,7 +158,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-02-08",
     updatedAt: "2026-06-28",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "How AI Background Removal Works",
         body: "Modern background removal uses deep learning models trained on millions of images to distinguish foreground subjects from backgrounds. These models identify edges, depth cues, and semantic content to create precise masks. Unlike older chroma-key methods that required a green screen, AI models work on any background — cluttered rooms, outdoor landscapes, or patterned surfaces. The model outputs an alpha mask that separates the subject, which is then composited onto a transparent or custom-colored background. Accuracy depends on subject complexity: clear portraits work best, fine hair and translucent objects are challenging."
@@ -194,7 +194,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 7,
     publishedAt: "2026-02-12",
     updatedAt: "2026-07-01",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Why Convert WebP to JPG?",
         body: "WebP offers superior compression, but not every platform supports it. Older operating systems, legacy CMS platforms, some email clients, and certain image editing software lack WebP compatibility. Converting to JPG ensures your images can be opened by anyone, anywhere. JPG remains the most universally supported image format — every device, browser, and application can display it. Converting WebP to JPG is also useful when submitting images to platforms that explicitly require JPG format, such as many e-commerce sites and printing services."
@@ -230,7 +230,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-02-18",
     updatedAt: "2026-07-05",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is DPI and Why Does It Matter?",
         body: "DPI (Dots Per Inch) measures the number of printed dots within one inch of an image. It determines how sharp a printed image appears. For digital screens, PPI (Pixels Per Inch) is the analogous term, but DPI is commonly used for both. A 300 DPI image printed at 4x6 inches contains 1200x1800 pixels — enough detail for sharp prints. A 72 DPI image at the same print size would only contain 288x432 pixels, appearing pixelated and blurry. Understanding DPI prevents the common mistake of using low-resolution images for print."
@@ -266,7 +266,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-02-22",
     updatedAt: "2026-07-08",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "The Rise of Browser-Based Image Editing",
         body: "Online image editors have matured dramatically in recent years. Powered by WebAssembly, Canvas APIs, and client-side processing, modern browser-based editors rival desktop applications in capability. They eliminate installation, work across operating systems, and automatically update. For the estimated 80% of users who only need basic editing (cropping, resizing, filters, text overlay), online editors provide everything needed without the complexity or cost of professional software like Photoshop."
@@ -302,7 +302,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 7,
     publishedAt: "2026-02-26",
     updatedAt: "2026-07-10",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Why Cropping Is More Important Than You Think",
         body: "Cropping is not just about removing unwanted edges — it is a fundamental compositional tool that directs the viewer's attention, improves visual balance, and adapts images for different mediums. A well-cropped image can transform an average photo into an engaging visual. Conversely, poor cropping cuts off important elements, leaves awkward negative space, or distorts the intended focus. Understanding cropping principles helps you make intentional decisions rather than arbitrary cuts."
@@ -338,7 +338,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 7,
     publishedAt: "2026-03-02",
     updatedAt: "2026-07-12",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is HEIC and Why Convert It?",
         body: "HEIC (High Efficiency Image Container) is Apple's default photo format since iOS 11, based on the HEIF (High Efficiency Image File Format) standard. HEIC files are roughly half the size of equivalent JPEGs while maintaining superior quality. However, HEIC compatibility is limited: many Windows versions before 2022, older Android devices, web browsers, and legacy applications cannot open HEIC files natively. Converting to JPG ensures universal compatibility when sharing photos with clients, uploading to websites, or printing at third-party services."
@@ -374,7 +374,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-03-06",
     updatedAt: "2026-07-15",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "The Fundamental Trade-Off: Size vs Fidelity",
         body: "Every image compression algorithm navigates the same trade-off: reduce file size while preserving acceptable visual quality. Lossless compression preserves every pixel of the original — decompression yields a byte-for-byte identical copy. Lossy compression achieves far smaller files by discarding information deemed visually unimportant, but the degradation is permanent. Understanding this fundamental distinction is essential for choosing the right approach. The choice depends on your application: archival storage demands lossless, while web delivery benefits from strategic lossy compression."
@@ -410,7 +410,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 7,
     publishedAt: "2026-03-10",
     updatedAt: "2026-07-18",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Why Social Media Image Sizes Matter",
         body: "Each social media platform has specific image dimension requirements. Uploading a wrongly sized image leads to awkward cropping, poor resolution, or rejected uploads. A properly sized profile picture appears sharp on both mobile and desktop. A correctly dimensioned cover photo displays fully without being cropped on certain devices. Feed posts with optimal dimensions get 30-40% more engagement because they display fully in the feed without requiring users to tap to expand. Knowing the right sizes ensures your content looks professional everywhere."
@@ -446,7 +446,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-03-14",
     updatedAt: "2026-07-20",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "The State of Free Stock Photography in 2026",
         body: "The stock photography landscape has evolved significantly. While premium sites like Shutterstock and Getty Images still dominate paid licensing, the quality of free stock photo sites has risen dramatically. Many photographers now contribute to free platforms for exposure, and AI-generated imagery has created new categories of stock content. However, licensing terms vary widely — some sites require attribution, others restrict commercial use, and AI-generated images may have unresolved copyright questions. This guide covers vetted sites with clear commercial-use licensing."
@@ -482,7 +482,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 7,
     publishedAt: "2026-03-18",
     updatedAt: "2026-07-22",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Why Convert SVG to PNG?",
         body: "SVG (Scalable Vector Graphics) is ideal for logos, icons, and illustrations — it scales infinitely and has small file sizes. However, not all platforms support SVG. Email clients, most CMS rich-text editors, social media platforms, and many printing services require raster formats like PNG. Converting SVG to PNG produces a fixed-resolution image that can be used anywhere. PNG is the preferred raster format for vector graphics because its lossless compression preserves sharp edges, uniform colors, and transparency perfectly."
@@ -518,7 +518,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-03-22",
     updatedAt: "2026-07-25",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is EXIF Data?",
         body: "EXIF (Exchangeable Image File Format) is metadata embedded in image files by digital cameras and smartphones. Every time you take a photo, the device records information about the shot: camera make and model, date and time, focal length, aperture, shutter speed, ISO, whether flash was used, and often GPS coordinates of where the photo was taken. Smartphones add even more data: device serial numbers, software version, face detection data, and sometimes thumbnails of the original image. This data travels with the image file whenever you share it."
@@ -554,7 +554,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 6,
     publishedAt: "2026-03-26",
     updatedAt: "2026-07-28",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "When to Flip or Rotate Images",
         body: "Flipping and rotating serve different purposes. Flipping (mirroring) an image horizontally reverses left and right — useful for correcting mirrored selfies, creating symmetrical compositions, or adjusting the direction a subject faces. Vertical flipping reverses top and bottom — used for artistic effects or correcting upside-down scans. Rotating turns an image by an angle (90, 180, 270 degrees, or custom) — essential for fixing photos taken at odd angles, adjusting horizons, or fitting images into layouts with specific orientation requirements."
@@ -590,7 +590,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-04-02",
     updatedAt: "2026-07-30",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Why Photographers Need Specialized Compressors",
         body: "Photographers face unique compression challenges. Client galleries must balance image quality with loading speed. Portfolio sites cannot compromise on visual fidelity. Email delivery of high-resolution proofs must respect attachment size limits. Unlike generic compression tools that apply one-size-fits-all settings, photographer-grade compressors offer perceptual quality metrics, side-by-side comparisons, and format flexibility. The goal is to reduce file size by 60-80% while maintaining the subtle tonal gradations, fine texture details, and color accuracy that define professional photography."
@@ -626,7 +626,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 7,
     publishedAt: "2026-04-06",
     updatedAt: "2026-08-01",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Why Add Text to Images?",
         body: "Text-over-image graphics dominate social media, digital marketing, and web content. Quote cards with striking typography generate 3x more engagement than plain text posts. Product images with promotional text drive conversions. Watermarked images protect copyright. Event banners with date and location text communicate essential information at a glance. Adding text directly to images eliminates the need for separate caption design and ensures the message travels with the visual wherever it is shared."
@@ -662,7 +662,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-04-12",
     updatedAt: "2026-08-05",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "The Real Cost of Slow Images",
         body: "Slow-loading images directly impact your bottom line. A one-second delay in page load reduces conversions by 7% and customer satisfaction by 16%. Images are typically the largest assets on any webpage, accounting for 50-70% of total page weight. Google's Core Web Vitals — specifically Largest Contentful Paint (LCP) — uses image loading as a primary metric. Pages with LCP over 2.5 seconds are penalized in search rankings. Understanding why images load slow is the first step to fixing the problem."
@@ -698,7 +698,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 7,
     publishedAt: "2026-04-18",
     updatedAt: "2026-08-08",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Why Convert JPG to PDF?",
         body: "Converting images to PDF format serves many practical purposes. Combine multiple scanned document pages into a single file for easy sharing. Create a photo album or portfolio as a single PDF document. Convert screenshots and receipts into a PDF for record keeping. Submit images as a PDF attachment when the recipient requires PDF format. PDF also offers security features (password protection) that individual JPG images lack, and PDFs are typically smaller in total size than a ZIP archive of individual JPG files."

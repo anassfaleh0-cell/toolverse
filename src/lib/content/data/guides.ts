@@ -18,7 +18,7 @@ export const GUIDES: ContentPiece[] = [
     readingTimeMinutes: 12,
     publishedAt: "2026-06-15",
     updatedAt: "2026-07-01",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Understanding DNS Resolution Failures",
         body: "DNS resolution failures manifest as SERVFAIL, NXDOMAIN, or timeout responses. SERVFAIL indicates the authoritative server encountered an internal failure or the DNSSEC chain is broken. NXDOMAIN means the record genuinely does not exist. Timeouts suggest a network path issue between your resolver and the authoritative servers. When troubleshooting, start by running a DNS Lookup across multiple record types to isolate whether the problem affects A, MX, or NS lookups specifically. Use a public resolver like 8.8.8.8 to bypass your ISP's resolver and determine if the issue is local or global.",
@@ -58,7 +58,7 @@ export const GUIDES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-06-18",
     updatedAt: "2026-07-02",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Why Your PTR Record Returns NXDOMAIN",
         body: "A reverse DNS lookup that returns NXDOMAIN means no PTR record exists in the in-addr.arpa zone for your IP. This is the most common rDNS problem. Unlike forward DNS where you control your own zone, reverse DNS is controlled by whoever owns the IP block — typically your ISP or hosting provider. You must request PTR changes through them. Use our WHOIS Lookup to identify your IP block owner, then contact their NOC with the desired PTR hostname.",
@@ -98,7 +98,7 @@ export const GUIDES: ContentPiece[] = [
     readingTimeMinutes: 11,
     publishedAt: "2026-06-20",
     updatedAt: "2026-07-03",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "The Real Cause of Propagation Delays",
         body: "Every DNS record has a Time To Live (TTL) value measured in seconds. When you change a record, recursive resolvers worldwide still serve the cached old value until the TTL expires. If your old A record had a TTL of 86400 (24 hours), some users may see the old IP for a full day after the change. Lowering TTL to 60 seconds 48 hours before a planned migration minimizes this window significantly.",
@@ -138,7 +138,7 @@ export const GUIDES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-06-22",
     updatedAt: "2026-07-01",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Understanding GDPR and WHOIS Redaction",
         body: "Since May 2018, ICANN's Temporary Specification requires registrars to redact personal data for natural persons. What was once full registrant name, address, phone, and email is now replaced with anonymized or redacted fields. Our WHOIS Lookup tool displays whatever data is publicly available. If you see 'Redacted for Privacy' or 'Data Redacted,' this is normal for domains registered by individuals under GDPR or similar privacy laws.",
@@ -178,7 +178,7 @@ export const GUIDES: ContentPiece[] = [
     readingTimeMinutes: 13,
     publishedAt: "2026-06-25",
     updatedAt: "2026-07-04",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Diagnosing Certificate Expiration Errors",
         body: "An expired certificate is the most common SSL error. Use the SSL Certificate Checker to view the exact notAfter date. If the certificate has expired, browsers display NET::ERR_CERT_DATE_INVALID. Renew the certificate immediately and verify the new one is installed. For Let's Encrypt certificates, ensure your ACME client is running and can reach the CA's servers for automatic renewal. Check that port 80 is accessible from the internet, as HTTP-01 challenges require it.",
@@ -218,7 +218,7 @@ export const GUIDES: ContentPiece[] = [
     readingTimeMinutes: 11,
     publishedAt: "2026-06-27",
     updatedAt: "2026-07-03",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Fixing Missing Strict-Transport-Security Headers",
         body: "If your site does not send the Strict-Transport-Security (HSTS) header, browsers may connect over unencrypted HTTP after the initial HTTPS connection. Use the HTTP Headers Checker to verify the header is present on your HTTPS responses. Set a max-age of at least 31536000 (one year) and include the includeSubDomains directive once you have verified all subdomains support HTTPS. Add your domain to the HSTS preload list at hstspreload.org for baked-in protection.",
@@ -258,7 +258,7 @@ export const GUIDES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-06-28",
     updatedAt: "2026-07-02",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Is It Down for Everyone or Just You?",
         body: "First determine if the outage is global or local. Use the Website Status Checker from our server — if it returns 200, the site is up and the issue is on your end. If it returns 5xx or connection timeout, the outage is server-side. Check our Ping Test to see if the server is reachable at the network level. If ping succeeds but the website returns errors, the problem is in the application stack rather than the network.",
@@ -298,7 +298,7 @@ export const GUIDES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-06-29",
     updatedAt: "2026-07-03",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Identifying the Source of High Latency",
         body: "High ping times can originate from your local network, your ISP, intermediate routers, or the target server. Run the Ping Test to establish baseline latency. Compare results to your usual values. If latency is high to one target but normal to others, the problem is between you and that specific destination. If latency is high to all targets, the issue is on your end — check your Wi-Fi signal strength, router load, and background downloads.",
@@ -338,7 +338,7 @@ export const GUIDES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-06-30",
     updatedAt: "2026-07-04",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Port States: Open vs. Closed vs. Filtered",
         body: "The Port Checker reveals three port states. Open means a service is listening and the firewall allows the connection. Closed means the port is reachable but no service is listening. Filtered means no response was received — a firewall is silently dropping the packets. Filtered ports require firewall rule changes. Closed ports require starting the service or fixing the application binding.",
@@ -378,7 +378,7 @@ export const GUIDES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-07-01",
     updatedAt: "2026-07-05",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Why Analytics Show Unknown Browsers",
         body: "When analytics tools report large percentages of unknown or (not set) browsers, the User-Agent header may be missing, truncated, or too long. Privacy-focused browsers like Brave, privacy extensions, and enterprise proxies often strip or modify the UA header. Use the User Agent Parser to test your own browser's UA. If your analytics pipeline shows unexpected results, check whether a reverse proxy or CDN is modifying the User-Agent header before it reaches your server.",
@@ -418,7 +418,7 @@ export const GUIDES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-07-02",
     updatedAt: "2026-07-05",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Dynamic IP vs. Static IP Addresses",
         body: "Most residential ISPs assign dynamic IP addresses that change periodically. If your public IP changes without warning, it is likely due to your router's DHCP lease renewal. Use What Is My IP to check your current address. If the IP changes frequently, consider requesting a static IP from your ISP or using a DDNS (Dynamic DNS) service that maps a hostname to your changing IP.",
@@ -458,7 +458,7 @@ export const GUIDES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-07-03",
     updatedAt: "2026-07-05",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "Why IP Geolocation Shows the Wrong City",
         body: "IP geolocation databases map IP ranges to physical locations based on ISP registration data and routing topology, not GPS. If your ISP is headquartered in one city but you live in another, geolocation may show the ISP's city instead of yours. This is especially common with national ISPs that have a single registered headquarters. The IP Lookup tool displays the best available data, but city-level accuracy is typically 60-85% depending on the IP type.",
@@ -501,7 +501,7 @@ export const BEGINNER_GUIDES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-06-10",
     updatedAt: "2026-07-01",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is a DNS Lookup?",
         body: "A DNS lookup is the process of querying the Domain Name System to translate a human-readable domain name like example.com into a machine-readable IP address like 93.184.216.34. When you type a URL into your browser, your device performs a DNS lookup behind the scenes, contacting a chain of DNS servers to find the correct IP. Our DNS Lookup tool makes this process visible, showing you every record type and response your domain returns.",
@@ -541,7 +541,7 @@ export const BEGINNER_GUIDES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-06-12",
     updatedAt: "2026-07-01",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "The Difference Between Forward and Reverse DNS",
         body: "Forward DNS translates domain names to IP addresses — the standard lookup you use every day. Reverse DNS does the opposite: it translates IP addresses back to hostnames using PTR records stored in the in-addr.arpa domain. While you manage your forward DNS through your domain registrar or DNS hosting provider, reverse DNS is managed by whoever owns the IP address block, usually your ISP or cloud hosting provider.",
@@ -581,7 +581,7 @@ export const BEGINNER_GUIDES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-06-14",
     updatedAt: "2026-07-01",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is DNS Propagation?",
         body: "DNS propagation is the period after you change a DNS record when the old value is still cached by recursive resolvers worldwide while the new value gradually spreads. It is not a single event but a staggered process — each resolver caches the old record until its TTL expires, then queries the authoritative server for the updated value. The total propagation time depends on the TTL of the old record, not the new one.",
@@ -621,7 +621,7 @@ export const BEGINNER_GUIDES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-06-16",
     updatedAt: "2026-07-01",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is a WHOIS Lookup?",
         body: "A WHOIS lookup queries domain registration databases to find information about who owns a domain, when it was registered, when it expires, and which registrar manages it. Originally developed in the 1980s, WHOIS was the internet's phonebook for domain ownership. Our WHOIS Lookup tool contacts the appropriate registry (like Verisign for .com domains) and the domain's registrar to compile the available registration data.",
@@ -661,7 +661,7 @@ export const BEGINNER_GUIDES: ContentPiece[] = [
     readingTimeMinutes: 11,
     publishedAt: "2026-06-17",
     updatedAt: "2026-07-02",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is an SSL Certificate?",
         body: "An SSL (Secure Sockets Layer) certificate is a digital file that authenticates a website's identity and enables an encrypted connection. When a browser connects to an HTTPS website, the server presents its SSL certificate. The browser checks that the certificate is valid, unexpired, issued by a trusted Certificate Authority (CA), and matches the domain name being requested. If all checks pass, the browser displays a padlock icon.",
@@ -701,7 +701,7 @@ export const BEGINNER_GUIDES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-06-19",
     updatedAt: "2026-07-02",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Are HTTP Headers?",
         body: "HTTP headers are metadata sent with every HTTP request and response. They tell the browser how to handle the content, whether to cache it, which origins can access it, and what security policies to enforce. Request headers are sent by the client (browser), while response headers are sent by the server. The HTTP Headers Checker shows you the response headers from any URL, revealing how the server is configured.",
@@ -741,7 +741,7 @@ export const BEGINNER_GUIDES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-06-21",
     updatedAt: "2026-07-02",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Does a Website Status Checker Do?",
         body: "A website status checker sends an HTTP request to a URL and reports the response status code and response time. It tells you whether the website is online (returning 2xx or 3xx status), experiencing errors (4xx or 5xx), or unreachable (connection timeout or DNS failure). Our Website Status Checker performs this check from our server, giving you an external perspective that bypasses any local network issues on your end.",
@@ -781,7 +781,7 @@ export const BEGINNER_GUIDES: ContentPiece[] = [
     readingTimeMinutes: 7,
     publishedAt: "2026-06-23",
     updatedAt: "2026-07-03",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is a Ping Test?",
         body: "A ping test measures the round-trip time for data packets to travel from your computer to a destination server and back. Lower ping times indicate faster, more responsive connections. Our Ping Test uses TCP connections rather than traditional ICMP packets, making it more representative of real application traffic like web browsing and API calls. The tool sends multiple probes and reports the minimum, average, and maximum response times.",
@@ -821,7 +821,7 @@ export const BEGINNER_GUIDES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-06-24",
     updatedAt: "2026-07-03",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Are Network Ports?",
         body: "Network ports are virtual endpoints for network communication, ranging from 0 to 65535. Each port is associated with a specific service or protocol. Port 80 is the standard HTTP port, port 443 is HTTPS, port 22 is SSH, and port 25 is SMTP. A server can run multiple services by listening on different ports. The Port Checker tests whether specific ports on a host are accessible from the internet.",
@@ -861,7 +861,7 @@ export const BEGINNER_GUIDES: ContentPiece[] = [
     readingTimeMinutes: 7,
     publishedAt: "2026-06-25",
     updatedAt: "2026-07-04",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is a User-Agent String?",
         body: "A User-Agent (UA) string is a text string that browsers send with every HTTP request to identify themselves. It typically includes the browser name and version, the rendering engine, the operating system, and sometimes the device model. For example, Chrome on Windows might send Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36.",
@@ -901,7 +901,7 @@ export const BEGINNER_GUIDES: ContentPiece[] = [
     readingTimeMinutes: 7,
     publishedAt: "2026-06-26",
     updatedAt: "2026-07-04",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is a Public IP Address?",
         body: "A public IP address is a unique identifier assigned to your internet connection by your ISP. Every device on the internet uses IP addresses to communicate, like street addresses for data packets. Your public IP reveals information about your ISP and general geographic location. The What Is My IP tool shows you exactly what IP address the internet sees when you connect.",
@@ -941,7 +941,7 @@ export const BEGINNER_GUIDES: ContentPiece[] = [
     readingTimeMinutes: 7,
     publishedAt: "2026-06-28",
     updatedAt: "2026-07-04",
-    sections: [
+    noindex: false,    sections: [
       {
         heading: "What Is an IP Lookup?",
         body: "An IP lookup is a query that returns geographic and network information about an IP address. Our IP Lookup tool retrieves the country, region, city, coordinates, ISP, ASN, and hostname associated with any IP address. Unlike What Is My IP which checks your own address, IP Lookup works for any IP address in the world, making it useful for security investigations and network troubleshooting.",

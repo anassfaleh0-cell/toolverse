@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { Button, Alert, Card, Skeleton, Input } from "@/components/ui";
+import { Button, Alert, Card, Input } from "@/components/ui";
+import { getFFmpeg, formatBytes } from "@/lib/ffmpeg";
 
 export function VideoToGIF() {
   const [file, setFile] = useState<File | null>(null);
@@ -12,7 +13,6 @@ export function VideoToGIF() {
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
     const f = e.target.files?.[0];
@@ -31,79 +31,37 @@ export function VideoToGIF() {
     setProgress(0);
 
     try {
-      const videoUrl = URL.createObjectURL(file);
-      const video = document.createElement("video");
-      video.src = videoUrl;
-      video.muted = true;
-
-      await new Promise<void>((resolve, reject) => {
-        video.onloadedmetadata = () => resolve();
-        video.onerror = () => reject(new Error("Failed to load video"));
-        setTimeout(() => reject(new Error("Timeout")), 10000);
+      const ffmpeg = await getFFmpeg((p) => {
+        if (p.total > 0) setProgress(Math.round((p.received / p.total) * 50));
       });
+      ffmpeg.writeFile("input", new Uint8Array(await file.arrayBuffer()));
+      setProgress(50);
 
-      const fps = 10;
-      const start = parseFloat(startTime);
-      const dur = parseFloat(duration);
-      const totalFrames = Math.ceil(dur * fps);
-      const w = 320;
-      const h = Math.round(video.videoHeight / video.videoWidth * w);
+      const start = parseFloat(startTime) || 0;
+      const dur = parseFloat(duration) || 3;
+      const scale = "320:-1";
 
-      video.currentTime = start;
-      await new Promise<void>((r) => { video.onseeked = () => r(); });
+      await ffmpeg.exec([
+        "-ss", String(start),
+        "-t", String(dur),
+        "-i", "input",
+        "-vf", `fps=10,scale=${scale}:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=256[p];[s1][p]paletteuse=dither=bayer`,
+        "-loop", "0",
+        "output.gif",
+      ]);
 
-      const canvas = document.createElement("canvas");
-      canvas.width = w;
-      canvas.height = h;
-      const ctx = canvas.getContext("2d")!;
+      const data = await ffmpeg.readFile("output.gif");
+      ffmpeg.deleteFile("input");
+      ffmpeg.deleteFile("output.gif");
 
-      const frames: ImageData[] = [];
-
-      for (let i = 0; i < totalFrames; i++) {
-        video.currentTime = start + i / fps;
-        await new Promise<void>((r) => { video.onseeked = () => r(); });
-        ctx.drawImage(video, 0, 0, w, h);
-        frames.push(ctx.getImageData(0, 0, w, h));
-        setProgress(Math.round(((i + 1) / totalFrames) * 90));
-      }
-
-      setProgress(95);
-      const gifBlob = await framesToGIF(frames, w, h, fps);
-      setResult(URL.createObjectURL(gifBlob));
+      const blob = new Blob([data as BlobPart], { type: "image/gif" });
+      setResult(URL.createObjectURL(blob));
       setProgress(100);
-      URL.revokeObjectURL(videoUrl);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Conversion failed");
     } finally {
       setLoading(false);
     }
-  }
-
-  async function framesToGIF(frames: ImageData[], w: number, h: number, fps: number): Promise<Blob> {
-    const canvas = document.createElement("canvas");
-    canvas.width = w;
-    canvas.height = h;
-    const ctx = canvas.getContext("2d")!;
-
-    const stream = canvas.captureStream(fps);
-    const recorder = new MediaRecorder(stream, { mimeType: "video/webm" });
-    const chunks: Blob[] = [];
-
-    return new Promise((resolve, reject) => {
-      recorder.ondataavailable = (e) => { if (e.data.size > 0) chunks.push(e.data); };
-      recorder.onstop = () => resolve(new Blob(chunks, { type: "video/webm" }));
-      recorder.onerror = () => reject(new Error("Recording failed"));
-      recorder.start();
-
-      let i = 0;
-      function drawFrame() {
-        if (i >= frames.length) { recorder.stop(); return; }
-        ctx.putImageData(frames[i], 0, 0);
-        i++;
-        setTimeout(drawFrame, 1000 / fps);
-      }
-      drawFrame();
-    });
   }
 
   return (
@@ -114,7 +72,6 @@ export function VideoToGIF() {
           <div>
             <p className="font-medium text-zinc-900 dark:text-zinc-100">{file.name}</p>
             <Button variant="ghost" size="sm" className="mt-2" onClick={() => { setFile(null); setResult(null); }}>Remove</Button>
-            <video ref={videoRef} controls className="mt-4 max-h-48 w-full rounded-lg" src={URL.createObjectURL(file)} />
           </div>
         ) : (
           <button onClick={() => inputRef.current?.click()} className="cursor-pointer text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100">
@@ -136,7 +93,7 @@ export function VideoToGIF() {
       </div>
 
       <Button onClick={handleConvert} disabled={!file || loading} variant="primary">
-        {loading ? `Processing (${progress}%)...` : "Convert to GIF"}
+        {loading ? `Converting (${progress}%)...` : "Convert to GIF"}
       </Button>
 
       {loading && (
@@ -144,7 +101,6 @@ export function VideoToGIF() {
           <div className="h-2 overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-700">
             <div className="h-full rounded-full bg-nuvora-500 transition-all" style={{ width: `${progress}%` }} />
           </div>
-          <Skeleton count={1} columns={1} />
         </div>
       )}
       {error && <Alert variant="error">{error}</Alert>}
@@ -152,8 +108,8 @@ export function VideoToGIF() {
       {result && (
         <Card variant="default" className="p-5">
           <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100">Conversion complete</p>
-          <video src={result} controls autoPlay loop muted className="mt-3 max-h-64 rounded-lg" />
-          <a href={result} download={`${file?.name?.replace(/\.[^.]+$/, "") ?? "clip"}.webm`} className="mt-3 inline-flex items-center gap-2 rounded-lg bg-nuvora-600 px-4 py-2 text-sm font-medium text-white hover:bg-nuvora-700">
+          <img src={result} alt="Animated GIF" className="mt-3 max-h-64 rounded-lg" />
+          <a href={result} download={`${file?.name?.replace(/\.[^.]+$/, "") ?? "clip"}.gif`} className="mt-3 inline-flex items-center gap-2 rounded-lg bg-nuvora-600 px-4 py-2 text-sm font-medium text-white hover:bg-nuvora-700">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             Download GIF
           </a>

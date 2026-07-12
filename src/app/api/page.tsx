@@ -7,6 +7,7 @@ import { BRAND } from "@/lib/nuvora/brand";
 export const metadata: Metadata = {
   title: `Nuvora API — Coming Soon`,
   description: `${SITE_NAME} API is coming soon. Programmatic access to all tools — DNS lookup, SSL checker, WHOIS, PDF conversion, and more. RESTful endpoints with simple authentication.`,
+  robots: { index: false },
   openGraph: { title: `Nuvora API`, description: `${SITE_NAME} API for developers. Programmatic access to all free online tools. Coming soon.`, url: `${SITE_URL}/api` },
   alternates: { canonical: `${SITE_URL}/api` },
 };

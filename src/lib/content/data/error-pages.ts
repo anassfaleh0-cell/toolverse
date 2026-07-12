@@ -18,7 +18,7 @@ export const ERROR_PAGES: ContentPiece[] = [
     category: "network-internet",
     publishedAt: "2026-03-10",
     updatedAt: "2026-06-01",
-  },
+    noindex: false,  },
   {
     slug: "ssl-certificate-checker-errors",
     type: "errors",
@@ -36,7 +36,7 @@ export const ERROR_PAGES: ContentPiece[] = [
     category: "network-internet",
     publishedAt: "2026-03-15",
     updatedAt: "2026-06-01",
-  },
+    noindex: false,  },
   {
     slug: "port-checker-errors",
     type: "errors",
@@ -54,7 +54,7 @@ export const ERROR_PAGES: ContentPiece[] = [
     category: "network-internet",
     publishedAt: "2026-03-20",
     updatedAt: "2026-06-01",
-  },
+    noindex: false,  },
   {
     slug: "ping-test-errors",
     type: "errors",
@@ -72,7 +72,7 @@ export const ERROR_PAGES: ContentPiece[] = [
     category: "network-internet",
     publishedAt: "2026-03-25",
     updatedAt: "2026-06-01",
-  },
+    noindex: false,  },
   {
     slug: "whois-lookup-errors",
     type: "errors",
@@ -90,5 +90,5 @@ export const ERROR_PAGES: ContentPiece[] = [
     category: "network-internet",
     publishedAt: "2026-04-01",
     updatedAt: "2026-06-01",
-  },
+    noindex: false,  },
 ];

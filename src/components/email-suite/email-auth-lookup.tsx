@@ -94,7 +94,7 @@ const RECORD_DESCRIPTIONS: Record<string, { name: string; rfc: string; desc: str
   spf: { name: "SPF", rfc: "RFC 7208", desc: "Specifies which mail servers are authorized to send email for your domain." },
   dkim: { name: "DKIM", rfc: "RFC 6376", desc: "Provides a digital signature for email, proving it hasn't been tampered with." },
   dmarc: { name: "DMARC", rfc: "RFC 7489", desc: "Tells receiving servers how to handle email that fails SPF or DKIM checks." },
-  bimi: { name: "BIMI", rfc: "RFC XXXX", desc: "Associates your brand logo with authenticated email for display in supporting clients." },
+  bimi: { name: "BIMI", rfc: "RFC 9371", desc: "Associates your brand logo with authenticated email for display in supporting clients." },
   mx: { name: "MX", rfc: "RFC 5321", desc: "Identifies the mail servers responsible for receiving email for your domain." },
 };
 
