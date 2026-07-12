@@ -29,8 +29,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: { title: meta.title, description: meta.description, url: `${SITE_URL}/vs/${slug}` },
     twitter: { card: "summary_large_image", title: meta.title, description: meta.description },
     alternates: { canonical: `${SITE_URL}/vs/${slug}` },
+    robots: { index: false, follow: false },
   };
 }
+
+export const dynamicParams = false;
 
 export default async function VsPage({ params }: Props) {
   const { slug } = await params;

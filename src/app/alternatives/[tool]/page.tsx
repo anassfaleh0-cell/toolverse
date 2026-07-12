@@ -29,6 +29,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+export const dynamicParams = false;
+
 export default async function AlternativesPage({ params }: Props) {
   const { tool } = await params;
   const tools = getAllTools();

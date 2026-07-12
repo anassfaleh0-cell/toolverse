@@ -88,7 +88,6 @@ function IpMap({ lat, lon }: { lat: number; lon: number }) {
         src={src}
         title="Map showing your location"
         className={`h-full w-full border-0 transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-0"}`}
-        loading="lazy"
         allowFullScreen
         referrerPolicy="no-referrer"
         sandbox="allow-scripts allow-same-origin"

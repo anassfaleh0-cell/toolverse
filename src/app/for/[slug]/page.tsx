@@ -27,9 +27,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description,
     openGraph: { title, description, url: `${SITE_URL}/for/${slug}` },
     alternates: { canonical: `${SITE_URL}/for/${slug}` },
-    robots: { index: true, follow: true },
   };
 }
+
+export const dynamicParams = false;
 
 export default async function UseCasePage({ params }: Props) {
   const { slug } = await params;

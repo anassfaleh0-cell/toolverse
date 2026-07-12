@@ -4,6 +4,7 @@ import { getAllTools, getCategories } from "@/lib/registry";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import { JsonLd } from "@/components/shared";
 import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
+import type { Thing, WithContext } from "schema-dts";
 
 export const metadata: Metadata = {
   title: `All Tools`,
@@ -26,6 +27,20 @@ export default function ToolsPage() {
     <>
       <JsonLd data={webPageSchema({ name: `All Tools - ${SITE_NAME}`, description: `Browse all free online tools on ${SITE_NAME}.`, url: `${SITE_URL}/tools`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: "All Tools",
+        itemListElement: tools.map((t, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          item: {
+            "@type": "SoftwareApplication",
+            name: t.name,
+            url: `${SITE_URL}${t.url}`,
+          },
+        })),
+      } as WithContext<Thing>} />
       <section className="border-b border-zinc-200 dark:border-zinc-800">
         <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
           <nav aria-label="Breadcrumb" className="text-sm text-zinc-500 dark:text-zinc-400">

@@ -22,9 +22,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description,
     openGraph: { title, description, url: `${SITE_URL}/glossary/${term}` },
     alternates: { canonical: `${SITE_URL}/glossary/${term}` },
-    robots: { index: true, follow: true },
   };
 }
+
+export const dynamicParams = false;
 
 export default async function GlossaryTermPage({ params }: Props) {
   const { term } = await params;

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import { Breadcrumbs, JsonLd } from "@/components/shared";
-import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
+import { breadcrumbSchema, organizationSchema, webPageSchema } from "@/lib/seo";
 import { getAllTools } from "@/lib/registry";
 import { getAllContent } from "@/lib/content/registry";
 import { AUTHORS } from "@/lib/content/authors";
@@ -28,6 +28,7 @@ export default function About() {
     <>
       <JsonLd data={webPageSchema({ name: `About ${SITE_NAME}`, description: `Learn about ${SITE_NAME}'s editorial policy and methodology.`, url: `${SITE_URL}/about`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
+      <JsonLd data={organizationSchema()} />
       <section className="border-b border-zinc-200 bg-zinc-50 py-12 dark:border-zinc-800 dark:bg-zinc-900/50 sm:py-16">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <Breadcrumbs items={breadcrumbs} />
