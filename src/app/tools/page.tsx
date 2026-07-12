@@ -6,10 +6,10 @@ import { JsonLd } from "@/components/shared";
 import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `All Tools - ${SITE_NAME}`,
+  title: `All Tools`,
   description: `Browse all free online tools on ${SITE_NAME}. Find the perfect tool for developers, designers, and creators.`,
-  openGraph: { title: `All Tools - ${SITE_NAME}`, description: `Browse all free online tools on ${SITE_NAME}.`, url: `${SITE_URL}/tools` },
-  twitter: { title: `All Tools - ${SITE_NAME}`, description: `Browse all free online tools on ${SITE_NAME}.` },
+  openGraph: { title: `All Tools`, description: `Browse all free online tools on ${SITE_NAME}.`, url: `${SITE_URL}/tools` },
+  twitter: { title: `All Tools`, description: `Browse all free online tools on ${SITE_NAME}.` },
   alternates: { canonical: `${SITE_URL}/tools` },
 };
 

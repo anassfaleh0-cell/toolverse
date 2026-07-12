@@ -5,7 +5,7 @@ import { Breadcrumbs, JsonLd } from "@/components/shared";
 import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `Online File Converters — Free Format Conversion Tools | ${SITE_NAME}`,
+  title: `Online File Converters — Free Format Conversion Tools`,
   description: `Free online file converters: convert between PDF, Word, Excel, images, JSON, CSV, XML, and more. No signup, no uploads — all in your browser.`,
   alternates: { canonical: `${SITE_URL}/convert` },
 };
@@ -45,7 +45,7 @@ const FORMAT_GROUPS = [
 export default function ConvertPage() {
   return (
     <>
-      <JsonLd data={webPageSchema({ name: `Online File Converters — Free Format Conversion Tools | ${SITE_NAME}`, description: `Free online file converters for all formats.`, url: `${SITE_URL}/convert`, breadcrumbs })} />
+      <JsonLd data={webPageSchema({ name: `Online File Converters — Free Format Conversion Tools`, description: `Free online file converters for all formats.`, url: `${SITE_URL}/convert`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <section className="border-b border-border-subtle bg-gradient-to-b from-nuvora-50/30 to-surface dark:from-nuvora-950/20">
         <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">

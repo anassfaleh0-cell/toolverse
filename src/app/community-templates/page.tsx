@@ -5,7 +5,7 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: `Community Templates — Reusable Configurations | ${SITE_NAME}`,
+  title: `Community Templates — Reusable Configurations`,
   description: "Community-contributed templates and configurations for DNS, SSL, SEO, and network tools. Save time with pre-built setups from the Nuvora community.",
   openGraph: { title: `Community Templates`, description: "Community-contributed templates for DNS, SSL, SEO, and network tools." },
   twitter: { title: `Community Templates`, description: "Community-contributed templates." },

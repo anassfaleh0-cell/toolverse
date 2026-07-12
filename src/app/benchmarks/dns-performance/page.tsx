@@ -5,11 +5,11 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: `DNS Performance Benchmarks 2026 — DNS Provider Speed Comparison | ${SITE_NAME}`,
+  title: `DNS Performance Benchmarks 2026 — DNS Provider Speed Comparison`,
   description: `Independent DNS performance benchmarks for 2026 comparing Cloudflare (1.1.1.1), Google (8.8.8.8), Quad9 (9.9.9.9), OpenDNS, Comodo, and CleanBrowsing. Average latency, uptime, DNSSEC support, malware blocking, ECS, and global PoPs.`,
   alternates: { canonical: `${SITE_URL}/benchmarks/dns-performance` },
   openGraph: {
-    title: `DNS Performance Benchmarks 2026 — ${SITE_NAME}`,
+    title: `DNS Performance Benchmarks 2026`,
     description: `Data-driven comparison of 6 major DNS providers across latency, uptime, security, and feature support. Find the fastest and most secure DNS for your network.`,
   },
 };

@@ -6,7 +6,7 @@ import { breadcrumbSchema, webPageSchema, faqSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `The Ultimate SEO Guide — Technical SEO, On-Page, and Content Strategy - ${SITE_NAME}`,
+  title: `The Ultimate SEO Guide — Technical SEO, On-Page, and Content Strategy`,
   description: "A comprehensive guide to search engine optimization covering technical SEO (site structure, robots.txt, sitemaps, canonical URLs, schema markup), on-page SEO (title tags, meta descriptions, headings, content optimization), content strategy, common mistakes, and SEO tools.",
   openGraph: {
     title: "The Ultimate SEO Guide — Technical SEO, On-Page, and Content Strategy",

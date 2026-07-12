@@ -4,7 +4,7 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: `100M Monthly Visits Roadmap — Growth Strategy | ${SITE_NAME}`,
+  title: `100M Monthly Visits Roadmap — Growth Strategy`,
   description: "A data-driven plan to scale Nuvora from 1M to 100M monthly visits through content, SEO, product, and distribution strategies.",
   openGraph: { title: `100M Monthly Visits Roadmap`, description: "A data-driven plan to scale Nuvora from 1M to 100M monthly visits." },
   twitter: { title: `100M Monthly Visits Roadmap`, description: "A data-driven plan to scale Nuvora." },
@@ -133,7 +133,7 @@ function MilestoneCard({ period, target, color, strategies, metrics, rationale }
 export default function HundredMRoadmapPage() {
   return (
     <>
-      <JsonLd data={webPageSchema({ name: `100M Monthly Visits Roadmap — ${SITE_NAME}`, description: "A data-driven plan to scale Nuvora from 1M to 100M monthly visits.", url: `${SITE_URL}/100m-roadmap`, breadcrumbs })} />
+      <JsonLd data={webPageSchema({ name: `100M Monthly Visits Roadmap — Growth Strategy`, description: "A data-driven plan to scale Nuvora from 1M to 100M monthly visits.", url: `${SITE_URL}/100m-roadmap`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <section className="border-b border-zinc-200 bg-zinc-50 py-12 dark:border-zinc-800 dark:bg-zinc-900/50 sm:py-16">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">

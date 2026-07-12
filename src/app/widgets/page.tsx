@@ -5,9 +5,9 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { getAllTools, getPopularTools } from "@/lib/registry";
 
 export const metadata: Metadata = {
-  title: `Embeddable Widgets — ${SITE_NAME}`,
+  title: `Embeddable Widgets`,
   description: `Embed ${SITE_NAME} tools on your website. Free iframe widgets for DNS lookup, SSL checker, WHOIS lookup, and more. Simple copy-paste embed codes.`,
-  openGraph: { title: `Embeddable Widgets — ${SITE_NAME}`, description: `Free embeddable widgets from ${SITE_NAME}. Add powerful tools to your site with a single iframe.`, url: `${SITE_URL}/widgets` },
+  openGraph: { title: `Embeddable Widgets`, description: `Free embeddable widgets from ${SITE_NAME}. Add powerful tools to your site with a single iframe.`, url: `${SITE_URL}/widgets` },
   alternates: { canonical: `${SITE_URL}/widgets` },
 };
 

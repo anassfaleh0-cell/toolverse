@@ -6,7 +6,7 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { getUseCaseSlugs } from "@/lib/content/programmatic-slugs";
 
 export const metadata: Metadata = {
-  title: `Tools by Audience — Find the Right Tool for Your Work | ${SITE_NAME}`,
+  title: `Tools by Audience — Find the Right Tool for Your Work`,
   description: `Browse ${SITE_NAME} tools curated for your role: developers, designers, writers, marketers, students, and more.`,
   alternates: { canonical: `${SITE_URL}/for` },
 };

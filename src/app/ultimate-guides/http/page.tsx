@@ -6,7 +6,7 @@ import { breadcrumbSchema, webPageSchema, faqSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `The Ultimate HTTP Guide — Headers, Status Codes, and Protocols - ${SITE_NAME}`,
+  title: `The Ultimate HTTP Guide — Headers, Status Codes, and Protocols`,
   description: "A comprehensive guide to the HTTP protocol covering all HTTP methods, status codes (1xx–5xx), request and response headers, HTTP/1.1 vs HTTP/2 vs HTTP/3 comparison, security headers, and HTTPS vs HTTP differences.",
   openGraph: {
     title: "The Ultimate HTTP Guide — Headers, Status Codes, and Protocols",

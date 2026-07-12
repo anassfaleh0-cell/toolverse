@@ -6,7 +6,7 @@ import { breadcrumbSchema, webPageSchema, faqSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `The Ultimate Networking Guide — DNS, TCP/IP, Ports, and Diagnostics - ${SITE_NAME}`,
+  title: `The Ultimate Networking Guide — DNS, TCP/IP, Ports, and Diagnostics`,
   description: "A comprehensive guide to computer networking covering the OSI model, TCP/IP stack, IPv4 and IPv6 addressing, CIDR and subnetting, DNS, common ports and protocols, network diagnostics (ping, traceroute, DNS lookup, port checking), and network security.",
   openGraph: {
     title: "The Ultimate Networking Guide — DNS, TCP/IP, Ports, and Diagnostics",

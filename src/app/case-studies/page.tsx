@@ -5,11 +5,11 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: `Case Studies — How Professionals Use Nuvora | ${SITE_NAME}`,
+  title: `Case Studies — How Professionals Use Nuvora`,
   description: `Real-world case studies showing how e-commerce platforms, web agencies, security consultancies, and content teams use Nuvora tools to solve problems and improve workflows.`,
   alternates: { canonical: `${SITE_URL}/case-studies` },
   openGraph: {
-    title: `Case Studies — How Professionals Use Nuvora | ${SITE_NAME}`,
+    title: `Case Studies — How Professionals Use Nuvora`,
     description: `Discover how businesses use Nuvora's network, security, and image tools to reduce downtime, accelerate debugging, and streamline content pipelines.`,
   },
 };

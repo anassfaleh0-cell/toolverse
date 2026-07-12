@@ -6,7 +6,7 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { getAllTools } from "@/lib/registry";
 
 export const metadata: Metadata = {
-  title: `Alternatives — Compare Free Online Tools | ${SITE_NAME}`,
+  title: `Alternatives — Compare Free Online Tools`,
   description: `Browse all alternative tool comparisons on ${SITE_NAME}. Find the best free alternative for every online tool.`,
   alternates: { canonical: `${SITE_URL}/alternatives` },
 };

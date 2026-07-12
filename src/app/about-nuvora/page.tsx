@@ -6,9 +6,9 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { BRAND } from "@/lib/nuvora/brand";
 
 export const metadata: Metadata = {
-  title: `About ${SITE_NAME} — Our Story & Mission`,
+  title: `About Nuvora — Our Story & Mission`,
   description: `${SITE_NAME} is an intelligent digital workspace providing powerful AI-powered tools for everyone. Learn about our mission, values, and team.`,
-  openGraph: { title: `About ${SITE_NAME}`, description: `Learn about ${SITE_NAME}'s mission to make powerful tools accessible to everyone.`, url: `${SITE_URL}/about-nuvora` },
+  openGraph: { title: `About Nuvora`, description: `Learn about ${SITE_NAME}'s mission to make powerful tools accessible to everyone.`, url: `${SITE_URL}/about-nuvora` },
   alternates: { canonical: `${SITE_URL}/about-nuvora` },
 };
 
@@ -20,7 +20,7 @@ const breadcrumbs = [
 export default function AboutNuvoraPage() {
   return (
     <>
-      <JsonLd data={webPageSchema({ name: `About ${SITE_NAME}`, description: `${SITE_NAME} story and mission.`, url: `${SITE_URL}/about-nuvora`, breadcrumbs })} />
+      <JsonLd data={webPageSchema({ name: `About Nuvora — Our Story & Mission`, description: `${SITE_NAME} story and mission.`, url: `${SITE_URL}/about-nuvora`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <section className="border-b border-border-subtle bg-gradient-to-b from-nuvora-50/30 to-surface dark:from-nuvora-950/20">
         <div className="mx-auto max-w-4xl px-4 py-20 sm:px-6 sm:py-28">

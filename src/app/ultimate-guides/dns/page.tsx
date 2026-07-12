@@ -6,7 +6,7 @@ import { breadcrumbSchema, webPageSchema, faqSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `The Ultimate DNS Guide — Everything You Need to Know About the Domain Name System - ${SITE_NAME}`,
+  title: `The Ultimate DNS Guide — Everything You Need to Know About the Domain Name System`,
   description: "A comprehensive guide to the Domain Name System covering DNS hierarchy, all record types, resolution process, DNSSEC security, performance benchmarks, troubleshooting, and best DNS tools. The definitive DNS reference.",
   openGraph: {
     title: `The Ultimate DNS Guide — Everything About the Domain Name System`,

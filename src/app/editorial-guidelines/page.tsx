@@ -6,10 +6,10 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { Callout } from "@/components/ui";
 
 export const metadata: Metadata = {
-  title: `Editorial Guidelines — ${SITE_NAME}`,
+  title: `Editorial Guidelines`,
   description: `How ${SITE_NAME} selects, reviews, and updates tools. Our editorial standards ensure accuracy, relevance, and independence in all content.`,
-  openGraph: { title: `Editorial Guidelines — ${SITE_NAME}`, description: `${SITE_NAME}'s editorial standards for tool selection, content accuracy, and independence.`, url: `${SITE_URL}/editorial-guidelines` },
-  twitter: { card: "summary_large_image", title: `Editorial Guidelines — ${SITE_NAME}`, description: `${SITE_NAME}'s editorial standards for tool selection.` },
+  openGraph: { title: `Editorial Guidelines`, description: `${SITE_NAME}'s editorial standards for tool selection, content accuracy, and independence.`, url: `${SITE_URL}/editorial-guidelines` },
+  twitter: { card: "summary_large_image", title: `Editorial Guidelines`, description: `${SITE_NAME}'s editorial standards for tool selection.` },
   alternates: { canonical: `${SITE_URL}/editorial-guidelines` },
 };
 

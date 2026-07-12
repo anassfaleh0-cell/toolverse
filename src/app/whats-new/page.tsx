@@ -7,10 +7,10 @@ import { getLatestContent } from "@/lib/content/registry";
 import { getAllTools } from "@/lib/registry";
 
 export const metadata: Metadata = {
-  title: `What&apos;s New — Latest Tools & Content | ${SITE_NAME}`,
+  title: `What&apos;s New — Latest Tools & Content`,
   description: "Discover the latest tools, guides, and content added to Nuvora. Stay updated with new releases and improvements.",
-  openGraph: { title: `What&apos;s New — Latest Tools & Content | ${SITE_NAME}`, description: "Discover the latest tools, guides, and content added to Nuvora. Stay updated with new releases and improvements.", url: `${SITE_URL}/whats-new` },
-  twitter: { card: "summary_large_image", title: `What&apos;s New — Latest Tools & Content | ${SITE_NAME}`, description: "Discover the latest tools and content on Nuvora." },
+  openGraph: { title: `What&apos;s New — Latest Tools & Content`, description: "Discover the latest tools, guides, and content added to Nuvora. Stay updated with new releases and improvements.", url: `${SITE_URL}/whats-new` },
+  twitter: { card: "summary_large_image", title: `What&apos;s New — Latest Tools & Content`, description: "Discover the latest tools and content on Nuvora." },
   alternates: { canonical: `${SITE_URL}/whats-new` },
 };
 

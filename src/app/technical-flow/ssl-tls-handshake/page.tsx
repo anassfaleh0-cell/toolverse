@@ -5,7 +5,7 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: `SSL/TLS Handshake Flow — How HTTPS Connections Work | ${SITE_NAME}`,
+  title: `SSL/TLS Handshake Flow — How HTTPS Connections Work`,
   description: "Visual guide to the SSL/TLS handshake process. Understand every step of how HTTPS establishes secure connections, from ClientHello to secure data transfer.",
   openGraph: { title: "SSL/TLS Handshake Flow", description: "Visual guide to the SSL/TLS handshake process." },
   twitter: { title: "SSL/TLS Handshake Flow", description: "Visual guide to HTTPS connection establishment." },

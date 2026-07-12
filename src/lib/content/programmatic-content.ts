@@ -162,7 +162,7 @@ export function generateAlternativeContent(toolId: string): {
   ];
 
   return {
-    title: `Top Free ${toolName} Alternatives for 2026 — ${SITE_NAME}`,
+    title: `Top Free ${toolName} Alternatives for 2026`,
     description: `Looking for the best free alternatives to ${toolName}? Compare top ${catLabel.toLowerCase()} tools. ${tool?.description ?? "Free, private, and browser-based."}`,
     intro: introForTool(toolName),
     alternatives,
@@ -244,7 +244,7 @@ export function generateVsContent(tool1Id: string, tool2Id: string): {
   ];
 
   return {
-    title: `${n1} vs ${n2}: Which Free Online Tool Is Better? — ${SITE_NAME}`,
+    title: `${n1} vs ${n2}: Which Free Online Tool Is Better?`,
     description: `Compare ${n1} vs ${n2} side by side. Features, performance, privacy, and ease of use. Find out which free online ${getCatLabel(c1).toLowerCase()} tool wins for your needs.`,
     overview: { tool1: { name: n1, desc: d1 }, tool2: { name: n2, desc: d2 } },
     comparisonTable,
@@ -313,7 +313,7 @@ export function generateConverterContent(source: string, target: string): {
   ];
 
   return {
-    title: `Free ${src} to ${tgt} Converter Online — ${SITE_NAME}`,
+    title: `Free ${src} to ${tgt} Converter Online`,
     description: `Convert ${src} to ${tgt} online for free. No signup, no uploads, no limits. Fast, private, browser-based ${src} to ${tgt} conversion tool.`,
     steps,
     benefits,
@@ -375,7 +375,7 @@ export function generateBestOfContent(categorySlug: string, useCase: string): {
   ];
 
   return {
-    title: `Best Free ${catLabel} Tools for ${useCaseLabel} in 2026 — ${SITE_NAME}`,
+    title: `Best Free ${catLabel} Tools for ${useCaseLabel} in 2026`,
     description: `Discover the best free ${catLabel.toLowerCase()} tools for ${useCaseLabel}. Curated, tested, and ranked. All tools are free, private, and browser-based with no signup.`,
     intro,
     criteria,
@@ -431,7 +431,7 @@ export function generateUseCaseContent(useCase: string): {
   ];
 
   return {
-    title: `Best Free Online Tools for ${useCaseLabel} — ${SITE_NAME}`,
+    title: `Best Free Online Tools for ${useCaseLabel}`,
     description: `The ultimate collection of free online tools for ${useCaseLabel}. Curated by ${SITE_NAME} — all browser-based, private, and completely free with no signup.`,
     intro: `As a ${useCaseLabel.toLowerCase()}, you need tools that are fast, reliable, and respect your privacy. ${SITE_NAME} offers a carefully curated collection of free online tools designed to help you work smarter. From ${toolGroups.slice(0, 3).map((g) => g.category.toLowerCase()).join(" and ")} utilities, each tool is browser-based, requires no signup, and processes everything locally on your device. Here is our curated selection of the best tools for ${useCaseLabel}.`,
     toolGroups,
@@ -489,7 +489,7 @@ export function generateGlossaryContent(term: string): {
   ];
 
   return {
-    title: `What Is ${label}? Definition, Uses, and Tools — ${SITE_NAME}`,
+    title: `What Is ${label}? Definition, Uses, and Tools`,
     description: `Learn what ${label} is, how it works, and why it matters. Complete guide with examples, use cases, and free online tools for working with ${label}.`,
     definition: definitions[term.toLowerCase()] || genericDef,
     examples: examplesList[term.toLowerCase()] || genericExamples,
@@ -527,7 +527,7 @@ export function generateHowToGuide(topic: string, toolId: string): Array<{ step:
 export function generateMetaForGuide(topic: string): { title: string; description: string } {
   const display = topic.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
   return {
-    title: `How to ${display} Online Free — ${SITE_NAME}`,
+    title: `How to ${display} Online Free`,
     description: `Learn how to ${display.toLowerCase()} online for free with ${SITE_NAME}. Step-by-step guide with tips. Fast, private, browser-based — no signup required.`,
   };
 }
@@ -535,21 +535,21 @@ export function generateMetaForGuide(topic: string): { title: string; descriptio
 // === META GENERATORS ===
 export function generateMetaForAlternatives(toolName: string): { title: string; description: string } {
   return {
-    title: `Top Free ${toolName} Alternatives in 2026 — ${SITE_NAME}`,
+    title: `Top Free ${toolName} Alternatives in 2026`,
     description: `Looking for ${toolName} alternatives? Compare the best free online alternatives to ${toolName}. All tools are private, browser-based, and require no signup.`,
   };
 }
 
 export function generateMetaForComparison(t1: string, t2: string): { title: string; description: string } {
   return {
-    title: `${t1} vs ${t2}: Side-by-Side Comparison — ${SITE_NAME}`,
+    title: `${t1} vs ${t2}: Side-by-Side Comparison`,
     description: `Compare ${t1} vs ${t2} online. Features, privacy, ease of use, and performance. Find out which free online tool is better for your needs.`,
   };
 }
 
 export function generateMetaForConverter(source: string, target: string): { title: string; description: string } {
   return {
-    title: `Free ${source.toUpperCase()} to ${target.toUpperCase()} Converter — ${SITE_NAME}`,
+    title: `Free ${source.toUpperCase()} to ${target.toUpperCase()} Converter`,
     description: `Convert ${source.toUpperCase()} to ${target.toUpperCase()} online free. No signup, no uploads, no limits. Fast, private, browser-based ${source.toUpperCase()} to ${target.toUpperCase()} conversion.`,
   };
 }
@@ -558,7 +558,7 @@ export function generateMetaForBestOf(category: string, useCase: string): { titl
   const cat = getCatLabel(category);
   const uc = useCase.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
   return {
-    title: `Best Free ${cat} Tools for ${uc} in 2026 — ${SITE_NAME}`,
+    title: `Best Free ${cat} Tools for ${uc} in 2026`,
     description: `Discover the best free ${cat.toLowerCase()} tools for ${uc}. Curated list with features, comparisons, and rankings. All 100% free, private, and browser-based.`,
   };
 }
@@ -566,14 +566,14 @@ export function generateMetaForBestOf(category: string, useCase: string): { titl
 export function generateMetaForUseCase(useCase: string): { title: string; description: string } {
   const label = useCase.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
   return {
-    title: `Best Free Online Tools for ${label} — ${SITE_NAME}`,
+    title: `Best Free Online Tools for ${label}`,
     description: `The ultimate collection of free online tools for ${label}. Curated by ${SITE_NAME}. All tools are browser-based, private, and completely free — no signup needed.`,
   };
 }
 
 export function generateGlossaryMeta(term: string): { title: string; description: string } {
   return {
-    title: `What Is ${term.toUpperCase()}? Definition & Guide — ${SITE_NAME}`,
+    title: `What Is ${term.toUpperCase()}? Definition & Guide`,
     description: `Learn what ${term.toUpperCase()} is, how it works, and why it matters. Complete guide with examples, use cases, and free online tools for working with ${term.toUpperCase()}.`,
   };
 }

@@ -5,9 +5,9 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { BRAND } from "@/lib/nuvora/brand";
 
 export const metadata: Metadata = {
-  title: `Brand Guidelines — ${SITE_NAME}`,
+  title: `Brand Guidelines`,
   description: `Official ${SITE_NAME} brand guidelines. Logo usage, color palette, typography, voice & tone, and visual identity standards.`,
-  openGraph: { title: `Brand Guidelines — ${SITE_NAME}`, description: `${SITE_NAME} brand guidelines covering logo, colors, typography, and tone of voice.`, url: `${SITE_URL}/brand` },
+  openGraph: { title: `Brand Guidelines`, description: `${SITE_NAME} brand guidelines covering logo, colors, typography, and tone of voice.`, url: `${SITE_URL}/brand` },
   alternates: { canonical: `${SITE_URL}/brand` },
 };
 

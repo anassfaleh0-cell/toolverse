@@ -5,14 +5,14 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: `Technical Glossary — Network, Security, and Developer Terms | ${SITE_NAME}`,
+    title: `Technical Glossary — Network, Security, and Developer Terms`,
   description: `Comprehensive A-Z glossary of 60+ technical terms covering DNS, SSL/TLS, HTTP, networking, security, web performance, and developer concepts. Free reference for IT professionals.`,
   openGraph: {
-    title: `Technical Glossary — Network, Security, and Developer Terms | ${SITE_NAME}`,
+  title: `Technical Glossary — Network, Security, and Developer Terms`,
     description: `A-Z reference of 60+ essential technical terms for developers, network engineers, and security professionals.`,
     url: `${SITE_URL}/glossary`,
   },
-  twitter: { card: "summary_large_image", title: `Technical Glossary — Network, Security, and Developer Terms | ${SITE_NAME}`, description: `A-Z reference of essential technical terms.` },
+  twitter: { card: "summary_large_image", title: `Technical Glossary — Network, Security, and Developer Terms`, description: `A-Z reference of essential technical terms.` },
   alternates: { canonical: `${SITE_URL}/glossary` },
 };
 

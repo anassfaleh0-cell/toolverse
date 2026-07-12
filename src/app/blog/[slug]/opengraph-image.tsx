@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { SITE_NAME } from "@/lib/constants";
+import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 export const runtime = "edge";
 export const size = { width: 1200, height: 630 };
@@ -52,7 +52,7 @@ export default async function Image() {
           color: "#c7d2fe",
         }}
       >
-        nuvora.tools
+        {new URL(SITE_URL).hostname}
       </div>
     </div>,
     size,

@@ -6,7 +6,7 @@ import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import { getFeaturedTools } from "@/lib/registry";
 
 export const metadata: Metadata = {
-  title: `Editor&apos;s Picks — Curated Selection of Best Tools | ${SITE_NAME}`,
+  title: `Editor&apos;s Picks — Curated Selection of Best Tools`,
   description: "Hand-picked selection of the best free online tools. Our editors curate the most useful tools for developers, designers, and IT professionals.",
   openGraph: { title: `Editor&apos;s Picks — Curated Tools`, description: "Hand-picked selection of best free online tools." },
   twitter: { title: `Editor&apos;s Picks`, description: "Hand-picked selection of best free online tools." },

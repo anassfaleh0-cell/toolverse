@@ -4,7 +4,7 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: `DNS Resolution Flow — How DNS Works Step by Step | ${SITE_NAME}`,
+  title: `DNS Resolution Flow — How DNS Works Step by Step`,
   description: "Visual guide to DNS resolution: from browser to recursive resolver to authoritative nameserver. Understand every step of the DNS lookup process with diagrams.",
   openGraph: { title: "DNS Resolution Flow — How DNS Works Step by Step", description: "Visual guide to DNS resolution from browser to authoritative nameserver." },
   twitter: { title: "DNS Resolution Flow", description: "Visual guide to DNS resolution." },

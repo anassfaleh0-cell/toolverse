@@ -5,11 +5,11 @@ import { breadcrumbSchema } from "@/lib/seo";
 import { AUTHORS } from "@/lib/content/authors";
 
 export const metadata: Metadata = {
-  title: `Anass Faleh — Founder & Developer, ${SITE_NAME}`,
+  title: `Anass Faleh — Founder & Developer, Nuvora`,
   description: `Meet Anass Faleh, the software engineer and founder behind ${SITE_NAME}. 10+ years of experience building web applications and developer tools.`,
   alternates: { canonical: `${SITE_URL}/authors/founder` },
   openGraph: {
-    title: `Anass Faleh — Founder & Developer, ${SITE_NAME}`,
+    title: `Anass Faleh — Founder & Developer, Nuvora`,
     description: `Meet the person building ${SITE_NAME}.`,
   },
 };

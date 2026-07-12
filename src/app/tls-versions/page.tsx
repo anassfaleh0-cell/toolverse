@@ -6,11 +6,11 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { Card, Badge } from "@/components/ui";
 
 export const metadata: Metadata = {
-  title: `TLS/SSL Versions Timeline — Complete Reference | ${SITE_NAME}`,
+  title: `TLS/SSL Versions Timeline — Complete Reference`,
   description: `Timeline of SSL and TLS protocol versions from SSL 2.0 (1995) to TLS 1.3 (2018). Key features, security status, deprecation dates, and recommendations.`,
   alternates: { canonical: `${SITE_URL}/tls-versions` },
   openGraph: {
-    title: `TLS/SSL Versions Timeline — ${SITE_NAME}`,
+    title: `TLS/SSL Versions Timeline`,
     description: `Complete timeline and comparison of SSL/TLS protocol versions with security status and feature highlights.`,
   },
 };

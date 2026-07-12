@@ -17,11 +17,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const tag = getTag(slug);
   if (!tag) return {};
   return {
-    title: `${tag.name} Tools - ${SITE_NAME}`,
+    title: `${tag.name} Tools`,
     description: tag.getDescription(),
     alternates: { canonical: `${SITE_URL}/tag/${tag.slug}` },
-    openGraph: { title: `${tag.name} Tools - ${SITE_NAME}`, description: tag.getDescription() },
-    twitter: { card: "summary_large_image", title: `${tag.name} Tools - ${SITE_NAME}`, description: tag.getDescription() },
+    openGraph: { title: `${tag.name} Tools`, description: tag.getDescription() },
+    twitter: { card: "summary_large_image", title: `${tag.name} Tools`, description: tag.getDescription() },
   };
 }
 

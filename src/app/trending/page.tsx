@@ -6,10 +6,10 @@ import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import { getInternalTools } from "@/lib/registry";
 
 export const metadata: Metadata = {
-  title: `Trending Tools — Most Popular Online Tools | ${SITE_NAME}`,
+  title: `Trending Tools — Most Popular Online Tools`,
   description: "Discover the most popular tools on Nuvora. See what other users are using for DNS lookup, IP lookup, SSL checks, and more.",
-  openGraph: { title: `Trending Tools — Most Popular Online Tools | ${SITE_NAME}`, description: "Most popular tools on Nuvora.", url: `${SITE_URL}/trending` },
-  twitter: { card: "summary_large_image", title: `Trending Tools — Most Popular Online Tools | ${SITE_NAME}`, description: "Most popular tools on Nuvora." },
+  openGraph: { title: `Trending Tools — Most Popular Online Tools`, description: "Most popular tools on Nuvora.", url: `${SITE_URL}/trending` },
+  twitter: { card: "summary_large_image", title: `Trending Tools — Most Popular Online Tools`, description: "Most popular tools on Nuvora." },
   alternates: { canonical: `${SITE_URL}/trending` },
 };
 

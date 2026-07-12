@@ -6,9 +6,9 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { getCategories } from "@/lib/registry";
 
 export const metadata: Metadata = {
-  title: `All Tool Categories — ${SITE_NAME}`,
+  title: `All Tool Categories`,
   description: `Browse all tool categories on ${SITE_NAME}. Find the right tool for every task — from network diagnostics and security to AI, SEO, and design.`,
-  openGraph: { title: `All Tool Categories — ${SITE_NAME}`, description: `Browse every tool category on ${SITE_NAME} and find the perfect tool.`, url: `${SITE_URL}/categories` },
+  openGraph: { title: `All Tool Categories`, description: `Browse every tool category on ${SITE_NAME} and find the perfect tool.`, url: `${SITE_URL}/categories` },
   alternates: { canonical: `${SITE_URL}/categories` },
 };
 

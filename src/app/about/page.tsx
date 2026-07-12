@@ -8,10 +8,10 @@ import { getAllContent } from "@/lib/content/registry";
 import { AUTHORS } from "@/lib/content/authors";
 
 export const metadata: Metadata = {
-  title: `About ${SITE_NAME} — Editorial Standards & Mission`,
+  title: `About Nuvora — Editorial Standards & Mission`,
   description: `Learn about ${SITE_NAME}'s editorial policy, content methodology, accuracy standards, and how we research and test every tool and guide.`,
-  openGraph: { title: `About ${SITE_NAME}`, description: `${SITE_NAME} is a free online platform providing network diagnostic tools, security checkers, and educational content.`, url: `${SITE_URL}/about` },
-  twitter: { card: "summary_large_image", title: `About ${SITE_NAME}`, description: `${SITE_NAME} is a free online platform providing network diagnostic tools.` },
+  openGraph: { title: `About Nuvora`, description: `${SITE_NAME} is a free online platform providing network diagnostic tools, security checkers, and educational content.`, url: `${SITE_URL}/about` },
+  twitter: { card: "summary_large_image", title: `About Nuvora`, description: `${SITE_NAME} is a free online platform providing network diagnostic tools.` },
   alternates: { canonical: `${SITE_URL}/about` },
 };
 

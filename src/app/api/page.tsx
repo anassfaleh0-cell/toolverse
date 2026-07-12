@@ -5,9 +5,9 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { BRAND } from "@/lib/nuvora/brand";
 
 export const metadata: Metadata = {
-  title: `${SITE_NAME} API — Coming Soon`,
+  title: `Nuvora API — Coming Soon`,
   description: `${SITE_NAME} API is coming soon. Programmatic access to all tools — DNS lookup, SSL checker, WHOIS, PDF conversion, and more. RESTful endpoints with simple authentication.`,
-  openGraph: { title: `${SITE_NAME} API`, description: `${SITE_NAME} API for developers. Programmatic access to all free online tools. Coming soon.`, url: `${SITE_URL}/api` },
+  openGraph: { title: `Nuvora API`, description: `${SITE_NAME} API for developers. Programmatic access to all free online tools. Coming soon.`, url: `${SITE_URL}/api` },
   alternates: { canonical: `${SITE_URL}/api` },
 };
 

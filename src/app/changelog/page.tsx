@@ -4,7 +4,7 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: `Changelog — Release Notes | ${SITE_NAME}`,
+  title: `Changelog — Release Notes`,
   description: `Track every update, improvement, and new tool added to ${SITE_NAME}. Full release history and changelog.`,
   openGraph: { title: `Changelog — Release Notes`, description: `Full release history for ${SITE_NAME}.`, url: `${SITE_URL}/changelog` },
   twitter: { title: `Changelog`, description: `Full release history for ${SITE_NAME}.` },

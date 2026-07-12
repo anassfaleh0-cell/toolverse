@@ -6,10 +6,10 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import type { Thing, WithContext } from "schema-dts";
 
 export const metadata: Metadata = {
-  title: `${SITE_NAME} on YouTube`,
+  title: `Nuvora on YouTube`,
   description: `Free ${SITE_NAME} tools tutorials, tips, and guides. New videos weekly.`,
   openGraph: {
-    title: `${SITE_NAME} on YouTube`,
+    title: `Nuvora on YouTube`,
     description: `Free ${SITE_NAME} tools tutorials. New videos weekly.`,
     url: `${SITE_URL}/youtube`,
   },

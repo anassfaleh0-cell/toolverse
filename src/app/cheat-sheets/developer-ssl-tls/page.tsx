@@ -6,11 +6,11 @@ import { Card, Badge } from "@/components/ui";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: `SSL/TLS Developer Cheat Sheet — Commands, Ciphers, Protocol Versions | ${SITE_NAME}`,
+  title: `SSL/TLS Developer Cheat Sheet — Commands, Ciphers, Protocol Versions`,
   description: `Complete SSL/TLS cheat sheet for developers. Quick reference for OpenSSL commands, TLS protocol versions (1.0–1.3), cipher suites, certificate troubleshooting, and common error codes.`,
   alternates: { canonical: `${SITE_URL}/cheat-sheets/developer-ssl-tls` },
   openGraph: {
-    title: `SSL/TLS Developer Cheat Sheet — ${SITE_NAME}`,
+    title: `SSL/TLS Developer Cheat Sheet`,
     description: `Quick reference for OpenSSL commands, TLS protocol versions, cipher suites, certificate troubleshooting, and common error codes.`,
   },
 };

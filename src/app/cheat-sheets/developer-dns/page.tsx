@@ -6,11 +6,11 @@ import { Card, Badge } from "@/components/ui";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: `DNS Developer Cheat Sheet — Commands, Record Types, Troubleshooting | ${SITE_NAME}`,
+  title: `DNS Developer Cheat Sheet — Commands, Record Types, Troubleshooting`,
   description: `Complete DNS cheat sheet for developers. Quick reference for nslookup, dig, host commands, DNS record types (A, AAAA, CNAME, MX, TXT, NS, SOA, SRV, PTR, CAA), response codes, TTL values, and troubleshooting tips.`,
   alternates: { canonical: `${SITE_URL}/cheat-sheets/developer-dns` },
   openGraph: {
-    title: `DNS Developer Cheat Sheet — ${SITE_NAME}`,
+    title: `DNS Developer Cheat Sheet`,
     description: `Quick reference for common DNS commands, record types, response codes, and developer troubleshooting tips.`,
   },
 };

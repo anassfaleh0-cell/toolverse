@@ -6,7 +6,7 @@ import { breadcrumbSchema, webPageSchema, faqSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `The Ultimate SSL/TLS Guide — Certificates, Handshakes, and Security - ${SITE_NAME}`,
+  title: `The Ultimate SSL/TLS Guide — Certificates, Handshakes, and Security`,
   description: "A comprehensive guide to SSL/TLS covering how TLS certificates work, DV vs OV vs EV certificate types, the TLS handshake step-by-step, TLS 1.2 vs 1.3 comparison, common SSL issues, and best practices.",
   openGraph: {
     title: "The Ultimate SSL/TLS Guide — Certificates, Handshakes, and Security",

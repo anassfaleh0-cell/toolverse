@@ -6,11 +6,11 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { Card } from "@/components/ui";
 
 export const metadata: Metadata = {
-  title: `DNS Record Types — Complete Reference | ${SITE_NAME}`,
+  title: `DNS Record Types — Complete Reference`,
   description: `Complete reference of all DNS record types including A, AAAA, CNAME, MX, TXT, NS, SOA, SRV, CAA, PTR, and more. Each type with purpose, format, examples, and when to use it.`,
   alternates: { canonical: `${SITE_URL}/dns-record-types` },
   openGraph: {
-    title: `DNS Record Types Reference — ${SITE_NAME}`,
+    title: `DNS Record Types Reference`,
     description: `Every DNS record type explained with purpose, format, examples, and use cases.`,
   },
 };

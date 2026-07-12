@@ -4,10 +4,10 @@ import { JsonLd } from "@/components/shared";
 import { webPageSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `About Our Research - ${SITE_NAME}`,
+  title: `About Our Research`,
   description: `How ${SITE_NAME} produces authoritative guides, comparisons, and tutorials through thorough research and expert analysis.`,
   alternates: { canonical: `${SITE_URL}/about-our-research` },
-  openGraph: { title: `About Our Research - ${SITE_NAME}` },
+  openGraph: { title: `About Our Research` },
 };
 
 export default function AboutOurResearchPage() {

@@ -15,7 +15,7 @@ export const CATEGORIES: Category[] = [
     label: "Text & Writing",
     icon: "✍️",
     description: "Writing assistants, grammar checkers, markdown editors, and text analysis tools.",
-    seoTitle: `Text & Writing Tools - ${SITE_NAME}`,
+    seoTitle: `Text & Writing Tools`,
     seoDescription: `Free online text and writing tools for ${SITE_NAME}. Markdown editors, text diff checkers, and more to supercharge your writing workflow.`,
   },
   {
@@ -23,7 +23,7 @@ export const CATEGORIES: Category[] = [
     label: "Image & Design",
     icon: "🎨",
     description: "Image editors, color palette generators, CSS gradient tools, and design utilities.",
-    seoTitle: `Image & Design Tools - ${SITE_NAME}`,
+    seoTitle: `Image & Design Tools`,
     seoDescription: `Free online image and design tools for ${SITE_NAME}. Color palette generators, image optimizers, CSS gradient tools, and design resources.`,
   },
   {
@@ -31,7 +31,7 @@ export const CATEGORIES: Category[] = [
     label: "Code & Development",
     icon: "💻",
     description: "Code formatters, regex builders, API testers, JSON tools, and developer utilities.",
-    seoTitle: `Developer Tools - ${SITE_NAME}`,
+    seoTitle: `Developer Tools`,
     seoDescription: `Free online developer tools for ${SITE_NAME}. JSON formatters, regex builders, API testers, and code utilities for developers.`,
   },
   {
@@ -39,7 +39,7 @@ export const CATEGORIES: Category[] = [
     label: "Data & Analytics",
     icon: "📊",
     description: "SQL builders, chart makers, data visualization, and analytics tools.",
-    seoTitle: `Data & Analytics Tools - ${SITE_NAME}`,
+    seoTitle: `Data & Analytics Tools`,
     seoDescription: `Free online data and analytics tools for ${SITE_NAME}. SQL query builders, chart makers, and data visualization utilities.`,
   },
   {
@@ -47,7 +47,7 @@ export const CATEGORIES: Category[] = [
     label: "Audio & Video",
     icon: "🎵",
     description: "Audio converters, video editors, media tools, and multimedia utilities.",
-    seoTitle: `Audio & Video Tools - ${SITE_NAME}`,
+    seoTitle: `Audio & Video Tools`,
     seoDescription: `Free online audio and video tools for ${SITE_NAME}. Audio converters, media editors, and multimedia processing utilities.`,
   },
   {
@@ -55,7 +55,7 @@ export const CATEGORIES: Category[] = [
     label: "Productivity",
     icon: "⚡",
     description: "IP tools, timers, and utilities that help you work smarter and faster.",
-    seoTitle: `Productivity Tools - ${SITE_NAME}`,
+    seoTitle: `Productivity Tools`,
     seoDescription: `Free online productivity tools for ${SITE_NAME}. IP lookup, timers, and utilities designed to help you work smarter.`,
   },
   {
@@ -63,7 +63,7 @@ export const CATEGORIES: Category[] = [
     label: "Network & Internet",
     icon: "🌐",
     description: "WHOIS lookup, DNS tools, SSL checkers, and network diagnostic utilities.",
-    seoTitle: `Network & Internet Tools - ${SITE_NAME}`,
+    seoTitle: `Network & Internet Tools`,
     seoDescription: `Free online network and internet tools for ${SITE_NAME}. WHOIS lookup, DNS checkers, SSL certificate validators, and network diagnostics.`,
   },
   {
@@ -71,7 +71,7 @@ export const CATEGORIES: Category[] = [
     label: "Finance",
     icon: "💰",
     description: "Mortgage calculators, loan calculators, budgeting tools, and financial planning utilities.",
-    seoTitle: `Finance Tools - ${SITE_NAME}`,
+    seoTitle: `Finance Tools`,
     seoDescription: `Free online finance tools for ${SITE_NAME}. Mortgage calculators, loan amortization, compound interest, salary converters, and financial planning utilities.`,
   },
   {
@@ -79,7 +79,7 @@ export const CATEGORIES: Category[] = [
     label: "Calculators",
     icon: "🧮",
     description: "BMI calculators, calorie counters, age calculators, date calculators, and general math utilities.",
-    seoTitle: `Online Calculators - ${SITE_NAME}`,
+    seoTitle: `Online Calculators`,
     seoDescription: `Free online calculators for ${SITE_NAME}. BMI, calorie, age, date, time, unit, scientific, and general math calculators for everyday use.`,
   },
   {
@@ -87,7 +87,7 @@ export const CATEGORIES: Category[] = [
     label: "Security",
     icon: "🔒",
     description: "Password strength checkers, breach checkers, CSRF generators, SSL tests, and security scanners.",
-    seoTitle: `Security Tools - ${SITE_NAME}`,
+    seoTitle: `Security Tools`,
     seoDescription: `Free online security tools for ${SITE_NAME}. Password strength checkers, data breach checks, SSL testers, CSP validators, and XSS scanners.`,
   },
   {
@@ -95,7 +95,7 @@ export const CATEGORIES: Category[] = [
     label: "AI",
     icon: "🤖",
     description: "AI text summarizers, rewriters, grammar checkers, sentiment analyzers, and content generation tools.",
-    seoTitle: `AI Tools - ${SITE_NAME}`,
+    seoTitle: `AI Tools`,
     seoDescription: `Free online AI tools for ${SITE_NAME}. Text summarization, rewriting, grammar checking, sentiment analysis, keyword extraction, and plagiarism detection.`,
   },
   {
@@ -103,7 +103,7 @@ export const CATEGORIES: Category[] = [
     label: "SEO",
     icon: "📈",
     description: "Keyword density checkers, SEO audits, page speed tests, backlink checkers, and SERP preview tools.",
-    seoTitle: `SEO Tools - ${SITE_NAME}`,
+    seoTitle: `SEO Tools`,
     seoDescription: `Free online SEO tools for ${SITE_NAME}. Keyword density analyzers, SEO audits, SERP previews, backlink checkers, and page speed testers.`,
   },
   {
@@ -111,7 +111,7 @@ export const CATEGORIES: Category[] = [
     label: "Converters",
     icon: "🔄",
     description: "CSV, JSON, XML, YAML, Markdown, HTML, and image format converters for data transformation.",
-    seoTitle: `File & Data Converters - ${SITE_NAME}`,
+    seoTitle: `File & Data Converters`,
     seoDescription: `Free online converters for ${SITE_NAME}. CSV to JSON, JSON to XML, Markdown to HTML, image format converters, and data transformation tools.`,
   },
   {
@@ -119,7 +119,7 @@ export const CATEGORIES: Category[] = [
     label: "Marketing",
     icon: "📣",
     description: "SEO tools, social media schedulers, email marketing platforms, analytics dashboards, and growth marketing utilities.",
-    seoTitle: `Marketing Tools - ${SITE_NAME}`,
+    seoTitle: `Marketing Tools`,
     seoDescription: `Free online marketing tools for ${SITE_NAME}. SEO analyzers, social media schedulers, email marketing utilities, and growth hacking tools.`,
   },
   {
@@ -127,7 +127,7 @@ export const CATEGORIES: Category[] = [
     label: "Writing",
     icon: "✏️",
     description: "Grammar checkers, plagiarism detectors, readability analyzers, AI writing assistants, and editing utilities.",
-    seoTitle: `Writing Tools - ${SITE_NAME}`,
+    seoTitle: `Writing Tools`,
     seoDescription: `Free online writing tools for ${SITE_NAME}. Grammar checkers, plagiarism detectors, AI writing assistants, and editing utilities for better content.`,
   },
   {
@@ -135,7 +135,7 @@ export const CATEGORIES: Category[] = [
     label: "Coding",
     icon: "⌨️",
     description: "Code formatters, linters, compilers, validators, and debugging tools for JavaScript, Python, HTML, CSS, and more.",
-    seoTitle: `Coding Tools - ${SITE_NAME}`,
+    seoTitle: `Coding Tools`,
     seoDescription: `Free online coding tools for ${SITE_NAME}. Code formatters, compilers, validators, linters, and debugging utilities for every programming language.`,
   },
   {
@@ -143,7 +143,7 @@ export const CATEGORIES: Category[] = [
     label: "Data",
     icon: "📊",
     description: "JSON editors, CSV processors, SQL builders, Excel utilities, data visualization, and ETL tools.",
-    seoTitle: `Data Tools - ${SITE_NAME}`,
+    seoTitle: `Data Tools`,
     seoDescription: `Free online data tools for ${SITE_NAME}. JSON editors, CSV processors, SQL query builders, Excel converters, and data visualization utilities.`,
   },
   {
@@ -151,7 +151,7 @@ export const CATEGORIES: Category[] = [
     label: "Performance",
     icon: "⚡",
     description: "Speed testers, cache checkers, CDN analyzers, Core Web Vitals tools, and web optimization utilities.",
-    seoTitle: `Performance Tools - ${SITE_NAME}`,
+    seoTitle: `Performance Tools`,
     seoDescription: `Free online performance tools for ${SITE_NAME}. Speed testers, cache validators, CDN checkers, and web performance optimization utilities.`,
   },
   {
@@ -159,7 +159,7 @@ export const CATEGORIES: Category[] = [
     label: "DevOps",
     icon: "🛠️",
     description: "CI/CD tools, Docker utilities, Kubernetes guides, monitoring dashboards, and infrastructure management tools.",
-    seoTitle: `DevOps Tools - ${SITE_NAME}`,
+    seoTitle: `DevOps Tools`,
     seoDescription: `Free online DevOps tools for ${SITE_NAME}. CI/CD utilities, Docker helpers, Kubernetes guides, monitoring dashboards, and infrastructure tools.`,
   },
   {
@@ -167,7 +167,7 @@ export const CATEGORIES: Category[] = [
     label: "Cloud",
     icon: "☁️",
     description: "AWS tools, GCP guides, Azure utilities, cloud storage managers, and multi-cloud management resources.",
-    seoTitle: `Cloud Tools - ${SITE_NAME}`,
+    seoTitle: `Cloud Tools`,
     seoDescription: `Free online cloud tools for ${SITE_NAME}. AWS utilities, GCP guides, Azure tools, cloud storage managers, and multi-cloud management resources.`,
   },
   {
@@ -175,7 +175,7 @@ export const CATEGORIES: Category[] = [
     label: "E-commerce",
     icon: "🛒",
     description: "Product management tools, pricing calculators, shipping analyzers, inventory trackers, and e-commerce optimization utilities.",
-    seoTitle: `E-commerce Tools - ${SITE_NAME}`,
+    seoTitle: `E-commerce Tools`,
     seoDescription: `Free online e-commerce tools for ${SITE_NAME}. Product management utilities, pricing calculators, shipping analyzers, and store optimization tools.`,
   },
   {
@@ -183,7 +183,7 @@ export const CATEGORIES: Category[] = [
     label: "Analytics",
     icon: "📈",
     description: "Tracking tools, data visualization, report generators, goal funnels, and business intelligence utilities.",
-    seoTitle: `Analytics Tools - ${SITE_NAME}`,
+    seoTitle: `Analytics Tools`,
     seoDescription: `Free online analytics tools for ${SITE_NAME}. Tracking tools, data visualization, report generators, and business intelligence utilities.`,
   },
   {
@@ -191,7 +191,7 @@ export const CATEGORIES: Category[] = [
     label: "Conversion Optimization",
     icon: "🎯",
     description: "A/B testing tools, landing page builders, funnel analyzers, heatmap generators, and CRO utilities.",
-    seoTitle: `Conversion Optimization Tools - ${SITE_NAME}`,
+    seoTitle: `Conversion Optimization Tools`,
     seoDescription: `Free online conversion optimization tools for ${SITE_NAME}. A/B testing, landing page builders, funnel analyzers, and CRO utilities.`,
   },
   {
@@ -199,7 +199,7 @@ export const CATEGORIES: Category[] = [
     label: "Email",
     icon: "📧",
     description: "Email marketing tools, automation builders, template editors, deliverability checkers, and newsletter utilities.",
-    seoTitle: `Email Tools - ${SITE_NAME}`,
+    seoTitle: `Email Tools`,
     seoDescription: `Free online email tools for ${SITE_NAME}. Email marketing platforms, automation builders, template editors, and deliverability tools.`,
   },
   {
@@ -207,7 +207,7 @@ export const CATEGORIES: Category[] = [
     label: "Social Media",
     icon: "📱",
     description: "Scheduling tools, analytics dashboards, content planners, hashtag generators, and social media management utilities.",
-    seoTitle: `Social Media Tools - ${SITE_NAME}`,
+    seoTitle: `Social Media Tools`,
     seoDescription: `Free online social media tools for ${SITE_NAME}. Scheduling platforms, analytics dashboards, content planners, and hashtag generators.`,
   },
   {
@@ -215,7 +215,7 @@ export const CATEGORIES: Category[] = [
     label: "Video",
     icon: "🎬",
     description: "Video editors, converters, screen recorders, streaming tools, and video optimization utilities.",
-    seoTitle: `Video Tools - ${SITE_NAME}`,
+    seoTitle: `Video Tools`,
     seoDescription: `Free online video tools for ${SITE_NAME}. Video editors, format converters, screen recorders, streaming tools, and optimization utilities.`,
   },
   {
@@ -223,7 +223,7 @@ export const CATEGORIES: Category[] = [
     label: "Audio",
     icon: "🎧",
     description: "Audio editors, format converters, podcasting tools, voice recorders, and audio processing utilities.",
-    seoTitle: `Audio Tools - ${SITE_NAME}`,
+    seoTitle: `Audio Tools`,
     seoDescription: `Free online audio tools for ${SITE_NAME}. Audio editors, format converters, podcasting tools, and audio processing utilities.`,
   },
   {
@@ -231,7 +231,7 @@ export const CATEGORIES: Category[] = [
     label: "Productivity Apps",
     icon: "✅",
     description: "Task managers, calendar tools, time trackers, note-taking apps, and workflow automation utilities.",
-    seoTitle: `Productivity Apps - ${SITE_NAME}`,
+    seoTitle: `Productivity Apps`,
     seoDescription: `Free online productivity apps for ${SITE_NAME}. Task managers, calendar tools, time trackers, note-taking apps, and workflow automation.`,
   },
   {
@@ -239,7 +239,7 @@ export const CATEGORIES: Category[] = [
     label: "Finance Apps",
     icon: "💳",
     description: "Loan calculators, budget planners, investment trackers, tax estimators, and personal finance management tools.",
-    seoTitle: `Finance Apps - ${SITE_NAME}`,
+    seoTitle: `Finance Apps`,
     seoDescription: `Free online finance apps for ${SITE_NAME}. Loan calculators, budget planners, investment trackers, tax estimators, and personal finance tools.`,
   },
   {
@@ -247,7 +247,7 @@ export const CATEGORIES: Category[] = [
     label: "Health & Fitness",
     icon: "🏥",
     description: "BMI calculators, fitness trackers, calorie counters, workout planners, and health monitoring tools.",
-    seoTitle: `Health & Fitness Tools - ${SITE_NAME}`,
+    seoTitle: `Health & Fitness Tools`,
     seoDescription: `Free online health and fitness tools for ${SITE_NAME}. BMI calculators, fitness trackers, workout planners, and health monitoring utilities.`,
   },
   {
@@ -255,7 +255,7 @@ export const CATEGORIES: Category[] = [
     label: "Education",
     icon: "📚",
     description: "Learning tools, course builders, exam prep utilities, flashcard makers, and educational resource generators.",
-    seoTitle: `Education Tools - ${SITE_NAME}`,
+    seoTitle: `Education Tools`,
     seoDescription: `Free online education tools for ${SITE_NAME}. Learning platforms, course builders, exam prep utilities, and educational resource generators.`,
   },
 ];

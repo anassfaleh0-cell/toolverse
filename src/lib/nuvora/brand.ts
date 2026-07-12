@@ -1,9 +1,11 @@
+import { SITE_URL } from "@/lib/constants";
+
 export const BRAND = {
   name: "Nuvora",
   tagline: "Smart Tools, Simply Done",
   description:
     "Nuvora provides powerful free online tools for everyone — from developers to designers, students to startups. Every tool runs entirely in your browser.",
-  url: "https://nuvora.tools",
+  url: SITE_URL,
   email: "hello@nuvora.tools",
   founded: "2026",
 

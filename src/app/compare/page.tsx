@@ -6,10 +6,10 @@ import { Breadcrumbs, JsonLd } from "@/components/shared";
 import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `Comparisons - ${SITE_NAME}`,
+  title: `Comparisons`,
   description: `Side-by-side comparisons of network tools, protocols, and technologies. Make informed decisions with our detailed comparison guides. ${SITE_DESCRIPTION}`,
-  openGraph: { title: `Comparisons - ${SITE_NAME}`, description: `Network tool and protocol comparisons.`, url: `${SITE_URL}/compare` },
-  twitter: { card: "summary_large_image", title: `Comparisons - ${SITE_NAME}`, description: `Network tool and protocol comparisons.` },
+  openGraph: { title: `Comparisons`, description: `Network tool and protocol comparisons.`, url: `${SITE_URL}/compare` },
+  twitter: { card: "summary_large_image", title: `Comparisons`, description: `Network tool and protocol comparisons.` },
   alternates: { canonical: `${SITE_URL}/compare` },
 };
 

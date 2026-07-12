@@ -6,11 +6,11 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { Card, Badge, Callout } from "@/components/ui";
 
 export const metadata: Metadata = {
-  title: `Hash Algorithm Comparison — MD5, SHA-1, SHA-256 & More | ${SITE_NAME}`,
+  title: `Hash Algorithm Comparison — MD5, SHA-1, SHA-256 & More`,
   description: `Compare MD5, SHA-1, SHA-256, SHA-384, and SHA-512 hash algorithms. Bit length, block size, rounds, security status, and use cases for each algorithm.`,
   alternates: { canonical: `${SITE_URL}/hash-algorithms` },
   openGraph: {
-    title: `Hash Algorithm Comparison — ${SITE_NAME}`,
+    title: `Hash Algorithm Comparison`,
     description: `Side-by-side comparison of popular hash algorithms with security status and recommendations.`,
   },
 };

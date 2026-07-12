@@ -6,7 +6,7 @@ import { breadcrumbSchema, webPageSchema, faqSchema } from "@/lib/seo";
 import type { FaqItem } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `The Ultimate JSON Guide — Syntax, Validation, and Data Exchange - ${SITE_NAME}`,
+  title: `The Ultimate JSON Guide — Syntax, Validation, and Data Exchange`,
   description: "A comprehensive guide to JSON covering syntax (objects, arrays, strings, numbers, booleans, null), JSON vs XML vs YAML comparison, validation and formatting, JSON in APIs, and essential JSON tools.",
   openGraph: {
     title: "The Ultimate JSON Guide — Syntax, Validation, and Data Exchange",
