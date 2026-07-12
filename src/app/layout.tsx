@@ -9,6 +9,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { CookieConsent } from "@/components/shared/cookie-consent";
 import { Analytics } from "@/components/shared/analytics";
+import { ServiceWorkerRegister } from "@/components/shared/service-worker-register";
 import { JsonLd } from "@/components/shared";
 import { BRAND } from "@/lib/nuvora/brand";
 
@@ -70,15 +71,14 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "48x48" },
       { url: "/favicon.svg", type: "image/svg+xml" },
     ],
     apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      { url: "/apple-touch-icon.svg", sizes: "180x180", type: "image/svg+xml" },
     ],
     other: [
-      { rel: "icon", url: "/icon-192.png", sizes: "192x192", type: "image/png" },
-      { rel: "icon", url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+      { rel: "icon", url: "/icon-192.svg", sizes: "192x192", type: "image/svg+xml" },
+      { rel: "icon", url: "/icon-512.svg", sizes: "512x512", type: "image/svg+xml" },
     ],
   },
 };
@@ -97,6 +97,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable}`}>
       <head />
       <body className="flex min-h-screen flex-col bg-background font-sans antialiased">
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="preload" href="/ffmpeg/ffmpeg-core.wasm" as="fetch" type="application/wasm" crossOrigin="anonymous" />
         <ThemeProvider>
           <JsonLd data={{
             "@context": "https://schema.org",
@@ -142,6 +146,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <main id="main-content" className="flex-1"><ErrorBoundary>{children}</ErrorBoundary></main>
           <Footer />
           <CookieConsent />
+          <Suspense fallback={null}><ServiceWorkerRegister /></Suspense>
           <Suspense fallback={null}><Analytics /></Suspense>
           <Suspense fallback={null}><UniversalWorkspace /></Suspense>
           <Suspense fallback={null}><CommandPalette /></Suspense>

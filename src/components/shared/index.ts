@@ -48,3 +48,4 @@ export { ReadingProgress } from "./reading-progress";
 export { TableOfContents } from "./table-of-contents";
 export { StepByStep } from "./step-by-step";
 export { ComparisonTable } from "./comparison-table";
+export { ServiceWorkerRegister } from "./service-worker-register";

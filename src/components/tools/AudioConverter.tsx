@@ -1,9 +1,25 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { Button, Alert, Card, Skeleton } from "@/components/ui";
+import { Button, Alert, Card } from "@/components/ui";
+import { getFFmpeg, formatBytes } from "@/lib/ffmpeg";
 
-const FORMATS = ["MP3", "WAV", "FLAC", "AAC", "OGG"] as const;
+interface FormatConfig {
+  ext: string;
+  args: string[];
+  mime: string;
+}
+
+const FORMAT_CONFIG: Record<string, FormatConfig> = {
+  MP3: { ext: "mp3", args: ["-c:a", "libmp3lame", "-q:a", "2"], mime: "audio/mpeg" },
+  WAV: { ext: "wav", args: ["-c:a", "pcm_s16le"], mime: "audio/wav" },
+  FLAC: { ext: "flac", args: ["-c:a", "flac"], mime: "audio/flac" },
+  AAC: { ext: "aac", args: ["-c:a", "aac", "-b:a", "192k"], mime: "audio/aac" },
+  OGG: { ext: "ogg", args: ["-c:a", "libvorbis", "-q:a", "3"], mime: "audio/ogg" },
+};
+
+const FORMATS = Object.keys(FORMAT_CONFIG);
+const MAX_SIZE = 100 * 1024 * 1024;
 
 export function AudioConverter() {
   const [file, setFile] = useState<File | null>(null);
@@ -11,6 +27,8 @@ export function AudioConverter() {
   const [result, setResult] = useState<string | null>(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [loadProgress, setLoadProgress] = useState(0);
+  const [convertProgress, setConvertProgress] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
 
   function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
@@ -24,24 +42,51 @@ export function AudioConverter() {
 
   async function handleConvert() {
     if (!file) return;
+
+    if (file.size > MAX_SIZE) {
+      setError(`File exceeds 100 MB limit (${formatBytes(file.size)}). FFmpeg.wasm runs in browser memory and cannot process files this large.`);
+      return;
+    }
+
     setLoading(true);
     setError("");
     setResult(null);
+    setLoadProgress(0);
+    setConvertProgress(0);
 
     try {
-      const arrayBuffer = await file.arrayBuffer();
-      const blob = new Blob([arrayBuffer], { type: `audio/${targetFormat.toLowerCase()}` });
+      const ffmpeg = await getFFmpeg((p) => {
+        setLoadProgress(p.done ? 100 : Math.round((p.received / p.total) * 100));
+      });
+      setLoadProgress(100);
+
+      const config = FORMAT_CONFIG[targetFormat];
+      const ext = file.name.substring(file.name.lastIndexOf("."));
+      const inputName = `input${ext}`;
+      const outputName = `output.${config.ext}`;
+
+      const inputData = new Uint8Array(await file.arrayBuffer());
+      await ffmpeg.writeFile(inputName, inputData);
+
+      ffmpeg.on("progress", ({ progress }: { progress: number }) => {
+        setConvertProgress(Math.round(progress * 100));
+      });
+
+      await ffmpeg.exec(["-i", inputName, ...config.args, outputName]);
+
+      const outputData = (await ffmpeg.readFile(outputName)) as Uint8Array;
+      const blob = new Blob([outputData.buffer as ArrayBuffer], { type: config.mime });
       const url = URL.createObjectURL(blob);
       setResult(url);
-    } catch {
-      setError("Conversion failed. Please try again.");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Conversion failed. Please try again.");
     } finally {
       setLoading(false);
     }
   }
 
-  const ext = targetFormat.toLowerCase();
-  const outName = file ? file.name.replace(/\.[^.]+$/, `.${ext}`) : `output.${ext}`;
+  const config = FORMAT_CONFIG[targetFormat];
+  const outName = file ? file.name.replace(/\.[^.]+$/, `.${config.ext}`) : `output.${config.ext}`;
 
   return (
     <div className="mx-auto max-w-3xl space-y-6">
@@ -50,7 +95,7 @@ export function AudioConverter() {
         {file ? (
           <div>
             <p className="font-medium text-zinc-900 dark:text-zinc-100">{file.name}</p>
-            <p className="mt-1 text-sm text-zinc-500">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
+            <p className="mt-1 text-sm text-zinc-500">{formatBytes(file.size)}</p>
             <Button variant="ghost" size="sm" className="mt-2" onClick={() => { setFile(null); setResult(null); }}>Remove</Button>
           </div>
         ) : (
@@ -71,23 +116,47 @@ export function AudioConverter() {
               onClick={() => setTargetFormat(fmt)}
               className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${targetFormat === fmt ? "bg-nuvora-600 text-white" : "bg-zinc-100 text-zinc-700 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"}`}
             >
-              .{fmt.toLowerCase()}
+              .{FORMAT_CONFIG[fmt].ext}
             </button>
           ))}
         </div>
       </div>
 
       <Button onClick={handleConvert} disabled={!file || loading} variant="primary">
-        {loading ? "Converting..." : "Convert"}
+        {loading && loadProgress < 100 ? "Loading FFmpeg..." : loading ? "Converting..." : "Convert"}
       </Button>
 
-      {loading && <Skeleton count={1} columns={1} />}
+      {loading && loadProgress < 100 && (
+        <div className="space-y-2">
+          <div className="flex items-center justify-between text-sm text-zinc-500">
+            <span>Loading FFmpeg...</span>
+            <span>{loadProgress}%</span>
+          </div>
+          <div className="h-2 w-full overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-700">
+            <div className="h-full rounded-full bg-nuvora-600 transition-all duration-300" style={{ width: `${loadProgress}%` }} />
+          </div>
+        </div>
+      )}
+
+      {loading && loadProgress >= 100 && (
+        <div className="space-y-2">
+          <div className="flex items-center justify-between text-sm text-zinc-500">
+            <span>Converting...</span>
+            <span>{convertProgress}%</span>
+          </div>
+          <div className="h-2 w-full overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-700">
+            <div className="h-full rounded-full bg-nuvora-600 transition-all duration-300" style={{ width: `${convertProgress}%` }} />
+          </div>
+        </div>
+      )}
+
       {error && <Alert variant="error">{error}</Alert>}
 
       {result && (
-        <Card variant="default" className="p-5">
+        <Card variant="default" className="space-y-3 p-5">
           <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100">Conversion complete</p>
-          <a href={result} download={outName} className="mt-3 inline-flex items-center gap-2 rounded-lg bg-nuvora-600 px-4 py-2 text-sm font-medium text-white hover:bg-nuvora-700">
+          <audio controls src={result} className="w-full" />
+          <a href={result} download={outName} className="inline-flex items-center gap-2 rounded-lg bg-nuvora-600 px-4 py-2 text-sm font-medium text-white hover:bg-nuvora-700">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             Download {outName}
           </a>

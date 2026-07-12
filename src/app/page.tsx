@@ -141,39 +141,7 @@ function FlagShipTools() {
   );
 }
 
-function Testimonials() {
-  return (
-    <section className="section-below-fold border-b border-border-subtle bg-gradient-to-b from-surface to-background">
-      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">Trusted by developers worldwide</h2>
-          <p className="mt-3 text-lg text-text-secondary">From solo devs to enterprise teams — Nuvora powers millions of lookups and analysis every month.</p>
-        </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-3">
-          {[
-            { quote: "The DNS propagation checker is my go-to before every deploy. The AI analysis catches misconfigurations I'd miss manually.", name: "Alex Chen", role: "DevOps Engineer", initials: "AC" },
-            { quote: "Having SPF, DKIM, and DMARC checks with AI-powered explanations means I can fix email issues without being a security expert.", name: "Sarah Mitchell", role: "Full-Stack Developer", initials: "SM" },
-            { quote: "Background remover works entirely in-browser — no uploads to a server. That's huge for privacy.", name: "Priya Patel", role: "Product Designer", initials: "PP" },
-          ].map(({ quote, name, role, initials }) => (
-            <div key={name} className="group rounded-2xl border border-border-subtle bg-surface p-6 transition-all hover:shadow-lg">
-              <div className="flex items-center gap-3">
-                <div className="flex size-10 items-center justify-center rounded-full bg-nuvora-100 text-xs font-bold text-nuvora-600 dark:bg-nuvora-900/50 dark:text-nuvora-400">{initials}</div>
-                <div>
-                  <p className="text-sm font-semibold text-text-primary">{name}</p>
-                  <p className="text-xs text-text-tertiary">{role}</p>
-                </div>
-                <div className="ml-auto flex items-center gap-1 text-amber-400">
-                  {[...Array(5)].map((_, i) => (<svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-3.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>))}
-                </div>
-              </div>
-              <p className="mt-4 text-sm text-text-secondary leading-relaxed">&ldquo;{quote}&rdquo;</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+
 
 function CategoryGrid() {
   const categories = getCategories();
@@ -274,7 +242,6 @@ export default function Home() {
       <AiShowcase />
       <FlagShipTools />
       <CategoryGrid />
-      <Testimonials />
       <FAQSection />
       <Suspense fallback={null}><RecentlyViewed /></Suspense>
       <Suspense fallback={null}><ContinueReading /></Suspense>

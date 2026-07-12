@@ -1,15 +1,55 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { NuvoraLogo } from "@/components/ui/logo";
 import { NAV_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
+function useFocusTrap(open: boolean, onClose: () => void) {
+  const ref = useRef<HTMLDivElement>(null);
+  const closeRef = useRef(onClose);
+  closeRef.current = onClose;
+
+  useEffect(() => {
+    if (!open || !ref.current) return;
+
+    const panel = ref.current;
+    const focusable = panel.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+    );
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    first?.focus();
+
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        closeRef.current();
+        return;
+      }
+      if (e.key !== "Tab") return;
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last?.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first?.focus();
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [open]);
+
+  return ref;
+}
+
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const mobileMenuRef = useFocusTrap(menuOpen, () => setMenuOpen(false));
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -74,7 +114,7 @@ export function Header() {
       </div>
 
       {menuOpen && (
-        <div className="border-t border-border-subtle bg-surface/95 backdrop-blur-xl px-4 pb-6 pt-2 sm:hidden">
+        <div ref={mobileMenuRef} className="border-t border-border-subtle bg-surface/95 backdrop-blur-xl px-4 pb-6 pt-2 sm:hidden" role="dialog" aria-label="Navigation menu" aria-modal="true">
           <ul className="flex flex-col gap-1">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
