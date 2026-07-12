@@ -59,7 +59,7 @@ const faqItems: FaqItem[] = [
   },
   {
     question: "How does the reverse order option work?",
-    answer: "The &apos;Reverse Order&apos; option reverses the final sorted output after all other sorting and deduplication operations have been applied. This is different from simply switching between A-Z and Z-A modes. For example, with A-Z sort and numerical values, the order would be [1, 2, 3, 4], and enabling reverse would produce [4, 3, 2, 1]. This is useful when you want the benefits of sorting (grouping, deduplication) but need the items in reverse order for a specific display or export requirement.",
+    answer: "The 'Reverse Order' option reverses the final sorted output after all other sorting and deduplication operations have been applied. This is different from simply switching between A-Z and Z-A modes. For example, with A-Z sort and numerical values, the order would be [1, 2, 3, 4], and enabling reverse would produce [4, 3, 2, 1]. This is useful when you want the benefits of sorting (grouping, deduplication) but need the items in reverse order for a specific display or export requirement.",
   },
 ];
 

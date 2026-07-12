@@ -78,7 +78,7 @@ export default async function ConvertPage({ params }: Props) {
           <ul className="mt-6 grid gap-4 sm:grid-cols-2">
             {content.benefits.map((benefit, i) => (
               <li key={i} className="flex gap-3 rounded-xl border border-border-subtle bg-surface p-4">
-                <span className="mt-0.5 shrink-0 text-nuvora-600">&check;</span>
+                <span className="mt-0.5 shrink-0 text-nuvora-600">✓</span>
                 <span className="text-sm text-text-secondary">{benefit}</span>
               </li>
             ))}
