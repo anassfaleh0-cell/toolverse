@@ -35,7 +35,9 @@ function getStats(toolCount: number) {
 export function Hero() {
   const toolCount = getRegisteredToolCount();
   const prefersReduced = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
   const [count, setCount] = useState(0);
+  useEffect(() => { setMounted(true); }, []);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const statsRef = useRef<HTMLDivElement>(null);
   const [statsVisible, setStatsVisible] = useState(false);
@@ -147,7 +149,7 @@ export function Hero() {
                 animate={prefersReduced ? {} : { scale: [1, 1.02, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
-                {count.toLocaleString()}+
+                {(mounted ? count : toolCount).toLocaleString()}+
               </motion.p>
               <p className="mt-2 text-sm font-medium text-text-secondary">Free Tools</p>
             </div>

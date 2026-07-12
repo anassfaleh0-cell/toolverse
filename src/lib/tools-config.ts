@@ -401,6 +401,14 @@ const CONFIGS: Record<string, ToolConfig> = {
   "random-name-picker": { fields: [], buttonText: "Pick", isComingSoon: false },
   "color-contrast-checker": { fields: [], buttonText: "Check", isComingSoon: false },
   "data-size-converter": { fields: [], buttonText: "Convert", isComingSoon: false },
+  "audio-converter": { fields: [], buttonText: "Convert", isComingSoon: false },
+  "video-compressor": { fields: [], buttonText: "Compress", isComingSoon: false },
+  "audio-extractor": { fields: [], buttonText: "Extract", isComingSoon: false },
+  "video-to-mp3": { fields: [], buttonText: "Convert", isComingSoon: false },
+  "video-converter": { fields: [], buttonText: "Convert", isComingSoon: false },
+  "gif-to-mp4": { fields: [], buttonText: "Convert", isComingSoon: false },
+  "ai-content-generator": { fields: [], buttonText: "Generate", isComingSoon: false },
+  "ai-paraphrasing-tool": { fields: [], buttonText: "Paraphrase", isComingSoon: false },
 };
 
 // ── AI Tools ──────────────────────────────────────────────────────────
