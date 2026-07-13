@@ -85,7 +85,7 @@ export function Hero() {
 
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28 lg:py-36">
         <div className="text-center">
-          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-nuvora-200 bg-nuvora-50/80 px-4 py-1.5 text-xs font-medium text-nuvora-700 backdrop-blur-sm dark:border-nuvora-800 dark:bg-nuvora-950/50 dark:text-nuvora-300">
+          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-nuvora-200 bg-nuvora-50/80 px-4 py-1.5 text-xs font-medium text-nuvora-700 backdrop-blur-sm dark:border-nuvora-700/50 dark:bg-nuvora-950 dark:text-nuvora-200">
             <span className="relative flex size-2">
               <motion.span
                 className="absolute inline-flex size-full rounded-full bg-nuvora-400 opacity-75"

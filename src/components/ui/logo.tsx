@@ -2,6 +2,7 @@
 
 import { useId } from "react";
 import { cn } from "@/lib/utils";
+import { SITE_NAME } from "@/lib/constants";
 import Link from "next/link";
 
 interface LogoProps {
@@ -50,7 +51,7 @@ export function Logo({ variant = "horizontal", className, size = "md", href }: L
       "font-bold tracking-tight bg-gradient-to-r from-nuvora-600 via-nuvora-500 to-nuvora-700 bg-clip-text text-transparent dark:from-nuvora-400 dark:via-nuvora-300 dark:to-nuvora-400",
       textSize,
     )}>
-      NuVora
+      {SITE_NAME}
     </span>
   );
 
@@ -66,7 +67,7 @@ export function Logo({ variant = "horizontal", className, size = "md", href }: L
   };
 
   if (href) {
-    return <Link href={href} aria-label="NuVora home">{inner()}</Link>;
+    return <Link href={href} aria-label={`${SITE_NAME} home`}>{inner()}</Link>;
   }
 
   return inner();
@@ -75,10 +76,10 @@ export function Logo({ variant = "horizontal", className, size = "md", href }: L
 export function NuvoraLogo({ className, animated }: { className?: string; animated?: boolean }) {
   const gid = useId();
   return (
-    <Link href="/" className={cn("group inline-flex items-center gap-2.5", className)} aria-label="NuVora home">
+    <Link href="/" className={cn("group inline-flex items-center gap-2.5", className)} aria-label={`${SITE_NAME} home`}>
       <LogoIcon size={36} gradientId={gid} />
       <span className="text-lg font-bold tracking-tight bg-gradient-to-r from-nuvora-600 via-blue-500 to-cyan-500 bg-clip-text text-transparent dark:from-nuvora-400 dark:via-blue-400 dark:to-cyan-400">
-        Nuvora
+        {SITE_NAME}
       </span>
     </Link>
   );
