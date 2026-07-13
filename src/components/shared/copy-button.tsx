@@ -10,12 +10,14 @@ interface CopyButtonProps {
 
 export function CopyButton({ text, label = "Copy" }: CopyButtonProps) {
   const [copied, setCopied] = useState(false);
+  const [pulse, setPulse] = useState(false);
 
   const handleCopy = useCallback(async () => {
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      setPulse(true);
+      setTimeout(() => { setCopied(false); setPulse(false); }, 1500);
     } catch {
       // Clipboard API not available
     }
@@ -27,6 +29,7 @@ export function CopyButton({ text, label = "Copy" }: CopyButtonProps) {
       variant="secondary"
       size="sm"
       onClick={handleCopy}
+      className={pulse ? "nuvora-copy-confirm" : ""}
       aria-label={copied ? "Copied" : `Copy ${label} to clipboard`}
     >
       {copied ? (
@@ -42,7 +45,7 @@ export function CopyButton({ text, label = "Copy" }: CopyButtonProps) {
           >
             <path d="M20 6 9 17l-5-5" />
           </svg>
-          Copied
+          <span className="text-emerald-600 dark:text-emerald-400">Copied</span>
         </>
       ) : (
         <>

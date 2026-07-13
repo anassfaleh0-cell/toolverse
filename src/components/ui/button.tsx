@@ -12,19 +12,19 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles: Record<Variant, string> = {
   primary:
-    "bg-nuvora-600 text-white hover:bg-nuvora-700 active:scale-[0.97] shadow-sm shadow-nuvora-600/20 dark:bg-nuvora-500 dark:hover:bg-nuvora-400 dark:shadow-nuvora-500/20",
+    "nuvora-button-primary rounded-xl",
   secondary:
-    "border border-border-subtle bg-surface text-text-primary hover:bg-surface-secondary active:scale-[0.97]",
+    "border border-border-subtle bg-surface text-text-primary hover:bg-surface-secondary active:scale-[0.97] shadow-sm transition-all duration-150 ease-out",
   ghost:
-    "text-text-secondary hover:bg-surface-secondary hover:text-text-primary",
+    "text-text-secondary hover:bg-surface-secondary hover:text-text-primary transition-all duration-150 ease-out",
   danger:
-    "bg-red-600 text-white hover:bg-red-500 active:scale-[0.97] dark:bg-red-700 dark:hover:bg-red-600",
+    "bg-red-600 text-white hover:bg-red-500 active:scale-[0.97] shadow-sm transition-all duration-150 ease-out dark:bg-red-700 dark:hover:bg-red-600",
 };
 
 const sizeStyles: Record<Size, string> = {
-  sm: "h-9 px-4 text-xs rounded-lg",
-  md: "h-11 px-6 text-sm rounded-xl",
-  lg: "h-12 px-8 text-base rounded-xl",
+  sm: "h-9 px-4 text-xs",
+  md: "h-11 px-6 text-sm",
+  lg: "h-12 px-8 text-base",
 };
 
 export function Button({
@@ -38,7 +38,7 @@ export function Button({
   return (
     <button
       className={cn(
-        "inline-flex items-center justify-center font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nuvora-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-950",
+        "inline-flex items-center justify-center font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nuvora-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-950",
         variantStyles[variant],
         sizeStyles[size],
         disabled && "pointer-events-none opacity-50",

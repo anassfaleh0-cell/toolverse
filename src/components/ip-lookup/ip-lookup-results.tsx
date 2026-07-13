@@ -69,7 +69,7 @@ export function IpLookupResults({
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 nuvora-result-reveal">
       {(() => {
         const hasFullData = data.city !== "—" && data.isp !== "—";
         const privacyScore = hasFullData ? 40 : data.city !== "—" ? 60 : 80;
@@ -102,9 +102,9 @@ export function IpLookupResults({
       )}
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {rows.map((r) => (
+        {rows.map((r, i) => (
           <div key={r.label} className="group relative">
-            <ToolResultCard label={r.label} value={r.value} icon={r.icon} mono={r.mono} />
+            <ToolResultCard label={r.label} value={r.value} icon={r.icon} mono={r.mono} index={i} />
             <div className="absolute right-2 top-2 opacity-0 transition-opacity group-hover:opacity-100">
               <CopyButton text={r.value} label="" />
             </div>

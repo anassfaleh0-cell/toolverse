@@ -36,6 +36,29 @@
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-tertiary: var(--text-tertiary);
+
+  --font-size-display: 3.5rem;
+  --font-size-heading-1: 2.25rem;
+  --font-size-heading-2: 1.75rem;
+  --font-size-heading-3: 1.25rem;
+
+  --shadow-card: 0 1px 2px 0 rgb(0 0 0 / 0.04);
+  --shadow-card-hover: 0 8px 24px -4px rgb(0 0 0 / 0.08);
+  --shadow-button: 0 1px 3px 0 rgb(99 102 241 / 0.2);
+  --shadow-button-hover: 0 4px 12px -2px rgb(99 102 241 / 0.3);
+  --shadow-elevated: 0 12px 32px -8px rgb(0 0 0 / 0.08);
+
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-snappy: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (width >= 40rem) {
+  @theme inline {
+    --font-size-display: 4.5rem;
+    --font-size-heading-1: 3rem;
+    --font-size-heading-2: 2.25rem;
+    --font-size-heading-3: 1.5rem;
+  }
 }
 
 :root {
@@ -130,8 +153,18 @@ html {
   50% { transform: translateY(-6px); }
 }
 
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes nuvora-shine {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
 .animate-fade-slide-up {
-  animation: fade-slide-up 0.4s ease-out both;
+  animation: fade-slide-up 0.35s var(--ease-snappy) both;
 }
 
 .animate-bar-grow {
@@ -149,15 +182,25 @@ html {
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.6s ease-out both;
+  animation: fadeIn 0.5s var(--ease-snappy) both;
 }
 
 .animate-slide-up {
-  animation: slideUp 0.5s ease-out both;
+  animation: slideUp 0.4s var(--ease-snappy) both;
 }
 
 .animate-scale-in {
-  animation: scaleIn 0.4s ease-out both;
+  animation: scaleIn 0.3s var(--ease-spring) both;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.animate-nuvora-shine {
+  background: linear-gradient(90deg, transparent 0%, rgba(99, 102, 241, 0.12) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: nuvora-shine 3s ease-in-out infinite;
 }
 
 @keyframes fadeIn {
@@ -182,6 +225,68 @@ html {
 
 .animate-marquee {
   animation: marquee 30s linear infinite;
+}
+
+/* ── Signature Nuvora Card — consistent card treatment across the site ── */
+.nuvora-card {
+  border-radius: 1rem;
+  border: 1px solid var(--border-subtle);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.2s var(--ease-snappy), box-shadow 0.2s var(--ease-snappy), border-color 0.2s ease;
+}
+
+.nuvora-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--color-nuvora-200);
+}
+
+.dark .nuvora-card:hover {
+  border-color: var(--color-nuvora-800);
+}
+
+/* ── Signature Nuvora Button ── */
+.nuvora-button-primary {
+  background: linear-gradient(135deg, var(--color-nuvora-600), var(--color-nuvora-500));
+  color: white;
+  font-weight: 600;
+  box-shadow: var(--shadow-button);
+  transition: transform 0.15s var(--ease-snappy), box-shadow 0.15s var(--ease-snappy), background 0.2s ease;
+}
+
+.dark .nuvora-button-primary {
+  background: linear-gradient(135deg, var(--color-nuvora-500), var(--color-nuvora-400));
+  box-shadow: 0 1px 3px 0 rgb(99 102 241 / 0.15);
+}
+
+.nuvora-button-primary:hover {
+  box-shadow: var(--shadow-button-hover);
+  background: linear-gradient(135deg, var(--color-nuvora-700), var(--color-nuvora-600));
+}
+
+.dark .nuvora-button-primary:hover {
+  background: linear-gradient(135deg, var(--color-nuvora-400), var(--color-nuvora-500));
+}
+
+.nuvora-button-primary:active {
+  transform: scale(0.97);
+}
+
+/* ── Result reveal — for tool output sections ── */
+.nuvora-result-reveal {
+  animation: fade-slide-up 0.3s var(--ease-snappy) both;
+}
+
+/* ── Copy confirmation pulse ── */
+@keyframes copy-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+  70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.nuvora-copy-confirm {
+  animation: copy-pulse 0.6s ease-out;
 }
 
 /* ── Scrollbar ── */

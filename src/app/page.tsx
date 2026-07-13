@@ -97,7 +97,7 @@ function AiShowcase() {
             { icon: (<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-6"><path d="M12 2a4 4 0 0 1 4 4c0 2-2 4-2 4h-4s-2-2-2-4a4 4 0 0 1 4-4z" /><path d="M8 14h8" /><path d="M8 18h4" /></svg>), title: "AI Explanations", desc: "Plain-English breakdowns of technical results. Beginner mode strips away the jargon." },
             { icon: (<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-6"><path d="M9 18V5l12-2v13" /><circle cx="6" cy="18" r="3" /><circle cx="18" cy="16" r="3" /></svg>), title: "Actionable Next Steps", desc: "Found an issue? Nuvora tells you how to fix it, step by step." },
           ].map((feature) => (
-            <div key={feature.title} className="group rounded-2xl border border-border-subtle bg-surface p-6 transition-all hover:shadow-lg hover:-translate-y-0.5">
+            <div key={feature.title} className="nuvora-card p-6">
               <span className="flex size-12 items-center justify-center rounded-xl bg-nuvora-100 text-nuvora-600 dark:bg-nuvora-900/50 dark:text-nuvora-400">{feature.icon}</span>
               <h3 className="mt-4 font-semibold text-text-primary">{feature.title}</h3>
               <p className="mt-2 text-sm text-text-secondary leading-relaxed">{feature.desc}</p>
@@ -121,7 +121,7 @@ function FlagShipTools() {
         </div>
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {featured.map(({ tool, icon, gradient, label }) => (
-            <Link key={tool!.id} href={tool!.url} className="group relative overflow-hidden rounded-2xl border border-border-subtle bg-surface p-6 shadow-sm transition-all hover:shadow-xl hover:-translate-y-1 active:scale-[0.98]">
+            <Link key={tool!.id} href={tool!.url} className="group relative overflow-hidden nuvora-card p-6">
               <div className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${gradient}`} />
               <div className="absolute -right-6 -top-6 size-16 rounded-full bg-gradient-to-br from-nuvora-50 to-transparent opacity-0 transition-opacity group-hover:opacity-100 dark:from-nuvora-950/50" />
               <div className="flex items-center justify-between">
@@ -156,7 +156,7 @@ function CategoryGrid() {
           {categories.filter(c => c.toolCount > 0).map((cat) => {
             const tools = getToolsByCategory(cat.slug);
             return (
-              <Link key={cat.slug} href={`/category/${cat.slug}`} className="group relative overflow-hidden rounded-2xl border border-border-subtle bg-surface p-6 transition-all hover:shadow-lg hover:-translate-y-0.5">
+              <Link key={cat.slug} href={`/category/${cat.slug}`} className="group relative overflow-hidden nuvora-card p-6">
                 <div className="absolute -right-8 -top-8 size-20 rounded-full bg-nuvora-50 opacity-0 transition-opacity group-hover:opacity-100 dark:bg-nuvora-950/30" />
                 <span className="text-2xl">{CATEGORY_ICONS[cat.slug] ?? "🔧"}</span>
                 <h3 className="mt-3 font-semibold text-text-primary">{cat.label}</h3>
@@ -188,7 +188,7 @@ function FAQSection() {
         </div>
         <div className="mt-12 space-y-4">
           {FAQ_ITEMS.slice(0, 5).map((item, i) => (
-            <details key={i} className="group rounded-2xl border border-border-subtle bg-surface transition-all hover:shadow-sm [&[open]]:shadow-md">
+            <details key={i} className="group nuvora-card [&[open]]:shadow-md">
               <summary className="flex cursor-pointer items-center justify-between px-6 py-4 text-sm font-semibold text-text-primary">
                 {item.question}
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4 shrink-0 text-text-tertiary transition-transform group-open:rotate-180"><path d="m6 9 6 6 6-6" /></svg>
@@ -227,7 +227,7 @@ function Newsletter() {
 export default function Home() {
   return (
     <>
-      <JsonLd data={webPageSchema({ name: `${SITE_NAME} — Smart Tools for Everything You Do`, description: SITE_DESCRIPTION, url: SITE_URL, breadcrumbs })} />
+      <JsonLd data={webPageSchema({ name: `${SITE_NAME} — Your Browser Can Do More — 255+ Free Tools`, description: SITE_DESCRIPTION, url: SITE_URL, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <JsonLd data={organizationSchema()} />
       <JsonLd data={webSiteSchema()} />

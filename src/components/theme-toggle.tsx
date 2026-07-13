@@ -23,7 +23,7 @@ export function ThemeToggle() {
     return (
       <button
         type="button"
-        className="size-9 rounded-lg border border-zinc-200 dark:border-zinc-700"
+        className="size-9 rounded-xl border border-border-subtle bg-surface"
         aria-label="Toggle theme"
       />
     );
@@ -33,7 +33,7 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="flex size-9 items-center justify-center rounded-lg border border-zinc-200 text-sm transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-800"
+      className="flex size-9 items-center justify-center rounded-xl border border-border-subtle bg-surface text-text-secondary transition-all duration-200 ease-out hover:bg-surface-secondary hover:text-text-primary active:scale-[0.92]"
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
     >
       <SunIcon className="hidden dark:block" />

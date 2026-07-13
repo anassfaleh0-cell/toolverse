@@ -8,13 +8,13 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 
 const variantStyles = {
   default:
-    "rounded-xl border border-border-subtle bg-surface",
+    "nuvora-card",
   elevated:
-    "rounded-xl border border-border-subtle bg-surface shadow-sm",
+    "nuvora-card shadow-sm",
   interactive:
-    "rounded-xl border border-border-subtle bg-surface shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5 active:scale-[0.98]",
+    "nuvora-card cursor-pointer",
   premium:
-    "rounded-2xl border border-border-subtle bg-gradient-to-br from-surface to-surface-secondary/50 shadow-sm transition-all hover:shadow-lg hover:-translate-y-0.5",
+    "nuvora-card bg-gradient-to-br from-surface to-surface-secondary/50",
 };
 
 export function Card({

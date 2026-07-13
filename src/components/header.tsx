@@ -84,7 +84,7 @@ export function Header() {
             <li>
               <Link
                 href="/tools"
-                className="ml-2 rounded-xl bg-nuvora-600 px-4 py-2 text-sm font-semibold text-white shadow-sm shadow-nuvora-600/20 transition-all hover:bg-nuvora-700 active:scale-[0.97] dark:bg-nuvora-500 dark:hover:bg-nuvora-400 dark:shadow-nuvora-500/20"
+                className="nuvora-button-primary rounded-xl px-4 py-2 text-sm"
               >
                 All Tools
               </Link>
@@ -130,7 +130,7 @@ export function Header() {
             <li className="mt-2">
               <Link
                 href="/tools"
-                className="flex items-center justify-center rounded-xl bg-nuvora-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-nuvora-700 dark:bg-nuvora-500 dark:hover:bg-nuvora-400"
+                className="nuvora-button-primary flex items-center justify-center rounded-xl px-4 py-2.5 text-sm"
                 onClick={() => setMenuOpen(false)}
               >
                 All Tools

@@ -29,7 +29,7 @@ export function ToolHero({ title, description, breadcrumbs, children }: ToolHero
         </div>
       </div>
       {/* Tool card */}
-      <div className="rounded-2xl border border-border-subtle bg-surface p-4 shadow-sm sm:p-6" role="region" aria-label="Tool interface">
+      <div className="nuvora-card p-4 sm:p-6" role="region" aria-label="Tool interface">
         {children}
       </div>
     </div>

@@ -10,7 +10,7 @@ export function Footer() {
           <div className="lg:col-span-1">
             <NuvoraLogo />
             <p className="mt-4 text-sm leading-relaxed text-text-secondary max-w-xs">
-              Smart Tools, Simply Done. Free online tools for everyone — privacy first, always.
+              Your browser can do more. 255+ free tools — privacy first, always, with zero data ever leaving your device.
             </p>
             <div className="mt-6 flex gap-3">
               <a href="https://github.com/NuvoraHQ" target="_blank" rel="noopener noreferrer" className="rounded-lg p-2 text-text-tertiary transition-colors hover:text-text-primary hover:bg-surface-secondary" aria-label="GitHub">

@@ -6,6 +6,7 @@ interface ToolResultCardProps {
   value: string;
   icon: string;
   mono?: boolean;
+  index?: number;
 }
 
 export function ToolResultCard({
@@ -13,9 +14,10 @@ export function ToolResultCard({
   value,
   icon,
   mono,
+  index = 0,
 }: ToolResultCardProps) {
   return (
-    <Card variant="default" className="p-4">
+    <Card variant="default" className="p-4 nuvora-result-reveal" style={{ animationDelay: `${index * 40}ms` } as React.CSSProperties}>
       <div className="flex items-center gap-3">
         <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-zinc-100 text-lg dark:bg-zinc-800">
           {icon}

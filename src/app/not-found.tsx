@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Logo } from "@/components/ui/logo";
 
 export const metadata: Metadata = {
-  title: "Page Not Found",
-  description: "The page you are looking for does not exist.",
+  title: "Page Not Found — Nuvora",
+  description: "The page you're looking for doesn't exist. Browse 255+ free tools instead.",
 };
 
 const popularTools = [
@@ -19,18 +18,30 @@ const popularTools = [
 export default function NotFound() {
   return (
     <div className="flex min-h-[60vh] flex-col items-center justify-center px-4 py-16 text-center">
-      <Logo size="lg" />
-      <h1 className="mt-8 text-6xl font-bold text-nuvora-600 dark:text-nuvora-400">404</h1>
-      <p className="mt-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50">Page Not Found</p>
+      <div className="mb-6 flex items-center justify-center">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="size-16" aria-hidden="true">
+          <defs>
+            <linearGradient id="404-grad" x1="0" y1="0" x2="32" y2="32">
+              <stop stopColor="#6366f1" /><stop offset=".55" stopColor="#4f46e5" /><stop offset="1" stopColor="#4338ca" />
+            </linearGradient>
+          </defs>
+          <rect x="0.5" y="0.5" width="31" height="31" rx="8" fill="url(#404-grad)" />
+          <rect x="0.5" y="0.5" width="31" height="31" rx="8" stroke="white" strokeOpacity={0.15} strokeWidth="0.5" />
+          <path d="M16 5 L26 11 L26 21 L16 27 L6 21 L6 11 Z" stroke="white" strokeWidth="1.4" strokeLinejoin="round" fill="white" fillOpacity={0.12} />
+          <path d="M16.5 7 L11 16 L14.5 16 L11.5 24.5 L21 13 L17 13 Z" fill="white" />
+        </svg>
+      </div>
+      <h1 className="text-7xl font-bold tracking-tight text-nuvora-600 dark:text-nuvora-400">404</h1>
+      <p className="mt-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50">Wrong tunnel. Try another.</p>
       <p className="mt-2 max-w-md text-zinc-600 dark:text-zinc-400">
-        This tool doesn't exist — but here are some popular ones:
+        That page doesn't exist — but 255+ tools do. Pick one:
       </p>
       <div className="mt-8 flex flex-wrap justify-center gap-3">
         {popularTools.map((tool) => (
           <Link
             key={tool.href}
             href={tool.href}
-            className="rounded-lg border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-700 transition-colors hover:bg-nuvora-50 hover:border-nuvora-300 hover:text-nuvora-700 dark:border-zinc-600 dark:text-zinc-300 dark:hover:bg-nuvora-950/50"
+            className="nuvora-card px-4 py-2 text-sm font-medium text-zinc-700 dark:text-zinc-300"
           >
             {tool.label}
           </Link>
@@ -39,13 +50,13 @@ export default function NotFound() {
       <div className="mt-10 flex gap-4">
         <Link
           href="/"
-          className="rounded-xl bg-nuvora-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-nuvora-700"
+          className="nuvora-button-primary inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm"
         >
           Back to Home
         </Link>
         <Link
           href="/tools"
-          className="rounded-xl border border-border-subtle bg-surface px-6 py-3 text-sm font-semibold text-text-secondary transition-colors hover:border-nuvora-300 hover:text-nuvora-600"
+          className="nuvora-card inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-text-secondary"
         >
           All Tools
         </Link>
