@@ -413,7 +413,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     noindex: false,    sections: [
       {
         heading: "Why Social Media Image Sizes Matter",
-        body: "Each social media platform has specific image dimension requirements. Uploading a wrongly sized image leads to awkward cropping, poor resolution, or rejected uploads. A properly sized profile picture appears sharp on both mobile and desktop. A correctly dimensioned cover photo displays fully without being cropped on certain devices. Feed posts with optimal dimensions get 30-40% more engagement because they display fully in the feed without requiring users to tap to expand. Knowing the right sizes ensures your content looks professional everywhere."
+        body: "Each social media platform has specific image dimension requirements. Uploading a wrongly sized image leads to awkward cropping, poor resolution, or rejected uploads. A properly sized profile picture appears sharp on both mobile and desktop. A correctly dimensioned cover photo displays fully without being cropped on certain devices. Feed posts with optimal dimensions tend to get higher engagement because they display fully in the feed without requiring users to tap to expand. Knowing the right sizes ensures your content looks professional everywhere."
       },
       {
         heading: "Instagram Image Sizes 2026",
@@ -665,7 +665,7 @@ export const CLUSTER_2_ARTICLES: ContentPiece[] = [
     noindex: false,    sections: [
       {
         heading: "The Real Cost of Slow Images",
-        body: "Slow-loading images directly impact your bottom line. A one-second delay in page load reduces conversions by 7% and customer satisfaction by 16%. Images are typically the largest assets on any webpage, accounting for 50-70% of total page weight. Google's Core Web Vitals — specifically Largest Contentful Paint (LCP) — uses image loading as a primary metric. Pages with LCP over 2.5 seconds are penalized in search rankings. Understanding why images load slow is the first step to fixing the problem."
+        body: "Slow-loading images directly impact your bottom line. Excessive page load times can hurt conversions and customer satisfaction. Images are typically the largest assets on any webpage, accounting for 50-70% of total page weight. Google's Core Web Vitals — specifically Largest Contentful Paint (LCP) — uses image loading as a primary metric. Pages with LCP over 2.5 seconds are penalized in search rankings. Understanding why images load slow is the first step to fixing the problem."
       },
       {
         heading: "Cause 1: Uncompressed Oversized Images",

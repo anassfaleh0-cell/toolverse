@@ -34,9 +34,7 @@ export function getAnalyticsConsent(): boolean | null {
 export function setAnalyticsConsent(granted: boolean): void {
   if (typeof window === "undefined") return;
   localStorage.setItem(ANALYTICS_KEY, String(granted));
-  if (granted) {
-    window.dispatchEvent(new CustomEvent("tv:analytics-consent-granted"));
-  }
+  window.dispatchEvent(new CustomEvent("tv:analytics-consent-granted"));
 }
 
 export function revokeConsent(): void {

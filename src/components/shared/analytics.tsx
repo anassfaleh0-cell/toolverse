@@ -2,7 +2,7 @@
 
 import Script from "next/script";
 import { usePathname, useSearchParams } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 import { inject } from "@vercel/analytics";
 import { getAnalyticsConsent, trackPageView, reportWebVitals, type PageView } from "@/lib/analytics";
 import { onCLS, onFCP, onLCP, onTTFB } from "web-vitals";
@@ -10,10 +10,16 @@ import { onCLS, onFCP, onLCP, onTTFB } from "web-vitals";
 const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID || "";
 const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID || "";
 
+function subscribeConsent(cb: () => void) {
+  if (typeof window === "undefined") return () => {};
+  window.addEventListener("tv:analytics-consent-granted", cb);
+  return () => window.removeEventListener("tv:analytics-consent-granted", cb);
+}
+
 export function Analytics() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const consent = getAnalyticsConsent();
+  const consent = useSyncExternalStore(subscribeConsent, getAnalyticsConsent, getAnalyticsConsent);
   const vitalsReported = useRef(false);
   const vercelInjected = useRef(false);
 
