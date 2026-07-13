@@ -152,10 +152,10 @@ export default function WordCounterPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🔡", title: "Case Converter", description: "Convert text between camelCase, snake_case, kebab-case, and more", href: "/case-converter" },
-              { icon: "🔍", title: "Regex Tester", description: "Test regular expressions with live matching and capture groups", href: "/regex-tester" },
-              { icon: "📝", title: "Lorem Ipsum Generator", description: "Generate placeholder text for designs and layouts", href: "/lorem-ipsum-generator" },
-              { icon: "📋", title: "JSON Formatter", description: "Validate, beautify, and minify JSON data", href: "/json-formatter" },
+              { icon: "CaseSensitive", title: "Case Converter", description: "Convert text between camelCase, snake_case, kebab-case, and more", href: "/case-converter" },
+              { icon: "Search", title: "Regex Tester", description: "Test regular expressions with live matching and capture groups", href: "/regex-tester" },
+              { icon: "PenTool", title: "Lorem Ipsum Generator", description: "Generate placeholder text for designs and layouts", href: "/lorem-ipsum-generator" },
+              { icon: "FileText", title: "JSON Formatter", description: "Validate, beautify, and minify JSON data", href: "/json-formatter" },
             ]}
             title="Related Text & Writing Tools"
           />

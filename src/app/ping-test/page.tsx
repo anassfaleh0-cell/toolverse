@@ -198,10 +198,10 @@ export default function PingTestPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🔍", title: "Port Checker", description: "Test if a port is open or closed from outside the network", href: "/port-checker" },
-              { icon: "🔍", title: "Website Status Checker", description: "Check if a website is online and measure response time", href: "/website-status-checker" },
-              { icon: "🔍", title: "DNS Lookup", description: "Query all DNS record types for any domain", href: "/dns-lookup" },
-              { icon: "🔍", title: "IP Lookup", description: "Trace any IP address location and ISP details", href: "/ip-lookup" },
+              { icon: "Search", title: "Port Checker", description: "Test if a port is open or closed from outside the network", href: "/port-checker" },
+              { icon: "Search", title: "Website Status Checker", description: "Check if a website is online and measure response time", href: "/website-status-checker" },
+              { icon: "Search", title: "DNS Lookup", description: "Query all DNS record types for any domain", href: "/dns-lookup" },
+              { icon: "Search", title: "IP Lookup", description: "Trace any IP address location and ISP details", href: "/ip-lookup" },
             ]}
             title="Related Network Tools"
           />

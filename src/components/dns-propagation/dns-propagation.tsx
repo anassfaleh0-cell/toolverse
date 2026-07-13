@@ -4,6 +4,7 @@ import { useState, useTransition } from "react";
 import Link from "next/link";
 import { Input, Button, Alert, Skeleton } from "@/components/ui";
 import { CopyButton, DashboardSummary, StatusBadge, ScoreGauge } from "@/components/shared";
+import { Icon } from "@/components/shared/icon";
 
 interface ServerResult {
   server: string;
@@ -191,9 +192,9 @@ export function DnsPropagationChecker() {
                       {geo.flag ? <span aria-hidden="true">{geo.flag}</span> : null}
                       {geo.label}
                     </span>
-                    <span className="text-xs text-zinc-500 dark:text-zinc-400">
-                      {s.values === null ? "⚠️ No response" : s.values.length === 0 ? "❌ No records" : "✅ " + s.values.length + " record(s)"}
-                    </span>
+                      <span className="inline-flex items-center gap-1 text-xs text-zinc-500 dark:text-zinc-400">
+                        {s.values === null ? <><Icon name="AlertTriangle" className="size-3.5 text-amber-500" /> No response</> : s.values.length === 0 ? <><Icon name="XCircle" className="size-3.5 text-red-500" /> No records</> : <><Icon name="CheckCircle2" className="size-3.5 text-emerald-500" /> {s.values.length} record(s)</>}
+                      </span>
                   </div>
                   {s.values && s.values.length > 0 && (
                     <div className="divide-y divide-zinc-200 dark:divide-zinc-800">
@@ -203,9 +204,9 @@ export function DnsPropagationChecker() {
                           className="flex items-center gap-3 px-5 py-3 font-mono text-sm"
                         >
                           {consistent ? (
-                            <span className="text-emerald-500">✓</span>
+                            <Icon name="CheckCircle2" className="size-4 text-emerald-500" />
                           ) : (
-                            <span className="text-amber-500">⚠</span>
+                            <Icon name="AlertTriangle" className="size-4 text-amber-500" />
                           )}
                           <span className="text-zinc-600 dark:text-zinc-400">
                             {val}

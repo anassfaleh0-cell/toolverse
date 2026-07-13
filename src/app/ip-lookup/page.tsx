@@ -215,10 +215,10 @@ export default function IpLookupPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🌐", title: "What Is My IP", description: "Check your own public IPv4 and IPv6 addresses", href: "/what-is-my-ip" },
-              { icon: "🔍", title: "WHOIS Lookup", description: "Check domain registration and ownership info", href: "/whois-lookup" },
-              { icon: "🔍", title: "Reverse DNS Lookup", description: "Find hostnames from IP addresses via PTR records", href: "/reverse-dns-lookup" },
-              { icon: "🔍", title: "DNS Lookup", description: "Query all DNS record types for any domain", href: "/dns-lookup" },
+              { icon: "Globe", title: "What Is My IP", description: "Check your own public IPv4 and IPv6 addresses", href: "/what-is-my-ip" },
+              { icon: "Search", title: "WHOIS Lookup", description: "Check domain registration and ownership info", href: "/whois-lookup" },
+              { icon: "Search", title: "Reverse DNS Lookup", description: "Find hostnames from IP addresses via PTR records", href: "/reverse-dns-lookup" },
+              { icon: "Search", title: "DNS Lookup", description: "Query all DNS record types for any domain", href: "/dns-lookup" },
             ]}
             title="Related Network Tools"
           />

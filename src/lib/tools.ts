@@ -592,7 +592,7 @@ export const tools: Tool[] = [
   {
     id: "background-remover",
     name: "Background Remover",
-    description: "Remove backgrounds from images using chroma key (green/blue screen). API-ready architecture for integrating AI-powered background removal services.",
+    description: "Remove backgrounds from images using chroma key (green/blue screen). All processing happens client-side in your browser — no uploads, no servers.",
     url: "/background-remover",
     category: "image-design",
     isFree: true,

@@ -203,10 +203,10 @@ export default function ShaHashGeneratorPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🔑", title: "MD5 Hash Generator", description: "Generate MD5 hash digests for non-cryptographic use cases", href: "/md5-hash-generator" },
-              { icon: "🪙", title: "JWT Decoder", description: "Decode and inspect JSON Web Token headers and payloads", href: "/jwt-decoder" },
-              { icon: "🔐", title: "Base64 Encoder", description: "Encode and decode Base64 strings for data transport", href: "/base64-encoder" },
-              { icon: "🔲", title: "UUID Generator", description: "Generate UUID v4 identifiers for database keys and IDs", href: "/uuid-generator" },
+              { icon: "Key", title: "MD5 Hash Generator", description: "Generate MD5 hash digests for non-cryptographic use cases", href: "/md5-hash-generator" },
+              { icon: "Circle", title: "JWT Decoder", description: "Decode and inspect JSON Web Token headers and payloads", href: "/jwt-decoder" },
+              { icon: "LockKeyhole", title: "Base64 Encoder", description: "Encode and decode Base64 strings for data transport", href: "/base64-encoder" },
+              { icon: "Grid3x3", title: "UUID Generator", description: "Generate UUID v4 identifiers for database keys and IDs", href: "/uuid-generator" },
             ]}
             title="Related Developer Tools"
           />

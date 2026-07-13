@@ -198,10 +198,10 @@ export default function WhatIsMyIp() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🔍", title: "IP Lookup", description: "Trace any IP address location and ISP details", href: "/ip-lookup" },
-              { icon: "🔍", title: "DNS Lookup", description: "Query all DNS record types for any domain", href: "/dns-lookup" },
-              { icon: "🔍", title: "Ping Test", description: "Measure network latency and packet loss", href: "/ping-test" },
-              { icon: "🔍", title: "Port Checker", description: "Test if a network port is open or filtered", href: "/port-checker" },
+              { icon: "Search", title: "IP Lookup", description: "Trace any IP address location and ISP details", href: "/ip-lookup" },
+              { icon: "Search", title: "DNS Lookup", description: "Query all DNS record types for any domain", href: "/dns-lookup" },
+              { icon: "Search", title: "Ping Test", description: "Measure network latency and packet loss", href: "/ping-test" },
+              { icon: "Search", title: "Port Checker", description: "Test if a network port is open or filtered", href: "/port-checker" },
             ]}
             title="Related Network Tools"
           />

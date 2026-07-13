@@ -203,10 +203,10 @@ export default function JsMinifierPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🌐", title: "HTML Minifier", description: "Minify and beautify HTML markup for production", href: "/html-minifier" },
-              { icon: "🎨", title: "CSS Minifier", description: "Minify and beautify CSS stylesheets for production", href: "/css-minifier" },
-              { icon: "📋", title: "JSON Formatter", description: "Validate, beautify, and minify JSON data", href: "/json-formatter" },
-              { icon: "🔍", title: "Regex Tester", description: "Test regular expressions with live matching and capture groups", href: "/regex-tester" },
+              { icon: "Globe", title: "HTML Minifier", description: "Minify and beautify HTML markup for production", href: "/html-minifier" },
+              { icon: "Palette", title: "CSS Minifier", description: "Minify and beautify CSS stylesheets for production", href: "/css-minifier" },
+              { icon: "FileText", title: "JSON Formatter", description: "Validate, beautify, and minify JSON data", href: "/json-formatter" },
+              { icon: "Search", title: "Regex Tester", description: "Test regular expressions with live matching and capture groups", href: "/regex-tester" },
             ]}
             title="Related Developer Tools"
           />

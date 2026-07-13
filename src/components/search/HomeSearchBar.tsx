@@ -3,25 +3,12 @@
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { tools } from "@/lib/tools";
+import { Icon } from "@/components/shared/icon";
+import { CATEGORIES } from "@/lib/categories";
 
-const CATEGORY_ICONS: Record<string, string> = {
-  "network-internet": "🌐",
-  "code-dev": "💻",
-  "image-design": "🎨",
-  "text-writing": "📝",
-  "productivity": "⚡",
-  "data-analytics": "📊",
-  "security": "🛡️",
-  "ai": "🤖",
-  "audio-video": "🎵",
-  "finance": "💰",
-  "education": "📚",
-  "gaming": "🎮",
-  "health": "❤️",
-  "social-media": "📱",
-  "seo": "🔍",
-  "marketing": "📈",
-};
+const CATEGORY_ICONS: Record<string, string> = Object.fromEntries(
+  CATEGORIES.map(c => [c.slug, c.icon])
+);
 
 export function HomeSearchBar() {
   const [query, setQuery] = useState("");
@@ -137,8 +124,8 @@ export function HomeSearchBar() {
                     : "hover:bg-surface-secondary"
                 }`}
               >
-                <span className="text-xl shrink-0">
-                  {CATEGORY_ICONS[tool.category] ?? "🔧"}
+                <span className="flex items-center justify-center size-8 shrink-0 rounded-lg bg-surface-secondary">
+                  <Icon name={CATEGORY_ICONS[tool.category] ?? "Wrench"} className="size-4 text-text-secondary" />
                 </span>
                 <div className="flex-1 min-w-0">
                   <div className="font-medium text-sm text-text-primary truncate">

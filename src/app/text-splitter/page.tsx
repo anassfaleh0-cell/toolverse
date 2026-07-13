@@ -125,10 +125,10 @@ export default function TextSplitterPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🔗", title: "Text Joiner", description: "Join multiple lines with custom separators", href: "/text-joiner" },
-              { icon: "🔄", title: "Case Converter", description: "Convert text between different letter cases", href: "/case-converter" },
-              { icon: "🔤", title: "Sort Lines", description: "Sort lines alphabetically A-Z or Z-A", href: "/sort-lines" },
-              { icon: "📋", title: "Remove Duplicate Lines", description: "Remove duplicate lines and keep only unique entries", href: "/remove-duplicate-lines" },
+              { icon: "Link", title: "Text Joiner", description: "Join multiple lines with custom separators", href: "/text-joiner" },
+              { icon: "RefreshCw", title: "Case Converter", description: "Convert text between different letter cases", href: "/case-converter" },
+              { icon: "TextIcon", title: "Sort Lines", description: "Sort lines alphabetically A-Z or Z-A", href: "/sort-lines" },
+              { icon: "FileText", title: "Remove Duplicate Lines", description: "Remove duplicate lines and keep only unique entries", href: "/remove-duplicate-lines" },
             ]}
             title="Related Text & Writing Tools"
           />

@@ -55,10 +55,10 @@ export default function TlsrptLookupPage() {
       <section className="py-16 sm:py-20">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools tools={[
-            { icon: "📧", title: "MTA-STS Lookup", description: "Check TLS enforcement policy", href: "/mta-sts-lookup" },
-            { icon: "🛡️", title: "DMARC Lookup", description: "Check email authentication policy", href: "/dmarc-lookup" },
-            { icon: "📨", title: "MX Lookup", description: "Check mail server records", href: "/mx-lookup" },
-            { icon: "🔒", title: "DNSSEC Checker", description: "Verify DNSSEC signing", href: "/dnssec-checker" },
+            { icon: "Mail", title: "MTA-STS Lookup", description: "Check TLS enforcement policy", href: "/mta-sts-lookup" },
+            { icon: "Shield", title: "DMARC Lookup", description: "Check email authentication policy", href: "/dmarc-lookup" },
+            { icon: "Send", title: "MX Lookup", description: "Check mail server records", href: "/mx-lookup" },
+            { icon: "Lock", title: "DNSSEC Checker", description: "Verify DNSSEC signing", href: "/dnssec-checker" },
           ]} title="Related Email Security Tools" />
         </div>
       </section>

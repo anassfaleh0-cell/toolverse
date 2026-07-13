@@ -2,6 +2,7 @@ export { Breadcrumbs } from "./breadcrumbs";
 export { ToolLayout } from "./tool-layout";
 export { ToolHero } from "./tool-hero";
 export { ToolResultCard } from "./tool-result-card";
+export { Icon } from "./icon";
 export { ToolSkeleton } from "./tool-skeleton";
 export { ToolAnalysis } from "./tool-analysis";
 export { AiExplain, AIExplanationCard } from "./ai-explain";

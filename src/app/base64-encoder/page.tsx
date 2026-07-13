@@ -203,10 +203,10 @@ export default function Base64EncoderPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🔗", title: "URL Encoder", description: "Percent-encode and decode URLs and query string parameters", href: "/url-encoder" },
-              { icon: "🔤", title: "HTML Entity Encoder", description: "Encode HTML special characters to prevent XSS", href: "/html-entity-encoder" },
-              { icon: "🪙", title: "JWT Decoder", description: "Decode and inspect JSON Web Token headers and payloads", href: "/jwt-decoder" },
-              { icon: "🔑", title: "SHA Hash Generator", description: "Generate SHA-1, SHA-256, and SHA-512 hash digests", href: "/sha-hash-generator" },
+              { icon: "Link", title: "URL Encoder", description: "Percent-encode and decode URLs and query string parameters", href: "/url-encoder" },
+              { icon: "TextIcon", title: "HTML Entity Encoder", description: "Encode HTML special characters to prevent XSS", href: "/html-entity-encoder" },
+              { icon: "Circle", title: "JWT Decoder", description: "Decode and inspect JSON Web Token headers and payloads", href: "/jwt-decoder" },
+              { icon: "Key", title: "SHA Hash Generator", description: "Generate SHA-1, SHA-256, and SHA-512 hash digests", href: "/sha-hash-generator" },
             ]}
             title="Related Developer Tools"
           />

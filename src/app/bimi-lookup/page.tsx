@@ -57,10 +57,10 @@ export default function BimiLookupPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "📧", title: "SPF Lookup", description: "Check authorized mail servers", href: "/spf-lookup" },
-              { icon: "🔑", title: "DKIM Lookup", description: "Check email signing configuration", href: "/dkim-lookup" },
-              { icon: "🛡️", title: "DMARC Lookup", description: "Verify email authentication policy", href: "/dmarc-lookup" },
-              { icon: "📨", title: "MX Lookup", description: "Find mail server records", href: "/mx-lookup" },
+              { icon: "Mail", title: "SPF Lookup", description: "Check authorized mail servers", href: "/spf-lookup" },
+              { icon: "Key", title: "DKIM Lookup", description: "Check email signing configuration", href: "/dkim-lookup" },
+              { icon: "Shield", title: "DMARC Lookup", description: "Verify email authentication policy", href: "/dmarc-lookup" },
+              { icon: "Send", title: "MX Lookup", description: "Find mail server records", href: "/mx-lookup" },
             ]}
             title="Related Email Authentication Tools"
           />

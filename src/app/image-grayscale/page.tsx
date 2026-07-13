@@ -92,10 +92,10 @@ export default function ImageGrayscalePage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🌫️", title: "Blur Image", description: "Add Gaussian blur effects to your images", href: "/blur-image" },
-              { icon: "📦", title: "Image Compressor", description: "Compress grayscale images for efficient web delivery", href: "/image-compressor" },
-              { icon: "🔄", title: "Image Converter", description: "Convert grayscale images between different formats", href: "/image-converter" },
-              { icon: "✂️", title: "Crop Image", description: "Crop and reframe your grayscale images", href: "/crop-image" },
+              { icon: "Droplets️", title: "Blur Image", description: "Add Gaussian blur effects to your images", href: "/blur-image" },
+              { icon: "Package", title: "Image Compressor", description: "Compress grayscale images for efficient web delivery", href: "/image-compressor" },
+              { icon: "RefreshCw", title: "Image Converter", description: "Convert grayscale images between different formats", href: "/image-converter" },
+              { icon: "Scissors", title: "Crop Image", description: "Crop and reframe your grayscale images", href: "/crop-image" },
             ]}
             title="Related Image Tools"
           />

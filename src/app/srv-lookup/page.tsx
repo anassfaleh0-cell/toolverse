@@ -58,10 +58,10 @@ export default function SrvLookupPage() {
       <section className="py-16 sm:py-20">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools tools={[
-            { icon: "🔍", title: "DNS Lookup", description: "Query all DNS record types", href: "/dns-lookup" },
-            { icon: "🔍", title: "CAA Lookup", description: "Check Certificate Authority Authorization", href: "/caa-lookup" },
-            { icon: "🔒", title: "DNSSEC Checker", description: "Verify DNSSEC signing", href: "/dnssec-checker" },
-            { icon: "🔍", title: "Nameserver Analyzer", description: "Analyze nameserver setup", href: "/nameserver-analyzer" },
+            { icon: "Search", title: "DNS Lookup", description: "Query all DNS record types", href: "/dns-lookup" },
+            { icon: "Search", title: "CAA Lookup", description: "Check Certificate Authority Authorization", href: "/caa-lookup" },
+            { icon: "Lock", title: "DNSSEC Checker", description: "Verify DNSSEC signing", href: "/dnssec-checker" },
+            { icon: "Search", title: "Nameserver Analyzer", description: "Analyze nameserver setup", href: "/nameserver-analyzer" },
           ]} title="Related DNS Tools" />
         </div>
       </section>

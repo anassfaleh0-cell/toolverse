@@ -210,10 +210,10 @@ export default function SslCertificatePage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🔍", title: "HTTP Headers Checker", description: "Inspect security and response headers from any URL", href: "/http-headers-checker" },
-              { icon: "🔍", title: "Website Status Checker", description: "Check if a website is online and measure response time", href: "/website-status-checker" },
-              { icon: "🔍", title: "DNS Lookup", description: "Query all DNS record types for any domain", href: "/dns-lookup" },
-              { icon: "🔍", title: "Port Checker", description: "Test if a port is open or closed from outside the network", href: "/port-checker" },
+              { icon: "Search", title: "HTTP Headers Checker", description: "Inspect security and response headers from any URL", href: "/http-headers-checker" },
+              { icon: "Search", title: "Website Status Checker", description: "Check if a website is online and measure response time", href: "/website-status-checker" },
+              { icon: "Search", title: "DNS Lookup", description: "Query all DNS record types for any domain", href: "/dns-lookup" },
+              { icon: "Search", title: "Port Checker", description: "Test if a port is open or closed from outside the network", href: "/port-checker" },
             ]}
             title="Related Network Tools"
           />

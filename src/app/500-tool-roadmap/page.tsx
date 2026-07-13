@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Breadcrumbs, JsonLd, SocialShare } from "@/components/shared";
+import { Icon } from "@/components/shared/icon";
 import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
@@ -35,7 +36,7 @@ const CATEGORIES: ToolCategory[] = [
   {
     id: "pdf",
     name: "PDF Tools",
-    icon: "\u{1F4C4}",
+    icon: "FileText",
     current: 10,
     planned: 31,
     tools: [
@@ -51,7 +52,7 @@ const CATEGORIES: ToolCategory[] = [
   {
     id: "image",
     name: "Image Tools",
-    icon: "\u{1F5BC}️",
+    icon: "Image",
     current: 12,
     planned: 30,
     tools: [
@@ -68,7 +69,7 @@ const CATEGORIES: ToolCategory[] = [
   {
     id: "seo",
     name: "SEO Tools",
-    icon: "\u{1F310}",
+    icon: "Globe",
     current: 6,
     planned: 27,
     tools: [
@@ -86,7 +87,7 @@ const CATEGORIES: ToolCategory[] = [
   {
     id: "ai",
     name: "AI Tools",
-    icon: "\u{1F916}",
+    icon: "Bot",
     current: 0,
     planned: 22,
     tools: [
@@ -102,7 +103,7 @@ const CATEGORIES: ToolCategory[] = [
   {
     id: "network",
     name: "Network Tools",
-    icon: "\u{1F4E1}",
+    icon: "Satellite",
     current: 8,
     planned: 30,
     tools: [
@@ -119,7 +120,7 @@ const CATEGORIES: ToolCategory[] = [
   {
     id: "security",
     name: "Security Tools",
-    icon: "\u{1F6E1}️",
+    icon: "Shield",
     current: 3,
     planned: 26,
     tools: [
@@ -136,7 +137,7 @@ const CATEGORIES: ToolCategory[] = [
   {
     id: "developer",
     name: "Developer Tools",
-    icon: "\u{1F4BB}",
+    icon: "Monitor",
     current: 14,
     planned: 30,
     tools: [
@@ -153,7 +154,7 @@ const CATEGORIES: ToolCategory[] = [
   {
     id: "text",
     name: "Text Tools",
-    icon: "\u{1F4DD}",
+    icon: "FileText",
     current: 5,
     planned: 26,
     tools: [
@@ -169,7 +170,7 @@ const CATEGORIES: ToolCategory[] = [
   {
     id: "data",
     name: "Data Tools",
-    icon: "\u{1F4CA}",
+    icon: "BarChart3",
     current: 3,
     planned: 24,
     tools: [
@@ -184,7 +185,7 @@ const CATEGORIES: ToolCategory[] = [
   {
     id: "calculator",
     name: "Calculator Tools",
-    icon: "\u{1F522}",
+    icon: "Hash",
     current: 0,
     planned: 25,
     tools: [
@@ -201,7 +202,7 @@ const CATEGORIES: ToolCategory[] = [
   {
     id: "unit-converters",
     name: "Unit Converters",
-    icon: "\u{1F4D0}",
+    icon: "Ruler",
     current: 0,
     planned: 25,
     tools: [
@@ -218,7 +219,7 @@ const CATEGORIES: ToolCategory[] = [
   {
     id: "finance",
     name: "Finance Tools",
-    icon: "\u{1F4B0}",
+    icon: "DollarSign",
     current: 0,
     planned: 22,
     tools: [
@@ -235,7 +236,7 @@ const CATEGORIES: ToolCategory[] = [
   {
     id: "marketing",
     name: "Marketing Tools",
-    icon: "\u{1F4E3}",
+    icon: "Megaphone",
     current: 0,
     planned: 15,
     tools: [
@@ -251,7 +252,7 @@ const CATEGORIES: ToolCategory[] = [
   {
     id: "social-media",
     name: "Social Media Tools",
-    icon: "\u{1F4F1}",
+    icon: "Smartphone",
     current: 0,
     planned: 18,
     tools: [
@@ -267,7 +268,7 @@ const CATEGORIES: ToolCategory[] = [
   {
     id: "browser",
     name: "Browser Tools",
-    icon: "\u{1F310}",
+    icon: "Globe",
     current: 1,
     planned: 20,
     tools: [
@@ -282,7 +283,7 @@ const CATEGORIES: ToolCategory[] = [
   {
     id: "encoding",
     name: "Encoding Tools",
-    icon: "\u{1F524}",
+    icon: "TextIcon",
     current: 2,
     planned: 22,
     tools: [
@@ -299,7 +300,7 @@ const CATEGORIES: ToolCategory[] = [
   {
     id: "cryptography",
     name: "Cryptography Tools",
-    icon: "\u{1F510}",
+    icon: "LockKeyhole",
     current: 1,
     planned: 21,
     tools: [
@@ -315,7 +316,7 @@ const CATEGORIES: ToolCategory[] = [
   {
     id: "domain",
     name: "Domain Tools",
-    icon: "\u{1F30D}",
+    icon: "Globe",
     current: 7,
     planned: 23,
     tools: [
@@ -332,7 +333,7 @@ const CATEGORIES: ToolCategory[] = [
   {
     id: "email",
     name: "Email Tools",
-    icon: "\u{2709}️",
+    icon: "Mail",
     current: 0,
     planned: 21,
     tools: [
@@ -348,7 +349,7 @@ const CATEGORIES: ToolCategory[] = [
   {
     id: "video",
     name: "Video Tools",
-    icon: "\u{1F3AC}",
+    icon: "Film",
     current: 0,
     planned: 26,
     tools: [
@@ -365,7 +366,7 @@ const CATEGORIES: ToolCategory[] = [
   {
     id: "audio",
     name: "Audio Tools",
-    icon: "\u{1F3B5}",
+    icon: "Music",
     current: 0,
     planned: 25,
     tools: [
@@ -388,7 +389,7 @@ function CategorySection({ category }: { category: ToolCategory }) {
     <details className="group rounded-lg border border-zinc-200 bg-white dark:border-zinc-700 dark:bg-zinc-900">
       <summary className="flex cursor-pointer items-center justify-between gap-4 px-5 py-4 transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800/50">
         <div className="flex items-center gap-3 min-w-0">
-          <span className="text-xl shrink-0" aria-hidden="true">{category.icon}</span>
+          <Icon name={category.icon} className="size-6 text-nuvora-600 dark:text-nuvora-400" />
           <div className="min-w-0">
             <h2 className="text-base font-bold text-zinc-900 dark:text-zinc-100 truncate">
               {category.name}

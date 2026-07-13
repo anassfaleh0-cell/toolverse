@@ -5,13 +5,14 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { getRegisteredToolCount, getCategories } from "@/lib/registry";
 import { Logo } from "@/components/ui/logo";
+import { Icon } from "@/components/shared/icon";
 import { HERO_TAGLINE, HERO_SUBTITLE } from "@/lib/constants";
 
 const trustBadges = [
-  { icon: "🔒", label: "Privacy First" },
-  { icon: "⚡", label: "Instant Results" },
-  { icon: "🆓", label: "100% Free" },
-  { icon: "📱", label: "Works on Mobile" },
+  { icon: "Shield", label: "Privacy First" },
+  { icon: "Zap", label: "Instant Results" },
+  { icon: "Smile", label: "100% Free" },
+  { icon: "Smartphone", label: "Works on Mobile" },
 ];
 
 function getStats(toolCount: number, catCount: number) {
@@ -148,7 +149,7 @@ export function Hero() {
           >
             {trustBadges.map((badge) => (
               <div key={badge.label} className="flex items-center gap-1.5 text-sm text-text-secondary transition-all duration-200 hover:text-text-primary">
-                <span>{badge.icon}</span>
+                <Icon name={badge.icon} className="size-4" />
                 <span className="font-medium">{badge.label}</span>
               </div>
             ))}
@@ -184,7 +185,7 @@ export function Hero() {
               animate={statsVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6 }}
             >
-              <span className="font-semibold text-text-primary">Join 100,000+ users</span> who trust Nuvora daily
+              <span className="font-semibold text-text-primary">Every tool runs entirely in your browser</span> — nothing is sent to a server
             </motion.p>
           </div>
         </div>

@@ -125,10 +125,10 @@ export default function RemoveEmptyLinesPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🧹", title: "Text Cleaner", description: "Clean text with extra spaces, special chars, and HTML tags", href: "/text-cleaner" },
-              { icon: "📋", title: "Remove Duplicate Lines", description: "Remove duplicate lines and keep only unique entries", href: "/remove-duplicate-lines" },
-              { icon: "📏", title: "Line Counter", description: "Count lines with detailed real-time statistics", href: "/line-counter" },
-              { icon: "🔤", title: "Sort Lines", description: "Sort lines alphabetically A-Z or Z-A", href: "/sort-lines" },
+              { icon: "Sparkles", title: "Text Cleaner", description: "Clean text with extra spaces, special chars, and HTML tags", href: "/text-cleaner" },
+              { icon: "FileText", title: "Remove Duplicate Lines", description: "Remove duplicate lines and keep only unique entries", href: "/remove-duplicate-lines" },
+              { icon: "Ruler", title: "Line Counter", description: "Count lines with detailed real-time statistics", href: "/line-counter" },
+              { icon: "TextIcon", title: "Sort Lines", description: "Sort lines alphabetically A-Z or Z-A", href: "/sort-lines" },
             ]}
             title="Related Text & Writing Tools"
           />

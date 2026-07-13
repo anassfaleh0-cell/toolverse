@@ -151,10 +151,10 @@ export default function HtmlPreviewPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🔗", title: "URL Encoder", description: "Percent-encode and decode URLs and query string parameters", href: "/url-encoder" },
-              { icon: "🔤", title: "HTML Entity Encoder", description: "Encode HTML special characters to prevent XSS", href: "/html-entity-encoder" },
-              { icon: "📦", title: "HTML Minifier", description: "Minify and beautify HTML code", href: "/html-minifier" },
-              { icon: "📋", title: "JSON Formatter", description: "Validate, beautify, and minify JSON data", href: "/json-formatter" },
+              { icon: "Link", title: "URL Encoder", description: "Percent-encode and decode URLs and query string parameters", href: "/url-encoder" },
+              { icon: "TextIcon", title: "HTML Entity Encoder", description: "Encode HTML special characters to prevent XSS", href: "/html-entity-encoder" },
+              { icon: "Package", title: "HTML Minifier", description: "Minify and beautify HTML code", href: "/html-minifier" },
+              { icon: "FileText", title: "JSON Formatter", description: "Validate, beautify, and minify JSON data", href: "/json-formatter" },
             ]}
             title="Related Developer Tools"
           />

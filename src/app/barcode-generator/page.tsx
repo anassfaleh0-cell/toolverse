@@ -161,10 +161,10 @@ export default function BarcodeGeneratorPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "📱", title: "QR Code Generator", description: "Generate QR codes for URLs, text, and contact information", href: "/qr-code-generator" },
-              { icon: "🎨", title: "Color Converter", description: "Convert colors between HEX, RGB, and HSL for barcode printing", href: "/color-converter" },
-              { icon: "🔐", title: "Base64 Encoder", description: "Encode binary data for embedding in barcode payloads", href: "/base64-encoder" },
-              { icon: "🔑", title: "SHA Hash Generator", description: "Generate SHA hash digests for barcode data verification", href: "/sha-hash-generator" },
+              { icon: "Smartphone", title: "QR Code Generator", description: "Generate QR codes for URLs, text, and contact information", href: "/qr-code-generator" },
+              { icon: "Palette", title: "Color Converter", description: "Convert colors between HEX, RGB, and HSL for barcode printing", href: "/color-converter" },
+              { icon: "LockKeyhole", title: "Base64 Encoder", description: "Encode binary data for embedding in barcode payloads", href: "/base64-encoder" },
+              { icon: "Key", title: "SHA Hash Generator", description: "Generate SHA hash digests for barcode data verification", href: "/sha-hash-generator" },
             ]}
             title="Related Image & Design Tools"
           />

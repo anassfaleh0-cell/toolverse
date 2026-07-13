@@ -198,10 +198,10 @@ export default function PortCheckerPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🔍", title: "Ping Test", description: "Measure network latency and packet loss to any server", href: "/ping-test" },
-              { icon: "🔍", title: "Website Status Checker", description: "Check if a website is online and measure response time", href: "/website-status-checker" },
-              { icon: "🔍", title: "SSL Certificate Checker", description: "Verify TLS certificates and expiration dates", href: "/ssl-certificate-checker" },
-              { icon: "🔍", title: "User Agent Parser", description: "Parse any user agent string for browser and device details", href: "/user-agent-parser" },
+              { icon: "Search", title: "Ping Test", description: "Measure network latency and packet loss to any server", href: "/ping-test" },
+              { icon: "Search", title: "Website Status Checker", description: "Check if a website is online and measure response time", href: "/website-status-checker" },
+              { icon: "Search", title: "SSL Certificate Checker", description: "Verify TLS certificates and expiration dates", href: "/ssl-certificate-checker" },
+              { icon: "Search", title: "User Agent Parser", description: "Parse any user agent string for browser and device details", href: "/user-agent-parser" },
             ]}
             title="Related Network Tools"
           />

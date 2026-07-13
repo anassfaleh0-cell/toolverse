@@ -177,10 +177,10 @@ export default function JsonToCsvPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "📋", title: "JSON Formatter", description: "Validate, beautify, and minify JSON data", href: "/json-formatter" },
-              { icon: "🔐", title: "Base64 Encoder", description: "Encode and decode Base64 strings for data URIs and JWT payloads", href: "/base64-encoder" },
-              { icon: "📄", title: "YAML to JSON Converter", description: "Convert between YAML and JSON formats", href: "/yaml-to-json" },
-              { icon: "🔤", title: "HTML Entity Encoder", description: "Encode HTML special characters to prevent XSS and rendering issues", href: "/html-entity-encoder" },
+              { icon: "FileText", title: "JSON Formatter", description: "Validate, beautify, and minify JSON data", href: "/json-formatter" },
+              { icon: "LockKeyhole", title: "Base64 Encoder", description: "Encode and decode Base64 strings for data URIs and JWT payloads", href: "/base64-encoder" },
+              { icon: "File", title: "YAML to JSON Converter", description: "Convert between YAML and JSON formats", href: "/yaml-to-json" },
+              { icon: "TextIcon", title: "HTML Entity Encoder", description: "Encode HTML special characters to prevent XSS and rendering issues", href: "/html-entity-encoder" },
             ]}
             title="Related Data Tools"
           />

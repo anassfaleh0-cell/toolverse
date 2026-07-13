@@ -125,10 +125,10 @@ export default function ExcerptGeneratorPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "📝", title: "Word Counter", description: "Count words, characters, sentences, and reading time", href: "/word-counter" },
-              { icon: "🧹", title: "Text Cleaner", description: "Clean text with extra spaces, special chars, and HTML tags", href: "/text-cleaner" },
-              { icon: "🔍", title: "Find and Replace", description: "Find and replace text with case and regex options", href: "/find-and-replace" },
-              { icon: "🔗", title: "Text to Slug Converter", description: "Convert text to URL-friendly slugs", href: "/text-to-slug" },
+              { icon: "PenTool", title: "Word Counter", description: "Count words, characters, sentences, and reading time", href: "/word-counter" },
+              { icon: "Sparkles", title: "Text Cleaner", description: "Clean text with extra spaces, special chars, and HTML tags", href: "/text-cleaner" },
+              { icon: "Search", title: "Find and Replace", description: "Find and replace text with case and regex options", href: "/find-and-replace" },
+              { icon: "Link", title: "Text to Slug Converter", description: "Convert text to URL-friendly slugs", href: "/text-to-slug" },
             ]}
             title="Related Text & Writing Tools"
           />

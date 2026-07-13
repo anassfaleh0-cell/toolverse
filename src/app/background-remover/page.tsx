@@ -89,10 +89,10 @@ export default function BackgroundRemoverPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "⚫", title: "Image Grayscale", description: "Convert images to grayscale or sepia effects", href: "/image-grayscale" },
-              { icon: "✂️", title: "Crop Image", description: "Crop and reframe your background-free images", href: "/crop-image" },
-              { icon: "📐", title: "Image Resizer", description: "Resize background-free images for e-commerce", href: "/image-resizer" },
-              { icon: "📦", title: "Image Compressor", description: "Compress images for faster web delivery", href: "/image-compressor" },
+              { icon: "Circle", title: "Image Grayscale", description: "Convert images to grayscale or sepia effects", href: "/image-grayscale" },
+              { icon: "Scissors", title: "Crop Image", description: "Crop and reframe your background-free images", href: "/crop-image" },
+              { icon: "Ruler", title: "Image Resizer", description: "Resize background-free images for e-commerce", href: "/image-resizer" },
+              { icon: "Package", title: "Image Compressor", description: "Compress images for faster web delivery", href: "/image-compressor" },
             ]}
             title="Related Image Tools"
           />

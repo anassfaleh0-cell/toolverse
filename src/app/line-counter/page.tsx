@@ -125,10 +125,10 @@ export default function LineCounterPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "📝", title: "Word Counter", description: "Count words, characters, sentences, and reading time", href: "/word-counter" },
-              { icon: "🧹", title: "Remove Empty Lines", description: "Remove blank and whitespace-only lines from text", href: "/remove-empty-lines" },
-              { icon: "📋", title: "Remove Duplicate Lines", description: "Remove duplicate lines and keep only unique entries", href: "/remove-duplicate-lines" },
-              { icon: "🔤", title: "Sort Lines", description: "Sort lines alphabetically A-Z or Z-A", href: "/sort-lines" },
+              { icon: "PenTool", title: "Word Counter", description: "Count words, characters, sentences, and reading time", href: "/word-counter" },
+              { icon: "Sparkles", title: "Remove Empty Lines", description: "Remove blank and whitespace-only lines from text", href: "/remove-empty-lines" },
+              { icon: "FileText", title: "Remove Duplicate Lines", description: "Remove duplicate lines and keep only unique entries", href: "/remove-duplicate-lines" },
+              { icon: "TextIcon", title: "Sort Lines", description: "Sort lines alphabetically A-Z or Z-A", href: "/sort-lines" },
             ]}
             title="Related Text & Writing Tools"
           />

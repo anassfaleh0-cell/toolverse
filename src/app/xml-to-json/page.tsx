@@ -161,10 +161,10 @@ export default function XmlToJsonPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "📋", title: "JSON Formatter", description: "Validate, beautify, and minify JSON data with syntax highlighting", href: "/json-formatter" },
-              { icon: "🔗", title: "URL Encoder", description: "Percent-encode and decode URLs and query string parameters", href: "/url-encoder" },
-              { icon: "🔐", title: "Base64 Encoder", description: "Encode and decode Base64 strings for data transport", href: "/base64-encoder" },
-              { icon: "🪙", title: "JWT Decoder", description: "Decode and inspect JSON Web Token headers and payloads", href: "/jwt-decoder" },
+              { icon: "FileText", title: "JSON Formatter", description: "Validate, beautify, and minify JSON data with syntax highlighting", href: "/json-formatter" },
+              { icon: "Link", title: "URL Encoder", description: "Percent-encode and decode URLs and query string parameters", href: "/url-encoder" },
+              { icon: "LockKeyhole", title: "Base64 Encoder", description: "Encode and decode Base64 strings for data transport", href: "/base64-encoder" },
+              { icon: "Circle", title: "JWT Decoder", description: "Decode and inspect JSON Web Token headers and payloads", href: "/jwt-decoder" },
             ]}
             title="Related Data Tools"
           />

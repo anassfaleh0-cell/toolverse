@@ -187,10 +187,10 @@ export default function ColorConverterPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🎨", title: "CSS Minifier", description: "Minify and beautify CSS stylesheets for production", href: "/css-minifier" },
-              { icon: "🔡", title: "Case Converter", description: "Convert text between camelCase, snake_case, and more", href: "/case-converter" },
-              { icon: "🔢", title: "Number Base Converter", description: "Convert numbers between binary, octal, decimal, and hexadecimal", href: "/number-base-converter" },
-              { icon: "🔗", title: "URL Encoder", description: "Percent-encode and decode URLs and query string parameters", href: "/url-encoder" },
+              { icon: "Palette", title: "CSS Minifier", description: "Minify and beautify CSS stylesheets for production", href: "/css-minifier" },
+              { icon: "CaseSensitive", title: "Case Converter", description: "Convert text between camelCase, snake_case, and more", href: "/case-converter" },
+              { icon: "Hash", title: "Number Base Converter", description: "Convert numbers between binary, octal, decimal, and hexadecimal", href: "/number-base-converter" },
+              { icon: "Link", title: "URL Encoder", description: "Percent-encode and decode URLs and query string parameters", href: "/url-encoder" },
             ]}
             title="Related Developer Tools"
           />

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getConverterSlugs } from "@/lib/content/programmatic-slugs";
+import { Icon } from "@/components/shared/icon";
 import { generateConverterContent, generateMetaForConverter } from "@/lib/content/programmatic-content";
 import { Breadcrumbs, JsonLd, FaqSection } from "@/components/shared";
 import { breadcrumbSchema, faqSchema, webPageSchema } from "@/lib/seo";
@@ -78,7 +79,7 @@ export default async function ConvertPage({ params }: Props) {
           <ul className="mt-6 grid gap-4 sm:grid-cols-2">
             {content.benefits.map((benefit, i) => (
               <li key={i} className="flex gap-3 rounded-xl border border-border-subtle bg-surface p-4">
-                <span className="mt-0.5 shrink-0 text-nuvora-600">✓</span>
+                <Icon name="CheckCircle2" className="size-5 text-nuvora-600 shrink-0 mt-0.5" />
                 <span className="text-sm text-text-secondary">{benefit}</span>
               </li>
             ))}

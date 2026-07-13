@@ -201,10 +201,10 @@ export default function SeoDiagnosticsPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🔗", title: "Redirect Checker", description: "Trace and audit URL redirect chains", href: "/redirect-checker" },
-              { icon: "🔍", title: "HTTP Headers Checker", description: "Inspect response and caching headers", href: "/http-headers-checker" },
-              { icon: "📄", title: "Sitemap Generator", description: "Create XML sitemaps for search engines", href: "/sitemap-generator" },
-              { icon: "🔒", title: "SSL Certificate Checker", description: "Verify SSL/TLS certificate validity", href: "/ssl-certificate-checker" },
+              { icon: "Link", title: "Redirect Checker", description: "Trace and audit URL redirect chains", href: "/redirect-checker" },
+              { icon: "Search", title: "HTTP Headers Checker", description: "Inspect response and caching headers", href: "/http-headers-checker" },
+              { icon: "File", title: "Sitemap Generator", description: "Create XML sitemaps for search engines", href: "/sitemap-generator" },
+              { icon: "Lock", title: "SSL Certificate Checker", description: "Verify SSL/TLS certificate validity", href: "/ssl-certificate-checker" },
             ]}
             title="Related SEO Tools"
           />

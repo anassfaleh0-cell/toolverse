@@ -51,10 +51,10 @@ export default function DkimValidatorPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🔑", title: "DKIM Lookup", description: "Fetch DKIM records from DNS", href: "/dkim-lookup" },
-              { icon: "📧", title: "SPF Generator", description: "Create SPF records", href: "/spf-generator" },
-              { icon: "🛡️", title: "DMARC Generator", description: "Create DMARC policies", href: "/dmarc-generator" },
-              { icon: "📨", title: "MX Lookup", description: "Find mail servers", href: "/mx-lookup" },
+              { icon: "Key", title: "DKIM Lookup", description: "Fetch DKIM records from DNS", href: "/dkim-lookup" },
+              { icon: "Mail", title: "SPF Generator", description: "Create SPF records", href: "/spf-generator" },
+              { icon: "Shield", title: "DMARC Generator", description: "Create DMARC policies", href: "/dmarc-generator" },
+              { icon: "Send", title: "MX Lookup", description: "Find mail servers", href: "/mx-lookup" },
             ]}
             title="Related Email Authentication Tools"
           />

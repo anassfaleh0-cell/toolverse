@@ -125,10 +125,10 @@ export default function TextJoinerPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "✂️", title: "Text Splitter", description: "Split text by delimiter and output in various formats", href: "/text-splitter" },
-              { icon: "🔤", title: "Sort Lines", description: "Sort lines alphabetically A-Z or Z-A", href: "/sort-lines" },
-              { icon: "📋", title: "Remove Duplicate Lines", description: "Remove duplicate lines and keep only unique entries", href: "/remove-duplicate-lines" },
-              { icon: "🔗", title: "Text to Slug Converter", description: "Convert text to URL-friendly slugs", href: "/text-to-slug" },
+              { icon: "Scissors", title: "Text Splitter", description: "Split text by delimiter and output in various formats", href: "/text-splitter" },
+              { icon: "TextIcon", title: "Sort Lines", description: "Sort lines alphabetically A-Z or Z-A", href: "/sort-lines" },
+              { icon: "FileText", title: "Remove Duplicate Lines", description: "Remove duplicate lines and keep only unique entries", href: "/remove-duplicate-lines" },
+              { icon: "Link", title: "Text to Slug Converter", description: "Convert text to URL-friendly slugs", href: "/text-to-slug" },
             ]}
             title="Related Text & Writing Tools"
           />

@@ -152,10 +152,10 @@ export default function LoremIpsumGeneratorPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "📝", title: "Word Counter", description: "Count words, characters, sentences, and paragraphs in your text", href: "/word-counter" },
-              { icon: "🔡", title: "Case Converter", description: "Convert text between camelCase, snake_case, kebab-case, and more", href: "/case-converter" },
-              { icon: "🔗", title: "URL Encoder", description: "Percent-encode and decode URLs and query string parameters", href: "/url-encoder" },
-              { icon: "🔍", title: "Regex Tester", description: "Test regular expressions with live matching and capture groups", href: "/regex-tester" },
+              { icon: "PenTool", title: "Word Counter", description: "Count words, characters, sentences, and paragraphs in your text", href: "/word-counter" },
+              { icon: "CaseSensitive", title: "Case Converter", description: "Convert text between camelCase, snake_case, kebab-case, and more", href: "/case-converter" },
+              { icon: "Link", title: "URL Encoder", description: "Percent-encode and decode URLs and query string parameters", href: "/url-encoder" },
+              { icon: "Search", title: "Regex Tester", description: "Test regular expressions with live matching and capture groups", href: "/regex-tester" },
             ]}
             title="Related Text & Writing Tools"
           />

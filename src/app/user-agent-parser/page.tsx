@@ -198,10 +198,10 @@ export default function UserAgentPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🔍", title: "HTTP Headers Checker", description: "Inspect all HTTP request and response headers", href: "/http-headers-checker" },
-              { icon: "🔍", title: "What Is My IP", description: "Check your public IP address and browser info", href: "/what-is-my-ip" },
-              { icon: "🔍", title: "Website Status Checker", description: "Check if a website is online and measure response time", href: "/website-status-checker" },
-              { icon: "🔍", title: "IP Lookup", description: "Trace any IP address location and ISP details", href: "/ip-lookup" },
+              { icon: "Search", title: "HTTP Headers Checker", description: "Inspect all HTTP request and response headers", href: "/http-headers-checker" },
+              { icon: "Search", title: "What Is My IP", description: "Check your public IP address and browser info", href: "/what-is-my-ip" },
+              { icon: "Search", title: "Website Status Checker", description: "Check if a website is online and measure response time", href: "/website-status-checker" },
+              { icon: "Search", title: "IP Lookup", description: "Trace any IP address location and ISP details", href: "/ip-lookup" },
             ]}
             title="Related Network Tools"
           />

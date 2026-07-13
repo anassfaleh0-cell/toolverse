@@ -55,10 +55,10 @@ export default function MtaStsLookupPage() {
       <section className="py-16 sm:py-20">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools tools={[
-            { icon: "📧", title: "SPF Lookup", description: "Check authorized mail servers", href: "/spf-lookup" },
-            { icon: "🛡️", title: "TLSRPT Lookup", description: "Check TLS reporting configuration", href: "/tlsrpt-lookup" },
-            { icon: "🔒", title: "DNSSEC Checker", description: "Verify DNSSEC for DANE", href: "/dnssec-checker" },
-            { icon: "📨", title: "MX Lookup", description: "Check mail server records", href: "/mx-lookup" },
+            { icon: "Mail", title: "SPF Lookup", description: "Check authorized mail servers", href: "/spf-lookup" },
+            { icon: "Shield", title: "TLSRPT Lookup", description: "Check TLS reporting configuration", href: "/tlsrpt-lookup" },
+            { icon: "Lock", title: "DNSSEC Checker", description: "Verify DNSSEC for DANE", href: "/dnssec-checker" },
+            { icon: "Send", title: "MX Lookup", description: "Check mail server records", href: "/mx-lookup" },
           ]} title="Related Email Security Tools" />
         </div>
       </section>

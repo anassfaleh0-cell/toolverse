@@ -184,10 +184,10 @@ export default function WhoisLookupPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🔍", title: "DNS Lookup", description: "Query all DNS record types for any domain", href: "/dns-lookup" },
-              { icon: "🔍", title: "Reverse DNS Lookup", description: "Find hostnames from IP addresses via PTR records", href: "/reverse-dns-lookup" },
-              { icon: "🔍", title: "DNS Propagation Checker", description: "Verify DNS changes have propagated worldwide", href: "/dns-propagation-checker" },
-              { icon: "🔍", title: "IP Lookup", description: "Trace any IP address location and ISP details", href: "/ip-lookup" },
+              { icon: "Search", title: "DNS Lookup", description: "Query all DNS record types for any domain", href: "/dns-lookup" },
+              { icon: "Search", title: "Reverse DNS Lookup", description: "Find hostnames from IP addresses via PTR records", href: "/reverse-dns-lookup" },
+              { icon: "Search", title: "DNS Propagation Checker", description: "Verify DNS changes have propagated worldwide", href: "/dns-propagation-checker" },
+              { icon: "Search", title: "IP Lookup", description: "Trace any IP address location and ISP details", href: "/ip-lookup" },
             ]}
             title="Related Network Tools"
           />

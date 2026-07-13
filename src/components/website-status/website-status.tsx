@@ -3,6 +3,7 @@
 import { useState, useTransition } from "react";
 import { Input, Button, Alert, Card, Skeleton } from "@/components/ui";
 import { CopyButton } from "@/components/shared";
+import { Icon } from "@/components/shared/icon";
 
 interface StatusResult {
   url: string;
@@ -57,11 +58,11 @@ export function WebsiteStatusChecker() {
 
   const statusIcon = (label: string) => {
     switch (label) {
-      case "Online": return "✅";
-      case "Redirect": return "↪️";
-      case "Error": return "⚠️";
-      case "Offline": return "❌";
-      default: return "❓";
+      case "Online": return "CheckCircle2";
+      case "Redirect": return "CornerDownRight";
+      case "Error": return "AlertTriangle";
+      case "Offline": return "XCircle";
+      default: return "HelpCircle";
     }
   };
 
@@ -97,7 +98,7 @@ export function WebsiteStatusChecker() {
       {result && !loading && (
         <div className="mt-8">
           <Card variant="default" className={`border-2 p-8 text-center ${statusColor(result.statusCode)}`}>
-            <div className="text-5xl">{statusIcon(result.statusLabel)}</div>
+            <Icon name={statusIcon(result.statusLabel)} className="size-12 mx-auto" />
             <p className="mt-4 text-2xl font-bold text-zinc-900 dark:text-zinc-50">
               {result.statusLabel}
             </p>

@@ -198,10 +198,10 @@ export default function ReverseDnsPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🔍", title: "DNS Lookup", description: "Query all DNS record types for any domain", href: "/dns-lookup" },
-              { icon: "🔍", title: "DNS Propagation Checker", description: "Verify DNS changes have propagated worldwide", href: "/dns-propagation-checker" },
-              { icon: "🔍", title: "WHOIS Lookup", description: "Check domain registration and ownership info", href: "/whois-lookup" },
-              { icon: "🔍", title: "IP Lookup", description: "Trace any IP address location and ISP details", href: "/ip-lookup" },
+              { icon: "Search", title: "DNS Lookup", description: "Query all DNS record types for any domain", href: "/dns-lookup" },
+              { icon: "Search", title: "DNS Propagation Checker", description: "Verify DNS changes have propagated worldwide", href: "/dns-propagation-checker" },
+              { icon: "Search", title: "WHOIS Lookup", description: "Check domain registration and ownership info", href: "/whois-lookup" },
+              { icon: "Search", title: "IP Lookup", description: "Trace any IP address location and ISP details", href: "/ip-lookup" },
             ]}
             title="Related Network Tools"
           />

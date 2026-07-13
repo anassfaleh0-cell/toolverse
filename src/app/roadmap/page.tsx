@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Breadcrumbs, JsonLd } from "@/components/shared";
+import { Icon } from "@/components/shared/icon";
 import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
@@ -82,7 +83,7 @@ export default function RoadmapPage() {
                 {phase.items.map((item) => (
                   <div key={item.name} className={`rounded-lg border p-4 ${item.done ? "border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-950" : "border-zinc-200 bg-white dark:border-zinc-700 dark:bg-zinc-900"}`}>
                     <div className="flex items-center gap-2">
-                      {item.done && <span className="text-green-600 dark:text-green-400">✓</span>}
+                      {item.done && <Icon name="CheckCircle2" className="size-5 text-green-600 dark:text-green-400" />}
                       <h3 className={`font-semibold ${item.done ? "text-green-800 dark:text-green-200 line-through" : "text-zinc-900 dark:text-zinc-100"}`}>{item.name}</h3>
                     </div>
                     <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">{item.desc}</p>

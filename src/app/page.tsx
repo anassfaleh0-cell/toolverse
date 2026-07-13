@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import { JsonLd } from "@/components/shared";
 import { Hero } from "@/components/shared/hero";
+import { Icon } from "@/components/shared/icon";
 import { HomeSearchBar } from "@/components/search/HomeSearchBar";
 import { webPageSchema, breadcrumbSchema, faqSchema, organizationSchema, webSiteSchema } from "@/lib/seo";
 import { SITE_NAME, SITE_URL, SITE_DESCRIPTION, FAQ_ITEMS, HERO_TAGLINE } from "@/lib/constants";
@@ -25,26 +26,15 @@ export const metadata: Metadata = {
 
 const breadcrumbs = [{ label: "Home", href: SITE_URL }];
 
-const CATEGORY_ICONS: Record<string, string> = {
-  "network-internet": "🌐",
-  "code-dev": "💻",
-  "image-design": "🎨",
-  "text-writing": "📝",
-  "productivity": "⚡",
-  "data-analytics": "📊",
-  "security": "🛡️",
-  "ai": "🤖",
-};
-
 const FEATURED_TOOLS = [
-  { id: "dns-lookup", icon: "🌐", gradient: "from-nuvora-500 to-aurora-500", label: "Network" },
-  { id: "merge-pdf", icon: "📄", gradient: "from-red-500 to-rose-500", label: "PDF" },
-  { id: "compress-pdf", icon: "🗜️", gradient: "from-orange-500 to-amber-500", label: "PDF" },
-  { id: "background-remover", icon: "✨", gradient: "from-purple-500 to-violet-500", label: "Image" },
-  { id: "spf-lookup", icon: "📧", gradient: "from-emerald-500 to-teal-500", label: "Email" },
-  { id: "domain-report", icon: "📊", gradient: "from-cyan-500 to-blue-500", label: "Security" },
-  { id: "password-generator", icon: "🔐", gradient: "from-red-500 to-pink-500", label: "Security" },
-  { id: "qr-code-generator", icon: "📱", gradient: "from-zinc-500 to-slate-700", label: "Utility" },
+  { id: "dns-lookup", icon: "Globe", gradient: "from-nuvora-500 to-aurora-500", label: "Network" },
+  { id: "merge-pdf", icon: "FileText", gradient: "from-red-500 to-rose-500", label: "PDF" },
+  { id: "compress-pdf", icon: "FileArchive", gradient: "from-orange-500 to-amber-500", label: "PDF" },
+  { id: "background-remover", icon: "Sparkles", gradient: "from-purple-500 to-violet-500", label: "Image" },
+  { id: "spf-lookup", icon: "Mail", gradient: "from-emerald-500 to-teal-500", label: "Email" },
+  { id: "domain-report", icon: "BarChart3", gradient: "from-cyan-500 to-blue-500", label: "Security" },
+  { id: "password-generator", icon: "LockKeyhole", gradient: "from-red-500 to-pink-500", label: "Security" },
+  { id: "qr-code-generator", icon: "QrCode", gradient: "from-zinc-500 to-slate-700", label: "Utility" },
 ];
 
 function TrustBar() {
@@ -125,7 +115,7 @@ function FlagShipTools() {
               <div className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${gradient}`} />
               <div className="absolute -right-6 -top-6 size-16 rounded-full bg-gradient-to-br from-nuvora-50 to-transparent opacity-0 transition-opacity group-hover:opacity-100 dark:from-nuvora-950/50" />
               <div className="flex items-center justify-between">
-                <span className="text-2xl">{icon}</span>
+                <Icon name={icon} className="size-6 text-nuvora-600 dark:text-nuvora-400" />
                 <span className="rounded-full bg-surface-secondary px-2.5 py-0.5 text-[11px] font-medium text-text-tertiary">{label}</span>
               </div>
               <h3 className="mt-4 font-semibold text-text-primary">{tool!.name}</h3>
@@ -158,7 +148,7 @@ function CategoryGrid() {
             return (
               <Link key={cat.slug} href={`/category/${cat.slug}`} className="group relative overflow-hidden nuvora-card p-6">
                 <div className="absolute -right-8 -top-8 size-20 rounded-full bg-nuvora-50 opacity-0 transition-opacity group-hover:opacity-100 dark:bg-nuvora-950/30" />
-                <span className="text-2xl">{CATEGORY_ICONS[cat.slug] ?? "🔧"}</span>
+                <Icon name={cat.icon} className="size-6 text-nuvora-600 dark:text-nuvora-400" />
                 <h3 className="mt-3 font-semibold text-text-primary">{cat.label}</h3>
                 <p className="mt-1 text-sm text-text-tertiary">{cat.toolCount} tools</p>
                 <p className="mt-2 line-clamp-2 text-sm text-text-secondary leading-relaxed">{cat.description}</p>

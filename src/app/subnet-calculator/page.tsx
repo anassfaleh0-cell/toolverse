@@ -152,10 +152,10 @@ export default function SubnetCalculatorPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🌐", title: "IP Lookup", description: "Look up any IPv4 or IPv6 address with geolocation and ISP details", href: "/ip-lookup" },
-              { icon: "📡", title: "DNS Lookup", description: "Look up DNS records for any domain name", href: "/dns-lookup" },
-              { icon: "📶", title: "Ping Test", description: "Test network latency and packet loss to any host", href: "/ping-test" },
-              { icon: "🔍", title: "WHOIS Lookup", description: "Look up domain registration and ownership information", href: "/whois-lookup" },
+              { icon: "Globe", title: "IP Lookup", description: "Look up any IPv4 or IPv6 address with geolocation and ISP details", href: "/ip-lookup" },
+              { icon: "Satellite", title: "DNS Lookup", description: "Look up DNS records for any domain name", href: "/dns-lookup" },
+              { icon: "Activity", title: "Ping Test", description: "Test network latency and packet loss to any host", href: "/ping-test" },
+              { icon: "Search", title: "WHOIS Lookup", description: "Look up domain registration and ownership information", href: "/whois-lookup" },
             ]}
             title="Related Network Tools"
           />

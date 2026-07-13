@@ -51,10 +51,10 @@ export default function DmarcGeneratorPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "📧", title: "SPF Generator", description: "Create SPF records", href: "/spf-generator" },
-              { icon: "🔑", title: "DKIM Validator", description: "Validate DKIM records", href: "/dkim-validator" },
-              { icon: "📨", title: "MX Lookup", description: "Find mail servers", href: "/mx-lookup" },
-              { icon: "🏷️", title: "DMARC Lookup", description: "Check existing DMARC policy", href: "/dmarc-lookup" },
+              { icon: "Mail", title: "SPF Generator", description: "Create SPF records", href: "/spf-generator" },
+              { icon: "Key", title: "DKIM Validator", description: "Validate DKIM records", href: "/dkim-validator" },
+              { icon: "Send", title: "MX Lookup", description: "Find mail servers", href: "/mx-lookup" },
+              { icon: "Tag", title: "DMARC Lookup", description: "Check existing DMARC policy", href: "/dmarc-lookup" },
             ]}
             title="Related Email Authentication Tools"
           />

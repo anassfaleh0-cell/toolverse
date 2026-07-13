@@ -56,10 +56,10 @@ export default function DnsZoneValidatorPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🔍", title: "DNS Lookup", description: "Query all DNS record types", href: "/dns-lookup" },
-              { icon: "🔒", title: "DNSSEC Checker", description: "Verify DNSSEC signing", href: "/dnssec-checker" },
-              { icon: "🔍", title: "Nameserver Analyzer", description: "Analyze nameserver setup", href: "/nameserver-analyzer" },
-              { icon: "🔍", title: "CAA Lookup", description: "Check CA Authorization", href: "/caa-lookup" },
+              { icon: "Search", title: "DNS Lookup", description: "Query all DNS record types", href: "/dns-lookup" },
+              { icon: "Lock", title: "DNSSEC Checker", description: "Verify DNSSEC signing", href: "/dnssec-checker" },
+              { icon: "Search", title: "Nameserver Analyzer", description: "Analyze nameserver setup", href: "/nameserver-analyzer" },
+              { icon: "Search", title: "CAA Lookup", description: "Check CA Authorization", href: "/caa-lookup" },
             ]}
             title="Related DNS Tools"
           />

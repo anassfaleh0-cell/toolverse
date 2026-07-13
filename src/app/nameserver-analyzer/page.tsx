@@ -56,10 +56,10 @@ export default function NameserverAnalyzerPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🔍", title: "DNS Lookup", description: "Query all DNS record types", href: "/dns-lookup" },
-              { icon: "🔒", title: "DNSSEC Checker", description: "Verify DNSSEC signing", href: "/dnssec-checker" },
-              { icon: "🔍", title: "CAA Lookup", description: "Check CA Authorization", href: "/caa-lookup" },
-              { icon: "🔍", title: "DNS Zone Validator", description: "Validate DNS zone", href: "/dns-zone-validator" },
+              { icon: "Search", title: "DNS Lookup", description: "Query all DNS record types", href: "/dns-lookup" },
+              { icon: "Lock", title: "DNSSEC Checker", description: "Verify DNSSEC signing", href: "/dnssec-checker" },
+              { icon: "Search", title: "CAA Lookup", description: "Check CA Authorization", href: "/caa-lookup" },
+              { icon: "Search", title: "DNS Zone Validator", description: "Validate DNS zone", href: "/dns-zone-validator" },
             ]}
             title="Related DNS Tools"
           />

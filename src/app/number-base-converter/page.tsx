@@ -203,10 +203,10 @@ export default function NumberBaseConverterPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🎨", title: "Color Converter", description: "Convert colors between HEX, RGB, and HSL formats", href: "/color-converter" },
-              { icon: "🔡", title: "Case Converter", description: "Convert text between camelCase, snake_case, and more", href: "/case-converter" },
-              { icon: "🔲", title: "UUID Generator", description: "Generate UUID v4 identifiers for database keys and IDs", href: "/uuid-generator" },
-              { icon: "🔍", title: "Regex Tester", description: "Test regular expressions with live matching and capture groups", href: "/regex-tester" },
+              { icon: "Palette", title: "Color Converter", description: "Convert colors between HEX, RGB, and HSL formats", href: "/color-converter" },
+              { icon: "CaseSensitive", title: "Case Converter", description: "Convert text between camelCase, snake_case, and more", href: "/case-converter" },
+              { icon: "Grid3x3", title: "UUID Generator", description: "Generate UUID v4 identifiers for database keys and IDs", href: "/uuid-generator" },
+              { icon: "Search", title: "Regex Tester", description: "Test regular expressions with live matching and capture groups", href: "/regex-tester" },
             ]}
             title="Related Developer Tools"
           />

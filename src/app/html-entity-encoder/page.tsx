@@ -203,10 +203,10 @@ export default function HtmlEntityEncoderPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🔗", title: "URL Encoder", description: "Percent-encode and decode URLs and query string parameters", href: "/url-encoder" },
-              { icon: "🔐", title: "Base64 Encoder", description: "Encode and decode Base64 strings for data URIs and JWT payloads", href: "/base64-encoder" },
-              { icon: "📄", title: "HTML Minifier", description: "Minify HTML by removing whitespace and comments", href: "/html-minifier" },
-              { icon: "📜", title: "JS Minifier", description: "Minify JavaScript code to reduce file size and improve load times", href: "/js-minifier" },
+              { icon: "Link", title: "URL Encoder", description: "Percent-encode and decode URLs and query string parameters", href: "/url-encoder" },
+              { icon: "LockKeyhole", title: "Base64 Encoder", description: "Encode and decode Base64 strings for data URIs and JWT payloads", href: "/base64-encoder" },
+              { icon: "File", title: "HTML Minifier", description: "Minify HTML by removing whitespace and comments", href: "/html-minifier" },
+              { icon: "FileText", title: "JS Minifier", description: "Minify JavaScript code to reduce file size and improve load times", href: "/js-minifier" },
             ]}
             title="Related Developer Tools"
           />

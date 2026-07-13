@@ -203,10 +203,10 @@ export default function RegexTesterPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "📋", title: "JSON Formatter", description: "Validate, beautify, and minify JSON data for regex test inputs", href: "/json-formatter" },
-              { icon: "🔡", title: "Case Converter", description: "Convert text between uppercase, lowercase, camelCase, and more", href: "/case-converter" },
-              { icon: "🔐", title: "Base64 Encoder", description: "Encode and decode Base64 strings for test data preparation", href: "/base64-encoder" },
-              { icon: "🔗", title: "URL Encoder", description: "Percent-encode and decode URLs and query string parameters", href: "/url-encoder" },
+              { icon: "FileText", title: "JSON Formatter", description: "Validate, beautify, and minify JSON data for regex test inputs", href: "/json-formatter" },
+              { icon: "CaseSensitive", title: "Case Converter", description: "Convert text between uppercase, lowercase, camelCase, and more", href: "/case-converter" },
+              { icon: "LockKeyhole", title: "Base64 Encoder", description: "Encode and decode Base64 strings for test data preparation", href: "/base64-encoder" },
+              { icon: "Link", title: "URL Encoder", description: "Percent-encode and decode URLs and query string parameters", href: "/url-encoder" },
             ]}
             title="Related Developer Tools"
           />

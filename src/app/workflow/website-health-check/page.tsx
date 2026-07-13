@@ -4,6 +4,7 @@ import { useState, useCallback } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui";
 import { ResultExport, ToolMethodology } from "@/components/shared";
+import { Icon } from "@/components/shared/icon";
 import { saveResult } from "@/lib/user-storage";
 
 interface StepResult {
@@ -143,12 +144,12 @@ export default function WebsiteHealthCheckPage() {
                 >
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
-                      <span className={`text-base ${
+                      <span className={`flex items-center justify-center ${
                         r.status === "passed" ? "text-emerald-500" :
                         r.status === "failed" ? "text-red-500" :
                         r.status === "running" ? "text-blue-500" : "text-zinc-300"
                       }`}>
-                        {r.status === "passed" ? "✓" : r.status === "failed" ? "✗" : r.status === "running" ? "→" : "○"}
+                        {r.status === "passed" ? <Icon name="CheckCircle2" className="size-5" /> : r.status === "failed" ? <Icon name="XCircle" className="size-5" /> : r.status === "running" ? "→" : "○"}
                       </span>
                       <span className="font-medium text-zinc-900 dark:text-zinc-50">
                         {step?.label || r.step}

@@ -200,10 +200,10 @@ export default function DnsPropagationTroubleshootingPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🔍", title: "DNS Propagation Checker", description: "Verify DNS changes from locations worldwide", href: "/dns-propagation-checker" },
-              { icon: "🔍", title: "DNS Lookup", description: "Query all DNS record types for any domain", href: "/dns-lookup" },
-              { icon: "🔍", title: "DNS Record Types", description: "Reference for all DNS record types and their uses", href: "/dns-record-types" },
-              { icon: "🔍", title: "WHOIS Lookup", description: "Check domain registration and nameserver details", href: "/whois-lookup" },
+              { icon: "Search", title: "DNS Propagation Checker", description: "Verify DNS changes from locations worldwide", href: "/dns-propagation-checker" },
+              { icon: "Search", title: "DNS Lookup", description: "Query all DNS record types for any domain", href: "/dns-lookup" },
+              { icon: "Search", title: "DNS Record Types", description: "Reference for all DNS record types and their uses", href: "/dns-record-types" },
+              { icon: "Search", title: "WHOIS Lookup", description: "Check domain registration and nameserver details", href: "/whois-lookup" },
             ]}
             title="Related DNS Tools"
           />

@@ -198,10 +198,10 @@ export default function WebsiteStatusPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🔍", title: "Ping Test", description: "Measure network latency and packet loss to any server", href: "/ping-test" },
-              { icon: "🔍", title: "HTTP Headers Checker", description: "Inspect all HTTP security and response headers", href: "/http-headers-checker" },
-              { icon: "🔍", title: "DNS Lookup", description: "Query all DNS record types for any domain", href: "/dns-lookup" },
-              { icon: "🔍", title: "SSL Certificate Checker", description: "Verify TLS certificates and expiration dates", href: "/ssl-certificate-checker" },
+              { icon: "Search", title: "Ping Test", description: "Measure network latency and packet loss to any server", href: "/ping-test" },
+              { icon: "Search", title: "HTTP Headers Checker", description: "Inspect all HTTP security and response headers", href: "/http-headers-checker" },
+              { icon: "Search", title: "DNS Lookup", description: "Query all DNS record types for any domain", href: "/dns-lookup" },
+              { icon: "Search", title: "SSL Certificate Checker", description: "Verify TLS certificates and expiration dates", href: "/ssl-certificate-checker" },
             ]}
             title="Related Network Tools"
           />

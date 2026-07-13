@@ -203,10 +203,10 @@ export default function CssMinifierPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "📜", title: "JS Minifier", description: "Minify and beautify JavaScript code for faster loading", href: "/js-minifier" },
-              { icon: "🌐", title: "HTML Minifier", description: "Minify and beautify HTML markup for production", href: "/html-minifier" },
-              { icon: "🎨", title: "Color Converter", description: "Convert colors between HEX, RGB, and HSL formats", href: "/color-converter" },
-              { icon: "🔡", title: "Case Converter", description: "Convert text between camelCase, snake_case, and more", href: "/case-converter" },
+              { icon: "FileText", title: "JS Minifier", description: "Minify and beautify JavaScript code for faster loading", href: "/js-minifier" },
+              { icon: "Globe", title: "HTML Minifier", description: "Minify and beautify HTML markup for production", href: "/html-minifier" },
+              { icon: "Palette", title: "Color Converter", description: "Convert colors between HEX, RGB, and HSL formats", href: "/color-converter" },
+              { icon: "CaseSensitive", title: "Case Converter", description: "Convert text between camelCase, snake_case, and more", href: "/case-converter" },
             ]}
             title="Related Developer Tools"
           />

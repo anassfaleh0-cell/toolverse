@@ -151,10 +151,10 @@ export default function CssGradientGeneratorPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🎨", title: "Color Converter", description: "Convert colors between HEX, RGB, and HSL formats", href: "/color-converter" },
-              { icon: "📱", title: "QR Code Generator", description: "Generate QR codes from any text or URL", href: "/qr-code-generator" },
-              { icon: "📊", title: "Barcode Generator", description: "Generate barcodes in Code 128, EAN-13, and UPC-A", href: "/barcode-generator" },
-              { icon: "🖼️", title: "Image Resizer", description: "Resize images online with aspect ratio lock", href: "/image-resizer" },
+              { icon: "Palette", title: "Color Converter", description: "Convert colors between HEX, RGB, and HSL formats", href: "/color-converter" },
+              { icon: "Smartphone", title: "QR Code Generator", description: "Generate QR codes from any text or URL", href: "/qr-code-generator" },
+              { icon: "BarChart3", title: "Barcode Generator", description: "Generate barcodes in Code 128, EAN-13, and UPC-A", href: "/barcode-generator" },
+              { icon: "Image", title: "Image Resizer", description: "Resize images online with aspect ratio lock", href: "/image-resizer" },
             ]}
             title="Related Design Tools"
           />

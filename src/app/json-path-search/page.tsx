@@ -161,10 +161,10 @@ export default function JsonPathSearchPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "📋", title: "JSON Formatter", description: "Validate, beautify, and minify JSON data with syntax highlighting", href: "/json-formatter" },
-              { icon: "🔄", title: "XML to JSON Converter", description: "Convert XML to JSON and JSON to XML for cross-format queries", href: "/xml-to-json" },
-              { icon: "🔗", title: "URL Encoder", description: "Percent-encode and decode URLs and query string parameters", href: "/url-encoder" },
-              { icon: "🪙", title: "JWT Decoder", description: "Decode and inspect JSON Web Token headers and payloads", href: "/jwt-decoder" },
+              { icon: "FileText", title: "JSON Formatter", description: "Validate, beautify, and minify JSON data with syntax highlighting", href: "/json-formatter" },
+              { icon: "RefreshCw", title: "XML to JSON Converter", description: "Convert XML to JSON and JSON to XML for cross-format queries", href: "/xml-to-json" },
+              { icon: "Link", title: "URL Encoder", description: "Percent-encode and decode URLs and query string parameters", href: "/url-encoder" },
+              { icon: "Circle", title: "JWT Decoder", description: "Decode and inspect JSON Web Token headers and payloads", href: "/jwt-decoder" },
             ]}
             title="Related Developer Tools"
           />

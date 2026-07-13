@@ -3,6 +3,7 @@
 import { useState, useCallback, useMemo } from "react";
 import { Button, Input } from "@/components/ui";
 import { ResultExport, AiExplain } from "@/components/shared";
+import { Icon } from "@/components/shared/icon";
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 
 interface SPFScore {
@@ -606,7 +607,10 @@ export function EmailAuthLookup({ lookupType, title, description, placeholder, s
                     <div className="space-y-0.5">
                       <p className="text-[11px] font-medium text-red-600">Weaknesses</p>
                       {result.dmarcAnalysis.weaknesses.map((w, i) => (
-                        <p key={i} className="text-xs text-red-700 dark:text-red-400">✗ {w}</p>
+                        <p key={i} className="flex items-start gap-1.5 text-xs text-red-700 dark:text-red-400">
+                          <Icon name="XCircle" className="size-3.5 shrink-0 mt-0.5" />
+                          <span>{w}</span>
+                        </p>
                       ))}
                     </div>
                   )}
@@ -678,7 +682,10 @@ export function EmailAuthLookup({ lookupType, title, description, placeholder, s
                   <div className="space-y-1.5">
                     {warnings.map((w, i) => (
                       <div key={i} className={`flex items-start gap-2 text-xs ${w.type === "error" ? "text-red-600 dark:text-red-400" : w.type === "warning" ? "text-amber-600 dark:text-amber-400" : "text-blue-600 dark:text-blue-400"}`}>
-                        <span className="mt-0.5 shrink-0">{w.type === "error" ? "✕" : w.type === "warning" ? "!" : "i"}</span>
+                        <Icon
+                          name={w.type === "error" ? "XCircle" : w.type === "warning" ? "AlertTriangle" : "Info"}
+                          className="size-4 shrink-0 mt-0.5"
+                        />
                         <span>{w.text}</span>
                       </div>
                     ))}

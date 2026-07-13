@@ -56,10 +56,10 @@ export default function BlacklistCheckPage() {
       <section className="py-16 sm:py-20">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools tools={[
-            { icon: "📧", title: "Email Deliverability Check", description: "Full email health audit", href: "/email-deliverability-checker" },
-            { icon: "🔍", title: "DNS Lookup", description: "Query all DNS record types", href: "/dns-lookup" },
-            { icon: "📨", title: "MX Lookup", description: "Check mail server records", href: "/mx-lookup" },
-            { icon: "🔍", title: "ASN Lookup", description: "Find ASN for any IP", href: "/asn-lookup" },
+            { icon: "Mail", title: "Email Deliverability Check", description: "Full email health audit", href: "/email-deliverability-checker" },
+            { icon: "Search", title: "DNS Lookup", description: "Query all DNS record types", href: "/dns-lookup" },
+            { icon: "Send", title: "MX Lookup", description: "Check mail server records", href: "/mx-lookup" },
+            { icon: "Search", title: "ASN Lookup", description: "Find ASN for any IP", href: "/asn-lookup" },
           ]} title="Related Network Security Tools" />
         </div>
       </section>

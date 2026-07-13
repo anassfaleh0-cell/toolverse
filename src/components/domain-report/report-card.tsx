@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { Button, Input } from "@/components/ui";
-import { StatusBadge } from "@/components/shared";
+import { StatusBadge, Icon } from "@/components/shared";
 import { cn } from "@/lib/utils";
 
 type Grade = "S" | "A" | "B" | "C" | "D" | "F";
@@ -77,9 +77,9 @@ async function checkDns(hostname: string): Promise<CategoryResult> {
   try {
     const data = await fetchJson(`/api/dns-lookup?hostname=${encodeURIComponent(hostname)}`);
     const ok = data.records?.length > 0;
-    return { key: "dns", label: "DNS Health", icon: "🌐", score: ok ? 100 : 40, status: ok ? "good" : "warning", statusLabel: ok ? "Resolves" : "No Records", detail: ok ? `${data.records.length} record types resolved` : "No DNS records found — domain may not exist" };
+    return { key: "dns", label: "DNS Health", icon: "Globe", score: ok ? 100 : 40, status: ok ? "good" : "warning", statusLabel: ok ? "Resolves" : "No Records", detail: ok ? `${data.records.length} record types resolved` : "No DNS records found — domain may not exist" };
   } catch (e) {
-    return { key: "dns", label: "DNS Health", icon: "🌐", score: 0, status: "critical", statusLabel: "Failed", detail: e instanceof Error ? e.message : "DNS query failed" };
+    return { key: "dns", label: "DNS Health", icon: "Globe", score: 0, status: "critical", statusLabel: "Failed", detail: e instanceof Error ? e.message : "DNS query failed" };
   }
 }
 
@@ -89,9 +89,9 @@ async function checkSsl(host: string): Promise<CategoryResult> {
     const c = data.certificate;
     const d = c.daysRemaining;
     const score = d > 30 ? 100 : d > 0 ? 60 : 10;
-    return { key: "ssl", label: "SSL / TLS", icon: "🔒", score, status: d > 30 ? "good" : d > 0 ? "warning" : "critical", statusLabel: d > 0 ? `${d} days` : "Expired", detail: d > 0 ? `Valid until ${new Date(c.validTo).toLocaleDateString()}` : "Certificate is expired or invalid" };
+    return { key: "ssl", label: "SSL / TLS", icon: "Lock", score, status: d > 30 ? "good" : d > 0 ? "warning" : "critical", statusLabel: d > 0 ? `${d} days` : "Expired", detail: d > 0 ? `Valid until ${new Date(c.validTo).toLocaleDateString()}` : "Certificate is expired or invalid" };
   } catch (e) {
-    return { key: "ssl", label: "SSL / TLS", icon: "🔒", score: 0, status: "critical", statusLabel: "Failed", detail: e instanceof Error ? e.message : "SSL check failed" };
+    return { key: "ssl", label: "SSL / TLS", icon: "Lock", score: 0, status: "critical", statusLabel: "Failed", detail: e instanceof Error ? e.message : "SSL check failed" };
   }
 }
 
@@ -101,9 +101,9 @@ async function checkHttp(url: string): Promise<CategoryResult> {
     const wanted = ["strict-transport-security", "content-security-policy", "x-frame-options", "x-content-type-options", "referrer-policy", "permissions-policy"];
     const found = wanted.filter(h => data.headers?.[h]).length;
     const score = Math.round((found / wanted.length) * 100);
-    return { key: "http", label: "HTTP Headers", icon: "📋", score, status: score >= 80 ? "good" : score >= 40 ? "warning" : "critical", statusLabel: `${found}/${wanted.length}`, detail: found > 0 ? `${found} of ${wanted.length} security headers present` : "No security headers detected" };
+    return { key: "http", label: "HTTP Headers", icon: "ClipboardList", score, status: score >= 80 ? "good" : score >= 40 ? "warning" : "critical", statusLabel: `${found}/${wanted.length}`, detail: found > 0 ? `${found} of ${wanted.length} security headers present` : "No security headers detected" };
   } catch (e) {
-    return { key: "http", label: "HTTP Headers", icon: "📋", score: 0, status: "critical", statusLabel: "Failed", detail: e instanceof Error ? e.message : "Headers check failed" };
+    return { key: "http", label: "HTTP Headers", icon: "ClipboardList", score: 0, status: "critical", statusLabel: "Failed", detail: e instanceof Error ? e.message : "Headers check failed" };
   }
 }
 
@@ -113,11 +113,11 @@ async function checkWhois(domain: string): Promise<CategoryResult> {
     const raw = data.data || "";
     const expired = /Expir|expir/i.test(raw);
     const notFound = /No match|not found|no data found|Domain not found/i.test(raw);
-    if (notFound) return { key: "whois", label: "WHOIS", icon: "📝", score: 0, status: "critical", statusLabel: "Not Found", detail: "Domain not found in WHOIS database" };
+    if (notFound) return { key: "whois", label: "WHOIS", icon: "FileText", score: 0, status: "critical", statusLabel: "Not Found", detail: "Domain not found in WHOIS database" };
     const score = expired ? 100 : 50;
-    return { key: "whois", label: "WHOIS", icon: "📝", score, status: expired ? "good" : "warning", statusLabel: expired ? "Registered" : "Check Expiry", detail: expired ? "Domain is registered and active" : "Could not verify expiration status" };
+    return { key: "whois", label: "WHOIS", icon: "FileText", score, status: expired ? "good" : "warning", statusLabel: expired ? "Registered" : "Check Expiry", detail: expired ? "Domain is registered and active" : "Could not verify expiration status" };
   } catch (e) {
-    return { key: "whois", label: "WHOIS", icon: "📝", score: 0, status: "critical", statusLabel: "Failed", detail: e instanceof Error ? e.message : "WHOIS lookup failed" };
+    return { key: "whois", label: "WHOIS", icon: "FileText", score: 0, status: "critical", statusLabel: "Failed", detail: e instanceof Error ? e.message : "WHOIS lookup failed" };
   }
 }
 
@@ -127,9 +127,9 @@ async function checkStatus(url: string): Promise<CategoryResult> {
     const online = data.statusLabel === "Online";
     const redirect = data.statusLabel === "Redirect";
     const score = online ? 100 : redirect ? 70 : 20;
-    return { key: "status", label: "Website Status", icon: "⚡", score, status: online ? "good" : redirect ? "warning" : "critical", statusLabel: online ? "Online" : redirect ? "Redirect" : "Offline", detail: online ? `HTTP ${data.statusCode} — server is responding` : redirect ? `Redirect (HTTP ${data.statusCode})` : "Website is not reachable" };
+    return { key: "status", label: "Website Status", icon: "Zap", score, status: online ? "good" : redirect ? "warning" : "critical", statusLabel: online ? "Online" : redirect ? "Redirect" : "Offline", detail: online ? `HTTP ${data.statusCode} — server is responding` : redirect ? `Redirect (HTTP ${data.statusCode})` : "Website is not reachable" };
   } catch (e) {
-    return { key: "status", label: "Website Status", icon: "⚡", score: 0, status: "critical", statusLabel: "Offline", detail: e instanceof Error ? e.message : "Website unreachable" };
+    return { key: "status", label: "Website Status", icon: "Zap", score: 0, status: "critical", statusLabel: "Offline", detail: e instanceof Error ? e.message : "Website unreachable" };
   }
 }
 
@@ -146,9 +146,9 @@ async function checkPing(host: string): Promise<CategoryResult> {
       else if (avg < 500) score = 40;
       else score = 20;
     }
-    return { key: "ping", label: "Response Time", icon: "📡", score, status: score >= 80 ? "good" : score >= 40 ? "warning" : "critical", statusLabel: loss >= 100 ? "Timeout" : `${avg}ms`, detail: loss >= 100 ? "Host did not respond within timeout" : `${avg}ms avg · ${data.min}–${data.max}ms range · ${loss}% loss` };
+    return { key: "ping", label: "Response Time", icon: "Satellite", score, status: score >= 80 ? "good" : score >= 40 ? "warning" : "critical", statusLabel: loss >= 100 ? "Timeout" : `${avg}ms`, detail: loss >= 100 ? "Host did not respond within timeout" : `${avg}ms avg · ${data.min}–${data.max}ms range · ${loss}% loss` };
   } catch (e) {
-    return { key: "ping", label: "Response Time", icon: "📡", score: 0, status: "critical", statusLabel: "Failed", detail: e instanceof Error ? e.message : "Ping test failed" };
+    return { key: "ping", label: "Response Time", icon: "Satellite", score: 0, status: "critical", statusLabel: "Failed", detail: e instanceof Error ? e.message : "Ping test failed" };
   }
 }
 
@@ -293,7 +293,7 @@ export function DomainReportCard() {
             {results.categories.map((cat, i) => (
               <div key={cat.key} className="rounded-xl border border-zinc-200 bg-white p-5 shadow-sm transition-all duration-300 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/50" style={{ animation: `fade-slide-up 0.4s ease-out ${i * 0.08}s both` }}>
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl">{cat.icon}</span>
+                  <Icon name={cat.icon} className="size-6 text-nuvora-600 dark:text-nuvora-400" />
                   <StatusBadge status={cat.status} label={cat.statusLabel} />
                 </div>
                 <p className="mt-3 text-sm font-semibold text-zinc-900 dark:text-zinc-50">{cat.label}</p>

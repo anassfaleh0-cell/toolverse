@@ -177,10 +177,10 @@ export default function SqlFormatterPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "📋", title: "JSON Formatter", description: "Validate, beautify, and minify JSON data", href: "/json-formatter" },
-              { icon: "🔍", title: "Regex Tester", description: "Test regular expressions with live matching and capture groups", href: "/regex-tester" },
-              { icon: "🔧", title: "JS Minifier", description: "Minify JavaScript code to reduce file size", href: "/js-minifier" },
-              { icon: "🎨", title: "CSS Minifier", description: "Minify and format CSS stylesheets", href: "/css-minifier" },
+              { icon: "FileText", title: "JSON Formatter", description: "Validate, beautify, and minify JSON data", href: "/json-formatter" },
+              { icon: "Search", title: "Regex Tester", description: "Test regular expressions with live matching and capture groups", href: "/regex-tester" },
+              { icon: "Wrench", title: "JS Minifier", description: "Minify JavaScript code to reduce file size", href: "/js-minifier" },
+              { icon: "Palette", title: "CSS Minifier", description: "Minify and format CSS stylesheets", href: "/css-minifier" },
             ]}
             title="Related Developer Tools"
           />

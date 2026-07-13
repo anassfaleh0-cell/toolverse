@@ -157,10 +157,10 @@ export default function DnsTroubleshootingPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🔍", title: "DNS Lookup", description: "Query all DNS record types for any domain", href: "/dns-lookup" },
-              { icon: "🔍", title: "DNS Propagation Checker", description: "Verify DNS changes worldwide", href: "/dns-propagation-checker" },
-              { icon: "🔍", title: "Reverse DNS Lookup", description: "Find hostnames from IP addresses", href: "/reverse-dns-lookup" },
-              { icon: "🔍", title: "WHOIS Lookup", description: "Check domain registration details", href: "/whois-lookup" },
+              { icon: "Search", title: "DNS Lookup", description: "Query all DNS record types for any domain", href: "/dns-lookup" },
+              { icon: "Search", title: "DNS Propagation Checker", description: "Verify DNS changes worldwide", href: "/dns-propagation-checker" },
+              { icon: "Search", title: "Reverse DNS Lookup", description: "Find hostnames from IP addresses", href: "/reverse-dns-lookup" },
+              { icon: "Search", title: "WHOIS Lookup", description: "Check domain registration details", href: "/whois-lookup" },
             ]}
             title="Related DNS Tools"
           />

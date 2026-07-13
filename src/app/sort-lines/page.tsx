@@ -125,10 +125,10 @@ export default function SortLinesPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "📋", title: "Remove Duplicate Lines", description: "Remove duplicate lines and keep only unique entries", href: "/remove-duplicate-lines" },
-              { icon: "🧹", title: "Remove Empty Lines", description: "Remove blank and whitespace-only lines from text", href: "/remove-empty-lines" },
-              { icon: "📏", title: "Line Counter", description: "Count lines with detailed real-time statistics", href: "/line-counter" },
-              { icon: "🔗", title: "Text Joiner", description: "Join multiple lines with custom separators", href: "/text-joiner" },
+              { icon: "FileText", title: "Remove Duplicate Lines", description: "Remove duplicate lines and keep only unique entries", href: "/remove-duplicate-lines" },
+              { icon: "Sparkles", title: "Remove Empty Lines", description: "Remove blank and whitespace-only lines from text", href: "/remove-empty-lines" },
+              { icon: "Ruler", title: "Line Counter", description: "Count lines with detailed real-time statistics", href: "/line-counter" },
+              { icon: "Link", title: "Text Joiner", description: "Join multiple lines with custom separators", href: "/text-joiner" },
             ]}
             title="Related Text & Writing Tools"
           />

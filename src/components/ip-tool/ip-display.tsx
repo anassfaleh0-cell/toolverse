@@ -291,27 +291,27 @@ export function IpDisplay({ pageUrl }: IpDisplayProps) {
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {geo && (
           <>
-            <ToolResultCard label="IP Address" value={geo.ip} icon="🌐" mono />
-            <ToolResultCard label="Country" value={geo.country} icon="🗺️" />
-            <ToolResultCard label="Region" value={geo.regionName} icon="📍" />
-            <ToolResultCard label="City" value={geo.city} icon="🏙️" />
-            <ToolResultCard label="ZIP Code" value={geo.zip || "—"} icon="📮" />
-            <ToolResultCard label="ISP" value={geo.isp} icon="🏢" />
-            <ToolResultCard label="ASN" value={geo.as} icon="🏷️" />
-            <ToolResultCard label="Timezone" value={geo.timezone} icon="🕐" />
-            <ToolResultCard label="Latitude" value={String(geo.lat)} icon="📍" />
-            <ToolResultCard label="Longitude" value={String(geo.lon)} icon="📍" />
+            <ToolResultCard label="IP Address" value={geo.ip} icon="Globe" mono />
+            <ToolResultCard label="Country" value={geo.country} icon="MapPin" />
+            <ToolResultCard label="Region" value={geo.regionName} icon="MapPin" />
+            <ToolResultCard label="City" value={geo.city} icon="Building2" />
+            <ToolResultCard label="ZIP Code" value={geo.zip || "—"} icon="MapPin" />
+            <ToolResultCard label="ISP" value={geo.isp} icon="Building" />
+            <ToolResultCard label="ASN" value={geo.as} icon="Tag" />
+            <ToolResultCard label="Timezone" value={geo.timezone} icon="Clock" />
+            <ToolResultCard label="Latitude" value={String(geo.lat)} icon="MapPin" />
+            <ToolResultCard label="Longitude" value={String(geo.lon)} icon="MapPin" />
           </>
         )}
         {browser && (
           <>
-            <ToolResultCard label="Browser" value={browser.browser} icon={getBrowserEmoji(browser.browser)} />
-            <ToolResultCard label="Browser Version" value={browser.browserVersion || "—"} icon="🔢" />
-            <ToolResultCard label="Operating System" value={browser.os} icon={getOsEmoji(browser.os)} />
-            <ToolResultCard label="Device Type" value={browser.deviceType} icon={getDeviceEmoji(browser.deviceType)} />
-            <ToolResultCard label="Screen Resolution" value={browser.screenResolution} icon="🖥️" />
-            <ToolResultCard label="Language" value={browser.language} icon="🌍" />
-            <ToolResultCard label="User Agent" value={browser.userAgent.slice(0, 80) + "..."} icon="🤖" />
+            <ToolResultCard label="Browser" value={browser.browser} icon="Monitor" />
+            <ToolResultCard label="Browser Version" value={browser.browserVersion || "—"} icon="Tag" />
+            <ToolResultCard label="Operating System" value={browser.os} icon="Monitor" />
+            <ToolResultCard label="Device Type" value={browser.deviceType} icon="Smartphone" />
+            <ToolResultCard label="Screen Resolution" value={browser.screenResolution} icon="Monitor" />
+            <ToolResultCard label="Language" value={browser.language} icon="Globe" />
+            <ToolResultCard label="User Agent" value={browser.userAgent.slice(0, 80) + "..."} icon="Bot" />
           </>
         )}
       </div>

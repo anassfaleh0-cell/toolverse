@@ -102,10 +102,10 @@ export default function ImageCompressorPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "📐", title: "Image Resizer", description: "Resize images to exact dimensions for web and social media", href: "/image-resizer" },
-              { icon: "🔄", title: "Image Converter", description: "Convert between JPEG, PNG, WebP, GIF, and BMP formats", href: "/image-converter" },
-              { icon: "✂️", title: "Crop Image", description: "Crop images with preset aspect ratios or freeform selection", href: "/crop-image" },
-              { icon: "🎨", title: "Color Converter", description: "Convert colors between HEX, RGB, and HSL formats", href: "/color-converter" },
+              { icon: "Ruler", title: "Image Resizer", description: "Resize images to exact dimensions for web and social media", href: "/image-resizer" },
+              { icon: "RefreshCw", title: "Image Converter", description: "Convert between JPEG, PNG, WebP, GIF, and BMP formats", href: "/image-converter" },
+              { icon: "Scissors", title: "Crop Image", description: "Crop images with preset aspect ratios or freeform selection", href: "/crop-image" },
+              { icon: "Palette", title: "Color Converter", description: "Convert colors between HEX, RGB, and HSL formats", href: "/color-converter" },
             ]}
             title="Related Image Tools"
           />

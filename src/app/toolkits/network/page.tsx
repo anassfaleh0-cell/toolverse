@@ -25,17 +25,17 @@ export const metadata: Metadata = {
 };
 
 const icons: Record<string, string> = {
-  "dns-lookup": "🌐",
-  "reverse-dns-lookup": "🔄",
-  "dns-propagation-checker": "🔄",
-  "ping-test": "📡",
-  "port-checker": "🔌",
-  "subnet-calculator": "🌐",
-  "whois-lookup": "🔍",
-  "ip-lookup": "🌍",
-  "what-is-my-ip": "🔑",
-  "website-status-checker": "💡",
-  "user-agent-parser": "🤖",
+  "dns-lookup": "Globe",
+  "reverse-dns-lookup": "RefreshCw",
+  "dns-propagation-checker": "RefreshCw",
+  "ping-test": "Satellite",
+  "port-checker": "Plug",
+  "subnet-calculator": "Globe",
+  "whois-lookup": "Search",
+  "ip-lookup": "Globe",
+  "what-is-my-ip": "Key",
+  "website-status-checker": "Zap",
+  "user-agent-parser": "Bot",
 };
 
 const tools = [

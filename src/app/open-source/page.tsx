@@ -44,7 +44,7 @@ export default function OpenSourcePage() {
             <a key={repo.name} href={repo.url} target="_blank" rel="noopener" className="block rounded-lg border border-zinc-200 bg-white p-4 transition-colors hover:border-blue-300 dark:border-zinc-700 dark:bg-zinc-900 dark:hover:border-blue-700">
               <div className="flex items-center justify-between">
                 <h3 className="font-semibold text-blue-600 dark:text-blue-400">{repo.name}</h3>
-                {"stars" in repo && <span className="text-sm text-zinc-500">★ {(repo as { stars: string }).stars}</span>}
+                {"stars" in repo && <span className="text-sm text-zinc-500">Star {(repo as { stars: string }).stars}</span>}
               </div>
               <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">{repo.desc}</p>
               <span className="mt-2 inline-block rounded bg-zinc-100 px-2 py-0.5 text-xs text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400">{repo.language}</span>

@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useMemo } from "react";
 import { Button, Input } from "@/components/ui";
+import { Icon } from "@/components/shared/icon";
 
 interface SpfInclude {
   type: "ip4" | "ip6" | "include" | "a" | "mx" | "ptr";
@@ -117,7 +118,10 @@ export function SpfGenerator() {
         <div className="space-y-1.5">
           {warnings.map((w, i) => (
             <div key={i} className={`flex items-start gap-2 text-xs ${w.type === "error" ? "text-red-600 dark:text-red-400" : w.type === "warning" ? "text-amber-600 dark:text-amber-400" : "text-blue-600 dark:text-blue-400"}`}>
-              <span className="mt-0.5 shrink-0">{w.type === "error" ? "✕" : w.type === "warning" ? "!" : "i"}</span>
+              <Icon
+                name={w.type === "error" ? "XCircle" : w.type === "warning" ? "AlertTriangle" : "Info"}
+                className="size-4 shrink-0 mt-0.5"
+              />
               <span>{w.text}</span>
             </div>
           ))}

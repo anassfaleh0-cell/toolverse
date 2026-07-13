@@ -57,10 +57,10 @@ export default function EmailDeliverabilityCheckerPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "📧", title: "SPF Lookup", description: "Check SPF records", href: "/spf-lookup" },
-              { icon: "🛡️", title: "DMARC Lookup", description: "Check DMARC policies", href: "/dmarc-lookup" },
-              { icon: "🔑", title: "DKIM Lookup", description: "Check DKIM signing", href: "/dkim-lookup" },
-              { icon: "📨", title: "MX Lookup", description: "Check mail servers", href: "/mx-lookup" },
+              { icon: "Mail", title: "SPF Lookup", description: "Check SPF records", href: "/spf-lookup" },
+              { icon: "Shield", title: "DMARC Lookup", description: "Check DMARC policies", href: "/dmarc-lookup" },
+              { icon: "Key", title: "DKIM Lookup", description: "Check DKIM signing", href: "/dkim-lookup" },
+              { icon: "Send", title: "MX Lookup", description: "Check mail servers", href: "/mx-lookup" },
             ]}
             title="Related Email Authentication Tools"
           />

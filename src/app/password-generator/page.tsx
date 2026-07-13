@@ -208,10 +208,10 @@ export default function PasswordGeneratorPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🔐", title: "SHA Hash Generator", description: "Generate SHA-1, SHA-256, SHA-384, and SHA-512 hash digests", href: "/sha-hash-generator" },
-              { icon: "🔑", title: "MD5 Hash Generator", description: "Generate MD5 hash digests for checksums and deduplication", href: "/md5-hash-generator" },
-              { icon: "🔡", title: "Base64 Encoder", description: "Encode and decode Base64 data for secure data transmission", href: "/base64-encoder" },
-              { icon: "🔍", title: "JWT Decoder", description: "Decode and inspect JSON Web Token contents and claims", href: "/jwt-decoder" },
+              { icon: "LockKeyhole", title: "SHA Hash Generator", description: "Generate SHA-1, SHA-256, SHA-384, and SHA-512 hash digests", href: "/sha-hash-generator" },
+              { icon: "Key", title: "MD5 Hash Generator", description: "Generate MD5 hash digests for checksums and deduplication", href: "/md5-hash-generator" },
+              { icon: "CaseSensitive", title: "Base64 Encoder", description: "Encode and decode Base64 data for secure data transmission", href: "/base64-encoder" },
+              { icon: "Search", title: "JWT Decoder", description: "Decode and inspect JSON Web Token contents and claims", href: "/jwt-decoder" },
             ]}
             title="Related Security Tools"
           />

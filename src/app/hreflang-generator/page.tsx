@@ -80,7 +80,7 @@ export default function HreflangGeneratorPage() {
 
       <section className="border-t border-zinc-200 py-12 dark:border-zinc-800 sm:py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
-          <RelatedTools tools={relatedTools?.map(t => ({ icon: "🔧", title: t.name, description: t.description, href: t.url })) || []} title="Related Tools" />
+          <RelatedTools tools={relatedTools?.map(t => ( { icon: "Wrench", title: t.name, description: t.description, href: t.url })) || []} title="Related Tools" />
         </div>
       </section>
     </>

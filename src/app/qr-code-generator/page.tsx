@@ -200,10 +200,10 @@ export default function QrCodeGeneratorPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "📊", title: "Barcode Generator", description: "Generate Code 128, EAN-13, and UPC-A barcodes for retail and logistics", href: "/barcode-generator" },
-              { icon: "🔐", title: "Base64 Encoder", description: "Encode binary data for embedding in QR code payloads", href: "/base64-encoder" },
-              { icon: "🔗", title: "URL Encoder", description: "Percent-encode URLs to ensure QR code compatibility", href: "/url-encoder" },
-              { icon: "🎨", title: "Color Converter", description: "Convert colors between HEX, RGB, and HSL for QR code design", href: "/color-converter" },
+              { icon: "BarChart3", title: "Barcode Generator", description: "Generate Code 128, EAN-13, and UPC-A barcodes for retail and logistics", href: "/barcode-generator" },
+              { icon: "LockKeyhole", title: "Base64 Encoder", description: "Encode binary data for embedding in QR code payloads", href: "/base64-encoder" },
+              { icon: "Link", title: "URL Encoder", description: "Percent-encode URLs to ensure QR code compatibility", href: "/url-encoder" },
+              { icon: "Palette", title: "Color Converter", description: "Convert colors between HEX, RGB, and HSL for QR code design", href: "/color-converter" },
             ]}
             title="Related Image & Design Tools"
           />

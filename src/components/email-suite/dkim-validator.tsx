@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useMemo } from "react";
 import { Button, Input } from "@/components/ui";
+import { Icon } from "@/components/shared/icon";
 
 interface ValidationMessage {
   type: "success" | "error" | "warning" | "info";
@@ -120,8 +121,8 @@ export function DkimValidator() {
           <div className="space-y-2 px-5 py-4">
             {result.messages.map((msg, i) => (
               <div key={i} className="flex items-start gap-2 text-sm">
-                <span className="mt-0.5 shrink-0">
-                  {msg.type === "success" ? "✅" : msg.type === "warning" ? "⚠️" : msg.type === "info" ? "ℹ️" : "❌"}
+                <span className="mt-0.5 shrink-0 flex items-center justify-center size-5">
+                  <Icon name={msg.type === "success" ? "CheckCircle2" : msg.type === "warning" ? "AlertTriangle" : msg.type === "info" ? "Info" : "XCircle"} className="size-4" />
                 </span>
                 <span className={
                   msg.type === "success" ? "text-green-700 dark:text-green-400" 

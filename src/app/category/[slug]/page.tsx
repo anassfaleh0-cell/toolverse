@@ -189,7 +189,7 @@ export default async function CategoryPage({ params }: Props) {
           <RelatedTools
             title="Popular Tools"
             tools={popular.map((t) => ({
-              icon: "⭐",
+              icon: "Star",
               title: t.name,
               description: t.description,
               href: t.url,

@@ -92,10 +92,10 @@ export default function ImageConverterPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "📦", title: "Image Compressor", description: "Compress JPEG, PNG, and WebP images to reduce file size", href: "/image-compressor" },
-              { icon: "✂️", title: "Crop Image", description: "Crop images to exact dimensions and aspect ratios", href: "/crop-image" },
-              { icon: "🏷️", title: "Watermark Image", description: "Add text watermarks to protect your images", href: "/watermark-image" },
-              { icon: "🎨", title: "Color Converter", description: "Convert colors between HEX, RGB, and HSL formats", href: "/color-converter" },
+              { icon: "Package", title: "Image Compressor", description: "Compress JPEG, PNG, and WebP images to reduce file size", href: "/image-compressor" },
+              { icon: "Scissors", title: "Crop Image", description: "Crop images to exact dimensions and aspect ratios", href: "/crop-image" },
+              { icon: "Tag", title: "Watermark Image", description: "Add text watermarks to protect your images", href: "/watermark-image" },
+              { icon: "Palette", title: "Color Converter", description: "Convert colors between HEX, RGB, and HSL formats", href: "/color-converter" },
             ]}
             title="Related Image Tools"
           />

@@ -57,10 +57,10 @@ export default function DnssecCheckerPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🔍", title: "DNS Lookup", description: "Query all DNS record types", href: "/dns-lookup" },
-              { icon: "🔍", title: "CAA Lookup", description: "Check Certificate Authority Authorization", href: "/caa-lookup" },
-              { icon: "🔍", title: "Nameserver Analyzer", description: "Analyze nameserver configuration", href: "/nameserver-analyzer" },
-              { icon: "🔍", title: "DNS Zone Validator", description: "Validate DNS zone configuration", href: "/dns-zone-validator" },
+              { icon: "Search", title: "DNS Lookup", description: "Query all DNS record types", href: "/dns-lookup" },
+              { icon: "Search", title: "CAA Lookup", description: "Check Certificate Authority Authorization", href: "/caa-lookup" },
+              { icon: "Search", title: "Nameserver Analyzer", description: "Analyze nameserver configuration", href: "/nameserver-analyzer" },
+              { icon: "Search", title: "DNS Zone Validator", description: "Validate DNS zone configuration", href: "/dns-zone-validator" },
             ]}
             title="Related DNS Tools"
           />

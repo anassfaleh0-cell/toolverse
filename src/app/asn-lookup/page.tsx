@@ -55,10 +55,10 @@ export default function AsnLookupPage() {
       <section className="py-16 sm:py-20">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools tools={[
-            { icon: "🔍", title: "IP Lookup", description: "Find IP location and ISP", href: "/ip-lookup" },
-            { icon: "🔍", title: "DNS Lookup", description: "Query all DNS record types", href: "/dns-lookup" },
-            { icon: "🔍", title: "Blacklist Check", description: "Check IP reputation on DNSBLs", href: "/blacklist-check" },
-            { icon: "🔍", title: "Reverse DNS Lookup", description: "Find hostname from IP", href: "/reverse-dns-lookup" },
+            { icon: "Search", title: "IP Lookup", description: "Find IP location and ISP", href: "/ip-lookup" },
+            { icon: "Search", title: "DNS Lookup", description: "Query all DNS record types", href: "/dns-lookup" },
+            { icon: "Search", title: "Blacklist Check", description: "Check IP reputation on DNSBLs", href: "/blacklist-check" },
+            { icon: "Search", title: "Reverse DNS Lookup", description: "Find hostname from IP", href: "/reverse-dns-lookup" },
           ]} title="Related Network Tools" />
         </div>
       </section>

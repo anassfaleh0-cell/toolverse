@@ -25,14 +25,14 @@ export const metadata: Metadata = {
 };
 
 const icons: Record<string, string> = {
-  "ssl-certificate-checker": "🔒",
-  "http-headers-checker": "📧",
-  "website-status-checker": "💡",
-  "dns-lookup": "🌐",
-  "dns-propagation-checker": "🔄",
-  "whois-lookup": "🔍",
-  "text-to-slug": "🕹️",
-  "ping-test": "📡",
+  "ssl-certificate-checker": "Lock",
+  "http-headers-checker": "Mail",
+  "website-status-checker": "Zap",
+  "dns-lookup": "Globe",
+  "dns-propagation-checker": "RefreshCw",
+  "whois-lookup": "Search",
+  "text-to-slug": "Gamepad2",
+  "ping-test": "Satellite",
 };
 
 const tools = [

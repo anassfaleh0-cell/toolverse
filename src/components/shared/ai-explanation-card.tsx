@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { cn } from "@/lib/utils";
+import { Icon } from "@/components/shared/icon";
 import { getKnowledgeForTool } from "@/lib/ai-explanation-knowledge";
 
 interface Issue {
@@ -273,20 +274,19 @@ export function AIExplanationCard({
                       )}
                     >
                       <div className="flex items-start gap-2">
-                        <span
+                        <Icon
+                          name={issue.severity === "error"
+                            ? "XCircle"
+                            : issue.severity === "warning"
+                              ? "AlertTriangle"
+                              : "Info"}
                           className={cn(
-                            "mt-0.5 shrink-0 text-xs font-bold",
+                            "size-4 shrink-0 mt-0.5",
                             issue.severity === "error" && "text-red-500",
                             issue.severity === "warning" && "text-amber-500",
                             issue.severity === "info" && "text-blue-500",
                           )}
-                        >
-                          {issue.severity === "error"
-                            ? "✕"
-                            : issue.severity === "warning"
-                              ? "!"
-                              : "i"}
-                        </span>
+                        />
                         <div className="flex-1">
                           <p
                             className={cn(

@@ -198,10 +198,10 @@ export default function Md5HashGeneratorPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🔑", title: "SHA Hash Generator", description: "Generate SHA-1, SHA-256, and SHA-512 hash digests", href: "/sha-hash-generator" },
-              { icon: "🔲", title: "UUID Generator", description: "Generate UUID v4 identifiers for database keys and IDs", href: "/uuid-generator" },
-              { icon: "🔐", title: "Base64 Encoder", description: "Encode and decode Base64 strings for data transport", href: "/base64-encoder" },
-              { icon: "🪙", title: "JWT Decoder", description: "Decode and inspect JSON Web Token headers and payloads", href: "/jwt-decoder" },
+              { icon: "Key", title: "SHA Hash Generator", description: "Generate SHA-1, SHA-256, and SHA-512 hash digests", href: "/sha-hash-generator" },
+              { icon: "Grid3x3", title: "UUID Generator", description: "Generate UUID v4 identifiers for database keys and IDs", href: "/uuid-generator" },
+              { icon: "LockKeyhole", title: "Base64 Encoder", description: "Encode and decode Base64 strings for data transport", href: "/base64-encoder" },
+              { icon: "Circle", title: "JWT Decoder", description: "Decode and inspect JSON Web Token headers and payloads", href: "/jwt-decoder" },
             ]}
             title="Related Developer Tools"
           />

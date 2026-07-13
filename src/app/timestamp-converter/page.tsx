@@ -177,10 +177,10 @@ export default function TimestampConverterPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🔢", title: "Number Base Converter", description: "Convert numbers between binary, octal, decimal, and hexadecimal", href: "/number-base-converter" },
-              { icon: "🎨", title: "Color Converter", description: "Convert colors between HEX, RGB, HSL, and other formats", href: "/color-converter" },
-              { icon: "📋", title: "JSON Formatter", description: "Validate, beautify, and minify JSON data", href: "/json-formatter" },
-              { icon: "🔷", title: "UUID Generator", description: "Generate random UUID v4 identifiers for distributed systems", href: "/uuid-generator" },
+              { icon: "Hash", title: "Number Base Converter", description: "Convert numbers between binary, octal, decimal, and hexadecimal", href: "/number-base-converter" },
+              { icon: "Palette", title: "Color Converter", description: "Convert colors between HEX, RGB, HSL, and other formats", href: "/color-converter" },
+              { icon: "FileText", title: "JSON Formatter", description: "Validate, beautify, and minify JSON data", href: "/json-formatter" },
+              { icon: "Circle", title: "UUID Generator", description: "Generate random UUID v4 identifiers for distributed systems", href: "/uuid-generator" },
             ]}
             title="Related Developer Tools"
           />

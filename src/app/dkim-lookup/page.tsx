@@ -57,10 +57,10 @@ export default function DkimLookupPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "📧", title: "SPF Lookup", description: "Check authorized mail servers", href: "/spf-lookup" },
-              { icon: "🛡️", title: "DMARC Lookup", description: "Verify email authentication policy", href: "/dmarc-lookup" },
-              { icon: "📨", title: "MX Lookup", description: "Find mail server records", href: "/mx-lookup" },
-              { icon: "🏷️", title: "BIMI Lookup", description: "Check brand logo association", href: "/bimi-lookup" },
+              { icon: "Mail", title: "SPF Lookup", description: "Check authorized mail servers", href: "/spf-lookup" },
+              { icon: "Shield", title: "DMARC Lookup", description: "Verify email authentication policy", href: "/dmarc-lookup" },
+              { icon: "Send", title: "MX Lookup", description: "Find mail server records", href: "/mx-lookup" },
+              { icon: "Tag", title: "BIMI Lookup", description: "Check brand logo association", href: "/bimi-lookup" },
             ]}
             title="Related Email Authentication Tools"
           />

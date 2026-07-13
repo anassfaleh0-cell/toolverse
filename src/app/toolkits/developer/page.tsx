@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
 import { JsonLd, Breadcrumbs, FaqSection } from "@/components/shared";
+import { Icon } from "@/components/shared/icon";
 import { webPageSchema, breadcrumbSchema, faqSchema, type FaqItem } from "@/lib/seo";
 
 const slug = "toolkits/developer";
@@ -25,29 +26,29 @@ export const metadata: Metadata = {
 };
 
 const icons: Record<string, string> = {
-  "dns-lookup": "🌐",
-  "reverse-dns-lookup": "🔄",
-  "ping-test": "📡",
-  "port-checker": "🔌",
-  "json-formatter": "📑",
-  "regex-tester": "🔍",
-  "jwt-decoder": "🔑",
-  "case-converter": "🔠",
-  "sql-formatter": "📒",
-  "ssl-certificate-checker": "🔒",
-  "http-headers-checker": "📧",
-  "website-status-checker": "💡",
-  "html-preview": "🎨",
-  "markdown-preview": "📝",
-  "base64-encoder": "🔢",
-  "url-encoder": "🔗",
-  "html-entity-encoder": "🗄️",
-  "text-to-slug": "🕹️",
-  "url-parser": "🔍",
-  "password-generator": "🔑",
-  "js-minifier": "📖",
-  "css-minifier": "🎨",
-  "html-minifier": "🌐",
+  "dns-lookup": "Globe",
+  "reverse-dns-lookup": "RefreshCw",
+  "ping-test": "Satellite",
+  "port-checker": "Plug",
+  "json-formatter": "FileText",
+  "regex-tester": "Search",
+  "jwt-decoder": "Key",
+  "case-converter": "CaseSensitive",
+  "sql-formatter": "FileText",
+  "ssl-certificate-checker": "Lock",
+  "http-headers-checker": "Mail",
+  "website-status-checker": "Zap",
+  "html-preview": "Palette",
+  "markdown-preview": "PenTool",
+  "base64-encoder": "Hash",
+  "url-encoder": "Link",
+  "html-entity-encoder": "Database",
+  "text-to-slug": "Gamepad2",
+  "url-parser": "Search",
+  "password-generator": "Key",
+  "js-minifier": "BookOpen",
+  "css-minifier": "Palette",
+  "html-minifier": "Globe",
 };
 
 const tools = [
@@ -343,7 +344,7 @@ export default function DeveloperToolkitPage() {
                 >
                   <div className="flex items-start gap-4">
                     <span className="text-2xl">
-                      {icons[tool.id] ?? "🔧"}
+                      <Icon name={icons[tool.id] ?? "Wrench"} className="size-6 text-nuvora-600 dark:text-nuvora-400" />
                     </span>
                     <div>
                       <h3 className="font-semibold text-zinc-900 group-hover:text-blue-600 dark:text-zinc-50 dark:group-hover:text-blue-400">

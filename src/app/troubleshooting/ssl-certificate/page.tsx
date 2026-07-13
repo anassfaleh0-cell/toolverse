@@ -212,10 +212,10 @@ export default function SslCertificateTroubleshootingPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <RelatedTools
             tools={[
-              { icon: "🔒", title: "SSL Certificate Checker", description: "Validate SSL certificates, chain, and expiry", href: "/ssl-certificate-checker" },
-              { icon: "🔒", title: "TLS Versions Guide", description: "Compare SSL/TLS protocol versions and best practices", href: "/tls-versions" },
-              { icon: "🔍", title: "HTTP Headers Checker", description: "Inspect security and response headers", href: "/http-headers-checker" },
-              { icon: "🔍", title: "Website Status Checker", description: "Check website availability and response time", href: "/website-status-checker" },
+              { icon: "Lock", title: "SSL Certificate Checker", description: "Validate SSL certificates, chain, and expiry", href: "/ssl-certificate-checker" },
+              { icon: "Lock", title: "TLS Versions Guide", description: "Compare SSL/TLS protocol versions and best practices", href: "/tls-versions" },
+              { icon: "Search", title: "HTTP Headers Checker", description: "Inspect security and response headers", href: "/http-headers-checker" },
+              { icon: "Search", title: "Website Status Checker", description: "Check website availability and response time", href: "/website-status-checker" },
             ]}
             title="Related Security Tools"
           />

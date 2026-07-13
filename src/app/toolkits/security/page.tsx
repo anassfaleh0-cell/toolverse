@@ -25,13 +25,13 @@ export const metadata: Metadata = {
 };
 
 const icons: Record<string, string> = {
-  "ssl-certificate-checker": "🔒",
-  "port-checker": "🔌",
-  "subnet-calculator": "🌐",
-  "whois-lookup": "🔍",
-  "http-headers-checker": "📧",
-  "dns-lookup": "🌐",
-  "password-generator": "🔑",
+  "ssl-certificate-checker": "Lock",
+  "port-checker": "Plug",
+  "subnet-calculator": "Globe",
+  "whois-lookup": "Search",
+  "http-headers-checker": "Mail",
+  "dns-lookup": "Globe",
+  "password-generator": "Key",
 };
 
 const tools = [
