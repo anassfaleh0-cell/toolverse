@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState, useRef, useCallback } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { getRegisteredToolCount, getCategories } from "@/lib/registry";
+import { Logo } from "@/components/ui/logo";
 import { HERO_TAGLINE, HERO_SUBTITLE } from "@/lib/constants";
 
 const trustBadges = [
@@ -100,6 +101,9 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
+            <div className="mb-4 flex justify-center opacity-60">
+              <Logo size="lg" />
+            </div>
             <h1 className="text-display font-bold tracking-tight text-text-primary leading-[1.1]">
               {HERO_TAGLINE}
             </h1>
