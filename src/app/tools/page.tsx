@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllTools, getCategories } from "@/lib/registry";
+import { Icon } from "@/components/shared/icon";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import { JsonLd } from "@/components/shared";
 import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
@@ -75,7 +76,7 @@ export default function ToolsPage() {
                 href={`/category/${cat.slug}`}
                 className="rounded-full border border-zinc-300 px-4 py-1.5 text-sm text-zinc-700 transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
               >
-                {cat.icon} {cat.label}
+                <Icon name={cat.icon} className="size-4 align-text-bottom" /> {cat.label}
               </Link>
             ))}
           </div>
@@ -105,8 +106,10 @@ export default function ToolsPage() {
                   {tool.description}
                 </p>
                 <span className="mt-3 inline-block text-xs text-zinc-400 dark:text-zinc-500">
-                  {categories.find((c) => c.slug === tool.category)?.icon}{" "}
-                  {categories.find((c) => c.slug === tool.category)?.label}
+                  {(() => {
+                    const cat = categories.find((c) => c.slug === tool.category);
+                    return cat ? <><Icon name={cat.icon} className="size-3.5 align-text-bottom" /> {cat.label}</> : null;
+                  })()}
                 </span>
               </Link>
             ))}

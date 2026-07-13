@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import { Breadcrumbs, JsonLd } from "@/components/shared";
+import { Icon } from "@/components/shared/icon";
 import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { getCategories } from "@/lib/registry";
 
@@ -45,7 +46,7 @@ export default function CategoriesPage() {
                 href={`/category/${c.slug}`}
                 className="group rounded-2xl border border-border-subtle bg-surface p-6 transition hover:border-nuvora-300 hover:shadow-md dark:hover:border-nuvora-700"
               >
-                <span className="text-3xl">{c.icon}</span>
+                <Icon name={c.icon} className="size-8 text-nuvora-600 dark:text-nuvora-400" />
                 <h3 className="mt-3 font-semibold text-text-primary group-hover:text-nuvora-600 dark:group-hover:text-nuvora-400">
                   {c.label}
                 </h3>

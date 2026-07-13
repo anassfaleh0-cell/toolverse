@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound, permanentRedirect } from "next/navigation";
 import { getCategoryWithTools, generateCategoryBreadcrumbs } from "@/lib/registry";
 import { JsonLd, FaqSection, RelatedTools } from "@/components/shared";
+import { Icon } from "@/components/shared/icon";
 import { faqSchema, webPageSchema, type FaqItem } from "@/lib/seo";
 import { generateCategoryFaq, getCategories, getPopularTools } from "@/lib/registry";
 import { BreadcrumbSchema } from "@/components/schema/BreadcrumbSchema";
@@ -111,8 +112,9 @@ export default async function CategoryPage({ params }: Props) {
             </ol>
           </nav>
 
-          <h1 className="mt-6 text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-5xl">
-            {category.icon} {category.label} Tools
+          <h1 className="mt-6 flex items-center gap-3 text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-5xl">
+            <Icon name={category.icon} className="size-9 text-nuvora-600 dark:text-nuvora-400" />
+            <span>{category.label} Tools</span>
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
             {category.description}
@@ -171,7 +173,7 @@ export default async function CategoryPage({ params }: Props) {
                   href={`/category/${cat.slug}`}
                   className="rounded-xl border border-zinc-200 p-5 transition-colors hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-900"
                 >
-                  <span className="text-2xl">{cat.icon}</span>
+                  <Icon name={cat.icon} className="size-7 text-nuvora-600 dark:text-nuvora-400" />
                   <h3 className="mt-3 font-semibold text-zinc-900 dark:text-zinc-50">
                     {cat.label}
                   </h3>
