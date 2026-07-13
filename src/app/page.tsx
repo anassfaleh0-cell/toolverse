@@ -221,7 +221,7 @@ export default function Home() {
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <JsonLd data={organizationSchema()} />
       <JsonLd data={webSiteSchema()} />
-      <JsonLd data={faqSchema(FAQ_ITEMS.map((item, i) => ({ question: item.question, answer: item.answer })))} />
+      <JsonLd data={faqSchema(FAQ_ITEMS.slice(0, 5).map((item) => ({ question: item.question, answer: item.answer })))} />
       <Hero />
       <section className="border-b border-border-subtle">
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
