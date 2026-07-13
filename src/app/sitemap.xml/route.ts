@@ -13,8 +13,6 @@ export async function GET() {
   <sitemap><loc>${baseUrl}/sitemap-landing.xml</loc><lastmod>${now}</lastmod></sitemap>
   <sitemap><loc>${baseUrl}/sitemap-static.xml</loc><lastmod>${now}</lastmod></sitemap>
   <sitemap><loc>${baseUrl}/sitemap-alternatives.xml</loc><lastmod>${now}</lastmod></sitemap>
-  <sitemap><loc>${baseUrl}/sitemap-vs.xml</loc><lastmod>${now}</lastmod></sitemap>
-  <sitemap><loc>${baseUrl}/sitemap-convert.xml</loc><lastmod>${now}</lastmod></sitemap>
   <sitemap><loc>${baseUrl}/sitemap-best.xml</loc><lastmod>${now}</lastmod></sitemap>
   <sitemap><loc>${baseUrl}/sitemap-guides.xml</loc><lastmod>${now}</lastmod></sitemap>
   <sitemap><loc>${baseUrl}/sitemap-glossary.xml</loc><lastmod>${now}</lastmod></sitemap>
