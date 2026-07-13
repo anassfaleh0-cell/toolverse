@@ -8,12 +8,12 @@ interface BreadcrumbsProps {
 export function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
     <nav aria-label="Breadcrumb" className="text-sm text-zinc-500 dark:text-zinc-400">
-      <ol className="flex items-center gap-2">
+      <ol className="flex items-center gap-1.5">
         {items.map((item, i) => {
           const isLast = i === items.length - 1;
           return (
-            <li key={item.label} className="flex items-center gap-2">
-              {i > 0 && <span aria-hidden="true">/</span>}
+            <li key={item.label} className="inline-flex items-center">
+              {i > 0 && <span className="mr-1.5" aria-hidden="true">/</span>}
               {item.href && !isLast ? (
                 <Link
                   href={item.href}

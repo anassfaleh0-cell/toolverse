@@ -94,21 +94,24 @@ export default async function CategoryPage({ params }: Props) {
       <section className="border-b border-zinc-200 dark:border-zinc-800">
         <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
           <nav aria-label="Breadcrumb" className="text-sm text-zinc-500 dark:text-zinc-400">
-            <ol className="flex items-center gap-2">
-              {breadcrumbs.map((item, i) => (
-                <li key={item.label} className="flex items-center gap-2">
-                  {i > 0 && <span aria-hidden="true">/</span>}
-                  {item.href && i < breadcrumbs.length - 1 ? (
-                    <Link href={item.href} className="hover:text-zinc-900 dark:hover:text-zinc-50">
-                      {item.label}
-                    </Link>
-                  ) : (
-                    <span className="text-zinc-900 dark:text-zinc-50" aria-current="page">
-                      {item.label}
-                    </span>
-                  )}
-                </li>
-              ))}
+            <ol className="flex items-center gap-1.5">
+              {breadcrumbs.map((item, i) => {
+                const isLast = i === breadcrumbs.length - 1;
+                return (
+                  <li key={item.label} className="inline-flex items-center">
+                    {i > 0 && <span className="mr-1.5" aria-hidden="true">/</span>}
+                    {item.href && !isLast ? (
+                      <Link href={item.href} className="hover:text-zinc-900 dark:hover:text-zinc-50">
+                        {item.label}
+                      </Link>
+                    ) : (
+                      <span className="text-zinc-900 dark:text-zinc-50" aria-current="page">
+                        {item.label}
+                      </span>
+                    )}
+                  </li>
+                );
+              })}
             </ol>
           </nav>
 
