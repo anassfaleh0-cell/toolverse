@@ -31,7 +31,7 @@ export function RelatedContent({ toolSlug }: { toolSlug: string }) {
               href={`/learn/${item.slug}`}
               className="rounded-lg border border-zinc-200 p-4 transition-colors hover:border-green-300 dark:border-zinc-800 dark:hover:border-green-700"
             >
-              <span className="text-xs font-medium uppercase tracking-wider text-green-600 dark:text-green-400">Beginner Guide</span>
+              <span className="text-xs font-medium uppercase tracking-wider text-green-700 dark:text-green-400">Beginner Guide</span>
               <h3 className="mt-1 font-semibold text-zinc-900 dark:text-zinc-50">{item.title}</h3>
               <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400 line-clamp-2">{item.description}</p>
             </Link>
@@ -64,7 +64,7 @@ export function RelatedContent({ toolSlug }: { toolSlug: string }) {
               href={`/compare/${item.slug}`}
               className="rounded-lg border border-zinc-200 p-4 transition-colors hover:border-amber-300 dark:border-zinc-800 dark:hover:border-amber-700"
             >
-              <span className="text-xs font-medium uppercase tracking-wider text-amber-600 dark:text-amber-400">Comparison</span>
+              <span className="text-xs font-medium uppercase tracking-wider text-amber-700 dark:text-amber-400">Comparison</span>
               <h3 className="mt-1 font-semibold text-zinc-900 dark:text-zinc-50">{item.title}</h3>
               <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400 line-clamp-2">{item.description}</p>
             </Link>
