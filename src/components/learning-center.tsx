@@ -26,7 +26,7 @@ export function LearningCenter() {
               href={`/learn/${item.slug}`}
               className="group rounded-xl border border-border-subtle bg-surface p-6 transition-all hover:shadow-md hover:-translate-y-0.5"
             >
-              <span className="text-xs font-medium uppercase tracking-wider text-aurora-600 dark:text-aurora-400">
+              <span className="text-xs font-medium uppercase tracking-wider text-aurora-700 dark:text-aurora-400">
                 {item.difficulty === "beginner" ? "Beginner Guide" : "Guide"}
               </span>
               <h3 className="mt-2 font-semibold text-text-primary transition-colors group-hover:text-nuvora-600 dark:group-hover:text-nuvora-400">

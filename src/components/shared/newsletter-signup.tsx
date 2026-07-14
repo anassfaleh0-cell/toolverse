@@ -16,7 +16,7 @@ export function NewsletterSignup() {
     return (
       <div className="rounded-2xl border border-aurora-200 bg-aurora-50 p-8 text-center dark:border-aurora-800 dark:bg-aurora-950/30">
         <p className="text-lg font-semibold text-aurora-700 dark:text-aurora-300">You&apos;re subscribed! 🎉</p>
-        <p className="mt-2 text-sm text-aurora-600 dark:text-aurora-400">We&apos;ll keep you posted on new tools and features.</p>
+        <p className="mt-2 text-sm text-aurora-700 dark:text-aurora-400">We&apos;ll keep you posted on new tools and features.</p>
       </div>
     );
   }

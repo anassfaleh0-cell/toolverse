@@ -34,7 +34,7 @@ export function ComparisonMatrix({ headers, rows, title }: ComparisonMatrixProps
               {row.values.map((v, j) => (
                 <td key={j} className="px-4 py-2.5 text-zinc-600 dark:text-zinc-400">
                   {typeof v === "boolean" ? (
-                    <span className={v ? "text-green-600 dark:text-green-400" : "text-red-600"}>{v ? "✓" : "✗"}</span>
+                    <span className={v ? "text-green-700 dark:text-green-400" : "text-red-600"}>{v ? "✓" : "✗"}</span>
                   ) : (
                     v
                   )}

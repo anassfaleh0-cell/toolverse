@@ -24,7 +24,7 @@ export function CompareResults({ title, leftLabel, rightLabel, fields }: Compare
       <div className="border-b border-zinc-200 px-5 py-4 dark:border-zinc-800">
         <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">{title}</h3>
         {diffs > 0 && (
-          <p className="mt-0.5 text-xs text-amber-600 dark:text-amber-400">
+          <p className="mt-0.5 text-xs text-amber-700 dark:text-amber-400">
             {diffs} difference{diffs !== 1 ? "s" : ""} found
           </p>
         )}

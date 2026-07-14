@@ -340,7 +340,7 @@ export function AIExplanationCard({
                           <p className="text-xs font-medium text-green-700 dark:text-green-300">
                             {issue.message}
                           </p>
-                          <p className="mt-1 text-sm text-green-600 dark:text-green-400">
+                          <p className="mt-1 text-sm text-green-700 dark:text-green-400">
                             {issue.fix}
                           </p>
                         </div>

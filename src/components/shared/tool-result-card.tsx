@@ -24,7 +24,7 @@ export function ToolResultCard({
           <Icon name={icon} className="size-5 text-nuvora-600 dark:text-nuvora-400" />
         </span>
         <div className="min-w-0">
-          <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+          <p className="text-xs font-medium uppercase tracking-wider text-zinc-600 dark:text-zinc-400">
             {label}
           </p>
           <p

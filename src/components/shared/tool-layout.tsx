@@ -243,7 +243,7 @@ export function ToolLayout({ children, toolSlug, useCases, relatedToolSlugs }: T
                     className="flex size-9 items-center justify-center rounded-lg border border-border-subtle bg-surface text-text-secondary hover:bg-surface-secondary hover:text-nuvora-600 transition-colors"
                   >
                     {copied ? (
-                      <Icon name="Check" className="size-4 text-aurora-500" />
+                      <Icon name="Check" className="size-4 text-aurora-700" />
                     ) : (
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></svg>
                     )}

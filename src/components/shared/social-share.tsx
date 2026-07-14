@@ -40,7 +40,7 @@ export function SocialShare({ url, title, description }: { url: string; title: s
         className="flex size-9 items-center justify-center rounded-lg border border-border-subtle bg-surface-secondary text-text-secondary hover:bg-surface-secondary hover:text-nuvora-600 transition-colors"
       >
         {copied ? (
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4 text-aurora-500">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4 text-aurora-700">
             <polyline points="20 6 9 17 4 12" />
           </svg>
         ) : (

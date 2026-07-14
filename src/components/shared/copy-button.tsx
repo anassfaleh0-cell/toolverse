@@ -40,12 +40,12 @@ export function CopyButton({ text, label = "Copy" }: CopyButtonProps) {
             fill="none"
             stroke="currentColor"
             strokeWidth={2}
-            className="size-4 text-emerald-600"
+            className="size-4 text-emerald-700"
             aria-hidden="true"
           >
             <path d="M20 6 9 17l-5-5" />
           </svg>
-          <span className="text-emerald-600 dark:text-emerald-400">Copied</span>
+          <span className="text-emerald-700 dark:text-emerald-400">Copied</span>
         </>
       ) : (
         <>

@@ -113,9 +113,9 @@ interface RiskLevelProps {
 }
 
 const RISK_CONFIG = {
-  low: { color: "bg-emerald-500", text: "text-emerald-600 dark:text-emerald-400", bar: "w-[25%]" },
-  medium: { color: "bg-amber-500", text: "text-amber-600 dark:text-amber-400", bar: "w-[50%]" },
-  high: { color: "bg-orange-500", text: "text-orange-600 dark:text-orange-400", bar: "w-[75%]" },
+  low: { color: "bg-emerald-500", text: "text-emerald-700 dark:text-emerald-400", bar: "w-[25%]" },
+  medium: { color: "bg-amber-500", text: "text-amber-700 dark:text-amber-400", bar: "w-[50%]" },
+  high: { color: "bg-orange-500", text: "text-orange-700 dark:text-orange-400", bar: "w-[75%]" },
   critical: { color: "bg-red-500", text: "text-red-600 dark:text-red-400", bar: "w-full" },
 };
 

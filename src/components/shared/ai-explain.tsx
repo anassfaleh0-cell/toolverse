@@ -91,7 +91,7 @@ export function AiExplain({ toolName, analysis, beginnerMode }: AiExplainProps) 
               )}
               {fix && (
                 <div>
-                  <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-green-600 dark:text-green-400">How to Fix</h4>
+                  <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-green-700 dark:text-green-400">How to Fix</h4>
                   <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">{fix}</p>
                 </div>
               )}
