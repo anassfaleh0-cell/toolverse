@@ -32,7 +32,7 @@ export function PopularWorkflows() {
                     {step.label}
                   </Link>
                   {idx < workflow.steps.length - 1 && (
-                    <span className="text-[11px] text-zinc-300 dark:text-zinc-600">&rarr;</span>
+                    <span className="text-[11px] text-zinc-400 dark:text-zinc-600">&rarr;</span>
                   )}
                 </span>
               ))}

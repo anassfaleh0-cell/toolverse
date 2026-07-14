@@ -20,7 +20,7 @@ const variantStyles: Record<CalloutVariant, string> = {
 
 const iconColors: Record<CalloutVariant, string> = {
   tip: "text-emerald-600 dark:text-emerald-400",
-  warning: "text-amber-600 dark:text-amber-400",
+  warning: "text-amber-700 dark:text-amber-400",
   info: "text-blue-600 dark:text-blue-400",
   note: "text-zinc-500 dark:text-zinc-400",
 };

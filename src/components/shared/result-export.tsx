@@ -77,7 +77,7 @@ export function ResultExport({ rawData, fileName, displayName, formatAsText, for
       >
         {copied ? (
           <>
-            <Icon name="Check" className="size-3.5 text-emerald-500" />
+            <Icon name="Check" className="size-3.5 text-emerald-600" />
             Copied
           </>
         ) : (

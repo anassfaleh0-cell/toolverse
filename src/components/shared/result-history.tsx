@@ -32,7 +32,7 @@ export function ResultHistory({ toolSlug, onRestore }: ResultHistoryProps) {
         className="flex w-full items-center justify-between px-5 py-3 text-sm font-medium text-zinc-900 transition-colors hover:bg-zinc-50 dark:text-zinc-50 dark:hover:bg-zinc-900"
       >
         <span className="flex items-center gap-2">
-          <Icon name="Clock" className="size-4 text-zinc-400" />
+          <Icon name="Clock" className="size-4 text-zinc-500" />
           Recent Analyses ({entries.length})
         </span>
         <div className="flex items-center gap-2">
@@ -43,11 +43,11 @@ export function ResultHistory({ toolSlug, onRestore }: ResultHistoryProps) {
               clearResultHistory(toolSlug);
               refresh();
             }}
-            className="text-xs text-zinc-400 hover:text-red-500"
+            className="text-xs text-zinc-500 hover:text-red-500"
           >
             Clear
           </button>
-          <Icon name="ChevronDown" className={`size-4 text-zinc-400 transition-transform ${open ? "rotate-180" : ""}`} />
+          <Icon name="ChevronDown" className={`size-4 text-zinc-500 transition-transform ${open ? "rotate-180" : ""}`} />
         </div>
       </button>
       {open && (
@@ -74,7 +74,7 @@ export function ResultHistory({ toolSlug, onRestore }: ResultHistoryProps) {
                   deleteResultEntry(toolSlug, entry.ts);
                   refresh();
                 }}
-                className="text-[10px] text-zinc-300 hover:text-red-500"
+                className="text-[10px] text-zinc-500 hover:text-red-500"
                 aria-label="Delete entry"
               >
                 &times;

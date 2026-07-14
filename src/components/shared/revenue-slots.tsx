@@ -35,7 +35,7 @@ export function AffiliateSlot({ className = "", id }: SlotProps) {
       role="complementary"
       aria-label="Sponsored content"
     >
-      <p className="text-xs text-amber-600 dark:text-amber-400">
+      <p className="text-xs text-amber-700 dark:text-amber-400">
         Affiliate links may be present. We may earn a commission on purchases.
       </p>
     </div>

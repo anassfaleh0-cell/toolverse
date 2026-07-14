@@ -144,7 +144,7 @@ export function AIExplanationCard({
             </span>
           )}
           {issueCount > 0 && (
-            <span className="text-zinc-400">
+            <span className="text-zinc-500">
               {issueCount} issue{issueCount !== 1 ? "s" : ""}
               {errorCount > 0 && ` (${errorCount} error${errorCount !== 1 ? "s" : ""})`}
             </span>
@@ -158,7 +158,7 @@ export function AIExplanationCard({
               "rounded px-2 py-0.5 text-[11px] font-medium transition-colors",
               beginnerMode
                 ? "bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-400"
-                : "text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300",
+                : "text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300",
             )}
           >
             Beginner
@@ -170,7 +170,7 @@ export function AIExplanationCard({
               "rounded px-2 py-0.5 text-[11px] font-medium transition-colors",
               expertMode
                 ? "bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-400"
-                : "text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300",
+                : "text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300",
             )}
           >
             Expert
@@ -243,7 +243,7 @@ export function AIExplanationCard({
           {activeTab === "whyBad" && (
             <div className="space-y-3">
               <div className="flex items-start gap-2 rounded-lg border border-amber-200 bg-amber-50 p-3 dark:border-amber-800 dark:bg-amber-950/50">
-                <span className="mt-0.5 shrink-0 text-amber-500">
+                <span className="mt-0.5 shrink-0 text-amber-700">
                   <Icon name="AlertTriangle" className="size-5" aria-hidden="true" />
                 </span>
                 <div>
@@ -282,9 +282,9 @@ export function AIExplanationCard({
                               : "Info"}
                           className={cn(
                             "size-4 shrink-0 mt-0.5",
-                            issue.severity === "error" && "text-red-500",
-                            issue.severity === "warning" && "text-amber-500",
-                            issue.severity === "info" && "text-blue-500",
+                            issue.severity === "error" && "text-red-700",
+                            issue.severity === "warning" && "text-amber-700",
+                            issue.severity === "info" && "text-blue-700",
                           )}
                         />
                         <div className="flex-1">

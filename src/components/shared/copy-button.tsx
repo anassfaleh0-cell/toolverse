@@ -40,7 +40,7 @@ export function CopyButton({ text, label = "Copy" }: CopyButtonProps) {
             fill="none"
             stroke="currentColor"
             strokeWidth={2}
-            className="size-4 text-emerald-500"
+            className="size-4 text-emerald-600"
             aria-hidden="true"
           >
             <path d="M20 6 9 17l-5-5" />

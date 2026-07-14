@@ -43,7 +43,7 @@ function GroupSection({ title, links }: { title: string; links: (ContextualLink 
   if (links.length === 0) return null;
   return (
     <div>
-      <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">{title}</h4>
+      <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">{title}</h4>
       <div className="flex flex-wrap gap-2">
         {links.map((link) => (
           <LinkBadge key={link.href} link={link} />

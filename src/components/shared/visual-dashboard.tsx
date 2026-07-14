@@ -158,7 +158,7 @@ export function DashboardSummary({ title, status, mainFinding, riskLevel, riskLa
           </div>
         </div>
         {timestamp && (
-          <p className="shrink-0 text-xs text-zinc-400">Updated {new Date(timestamp).toLocaleString()}</p>
+          <p className="shrink-0 text-xs text-zinc-500">Updated {new Date(timestamp).toLocaleString()}</p>
         )}
       </div>
       <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -178,7 +178,7 @@ const GRADE_CONFIG: Record<string, { label: string; color: string; ring: string 
   "A+": { label: "A+", color: "text-emerald-600 dark:text-emerald-400", ring: "stroke-emerald-500" },
   "A": { label: "A", color: "text-emerald-600 dark:text-emerald-400", ring: "stroke-emerald-500" },
   "A-": { label: "A-", color: "text-emerald-600 dark:text-emerald-400", ring: "stroke-emerald-500" },
-  "B+": { label: "B+", color: "text-emerald-500 dark:text-emerald-400", ring: "stroke-emerald-400" },
+  "B+": { label: "B+", color: "text-emerald-600 dark:text-emerald-400", ring: "stroke-emerald-400" },
   "B": { label: "B", color: "text-amber-600 dark:text-amber-400", ring: "stroke-amber-500" },
   "B-": { label: "B-", color: "text-amber-600 dark:text-amber-400", ring: "stroke-amber-500" },
   "C+": { label: "C+", color: "text-amber-600 dark:text-amber-400", ring: "stroke-amber-500" },

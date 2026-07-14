@@ -106,7 +106,7 @@ export function SearchSuggestions() {
   return (
     <div ref={ref} className="relative w-full max-w-xl" role="combobox" aria-expanded={open} aria-haspopup="listbox" aria-controls="search-suggestions-listbox">
       <div className="flex items-center gap-2 rounded-xl border border-zinc-300 bg-white px-4 py-3 shadow-sm transition-colors focus-within:border-zinc-500 focus-within:ring-2 focus-within:ring-zinc-200 dark:border-zinc-700 dark:bg-zinc-900 dark:focus-within:border-zinc-500 dark:focus-within:ring-zinc-800">
-        <Icon name="Search" className="size-5 shrink-0 text-zinc-400" aria-hidden="true" />
+        <Icon name="Search" className="size-5 shrink-0 text-zinc-500" aria-hidden="true" />
         <input
           ref={inputRef}
           type="search"
@@ -115,7 +115,7 @@ export function SearchSuggestions() {
           onKeyDown={handleKey}
           onFocus={() => { if (results.length > 0) setOpen(true); }}
           placeholder="Search tools, guides, articles..."
-          className="flex-1 bg-transparent text-sm text-zinc-900 outline-none placeholder:text-zinc-400 dark:text-zinc-50"
+          className="flex-1 bg-transparent text-sm text-zinc-900 outline-none placeholder:text-zinc-500 dark:text-zinc-50"
           aria-label="Search tools, guides, articles"
           aria-autocomplete="list"
           role="searchbox"

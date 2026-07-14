@@ -165,7 +165,7 @@ export function UniversalWorkspace() {
           <button
             type="button"
             onClick={() => setOpen(false)}
-            className="rounded-md p-1 text-zinc-400 transition-colors hover:bg-zinc-100 hover:text-zinc-600 dark:hover:bg-zinc-800 dark:hover:text-zinc-300"
+            className="rounded-md p-1 text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-600 dark:hover:bg-zinc-800 dark:hover:text-zinc-300"
             aria-label="Close workspace"
           >
             <svg
@@ -197,7 +197,7 @@ export function UniversalWorkspace() {
               className={`flex-1 px-3 py-2 text-xs font-medium transition-colors ${
                 tab === t.key
                   ? "border-b-2 border-blue-500 text-zinc-900 dark:text-zinc-50"
-                  : "text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300"
+                  : "text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300"
               }`}
             >
               {t.label}
@@ -223,10 +223,10 @@ export function UniversalWorkspace() {
                       <p className="truncate text-sm font-medium text-zinc-900 dark:text-zinc-50">
                         {entry.toolName}
                       </p>
-                      <p className="truncate text-xs text-zinc-400">
+                      <p className="truncate text-xs text-zinc-500">
                         {entry.label}
                       </p>
-                      <p className="text-[10px] text-zinc-300">
+                      <p className="text-[10px] text-zinc-500">
                         {formatTime(entry.savedAt)}
                       </p>
                     </Link>
@@ -235,7 +235,7 @@ export function UniversalWorkspace() {
                       onClick={() =>
                         handleRemove(entry.toolSlug, entry.savedAt)
                       }
-                      className="shrink-0 rounded p-1 text-zinc-300 opacity-0 transition-all hover:text-red-500 group-hover:opacity-100"
+                      className="shrink-0 rounded p-1 text-zinc-400 opacity-0 transition-all hover:text-red-500 group-hover:opacity-100"
                       aria-label="Remove entry"
                     >
                       <svg
@@ -302,7 +302,7 @@ export function UniversalWorkspace() {
                       fill="none"
                       stroke="currentColor"
                       strokeWidth={2}
-                      className="size-3.5 shrink-0 text-zinc-400"
+                      className="size-3.5 shrink-0 text-zinc-500"
                     >
                       <circle cx="12" cy="12" r="10" />
                       <polyline points="12 6 12 12 16 14" />
@@ -311,7 +311,7 @@ export function UniversalWorkspace() {
                       <p className="truncate text-sm font-medium text-zinc-900 dark:text-zinc-50">
                         {tool.name}
                       </p>
-                      <p className="text-[10px] text-zinc-400">
+                      <p className="text-[10px] text-zinc-500">
                         {formatTime(tool.viewedAt)}
                       </p>
                     </div>
@@ -328,6 +328,6 @@ export function UniversalWorkspace() {
 
 function EmptyState({ message }: { message: string }) {
   return (
-    <p className="px-4 py-10 text-center text-sm text-zinc-400">{message}</p>
+    <p className="px-4 py-10 text-center text-sm text-zinc-500">{message}</p>
   );
 }

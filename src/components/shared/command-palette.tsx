@@ -223,7 +223,7 @@ export function CommandPalette() {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center gap-3 border-b border-zinc-200 px-5 py-4 dark:border-zinc-700">
-          <Icon name="Search" className="size-5 shrink-0 text-zinc-400" />
+          <Icon name="Search" className="size-5 shrink-0 text-zinc-500" />
           <input
             ref={inputRef}
             type="text"
@@ -231,10 +231,10 @@ export function CommandPalette() {
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Search tools..."
-            className="flex-1 bg-transparent text-base text-zinc-900 outline-none placeholder:text-zinc-400 dark:text-zinc-50"
+            className="flex-1 bg-transparent text-base text-zinc-900 outline-none placeholder:text-zinc-500 dark:text-zinc-50"
             autoFocus
           />
-          <kbd className="hidden shrink-0 rounded-md border border-zinc-200 px-2 py-0.5 text-xs text-zinc-400 sm:inline-block dark:border-zinc-600">ESC</kbd>
+          <kbd className="hidden shrink-0 rounded-md border border-zinc-200 px-2 py-0.5 text-xs text-zinc-500 sm:inline-block dark:border-zinc-600">ESC</kbd>
         </div>
 
         <div ref={listRef} className="max-h-96 overflow-y-auto">
@@ -242,14 +242,14 @@ export function CommandPalette() {
             <>
               {recentSearches.length > 0 && (
                 <div className="px-4 pt-3">
-                  <p className="mb-1 px-2 text-xs font-medium uppercase tracking-wider text-zinc-400">Recent Searches</p>
+                  <p className="mb-1 px-2 text-xs font-medium uppercase tracking-wider text-zinc-500">Recent Searches</p>
                   {recentSearches.slice(0, 8).map((sq) => (
                     <button
                       key={sq}
                       onClick={() => selectRecentSearch(sq)}
                       className="flex w-full items-center gap-3 rounded-lg px-2 py-2 text-sm text-zinc-600 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
                     >
-                      <svg className="size-4 shrink-0 text-zinc-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                      <svg className="size-4 shrink-0 text-zinc-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
                         <path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0z" /><path d="M12 7v5l3 3" />
                       </svg>
                       {sq}
@@ -260,14 +260,14 @@ export function CommandPalette() {
 
               {trending.length > 0 && (
                 <div className="px-4 pt-3">
-                  <p className="mb-1 px-2 text-xs font-medium uppercase tracking-wider text-zinc-400">Trending</p>
+                  <p className="mb-1 px-2 text-xs font-medium uppercase tracking-wider text-zinc-500">Trending</p>
                   {trending.slice(0, 5).map((sq) => (
                     <button
                       key={sq}
                       onClick={() => selectRecentSearch(sq)}
                       className="flex w-full items-center gap-3 rounded-lg px-2 py-2 text-sm text-zinc-600 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
                     >
-                      <svg className="size-4 shrink-0 text-zinc-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                      <svg className="size-4 shrink-0 text-zinc-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
                         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" />
                       </svg>
                       {sq}
@@ -278,14 +278,14 @@ export function CommandPalette() {
 
               {recentlyViewed.length > 0 && (
                 <div className="px-4 pt-3">
-                  <p className="mb-1 px-2 text-xs font-medium uppercase tracking-wider text-zinc-400">Recently Viewed</p>
+                  <p className="mb-1 px-2 text-xs font-medium uppercase tracking-wider text-zinc-500">Recently Viewed</p>
                   {recentlyViewed.slice(0, 5).map((item) => (
                     <button
                       key={item.slug}
                       onClick={() => selectLocal(item)}
                       className="flex w-full items-center gap-3 rounded-lg px-2 py-2 text-sm text-zinc-600 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
                     >
-                      <svg className="size-4 shrink-0 text-zinc-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                      <svg className="size-4 shrink-0 text-zinc-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                       </svg>
                       <span className="flex-1 truncate text-left font-medium text-zinc-900 dark:text-zinc-50">{item.name}</span>
@@ -296,14 +296,14 @@ export function CommandPalette() {
 
               {bookmarked.length > 0 && (
                 <div className="px-4 pb-3 pt-3">
-                  <p className="mb-1 px-2 text-xs font-medium uppercase tracking-wider text-zinc-400">Bookmarks</p>
+                  <p className="mb-1 px-2 text-xs font-medium uppercase tracking-wider text-zinc-500">Bookmarks</p>
                   {bookmarked.slice(0, 5).map((item) => (
                     <button
                       key={item.slug}
                       onClick={() => selectLocal(item)}
                       className="flex w-full items-center gap-3 rounded-lg px-2 py-2 text-sm text-zinc-600 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
                     >
-                      <svg className="size-4 shrink-0 text-zinc-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                      <svg className="size-4 shrink-0 text-zinc-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
                         <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
                       </svg>
                       <span className="flex-1 truncate text-left font-medium text-zinc-900 dark:text-zinc-50">{item.name}</span>
@@ -313,7 +313,7 @@ export function CommandPalette() {
               )}
 
               {!hasLocalResults && recentSearches.length === 0 && trending.length === 0 && (
-                <div className="px-4 py-8 text-center text-sm text-zinc-400">
+                <div className="px-4 py-8 text-center text-sm text-zinc-500">
                   Press <kbd className="rounded border border-zinc-200 px-1.5 py-0.5 dark:border-zinc-600">K</kbd> to start searching
                 </div>
               )}
@@ -327,7 +327,7 @@ export function CommandPalette() {
                 if (!items || items.length === 0) return null;
                 return (
                   <div key={group}>
-                    <p className="mb-1 px-2 pt-1 text-xs font-medium uppercase tracking-wider text-zinc-400">{group} ({items.length})</p>
+                    <p className="mb-1 px-2 pt-1 text-xs font-medium uppercase tracking-wider text-zinc-500">{group} ({items.length})</p>
                     {items.map((result) => {
                       const flatIdx = flatResults.indexOf(result);
                       return (
@@ -353,11 +353,11 @@ export function CommandPalette() {
           )}
 
           {!showRecent && totalResults === 0 && (
-            <div className="px-4 py-8 text-center text-sm text-zinc-400">No results found for &quot;{query}&quot;</div>
+            <div className="px-4 py-8 text-center text-sm text-zinc-500">No results found for &quot;{query}&quot;</div>
           )}
         </div>
 
-        <div className="flex items-center gap-4 border-t border-zinc-200 px-5 py-3 text-xs text-zinc-400 dark:border-zinc-700">
+        <div className="flex items-center gap-4 border-t border-zinc-200 px-5 py-3 text-xs text-zinc-500 dark:border-zinc-700">
           <span><kbd className="rounded border border-zinc-200 px-1.5 py-0.5 dark:border-zinc-600">T</kbd><kbd className="ml-0.5 rounded border border-zinc-200 px-1.5 py-0.5 dark:border-zinc-600">T</kbd> Navigate</span>
           <span><kbd className="rounded border border-zinc-200 px-1.5 py-0.5 dark:border-zinc-600">Enter</kbd> Open</span>
           <span><kbd className="rounded border border-zinc-200 px-1.5 py-0.5 dark:border-zinc-600">Esc</kbd> Close</span>

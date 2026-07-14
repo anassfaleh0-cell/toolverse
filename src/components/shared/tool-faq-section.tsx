@@ -23,7 +23,7 @@ export function ToolFaqSection({ items, toolName }: ToolFaqSectionProps) {
             <details key={i} className="group">
               <summary className="flex cursor-pointer items-center justify-between px-5 py-4 text-sm font-medium text-zinc-900 hover:bg-zinc-50 dark:text-zinc-50 dark:hover:bg-zinc-900/50">
                 {item.question}
-                <Icon name="ChevronDown" className="size-4 shrink-0 text-zinc-400 transition-transform group-open:rotate-180" aria-hidden="true" />
+                <Icon name="ChevronDown" className="size-4 shrink-0 text-zinc-500 transition-transform group-open:rotate-180" aria-hidden="true" />
               </summary>
               <p className="px-5 pb-4 text-sm text-zinc-600 dark:text-zinc-400">
                 {item.answer}
