@@ -6,7 +6,7 @@ import { JsonLd } from "@/components/shared";
 import { Hero } from "@/components/shared/hero";
 import { Icon } from "@/components/shared/icon";
 import { HomeSearchBar } from "@/components/search/HomeSearchBar";
-import { webPageSchema, breadcrumbSchema, faqSchema, organizationSchema, webSiteSchema } from "@/lib/seo";
+import { webPageSchema, breadcrumbSchema, faqSchema, webSiteSchema } from "@/lib/seo";
 import { SITE_NAME, SITE_URL, SITE_DESCRIPTION, FAQ_ITEMS, HERO_TAGLINE } from "@/lib/constants";
 import { getCategories, getToolsByCategory, getAllTools } from "@/lib/registry";
 
@@ -83,7 +83,7 @@ function AiShowcase() {
         </div>
         <div className="mt-12 grid gap-6 sm:grid-cols-3">
           {[
-            { icon: (<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-6"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></svg>), title: "Smart Analysis", desc: "Every tool explains its results — not just what, but why and what to do next." },
+            { icon: (<Icon name="PenSquare" className="size-6" />), title: "Smart Analysis", desc: "Every tool explains its results — not just what, but why and what to do next." },
             { icon: (<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-6"><path d="M12 2a4 4 0 0 1 4 4c0 2-2 4-2 4h-4s-2-2-2-4a4 4 0 0 1 4-4z" /><path d="M8 14h8" /><path d="M8 18h4" /></svg>), title: "AI Explanations", desc: "Plain-English breakdowns of technical results. Beginner mode strips away the jargon." },
             { icon: (<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-6"><path d="M9 18V5l12-2v13" /><circle cx="6" cy="18" r="3" /><circle cx="18" cy="16" r="3" /></svg>), title: "Actionable Next Steps", desc: "Found an issue? Nuvora tells you how to fix it, step by step." },
           ].map((feature) => (
@@ -121,7 +121,7 @@ function FlagShipTools() {
               <h3 className="mt-4 font-semibold text-text-primary">{tool!.name}</h3>
               <p className="mt-1.5 line-clamp-2 text-sm text-text-secondary leading-relaxed">{tool!.description}</p>
               <div className="mt-4 flex items-center gap-1 text-xs font-medium text-nuvora-600 opacity-0 transition-opacity group-hover:opacity-100 dark:text-nuvora-400">
-                Open tool <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-3"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                Open tool <Icon name="ArrowRight" className="size-3" />
               </div>
             </Link>
           ))}
@@ -157,7 +157,7 @@ function CategoryGrid() {
                   {tools.length > 4 && <span className="rounded-full bg-surface-secondary px-2.5 py-0.5 text-xs text-text-tertiary">+{tools.length - 4} more</span>}
                 </div>
                 <div className="mt-4 flex items-center gap-1 text-xs font-medium text-nuvora-600 opacity-0 transition-opacity group-hover:opacity-100 dark:text-nuvora-400">
-                  Browse all <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-3"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                  Browse all <Icon name="ArrowRight" className="size-3" />
                 </div>
               </Link>
             );
@@ -181,7 +181,7 @@ function FAQSection() {
             <details key={i} className="group nuvora-card [&[open]]:shadow-md">
               <summary className="flex cursor-pointer items-center justify-between px-6 py-4 text-sm font-semibold text-text-primary">
                 {item.question}
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4 shrink-0 text-text-tertiary transition-transform group-open:rotate-180"><path d="m6 9 6 6 6-6" /></svg>
+                <Icon name="ChevronDown" className="size-4 shrink-0 text-text-tertiary transition-transform group-open:rotate-180" />
               </summary>
               <div className="border-t border-border-subtle px-6 pb-4 pt-3">
                 <p className="text-sm text-text-secondary leading-relaxed">{item.answer}</p>
@@ -205,9 +205,10 @@ function Newsletter() {
         <h2 className="mt-6 text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">Get notified about new tools</h2>
         <p className="mt-3 text-lg text-text-secondary">New tools, features, and product launches. No spam — ever. Unsubscribe anytime.</p>
         <div className="mx-auto mt-8 flex max-w-md gap-3">
-          <input type="email" placeholder="you@example.com" readOnly
+          <label htmlFor="newsletter-email" className="sr-only">Email address for newsletter</label>
+          <input id="newsletter-email" type="email" placeholder="you@example.com" readOnly
             className="min-w-0 flex-1 rounded-xl border border-border-subtle bg-surface px-4 py-3 text-sm outline-none transition-all focus:border-nuvora-400 focus:ring-4 focus:ring-nuvora-100 dark:focus:border-nuvora-600 dark:focus:ring-nuvora-900/30" />
-          <span className="shrink-0 rounded-xl bg-nuvora-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-nuvora-700">Subscribe</span>
+          <button type="button" className="shrink-0 cursor-pointer rounded-xl bg-nuvora-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-nuvora-700 disabled:opacity-50">Subscribe</button>
         </div>
       </div>
     </section>
@@ -219,7 +220,7 @@ export default function Home() {
     <>
       <JsonLd data={webPageSchema({ name: `${SITE_NAME} — Your Browser Can Do More — 255+ Free Tools`, description: SITE_DESCRIPTION, url: SITE_URL, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
-      <JsonLd data={organizationSchema()} />
+
       <JsonLd data={webSiteSchema()} />
       <JsonLd data={faqSchema(FAQ_ITEMS.slice(0, 5).map((item) => ({ question: item.question, answer: item.answer })))} />
       <Hero />

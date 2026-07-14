@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from "react";
 import { Input, Textarea, Button, Alert } from "@/components/ui";
-import { CopyButton } from "@/components/shared";
+import { CopyButton, Icon } from "@/components/shared";
 
 const allFlags = [
   { id: "g", label: "g", description: "Global" },
@@ -138,13 +138,9 @@ export function RegexTester() {
           {pattern.trim() && (
             <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2">
               {isValid ? (
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-5 text-green-500" aria-label="Valid pattern">
-                  <path d="M20 6 9 17l-5-5" />
-                </svg>
+                <Icon name="Check" className="size-5 text-green-500" aria-label="Valid pattern" />
               ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-5 text-red-500" aria-label="Invalid pattern">
-                  <path d="M18 6 6 18M6 6l12 12" />
-                </svg>
+                <Icon name="X" className="size-5 text-red-500" aria-label="Invalid pattern" />
               )}
             </span>
           )}
@@ -193,16 +189,7 @@ export function RegexTester() {
           type="button"
           className="flex items-center gap-1.5 text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={2}
-            className={`size-4 transition-transform ${showPatterns ? "rotate-90" : ""}`}
-          >
-            <path d="m9 18 6-6-6-6" />
-          </svg>
+          <Icon name="ChevronRight" className={`size-4 transition-transform ${showPatterns ? "rotate-90" : ""}`} />
           Common Patterns
         </button>
         {showPatterns && (

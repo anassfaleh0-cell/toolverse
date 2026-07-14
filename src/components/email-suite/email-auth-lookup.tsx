@@ -229,7 +229,7 @@ function ScoreBar({ score, label }: { score: number; label: string }) {
   const color = score >= 70 ? "bg-green-500" : score >= 40 ? "bg-amber-500" : "bg-red-500";
   return (
     <div className="flex items-center gap-3">
-      <span className="w-32 shrink-0 text-xs text-zinc-500">{label}</span>
+      <span className="w-32 shrink-0 text-xs text-zinc-500 dark:text-zinc-400">{label}</span>
       <div className="flex-1">
         <div className="h-2 overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-700">
           <div className={`h-full rounded-full transition-all ${color}`} style={{ width: `${Math.min(100, Math.max(0, score))}%` }} />
@@ -488,7 +488,7 @@ export function EmailAuthLookup({ lookupType, title, description, placeholder, s
 
       {history.length > 0 && (
         <div className="flex flex-wrap items-center gap-1.5">
-          <span className="text-[11px] font-medium text-zinc-400">Recent:</span>
+          <span className="text-[11px] font-medium text-zinc-400 dark:text-zinc-300">Recent:</span>
           {history.slice(0, 5).map((d) => (
             <button key={d} type="button" onClick={() => { setDomain(d); }} className="rounded-md border border-zinc-200 px-2 py-0.5 text-[11px] text-zinc-500 transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800">{d}</button>
           ))}
@@ -521,12 +521,12 @@ export function EmailAuthLookup({ lookupType, title, description, placeholder, s
 
       {showAdvanced && (
         <div className="rounded-xl border border-zinc-200 bg-zinc-50 px-5 py-4 dark:border-zinc-800 dark:bg-zinc-900">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-500">Developer Mode</p>
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Developer Mode</p>
           <div className="space-y-2 text-xs text-zinc-600 dark:text-zinc-400">
             <p>API: <code className="rounded bg-zinc-200 px-1 py-0.5 dark:bg-zinc-700">GET /api/email?type={lookupType}&domain=example.com{showSelector ? "&selector=auto" : ""}</code></p>
             <p>CLI: <code className="rounded bg-zinc-200 px-1 py-0.5 dark:bg-zinc-700">nslookup -type=TXT {lookupType === "dmarc" ? "_dmarc." : lookupType === "bimi" ? "default._bimi." : lookupType === "dkim" ? "default._domainkey." : ""}example.com</code></p>
             {lookupType === "mx" && <p>CLI: <code className="rounded bg-zinc-200 px-1 py-0.5 dark:bg-zinc-700">nslookup -type=MX example.com</code></p>}
-            {result && <p className="mt-2 font-mono text-zinc-400">Raw result: {JSON.stringify(result, null, 2).slice(0, 500)}</p>}
+            {result && <p className="mt-2 font-mono text-zinc-400 dark:text-zinc-300">Raw result: {JSON.stringify(result, null, 2).slice(0, 500)}</p>}
           </div>
         </div>
       )}
@@ -546,7 +546,7 @@ export function EmailAuthLookup({ lookupType, title, description, placeholder, s
                   <div>
                     <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">{result.type} Records for {result.domain}</p>
                     <p className="mt-0.5 text-2xl font-bold text-zinc-900 dark:text-zinc-50">{result.records.length}</p>
-                    <p className="text-xs text-zinc-500">{result.records.length === 1 ? "record found" : "records found"}</p>
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400">{result.records.length === 1 ? "record found" : "records found"}</p>
                   </div>
                   <div className="flex items-center gap-2">
                     {(result.spfScore || result.dmarcAnalysis || result.dkimScore || (result.bimiValidation && result.bimiValidation.score !== undefined)) && (
@@ -558,7 +558,7 @@ export function EmailAuthLookup({ lookupType, title, description, placeholder, s
                       disabled={pdfLoading}
                       className="inline-flex items-center gap-1 rounded-lg border border-zinc-200 bg-white px-2.5 py-1.5 text-[11px] font-medium text-zinc-600 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700"
                     >
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-3.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></svg>
+                      <Icon name="FileText" className="size-3.5" />
                       {pdfLoading ? "Generating..." : "Download Report"}
                     </button>
                     {reportData && (
@@ -577,7 +577,7 @@ export function EmailAuthLookup({ lookupType, title, description, placeholder, s
               {/* Score breakdown */}
               {result.spfScore && (
                 <div className="border-b border-zinc-200 px-5 py-3 dark:border-zinc-800">
-                  <p className="mb-2 text-xs font-semibold text-zinc-500 uppercase tracking-wider">SPF Score Breakdown</p>
+                  <p className="mb-2 text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">SPF Score Breakdown</p>
                   {result.spfScore.breakdown.map((b, i) => (
                     <div key={i} className="flex items-center justify-between py-0.5 text-xs">
                       <span className="text-zinc-600 dark:text-zinc-400">{b.reason}</span>
@@ -589,7 +589,7 @@ export function EmailAuthLookup({ lookupType, title, description, placeholder, s
 
               {result.dmarcAnalysis && (
                 <div className="border-b border-zinc-200 px-5 py-3 dark:border-zinc-800">
-                  <p className="mb-2 text-xs font-semibold text-zinc-500 uppercase tracking-wider">DMARC Policy Analysis</p>
+                  <p className="mb-2 text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">DMARC Policy Analysis</p>
                   <div className="mb-2 flex flex-wrap gap-2">
                     {Object.entries(result.dmarcAnalysis.tags).map(([k, v]) => (
                       <span key={k} className="rounded bg-zinc-100 px-2 py-0.5 text-xs font-mono text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">{k}={v}</span>
@@ -619,8 +619,8 @@ export function EmailAuthLookup({ lookupType, title, description, placeholder, s
 
               {result.dkimSelectors && (
                 <div className="border-b border-zinc-200 px-5 py-3 dark:border-zinc-800">
-                  <p className="mb-2 text-xs font-semibold text-zinc-500 uppercase tracking-wider">DKIM Selector Detection</p>
-                  <p className="mb-2 text-xs text-zinc-500">Probed {result.dkimSelectors.length} common selectors. Found {result.dkimSelectors.filter((s) => s.found).length} valid.</p>
+                  <p className="mb-2 text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">DKIM Selector Detection</p>
+                  <p className="mb-2 text-xs text-zinc-500 dark:text-zinc-400">Probed {result.dkimSelectors.length} common selectors. Found {result.dkimSelectors.filter((s) => s.found).length} valid.</p>
                   <div className="flex flex-wrap gap-1.5">
                     {result.dkimSelectors.filter((s) => s.found).map((s) => (
                       <span key={s.selector} className="rounded bg-green-100 px-2 py-0.5 text-xs font-mono text-green-700 dark:bg-green-900/30 dark:text-green-400" title={s.keySize ? `${s.keyType} ${s.keySize}-bit` : s.keyType}>
@@ -628,12 +628,12 @@ export function EmailAuthLookup({ lookupType, title, description, placeholder, s
                       </span>
                     ))}
                     {result.dkimSelectors.filter((s) => !s.found).slice(0, 10).map((s) => (
-                      <span key={s.selector} className="rounded bg-zinc-100 px-2 py-0.5 text-xs font-mono text-zinc-400 dark:bg-zinc-800">-{s.selector}</span>
+                      <span key={s.selector} className="rounded bg-zinc-100 px-2 py-0.5 text-xs font-mono text-zinc-400 dark:text-zinc-300 dark:bg-zinc-800">-{s.selector}</span>
                     ))}
                   </div>
                   {result.dkimScore && (
                     <div className="mt-2 border-t border-zinc-200 pt-2 dark:border-zinc-800">
-                      <p className="mb-1 text-xs font-semibold text-zinc-500">DKIM Score Breakdown</p>
+                      <p className="mb-1 text-xs font-semibold text-zinc-500 dark:text-zinc-400">DKIM Score Breakdown</p>
                       {result.dkimScore.breakdown.map((b, i) => (
                         <div key={i} className="flex items-center justify-between py-0.5 text-xs">
                           <span className="text-zinc-600 dark:text-zinc-400">{b.reason}</span>
@@ -647,7 +647,7 @@ export function EmailAuthLookup({ lookupType, title, description, placeholder, s
 
               {result.bimiValidation && (
                 <div className="border-b border-zinc-200 px-5 py-3 dark:border-zinc-800">
-                  <p className="mb-2 text-xs font-semibold text-zinc-500 uppercase tracking-wider">BIMI Validation</p>
+                  <p className="mb-2 text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">BIMI Validation</p>
                   <div className="grid grid-cols-2 gap-2 text-xs">
                     <div className="flex items-center gap-2">
                       <span className={`size-2 rounded-full ${result.bimiValidation.hasSVG ? "bg-green-500" : "bg-red-500"}`} />
@@ -695,24 +695,24 @@ export function EmailAuthLookup({ lookupType, title, description, placeholder, s
 
               <div className="divide-y divide-zinc-200 dark:divide-zinc-800">
                 {result.records.length === 0 ? (
-                  <div className="px-5 py-8 text-center text-sm text-zinc-500">
+                  <div className="px-5 py-8 text-center text-sm text-zinc-500 dark:text-zinc-400">
                     No {result.type} records found for {result.domain}.
                   </div>
                 ) : (
                   result.records.map((record, i) => (
                     <div key={i} className="px-5 py-4">
                       <div className="mb-2 flex items-center justify-between">
-                        <span className="text-[11px] font-medium text-zinc-400">Record {i + 1}</span>
+                        <span className="text-[11px] font-medium text-zinc-400 dark:text-zinc-300">Record {i + 1}</span>
                       </div>
                       <div className="flex items-start justify-between gap-4">
                         <pre className="flex-1 overflow-x-auto whitespace-pre-wrap break-all text-sm text-zinc-900 dark:text-zinc-50">{record}</pre>
                         <button
                           type="button"
                           onClick={() => navigator.clipboard.writeText(record)}
-                          className="shrink-0 rounded-lg p-2 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-600 dark:hover:bg-zinc-800 dark:hover:text-zinc-300"
+                          className="shrink-0 rounded-lg p-2 text-zinc-400 dark:text-zinc-300 hover:bg-zinc-100 hover:text-zinc-600 dark:hover:bg-zinc-800 dark:hover:text-zinc-300"
                           aria-label="Copy record"
                         >
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4"><rect x="9" y="9" width="13" height="13" rx="2" ry="2" /><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg>
+                          <Icon name="Copy" className="size-4" />
                         </button>
                       </div>
                     </div>
@@ -722,7 +722,7 @@ export function EmailAuthLookup({ lookupType, title, description, placeholder, s
 
               {result.raw && result.raw.length > result.records.length && (
                 <div className="border-t border-zinc-200 bg-zinc-50 px-5 py-3 dark:border-zinc-800 dark:bg-zinc-900">
-                  <p className="text-xs text-zinc-500">
+                  <p className="text-xs text-zinc-500 dark:text-zinc-400">
                     {result.raw.length - result.records.length} additional TXT record{result.raw.length - result.records.length !== 1 ? "s" : ""} found (non-{result.type})
                   </p>
                 </div>
@@ -730,8 +730,8 @@ export function EmailAuthLookup({ lookupType, title, description, placeholder, s
 
               {showAdvanced && result.raw && (
                 <div className="border-t border-zinc-200 bg-zinc-50 px-5 py-3 dark:border-zinc-800 dark:bg-zinc-900">
-                  <p className="mb-1 text-[11px] font-medium text-zinc-500">Raw DNS Response</p>
-                  <pre className="overflow-x-auto whitespace-pre-wrap break-all text-xs text-zinc-400">All TXT records: {JSON.stringify(result.raw)}</pre>
+                  <p className="mb-1 text-[11px] font-medium text-zinc-500 dark:text-zinc-400">Raw DNS Response</p>
+                  <pre className="overflow-x-auto whitespace-pre-wrap break-all text-xs text-zinc-400 dark:text-zinc-300">All TXT records: {JSON.stringify(result.raw)}</pre>
                 </div>
               )}
             </div>
@@ -742,7 +742,7 @@ export function EmailAuthLookup({ lookupType, title, description, placeholder, s
               <div className="border-b border-zinc-200 bg-zinc-50 px-5 py-4 dark:border-zinc-800 dark:bg-zinc-900">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">Email Deliverability Score</p>
+                    <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Email Deliverability Score</p>
                     <p className={`mt-1 text-3xl font-bold ${result.deliverabilityScore.overall >= 70 ? "text-green-600" : result.deliverabilityScore.overall >= 40 ? "text-amber-600" : "text-red-600"}`}>
                       {result.deliverabilityScore.overall}/100
                     </p>
@@ -753,7 +753,7 @@ export function EmailAuthLookup({ lookupType, title, description, placeholder, s
                     disabled={pdfLoading}
                     className="inline-flex items-center gap-1 rounded-lg border border-zinc-200 bg-white px-2.5 py-1.5 text-[11px] font-medium text-zinc-600 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700"
                   >
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-3.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></svg>
+                    <Icon name="FileText" className="size-3.5" />
                     {pdfLoading ? "Generating..." : "Download Report"}
                   </button>
                 </div>
@@ -764,30 +764,30 @@ export function EmailAuthLookup({ lookupType, title, description, placeholder, s
                 ))}
               </div>
               <div className="border-t border-zinc-200 px-5 py-3 dark:border-zinc-800">
-                <p className="mb-2 text-xs font-semibold text-zinc-500 uppercase tracking-wider">Details</p>
+                <p className="mb-2 text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Details</p>
                 <div className="grid grid-cols-2 gap-3 text-xs">
                   {result.spfScore && (
                     <div className="rounded-lg bg-zinc-50 p-2 dark:bg-zinc-900">
                       <p className="font-medium text-zinc-700 dark:text-zinc-300">SPF</p>
-                      <p className="text-zinc-500">{result.spfScore.breakdown.map((b) => b.reason).join("; ")}</p>
+                      <p className="text-zinc-500 dark:text-zinc-400">{result.spfScore.breakdown.map((b) => b.reason).join("; ")}</p>
                     </div>
                   )}
                   {result.dkimScore && (
                     <div className="rounded-lg bg-zinc-50 p-2 dark:bg-zinc-900">
                       <p className="font-medium text-zinc-700 dark:text-zinc-300">DKIM</p>
-                      <p className="text-zinc-500">{result.dkimScore.breakdown.map((b) => b.reason).join("; ")}</p>
+                      <p className="text-zinc-500 dark:text-zinc-400">{result.dkimScore.breakdown.map((b) => b.reason).join("; ")}</p>
                     </div>
                   )}
                   {result.dmarcAnalysis && (
                     <div className="rounded-lg bg-zinc-50 p-2 dark:bg-zinc-900">
                       <p className="font-medium text-zinc-700 dark:text-zinc-300">DMARC</p>
-                      <p className="text-zinc-500">{result.dmarcAnalysis.strengths.concat(result.dmarcAnalysis.weaknesses).join("; ")}</p>
+                      <p className="text-zinc-500 dark:text-zinc-400">{result.dmarcAnalysis.strengths.concat(result.dmarcAnalysis.weaknesses).join("; ")}</p>
                     </div>
                   )}
                   {result.bimiValidation && (
                     <div className="rounded-lg bg-zinc-50 p-2 dark:bg-zinc-900">
                       <p className="font-medium text-zinc-700 dark:text-zinc-300">BIMI</p>
-                      <p className="text-zinc-500">{result.bimiValidation.dmarcEnforced ? "DMARC enforced" : "DMARC not enforced"}</p>
+                      <p className="text-zinc-500 dark:text-zinc-400">{result.bimiValidation.dmarcEnforced ? "DMARC enforced" : "DMARC not enforced"}</p>
                     </div>
                   )}
                 </div>
@@ -816,7 +816,7 @@ export function EmailAuthLookup({ lookupType, title, description, placeholder, s
       {comparisonResult && (
         <div className="overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800">
           <div className="border-b border-zinc-200 bg-zinc-50 px-5 py-3 dark:border-zinc-800 dark:bg-zinc-900">
-            <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">Domain Comparison</p>
+            <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Domain Comparison</p>
             <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
               Comparing {comparisonResult.domain1} vs {comparisonResult.domain2}
             </p>
@@ -824,17 +824,17 @@ export function EmailAuthLookup({ lookupType, title, description, placeholder, s
 
           {comparisonResult.overall && (
             <div className="border-b border-zinc-200 px-5 py-4 dark:border-zinc-800">
-              <p className="mb-2 text-xs font-semibold text-zinc-500 uppercase tracking-wider">Overall Deliverability</p>
+              <p className="mb-2 text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Overall Deliverability</p>
               <div className="grid grid-cols-2 gap-4">
                 <div className={`rounded-lg border p-3 ${comparisonResult.overall.winner === comparisonResult.domain1 ? "border-green-300 bg-green-50 dark:border-green-700 dark:bg-green-900/20" : "border-zinc-200 dark:border-zinc-700"}`}>
-                  <p className="text-xs font-medium text-zinc-500">{comparisonResult.domain1}</p>
+                  <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">{comparisonResult.domain1}</p>
                   <p className={`text-2xl font-bold ${comparisonResult.overall.domain1.overall >= 70 ? "text-green-600" : comparisonResult.overall.domain1.overall >= 40 ? "text-amber-600" : "text-red-600"}`}>
                     {comparisonResult.overall.domain1.overall}/100
                   </p>
                   {comparisonResult.overall.winner === comparisonResult.domain1 && <p className="text-xs text-green-600 font-medium mt-1">Winner</p>}
                 </div>
                 <div className={`rounded-lg border p-3 ${comparisonResult.overall.winner === comparisonResult.domain2 ? "border-green-300 bg-green-50 dark:border-green-700 dark:bg-green-900/20" : "border-zinc-200 dark:border-zinc-700"}`}>
-                  <p className="text-xs font-medium text-zinc-500">{comparisonResult.domain2}</p>
+                  <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">{comparisonResult.domain2}</p>
                   <p className={`text-2xl font-bold ${comparisonResult.overall.domain2.overall >= 70 ? "text-green-600" : comparisonResult.overall.domain2.overall >= 40 ? "text-amber-600" : "text-red-600"}`}>
                     {comparisonResult.overall.domain2.overall}/100
                   </p>
@@ -846,15 +846,15 @@ export function EmailAuthLookup({ lookupType, title, description, placeholder, s
 
           {Object.entries(comparisonResult.comparisons).map(([key, comp]) => (
             <div key={key} className="border-b border-zinc-200 px-5 py-4 last:border-b-0 dark:border-zinc-800">
-              <p className="mb-2 text-xs font-semibold text-zinc-500 uppercase tracking-wider">{key.toUpperCase()}</p>
+              <p className="mb-2 text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">{key.toUpperCase()}</p>
               <div className="grid grid-cols-2 gap-4">
                 <div className={`rounded-lg border p-2 ${comp.winner === comparisonResult.domain1 ? "border-green-200 bg-green-50/50 dark:border-green-800 dark:bg-green-900/10" : "border-zinc-200 dark:border-zinc-700"}`}>
                   <p className="text-xs font-medium text-zinc-700 dark:text-zinc-300">{comparisonResult.domain1}</p>
-                  <pre className="mt-1 text-xs text-zinc-500 whitespace-pre-wrap">{JSON.stringify(comp.domain1, null, 1)}</pre>
+                  <pre className="mt-1 text-xs text-zinc-500 dark:text-zinc-400 whitespace-pre-wrap">{JSON.stringify(comp.domain1, null, 1)}</pre>
                 </div>
                 <div className={`rounded-lg border p-2 ${comp.winner === comparisonResult.domain2 ? "border-green-200 bg-green-50/50 dark:border-green-800 dark:bg-green-900/10" : "border-zinc-200 dark:border-zinc-700"}`}>
                   <p className="text-xs font-medium text-zinc-700 dark:text-zinc-300">{comparisonResult.domain2}</p>
-                  <pre className="mt-1 text-xs text-zinc-500 whitespace-pre-wrap">{JSON.stringify(comp.domain2, null, 1)}</pre>
+                  <pre className="mt-1 text-xs text-zinc-500 dark:text-zinc-400 whitespace-pre-wrap">{JSON.stringify(comp.domain2, null, 1)}</pre>
                 </div>
               </div>
               {comp.winner && (

@@ -75,7 +75,8 @@ export default function TextCleanerPage() {
         <ToolLayout toolSlug={slug}>
           <ToolHero
             title="Text Cleaner"
-            description="Clean and normalize text with toggle-able options for extra spaces, special characters, HTML tags, smart quotes, and more. Live before-and-after preview."
+            description={pageDescription}
+            introText="Remove unwanted formatting, extra spaces, special characters, and invisible Unicode from your text. Clean up copied content for clean, consistent output."
             breadcrumbs={breadcrumbs}
           >
             <TextCleaner />

@@ -110,8 +110,9 @@ export default function UrlEncoderPage() {
       <section className="border-b border-zinc-200 dark:border-zinc-800">
         <ToolLayout toolSlug={slug}>
           <ToolHero
-            title="URL Encoder Decoder"
-            description="Percent-encode or decode any URL string, query parameter, or URI component. Essential for debugging API calls, form submissions, and redirect chains."
+            title="URL Encoder / Decoder"
+            description={pageDescription}
+            introText="Encode or decode URLs for use in web applications, API calls, and query parameters. Ensures special characters are properly escaped for safe transmission."
             breadcrumbs={breadcrumbs}
           >
             <UrlEncoder />

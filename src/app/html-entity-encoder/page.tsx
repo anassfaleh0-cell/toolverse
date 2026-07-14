@@ -120,8 +120,9 @@ export default function HtmlEntityEncoderPage() {
       <section className="border-b border-zinc-200 dark:border-zinc-800">
         <ToolLayout toolSlug={slug}>
           <ToolHero
-            title="HTML Entity Encoder Decoder"
-            description="Convert special HTML characters like <, >, &, and quotes to HTML entities and back. Essential for preventing XSS and ensuring proper character rendering."
+            title="HTML Entity Encoder / Decoder"
+            description={pageDescription}
+            introText="Encode special characters to HTML entities and decode them back. Essential for preventing XSS attacks and ensuring proper display of reserved HTML characters."
             breadcrumbs={breadcrumbs}
           >
             <HtmlEntityEncoder />

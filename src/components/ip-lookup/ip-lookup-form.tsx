@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { validateIp } from "@/lib/ip-lookup-utils";
 import { Button } from "@/components/ui";
+import { Icon } from "@/components/shared/icon";
 
 interface IpLookupFormProps {
   onLookup: (ip: string) => void;
@@ -31,17 +32,7 @@ export function IpLookupForm({ onLookup, loading }: IpLookupFormProps) {
       <div className="relative mx-auto flex w-full max-w-xl items-center gap-2">
         <div className="relative flex w-full items-center overflow-hidden rounded-xl border border-zinc-300 bg-white/80 shadow-sm backdrop-blur-sm transition-colors focus-within:border-zinc-500 focus-within:ring-2 focus-within:ring-zinc-200 dark:border-zinc-700 dark:bg-zinc-900/80 dark:focus-within:border-zinc-500 dark:focus-within:ring-zinc-800">
           <span className="flex shrink-0 items-center pl-4" aria-hidden="true">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2}
-              className="size-5 text-zinc-400"
-            >
-              <circle cx="11" cy="11" r="8" />
-              <path d="m21 21-4.35-4.35" />
-            </svg>
+            <Icon name="Search" className="size-5 text-zinc-400" />
           </span>
           <input
             type="text"

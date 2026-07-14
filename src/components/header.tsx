@@ -6,6 +6,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { NuvoraLogo } from "@/components/ui/logo";
 import { NAV_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+import { Icon } from "@/components/shared/icon";
 
 function useFocusTrap(open: boolean, onClose: () => void) {
   const ref = useRef<HTMLDivElement>(null);
@@ -101,13 +102,9 @@ export function Header() {
             aria-expanded={menuOpen}
           >
             {menuOpen ? (
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-5" aria-hidden="true">
-                <path d="M18 6 6 18" /><path d="m6 6 12 12" />
-              </svg>
+              <Icon name="X" className="size-5" aria-hidden="true" />
             ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-5" aria-hidden="true">
-                <path d="M3 12h18" /><path d="M3 6h18" /><path d="M3 18h18" />
-              </svg>
+              <Icon name="Menu" className="size-5" aria-hidden="true" />
             )}
           </button>
         </nav>

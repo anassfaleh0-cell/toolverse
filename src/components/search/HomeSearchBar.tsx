@@ -63,17 +63,7 @@ export function HomeSearchBar() {
     <div className="w-full max-w-2xl mx-auto relative">
       <div className="relative">
         <div className="relative flex items-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={2}
-            className="absolute left-4 w-5 h-5 text-text-tertiary"
-          >
-            <circle cx="11" cy="11" r="8" />
-            <path d="m21 21-4.35-4.35" />
-          </svg>
+          <Icon name="Search" className="absolute left-4 w-5 h-5 text-text-tertiary" />
           <input
             ref={inputRef}
             type="text"
@@ -96,17 +86,7 @@ export function HomeSearchBar() {
               }}
               className="absolute right-4 p-1 hover:bg-surface-secondary rounded-full transition-colors"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                className="w-5 h-5 text-text-tertiary"
-              >
-                <path d="M18 6 6 18" />
-                <path d="m6 6 12 12" />
-              </svg>
+              <Icon name="X" className="w-5 h-5 text-text-tertiary" />
             </button>
           )}
         </div>

@@ -27,7 +27,7 @@ const variantStyles: Record<BadgeVariant, string> = {
   info:
     "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
   neutral:
-    "bg-zinc-50 text-zinc-500 dark:bg-zinc-800/50 dark:text-zinc-400",
+    "bg-zinc-50 text-zinc-700 dark:bg-zinc-800/50 dark:text-zinc-300",
 };
 
 export function Badge({

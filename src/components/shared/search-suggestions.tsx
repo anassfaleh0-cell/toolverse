@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, useTransition } from "react";
+import { Icon } from "@/components/shared/icon";
 
 interface SearchResult {
   slug: string;
@@ -105,18 +106,7 @@ export function SearchSuggestions() {
   return (
     <div ref={ref} className="relative w-full max-w-xl" role="combobox" aria-expanded={open} aria-haspopup="listbox" aria-controls="search-suggestions-listbox">
       <div className="flex items-center gap-2 rounded-xl border border-zinc-300 bg-white px-4 py-3 shadow-sm transition-colors focus-within:border-zinc-500 focus-within:ring-2 focus-within:ring-zinc-200 dark:border-zinc-700 dark:bg-zinc-900 dark:focus-within:border-zinc-500 dark:focus-within:ring-zinc-800">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={2}
-          className="size-5 shrink-0 text-zinc-400"
-          aria-hidden="true"
-        >
-          <circle cx="11" cy="11" r="8" />
-          <path d="m21 21-4.35-4.35" />
-        </svg>
+        <Icon name="Search" className="size-5 shrink-0 text-zinc-400" aria-hidden="true" />
         <input
           ref={inputRef}
           type="search"

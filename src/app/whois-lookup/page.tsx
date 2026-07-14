@@ -123,7 +123,8 @@ export default function WhoisLookupPage() {
         <ToolLayout toolSlug={slug}>
           <ToolHero
             title="WHOIS Lookup"
-            description="Look up WHOIS records for any domain. See registrar, registration dates, name servers, and contact info. Verify domain ownership and detect expiry risks."
+            description={pageDescription}
+            introText="Look up WHOIS records for any domain to find registration details, expiration dates, name servers, and contact information. Essential for domain research and ownership verification."
             breadcrumbs={breadcrumbs}
           >
             <WhoisLookup />

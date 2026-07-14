@@ -47,9 +47,9 @@ export default function CategoriesPage() {
                 className="group rounded-2xl border border-border-subtle bg-surface p-6 transition hover:border-nuvora-300 hover:shadow-md dark:hover:border-nuvora-700"
               >
                 <Icon name={c.icon} className="size-8 text-nuvora-600 dark:text-nuvora-400" />
-                <h3 className="mt-3 font-semibold text-text-primary group-hover:text-nuvora-600 dark:group-hover:text-nuvora-400">
+                <h2 className="mt-3 text-base font-semibold text-text-primary group-hover:text-nuvora-600 dark:group-hover:text-nuvora-400">
                   {c.label}
-                </h3>
+                </h2>
                 <p className="mt-1 text-sm text-text-secondary">{c.description}</p>
                 <span className="mt-3 inline-block text-xs font-medium text-nuvora-600 dark:text-nuvora-400">
                   {c.toolCount} tool{c.toolCount !== 1 ? "s" : ""}

@@ -411,13 +411,13 @@ export function DnsLookup() {
                       className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[11px] font-bold ${
                         check.passed
                           ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900 dark:text-emerald-300"
-                          : "bg-zinc-100 text-zinc-400 dark:bg-zinc-800 dark:text-zinc-500"
+                          : "bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300"
                       }`}
                     >
                       {check.passed ? "✓" : "—"}
                     </span>
                     <span className="text-sm text-zinc-900 dark:text-zinc-50">{check.label}</span>
-                    <span className="ml-auto text-xs text-zinc-400 dark:text-zinc-500">+{check.points}</span>
+                    <span className="ml-auto text-xs text-zinc-500 dark:text-zinc-300">+{check.points}</span>
                   </div>
                 ))}
               </div>
@@ -551,15 +551,15 @@ export function DnsLookup() {
             <div className="mt-3 grid grid-cols-3 gap-3 text-xs">
               <div className="rounded-lg bg-zinc-50 p-3 dark:bg-zinc-800/50">
                 <span className="font-semibold text-zinc-900 dark:text-zinc-50">Short (30-300s)</span>
-                <p className="mt-1 text-zinc-500">Fast propagation, higher query volume. Use during migration.</p>
+                <p className="mt-1 text-zinc-500 dark:text-zinc-400">Fast propagation, higher query volume. Use during migration.</p>
               </div>
               <div className="rounded-lg bg-zinc-50 p-3 dark:bg-zinc-800/50">
                 <span className="font-semibold text-zinc-900 dark:text-zinc-50">Medium (3600s)</span>
-                <p className="mt-1 text-zinc-500">Balanced for stable production records.</p>
+                <p className="mt-1 text-zinc-500 dark:text-zinc-400">Balanced for stable production records.</p>
               </div>
               <div className="rounded-lg bg-zinc-50 p-3 dark:bg-zinc-800/50">
                 <span className="font-semibold text-zinc-900 dark:text-zinc-50">Long (86400s+)</span>
-                <p className="mt-1 text-zinc-500">Maximum caching. Use for records that rarely change.</p>
+                <p className="mt-1 text-zinc-500 dark:text-zinc-400">Maximum caching. Use for records that rarely change.</p>
               </div>
             </div>
           </div>
@@ -569,7 +569,7 @@ export function DnsLookup() {
             <ul className="space-y-1.5 text-zinc-600 dark:text-zinc-400">
               {COMMON_MISTAKES.map((m, i) => (
                 <li key={i} className="flex gap-2">
-                  <span className="mt-0.5 shrink-0 text-amber-500">&#9888;</span>
+                  <span className="mt-0.5 shrink-0 text-amber-700">&#9888;</span>
                   {m}
                 </li>
               ))}

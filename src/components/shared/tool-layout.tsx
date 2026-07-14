@@ -6,6 +6,7 @@ import { getToolBySlug, getRelatedTools } from "@/lib/registry";
 import { BookmarkButton } from "@/components/shared/bookmark-button";
 import { ShareButton } from "@/components/shared/share-button";
 import { JsonLd } from "@/components/shared/json-ld";
+import { Icon } from "@/components/shared/icon";
 import { howToSchema } from "@/lib/seo";
 import { SITE_URL, SITE_NAME } from "@/lib/constants";
 import { TOOL_KEYWORDS } from "@/lib/seo/keywords";
@@ -242,7 +243,7 @@ export function ToolLayout({ children, toolSlug, useCases, relatedToolSlugs }: T
                     className="flex size-9 items-center justify-center rounded-lg border border-border-subtle bg-surface text-text-secondary hover:bg-surface-secondary hover:text-nuvora-600 transition-colors"
                   >
                     {copied ? (
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4 text-aurora-500"><polyline points="20 6 9 17 4 12" /></svg>
+                      <Icon name="Check" className="size-4 text-aurora-500" />
                     ) : (
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></svg>
                     )}
@@ -257,7 +258,7 @@ export function ToolLayout({ children, toolSlug, useCases, relatedToolSlugs }: T
                 href={`${SITE_URL}/contact?subject=Issue%20with%20${encodeURIComponent(tool.name)}&ref=${toolSlug}`}
                 className="inline-flex items-center gap-1.5 text-xs text-text-tertiary hover:text-nuvora-600 transition-colors"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-3.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+                <Icon name="Shield" className="size-3.5" />
                 Report an issue
               </a>
             </section>

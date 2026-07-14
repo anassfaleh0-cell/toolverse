@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import { Breadcrumbs, JsonLd } from "@/components/shared";
 import { breadcrumbSchema, organizationSchema, webPageSchema } from "@/lib/seo";
@@ -43,19 +44,19 @@ export default function About() {
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
             <div className="rounded-xl border border-zinc-200 bg-white p-4 text-center dark:border-zinc-800 dark:bg-zinc-900">
               <div className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">{toolCount}+</div>
-              <div className="mt-1 text-xs text-zinc-500">Free Tools</div>
+              <div className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">Free Tools</div>
             </div>
             <div className="rounded-xl border border-zinc-200 bg-white p-4 text-center dark:border-zinc-800 dark:bg-zinc-900">
               <div className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">{contentCount}+</div>
-              <div className="mt-1 text-xs text-zinc-500">Guides & Articles</div>
+              <div className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">Guides & Articles</div>
             </div>
             <div className="rounded-xl border border-zinc-200 bg-white p-4 text-center dark:border-zinc-800 dark:bg-zinc-900">
               <div className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">100%</div>
-              <div className="mt-1 text-xs text-zinc-500">Free to Use</div>
+              <div className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">Free to Use</div>
             </div>
             <div className="rounded-xl border border-zinc-200 bg-white p-4 text-center dark:border-zinc-800 dark:bg-zinc-900">
               <div className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">No</div>
-              <div className="mt-1 text-xs text-zinc-500">Signup Required</div>
+              <div className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">Signup Required</div>
             </div>
           </div>
 
@@ -89,7 +90,7 @@ export default function About() {
             <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">About the Founder</h2>
             <div className="flex items-start gap-4 rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900">
               {AUTHORS.founder.avatarUrl ? (
-                <img src={AUTHORS.founder.avatarUrl} alt={AUTHORS.founder.name} className="size-14 shrink-0 rounded-full object-cover" />
+                <Image src={AUTHORS.founder.avatarUrl} alt={AUTHORS.founder.name} width={56} height={56} className="size-14 shrink-0 rounded-full object-cover" />
               ) : (
                 <div className="flex size-14 shrink-0 items-center justify-center rounded-full bg-blue-100 text-lg font-bold text-blue-600 dark:bg-blue-900 dark:text-blue-400">
                   {AUTHORS.founder.name.split(" ").map(n => n[0]).join("").slice(0, 2)}

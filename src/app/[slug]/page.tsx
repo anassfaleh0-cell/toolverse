@@ -229,12 +229,12 @@ export default async function SlugPage({ params }: { params: Promise<{ slug: str
   notFound();
 }
 
-function ToolGenericPage({ slug }: { slug: string }) {
+async function ToolGenericPage({ slug }: { slug: string }) {
   const tool = getToolBySlug(slug);
   if (!tool) return null;
 
   const breadcrumbs = generateToolBreadcrumbs(tool);
-  const faqItems = generateToolFaq(tool);
+  const faqItems = await generateToolFaq(tool);
   const relatedTools = getRelatedTools(tool, 6);
   const ToolComponent = getToolComponent(slug);
 

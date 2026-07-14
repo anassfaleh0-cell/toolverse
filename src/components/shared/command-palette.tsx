@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { getRecentlyViewed, getBookmarks, getSearchHistory, addSearchQuery, type StoredTool } from "@/lib/user-storage";
+import { Icon } from "@/components/shared/icon";
 
 interface SearchResult {
   slug: string;
@@ -222,9 +223,7 @@ export function CommandPalette() {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center gap-3 border-b border-zinc-200 px-5 py-4 dark:border-zinc-700">
-          <svg className="size-5 shrink-0 text-zinc-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-            <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
-          </svg>
+          <Icon name="Search" className="size-5 shrink-0 text-zinc-400" />
           <input
             ref={inputRef}
             type="text"

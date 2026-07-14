@@ -56,7 +56,7 @@ export default function ImageConverterPage() {
 
       <section className="border-b border-zinc-200 dark:border-zinc-800">
         <ToolLayout toolSlug={slug}>
-          <ToolHero title={pageTitle} description={pageDescription} breadcrumbs={breadcrumbs}>
+          <ToolHero title={pageTitle} description={pageDescription} introText="Convert images between formats including JPEG, PNG, WebP, GIF, and SVG. Resize and optimize images for web, social media, or print. All processing happens locally." breadcrumbs={breadcrumbs}>
             <ImageConverter />
           </ToolHero>
         </ToolLayout>

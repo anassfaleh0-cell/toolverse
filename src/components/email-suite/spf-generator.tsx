@@ -77,8 +77,8 @@ export function SpfGenerator() {
     <div className="mx-auto max-w-3xl space-y-5">
       <div className="rounded-xl border border-zinc-200 dark:border-zinc-800">
         <div className="flex items-center justify-between border-b border-zinc-200 px-5 py-4 dark:border-zinc-800">
-          <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">Authorized Senders</p>
-          <span className="text-[11px] text-zinc-400">{lookupCount}/10 DNS lookups</span>
+          <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Authorized Senders</p>
+          <span className="text-[11px] text-zinc-400 dark:text-zinc-300">{lookupCount}/10 DNS lookups</span>
         </div>
         <div className="divide-y divide-zinc-200 dark:divide-zinc-800">
           {includes.map((inc, i) => (
@@ -103,8 +103,8 @@ export function SpfGenerator() {
                 placeholder={inc.type === "include" ? "_spf.google.com" : inc.type === "ip4" ? "192.168.1.0/24" : "example.com"}
                 className="flex-1"
               />
-              <button type="button" onClick={() => removeInclude(i)} className="shrink-0 rounded-lg p-2 text-zinc-400 hover:text-red-500" aria-label="Remove">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4"><path d="M18 6L6 18" /><path d="M6 6l12 12" /></svg>
+              <button type="button" onClick={() => removeInclude(i)} className="shrink-0 rounded-lg p-2 text-zinc-400 dark:text-zinc-300 hover:text-red-500" aria-label="Remove">
+                <Icon name="X" className="size-4" aria-hidden="true" />
               </button>
             </div>
           ))}
@@ -144,7 +144,7 @@ export function SpfGenerator() {
 
       <div className="overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800">
         <div className="flex items-center justify-between border-b border-zinc-200 bg-zinc-50 px-5 py-3 dark:border-zinc-800 dark:bg-zinc-900">
-          <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">Generated SPF Record (<span className="font-mono">TXT</span>)</p>
+          <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Generated SPF Record (<span className="font-mono">TXT</span>)</p>
           <div className="flex gap-2">
             <Button variant="secondary" size="sm" onClick={handleCopy}>{copied ? "Copied!" : "Copy"}</Button>
             <Button variant="secondary" size="sm" onClick={handleDownloadTxt}>Download TXT</Button>
@@ -164,11 +164,11 @@ export function SpfGenerator() {
 
       {showAdvanced && (
         <div className="rounded-xl border border-zinc-200 bg-zinc-50 px-5 py-4 dark:border-zinc-800 dark:bg-zinc-900">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-500">DNS Zone File Entry (BIND format)</p>
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">DNS Zone File Entry (BIND format)</p>
           <pre className="mb-3 overflow-x-auto text-sm text-zinc-700 dark:text-zinc-300">@  IN  TXT  "{record}"</pre>
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-500">Verify with dig</p>
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Verify with dig</p>
           <pre className="mb-3 overflow-x-auto text-sm text-zinc-700 dark:text-zinc-300">dig TXT example.com +short</pre>
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-500">Verify with nslookup</p>
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Verify with nslookup</p>
           <pre className="overflow-x-auto text-sm text-zinc-700 dark:text-zinc-300">nslookup -type=TXT example.com</pre>
         </div>
       )}

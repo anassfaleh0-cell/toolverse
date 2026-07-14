@@ -3,6 +3,7 @@
 import { useState, useCallback, useMemo } from "react";
 import { Button, Input } from "@/components/ui";
 import { ResultExport, AIExplanationCard } from "@/components/shared";
+import { Icon } from "@/components/shared/icon";
 
 interface BatchResult { input: string; output: Record<string, unknown> }
 interface NameserverInfo { hostname: string; ips: string[]; reachable: boolean }
@@ -242,7 +243,7 @@ export function DnsToolLookup({ lookupType, title, description, placeholder, beg
                 <div key={i} className="flex items-center justify-between px-5 py-3">
                   <pre className="flex-1 overflow-x-auto whitespace-pre-wrap break-all font-mono text-sm text-zinc-900 dark:text-zinc-50">{rec}</pre>
                   <button type="button" onClick={() => navigator.clipboard.writeText(rec)} className="ml-2 shrink-0 rounded-lg p-2 text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800" aria-label="Copy">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4"><rect x="9" y="9" width="13" height="13" rx="2" ry="2" /><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg>
+                    <Icon name="Copy" className="size-4" />
                   </button>
                 </div>
               ))

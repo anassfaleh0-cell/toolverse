@@ -14,7 +14,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
+    author: { name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -23,8 +23,8 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         "Learn how to format JSON code properly using manual techniques and online tools. Covers common JSON errors, validation, linting, and best practices for cleaner data structures.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
-      mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.com/articles/how-to-format-json-code" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
+      mainEntityOfPage: { "@type": "WebPage", "@id": "{DOMAIN}/blog/how-to-format-json-code" },
       about: { "@type": "Thing", name: "JSON Formatting" },
       hasPart: [
         {
@@ -85,7 +85,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
       },
       {
         heading: "How to Use the JSON Formatter Tool",
-        body: "Using the ToolVerse JSON Formatter is straightforward. Step 1: Navigate to the JSON Formatter tool page. Step 2: Paste your raw JSON into the input textarea. The tool accepts up to 500 KB of JSON data per request. Step 3: Select your indentation preference — 2 spaces (recommended for most projects), 4 spaces (Google style guide), or tab indentation. Step 4: Click the Format button. The tool immediately validates your JSON and displays the formatted output in the right panel. If your JSON has syntax errors, the tool highlights the exact line and character position of each error with a descriptive message like \"Unexpected token ',' at line 5, column 12 — trailing comma not allowed.\" You can also minify JSON by clicking the Minify button, which strips all whitespace to produce compact output for production use. The copy button copies formatted or minified JSON to your clipboard in one click. For extra functionality, the tree view mode renders JSON as an expandable/collapsible tree, making navigation of deeply nested documents (5+ levels deep) much faster than scrolling through raw text."
+        body: "Using the Nuvora JSON Formatter is straightforward. Step 1: Navigate to the JSON Formatter tool page. Step 2: Paste your raw JSON into the input textarea. The tool accepts up to 500 KB of JSON data per request. Step 3: Select your indentation preference — 2 spaces (recommended for most projects), 4 spaces (Google style guide), or tab indentation. Step 4: Click the Format button. The tool immediately validates your JSON and displays the formatted output in the right panel. If your JSON has syntax errors, the tool highlights the exact line and character position of each error with a descriptive message like \"Unexpected token ',' at line 5, column 12 — trailing comma not allowed.\" You can also minify JSON by clicking the Minify button, which strips all whitespace to produce compact output for production use. The copy button copies formatted or minified JSON to your clipboard in one click. For extra functionality, the tree view mode renders JSON as an expandable/collapsible tree, making navigation of deeply nested documents (5+ levels deep) much faster than scrolling through raw text."
       },
       {
         heading: "Common JSON Errors and How to Fix Them",
@@ -114,7 +114,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
+    author: { name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -123,10 +123,10 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         "Master Base64 encoding and decoding with this developer guide. Learn how binary-to-text encoding works, common use cases like JWT and data URIs, and how to use online tools.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
-        "@id": "https://toolverse.com/articles/base64-encoding-decoding-guide"
+        "@id": "{DOMAIN}/blog/base64-encoding-decoding-guide"
       },
       about: { "@type": "Thing", name: "Base64 Encoding" },
       hasPart: [
@@ -188,7 +188,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
       },
       {
         heading: "Encoding and Decoding with the Online Tool",
-        body: "The ToolVerse Base64 Encoder/Decoder handles both encoding and decoding with a clean interface. To encode: paste your text or binary data into the input field. The tool accepts strings up to 10 MB. Select 'Encode to Base64' and click Convert. The output appears instantly with a copy button. To decode: paste a Base64 string and select 'Decode from Base64'. The tool auto-detects input encoding and shows the decoded result. It also detects Base64URL format — if you paste a JWT segment (without '+' and '/' but with '-' and '_'), the tool recognizes it and gives you the option to decode as standard Base64 or Base64URL. For binary files like images, you can upload a file directly: the tool encodes the file bytes to Base64 and optionally generates a data URI ready to paste into an `<img src=\"data:image/png;base64,...\">` tag. A real-time character count shows the input length and the output expansion ratio, helping you estimate the bandwidth impact of Base64 encoding. The tool also supports batch mode for encoding/decoding multiple values from a comma-separated list."
+        body: "The Nuvora Base64 Encoder/Decoder handles both encoding and decoding with a clean interface. To encode: paste your text or binary data into the input field. The tool accepts strings up to 10 MB. Select 'Encode to Base64' and click Convert. The output appears instantly with a copy button. To decode: paste a Base64 string and select 'Decode from Base64'. The tool auto-detects input encoding and shows the decoded result. It also detects Base64URL format — if you paste a JWT segment (without '+' and '/' but with '-' and '_'), the tool recognizes it and gives you the option to decode as standard Base64 or Base64URL. For binary files like images, you can upload a file directly: the tool encodes the file bytes to Base64 and optionally generates a data URI ready to paste into an `<img src=\"data:image/png;base64,...\">` tag. A real-time character count shows the input length and the output expansion ratio, helping you estimate the bandwidth impact of Base64 encoding. The tool also supports batch mode for encoding/decoding multiple values from a comma-separated list."
       },
       {
         heading: "Common Use Cases: JWT, Data URIs, and Email Attachments",
@@ -217,7 +217,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
+    author: { name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -226,10 +226,10 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         "Learn HTML encoding to prevent XSS attacks and display code safely on web pages. Covers common HTML entities, encoding user input, decoding, and best practices for secure output.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
-        "@id": "https://toolverse.com/articles/html-encoder-decoder-guide"
+        "@id": "{DOMAIN}/blog/html-encoder-decoder-guide"
       },
       about: { "@type": "Thing", name: "HTML Encoding" },
       hasPart: [
@@ -295,7 +295,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
       },
       {
         heading: "Using the HTML Encoder Tool",
-        body: "The ToolVerse HTML Entity Encoder provides a simple interface for encoding and decoding HTML. To encode: paste text containing special characters (like `<script>alert('XSS')</script>`) into the input box and click Encode. The tool outputs `&lt;script&gt;alert(&#39;XSS&#39;)&lt;/script&gt;`. The tool supports all HTML4 and HTML5 named entities plus full Unicode numeric references. Choose between encoding all special characters (maximum safety) or only the five essential ones (&, <, >, ', \") for minimum encoding when you need human-readable output. To decode: paste encoded HTML entities and click Decode. The tool converts `&amp;` back to `&`, `&lt;` back to `<`, and so on. A batch mode lets you encode/decode multiple lines at once — useful for processing log files or sanitizing entire HTML fragments. The tool also shows a live preview of how the encoded or decoded text will render in a browser, so you can verify the output visually. The character count and entity count displays help you understand the encoding overhead: a single `<` becomes 4 characters `&lt;`, a 10% overhead for typical text."
+        body: "The Nuvora HTML Entity Encoder provides a simple interface for encoding and decoding HTML. To encode: paste text containing special characters (like `<script>alert('XSS')</script>`) into the input box and click Encode. The tool outputs `&lt;script&gt;alert(&#39;XSS&#39;)&lt;/script&gt;`. The tool supports all HTML4 and HTML5 named entities plus full Unicode numeric references. Choose between encoding all special characters (maximum safety) or only the five essential ones (&, <, >, ', \") for minimum encoding when you need human-readable output. To decode: paste encoded HTML entities and click Decode. The tool converts `&amp;` back to `&`, `&lt;` back to `<`, and so on. A batch mode lets you encode/decode multiple lines at once — useful for processing log files or sanitizing entire HTML fragments. The tool also shows a live preview of how the encoded or decoded text will render in a browser, so you can verify the output visually. The character count and entity count displays help you understand the encoding overhead: a single `<` becomes 4 characters `&lt;`, a 10% overhead for typical text."
       },
       {
         heading: "When to Encode: User-Generated Content, Code Display, and Email Templates",
@@ -320,7 +320,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 11,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
+    author: { name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -329,10 +329,10 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         "Learn how to minify CSS and JavaScript files to reduce page load times. Covers build tool integration with webpack and esbuild, source maps, and compression vs minification differences.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
-        "@id": "https://toolverse.com/articles/how-to-minify-css-and-js"
+        "@id": "{DOMAIN}/blog/how-to-minify-css-and-js"
       },
       about: { "@type": "Thing", name: "Minification" },
       hasPart: [
@@ -360,7 +360,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
               name: "What tools can minify CSS and JS?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Popular minification tools include: UglifyJS and Terser for JavaScript, cssnano and clean-css for CSS, esbuild (which can minify both), and webpack/Rollup/Vite plugins that bundle and minify automatically. Online tools like ToolVerse CSS Minifier and JS Minifier provide quick one-off minification without installing anything."
+                text: "Popular minification tools include: UglifyJS and Terser for JavaScript, cssnano and clean-css for CSS, esbuild (which can minify both), and webpack/Rollup/Vite plugins that bundle and minify automatically. Online tools like Nuvora CSS Minifier and JS Minifier provide quick one-off minification without installing anything."
               }
             },
             {
@@ -394,7 +394,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
       },
       {
         heading: "Using the CSS and JS Minifier Tools",
-        body: "The ToolVerse CSS Minifier and JS Minifier tools provide quick, no-installation-needed minification for individual files. For CSS: paste your stylesheet into the input area and select your options. The CSS Minifier offers three levels: Safe (removes whitespace and comments only, preserving all CSS semantics), Standard (additionally collapses identical selectors, merges redundant properties, and optimizes shorthand properties like `margin: 10px 10px 10px 10px` into `margin:10px`), and Aggressive (reduces hex colors to 3-digit where possible like `#ff8800` to `#f80`, removes units from zero values like `0px` to `0`, and drops unnecessary quotes). Input a 50 KB stylesheet and get back ~25 KB. For JS: paste your JavaScript and choose from Standard (Terser with safe defaults: compress with defaults, mangle toplevel: false) or Advanced (mangle toplevel for shorter global names — only safe for standalone scripts, not libraries). Both tools display the original size, minified size, compression percentage, and estimated gzip size. A download button saves the minified output as a .min.css or .min.js file. The live diff view highlights what was removed so you can inspect the results and confirm no critical code was stripped."
+        body: "The Nuvora CSS Minifier and JS Minifier tools provide quick, no-installation-needed minification for individual files. For CSS: paste your stylesheet into the input area and select your options. The CSS Minifier offers three levels: Safe (removes whitespace and comments only, preserving all CSS semantics), Standard (additionally collapses identical selectors, merges redundant properties, and optimizes shorthand properties like `margin: 10px 10px 10px 10px` into `margin:10px`), and Aggressive (reduces hex colors to 3-digit where possible like `#ff8800` to `#f80`, removes units from zero values like `0px` to `0`, and drops unnecessary quotes). Input a 50 KB stylesheet and get back ~25 KB. For JS: paste your JavaScript and choose from Standard (Terser with safe defaults: compress with defaults, mangle toplevel: false) or Advanced (mangle toplevel for shorter global names — only safe for standalone scripts, not libraries). Both tools display the original size, minified size, compression percentage, and estimated gzip size. A download button saves the minified output as a .min.css or .min.js file. The live diff view highlights what was removed so you can inspect the results and confirm no critical code was stripped."
       },
       {
         heading: "Build Tool Integration: Webpack, esbuild, Terser",
@@ -427,7 +427,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 9,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
+    author: { name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -436,10 +436,10 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         "Learn SQL formatting conventions for MySQL, PostgreSQL, and SQLite. Improve query maintainability with uppercase keywords, proper indentation, and formatter tools that catch syntax errors.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
-        "@id": "https://toolverse.com/articles/sql-formatter-guide"
+        "@id": "{DOMAIN}/blog/sql-formatter-guide"
       },
       about: { "@type": "Thing", name: "SQL Formatting" },
       hasPart: [
@@ -497,15 +497,15 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
       },
       {
         heading: "SQL Formatting Conventions: Uppercase Keywords, Indentation, Line Breaks",
-        body: "The industry-standard convention for SQL formatting follows these rules: (1) Uppercase all SQL keywords: `SELECT`, `FROM`, `WHERE`, `JOIN`, `ON`, `GROUP BY`, `HAVING`, `ORDER BY`, `LIMIT`, `OFFSET`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `ALTER`, `DROP`, `AND`, `OR`, `NOT`, `IN`, `BETWEEN`, `LIKE`, `IS`, `NULL`, `AS`. This visually separates keywords from identifiers. (2) Each major clause starts on a new line. A simple query becomes: `SELECT column1, column2 FROM table WHERE condition ORDER BY column1;` (3) Indent JOINs and subqueries by 2 spaces: `SELECT u.name, o.total FROM users u JOIN (SELECT user_id, SUM(amount) AS total FROM orders GROUP BY user_id) o ON u.id = o.user_id WHERE o.total > 100;` (4) Align column lists vertically when they exceed 3-4 columns. (5) Place commas at the end of each line (standard) or the beginning (some prefer this for easier reordering). (6) Format CASE expressions with each WHEN on a new line indented under CASE. These conventions are not arbitrary — tools like sqlfmt, pgFormatter, and the ToolVerse SQL Formatter implement them automatically."
+        body: "The industry-standard convention for SQL formatting follows these rules: (1) Uppercase all SQL keywords: `SELECT`, `FROM`, `WHERE`, `JOIN`, `ON`, `GROUP BY`, `HAVING`, `ORDER BY`, `LIMIT`, `OFFSET`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `ALTER`, `DROP`, `AND`, `OR`, `NOT`, `IN`, `BETWEEN`, `LIKE`, `IS`, `NULL`, `AS`. This visually separates keywords from identifiers. (2) Each major clause starts on a new line. A simple query becomes: `SELECT column1, column2 FROM table WHERE condition ORDER BY column1;` (3) Indent JOINs and subqueries by 2 spaces: `SELECT u.name, o.total FROM users u JOIN (SELECT user_id, SUM(amount) AS total FROM orders GROUP BY user_id) o ON u.id = o.user_id WHERE o.total > 100;` (4) Align column lists vertically when they exceed 3-4 columns. (5) Place commas at the end of each line (standard) or the beginning (some prefer this for easier reordering). (6) Format CASE expressions with each WHEN on a new line indented under CASE. These conventions are not arbitrary — tools like sqlfmt, pgFormatter, and the Nuvora SQL Formatter implement them automatically."
       },
       {
         heading: "Using the SQL Formatter Tool with Different Dialects",
-        body: "The ToolVerse SQL Formatter supports MySQL, PostgreSQL, SQLite, MariaDB, and SQL Server dialects. The dialect matters because each SQL variant has unique syntax elements that a generic formatter might handle incorrectly. MySQL uses backticks for quoted identifiers (`users`), has a REPLACE statement (non-standard), and supports `LIMIT offset, count` syntax. PostgreSQL uses double quotes for identifiers and has operators like `->` (JSON access), `@>` (contains), and `||` (concatenation). SQLite has its own quirks with column types (affinity-based typing) and `AUTOINCREMENT` behavior. To use the tool: paste your raw SQL (up to 100 KB), select your SQL dialect from the dropdown, choose indentation style (2 spaces, 4 spaces, or tabs), and click Format. The tool parses the query using a grammar-aware parser — not simple regex replacement — so it correctly handles nested subqueries, CTEs (WITH clauses), window functions, and complex JOIN conditions. The formatted output is syntax-highlighted for readability. A compact mode is available for queries you want to keep dense but readable for embedding in application code. The diff view compares original vs formatted to verify nothing semantic changed."
+        body: "The Nuvora SQL Formatter supports MySQL, PostgreSQL, SQLite, MariaDB, and SQL Server dialects. The dialect matters because each SQL variant has unique syntax elements that a generic formatter might handle incorrectly. MySQL uses backticks for quoted identifiers (`users`), has a REPLACE statement (non-standard), and supports `LIMIT offset, count` syntax. PostgreSQL uses double quotes for identifiers and has operators like `->` (JSON access), `@>` (contains), and `||` (concatenation). SQLite has its own quirks with column types (affinity-based typing) and `AUTOINCREMENT` behavior. To use the tool: paste your raw SQL (up to 100 KB), select your SQL dialect from the dropdown, choose indentation style (2 spaces, 4 spaces, or tabs), and click Format. The tool parses the query using a grammar-aware parser — not simple regex replacement — so it correctly handles nested subqueries, CTEs (WITH clauses), window functions, and complex JOIN conditions. The formatted output is syntax-highlighted for readability. A compact mode is available for queries you want to keep dense but readable for embedding in application code. The diff view compares original vs formatted to verify nothing semantic changed."
       },
       {
         heading: "Common SQL Syntax Errors Caught by Formatters",
-        body: "SQL formatters catch more than just style issues — they catch syntax errors during the parsing step. Common errors detected include: (1) Missing commas between column names in SELECT lists or VALUES tuples — `SELECT col1 col2 FROM t` should be `SELECT col1, col2 FROM t`. (2) Mismatched parentheses — a common issue in complex WHERE clauses with multiple AND/OR groups: `WHERE (a = 1 AND b = 2 OR c = 3` is missing a closing paren. (3) Misplaced keywords — `SELECT FROM table WHERE` instead of `SELECT ... FROM table WHERE`. (4) Invalid use of reserved words without quoting — `SELECT order FROM sales` fails because `order` is a reserved keyword. Should be `SELECT \`order\` FROM sales` (MySQL) or `SELECT \"order\" FROM sales` (PostgreSQL). (5) Incorrect JOIN syntax — `JOIN table ON` without a condition. (6) Missing GROUP BY columns — when using aggregate functions with non-aggregated columns in the SELECT list (though this is a semantic check that strict SQL modes catch at runtime). Running a query through a formatter before execution is a low-effort way to catch these errors early. The ToolVerse SQL Formatter highlights problematic syntax with error messages indicating the exact line and character position, similar to a linter."
+        body: "SQL formatters catch more than just style issues — they catch syntax errors during the parsing step. Common errors detected include: (1) Missing commas between column names in SELECT lists or VALUES tuples — `SELECT col1 col2 FROM t` should be `SELECT col1, col2 FROM t`. (2) Mismatched parentheses — a common issue in complex WHERE clauses with multiple AND/OR groups: `WHERE (a = 1 AND b = 2 OR c = 3` is missing a closing paren. (3) Misplaced keywords — `SELECT FROM table WHERE` instead of `SELECT ... FROM table WHERE`. (4) Invalid use of reserved words without quoting — `SELECT order FROM sales` fails because `order` is a reserved keyword. Should be `SELECT \`order\` FROM sales` (MySQL) or `SELECT \"order\" FROM sales` (PostgreSQL). (5) Incorrect JOIN syntax — `JOIN table ON` without a condition. (6) Missing GROUP BY columns — when using aggregate functions with non-aggregated columns in the SELECT list (though this is a semantic check that strict SQL modes catch at runtime). Running a query through a formatter before execution is a low-effort way to catch these errors early. The Nuvora SQL Formatter highlights problematic syntax with error messages indicating the exact line and character position, similar to a linter."
       },
       {
         heading: "Formatting Complex Queries: CTEs, Subqueries, and Window Functions",
@@ -530,7 +530,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 12,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
+    author: { name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -539,10 +539,10 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         "Understand cryptographic hashing with MD5, SHA-1, SHA-256, and SHA-512. Learn hash generator usage, password storage with salting, file integrity checksums, and HMAC authentication.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
-        "@id": "https://toolverse.com/articles/hash-generator-md5-sha256"
+        "@id": "{DOMAIN}/blog/hash-generator-md5-sha256"
       },
       about: { "@type": "Thing", name: "Hash Generation" },
       hasPart: [
@@ -604,7 +604,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
       },
       {
         heading: "Using the Hash Generator Tool",
-        body: "The ToolVerse MD5 Hash Generator and SHA Hash Generator tools support multiple hash algorithms in a single interface. Input your text, file, or string (up to 50 MB for file uploads), and the tool computes hashes in real time. The tool computes MD5, SHA-1, SHA-224, SHA-256, SHA-384, and SHA-512 simultaneously, showing all hashes side by side with labels. This is useful for migrations: if you are moving from MD5 to SHA-256, you can see both outputs at once. Each hash is displayed as a lowercase hex string with a copy button. The tool also supports HMAC generation: select HMAC-MD5, HMAC-SHA1, HMAC-SHA256, or HMAC-SHA512, enter your secret key, and the tool computes the HMAC. For file integrity verification, drag and drop a file onto the tool, and it computes the hash along with the file size in bytes. A comparison mode lets you compare two hashes (paste two hashes side by side) — the tool highlights differences at the character level, useful for verifying whether two files are identical. The tool also outputs base64-encoded hashes for use in API signatures and data URIs, which is often more compact than hex."
+        body: "The Nuvora MD5 Hash Generator and SHA Hash Generator tools support multiple hash algorithms in a single interface. Input your text, file, or string (up to 50 MB for file uploads), and the tool computes hashes in real time. The tool computes MD5, SHA-1, SHA-224, SHA-256, SHA-384, and SHA-512 simultaneously, showing all hashes side by side with labels. This is useful for migrations: if you are moving from MD5 to SHA-256, you can see both outputs at once. Each hash is displayed as a lowercase hex string with a copy button. The tool also supports HMAC generation: select HMAC-MD5, HMAC-SHA1, HMAC-SHA256, or HMAC-SHA512, enter your secret key, and the tool computes the HMAC. For file integrity verification, drag and drop a file onto the tool, and it computes the hash along with the file size in bytes. A comparison mode lets you compare two hashes (paste two hashes side by side) — the tool highlights differences at the character level, useful for verifying whether two files are identical. The tool also outputs base64-encoded hashes for use in API signatures and data URIs, which is often more compact than hex."
       },
       {
         heading: "Hashing for Password Storage: Salting, bcrypt, and Argon2",
@@ -637,7 +637,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 11,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
+    author: { name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -646,10 +646,10 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         "Master API testing with HTTP methods, headers, authentication, and response analysis. Learn to test REST APIs using an API tester tool with real-world scenarios and best practices.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
-        "@id": "https://toolverse.com/articles/how-to-use-api-tester-tool"
+        "@id": "{DOMAIN}/blog/how-to-use-api-tester-tool"
       },
       about: { "@type": "Thing", name: "API Testing" },
       hasPart: [
@@ -703,7 +703,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     noindex: false,    sections: [
       {
         heading: "What Is API Testing and Why It Matters",
-        body: "API testing is the process of sending requests to an API endpoint and verifying the responses. It ensures that APIs function correctly, handle edge cases, enforce security, and perform within acceptable thresholds. In modern software architecture, APIs are the backbone connecting frontend applications, mobile apps, third-party integrations, and microservices. A broken API can cascade failures across an entire system. According to Postman's 2023 State of the API Report, 74% of developers use APIs more than they did the previous year, and 67% report that API reliability is their top concern. API testing catches: incorrect status codes (a 500 instead of 200), malformed response bodies (missing fields, wrong data types), authentication bypasses, rate limiting failures, performance regressions, and contract violations. An API tester tool lets you interact with APIs without writing code — you configure requests through a GUI and inspect responses in real time. This is ideal for exploratory testing, debugging during development, and documenting API behavior for team members. The ToolVerse API Tester provides a full-featured HTTP client in the browser with no installation required."
+        body: "API testing is the process of sending requests to an API endpoint and verifying the responses. It ensures that APIs function correctly, handle edge cases, enforce security, and perform within acceptable thresholds. In modern software architecture, APIs are the backbone connecting frontend applications, mobile apps, third-party integrations, and microservices. A broken API can cascade failures across an entire system. According to Postman's 2023 State of the API Report, 74% of developers use APIs more than they did the previous year, and 67% report that API reliability is their top concern. API testing catches: incorrect status codes (a 500 instead of 200), malformed response bodies (missing fields, wrong data types), authentication bypasses, rate limiting failures, performance regressions, and contract violations. An API tester tool lets you interact with APIs without writing code — you configure requests through a GUI and inspect responses in real time. This is ideal for exploratory testing, debugging during development, and documenting API behavior for team members. The Nuvora API Tester provides a full-featured HTTP client in the browser with no installation required."
       },
       {
         heading: "HTTP Methods: GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS",
@@ -711,11 +711,11 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
       },
       {
         heading: "Setting Up Requests: URL, Headers, Body, Auth",
-        body: "Configuring an API request in the ToolVerse API Tester involves four parts. (1) URL: Enter the full endpoint URL including protocol (`https://`), domain, path, and query parameters. The URL can be up to 8 KB (as per HTTP/1.1 spec). For query parameters, use the Params tab to add key-value pairs that are automatically URL-encoded. (2) Headers: Common headers include `Content-Type: application/json`, `Accept: application/json`, `User-Agent`, `Authorization`, and `Cache-Control`. The tool has an autocomplete dropdown for standard header names. Custom headers are supported. (3) Body: For POST, PUT, and PATCH methods, select a body format: JSON (most common for REST APIs), Form Data (`multipart/form-data` for file uploads), URL-encoded Form (`application/x-www-form-urlencoded`), Raw Text, or Binary. The JSON editor includes syntax highlighting and validation. (4) Authentication: The tool supports multiple auth types: No Auth, Basic Auth (enters `username:password` base64-encoded), Bearer Token (enters `Authorization: Bearer <token>`), API Key (configurable header name or query parameter), and OAuth 2.0 (client credentials grant). For OAuth 2.0, the tool can obtain a token by exchanging client credentials with the token endpoint, then automatically attach it to requests. Pre-request scripts are also supported for signing requests."
+        body: "Configuring an API request in the Nuvora API Tester involves four parts. (1) URL: Enter the full endpoint URL including protocol (`https://`), domain, path, and query parameters. The URL can be up to 8 KB (as per HTTP/1.1 spec). For query parameters, use the Params tab to add key-value pairs that are automatically URL-encoded. (2) Headers: Common headers include `Content-Type: application/json`, `Accept: application/json`, `User-Agent`, `Authorization`, and `Cache-Control`. The tool has an autocomplete dropdown for standard header names. Custom headers are supported. (3) Body: For POST, PUT, and PATCH methods, select a body format: JSON (most common for REST APIs), Form Data (`multipart/form-data` for file uploads), URL-encoded Form (`application/x-www-form-urlencoded`), Raw Text, or Binary. The JSON editor includes syntax highlighting and validation. (4) Authentication: The tool supports multiple auth types: No Auth, Basic Auth (enters `username:password` base64-encoded), Bearer Token (enters `Authorization: Bearer <token>`), API Key (configurable header name or query parameter), and OAuth 2.0 (client credentials grant). For OAuth 2.0, the tool can obtain a token by exchanging client credentials with the token endpoint, then automatically attach it to requests. Pre-request scripts are also supported for signing requests."
       },
       {
         heading: "Using the API Tester Tool: Request and Response",
-        body: "The ToolVerse API Tester provides a split-panel interface: request builder on the left, response viewer on the right. After configuring your request, click Send. The tool displays the response with several detailed sections. (1) Status: HTTP status code and status text (e.g., `200 OK`, `404 Not Found`) color-coded for quick scanning — green for 2xx, yellow for 3xx, orange for 4xx, red for 5xx. (2) Time: Total response time in milliseconds — critical for performance testing. The tool also shows DNS lookup, TCP connect, TLS handshake, and server processing time breakdowns. (3) Size: Response body size in bytes, plus response headers size. (4) Headers: Response headers displayed as key-value pairs with search. (5) Body: Formatted response body with syntax highlighting (JSON, XML, HTML, plain text). For JSON responses, a tree view lets you collapse/expand nodes and copy values. (6) Cookies: Any Set-Cookie headers shown with Name, Value, Domain, Path, Expires, HttpOnly, Secure flags. (7) Tests: Write assertion tests in JavaScript to automatically validate responses — check status code equals 200, response time under 500ms, body contains specific fields, JSON schema validation. Tests run after each request and show a pass/fail summary."
+        body: "The Nuvora API Tester provides a split-panel interface: request builder on the left, response viewer on the right. After configuring your request, click Send. The tool displays the response with several detailed sections. (1) Status: HTTP status code and status text (e.g., `200 OK`, `404 Not Found`) color-coded for quick scanning — green for 2xx, yellow for 3xx, orange for 4xx, red for 5xx. (2) Time: Total response time in milliseconds — critical for performance testing. The tool also shows DNS lookup, TCP connect, TLS handshake, and server processing time breakdowns. (3) Size: Response body size in bytes, plus response headers size. (4) Headers: Response headers displayed as key-value pairs with search. (5) Body: Formatted response body with syntax highlighting (JSON, XML, HTML, plain text). For JSON responses, a tree view lets you collapse/expand nodes and copy values. (6) Cookies: Any Set-Cookie headers shown with Name, Value, Domain, Path, Expires, HttpOnly, Secure flags. (7) Tests: Write assertion tests in JavaScript to automatically validate responses — check status code equals 200, response time under 500ms, body contains specific fields, JSON schema validation. Tests run after each request and show a pass/fail summary."
       },
       {
         heading: "Common API Testing Scenarios: Auth Tokens, Pagination, Error Handling, Rate Limiting",
@@ -740,7 +740,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
+    author: { name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -749,10 +749,10 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         "Create professional GitHub README files with this complete guide. Learn essential sections, Markdown formatting, badges, and how to use a README generator tool for open-source projects.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
-        "@id": "https://toolverse.com/articles/readme-generator-guide"
+        "@id": "{DOMAIN}/blog/readme-generator-guide"
       },
       about: { "@type": "Thing", name: "README Generator" },
       hasPart: [
@@ -810,7 +810,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
       },
       {
         heading: "Essential README Sections: Title, Description, Install, Usage, API, Contributing, License",
-        body: "A comprehensive README follows a standard structure that users and contributors expect. (1) Title and Badges: The project name at H1 level followed by badges (build status, version, license, downloads). (2) Description: 2-3 paragraphs explaining the problem the project solves, its key features, and who it is for. Keep this concise but informative. (3) Table of Contents: For READMEs longer than 200 lines, a ToC with anchor links to each major section helps navigation. GitHub automatically generates anchor IDs from headings. (4) Installation: Step-by-step instructions. For npm: `npm install package-name`. For Docker: `docker pull org/package`. Include system requirements (Node.js >= 18, Python >= 3.9, etc.). (5) Usage: Minimal working example. Show importing the library, calling the main function, and expected output. Use real code snippets that users can copy-paste. (6) API Documentation: For libraries, document each function/class — parameters, return values, types, and examples. (7) Configuration: If the project uses config files (JSON, YAML, .env), explain each setting. (8) Contributing: Link to CONTRIBUTING.md, explain fork-workflow, coding standards, and how to run tests. (9) License: Specify the license (MIT, Apache 2.0, GPL 3.0) and link to the full license file. (10) Credits and Acknowledgments: Thanks to contributors, inspired by projects, sponsorship info. The ToolVerse README Generator scaffolds all these sections with prompts."
+        body: "A comprehensive README follows a standard structure that users and contributors expect. (1) Title and Badges: The project name at H1 level followed by badges (build status, version, license, downloads). (2) Description: 2-3 paragraphs explaining the problem the project solves, its key features, and who it is for. Keep this concise but informative. (3) Table of Contents: For READMEs longer than 200 lines, a ToC with anchor links to each major section helps navigation. GitHub automatically generates anchor IDs from headings. (4) Installation: Step-by-step instructions. For npm: `npm install package-name`. For Docker: `docker pull org/package`. Include system requirements (Node.js >= 18, Python >= 3.9, etc.). (5) Usage: Minimal working example. Show importing the library, calling the main function, and expected output. Use real code snippets that users can copy-paste. (6) API Documentation: For libraries, document each function/class — parameters, return values, types, and examples. (7) Configuration: If the project uses config files (JSON, YAML, .env), explain each setting. (8) Contributing: Link to CONTRIBUTING.md, explain fork-workflow, coding standards, and how to run tests. (9) License: Specify the license (MIT, Apache 2.0, GPL 3.0) and link to the full license file. (10) Credits and Acknowledgments: Thanks to contributors, inspired by projects, sponsorship info. The Nuvora README Generator scaffolds all these sections with prompts."
       },
       {
         heading: "README Formatting with Markdown: Headings, Code Blocks, Tables, Badges",
@@ -818,7 +818,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
       },
       {
         heading: "Using the README Generator Tool",
-        body: "The ToolVerse README Generator creates a professional README in minutes through a guided form. Step 1: Enter your project name, short description (max 160 characters), and tagline. Step 2: Choose a template style — Standard (for most libraries and tools), Minimal (for small utilities), API Library (detailed API docs section), or Enterprise (with compliance, security, and support sections). Step 3: Fill in sections interactively. The tool prompts for installation command, quick start code example, configuration options, and key features (checkboxes). Step 4: Select badges you want included — the tool offers common badges from shields.io with auto-generated URLs: npm version, GitHub Actions build, Codecov coverage, license, Twitter follow, funding (GitHub Sponsors/Open Collective), and language-specific badges (PyPI version, Go Report Card, Crates.io version). Step 5: Choose color scheme for badges (default blue, green, red, or custom). Step 6: Click Generate — the tool outputs a complete README.md file ready to paste or download. The generated README includes proper GitHub anchor links in the Table of Contents, consistent formatting, and placeholders for sections you want to fill in later. The tool also supports importing an existing README for editing."
+        body: "The Nuvora README Generator creates a professional README in minutes through a guided form. Step 1: Enter your project name, short description (max 160 characters), and tagline. Step 2: Choose a template style — Standard (for most libraries and tools), Minimal (for small utilities), API Library (detailed API docs section), or Enterprise (with compliance, security, and support sections). Step 3: Fill in sections interactively. The tool prompts for installation command, quick start code example, configuration options, and key features (checkboxes). Step 4: Select badges you want included — the tool offers common badges from shields.io with auto-generated URLs: npm version, GitHub Actions build, Codecov coverage, license, Twitter follow, funding (GitHub Sponsors/Open Collective), and language-specific badges (PyPI version, Go Report Card, Crates.io version). Step 5: Choose color scheme for badges (default blue, green, red, or custom). Step 6: Click Generate — the tool outputs a complete README.md file ready to paste or download. The generated README includes proper GitHub anchor links in the Table of Contents, consistent formatting, and placeholders for sections you want to fill in later. The tool also supports importing an existing README for editing."
       },
       {
         heading: "Project-Specific Customization and Examples of Excellent READMEs",
@@ -843,7 +843,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 12,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
+    author: { name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -852,10 +852,10 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         "Master regular expressions with this regex tester guide. Learn regex syntax, common patterns for email/URL/phone validation, real-time matching, and performance optimization.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
-        "@id": "https://toolverse.com/articles/regex-tester-tool-guide"
+        "@id": "{DOMAIN}/blog/regex-tester-tool-guide"
       },
       about: { "@type": "Thing", name: "Regular Expressions" },
       hasPart: [
@@ -917,7 +917,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
       },
       {
         heading: "Using the Regex Tester Tool with Real-Time Matching",
-        body: "The ToolVerse Regex Tester provides an interactive environment for developing and testing regex patterns. The interface has three panels: (1) Pattern input: Type or paste your regex pattern. Toggle flags (g, i, m, s, u, y) as checkboxes. The pattern syntax is highlighted — literal characters in black, metacharacters in blue, character classes in green, groups in purple. A syntax error indicator (red border) appears for invalid patterns. (2) Test string area: A multi-line text box for your sample text. As you type, the tool highlights all matches in real time with a yellow background. Matches within matches (nested groups) are highlighted in different colors. (3) Results panel: Shows detailed match information — the matched text, the match position (index in the string), the length, and each captured group's value. A substitution bar lets you enter a replacement string and see the result of `replaceAll` live. The tool supports substitution references: `$1`, `$2` for captured groups, `$&` for the full match, `` $` `` for text before the match, and `$'` for text after the match. For complex patterns, a debug mode displays the regex engine's step-by-step matching process, showing which paths it tries and where it backtracks. This is invaluable for understanding why a pattern does not match as expected."
+        body: "The Nuvora Regex Tester provides an interactive environment for developing and testing regex patterns. The interface has three panels: (1) Pattern input: Type or paste your regex pattern. Toggle flags (g, i, m, s, u, y) as checkboxes. The pattern syntax is highlighted — literal characters in black, metacharacters in blue, character classes in green, groups in purple. A syntax error indicator (red border) appears for invalid patterns. (2) Test string area: A multi-line text box for your sample text. As you type, the tool highlights all matches in real time with a yellow background. Matches within matches (nested groups) are highlighted in different colors. (3) Results panel: Shows detailed match information — the matched text, the match position (index in the string), the length, and each captured group's value. A substitution bar lets you enter a replacement string and see the result of `replaceAll` live. The tool supports substitution references: `$1`, `$2` for captured groups, `$&` for the full match, `` $` `` for text before the match, and `$'` for text after the match. For complex patterns, a debug mode displays the regex engine's step-by-step matching process, showing which paths it tries and where it backtracks. This is invaluable for understanding why a pattern does not match as expected."
       },
       {
         heading: "Common Regex Patterns: Email, URL, Phone, Date, IP Address",
@@ -929,7 +929,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
       },
       {
         heading: "Regex in Different Programming Languages: JS, Python, PHP, Java",
-        body: "While regex syntax is mostly standardized (PCRE is the de facto reference), each language has its own flavor with unique features and limitations. JavaScript (ECMAScript): Supports `g`, `i`, `m`, `s` (ES2018), `u` (ES2015), `y` flags. No possessive quantifiers. No atomic groups. Named groups support added in ES2018: `(?<name>...)` with `match.groups.name`. Lookaheads (positive `(?=...)`, negative `(?!...)`) and lookbehinds (positive `(?<=...)`, negative `(?<!...)`). Python: Uses `re` module. Supports named groups `(?P<name>...)` and backreferences with `(?P=name)`. Atomic groups via the third-party `regex` module. Supports lookahead and lookbehind (must be fixed-width in `re` module, variable-width with `regex`). Python regex is more limited than PCRE — no possessive quantifiers, no recursion. PHP (PCRE): The most feature-rich flavor. Supports possessive quantifiers (`*+`, `++`, `?+`), atomic groups (`(?>...)`), recursive patterns (`(?R)`), conditional subpatterns (`(?(condition)yes|no)`), and callouts. Java: Supports possessive quantifiers, lookahead/lookbehind, named groups `(?<name>...)`. No atomic groups in standard library. The `Pattern` class compiles regex and `Matcher` performs matching. When writing portable regex across languages, stick to common features: basic quantifiers, character classes, groups, and anchors. Test your pattern in the ToolVerse Regex Tester with flavor-specific syntax highlighting."
+        body: "While regex syntax is mostly standardized (PCRE is the de facto reference), each language has its own flavor with unique features and limitations. JavaScript (ECMAScript): Supports `g`, `i`, `m`, `s` (ES2018), `u` (ES2015), `y` flags. No possessive quantifiers. No atomic groups. Named groups support added in ES2018: `(?<name>...)` with `match.groups.name`. Lookaheads (positive `(?=...)`, negative `(?!...)`) and lookbehinds (positive `(?<=...)`, negative `(?<!...)`). Python: Uses `re` module. Supports named groups `(?P<name>...)` and backreferences with `(?P=name)`. Atomic groups via the third-party `regex` module. Supports lookahead and lookbehind (must be fixed-width in `re` module, variable-width with `regex`). Python regex is more limited than PCRE — no possessive quantifiers, no recursion. PHP (PCRE): The most feature-rich flavor. Supports possessive quantifiers (`*+`, `++`, `?+`), atomic groups (`(?>...)`), recursive patterns (`(?R)`), conditional subpatterns (`(?(condition)yes|no)`), and callouts. Java: Supports possessive quantifiers, lookahead/lookbehind, named groups `(?<name>...)`. No atomic groups in standard library. The `Pattern` class compiles regex and `Matcher` performs matching. When writing portable regex across languages, stick to common features: basic quantifiers, character classes, groups, and anchors. Test your pattern in the Nuvora Regex Tester with flavor-specific syntax highlighting."
       },
       {
         heading: "Frequently Asked Questions",
@@ -950,7 +950,7 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
+    author: { name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -959,10 +959,10 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
         "Learn to create harmonious color palettes for web design using color theory, harmony rules, and accessibility standards. Covers HSL, HEX, RGB models and WCAG contrast ratios.",
       datePublished: "2026-07-11",
       dateModified: "2026-07-11",
-      author: { "@type": "Person", name: "Anass Faleh", url: "https://nuvora.tools/authors/founder" },
+      author: { "@type": "Person", name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
       mainEntityOfPage: {
         "@type": "WebPage",
-        "@id": "https://toolverse.com/articles/how-to-create-color-palette-web-design"
+        "@id": "{DOMAIN}/blog/how-to-create-color-palette-web-design"
       },
       about: { "@type": "Thing", name: "Color Palette" },
       hasPart: [
@@ -1028,15 +1028,15 @@ export const CLUSTER_13_ARTICLES: ContentPiece[] = [
       },
       {
         heading: "Using a Color Palette Generator",
-        body: "The ToolVerse Color Palette Generator creates harmonious palettes from any starting color. Step 1: Enter a base color in HEX, RGB, or HSL format, or use the color picker to select one visually. Step 2: Choose a harmony rule — Complementary, Analogous, Triadic, Split-Complementary, Monochromatic, or Tetradic. Step 3: Set the number of colors (3-10) and adjust settings like saturation variation (±20%), lightness range (20-80%), and random seed for variations. Step 4: Click Generate. The tool outputs a palette with each color displayed as a swatch with HEX, RGB, HSL, and CSS variable values. Each color has a copy button. The palette shows contrast ratios between adjacent colors and between the darkest and lightest colors. Below the palette, the tool renders previews: a hero section mockup using the palette (heading, body text, button, background), a data visualization preview (bar chart with palette colors), and a UI component mockup (card, form input, navigation bar). This helps you visualize how the palette performs in real web components. The palette can be exported as CSS custom properties (`:root { --color-primary: #2563EB; --color-secondary: ... }`), Tailwind CSS configuration, SCSS variables, or a Figma-compatible JSON file. Saved palettes sync to your account for reuse across projects."
+        body: "The Nuvora Color Palette Generator creates harmonious palettes from any starting color. Step 1: Enter a base color in HEX, RGB, or HSL format, or use the color picker to select one visually. Step 2: Choose a harmony rule — Complementary, Analogous, Triadic, Split-Complementary, Monochromatic, or Tetradic. Step 3: Set the number of colors (3-10) and adjust settings like saturation variation (±20%), lightness range (20-80%), and random seed for variations. Step 4: Click Generate. The tool outputs a palette with each color displayed as a swatch with HEX, RGB, HSL, and CSS variable values. Each color has a copy button. The palette shows contrast ratios between adjacent colors and between the darkest and lightest colors. Below the palette, the tool renders previews: a hero section mockup using the palette (heading, body text, button, background), a data visualization preview (bar chart with palette colors), and a UI component mockup (card, form input, navigation bar). This helps you visualize how the palette performs in real web components. The palette can be exported as CSS custom properties (`:root { --color-primary: #2563EB; --color-secondary: ... }`), Tailwind CSS configuration, SCSS variables, or a Figma-compatible JSON file. Saved palettes sync to your account for reuse across projects."
       },
       {
         heading: "Accessibility: Contrast Ratios and WCAG AA/AAA Compliance",
-        body: "Accessibility is not optional — approximately 8% of men and 0.5% of women have some form of color vision deficiency (CVD), totaling over 300 million people worldwide. WCAG 2.2 AA compliance (the legal standard in the EU and many US states) requires: normal text (<18px) must have a 4.5:1 contrast ratio against its background; large text (≥18px bold or ≥24px regular) requires 3:1. AAA compliance requires 7:1 and 4.5:1 respectively. The ToolVerse Color Palette Generator automatically calculates contrast ratios for all palette combinations. It flags combinations that fail AA standards with a red warning and suggests alternative colors. For example, pairing `#2563EB` (blue primary) with white text (#FFFFFF) yields a contrast ratio of 4.2:1 — below the 4.5:1 AA requirement for normal text. Darkening the blue to `#1D4ED8` (shade 700) improves the ratio to 5.1:1, passing AA. Beyond contrast, ensure color is not the only differentiator. WCAG 2.2 Success Criterion 1.4.1 requires that links, form errors, and status indicators use an additional differentiator besides color (like underlines, icons, or patterns). The palette tool includes a color blindness simulator (simulating protanopia, deuteranopia, tritanopia) to verify all palette colors are distinguishable when CVD is simulated."
+        body: "Accessibility is not optional — approximately 8% of men and 0.5% of women have some form of color vision deficiency (CVD), totaling over 300 million people worldwide. WCAG 2.2 AA compliance (the legal standard in the EU and many US states) requires: normal text (<18px) must have a 4.5:1 contrast ratio against its background; large text (≥18px bold or ≥24px regular) requires 3:1. AAA compliance requires 7:1 and 4.5:1 respectively. The Nuvora Color Palette Generator automatically calculates contrast ratios for all palette combinations. It flags combinations that fail AA standards with a red warning and suggests alternative colors. For example, pairing `#2563EB` (blue primary) with white text (#FFFFFF) yields a contrast ratio of 4.2:1 — below the 4.5:1 AA requirement for normal text. Darkening the blue to `#1D4ED8` (shade 700) improves the ratio to 5.1:1, passing AA. Beyond contrast, ensure color is not the only differentiator. WCAG 2.2 Success Criterion 1.4.1 requires that links, form errors, and status indicators use an additional differentiator besides color (like underlines, icons, or patterns). The palette tool includes a color blindness simulator (simulating protanopia, deuteranopia, tritanopia) to verify all palette colors are distinguishable when CVD is simulated."
       },
       {
         heading: "Building a Design System with Color Tokens",
-        body: "Color tokens transform a palette into a maintainable design system. Rather than hardcoding hex values throughout your CSS, define semantic tokens: `--color-primary: #2563EB` (main brand color for buttons, links, active states), `--color-primary-hover: #1D4ED8` (darker shade for hover), `--color-primary-light: #DBEAFE` (background tint for alerts, selections), `--color-surface: #FFFFFF` (card backgrounds, modals), `--color-surface-secondary: #F9FAFB` (alternate backgrounds, code blocks), `--color-text-primary: #111827` (headings, body text), `--color-text-secondary: #6B7280` (captions, metadata), `--color-border: #E5E7EB` (dividers, input borders), `--color-success: #10B981` (positive states), `--color-warning: #F59E0B` (caution), `--color-error: #EF4444` (destructive actions, errors), and `--color-info: #3B82F6` (informational). Define these in `:root` and customize per theme. A dark theme swaps token values: `--color-surface: #1F2937`, `--color-text-primary: #F9FAFB`. Tailwind CSS extends this with `colors: { primary: { 50: '#EFF6FF', 100: '#DBEAFE', ..., 900: '#1E3A5F' } }` for 10 shades per color. The ToolVerse Palette Generator outputs token definitions for CSS custom properties, Tailwind config, and SASS maps — reducing the setup time for integrating your palette into a real codebase from hours to minutes."
+        body: "Color tokens transform a palette into a maintainable design system. Rather than hardcoding hex values throughout your CSS, define semantic tokens: `--color-primary: #2563EB` (main brand color for buttons, links, active states), `--color-primary-hover: #1D4ED8` (darker shade for hover), `--color-primary-light: #DBEAFE` (background tint for alerts, selections), `--color-surface: #FFFFFF` (card backgrounds, modals), `--color-surface-secondary: #F9FAFB` (alternate backgrounds, code blocks), `--color-text-primary: #111827` (headings, body text), `--color-text-secondary: #6B7280` (captions, metadata), `--color-border: #E5E7EB` (dividers, input borders), `--color-success: #10B981` (positive states), `--color-warning: #F59E0B` (caution), `--color-error: #EF4444` (destructive actions, errors), and `--color-info: #3B82F6` (informational). Define these in `:root` and customize per theme. A dark theme swaps token values: `--color-surface: #1F2937`, `--color-text-primary: #F9FAFB`. Tailwind CSS extends this with `colors: { primary: { 50: '#EFF6FF', 100: '#DBEAFE', ..., 900: '#1E3A5F' } }` for 10 shades per color. The Nuvora Palette Generator outputs token definitions for CSS custom properties, Tailwind config, and SASS maps — reducing the setup time for integrating your palette into a real codebase from hours to minutes."
       },
       {
         heading: "Frequently Asked Questions",

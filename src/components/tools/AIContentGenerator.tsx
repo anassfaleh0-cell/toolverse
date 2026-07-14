@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { Button, Alert, Card } from "@/components/ui";
+import { Icon } from "@/components/shared/icon";
 
 const CONTENT_TYPES = ["Blog Post", "Product Description", "Social Media Post", "Email Newsletter", "Landing Page Copy", "Advertisement"] as const;
 const TONES = ["Professional", "Conversational", "Persuasive", "Informative", "Humorous", "Inspirational"] as const;
@@ -535,11 +536,11 @@ export function ContentGenerator() {
 
             <div className="flex flex-wrap gap-4 border-b border-zinc-200 pb-3 text-xs text-zinc-500 dark:border-zinc-700 dark:text-zinc-400">
               <span className="flex items-center gap-1">
-                <svg className="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></svg>
+                <Icon name="PenSquare" className="size-3.5" />
                 {wc} words
               </span>
               <span className="flex items-center gap-1">
-                <svg className="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+                <Icon name="Clock" className="size-3.5" />
                 {rt}
               </span>
               <span className="flex items-center gap-1">
@@ -556,25 +557,25 @@ export function ContentGenerator() {
               <Button onClick={handleCopy} variant="secondary" size="sm">
                 {copied ? (
                   <span className="flex items-center gap-1.5">
-                    <svg className="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12" /></svg>
+                    <Icon name="Check" className="size-4" />
                     Copied!
                   </span>
                 ) : (
                   <span className="flex items-center gap-1.5">
-                    <svg className="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2" /><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg>
+                    <Icon name="Copy" className="size-4" />
                     Copy to Clipboard
                   </span>
                 )}
               </Button>
               <Button onClick={handleDownload} variant="secondary" size="sm">
                 <span className="flex items-center gap-1.5">
-                  <svg className="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
+                  <Icon name="Download" className="size-4" />
                   Download as .txt
                 </span>
               </Button>
               <Button onClick={handleGenerate} variant="primary" size="sm">
                 <span className="flex items-center gap-1.5">
-                  <svg className="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="23 4 23 10 17 10" /><polyline points="1 20 1 14 7 14" /><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" /></svg>
+                  <Icon name="RefreshCw" className="size-4" />
                   Regenerate
                 </span>
               </Button>

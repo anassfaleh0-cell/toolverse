@@ -41,15 +41,15 @@ export function RemoveDuplicateLines() {
 
       <div className="flex flex-wrap gap-4">
         <label className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400">
-          <input type="checkbox" checked={caseSensitive} onChange={(e) => setCaseSensitive(e.target.checked)} className="h-4 w-4 rounded border-zinc-300" />
+          <input type="checkbox" checked={caseSensitive} onChange={(e) => setCaseSensitive(e.target.checked)} className="h-4 w-4 rounded border-zinc-300 dark:border-zinc-600" />
           Case Sensitive
         </label>
         <label className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400">
-          <input type="checkbox" checked={trimWhitespace} onChange={(e) => setTrimWhitespace(e.target.checked)} className="h-4 w-4 rounded border-zinc-300" />
+          <input type="checkbox" checked={trimWhitespace} onChange={(e) => setTrimWhitespace(e.target.checked)} className="h-4 w-4 rounded border-zinc-300 dark:border-zinc-600" />
           Trim Whitespace
         </label>
         <label className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400">
-          <input type="checkbox" checked={sortResults} onChange={(e) => setSortResults(e.target.checked)} className="h-4 w-4 rounded border-zinc-300" />
+          <input type="checkbox" checked={sortResults} onChange={(e) => setSortResults(e.target.checked)} className="h-4 w-4 rounded border-zinc-300 dark:border-zinc-600" />
           Sort Results
         </label>
       </div>

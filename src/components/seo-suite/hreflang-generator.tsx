@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Input, Button } from "@/components/ui";
-import { CopyButton } from "@/components/shared";
+import { CopyButton, Icon } from "@/components/shared";
 
 interface LangEntry {
   lang: string;
@@ -61,7 +61,7 @@ export function HreflangGenerator() {
               <Input id={`hl-url-${i}`} type="url" value={entry.url} onChange={(e) => updateEntry(i, "url", e.target.value)} placeholder="https://example.com/en/" aria-label={`URL ${i + 1}`} />
             </div>
             <Button type="button" variant="ghost" size="sm" className="mt-5" onClick={() => removeEntry(i)} aria-label={`Remove entry ${i + 1}`}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+              <Icon name="X" className="size-4" />
             </Button>
           </div>
         ))}

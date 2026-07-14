@@ -44,7 +44,7 @@ export default function NuvoraMobilePage() {
               { title: "Cross-Device Sync", desc: "Seamless sync of bookmarks, history, and settings across all your devices." },
             ].map(({ title, desc }) => (
               <div key={title} className="rounded-2xl border border-border-subtle bg-surface p-6">
-                <h3 className="font-semibold text-text-primary">{title}</h3>
+                <h2 className="text-base font-semibold text-text-primary">{title}</h2>
                 <p className="mt-2 text-sm text-text-secondary">{desc}</p>
               </div>
             ))}

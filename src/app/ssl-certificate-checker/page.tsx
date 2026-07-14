@@ -123,7 +123,8 @@ export default function SslCertificatePage() {
         <ToolLayout toolSlug={slug}>
           <ToolHero
             title="SSL Certificate Checker"
-            description="Check SSL/TLS certificate details for any domain. Verify expiration, issuer, SANs, and the full certificate chain."
+            description={pageDescription}
+            introText="Verify SSL/TLS certificates for any domain. Check expiration date, issuer, certificate chain, and detect configuration issues before they cause browser warnings."
             breadcrumbs={breadcrumbs}
           >
             <SslCertificateChecker />

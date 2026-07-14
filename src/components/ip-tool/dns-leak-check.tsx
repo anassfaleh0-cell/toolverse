@@ -62,7 +62,7 @@ export function DnsLeakCheck({ publicIp }: DnsLeakCheckProps) {
 
       {loading && (
         <div className="flex items-center gap-3 rounded-lg border border-zinc-200 p-4 dark:border-zinc-800">
-          <div className="size-5 animate-spin rounded-full border-2 border-zinc-300 border-t-blue-600" />
+          <div className="size-5 animate-spin rounded-full border-2 border-zinc-300 border-t-blue-600 dark:border-zinc-600" />
           <span className="text-sm text-zinc-500">Querying DNS resolvers and checking for leaks...</span>
         </div>
       )}

@@ -1,5 +1,3 @@
-"use client";
-
 interface DashboardCardProps {
   label: string;
   value: string | number;
@@ -19,13 +17,13 @@ export function DashboardCard({ label, value, status = "neutral", icon, subtitle
   const s = STATUS_STYLES[status];
   return (
     <div className={`rounded-xl border p-4 ${s.card} animate-fade-slide-up`}>
-      <p className="flex items-center gap-1.5 text-xs font-medium text-zinc-500 dark:text-zinc-400">
+      <p className="flex items-center gap-1.5 text-xs font-medium text-zinc-600 dark:text-zinc-300">
         <span className={`inline-block size-1.5 rounded-full ${s.dot}`} />
         {icon && <span aria-hidden="true">{icon}</span>}
         {label}
       </p>
       <p className={`mt-1.5 text-lg font-bold ${s.text}`}>{value}</p>
-      {subtitle && <p className="mt-0.5 text-xs text-zinc-400">{subtitle}</p>}
+      {subtitle && <p className="mt-0.5 text-xs text-zinc-500 dark:text-zinc-400">{subtitle}</p>}
     </div>
   );
 }
@@ -40,7 +38,7 @@ const BADGE_STYLES: Record<string, string> = {
   good: "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300",
   warning: "bg-amber-100 text-amber-800 dark:bg-amber-900/50 dark:text-amber-300",
   critical: "bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300",
-  neutral: "bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400",
+  neutral: "bg-zinc-100 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300",
 };
 
 export function StatusBadge({ status, label, pulse }: StatusBadgeProps) {

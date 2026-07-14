@@ -102,7 +102,8 @@ export default function PasswordGeneratorPage() {
         <ToolLayout toolSlug={slug}>
           <ToolHero
             title="Password Generator"
-            description="Create strong, unpredictable passwords with customizable length and character types. Every password is generated using cryptographically secure randomness right in your browser."
+            description={pageDescription}
+            introText="Create strong, unique passwords that protect your accounts from brute-force and dictionary attacks. Customize length, character types, and generate cryptographically secure passwords instantly."
             breadcrumbs={breadcrumbs}
           >
             <PasswordGenerator />

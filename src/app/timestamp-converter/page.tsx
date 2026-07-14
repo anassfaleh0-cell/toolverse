@@ -111,7 +111,8 @@ export default function TimestampConverterPage() {
         <ToolLayout toolSlug={slug}>
           <ToolHero
             title="Timestamp Converter"
-            description="Convert between Unix timestamps and human-readable dates. Automatically detects seconds vs milliseconds and shows both UTC and local time."
+            description={pageDescription}
+            introText="Convert Unix timestamps to human-readable dates and vice versa. Supports milliseconds, seconds, and multiple timezone formats for developers and system administrators."
             breadcrumbs={breadcrumbs}
           >
             <TimestampConverter />

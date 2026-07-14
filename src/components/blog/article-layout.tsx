@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { ContentPiece } from "@/lib/content/types";
 import { getRelatedContent } from "@/lib/content/registry";
 import { getToolBySlug } from "@/lib/registry";
@@ -7,6 +8,7 @@ import { JsonLd } from "@/components/shared/json-ld";
 import { LazySection } from "@/components/shared/lazy-section";
 import { SITE_URL } from "@/lib/constants";
 import { faqSchema, articleSchema, webPageSchema, breadcrumbSchema } from "@/lib/seo";
+import { Icon } from "@/components/shared/icon";
 import type { FaqItem } from "@/lib/seo";
 
 const TYPE_LABEL: Record<string, string> = { article: "Blog", guide: "Guide", tutorial: "Tutorial", comparison: "Comparison" };
@@ -122,7 +124,7 @@ export function ArticleLayout({ piece, basePath = "blog" }: { piece: ContentPiec
         <div className="mb-3 flex flex-wrap items-center gap-2">
           <span className="rounded-full bg-nuvora-100 px-2 py-0.5 text-[11px] font-medium text-nuvora-600 dark:bg-nuvora-900/50 dark:text-nuvora-400">{typeLabel}</span>
           <span className="inline-flex items-center gap-1 rounded-full bg-surface-secondary px-2 py-0.5 text-[11px] font-medium text-text-secondary">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-3" aria-hidden="true"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+            <Icon name="Clock" className="size-3" />
             {readingMins} min read
           </span>
           <span className="rounded-full bg-surface-secondary px-2 py-0.5 text-[11px] font-medium text-text-tertiary">{DIFFICULTY_LABEL[piece.difficulty] ?? piece.difficulty}</span>
@@ -147,7 +149,7 @@ export function ArticleLayout({ piece, basePath = "blog" }: { piece: ContentPiec
 
         {/* Featured Image — auto-generated aurora with article title */}
         <div className="mt-6 mb-8 overflow-hidden rounded-xl border border-border-subtle">
-          <img src={imgSrc} alt={piece.title} className="aspect-video w-full object-cover" />
+          <img src={imgSrc} alt={piece.title} loading="lazy" decoding="async" className="aspect-video w-full object-cover" />
         </div>
 
         {/* Table of Contents — if multiple sections */}
@@ -155,7 +157,7 @@ export function ArticleLayout({ piece, basePath = "blog" }: { piece: ContentPiec
           <>
             <details className="mb-6 rounded-lg border border-border-subtle bg-surface sm:hidden">
               <summary className="flex cursor-pointer items-center gap-2 px-4 py-2.5 text-sm font-medium text-text-primary">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4" aria-hidden="true"><path d="M4 6h16" /><path d="M4 12h16" /><path d="M4 18h16" /></svg>
+                <Icon name="List" className="size-4" aria-hidden="true" />
                 Table of Contents
               </summary>
               <div className="border-t border-border-subtle px-4 py-2">
@@ -164,7 +166,7 @@ export function ArticleLayout({ piece, basePath = "blog" }: { piece: ContentPiec
             </details>
             <nav className="mb-8 hidden rounded-lg border border-border-subtle bg-surface p-4 sm:block">
               <div className="flex items-center gap-2 mb-2">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4 text-nuvora-600 dark:text-nuvora-400" aria-hidden="true"><path d="M4 6h16" /><path d="M4 12h16" /><path d="M4 18h16" /></svg>
+                <Icon name="List" className="size-4 text-nuvora-600 dark:text-nuvora-400" aria-hidden="true" />
                 <h2 className="text-sm font-semibold text-text-primary">Table of Contents</h2>
               </div>
               <ul className="space-y-1">{piece.sections.map((s, i) => <li key={i}><a href={`#section-${i}`} className="text-sm text-text-secondary hover:text-nuvora-600 dark:hover:text-nuvora-400 transition-colors">{s.heading}</a></li>)}</ul>
@@ -187,7 +189,7 @@ export function ArticleLayout({ piece, basePath = "blog" }: { piece: ContentPiec
                   <details key={i} className="group rounded-lg border border-border-subtle bg-surface transition-all">
                     <summary className="flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-medium text-text-primary">
                       {faq.question}
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4 shrink-0 text-text-tertiary transition-transform group-open:rotate-180"><path d="m6 9 6 6 6-6" /></svg>
+                      <Icon name="ChevronDown" className="size-4 shrink-0 text-text-tertiary transition-transform group-open:rotate-180" />
                     </summary>
                     <div className="border-t border-border-subtle px-4 pb-3 pt-2"><p className="text-sm leading-relaxed text-text-secondary">{faq.answer}</p></div>
                   </details>
@@ -202,7 +204,7 @@ export function ArticleLayout({ piece, basePath = "blog" }: { piece: ContentPiec
           <section className="mt-10 rounded-xl border border-border-subtle bg-surface p-5">
             <div className="flex items-start gap-4">
               {author.avatarUrl ? (
-                <img src={author.avatarUrl} alt={author.name} className="size-11 shrink-0 rounded-full object-cover" />
+                <Image src={author.avatarUrl} alt={author.name} width={44} height={44} className="size-11 shrink-0 rounded-full object-cover" />
               ) : (
                 <div className="flex size-11 shrink-0 items-center justify-center rounded-full bg-nuvora-100 text-xs font-bold text-nuvora-600 dark:bg-nuvora-900/50 dark:text-nuvora-400">
                   {author.name.split(" ").map(n => n[0]).join("").slice(0, 2)}
@@ -244,7 +246,7 @@ export function ArticleLayout({ piece, basePath = "blog" }: { piece: ContentPiec
                 {related.map(r => (
                   <Link key={r.slug} href={`/blog/${r.slug}`} className="group rounded-xl border border-border-subtle bg-surface p-3 transition-all hover:shadow-sm hover:border-nuvora-300 dark:hover:border-nuvora-700">
                     <div className="mb-2 aspect-video w-full overflow-hidden rounded-lg bg-gradient-to-br from-nuvora-100 to-aurora-100 dark:from-nuvora-900/50 dark:to-aurora-900/30">
-                      <img src={generateArticleSvg(r.title)} alt={r.title} className="h-full w-full object-cover" />
+                      <img src={generateArticleSvg(r.title)} alt={r.title} loading="lazy" decoding="async" className="h-full w-full object-cover" />
                     </div>
                     <h3 className="text-sm font-semibold text-text-primary group-hover:text-nuvora-600 dark:group-hover:text-nuvora-400 transition-colors line-clamp-2">{r.title}</h3>
                     <p className="mt-1 text-xs leading-relaxed text-text-secondary line-clamp-2">{r.description}</p>

@@ -1,5 +1,3 @@
-"use client";
-
 interface IpLookupMapProps {
   lat: number;
   lon: number;

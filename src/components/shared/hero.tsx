@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useEffect, useState, useRef, useCallback } from "react";
-import { motion, useReducedMotion } from "framer-motion";
 import { getRegisteredToolCount, getCategories } from "@/lib/registry";
 import { Logo } from "@/components/ui/logo";
 import { Icon } from "@/components/shared/icon";
@@ -27,7 +26,6 @@ function getStats(toolCount: number, catCount: number) {
 export function Hero() {
   const toolCount = getRegisteredToolCount();
   const catCount = getCategories().length;
-  const prefersReduced = useReducedMotion();
   const [mounted, setMounted] = useState(false);
   const [count, setCount] = useState(0);
   useEffect(() => { setMounted(true); }, []);
@@ -35,6 +33,7 @@ export function Hero() {
   const [statsVisible, setStatsVisible] = useState(false);
 
   useEffect(() => {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReduced) { setCount(toolCount); return; }
     const duration = 2000;
     const start = performance.now();
@@ -45,7 +44,7 @@ export function Hero() {
       if (progress < 1) requestAnimationFrame(animate);
     };
     requestAnimationFrame(animate);
-  }, [toolCount, prefersReduced]);
+  }, [toolCount]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -67,108 +66,64 @@ export function Hero() {
   return (
     <section className="relative overflow-hidden" onMouseMove={handleMouseMove} style={{ "--mouse-x": "0", "--mouse-y": "0" } as React.CSSProperties}>
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-nuvora-50 via-surface to-aurora-50 dark:from-nuvora-950/30 dark:via-background dark:to-aurora-950/20" />
-      <motion.div
-        className="absolute inset-0 -z-10 opacity-25 dark:opacity-15"
-        animate={prefersReduced ? {} : {
-          background: [
-            "radial-gradient(40% 40% at 25% 25%, rgba(124,58,237,0.12), transparent)",
-            "radial-gradient(40% 40% at 75% 75%, rgba(6,182,212,0.12), transparent)",
-            "radial-gradient(40% 40% at 50% 50%, rgba(59,130,246,0.1), transparent)",
-            "radial-gradient(40% 40% at 25% 25%, rgba(124,58,237,0.12), transparent)",
-          ]
-        }}
-        transition={{ duration: 20, repeat: Infinity }}
-      />
+      <div className="absolute inset-0 -z-10 opacity-25 dark:opacity-15 animate-hero-gradient" />
 
-      {/* Subtle grid pattern */}
       <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.03] dark:opacity-[0.05]" style={{ backgroundImage: "linear-gradient(var(--color-nuvora-600) 1px, transparent 1px), linear-gradient(90deg, var(--color-nuvora-600) 1px, transparent 1px)", backgroundSize: "80px 80px" }} />
 
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28 lg:py-36">
         <div className="text-center">
-          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-nuvora-200 bg-nuvora-50/80 px-4 py-1.5 text-xs font-medium text-nuvora-700 backdrop-blur-sm dark:border-nuvora-700/50 dark:bg-nuvora-950 dark:text-nuvora-200">
+          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-nuvora-200 bg-nuvora-50/80 px-4 py-1.5 text-xs font-medium text-nuvora-700 backdrop-blur-sm dark:border-nuvora-700/50 dark:bg-nuvora-900/80 dark:text-nuvora-200">
             <span className="relative flex size-2">
-              <motion.span
-                className="absolute inline-flex size-full rounded-full bg-nuvora-400 opacity-75"
-                animate={prefersReduced ? {} : { scale: [1, 1.5, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
+              <span className="absolute inline-flex size-full rounded-full bg-nuvora-400 opacity-75 animate-scale-pulse" />
               <span className="relative inline-flex size-2 rounded-full bg-nuvora-500" />
             </span>
             {toolCount.toLocaleString()}+ free tools &mdash; 100% browser-based &bull; No signup
           </div>
 
-          <motion.div
-            initial={prefersReduced ? {} : { opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          >
+          <div className="animate-fade-slide-up delay-0">
             <div className="mb-4 flex justify-center opacity-60">
               <Logo size="lg" />
             </div>
             <h1 className="text-display font-bold tracking-tight text-text-primary leading-[1.1]">
               {HERO_TAGLINE}
             </h1>
-          </motion.div>
+          </div>
 
-          <motion.p
-            className="mx-auto mt-6 max-w-2xl text-lg text-text-secondary leading-relaxed"
-            initial={prefersReduced ? {} : { opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          >
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-text-secondary leading-relaxed animate-fade-slide-up delay-[150ms]">
             {HERO_SUBTITLE}
-          </motion.p>
+          </p>
 
-          <motion.div
-            className="mt-10 flex flex-wrap items-center justify-center gap-4"
-            initial={prefersReduced ? {} : { opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          >
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4 animate-fade-slide-up delay-[300ms]">
             <Link
               href="/tools"
               className="nuvora-button-primary inline-flex items-center gap-2.5 rounded-xl px-7 py-3.5 text-base"
             >
               Explore All Tools
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} className="size-4"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+              <Icon name="ArrowRight" className="size-4" />
             </Link>
             <Link
               href="/how-it-works"
               className="inline-flex items-center gap-2 rounded-xl border border-border-subtle bg-surface/80 px-7 py-3.5 text-base font-semibold text-text-secondary backdrop-blur-sm transition-all duration-200 ease-out hover:border-nuvora-300 hover:text-nuvora-600 hover:shadow-sm active:scale-[0.97]"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4"><circle cx="12" cy="12" r="10" /><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" /><path d="M12 17h.01" /></svg>
+              <Icon name="HelpCircle" className="size-4" />
               How It Works
             </Link>
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="mt-10 flex flex-wrap items-center justify-center gap-6"
-            initial={prefersReduced ? {} : { opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          >
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-6 animate-fade-slide-up delay-[450ms]">
             {trustBadges.map((badge) => (
               <div key={badge.label} className="flex items-center gap-1.5 text-sm text-text-secondary transition-all duration-200 hover:text-text-primary">
                 <Icon name={badge.icon} className="size-4" />
                 <span className="font-medium">{badge.label}</span>
               </div>
             ))}
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="mx-auto mt-14 flex items-center justify-center gap-8 sm:gap-14"
-            initial={prefersReduced ? {} : { opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
-          >
+          <div className="mx-auto mt-14 flex items-center justify-center gap-8 sm:gap-14 animate-fade-slide-up delay-[550ms]">
             <div className="text-center">
-              <motion.p
-                className="text-5xl font-bold text-nuvora-600 dark:text-nuvora-400 tabular-nums"
-                animate={prefersReduced ? {} : { scale: [1, 1.02, 1] }}
-                transition={{ duration: 2.5, repeat: Infinity }}
-              >
+              <p className="text-5xl font-bold text-nuvora-600 dark:text-nuvora-400 tabular-nums animate-pulse-slow">
                 {(mounted ? count : toolCount).toLocaleString()}+
-              </motion.p>
+              </p>
               <p className="mt-2 text-sm font-medium text-text-secondary">Free Tools</p>
             </div>
             <div className="h-14 w-px bg-border-subtle" />
@@ -176,17 +131,14 @@ export function Hero() {
               <p className="text-3xl font-bold text-text-primary tabular-nums">{catCount}</p>
               <p className="mt-2 text-sm font-medium text-text-secondary">Categories</p>
             </div>
-          </motion.div>
+          </div>
 
           <div ref={statsRef} className="mx-auto mt-14 max-w-2xl text-center">
-            <motion.p
-              className="text-base text-text-secondary"
-              initial={prefersReduced || statsVisible ? {} : { opacity: 0, y: 10 }}
-              animate={statsVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6 }}
+            <p
+              className={`text-base text-text-secondary transition-all duration-700 ${statsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}
             >
               <span className="font-semibold text-text-primary">Every tool runs entirely in your browser</span> — nothing is sent to a server
-            </motion.p>
+            </p>
           </div>
         </div>
       </div>

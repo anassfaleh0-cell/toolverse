@@ -119,7 +119,7 @@ export function VideoCompressor() {
             <p className="font-medium text-zinc-900 dark:text-zinc-100">
               {file.name}
             </p>
-            <p className="mt-1 text-sm text-zinc-500">
+            <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
               {(file.size / 1024 / 1024).toFixed(2)} MB
             </p>
             {isOverLimit && (

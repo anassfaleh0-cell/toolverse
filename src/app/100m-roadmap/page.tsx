@@ -207,7 +207,7 @@ export default function HundredMRoadmapPage() {
               </tbody>
             </table>
           </div>
-          <p className="mt-3 text-xs text-zinc-500">Traffic estimates from Similarweb (2026). Nuvora targets exceed current benchmarks through broader tool catalog, programmatic SEO at scale, API platform, and community marketplace — strategies no single competitor combines.</p>
+          <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-400">Traffic estimates from Similarweb (2026). Nuvora targets exceed current benchmarks through broader tool catalog, programmatic SEO at scale, API platform, and community marketplace — strategies no single competitor combines.</p>
         </div>
       </section>
     </>

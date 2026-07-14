@@ -56,7 +56,7 @@ export default function ImageCompressorPage() {
 
       <section className="border-b border-zinc-200 dark:border-zinc-800">
         <ToolLayout toolSlug={slug}>
-          <ToolHero title={pageTitle} description={pageDescription} breadcrumbs={breadcrumbs}>
+          <ToolHero title={pageTitle} description={pageDescription} introText="Reduce image file sizes without sacrificing quality. Compress JPEG, PNG, and WebP images for faster website loading, email attachments, and social media uploads." breadcrumbs={breadcrumbs}>
             <ImageCompressor />
           </ToolHero>
         </ToolLayout>

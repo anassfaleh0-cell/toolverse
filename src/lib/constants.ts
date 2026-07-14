@@ -1,7 +1,7 @@
 export const SITE_NAME = "Nuvora";
 export const SITE_DESCRIPTION =
   "Free online tools for everyone — DNS lookup, PDF conversion, image editing, security checks, and developer utilities. No signup, no tracking, 100% browser-based.";
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://nuvora.tools";
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://{DOMAIN}";
 
 export const HERO_TAGLINE = "Your browser can do more";
 export const HERO_SUBTITLE = "255+ free tools for DNS, security, PDFs, images, and more — all running locally with zero server uploads. No signup, no tracking.";

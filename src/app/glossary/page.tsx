@@ -158,9 +158,9 @@ export default function GlossaryPage() {
                 <div className="mt-4 space-y-4">
                   {glossary[section].map(({ term, definition }) => (
                     <div key={term}>
-                      <h3 className="font-mono text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+                      <div className="font-mono text-sm font-semibold text-zinc-900 dark:text-zinc-50">
                         {term}
-                      </h3>
+                      </div>
                       <p className="mt-0.5 text-sm text-zinc-600 dark:text-zinc-400">
                         {definition}
                       </p>

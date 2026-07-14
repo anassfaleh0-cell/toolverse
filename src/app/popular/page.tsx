@@ -48,9 +48,9 @@ export default function PopularPage() {
                 <span className="absolute right-3 top-3 rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-semibold text-amber-700 dark:bg-amber-900/40 dark:text-amber-300">
                   Popular
                 </span>
-                <h3 className="font-semibold text-text-primary group-hover:text-nuvora-600 dark:group-hover:text-nuvora-400">
+                <h2 className="text-base font-semibold text-text-primary group-hover:text-nuvora-600 dark:group-hover:text-nuvora-400">
                   {t.name}
-                </h3>
+                </h2>
                 <p className="mt-1 text-sm text-text-secondary line-clamp-2">{t.description}</p>
               </Link>
             ))}

@@ -50,9 +50,9 @@ export default function NewPage() {
                 <span className="absolute right-3 top-3 rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-semibold text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">
                   New
                 </span>
-                <h3 className="font-semibold text-text-primary group-hover:text-nuvora-600 dark:group-hover:text-nuvora-400">
+                <h2 className="text-base font-semibold text-text-primary group-hover:text-nuvora-600 dark:group-hover:text-nuvora-400">
                   {t.name}
-                </h3>
+                </h2>
                 <p className="mt-1 text-sm text-text-secondary line-clamp-2">{t.description}</p>
               </Link>
             ))}

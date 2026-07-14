@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { Button, Alert, Card, Skeleton } from "@/components/ui";
+import { Icon } from "@/components/shared/icon";
 
 export function VolumeBooster() {
   const [file, setFile] = useState<File | null>(null);
@@ -118,7 +119,7 @@ export function VolumeBooster() {
           Volume Boost: {Math.round(boost * 100)}%
         </label>
         <input type="range" min={1} max={3} step={0.1} value={boost} onChange={(e) => setBoost(parseFloat(e.target.value))} className="w-full accent-nuvora-600" />
-        <div className="flex justify-between text-xs text-zinc-500"><span>100% (original)</span><span>300% (max)</span></div>
+        <div className="flex justify-between text-xs text-zinc-500 dark:text-zinc-400"><span>100% (original)</span><span>300% (max)</span></div>
       </div>
 
       <Button onClick={handleBoost} disabled={!file || loading} variant="primary">
@@ -133,7 +134,7 @@ export function VolumeBooster() {
           <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100">Volume boosted to {Math.round(boost * 100)}%</p>
           <audio controls className="mt-3 w-full" src={result} />
           <a href={result} download={`boosted-${file?.name?.replace(/\.[^.]+$/, ".wav") ?? "audio.wav"}`} className="mt-3 inline-flex items-center gap-2 rounded-lg bg-nuvora-600 px-4 py-2 text-sm font-medium text-white hover:bg-nuvora-700">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <Icon name="Download" className="size-4" />
             Download Boosted Audio
           </a>
         </Card>

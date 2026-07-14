@@ -1,13 +1,22 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL } from "@/lib/constants";
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      { userAgent: "GPTBot", disallow: "/" },
-      { userAgent: "CCBot", disallow: "/" },
-      { userAgent: "*", allow: "/", disallow: ["/api/"], crawlDelay: 1 },
+      { userAgent: "Mediapartners-Google", allow: "/" },
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: [
+          "/api/",
+          "/nuvora-api/",
+          "/widgets/",
+          "/*?",
+          "/search",
+          "/tag/",
+        ],
+      },
     ],
-    sitemap: `${SITE_URL}/sitemap.xml`,
+    sitemap: `${process.env.NEXT_PUBLIC_SITE_URL || "https://{DOMAIN}"}/sitemap.xml`,
   };
 }

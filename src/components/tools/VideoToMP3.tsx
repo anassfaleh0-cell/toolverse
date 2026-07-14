@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { Button, Alert, Card } from "@/components/ui";
+import { Icon } from "@/components/shared/icon";
 import { getFFmpeg, formatBytes } from "@/lib/ffmpeg";
 
 const MAX_SIZE = 200 * 1024 * 1024;
@@ -90,7 +91,7 @@ export function VideoToMP3() {
         {file ? (
           <div>
             <p className="font-medium text-zinc-900 dark:text-zinc-100">{file.name}</p>
-            <p className="mt-1 text-sm text-zinc-500">{formatBytes(file.size)}</p>
+            <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{formatBytes(file.size)}</p>
             {isOverLimit && (
               <Alert variant="warning" className="mt-3">
                 File exceeds 200 MB limit — conversion may fail or be very slow.
@@ -133,7 +134,7 @@ export function VideoToMP3() {
           <p className="text-sm text-zinc-500 dark:text-zinc-400">{formatBytes(resultSize)} MP3 file ready</p>
           <audio controls src={resultUrl} className="w-full" />
           <a href={resultUrl} download={outName} className="inline-flex items-center gap-2 rounded-lg bg-nuvora-600 px-4 py-2 text-sm font-medium text-white hover:bg-nuvora-700">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <Icon name="Download" className="size-4" />
             Download {outName}
           </a>
         </Card>

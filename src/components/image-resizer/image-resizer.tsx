@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback } from "react";
 import { Input, Button } from "@/components/ui";
+import { Icon } from "@/components/shared/icon";
 
 interface Dimensions {
   width: number;
@@ -107,11 +108,7 @@ export function ImageResizer() {
                 : "border-zinc-300 hover:border-zinc-400 dark:border-zinc-700 dark:hover:border-zinc-500"
             }`}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="mb-3 size-10 text-zinc-400">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <polyline points="17 8 12 3 7 8" />
-              <line x1="12" y1="3" x2="12" y2="15" />
-            </svg>
+            <Icon name="Upload" className="mb-3 size-10 text-zinc-400" />
             <p className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
               {isDragOver ? "Drop your image here" : "Drop an image or click to upload"}
             </p>

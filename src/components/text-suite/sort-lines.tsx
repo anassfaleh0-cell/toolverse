@@ -64,19 +64,19 @@ export function SortLines() {
           <input type="radio" name="order" checked={order === "desc"} onChange={() => setOrder("desc")} className="h-4 w-4" /> Z-A
         </label>
         <label className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400">
-          <input type="checkbox" checked={ignoreCase} onChange={(e) => setIgnoreCase(e.target.checked)} className="h-4 w-4 rounded border-zinc-300" />
+          <input type="checkbox" checked={ignoreCase} onChange={(e) => setIgnoreCase(e.target.checked)} className="h-4 w-4 rounded border-zinc-300 dark:border-zinc-600" />
           Ignore Case
         </label>
         <label className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400">
-          <input type="checkbox" checked={numericSort} onChange={(e) => setNumericSort(e.target.checked)} className="h-4 w-4 rounded border-zinc-300" />
+          <input type="checkbox" checked={numericSort} onChange={(e) => setNumericSort(e.target.checked)} className="h-4 w-4 rounded border-zinc-300 dark:border-zinc-600" />
           Numeric Sort
         </label>
         <label className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400">
-          <input type="checkbox" checked={removeDuplicates} onChange={(e) => setRemoveDuplicates(e.target.checked)} className="h-4 w-4 rounded border-zinc-300" />
+          <input type="checkbox" checked={removeDuplicates} onChange={(e) => setRemoveDuplicates(e.target.checked)} className="h-4 w-4 rounded border-zinc-300 dark:border-zinc-600" />
           Remove Duplicates
         </label>
         <label className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400">
-          <input type="checkbox" checked={reverseOrder} onChange={(e) => setReverseOrder(e.target.checked)} className="h-4 w-4 rounded border-zinc-300" />
+          <input type="checkbox" checked={reverseOrder} onChange={(e) => setReverseOrder(e.target.checked)} className="h-4 w-4 rounded border-zinc-300 dark:border-zinc-600" />
           Reverse Order
         </label>
       </div>

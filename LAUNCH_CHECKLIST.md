@@ -1,90 +1,63 @@
-# Nuvora — Production Launch Checklist
+## 🚀 Nuvora Pre-Launch Checklist
 
-## Pre-Launch
+### Code Quality
+- [ ] All `console.log` removed
+- [ ] All "Toolverse" references replaced with "Nuvora"
+- [ ] No hardcoded URLs — everything uses `NEXT_PUBLIC_SITE_URL` or `{DOMAIN}` placeholder
+- [ ] `.env.example` created with `NEXT_PUBLIC_SITE_URL`
+- [ ] No unused imports or dead code
+- [ ] All `process.exit()` calls removed
 
-- [ ] Buy domain name (e.g., Nuvora.dev)
-- [ ] Configure domain DNS for Vercel
-- [ ] Connect Vercel project to Git repository
-- [ ] Set all environment variables in Vercel
-- [ ] Verify production build passes: `npm run build`
+### Domain & Environment
+- [ ] Domain purchased: _______
+- [ ] Set `NEXT_PUBLIC_SITE_URL` in `.env.local` to your actual domain
+- [ ] Remove `{DOMAIN}` placeholder — already handled by env var at runtime
+- [ ] Data files still contain `{DOMAIN}` placeholder — resolved at render time via `resolveSchema()` in content-page.tsx
+- [ ] `.env.local` excluded from git (already in `.gitignore`)
 
-## Domain & DNS
+### SEO
+- [ ] Root `layout.tsx` has proper metadata with `SITE_URL` env variable
+- [ ] `sitemap.xml` generated dynamically at `/sitemap.xml`
+- [ ] `robots.txt` configured at `/robots.txt`
+- [ ] Structured data (JSON-LD) on all page types:
+  - [ ] Homepage: Organization + WebSite schema
+  - [ ] Tool pages: WebApplication schema
+  - [ ] Content pages: Article schema + BreadcrumbList
+  - [ ] FAQ sections: FAQPage schema
+- [ ] `not-found.tsx` (404 page) styled with helpful links
+- [ ] Semantic HTML: `<main>`, `<nav>`, `<article>`, `<section>`, `<header>`, `<footer>` in use
+- [ ] Canonical URLs use `SITE_URL` on every page
+- [ ] OG + Twitter card images at `/og-image.svg`
 
-- [ ] Custom domain added to Vercel project
-- [ ] A record: `@` → `76.76.21.21`
-- [ ] CNAME record: `www` → `cname.vercel-dns.com`
-- [ ] HTTPS certificate provisioned (automatic via Vercel)
-- [ ] WWW redirect configured (Nuvora.dev → www or vice versa)
+### Content
+- [ ] Privacy Policy page ready
+- [ ] Terms of Service page ready
+- [ ] FAQ page ready
+- [ ] About page ready
+- [ ] All tool descriptions unique and SEO-optimized
+- [ ] No lorem ipsum or placeholder text remaining
+- [ ] 404 page has helpful navigation to popular tools
 
-## Search Engines
+### Performance
+- [ ] Images use `next/image` or proper sizing
+- [ ] Font loading uses `font-display: swap` (Geist fonts)
+- [ ] Bundle analysis run (`npm run analyze` or `ANALYZE=true next build`)
+- [ ] Lazy loading for below-fold content
+- [ ] Dark mode: zero flicker on load (`next-themes` with `attribute="class"`)
+- [ ] Dark mode verified on ALL pages
+- [ ] Core functionality works without JS (progressive enhancement)
 
-- [ ] Google Search Console property added
-- [ ] Domain verified (DNS TXT record)
-- [ ] Sitemap submitted: `https://Nuvora.dev/sitemap.xml`
-- [ ] Bing Webmaster Tools site added
-- [ ] Sitemap submitted to Bing
-- [ ] IndexNow key generated and deployed
-- [ ] IndexNow key file accessible: `https://Nuvora.dev/{key}.txt`
-- [ ] Request initial indexing (Google → URL Inspection → Request Indexing)
-
-## Analytics & Monitoring
-
-- [ ] Google Analytics 4 property created
-- [ ] `NEXT_PUBLIC_GA4_ID` configured
-- [ ] Microsoft Clarity project created
-- [ ] `NEXT_PUBLIC_CLARITY_ID` configured
-- [ ] Verify analytics fire on page load (browser dev tools)
-- [ ] Verify cookie consent banner appears for first-time visitors
-- [ ] Verify analytics do NOT fire before consent
-
-## Monetization (Optional)
-
-- [ ] Google AdSense account approved
-- [ ] `NEXT_PUBLIC_ADSENSE_ID` configured
-- [ ] Ad units placed on appropriate pages
-
-## Site Verification
-
-- [ ] `robots.txt` accessible: `https://Nuvora.dev/robots.txt`
-- [ ] `sitemap.xml` accessible and valid
-- [ ] `favicon` displays in browser tab
-- [ ] `manifest.webmanifest` accessible
-- [ ] `og:image` renders in social preview (OpenGraph debugger)
-- [ ] Twitter cards render in Twitter card validator
-- [ ] PWA install prompt works (if supported)
-- [ ] 404 page displays properly for non-existent routes
-- [ ] Security headers present (check with securityheaders.com)
-
-## Performance & Quality
-
-- [ ] Lighthouse Performance ≥ 90
-- [ ] Lighthouse Accessibility ≥ 95
-- [ ] Lighthouse Best Practices ≥ 95
-- [ ] Lighthouse SEO ≥ 95
-- [ ] Core Web Vitals pass (LCP ≤ 2.5s, FID ≤ 100ms, CLS ≤ 0.1)
-- [ ] Test on mobile (Chrome DevTools device emulation)
-- [ ] Test on actual mobile device
-- [ ] Test on tablet
-- [ ] Test on slow network (3G throttling)
-- [ ] Test with JavaScript disabled (graceful fallback)
-
-## Content Verification
-
-- [ ] Home page loads and displays correctly
-- [ ] All tool pages load without errors
-- [ ] All content pages load without errors
-- [ ] All category and tag pages load
-- [ ] Search functionality works
-- [ ] Bookmark tool works
-- [ ] Collections feature works
-
-## Post-Launch (First Week)
-
-- [ ] Monitor Vercel analytics dashboard
-- [ ] Monitor Google Search Console for crawl errors
-- [ ] Monitor Google Analytics for traffic
-- [ ] Fix any 404 errors from Search Console
-- [ ] Monitor Core Web Vitals in Search Console
-- [ ] Check index coverage in Search Console
-- [ ] Submit additional URLs for indexing
-- [ ] Monitor server logs for errors
+### Launch Day
+- [ ] Domain purchased: _______
+- [ ] Update `NEXT_PUBLIC_SITE_URL` in production env (Vercel dashboard)
+- [ ] Run `npm run build` — verify zero errors
+- [ ] Run `npm run lint` — verify zero warnings
+- [ ] Deploy to production (Vercel)
+- [ ] Verify all 255+ tools load correctly
+- [ ] Test dark mode on all pages (homepage, tool pages, content pages, 404)
+- [ ] Test on mobile + desktop
+- [ ] Submit sitemap to Google Search Console
+- [ ] Submit sitemap to Bing Webmaster Tools
+- [ ] Test structured data with Google Rich Results Test
+- [ ] Run Lighthouse audit (target 90+ all categories)
+- [ ] Share on social media

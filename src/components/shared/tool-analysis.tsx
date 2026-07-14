@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Icon } from "@/components/shared/icon";
 
 interface ToolAnalysisProps {
   category?: string;
@@ -88,9 +89,7 @@ export function ToolAnalysis({ category }: ToolAnalysisProps) {
           }`}
           aria-expanded={show === "howto"}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-3.5">
-            <circle cx="12" cy="12" r="10" /><path d="M12 16v-4" /><path d="M12 8h.01" />
-          </svg>
+          <Icon name="Info" className="size-3.5" />
           How to Use
         </button>
         <button
@@ -103,9 +102,7 @@ export function ToolAnalysis({ category }: ToolAnalysisProps) {
           }`}
           aria-expanded={show === "expert"}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-3.5">
-            <path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-          </svg>
+          <Icon name="PenSquare" className="size-3.5" />
           Expert Insight
         </button>
       </div>

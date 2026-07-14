@@ -2,6 +2,7 @@
 
 import { useState, useRef, type ReactNode } from "react";
 import { Button, Alert, Card } from "@/components/ui";
+import { Icon } from "@/components/shared/icon";
 
 const synonyms: Record<string, string[]> = {
   "good": ["excellent", "superb", "outstanding", "quality", "fine"],
@@ -742,25 +743,25 @@ export function ParaphrasingTool() {
             <Button onClick={handleCopy} variant="secondary" size="md">
               {copied ? (
                 <span className="flex items-center gap-1.5">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4"><polyline points="20 6 9 17 4 12"/></svg>
+                  <Icon name="Check" className="size-4" />
                   Copied!
                 </span>
               ) : (
                 <span className="flex items-center gap-1.5">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  <Icon name="Copy" className="size-4" />
                   Copy to Clipboard
                 </span>
               )}
             </Button>
             <Button onClick={handleDownload} variant="secondary" size="md">
               <span className="flex items-center gap-1.5">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <Icon name="Download" className="size-4" />
                 Download
               </span>
             </Button>
             <Button onClick={handleParaphrase} variant="primary" size="md">
               <span className="flex items-center gap-1.5">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                <Icon name="RefreshCw" className="size-4" />
                 Regenerate
               </span>
             </Button>

@@ -44,7 +44,7 @@ export default function NuvoraAiPage() {
               { title: "Fix It", desc: "Found a problem? Nuvora AI walks you through the exact steps to resolve it, from DNS record fixes to security header configuration." },
             ].map((f) => (
               <div key={f.title} className="rounded-2xl border border-border-subtle bg-surface p-6">
-                <h3 className="text-lg font-semibold text-text-primary">{f.title}</h3>
+                <h2 className="text-lg font-semibold text-text-primary">{f.title}</h2>
                 <p className="mt-2 text-sm text-text-secondary">{f.desc}</p>
               </div>
             ))}
@@ -65,7 +65,7 @@ export default function NuvoraAiPage() {
               <div key={step} className="flex gap-4">
                 <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-nuvora-100 text-sm font-bold text-nuvora-600 dark:bg-nuvora-900/50 dark:text-nuvora-400">{step}</span>
                 <div>
-                  <h3 className="font-semibold text-text-primary">{title}</h3>
+                  <h2 className="text-base font-semibold text-text-primary">{title}</h2>
                   <p className="mt-1 text-sm text-text-secondary">{desc}</p>
                 </div>
               </div>

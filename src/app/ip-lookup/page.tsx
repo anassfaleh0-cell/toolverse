@@ -124,7 +124,8 @@ export default function IpLookupPage() {
         <ToolLayout toolSlug={slug}>
           <ToolHero
             title="IP Lookup"
-            description="Trace any IP address to its geographic origin, ISP, and ASN. Detect proxies, VPNs, and hosting providers for security and debugging."
+            description={pageDescription}
+            introText="Trace any IP address to its geographic location, ISP, and ASN. Detect proxies, VPNs, and hosting providers. Essential for network troubleshooting and security analysis."
             breadcrumbs={breadcrumbs}
           >
             <Suspense fallback={<ToolSkeleton count={4} columns={1} />}>

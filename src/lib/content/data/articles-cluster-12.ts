@@ -15,7 +15,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 18,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Anass Faleh", url: "https://toolverse.com" },
+    author: { name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -23,10 +23,10 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
       description:
         "Learn how DNS translates domain names into IP addresses. Complete guide to DNS resolution, record types, and how the global DNS system works.",
       author: { "@type": "Person", name: "Anass Faleh" },
-      publisher: { "@type": "Organization", name: "Toolverse" },
+      publisher: { "@type": "Organization", name: "Nuvora" },
       datePublished: "2026-07-11",
-      mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.com/articles/what-is-dns-how-does-it-work" },
-      image: "https://toolverse.com/images/articles/dns-guide.jpg",
+      mainEntityOfPage: { "@type": "WebPage", "@id": "{DOMAIN}/blog/what-is-dns-how-does-it-work" },
+      image: "{DOMAIN}/images/articles/dns-guide.jpg",
       hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
@@ -127,7 +127,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 12,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Anass Faleh", url: "https://toolverse.com" },
+    author: { name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -135,10 +135,10 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
       description:
         "Learn how to perform DNS lookups for any domain. Check A, MX, CNAME, TXT, and NS records using command-line and online tools.",
       author: { "@type": "Person", name: "Anass Faleh" },
-      publisher: { "@type": "Organization", name: "Toolverse" },
+      publisher: { "@type": "Organization", name: "Nuvora" },
       datePublished: "2026-07-11",
-      mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.com/articles/complete-dns-lookup-guide" },
-      image: "https://toolverse.com/images/articles/dns-lookup-guide.jpg",
+      mainEntityOfPage: { "@type": "WebPage", "@id": "{DOMAIN}/blog/complete-dns-lookup-guide" },
+      image: "{DOMAIN}/images/articles/dns-lookup-guide.jpg",
       hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
@@ -239,7 +239,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Anass Faleh", url: "https://toolverse.com" },
+    author: { name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -247,10 +247,10 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
       description:
         "Find your public and private IP address on any device. Learn the difference between IPv4 and IPv6 and why your IP matters.",
       author: { "@type": "Person", name: "Anass Faleh" },
-      publisher: { "@type": "Organization", name: "Toolverse" },
+      publisher: { "@type": "Organization", name: "Nuvora" },
       datePublished: "2026-07-11",
-      mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.com/articles/how-to-check-your-ip-address" },
-      image: "https://toolverse.com/images/articles/ip-address-guide.jpg",
+      mainEntityOfPage: { "@type": "WebPage", "@id": "{DOMAIN}/blog/how-to-check-your-ip-address" },
+      image: "{DOMAIN}/images/articles/ip-address-guide.jpg",
       hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
@@ -308,7 +308,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
       },
       {
         heading: "Finding Your Public IP Address",
-        body: "Your public IP address is the address that identifies your entire network to the internet. It is assigned by your ISP and is shared by all devices on your local network through NAT. Finding your public IP is straightforward. The simplest method is to use our What Is My IP tool at toolverse.com - it displays your public IPv4 and IPv6 addresses, your ISP, and your approximate geolocation instantly. Alternatively search Google for what is my IP and the search result displays your public IP at the top. Command-line methods also work: on Windows run nslookup myip.opendns.com resolver1.opendns.com. On Linux or macOS run curl ifconfig.me or curl ipinfo.io/ip. Your public IP can be either dynamic or static. Dynamic IPs change periodically and are the default for most residential connections. Static IPs remain constant and are used for servers, VPN access, and VoIP systems. To check if your IP is static or dynamic, note your IP today and check after rebooting your modem. Your public IP reveals your ISP and general geographic location. This is why privacy-conscious users employ VPNs to mask their public IP.",
+        body: "Your public IP address is the address that identifies your entire network to the internet. It is assigned by your ISP and is shared by all devices on your local network through NAT. Finding your public IP is straightforward. The simplest method is to use our What Is My IP tool at {DOMAIN} - it displays your public IPv4 and IPv6 addresses, your ISP, and your approximate geolocation instantly. Alternatively search Google for what is my IP and the search result displays your public IP at the top. Command-line methods also work: on Windows run nslookup myip.opendns.com resolver1.opendns.com. On Linux or macOS run curl ifconfig.me or curl ipinfo.io/ip. Your public IP can be either dynamic or static. Dynamic IPs change periodically and are the default for most residential connections. Static IPs remain constant and are used for servers, VPN access, and VoIP systems. To check if your IP is static or dynamic, note your IP today and check after rebooting your modem. Your public IP reveals your ISP and general geographic location. This is why privacy-conscious users employ VPNs to mask their public IP.",
       },
       {
         heading: "Finding Your Private IP Address on Every Platform",
@@ -347,7 +347,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 12,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Anass Faleh", url: "https://toolverse.com" },
+    author: { name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -355,10 +355,10 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
       description:
         "Learn how reverse DNS lookups work, why email servers require PTR records, and how to perform rDNS lookups for any IP address.",
       author: { "@type": "Person", name: "Anass Faleh" },
-      publisher: { "@type": "Organization", name: "Toolverse" },
+      publisher: { "@type": "Organization", name: "Nuvora" },
       datePublished: "2026-07-11",
-      mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.com/articles/reverse-dns-lookup-explained" },
-      image: "https://toolverse.com/images/articles/reverse-dns-lookup.jpg",
+      mainEntityOfPage: { "@type": "WebPage", "@id": "{DOMAIN}/blog/reverse-dns-lookup-explained" },
+      image: "{DOMAIN}/images/articles/reverse-dns-lookup.jpg",
       hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
@@ -424,7 +424,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
       },
       {
         heading: "How to Perform a Reverse DNS Lookup",
-        body: "Performing a reverse DNS lookup is straightforward using both command-line tools and online services. On Linux and macOS use the dig command with the -x flag: dig -x 8.8.8.8. This returns the PTR record for the IP. Use +short for concise output: dig -x 8.8.8.8 +short returns dns.google. On Windows nslookup handles reverse lookups when given an IP: nslookup 8.8.8.8. The tool automatically detects an IP and performs a reverse lookup. For automation PowerShell provides Resolve-DnsName -Name 8.8.8.8 -Type PTR. The host command on Linux is also convenient: host 8.8.8.8. Online reverse DNS lookup tools offer advantages over CLI methods: they provide a clean interface and can check multiple record types simultaneously. Our Reverse DNS Lookup tool at toolverse.com accepts any IPv4 or IPv6 address and returns the PTR record, the authoritative nameserver for the reverse zone, and optionally performs forward-confirmed verification. For bulk reverse DNS lookups use a script: for ip in $(cat ip-list.txt); do echo $ip: $(dig -x $ip +short); done. Python scripts using socket.gethostbyaddr also handle reverse lookups programmatically. Note that some IPs may return no PTR record resulting in an NXDOMAIN response.",
+        body: "Performing a reverse DNS lookup is straightforward using both command-line tools and online services. On Linux and macOS use the dig command with the -x flag: dig -x 8.8.8.8. This returns the PTR record for the IP. Use +short for concise output: dig -x 8.8.8.8 +short returns dns.google. On Windows nslookup handles reverse lookups when given an IP: nslookup 8.8.8.8. The tool automatically detects an IP and performs a reverse lookup. For automation PowerShell provides Resolve-DnsName -Name 8.8.8.8 -Type PTR. The host command on Linux is also convenient: host 8.8.8.8. Online reverse DNS lookup tools offer advantages over CLI methods: they provide a clean interface and can check multiple record types simultaneously. Our Reverse DNS Lookup tool at {DOMAIN} accepts any IPv4 or IPv6 address and returns the PTR record, the authoritative nameserver for the reverse zone, and optionally performs forward-confirmed verification. For bulk reverse DNS lookups use a script: for ip in $(cat ip-list.txt); do echo $ip: $(dig -x $ip +short); done. Python scripts using socket.gethostbyaddr also handle reverse lookups programmatically. Note that some IPs may return no PTR record resulting in an NXDOMAIN response.",
       },
       {
         heading: "Setting Up PTR Records with Your Hosting Provider",
@@ -459,7 +459,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 15,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Anass Faleh", url: "https://toolverse.com" },
+    author: { name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -467,10 +467,10 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
       description:
         "Fix common DNS problems like DNS_PROBE_FINISHED_NXDOMAIN, slow resolution, and propagation delays. Step-by-step troubleshooting guide.",
       author: { "@type": "Person", name: "Anass Faleh" },
-      publisher: { "@type": "Organization", name: "Toolverse" },
+      publisher: { "@type": "Organization", name: "Nuvora" },
       datePublished: "2026-07-11",
-      mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.com/articles/how-to-troubleshoot-dns-issues" },
-      image: "https://toolverse.com/images/articles/troubleshoot-dns.jpg",
+      mainEntityOfPage: { "@type": "WebPage", "@id": "{DOMAIN}/blog/how-to-troubleshoot-dns-issues" },
+      image: "{DOMAIN}/images/articles/troubleshoot-dns.jpg",
       hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
@@ -571,7 +571,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 12,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Anass Faleh", url: "https://toolverse.com" },
+    author: { name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -579,10 +579,10 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
       description:
         "Understand DNS propagation delays, TTL values, and how global DNS updates propagate. Learn to check propagation status worldwide.",
       author: { "@type": "Person", name: "Anass Faleh" },
-      publisher: { "@type": "Organization", name: "Toolverse" },
+      publisher: { "@type": "Organization", name: "Nuvora" },
       datePublished: "2026-07-11",
-      mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.com/articles/dns-propagation-complete-guide" },
-      image: "https://toolverse.com/images/articles/dns-propagation.jpg",
+      mainEntityOfPage: { "@type": "WebPage", "@id": "{DOMAIN}/blog/dns-propagation-complete-guide" },
+      image: "{DOMAIN}/images/articles/dns-propagation.jpg",
       hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
@@ -683,7 +683,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 12,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Anass Faleh", url: "https://toolverse.com" },
+    author: { name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -691,10 +691,10 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
       description:
         "Verify SSL certificate installation, expiration dates, and chain validity. Ensure your website is secure with proper SSL/TLS configuration.",
       author: { "@type": "Person", name: "Anass Faleh" },
-      publisher: { "@type": "Organization", name: "Toolverse" },
+      publisher: { "@type": "Organization", name: "Nuvora" },
       datePublished: "2026-07-11",
-      mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.com/articles/how-to-check-ssl-certificate" },
-      image: "https://toolverse.com/images/articles/ssl-checker.jpg",
+      mainEntityOfPage: { "@type": "WebPage", "@id": "{DOMAIN}/blog/how-to-check-ssl-certificate" },
+      image: "{DOMAIN}/images/articles/ssl-checker.jpg",
       hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
@@ -791,7 +791,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Anass Faleh", url: "https://toolverse.com" },
+    author: { name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -799,10 +799,10 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
       description:
         "Learn how to use WHOIS lookups to find domain owners, registration dates, and nameservers. Complete guide with tools and privacy tips.",
       author: { "@type": "Person", name: "Anass Faleh" },
-      publisher: { "@type": "Organization", name: "Toolverse" },
+      publisher: { "@type": "Organization", name: "Nuvora" },
       datePublished: "2026-07-11",
-      mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.com/articles/whois-lookup-guide" },
-      image: "https://toolverse.com/images/articles/whois-guide.jpg",
+      mainEntityOfPage: { "@type": "WebPage", "@id": "{DOMAIN}/blog/whois-lookup-guide" },
+      image: "{DOMAIN}/images/articles/whois-guide.jpg",
       hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
@@ -860,7 +860,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
       },
       {
         heading: "How to Perform a WHOIS Lookup",
-        body: "WHOIS lookups can be performed via command line, online tools, or through your registrar interface. On Linux and macOS the whois command is built in: whois example.com. For a specific TLD: whois -h whois.verisign-grs.com example.com directs the query to Verisign .com registry directly. On Windows there is no built-in whois command but you can install Sysinternals whois utility, use WSL, or use a PowerShell script that queries WHOIS servers via TCP port 43. Online WHOIS lookup tools provide the most accessible interface. Our WHOIS Lookup tool at toolverse.com accepts any domain name and returns a cleanly formatted record showing registrar, creation and expiration dates, nameservers, and registrant information where available. The tool also handles WHOIS for IP addresses to show which organization owns the block and who to contact for abuse reports. Online tools handle the complexity of routing queries to the correct WHOIS server automatically. For domain investors and security researchers batch WHOIS lookups are essential: for domain in $(cat domains.txt); do whois $domain | grep -E Creation Date,Registry Expiry Date,Name Server >> whois-data.txt; done. Python libraries like python-whois provide programmatic access. RDAP is preferred for automated lookups offering structured JSON: curl https://rdap.verisign.com/com/v1/domain/example.com.",
+        body: "WHOIS lookups can be performed via command line, online tools, or through your registrar interface. On Linux and macOS the whois command is built in: whois example.com. For a specific TLD: whois -h whois.verisign-grs.com example.com directs the query to Verisign .com registry directly. On Windows there is no built-in whois command but you can install Sysinternals whois utility, use WSL, or use a PowerShell script that queries WHOIS servers via TCP port 43. Online WHOIS lookup tools provide the most accessible interface. Our WHOIS Lookup tool at {DOMAIN} accepts any domain name and returns a cleanly formatted record showing registrar, creation and expiration dates, nameservers, and registrant information where available. The tool also handles WHOIS for IP addresses to show which organization owns the block and who to contact for abuse reports. Online tools handle the complexity of routing queries to the correct WHOIS server automatically. For domain investors and security researchers batch WHOIS lookups are essential: for domain in $(cat domains.txt); do whois $domain | grep -E Creation Date,Registry Expiry Date,Name Server >> whois-data.txt; done. Python libraries like python-whois provide programmatic access. RDAP is preferred for automated lookups offering structured JSON: curl https://rdap.verisign.com/com/v1/domain/example.com.",
       },
       {
         heading: "WHOIS Privacy Protection and GDPR Impact",
@@ -899,7 +899,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 10,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Anass Faleh", url: "https://toolverse.com" },
+    author: { name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -907,10 +907,10 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
       description:
         "Learn how to use ping tests for network diagnosis. Measure latency, check packet loss, and troubleshoot connectivity issues.",
       author: { "@type": "Person", name: "Anass Faleh" },
-      publisher: { "@type": "Organization", name: "Toolverse" },
+      publisher: { "@type": "Organization", name: "Nuvora" },
       datePublished: "2026-07-11",
-      mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.com/articles/ping-test-guide-webmasters" },
-      image: "https://toolverse.com/images/articles/ping-test-guide.jpg",
+      mainEntityOfPage: { "@type": "WebPage", "@id": "{DOMAIN}/blog/ping-test-guide-webmasters" },
+      image: "{DOMAIN}/images/articles/ping-test-guide.jpg",
       hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
@@ -1011,7 +1011,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 18,
     publishedAt: "2026-07-11",
     updatedAt: "2026-07-11",
-    author: { name: "Anass Faleh", url: "https://toolverse.com" },
+    author: { name: "Anass Faleh", url: "{DOMAIN}/authors/founder" },
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -1019,10 +1019,10 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
       description:
         "Protect your network with proven security best practices. Covering firewalls, DNS security, VPNs, and monitoring for small businesses.",
       author: { "@type": "Person", name: "Anass Faleh" },
-      publisher: { "@type": "Organization", name: "Toolverse" },
+      publisher: { "@type": "Organization", name: "Nuvora" },
       datePublished: "2026-07-11",
-      mainEntityOfPage: { "@type": "WebPage", "@id": "https://toolverse.com/articles/network-security-guide" },
-      image: "https://toolverse.com/images/articles/network-security-guide.jpg",
+      mainEntityOfPage: { "@type": "WebPage", "@id": "{DOMAIN}/blog/network-security-guide" },
+      image: "{DOMAIN}/images/articles/network-security-guide.jpg",
       hasPart: [{
         "@type": "FAQPage",
         mainEntity: [
@@ -1104,7 +1104,7 @@ export const CLUSTER_12_ARTICLES: ContentPiece[] = [
       },
       {
         heading: "Conclusion",
-        body: "Network security in 2026 requires a layered approach combining firewalls, DNS security, encryption, VPNs, monitoring, and incident response planning. Start with the fundamentals: a properly configured firewall, DNSSEC for your domains, SSL certificates on all services, and a VPN for remote access. Build on that foundation with network monitoring, intrusion detection, and a documented incident response plan. Security is not a destination but an ongoing process of improvement. Use the tools available on Toolverse including our DNS Lookup, SSL Certificate Checker, Ping Test, and network security tools to assess and monitor your security posture. Stay informed about emerging threats and update your defenses accordingly. The effort you invest in network security today protects your business, your customers, and your reputation tomorrow.",
+        body: "Network security in 2026 requires a layered approach combining firewalls, DNS security, encryption, VPNs, monitoring, and incident response planning. Start with the fundamentals: a properly configured firewall, DNSSEC for your domains, SSL certificates on all services, and a VPN for remote access. Build on that foundation with network monitoring, intrusion detection, and a documented incident response plan. Security is not a destination but an ongoing process of improvement. Use the tools available on Nuvora including our DNS Lookup, SSL Certificate Checker, Ping Test, and network security tools to assess and monitor your security posture. Stay informed about emerging threats and update your defenses accordingly. The effort you invest in network security today protects your business, your customers, and your reputation tomorrow.",
       },
     ],
   },

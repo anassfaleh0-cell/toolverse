@@ -175,11 +175,11 @@ export function WhoisLookup() {
             riskLevel={daysUntilExpiry !== null && daysUntilExpiry > 90 ? "low" : daysUntilExpiry !== null && daysUntilExpiry > 0 ? "medium" : daysUntilExpiry !== null ? "critical" : "medium"}
             nextAction={daysUntilExpiry !== null && daysUntilExpiry < 90 ? "Renew your domain as soon as possible to avoid service disruption or loss of the domain." : "Your domain registration looks healthy. No immediate action needed."}
           >
-            {domainAge && <div className="text-center"><p className="text-xs text-zinc-500">Domain Age</p><p className="text-lg font-bold text-zinc-900 dark:text-zinc-50">{domainAge}</p></div>}
+            {domainAge && <div className="text-center"><p className="text-xs text-zinc-500 dark:text-zinc-400">Domain Age</p><p className="text-lg font-bold text-zinc-900 dark:text-zinc-50">{domainAge}</p></div>}
             {daysUntilExpiry !== null && <ExpiryBar daysRemaining={daysUntilExpiry} />}
-            {registrar && <div className="text-center"><p className="text-xs text-zinc-500">Registrar</p><p className="text-sm font-medium text-zinc-900 dark:text-zinc-50">{registrar}</p></div>}
+            {registrar && <div className="text-center"><p className="text-xs text-zinc-500 dark:text-zinc-400">Registrar</p><p className="text-sm font-medium text-zinc-900 dark:text-zinc-50">{registrar}</p></div>}
             <div className="col-span-full">
-              <p className="mb-2 text-xs font-medium text-zinc-500">Domain Lifecycle</p>
+              <p className="mb-2 text-xs font-medium text-zinc-500 dark:text-zinc-400">Domain Lifecycle</p>
               <Timeline events={[
                 ...(createdDate ? [{ date: new Date(createdDate).toLocaleDateString(), label: "Registered", type: "past" as const }] : []),
                 { date: new Date().toLocaleDateString(), label: "Today", type: "present" as const },

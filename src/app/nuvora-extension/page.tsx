@@ -44,7 +44,7 @@ export default function NuvoraExtensionPage() {
               { title: "Quick Actions", desc: "Customize your toolbar with your most-used tools for instant access." },
             ].map(({ title, desc }) => (
               <div key={title} className="rounded-2xl border border-border-subtle bg-surface p-6">
-                <h3 className="font-semibold text-text-primary">{title}</h3>
+                <h2 className="text-base font-semibold text-text-primary">{title}</h2>
                 <p className="mt-2 text-sm text-text-secondary">{desc}</p>
               </div>
             ))}

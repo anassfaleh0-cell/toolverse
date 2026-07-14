@@ -6,7 +6,7 @@ export const BRAND = {
   description:
     "Nuvora provides powerful free online tools for everyone — from developers to designers, students to startups. Every tool runs entirely in your browser.",
   url: SITE_URL,
-  email: "hello@nuvora.tools",
+  email: `hello@${new URL(SITE_URL).hostname}`,
   founded: "2026",
 
   mission:

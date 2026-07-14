@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { Button, Alert, Card } from "@/components/ui";
+import { Icon } from "@/components/shared/icon";
 import { getFFmpeg, formatBytes } from "@/lib/ffmpeg";
 
 interface FormatConfig {
@@ -157,7 +158,7 @@ export function AudioConverter() {
           <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100">Conversion complete</p>
           <audio controls src={result} className="w-full" />
           <a href={result} download={outName} className="inline-flex items-center gap-2 rounded-lg bg-nuvora-600 px-4 py-2 text-sm font-medium text-white hover:bg-nuvora-700">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <Icon name="Download" className="size-4" />
             Download {outName}
           </a>
         </Card>

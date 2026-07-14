@@ -1,79 +1,45 @@
 import type { ComponentType } from "react";
-import { UptimeChecker } from "@/components/tools/UptimeChecker";
-import { SpeedTest } from "@/components/tools/SpeedTest";
-import { AudioConverter } from "@/components/tools/AudioConverter";
-import { VideoCompressor } from "@/components/tools/VideoCompressor";
-import { MP3Cutter } from "@/components/tools/MP3Cutter";
-import { VideoToGIF } from "@/components/tools/VideoToGIF";
-import { AudioMerger } from "@/components/tools/AudioMerger";
-import { VideoResizer } from "@/components/tools/VideoResizer";
-import { AudioExtractor } from "@/components/tools/AudioExtractor";
-import { VolumeBooster } from "@/components/tools/VolumeBooster";
-import { VideoToMP3 } from "@/components/tools/VideoToMP3";
-import { ScreenRecorder } from "@/components/tools/ScreenRecorder";
-import { VideoConverter } from "@/components/tools/VideoConverter";
-import { GIFToMP4 } from "@/components/tools/GIFToMP4";
-import { ContentGenerator } from "@/components/tools/AIContentGenerator";
-import { ParaphrasingTool } from "@/components/tools/AIParaphrasingTool";
-import { DomainStrength } from "@/components/tools/DomainStrength";
-import { SalesTaxCalculator } from "@/components/tools/SalesTaxCalculator";
-import { DiscountCalculator } from "@/components/tools/DiscountCalculator";
-import { GradeCalculator } from "@/components/tools/GradeCalculator";
-import { FractionCalculator } from "@/components/tools/FractionCalculator";
-import { TimeZoneConverter } from "@/components/tools/TimeZoneConverter";
-import { Stopwatch } from "@/components/tools/Stopwatch";
-import { PomodoroTimer } from "@/components/tools/PomodoroTimer";
-import { CSSBoxShadowGenerator } from "@/components/tools/CSSBoxShadowGenerator";
-import { CSSBorderRadiusGenerator } from "@/components/tools/CSSBorderRadiusGenerator";
-import { TextToSpeech } from "@/components/tools/TextToSpeech";
-import { EmojiPicker } from "@/components/tools/EmojiPicker";
-import { RandomColorGenerator } from "@/components/tools/RandomColorGenerator";
-import { PercentageChangeCalculator } from "@/components/tools/PercentageChangeCalculator";
-import { BinaryToText } from "@/components/tools/BinaryToText";
-import { RomanNumeralConverter } from "@/components/tools/RomanNumeralConverter";
-import { BodyFatCalculator } from "@/components/tools/BodyFatCalculator";
-import { FontSizeConverter } from "@/components/tools/FontSizeConverter";
-import { RandomNamePicker } from "@/components/tools/RandomNamePicker";
-import { ColorContrastChecker } from "@/components/tools/ColorContrastChecker";
-import { DataSizeConverter } from "@/components/tools/DataSizeConverter";
+import dynamic from "next/dynamic";
+import { ToolSkeleton } from "@/components/tools/tool-skeleton";
+
 const componentRegistry: Record<string, ComponentType> = {
-  "uptime-checker": UptimeChecker,
-  "speed-test": SpeedTest,
-  "audio-converter": AudioConverter,
-  "video-compressor": VideoCompressor,
-  "mp3-cutter": MP3Cutter,
-  "video-to-gif": VideoToGIF,
-  "audio-merger": AudioMerger,
-  "video-resizer": VideoResizer,
-  "audio-extractor": AudioExtractor,
-  "volume-booster": VolumeBooster,
-  "video-to-mp3": VideoToMP3,
-  "screen-recorder": ScreenRecorder,
-  "video-converter": VideoConverter,
-  "gif-to-mp4": GIFToMP4,
-  "ai-content-generator": ContentGenerator,
-  "ai-paraphrasing-tool": ParaphrasingTool,
-  "page-authority": DomainStrength,
-  "sales-tax-calculator": SalesTaxCalculator,
-  "discount-calculator": DiscountCalculator,
-  "grade-calculator": GradeCalculator,
-  "fraction-calculator": FractionCalculator,
-  "time-zone-converter": TimeZoneConverter,
-  "stopwatch": Stopwatch,
-  "pomodoro-timer": PomodoroTimer,
-  "css-box-shadow": CSSBoxShadowGenerator,
-  "css-border-radius": CSSBorderRadiusGenerator,
-  "text-to-speech": TextToSpeech,
-  "emoji-picker": EmojiPicker,
-  "random-color-generator": RandomColorGenerator,
-  "percentage-change-calculator": PercentageChangeCalculator,
-  "binary-to-text": BinaryToText,
-  "roman-numeral-converter": RomanNumeralConverter,
-  "body-fat-calculator": BodyFatCalculator,
-  "font-size-converter": FontSizeConverter,
-  "random-name-picker": RandomNamePicker,
-  "color-contrast-checker": ColorContrastChecker,
-  "data-size-converter": DataSizeConverter,
+  "uptime-checker": dynamic(() => import("@/components/tools/UptimeChecker").then((m) => ({ default: m.UptimeChecker })), { loading: ToolSkeleton }),
+  "speed-test": dynamic(() => import("@/components/tools/SpeedTest").then((m) => ({ default: m.SpeedTest })), { loading: ToolSkeleton }),
+  "audio-converter": dynamic(() => import("@/components/tools/AudioConverter").then((m) => ({ default: m.AudioConverter })), { loading: ToolSkeleton }),
+  "video-compressor": dynamic(() => import("@/components/tools/VideoCompressor").then((m) => ({ default: m.VideoCompressor })), { loading: ToolSkeleton }),
+  "mp3-cutter": dynamic(() => import("@/components/tools/MP3Cutter").then((m) => ({ default: m.MP3Cutter })), { loading: ToolSkeleton }),
+  "video-to-gif": dynamic(() => import("@/components/tools/VideoToGIF").then((m) => ({ default: m.VideoToGIF })), { loading: ToolSkeleton }),
+  "audio-merger": dynamic(() => import("@/components/tools/AudioMerger").then((m) => ({ default: m.AudioMerger })), { loading: ToolSkeleton }),
+  "video-resizer": dynamic(() => import("@/components/tools/VideoResizer").then((m) => ({ default: m.VideoResizer })), { loading: ToolSkeleton }),
+  "audio-extractor": dynamic(() => import("@/components/tools/AudioExtractor").then((m) => ({ default: m.AudioExtractor })), { loading: ToolSkeleton }),
+  "volume-booster": dynamic(() => import("@/components/tools/VolumeBooster").then((m) => ({ default: m.VolumeBooster })), { loading: ToolSkeleton }),
+  "video-to-mp3": dynamic(() => import("@/components/tools/VideoToMP3").then((m) => ({ default: m.VideoToMP3 })), { loading: ToolSkeleton }),
+  "screen-recorder": dynamic(() => import("@/components/tools/ScreenRecorder").then((m) => ({ default: m.ScreenRecorder })), { loading: ToolSkeleton }),
+  "video-converter": dynamic(() => import("@/components/tools/VideoConverter").then((m) => ({ default: m.VideoConverter })), { loading: ToolSkeleton }),
+  "gif-to-mp4": dynamic(() => import("@/components/tools/GIFToMP4").then((m) => ({ default: m.GIFToMP4 })), { loading: ToolSkeleton }),
+  "ai-content-generator": dynamic(() => import("@/components/tools/AIContentGenerator").then((m) => ({ default: m.ContentGenerator })), { loading: ToolSkeleton }),
+  "ai-paraphrasing-tool": dynamic(() => import("@/components/tools/AIParaphrasingTool").then((m) => ({ default: m.ParaphrasingTool })), { loading: ToolSkeleton }),
+  "page-authority": dynamic(() => import("@/components/tools/DomainStrength").then((m) => ({ default: m.DomainStrength })), { loading: ToolSkeleton }),
+  "sales-tax-calculator": dynamic(() => import("@/components/tools/SalesTaxCalculator").then((m) => ({ default: m.SalesTaxCalculator })), { loading: ToolSkeleton }),
+  "discount-calculator": dynamic(() => import("@/components/tools/DiscountCalculator").then((m) => ({ default: m.DiscountCalculator })), { loading: ToolSkeleton }),
+  "grade-calculator": dynamic(() => import("@/components/tools/GradeCalculator").then((m) => ({ default: m.GradeCalculator })), { loading: ToolSkeleton }),
+  "fraction-calculator": dynamic(() => import("@/components/tools/FractionCalculator").then((m) => ({ default: m.FractionCalculator })), { loading: ToolSkeleton }),
+  "time-zone-converter": dynamic(() => import("@/components/tools/TimeZoneConverter").then((m) => ({ default: m.TimeZoneConverter })), { loading: ToolSkeleton }),
+  "stopwatch": dynamic(() => import("@/components/tools/Stopwatch").then((m) => ({ default: m.Stopwatch })), { loading: ToolSkeleton }),
+  "pomodoro-timer": dynamic(() => import("@/components/tools/PomodoroTimer").then((m) => ({ default: m.PomodoroTimer })), { loading: ToolSkeleton }),
+  "css-box-shadow": dynamic(() => import("@/components/tools/CSSBoxShadowGenerator").then((m) => ({ default: m.CSSBoxShadowGenerator })), { loading: ToolSkeleton }),
+  "css-border-radius": dynamic(() => import("@/components/tools/CSSBorderRadiusGenerator").then((m) => ({ default: m.CSSBorderRadiusGenerator })), { loading: ToolSkeleton }),
+  "text-to-speech": dynamic(() => import("@/components/tools/TextToSpeech").then((m) => ({ default: m.TextToSpeech })), { loading: ToolSkeleton }),
+  "emoji-picker": dynamic(() => import("@/components/tools/EmojiPicker").then((m) => ({ default: m.EmojiPicker })), { loading: ToolSkeleton }),
+  "random-color-generator": dynamic(() => import("@/components/tools/RandomColorGenerator").then((m) => ({ default: m.RandomColorGenerator })), { loading: ToolSkeleton }),
+  "percentage-change-calculator": dynamic(() => import("@/components/tools/PercentageChangeCalculator").then((m) => ({ default: m.PercentageChangeCalculator })), { loading: ToolSkeleton }),
+  "binary-to-text": dynamic(() => import("@/components/tools/BinaryToText").then((m) => ({ default: m.BinaryToText })), { loading: ToolSkeleton }),
+  "roman-numeral-converter": dynamic(() => import("@/components/tools/RomanNumeralConverter").then((m) => ({ default: m.RomanNumeralConverter })), { loading: ToolSkeleton }),
+  "body-fat-calculator": dynamic(() => import("@/components/tools/BodyFatCalculator").then((m) => ({ default: m.BodyFatCalculator })), { loading: ToolSkeleton }),
+  "font-size-converter": dynamic(() => import("@/components/tools/FontSizeConverter").then((m) => ({ default: m.FontSizeConverter })), { loading: ToolSkeleton }),
+  "random-name-picker": dynamic(() => import("@/components/tools/RandomNamePicker").then((m) => ({ default: m.RandomNamePicker })), { loading: ToolSkeleton }),
+  "color-contrast-checker": dynamic(() => import("@/components/tools/ColorContrastChecker").then((m) => ({ default: m.ColorContrastChecker })), { loading: ToolSkeleton }),
+  "data-size-converter": dynamic(() => import("@/components/tools/DataSizeConverter").then((m) => ({ default: m.DataSizeConverter })), { loading: ToolSkeleton }),
 };
 
 export function getToolComponent(slug: string): ComponentType | null {

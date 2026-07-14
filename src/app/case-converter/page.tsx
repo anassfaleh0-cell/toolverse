@@ -121,7 +121,8 @@ export default function CaseConverterPage() {
         <ToolLayout toolSlug={slug}>
           <ToolHero
             title="Case Converter"
-            description="Convert text between camelCase, PascalCase, snake_case, kebab-case, UPPER_CASE, and Title Case instantly. Perfect for refactoring code and standardizing naming conventions."
+            description={pageDescription}
+            introText="Convert text between uppercase, lowercase, title case, sentence case, camelCase, snake_case, and more. Instant conversion with copy-to-clipboard support."
             breadcrumbs={breadcrumbs}
           >
             <CaseConverter />

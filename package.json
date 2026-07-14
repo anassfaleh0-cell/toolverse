@@ -18,7 +18,6 @@
     "@pdfsmaller/pdf-encrypt-lite": "^1.0.2",
     "@vercel/analytics": "^2.0.1",
     "docx": "^9.7.1",
-    "framer-motion": "^12.42.2",
     "fuse.js": "^7.4.2",
     "geist": "^1.7.2",
     "js-yaml": "^5.2.1",

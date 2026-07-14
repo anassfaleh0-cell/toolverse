@@ -26,6 +26,18 @@ let nextConfig: NextConfig = {
         ],
       },
       {
+        source: "/_next/static/(.*)",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+        ],
+      },
+      {
+        source: "/images/(.*)",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+        ],
+      },
+      {
         source: "/:path*",
         headers: [
           { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
@@ -40,6 +52,10 @@ let nextConfig: NextConfig = {
     ];
   },
 };
+
+if (!process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL === "https://{DOMAIN}") {
+  console.warn("⚠️  NEXT_PUBLIC_SITE_URL is not set. Sitemap and OG URLs will use a placeholder.");
+}
 
 export default async function loadConfig() {
   if (process.env.ANALYZE === "true") {

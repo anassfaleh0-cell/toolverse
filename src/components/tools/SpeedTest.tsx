@@ -132,7 +132,7 @@ export function SpeedTest() {
         <div className="mt-8 space-y-4">
           <div className="flex items-center justify-between text-sm">
             <span className="text-zinc-600 dark:text-zinc-400">{phase}</span>
-            <span className="text-zinc-500">{progress}%</span>
+            <span className="text-zinc-500 dark:text-zinc-400">{progress}%</span>
           </div>
           <div className="h-2 overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-700">
             <div className="h-full rounded-full bg-nuvora-500 transition-all duration-500" style={{ width: `${progress}%` }} />

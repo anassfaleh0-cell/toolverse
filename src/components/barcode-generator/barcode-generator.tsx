@@ -220,7 +220,7 @@ export function BarcodeGenerator() {
               Download PNG
             </Button>
           </div>
-          <div className="flex items-center justify-center bg-white p-6">
+          <div className="flex items-center justify-center bg-white p-6 dark:bg-zinc-800">
             <canvas
               ref={canvasRef}
               width={400}

@@ -2189,7 +2189,7 @@ export function getComparisonPairs(slug: string): Array<{ label: string; competi
   "video-to-mp3": {
     primary: "video to MP3 converter",
     secondary: ["convert video to MP3", "MP4 to MP3 online", "extract audio as MP3", "video to audio converter", "save video sound as MP3"],
-    longTail: ["how to convert video to MP3 online free", "extract MP3 audio from MP4 video", "video to MP3 with bitrate control", "convert YouTube videos to MP3 alternative", "save audio track as high quality MP3"],
+    longTail: ["how to convert video to MP3 online free", "extract MP3 audio from MP4 video", "video to MP3 with bitrate control", "convert video files to MP3 audio locally", "save audio track as high quality MP3"],
     questions: ["How do I convert video to MP3?", "What bitrate should I use for MP3?", "Is video to MP3 conversion legal?", "What video formats are supported?", "How do I get the best audio quality?"],
     comparisons: ["video to MP3 vs audio extraction", "MP4 to MP3 vs AVI to MP3", "high vs low bitrate MP3", "video to MP3 vs video to WAV"],
     troubleshooting: ["converted MP3 quality too low", "audio out of sync", "video format not supported", "MP3 file has static noise", "very long video conversion time"],

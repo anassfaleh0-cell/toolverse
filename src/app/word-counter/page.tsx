@@ -103,6 +103,7 @@ export default function WordCounterPage() {
           <ToolHero
             title="Word Counter"
             description="Get real-time word count, character count, sentence count, paragraph count, and estimated reading time for any text. Free and private — no data leaves your browser."
+            introText="Count words, characters, sentences, and paragraphs in any text. Get real-time statistics including reading time and estimated speaking time. Essential for writers and editors."
             breadcrumbs={breadcrumbs}
           >
             <WordCounter />

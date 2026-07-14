@@ -86,11 +86,11 @@ export const CLUSTER_9_ARTICLES: ContentPiece[] = [
     ],
   },
   {
-    slug: "download-instagram-videos-legally",
+    slug: "save-instagram-content-legally",
     type: "article",
-    title: "How to Download Instagram Videos Legally: Tools, Rights, and Best Practices",
+    title: "How to Save Instagram Content Legally: Tools, Rights, and Best Practices",
     description:
-      "Learn the legal and ethical ways to download Instagram videos. Understand copyright, fair use, and the best tools for saving content you have permission to use.",
+      "Learn the legal and ethical ways to save Instagram content. Understand copyright, fair use, and the best tools for managing content you have permission to use.",
     difficulty: "beginner",
     category: "productivity",
     toolSlugs: ["url-encoder", "base64-encoder", "excerpt-generator"],
@@ -98,7 +98,7 @@ export const CLUSTER_9_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-06-08",
     updatedAt: "2026-07-04",
-    noindex: false,    sections: [
+    noindex: true,    sections: [
       { heading: "Understanding Copyright and Instagram Videos", body: "Every video posted on Instagram is protected by copyright from the moment it is created. Downloading someone else's video without permission is technically copyright infringement, regardless of whether you give credit. However, there are legitimate scenarios for downloading: saving your own videos as backups, downloading content you have written permission to repost, or capturing content under fair use for commentary, criticism, or education. Always assume a video is not free to use unless the creator explicitly grants permission through a Creative Commons license or direct authorization." },
       { heading: "Legal Methods for Downloading Instagram Videos", body: "The simplest legal method is to request a data download from Instagram itself. Go to your Instagram settings, request a download of your data, and Instagram will email you a ZIP file containing all your photos and videos. For videos you have permission to repost, ask the creator to send you the original file directly or use Instagram's collaboration feature, which allows shared ownership of a post. Some third-party tools claim to download videos legally, but their terms of service may violate Instagram's policies, potentially putting your account at risk." },
       { heading: "Using Instagram's Built-In Save and Regram Features", body: "Instagram provides legitimate ways to engage with others' content without downloading. The save feature lets you bookmark posts to a private collection for later reference — ideal for mood boards and inspiration. The regram or reshare option in Stories allows you to share a public post to your Story, crediting the original creator automatically. For business accounts, Instagram's content licensing tools in Creator Marketplace facilitate proper permission workflows. These built-in features respect copyright while still supporting content curation and community engagement." },
@@ -233,11 +233,11 @@ export const CLUSTER_9_ARTICLES: ContentPiece[] = [
     ],
   },
   {
-    slug: "remove-tiktok-watermark",
+    slug: "content-repurposing-guide",
     type: "article",
-    title: "How to Remove TikTok Watermark: Free Methods and Legal Considerations",
+    title: "Content Repurposing Guide: Adapt Videos Across Platforms",
     description:
-      "Learn legitimate ways to remove TikTok watermarks from your own videos. Compare free tools, understand usage rights, and protect your content from unauthorized use.",
+      "Learn how to repurpose your video content across platforms. Compare tools, understand usage rights, and protect your content from unauthorized use.",
     difficulty: "beginner",
     category: "productivity",
     toolSlugs: ["background-remover", "image-converter", "url-encoder"],
@@ -245,7 +245,7 @@ export const CLUSTER_9_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 8,
     publishedAt: "2026-06-22",
     updatedAt: "2026-07-08",
-    noindex: false,    sections: [
+    noindex: true,    sections: [
       { heading: "Understanding TikTok Watermarks and Why They Exist", body: "TikTok automatically adds a watermark to all videos downloaded from the app. The watermark displays the creator's username and the TikTok logo, serving both as attribution and as a branding mechanism that drives viewers to the platform. When you upload a video with a TikTok watermark to another platform like Instagram Reels or YouTube Shorts, the watermark signals that the content originated elsewhere. Platform algorithms may deprioritize watermarked content because it sends users off-platform. This creates demand for watermark removal, primarily for your own content." },
       { heading: "Legitimate Reasons to Remove Watermarks", body: "The only legitimate reason to remove a TikTok watermark is if the video is your own original content. You created the video, you own the rights, and you want to repurpose it across platforms without the TikTok branding. Other valid scenarios include removing watermarks from content you have purchased through a licensing agreement or content created under a work-for-hire arrangement where you own the intellectual property. Removing watermarks from someone else's content without permission is copyright violation and violates TikTok's terms of service." },
       { heading: "Free Methods for Removing Watermarks from Your Own Videos", body: "The simplest method is to save your video before posting to TikTok by recording it with your phone's camera and editing it on your device. If you already posted to TikTok, download the video from the app, then use a free online watermark remover tool. Some screen recording apps can capture your video without the watermark. For static watermarks, our background remover can sometimes isolate and remove watermark overlays from video frames, though video-specific tools are more reliable. Always keep an original unwatermarked master copy of every video you create." },
@@ -275,11 +275,11 @@ export const CLUSTER_9_ARTICLES: ContentPiece[] = [
     ],
   },
   {
-    slug: "download-youtube-thumbnails",
+    slug: "youtube-thumbnail-guide",
     type: "article",
-    title: "How to Download YouTube Thumbnails in High Quality: Free Methods",
+    title: "YouTube Thumbnail Guide: Find and Create High-Quality Thumbnails",
     description:
-      "Learn multiple methods to download YouTube thumbnails at maximum resolution. Compare online tools, browser tricks, and API-based approaches for any video.",
+      "Learn multiple methods to find YouTube thumbnails at maximum resolution. Compare tools, browser tricks, and API-based approaches for working with video thumbnails.",
     difficulty: "beginner",
     category: "productivity",
     toolSlugs: ["image-resizer", "image-converter", "image-color-picker"],
@@ -287,7 +287,7 @@ export const CLUSTER_9_ARTICLES: ContentPiece[] = [
     readingTimeMinutes: 7,
     publishedAt: "2026-06-25",
     updatedAt: "2026-07-09",
-    noindex: false,    sections: [
+    noindex: true,    sections: [
       { heading: "Understanding YouTube Thumbnail Resolutions", body: "YouTube generates thumbnails at multiple resolutions. The standard resolutions are maxresdefault (1280 by 720 pixels), hqdefault (480 by 360 pixels), mqdefault (320 by 180 pixels), and sddefault (640 by 480 pixels). The maxresdefault version is only generated for videos that have a custom uploaded thumbnail; auto-generated thumbnails may not have this resolution available. Understanding which URL pattern to use for each resolution ensures you get the highest quality version available for any given video." },
       { heading: "Method 1: Using the Video ID URL Pattern", body: "Every YouTube video has a unique video ID — the string after v= in the URL. You can construct thumbnail URLs directly using this ID. The pattern is: https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg. Replace VIDEO_ID with the actual ID. If maxresdefault is not available, try hqdefault.jpg as a fallback. This method requires no tools or accounts. Simply copy the video ID from the URL, paste it into the pattern, and open the resulting URL in your browser to view and save the full-resolution thumbnail." },
       { heading: "Method 2: Online Thumbnail Downloader Tools", body: "Several websites provide thumbnail download functionality through a simple interface. Paste the video URL, and the tool displays all available thumbnail resolutions with download buttons. These tools essentially automate the URL construction method described above. When using online tools, be cautious about privacy — avoid entering URLs from private or unlisted videos. For sensitive content, use the manual URL method instead. Our image resizer can help if you download a thumbnail and need to adjust its dimensions for use in blog posts or social media." },

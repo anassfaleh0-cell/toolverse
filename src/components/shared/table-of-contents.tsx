@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { Icon } from "@/components/shared/icon";
 
 interface TocItem { id: string; label: string; level: number }
 
@@ -19,9 +20,7 @@ export function TableOfContents({ items }: { items: TocItem[] }) {
       </nav>
       <div className="lg:hidden">
         <button onClick={() => setOpen(!open)} className="flex items-center gap-2 text-sm font-medium text-text-secondary py-2">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4">
-            <path d="M4 6h16" /><path d="M4 12h16" /><path d="M4 18h16" />
-          </svg>
+          <Icon name="List" className="size-4" />
           Table of Contents
         </button>
         {open && (

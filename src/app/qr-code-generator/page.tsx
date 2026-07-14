@@ -111,7 +111,8 @@ export default function QrCodeGeneratorPage() {
         <ToolLayout toolSlug={slug}>
           <ToolHero
             title="QR Code Generator"
-            description="Generate scannable QR codes for URLs, text, WiFi credentials, and more. Download as PNG for use in print, digital signage, and product packaging."
+            description={pageDescription}
+            introText="Create scannable QR codes instantly for URLs, text, WiFi credentials, and contact information. Download as high-quality PNG for print, signage, or digital use."
             breadcrumbs={breadcrumbs}
           >
             <QrCodeGenerator />

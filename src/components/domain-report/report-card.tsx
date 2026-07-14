@@ -265,7 +265,7 @@ export function DomainReportCard() {
           {/* ── Report Card Header ── */}
           <div className={cn("relative overflow-hidden rounded-2xl border bg-white p-8 text-center shadow-lg dark:bg-zinc-900/50", gm?.border)}>
             <div className={cn("absolute inset-0 opacity-[0.04]", gm?.text)} style={{ background: `linear-gradient(135deg, currentColor 0%, transparent 100%)` }} />
-            <p className="text-xs font-medium uppercase tracking-widest text-zinc-500">Overall Grade</p>
+            <p className="text-xs font-medium uppercase tracking-widest text-zinc-500 dark:text-zinc-400">Overall Grade</p>
             <div className="mt-4 flex flex-col items-center gap-2">
               <div className={cn("relative flex size-32 items-center justify-center rounded-2xl border-[3px] bg-white text-7xl font-black shadow-xl dark:bg-zinc-900", gm?.border, gm?.text, `shadow-lg ${gm?.glow}`)}>
                 {results.overallGrade}
@@ -273,7 +273,7 @@ export function DomainReportCard() {
               <p className={cn("text-lg font-bold", gm?.text)}>{gm?.desc}</p>
             </div>
             <p className="mt-4 text-xl font-bold text-zinc-900 dark:text-zinc-50">{results.domain}</p>
-            <p className="mt-1 text-sm text-zinc-500">Score: {results.overallScore}% · {new Date(results.timestamp).toLocaleDateString()}</p>
+            <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">Score: {results.overallScore}% · {new Date(results.timestamp).toLocaleDateString()}</p>
             <div className="mt-6 flex justify-center gap-3">
               <Button variant="secondary" size="sm" onClick={handleShare}>
                 {copied ? (

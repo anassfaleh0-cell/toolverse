@@ -121,7 +121,8 @@ export default function ColorConverterPage() {
         <ToolLayout toolSlug={slug}>
           <ToolHero
             title="Color Converter"
-            description="Convert colors between HEX, RGB, and HSL formats with a live preview. Perfect for web developers working with CSS, design systems, and accessibility testing."
+            description={pageDescription}
+            introText="Convert colors between HEX, RGB, HSL, HSV, CMYK, and named color formats. Get CSS-ready values and preview the color instantly. Perfect for web design and development."
             breadcrumbs={breadcrumbs}
           >
             <ColorConverter />

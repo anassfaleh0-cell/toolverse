@@ -124,7 +124,8 @@ export default function DnsLookupPage() {
         <ToolLayout toolSlug={slug}>
           <ToolHero
             title="DNS Lookup"
-            description="Perform detailed DNS lookups to retrieve A, AAAA, MX, NS, CNAME, TXT, and SOA records. Troubleshoot resolution failures and verify DNS configuration."
+            description={pageDescription}
+            introText="Look up DNS records for any domain. Query A, AAAA, MX, NS, TXT, CNAME, and SOA records to troubleshoot connectivity and verify configuration."
             breadcrumbs={breadcrumbs}
           >
             <DnsLookup />

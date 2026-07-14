@@ -111,7 +111,8 @@ export default function BarcodeGeneratorPage() {
         <ToolLayout toolSlug={slug}>
           <ToolHero
             title="Barcode Generator"
-            description="Generate Code 128, EAN-13, and UPC-A barcodes instantly. Create printable, scannable barcodes for inventory management, product labeling, and asset tracking."
+            description={pageDescription}
+            introText="Generate custom barcodes for products, inventory, and labeling. Supports EAN-13, UPC-A, Code 128, and QR formats. Download as PNG or SVG for commercial use."
             breadcrumbs={breadcrumbs}
           >
             <BarcodeGenerator />

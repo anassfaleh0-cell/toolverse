@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Fuse from "fuse.js";
+import { Icon } from "@/components/shared/icon";
 import { SEARCH_INDEX, type SearchEntry } from "@/lib/search-index";
 
 const fuse = new Fuse(SEARCH_INDEX, {
@@ -90,9 +91,7 @@ export function GlobalSearch() {
       <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setOpen(false)} />
       <div className="relative z-10 w-full max-w-xl rounded-2xl border border-border-subtle bg-surface shadow-2xl">
         <div className="flex items-center gap-3 border-b border-border-subtle px-4">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-5 shrink-0 text-text-tertiary">
-            <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
-          </svg>
+          <Icon name="Search" className="size-5 shrink-0 text-text-tertiary" />
           <input
             ref={inputRef}
             type="text"

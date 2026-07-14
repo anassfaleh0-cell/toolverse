@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FAQ_ITEMS } from "@/lib/constants";
+import { Icon } from "@/components/shared/icon";
 
 function AccordionItem({
   question,
@@ -25,19 +26,7 @@ function AccordionItem({
         <span className="font-medium text-zinc-900 dark:text-zinc-50">
           {question}
         </span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={2}
-          className={`size-5 shrink-0 text-zinc-400 transition-transform ${
-            isOpen ? "rotate-180" : ""
-          }`}
-          aria-hidden="true"
-        >
-          <path d="m6 9 6 6 6-6" />
-        </svg>
+        <Icon name="ChevronDown" className={`size-5 shrink-0 text-zinc-400 transition-transform ${isOpen ? "rotate-180" : ""}`} aria-hidden="true" />
       </button>
       <div
         className={`overflow-hidden transition-all ${

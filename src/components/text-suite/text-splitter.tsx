@@ -77,15 +77,15 @@ export function TextSplitter() {
 
       <div className="flex flex-wrap gap-4">
         <label className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400">
-          <input type="checkbox" checked={trimItems} onChange={(e) => setTrimItems(e.target.checked)} className="h-4 w-4 rounded border-zinc-300" />
+          <input type="checkbox" checked={trimItems} onChange={(e) => setTrimItems(e.target.checked)} className="h-4 w-4 rounded border-zinc-300 dark:border-zinc-600" />
           Trim Items
         </label>
         <label className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400">
-          <input type="checkbox" checked={removeEmpty} onChange={(e) => setRemoveEmpty(e.target.checked)} className="h-4 w-4 rounded border-zinc-300" />
+          <input type="checkbox" checked={removeEmpty} onChange={(e) => setRemoveEmpty(e.target.checked)} className="h-4 w-4 rounded border-zinc-300 dark:border-zinc-600" />
           Remove Empty
         </label>
         <label className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400">
-          <input type="checkbox" checked={deduplicate} onChange={(e) => setDeduplicate(e.target.checked)} className="h-4 w-4 rounded border-zinc-300" />
+          <input type="checkbox" checked={deduplicate} onChange={(e) => setDeduplicate(e.target.checked)} className="h-4 w-4 rounded border-zinc-300 dark:border-zinc-600" />
           Deduplicate
         </label>
       </div>

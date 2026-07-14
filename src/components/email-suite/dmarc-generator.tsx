@@ -146,12 +146,12 @@ export function DmarcGenerator() {
         <div>
           <label className="mb-1 block text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Aggregate Reports (rua)</label>
           <Input type="email" value={rua} onChange={(e) => setRua(e.target.value)} placeholder="dmarc-reports@example.com" />
-          <p className="mt-1 text-[11px] text-zinc-400">Receives daily XML reports</p>
+          <p className="mt-1 text-[11px] text-zinc-400 dark:text-zinc-300">Receives daily XML reports</p>
         </div>
         <div>
           <label className="mb-1 block text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Forensic Reports (ruf)</label>
           <Input type="email" value={ruf} onChange={(e) => setRuf(e.target.value)} placeholder="forensic@example.com" />
-          <p className="mt-1 text-[11px] text-zinc-400">Receives per-failure details</p>
+          <p className="mt-1 text-[11px] text-zinc-400 dark:text-zinc-300">Receives per-failure details</p>
         </div>
       </div>
 
@@ -159,7 +159,7 @@ export function DmarcGenerator() {
         <div>
           <label className="mb-1 block text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Percentage (pct=)</label>
           <Input type="number" min={1} max={100} value={pct} onChange={(e) => setPct(e.target.value)} />
-          <p className="mt-1 text-[11px] text-zinc-400">Apply policy to X% of email</p>
+          <p className="mt-1 text-[11px] text-zinc-400 dark:text-zinc-300">Apply policy to X% of email</p>
         </div>
         <div>
           <label className="mb-1 block text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Failure Options (fo=)</label>
@@ -186,7 +186,7 @@ export function DmarcGenerator() {
 
       <div className="overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800">
         <div className="flex items-center justify-between border-b border-zinc-200 bg-zinc-50 px-5 py-3 dark:border-zinc-800 dark:bg-zinc-900">
-          <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">Generated DMARC Record (<span className="font-mono">TXT</span>)</p>
+          <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Generated DMARC Record (<span className="font-mono">TXT</span>)</p>
           <div className="flex gap-2">
             <Button variant="secondary" size="sm" onClick={handleCopy}>{copied ? "Copied!" : "Copy"}</Button>
             <Button variant="secondary" size="sm" onClick={handleDownloadTxt}>Download</Button>
@@ -203,11 +203,11 @@ export function DmarcGenerator() {
 
       {showAdvanced && (
         <div className="rounded-xl border border-zinc-200 bg-zinc-50 px-5 py-4 dark:border-zinc-800 dark:bg-zinc-900">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-500">DNS Zone Entry (BIND format)</p>
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">DNS Zone Entry (BIND format)</p>
           <pre className="mb-3 overflow-x-auto text-sm text-zinc-700 dark:text-zinc-300">_dmarc  IN  TXT  "{record};"</pre>
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-500">Verify with dig</p>
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Verify with dig</p>
           <pre className="mb-3 overflow-x-auto text-sm text-zinc-700 dark:text-zinc-300">dig TXT _dmarc.example.com +short</pre>
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-500">DMARC Tag Reference</p>
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">DMARC Tag Reference</p>
           <table className="w-full text-xs text-zinc-600 dark:text-zinc-400">
             <thead><tr className="border-b border-zinc-200 dark:border-zinc-700"><th className="px-2 py-1 text-left font-medium">Tag</th><th className="px-2 py-1 text-left font-medium">Required</th><th className="px-2 py-1 text-left font-medium">Description</th></tr></thead>
             <tbody>

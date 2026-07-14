@@ -109,9 +109,9 @@ export default function ChangelogPage() {
                 <div className="rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-700 dark:bg-zinc-900">
                   <div className="flex items-center gap-2">
                     <span className="rounded bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-900 dark:text-blue-300">{release.version}</span>
-                    <span className="text-xs text-zinc-500">{release.date}</span>
+                    <span className="text-xs text-zinc-500 dark:text-zinc-400">{release.date}</span>
                   </div>
-                  <h3 className="mt-2 font-semibold text-zinc-900 dark:text-zinc-100">{release.title}</h3>
+                  <h2 className="mt-2 text-base font-semibold text-zinc-900 dark:text-zinc-100">{release.title}</h2>
                   <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">{release.description}</p>
                 </div>
               </div>

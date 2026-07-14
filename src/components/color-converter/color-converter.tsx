@@ -357,7 +357,7 @@ export function ColorConverter() {
             </div>
             <div className="grid grid-cols-2 gap-4 p-5">
               {[
-                { label: "On White (#FFFFFF)", wcag: results.wcagWhite, bg: "bg-white", text: "text-zinc-900" },
+                { label: "On White (#FFFFFF)", wcag: results.wcagWhite, bg: "bg-white dark:bg-zinc-800", text: "text-zinc-900 dark:text-zinc-50" },
                 { label: "On Black (#000000)", wcag: results.wcagBlack, bg: "bg-zinc-900", text: "text-zinc-50" },
               ].map((item) => (
                 <div key={item.label} className="space-y-2">

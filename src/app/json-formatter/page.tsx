@@ -122,6 +122,7 @@ export default function JsonFormatterPage() {
           <ToolHero
             title="JSON Formatter"
             description="Format, validate, beautify, and minify any JSON string instantly. Paste your JSON and get clean, readable output with error highlighting."
+            introText="Format, validate, and beautify JSON data for debugging and development. Minify JSON for production use. Works with large files and handles nested structures."
             breadcrumbs={breadcrumbs}
           >
             <JsonFormatter />

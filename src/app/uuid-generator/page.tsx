@@ -121,7 +121,8 @@ export default function UuidGeneratorPage() {
         <ToolLayout toolSlug={slug}>
           <ToolHero
             title="UUID Generator"
-            description="Generate one or multiple UUID v4 identifiers instantly. Perfect for database keys, API resource IDs, correlation IDs, and distributed system identifiers."
+            description={pageDescription}
+            introText="Generate version 4 UUIDs (random) and version 7 UUIDs (time-ordered) instantly. Copy individual UUIDs or bulk-generate multiple identifiers for databases and APIs."
             breadcrumbs={breadcrumbs}
           >
             <UuidGenerator />

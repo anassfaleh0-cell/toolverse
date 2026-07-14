@@ -120,7 +120,7 @@ export const CATEGORIES: Category[] = [
     icon: "Megaphone",
     description: "SEO tools, social media schedulers, email marketing platforms, analytics dashboards, and growth marketing utilities.",
     seoTitle: `Marketing Tools`,
-    seoDescription: `Free online marketing tools for ${SITE_NAME}. SEO analyzers, social media schedulers, email marketing utilities, and growth hacking tools.`,
+    seoDescription: `Free online marketing tools for ${SITE_NAME}. SEO analyzers, social media schedulers, email marketing utilities, and growth tools.`,
   },
   {
     slug: "writing",

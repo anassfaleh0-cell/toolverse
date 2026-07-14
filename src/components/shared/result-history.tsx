@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { getResultHistory, clearResultHistory, deleteResultEntry } from "@/lib/user-storage";
+import { Icon } from "@/components/shared/icon";
 
 interface HistoryEntry {
   ts: string;
@@ -31,7 +32,7 @@ export function ResultHistory({ toolSlug, onRestore }: ResultHistoryProps) {
         className="flex w-full items-center justify-between px-5 py-3 text-sm font-medium text-zinc-900 transition-colors hover:bg-zinc-50 dark:text-zinc-50 dark:hover:bg-zinc-900"
       >
         <span className="flex items-center gap-2">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4 text-zinc-400"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+          <Icon name="Clock" className="size-4 text-zinc-400" />
           Recent Analyses ({entries.length})
         </span>
         <div className="flex items-center gap-2">
@@ -46,7 +47,7 @@ export function ResultHistory({ toolSlug, onRestore }: ResultHistoryProps) {
           >
             Clear
           </button>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className={`size-4 text-zinc-400 transition-transform ${open ? "rotate-180" : ""}`}><polyline points="6 9 12 15 18 9" /></svg>
+          <Icon name="ChevronDown" className={`size-4 text-zinc-400 transition-transform ${open ? "rotate-180" : ""}`} />
         </div>
       </button>
       {open && (

@@ -65,7 +65,7 @@ export function TextCleaner() {
               type="checkbox"
               checked={opt.enabled}
               onChange={() => toggleOption(opt.id)}
-              className="h-4 w-4 rounded border-zinc-300"
+              className="h-4 w-4 rounded border-zinc-300 dark:border-zinc-600"
             />
             {opt.label}
           </label>

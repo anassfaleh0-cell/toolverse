@@ -5,14 +5,13 @@ import dynamic from "next/dynamic";
 import Script from "next/script";
 import { Suspense } from "react";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { CookieConsent } from "@/components/shared/cookie-consent";
-import { Analytics } from "@/components/shared/analytics";
-import { ServiceWorkerRegister } from "@/components/shared/service-worker-register";
-import { JsonLd } from "@/components/shared";
+import { JsonLd } from "@/components/shared/json-ld";
 import { BRAND } from "@/lib/nuvora/brand";
 
+import { ClientDynamic } from "@/components/shared/client-dynamic";
+
+const Header = dynamic(() => import("@/components/header").then((m) => ({ default: m.Header })), { ssr: true });
 const UniversalWorkspace = dynamic(() => import("@/components/shared/universal-workspace").then((m) => ({ default: m.UniversalWorkspace })));
 const CommandPalette = dynamic(() => import("@/components/shared/command-palette").then((m) => ({ default: m.CommandPalette })));
 const ErrorBoundary = dynamic(() => import("@/components/shared/error-boundary").then((m) => ({ default: m.ErrorBoundary })));
@@ -95,7 +94,15 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable}`}>
-      <head />
+      <head>
+        {process.env.NEXT_PUBLIC_ADSENSE_CLIENT && (
+          <>
+            <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+            <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
+          </>
+        )}
+        <link rel="dns-prefetch" href="https://www.googletagservices.com" />
+      </head>
       <body className="flex min-h-screen flex-col bg-background font-sans antialiased">
         <ThemeProvider>
           <JsonLd data={{
@@ -141,9 +148,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <Header />
           <main id="main-content" className="flex-1"><ErrorBoundary>{children}</ErrorBoundary></main>
           <Footer />
-          <CookieConsent />
-          <Suspense fallback={null}><ServiceWorkerRegister /></Suspense>
-          <Suspense fallback={null}><Analytics /></Suspense>
+          <ClientDynamic />
           <Suspense fallback={null}><UniversalWorkspace /></Suspense>
           <Suspense fallback={null}><CommandPalette /></Suspense>
         </ThemeProvider>

@@ -120,8 +120,9 @@ export default function Base64EncoderPage() {
       <section className="border-b border-zinc-200 dark:border-zinc-800">
         <ToolLayout toolSlug={slug}>
           <ToolHero
-            title="Base64 Encoder Decoder"
-            description="Encode any text to Base64 or decode Base64 strings back to readable text instantly. Works for strings, JSON payloads, and data URIs."
+            title="Base64 Encoder / Decoder"
+            description={pageDescription}
+            introText="Encode text or files to Base64 format and decode Base64 strings back to readable text. Supports data URIs, JWT tokens, and binary data transport for developers."
             breadcrumbs={breadcrumbs}
           >
             <Base64Encoder />

@@ -23,7 +23,9 @@ export function NewsletterSignup() {
 
   return (
     <form onSubmit={handleSubmit} className="mx-auto flex max-w-md gap-3">
+      <label htmlFor="newsletter-email-input" className="sr-only">Email address</label>
       <input
+        id="newsletter-email-input"
         type="email"
         value={email}
         onChange={e => setEmail(e.target.value)}

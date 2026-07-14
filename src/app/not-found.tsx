@@ -32,7 +32,7 @@ export default function NotFound() {
         </svg>
       </div>
       <h1 className="text-7xl font-bold tracking-tight text-nuvora-600 dark:text-nuvora-400">404</h1>
-      <p className="mt-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50">Wrong tunnel. Try another.</p>
+      <h2 className="mt-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50">Wrong tunnel. Try another.</h2>
       <p className="mt-2 max-w-md text-zinc-600 dark:text-zinc-400">
         That page doesn't exist — but 255+ tools do. Pick one:
       </p>

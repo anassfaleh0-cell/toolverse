@@ -1,9 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { ContentPiece } from "@/lib/content/types";
 import {
   Breadcrumbs,
   JsonLd,
   ComparisonMatrix,
+  Icon,
 } from "@/components/shared";
 import { Badge, Callout } from "@/components/ui";
 import {
@@ -17,6 +19,10 @@ import { getToolBySlug } from "@/lib/registry";
 import { AUTHORS } from "@/lib/content/authors";
 import { ContentTracker } from "./content-tracker";
 import { CrossLinks } from "./cross-links";
+
+function resolveSchema(obj: Record<string, unknown>, siteUrl: string): Record<string, unknown> {
+  return JSON.parse(JSON.stringify(obj).replace(/\{DOMAIN\}/g, siteUrl));
+}
 
 const TYPE_ROUTE: Record<string, string> = {
   guide: "guides",
@@ -63,7 +69,7 @@ function AuthorCard({ piece }: { piece: ContentPiece }) {
   return (
     <div className="flex items-center gap-3 rounded-xl border border-border-subtle bg-surface-secondary/50 p-4">
       {avatarUrl ? (
-        <img src={avatarUrl} alt={authorName} className="size-10 shrink-0 rounded-full object-cover" />
+        <Image src={avatarUrl} alt={authorName} width={40} height={40} className="size-10 shrink-0 rounded-full object-cover" />
       ) : (
         <div className="flex size-10 items-center justify-center rounded-full bg-nuvora-100 text-xs font-bold text-nuvora-600 dark:bg-nuvora-900/50 dark:text-nuvora-400">
           {authorName.split(" ").map(n => n[0]).join("").slice(0, 2)}
@@ -104,7 +110,7 @@ export function ContentPage({ piece }: { piece: ContentPiece }) {
         authorUrl: piece.author?.url ?? `${SITE_URL}/authors/founder`,
         imageUrl: piece.sections.length > 0 ? `${SITE_URL}/og-image.svg` : undefined,
       })} />
-      {piece.schema && <JsonLd data={piece.schema} />}
+      {piece.schema && <JsonLd data={resolveSchema(piece.schema, SITE_URL)} />}
 
       <article>
         <header className="border-b border-border-subtle bg-surface-secondary/30 py-16 sm:py-20">
@@ -156,9 +162,9 @@ export function ContentPage({ piece }: { piece: ContentPiece }) {
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4 text-nuvora-600 dark:text-nuvora-400">
                   <path d="M4 6h16" /><path d="M4 12h16" /><path d="M4 18h16" />
                 </svg>
-                <h3 className="text-sm font-semibold text-text-primary">
+                <h2 className="text-sm font-semibold text-text-primary">
                   Table of Contents
-                </h3>
+                </h2>
               </div>
               <ul className="space-y-1.5">
                 {piece.sections.map((section, i) => (
@@ -247,7 +253,7 @@ export function ContentPage({ piece }: { piece: ContentPiece }) {
             <section className="mt-16 rounded-2xl border border-border-subtle bg-gradient-to-br from-surface to-nuvora-50/30 p-6 dark:from-surface dark:to-nuvora-950/20">
               <div className="flex items-center gap-3">
                 <div className="flex size-10 items-center justify-center rounded-xl bg-nuvora-100 text-nuvora-600 dark:bg-nuvora-900/50 dark:text-nuvora-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-5"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></svg>
+                  <Icon name="PenSquare" className="size-5" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-text-primary">
@@ -266,7 +272,7 @@ export function ContentPage({ piece }: { piece: ContentPiece }) {
                       className="inline-flex items-center gap-2 rounded-xl bg-nuvora-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-nuvora-700 active:scale-[0.97]"
                     >
                       {tool.name}
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                      <Icon name="ArrowRight" className="size-4" />
                     </Link>
                   ) : null;
                 })}
@@ -297,7 +303,7 @@ export function ContentPage({ piece }: { piece: ContentPiece }) {
                     </p>
                     <div className="mt-3 flex items-center gap-1 text-xs font-medium text-text-tertiary group-hover:text-nuvora-600 dark:group-hover:text-nuvora-400 transition-colors">
                       Read more
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-3"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                      <Icon name="ArrowRight" className="size-3" />
                     </div>
                   </Link>
                 ))}

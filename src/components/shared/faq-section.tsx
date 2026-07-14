@@ -1,4 +1,5 @@
 import type { FaqItem } from "@/lib/seo";
+import { Icon } from "@/components/shared/icon";
 
 interface FaqSectionProps {
   items: FaqItem[];
@@ -24,9 +25,7 @@ export function FaqSection({
           <details key={i} className="group rounded-xl border border-border-subtle bg-surface transition-all hover:shadow-sm [&[open]]:shadow-sm">
             <summary className="flex cursor-pointer items-center justify-between px-5 py-3.5 text-sm font-medium text-text-primary">
               {item.question}
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4 shrink-0 text-text-tertiary transition-transform group-open:rotate-180">
-                <path d="m6 9 6 6 6-6" />
-              </svg>
+              <Icon name="ChevronDown" className="size-4 shrink-0 text-text-tertiary transition-transform group-open:rotate-180" />
             </summary>
             <div className="border-t border-border-subtle px-5 pb-3.5 pt-2.5">
               <p className="text-sm leading-relaxed text-text-secondary">{item.answer}</p>

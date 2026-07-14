@@ -5,6 +5,7 @@ import { Input, Button, Alert, Card, Textarea } from "@/components/ui";
 import { CopyButton } from "@/components/shared";
 import { getToolBySlug } from "@/lib/registry";
 import { getToolConfig, type ToolConfig, type ToolField } from "@/lib/tools-config";
+import { Icon } from "@/components/shared/icon";
 
 interface ToolComponentProps {
   slug: string;
@@ -37,7 +38,7 @@ function FieldRenderer({
           type="file"
           accept={field.accept || "*/*"}
           onChange={handleFile}
-          className="block w-full text-sm text-zinc-500 file:mr-4 file:rounded-lg file:border-0 file:bg-nuvora-50 file:px-4 file:py-2.5 file:text-sm file:font-medium file:text-nuvora-700 hover:file:bg-nuvora-100 dark:file:bg-nuvora-900/50 dark:file:text-nuvora-300 dark:hover:file:bg-nuvora-900/70"
+          className="block w-full text-sm text-zinc-500 dark:text-zinc-400 file:mr-4 file:rounded-lg file:border-0 file:bg-nuvora-50 file:px-4 file:py-2.5 file:text-sm file:font-medium file:text-nuvora-700 hover:file:bg-nuvora-100 dark:file:bg-nuvora-900/50 dark:file:text-nuvora-300 dark:hover:file:bg-nuvora-900/70"
           aria-label={field.label}
         />
         {value && value.startsWith("data:") && (
@@ -47,7 +48,7 @@ function FieldRenderer({
           <p className="mt-1 text-xs text-red-600 dark:text-red-400">File exceeds 20MB limit. Please choose a smaller file.</p>
         )}
         {value && value.startsWith("data:image/") && (
-          <img src={value} alt="Preview" className="mt-2 max-h-40 rounded-lg border border-zinc-200 object-contain dark:border-zinc-700" />
+          <img src={value} alt="Preview" loading="lazy" decoding="async" className="mt-2 max-h-40 rounded-lg border border-zinc-200 object-contain dark:border-zinc-700" />
         )}
       </div>
     );
@@ -124,7 +125,7 @@ function ResultRenderer({ data }: { data: Record<string, unknown> }) {
             {isError ? (
               <p className="text-sm text-red-600 dark:text-red-400">{strVal}</p>
             ) : isImageResult && imageUrl ? (
-              <img src={imageUrl} alt={key} className="max-h-64 rounded-lg border border-zinc-200 object-contain dark:border-zinc-700" />
+              <img src={imageUrl} alt={key} loading="lazy" decoding="async" className="max-h-64 rounded-lg border border-zinc-200 object-contain dark:border-zinc-700" />
             ) : isDownload ? (
               <a
                 href={strVal.replace(/__download__:/, "").replace(/\|\|.*$/, "")}
@@ -224,14 +225,12 @@ export function ToolComponent({ slug }: ToolComponentProps) {
     return (
       <div className="mx-auto max-w-lg text-center py-12">
         <div className="mx-auto flex size-16 items-center justify-center rounded-2xl bg-nuvora-100 text-nuvora-600 dark:bg-nuvora-900/50 dark:text-nuvora-400">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-8">
-            <path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-          </svg>
+          <Icon name="PenSquare" className="size-8" />
         </div>
         <h2 className="mt-6 text-2xl font-bold text-zinc-900 dark:text-zinc-50">{tool.name}</h2>
         <p className="mt-2 text-zinc-600 dark:text-zinc-400">{tool.description}</p>
         <span className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-4 py-1.5 text-sm font-medium text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4"><path d="M12 8v4l3 3M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z" /></svg>
+          <Icon name="RefreshCw" className="size-4" />
           Coming soon — interactive version under development
         </span>
       </div>

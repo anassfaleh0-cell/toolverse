@@ -1,5 +1,3 @@
-"use client";
-
 const RECENTLY_VIEWED_KEY = "tv_recently_viewed";
 const BOOKMARKS_KEY = "tv_bookmarks";
 const PINNED_KEY = "tv_pinned";

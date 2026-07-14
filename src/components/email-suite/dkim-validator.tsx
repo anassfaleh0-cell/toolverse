@@ -102,7 +102,7 @@ export function DkimValidator() {
           placeholder='v=DKIM1; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC...'
           className="w-full resize-none rounded-lg border border-zinc-300 bg-white px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
         />
-        <p className="mt-1 text-[11px] text-zinc-400">Paste the full TXT record from your DNS. Use DKIM Lookup to fetch one.</p>
+        <p className="mt-1 text-[11px] text-zinc-400 dark:text-zinc-300">Paste the full TXT record from your DNS. Use DKIM Lookup to fetch one.</p>
       </div>
 
       <div className="flex gap-3">

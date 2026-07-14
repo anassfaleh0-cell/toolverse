@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Icon } from "@/components/shared/icon";
 import { getLatestContent, getBeginnerGuides } from "@/lib/content/registry";
 
 export function LearningCenter() {
@@ -66,10 +67,7 @@ export function LearningCenter() {
             className="inline-flex items-center gap-2 text-sm font-medium text-nuvora-600 hover:text-nuvora-700 dark:text-nuvora-400 dark:hover:text-nuvora-300"
           >
             View all guides
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4">
-              <path d="M5 12h14" />
-              <path d="m12 5 7 7-7 7" />
-            </svg>
+<Icon name="ArrowRight" className="size-4" aria-hidden="true" />
           </Link>
         </div>
       </div>

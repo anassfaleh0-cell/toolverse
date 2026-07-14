@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Input, Button, Alert } from "@/components/ui";
+import { Icon } from "@/components/shared/icon";
 
 interface RedirectStep {
   url: string;
@@ -140,7 +141,7 @@ export function RedirectChecker() {
                   </span>
                 </div>
                 {i < steps.length - 1 && (
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-5 shrink-0 text-zinc-400"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <Icon name="ArrowRight" className="size-5 shrink-0 text-zinc-400" />
                 )}
               </div>
             ))}

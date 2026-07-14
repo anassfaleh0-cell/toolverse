@@ -4,7 +4,14 @@ import { getToolConfig } from "@/lib/tools-config";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import type { Metadata } from "next";
 import type { FaqItem } from "@/lib/seo";
-import { TOOL_KEYWORDS } from "@/lib/seo/keywords";
+
+let keywordsPromise: Promise<Record<string, { primary: string; secondary: string[]; questions: string[] }>> | null = null;
+async function getToolKeywords() {
+  if (!keywordsPromise) {
+    keywordsPromise = import("@/lib/seo/keywords").then((m) => m.TOOL_KEYWORDS);
+  }
+  return keywordsPromise;
+}
 
 export interface Tool extends ToolBase {
   slug: string;
@@ -103,10 +110,32 @@ export function generateToolBreadcrumbs(tool: Tool) {
   ];
 }
 
-export function generateToolMetadata(tool: Tool): Metadata {
-  const keywords = TOOL_KEYWORDS[tool.slug];
+const CTA_BY_CATEGORY: Record<string, string> = {
+  "network-internet": "Get instant results — no signup required.",
+  "security": "Check your security instantly — no data leaves your device.",
+  "code-dev": "No install required. Works in your browser.",
+  "coding": "No install required. Works in your browser.",
+  "converters": "Convert files locally. Nothing leaves your device.",
+  "image-design": "Create and export in seconds. Free, no signup.",
+  "audio-video": "Process media locally. Your files stay private.",
+  "text-writing": "Process text instantly. 100% free, no account needed.",
+  "writing": "Write better instantly. Free, no account needed.",
+  "seo": "Analyze your site instantly. Free, no signup.",
+  "calculators": "Calculate instantly. Free, no registration.",
+  "finance": "Calculate instantly. Free, no registration.",
+  "ai": "Get AI-powered results instantly. No signup required.",
+  "marketing": "Get marketing insights instantly. Free, no account needed.",
+  "productivity": "Get things done faster. Free browser-based tools.",
+  "education": "Learn and explore. Free tools, no account needed.",
+  "health": "Track your health metrics. Free, private, no signup.",
+  "fun": "Have fun exploring. Free tools, no registration.",
+};
+
+export async function generateToolMetadata(tool: Tool): Promise<Metadata> {
+  const keywords = (await getToolKeywords())[tool.slug];
+  const cta = CTA_BY_CATEGORY[tool.category] || "Free online tool. No signup, no tracking.";
   const richDescription = keywords
-    ? `Free ${keywords.primary} tool. ${tool.description} ${keywords.secondary.slice(0, 3).join(", ")}. Use our online ${keywords.primary} tool instantly — no signup, no tracking.`
+    ? `Free ${keywords.primary} tool. ${tool.description} ${keywords.secondary.slice(0, 3).join(", ")}. ${cta}`
     : tool.description;
   const ogTitle = `${tool.name} - ${SITE_NAME}`;
   const config = getToolConfig(tool.slug);
@@ -131,8 +160,8 @@ export function generateCategoryMetadata(category: Category): Metadata {
   };
 }
 
-export function generateToolFaq(tool: Tool): FaqItem[] {
-  const keywords = TOOL_KEYWORDS[tool.slug];
+export async function generateToolFaq(tool: Tool): Promise<FaqItem[]> {
+  const keywords = (await getToolKeywords())[tool.slug];
   if (keywords && keywords.questions.length >= 3) {
     const ans = `Use our free ${keywords.primary} tool. ${tool.description} No signup required, and your data never leaves your browser.`;
     return keywords.questions.slice(0, 5).map((q) => ({
