@@ -1,106 +1,200 @@
 # Nuvora — Smart Tools, Simply Done
-> Free online tools for everyone — DNS lookup, PDF conversion, image editing, security checks, and developer utilities. No signup, no tracking, 100% browser-based.
+> Free online tools for everyone — DNS lookup, PDF conversion, image editing, security checks, and developer utilities. No signup, no tracking, 100% browser-based. 255+ tools across 7 categories.
 
-## Tools
-- /dns-lookup: DNS Lookup tool — query A, AAAA, CNAME, MX, NS, TXT, SOA records
-- /ssl-certificate-checker: SSL Certificate Checker — validate and inspect SSL/TLS certificates
-- /whois-lookup: WHOIS Lookup — domain registration data and RDAP
-- /ip-lookup: IP Lookup — geolocation, ISP, ASN information
-- /what-is-my-ip: What Is My IP — public IP address, browser info, WebRTC leak test
+## About
+Nuvora provides privacy-first, client-side online tools. All processing happens in your browser — no data is uploaded, stored, or shared. The entire tool suite is statically generated (Next.js) with 12,000+ pages covering tools, guides, articles, comparisons, and learning paths.
+
+## Navigation
+- / — Homepage (tool grid, search, categories)
+- /tools — Full A–Z tool index
+- /categories — Tools grouped by category
+- /new — Newest tools
+- /popular — Most popular tools
+- /blog — Articles and guides (200+)
+- /learn — Learning paths and tutorials
+- /glossary — Technical terms and definitions
+- /compare — Side-by-side tool comparisons
+- /search — Search all tools and content
+
+## Categories
+
+### Network & Internet Tools
+- /dns-lookup: DNS Lookup — A, AAAA, CNAME, MX, NS, TXT, SOA records
 - /reverse-dns-lookup: Reverse DNS Lookup — PTR records
-- /dns-propagation-checker: DNS Propagation Checker — global DNS propagation
-- /http-headers-checker: HTTP Headers Checker — security headers, cache headers
-- /ping-test: Ping Test — network latency, packet loss, jitter
-- /port-checker: Port Checker — TCP port availability
-- /website-status-checker: Website Status Checker — uptime, response time
-- /user-agent-parser: User Agent Parser — browser, OS, device detection
+- /dns-propagation-checker: DNS Propagation Checker — global propagation status
+- /dnssec-checker: DNSSEC Checker — DNS security extension validation
+- /dns-zone-validator: DNS Zone Validator — zone file syntax checks
+- /what-is-my-ip: What Is My IP — public IP, geolocation, browser info, WebRTC leak test
+- /ip-lookup: IP Lookup — full geolocation, ISP, ASN
+- /asn-lookup: ASN Lookup — autonomous system number lookup
+- /ping-test: Ping Test — latency, packet loss, jitter
+- /traceroute: Traceroute — network path visualization
+- /speed-test: Speed Test — download/upload, ping
+- /port-checker: Port Checker — TCP port scan
+- /port-numbers: Port Numbers Reference — well-known port directory
 - /subnet-calculator: Subnet Calculator — CIDR, netmask, IP range
-- /password-generator: Password Generator — strong passwords, passphrases
-- /password-strength-checker: Password Strength Checker — entropy, crack time
+- /website-status-checker: Website Status Checker — uptime, response time
+- /uptime-checker: Uptime Checker — availability monitoring
+- /blacklist-check: Blacklist Check — IP/domain reputation
+- /mta-sts-lookup: MTA-STS Lookup — SMTP TLS reporting
+- /tlsrpt-lookup: TLS-RPT Lookup — TLS reporting endpoints
+- /srv-lookup: SRV Lookup — service record lookup
+- /caa-lookup: CAA Lookup — certificate authority authorization
+- /nameserver-analyzer: Nameserver Analyzer — NS configuration audit
+
+### Security & SSL
+- /ssl-certificate-checker: SSL Certificate Checker — validate and inspect certificates
+- /ssl-test: SSL/TLS Test — comprehensive TLS configuration analysis
+- /ssl-expiry-checker: SSL Expiry Checker — certificate expiration monitoring
+- /tls-versions: TLS Versions Guide — protocol version reference
+- /http-headers-checker: HTTP Headers Checker — security headers audit (CSP, HSTS, XFO)
+- /content-security-policy: CSP Checker — Content Security Policy analyzer
+- /cors-checker: CORS Checker — cross-origin resource sharing test
+- /xss-scanner: XSS Scanner — cross-site scripting detection
 - /data-breach-checker: Data Breach Checker — email breach history
-- /json-formatter: JSON Formatter — format, validate, minify JSON
-- /base64-encoder: Base64 Encoder — encode/decode Base64
-- /url-encoder: URL Encoder — URL encode/decode
-- /html-entity-encoder: HTML Entity Encoder — encode special characters
-- /jwt-decoder: JWT Decoder — decode and inspect JWT tokens
-- /uuid-generator: UUID Generator — v4, v7 UUIDs
-- /regex-tester: Regex Tester — test regular expressions live
-- /md5-hash-generator: MD5 Hash Generator — MD5 hashing
-- /sha-hash-generator: SHA Hash Generator — SHA-1, SHA-256, SHA-512
-- /html-minifier: HTML Minifier — compress HTML
-- /css-minifier: CSS Minifier — compress CSS
-- /js-minifier: JS Minifier — compress JavaScript
-- /case-converter: Case Converter — uppercase, lowercase, title case, camelCase
-- /number-base-converter: Number Base Converter — binary, octal, decimal, hex
-- /color-converter: Color Converter — hex, RGB, HSL, CMYK
-- /markdown-preview: Markdown Preview — live Markdown rendering
-- /sql-formatter: SQL Formatter — format SQL queries
-- /text-to-slug: Text to Slug — SEO-friendly URL slugs
-- /url-parser: URL Parser — parse and analyze URLs
-- /json-to-csv: JSON to CSV — convert between formats
+- /password-strength-checker: Password Strength Checker — entropy analysis
+- /password-generator: Password Generator — strong passwords
+
+### Email Authentication
+- /spf-lookup: SPF Lookup — sender policy framework check
+- /dkim-lookup: DKIM Lookup — email signature verification
+- /dmarc-lookup: DMARC Lookup — email authentication policy
+- /mx-lookup: MX Lookup — mail exchange records
+- /bimi-lookup: BIMI Lookup — brand indicators for message identification
+- /email-deliverability-checker: Email Deliverability Checker — comprehensive email health
+- /dkim-validator: DKIM Validator — signature verification tool
+- /dmarc-generator: DMARC Generator — DMARC record builder
+- /spf-generator: SPF Generator — SPF record builder
+- /mta-sts-lookup: MTA-STS Lookup — SMTP MTA strict transport security
+
+### PDF Tools
+- /merge-pdf: Merge PDF — combine PDFs
+- /split-pdf: Split PDF — extract pages
+- /compress-pdf: Compress PDF — reduce file size
+- /protect-pdf: Protect PDF — add password
+- /unlock-pdf: Unlock PDF — remove password
+- /pdf-to-word: PDF to Word — PDF to DOCX conversion
+- /word-to-pdf: Word to PDF — DOCX to PDF conversion
+- /pdf-to-jpg: PDF to JPG — PDF pages to images
+- /rotate-pdf: Rotate PDF — page rotation
+- /reorder-pdf: Reorder PDF — page rearrangement
+- /extract-pdf-pages: Extract PDF Pages — page extraction
+- /jpg-to-pdf: JPG to PDF — images to PDF
+
+### Image & Video Tools
+- /image-compressor: Image Compressor — JPEG, PNG, WebP optimization
+- /image-converter: Image Converter — format conversion
+- /crop-image: Crop Image — interactive cropping
+- /background-remover: Background Remover — AI-powered removal
+- /watermark-image: Watermark Image — text/image watermarking
+- /blur-image: Blur Image — image blur effects
+- /image-grayscale: Image Grayscale — desaturate images
+- /image-resizer: Image Resizer — dimension scaling
+- /image-metadata-viewer: Image Metadata Viewer — EXIF data
+- /image-to-base64: Image to Base64 — data URI conversion
+- /base64-to-image: Base64 to Image — reverse conversion
+
+### Developer Tools
+- /json-formatter: JSON Formatter — format, validate, minify
+- /json-to-csv: JSON to CSV — format conversion
 - /yaml-to-json: YAML to JSON — format conversion
 - /xml-to-json: XML to JSON — format conversion
-- /timestamp-converter: Timestamp Converter — Unix timestamp to date
-- /image-compressor: Image Compressor — compress JPEG, PNG, WebP
-- /image-converter: Image Converter — convert between formats
-- /crop-image: Crop Image — crop images online
-- /background-remover: Background Remover — remove image backgrounds
-- /watermark-image: Watermark Image — add text/image watermarks
-- /merge-pdf: Merge PDF — combine PDF files
-- /split-pdf: Split PDF — extract pages from PDF
-- /compress-pdf: Compress PDF — reduce PDF file size
-- /protect-pdf: Protect PDF — add password protection
-- /unlock-pdf: Unlock PDF — remove password protection
-- /pdf-to-word: PDF to Word — convert PDF to DOCX
-- /pdf-to-jpg: PDF to JPG — convert PDF pages to images
-- /word-to-pdf: Word to PDF — convert DOCX to PDF
-- /qr-code-generator: QR Code Generator — create QR codes
-- /barcode-generator: Barcode Generator — create barcodes
-- /robots-txt-generator: Robots.txt Generator — create robots.txt
-- /sitemap-generator: Sitemap Generator — generate XML sitemaps
-- /meta-tag-generator: Meta Tag Generator — SEO meta tags
-- /open-graph-generator: Open Graph Generator — social preview tags
-- /schema-generator: Schema Generator — JSON-LD structured data
-- /redirect-checker: Redirect Checker — trace HTTP redirects
-- /broken-link-checker: Broken Link Checker — find broken links
-- /serp-preview: SERP Preview — Google search result preview
-- /keyword-density: Keyword Density Checker — analyze keyword usage
-- /seo-audit: SEO Audit — comprehensive SEO analysis
-- /page-speed-checker: Page Speed Checker — website performance
-- /backlink-checker: Backlink Checker — analyze backlinks
-- /bmi-calculator: BMI Calculator — body mass index
-- /calorie-calculator: Calorie Calculator — daily calorie needs
-- /age-calculator: Age Calculator — exact age calculation
-- /date-calculator: Date Calculator — date arithmetic
-- /unit-converter: Unit Converter — convert between units
-- /scientific-calculator: Scientific Calculator — advanced math
-- /percentage-calculator: Percentage Calculator — percentage math
-- /mortgage-calculator: Mortgage Calculator — monthly payments
-- /loan-calculator: Loan Calculator — amortization schedule
-- /compound-interest-calculator: Compound Interest Calculator — investment growth
-- /currency-converter: Currency Converter — live exchange rates
-- /crypto-converter: Crypto Converter — cryptocurrency conversion
-- /password-strength-checker: Password Strength Checker — entropy analysis
-- /ssl-test: SSL Test — TLS configuration analysis
-- /cors-checker: CORS Checker — test CORS headers
-- /content-security-policy: CSP Checker — analyze security policies
-- /xss-scanner: XSS Scanner — detect XSS vulnerabilities
-- /ai-text-summarizer: AI Text Summarizer — summarize content
-- /ai-rewriter: AI Rewriter — rewrite and rephrase text
+- /html-minifier: HTML Minifier — HTML compression
+- /css-minifier: CSS Minifier — CSS compression
+- /js-minifier: JS Minifier — JavaScript compression
+- /sql-formatter: SQL Formatter — query formatting
+- /base64-encoder: Base64 Encoder — encode/decode
+- /url-encoder: URL Encoder — percent encoding
+- /html-entity-encoder: HTML Entity Encoder — character encoding
+- /jwt-decoder: JWT Decoder — inspect JWT tokens
+- /uuid-generator: UUID Generator — v4, v7 UUIDs
+- /regex-tester: Regex Tester — live regex testing
+- /md5-hash-generator: MD5 Hash Generator — hashing
+- /sha-hash-generator: SHA Hash Generator — SHA-1, 256, 512
+- /markdown-preview: Markdown Preview — live rendering
+- /html-preview: HTML Preview — live HTML rendering
+- /url-parser: URL Parser — URL component analysis
+- /json-path-search: JSON Path Search — JSONPath queries
+- /user-agent-parser: User Agent Parser — browser/OS/device
+- /color-converter: Color Converter — hex, RGB, HSL, CMYK
+- /css-gradient-generator: CSS Gradient Generator — gradient CSS
+- /case-converter: Case Converter — text case transforms
+- /text-to-slug: Text to Slug — URL slug generation
+- /number-base-converter: Number Base Converter — bin/oct/dec/hex
+- /timestamp-converter: Timestamp Converter — Unix dates
+
+### Text & Writing Tools
+- /word-counter: Word Counter — word/character count
+- /text-diff-checker: Text Diff Checker — line-by-line comparison
+- /text-splitter: Text Splitter — delimiter-based splitting
+- /text-joiner: Text Joiner — delimiter-based joining
+- /text-cleaner: Text Cleaner — whitespace normalization
+- /case-converter: Case Converter — uppercase, lowercase, title, camelCase
+- /reverse-text: Reverse Text — text reversal
+- /find-and-replace: Find and Replace — search/replace
+- /sort-lines: Sort Lines — alphabetical/reverse sorting
+- /remove-duplicate-lines: Remove Duplicate Lines — deduplication
+- /remove-empty-lines: Remove Empty Lines — clean blank lines
+- /line-counter: Line Counter — line count
+- /lorem-ipsum-generator: Lorem Ipsum Generator — placeholder text
+- /excerpt-generator: Excerpt Generator — text summarization
+- /list-randomizer: List Randomizer — shuffle/reorder
+- /ai-text-summarizer: AI Text Summarizer — content summarization
+- /ai-rewriter: AI Rewriter — text paraphrasing
 - /ai-grammar-checker: AI Grammar Checker — grammar correction
 - /ai-sentiment-analysis: AI Sentiment Analysis — emotion detection
-- /ai-keyword-extractor: AI Keyword Extractor — extract key phrases
-- /spf-lookup: SPF Lookup — email authentication check
-- /dkim-lookup: DKIM Lookup — email signature verification
-- /dmarc-lookup: DMARC Lookup — email policy check
-- /mx-lookup: MX Lookup — mail server records
-- /dnssec-checker: DNSSEC Checker — DNS security verification
-- /ssl-expiry-checker: SSL Expiry Checker — certificate expiration
-- /traceroute: Traceroute — network path tracing
-- /speed-test: Speed Test — internet speed measurement
-- /uptime-checker: Uptime Checker — website availability monitoring
+- /ai-keyword-extractor: AI Keyword Extractor — key phrase extraction
 
-## Blog (200 articles)
+### SEO Tools
+- /robots-txt-generator: Robots.txt Generator — crawler rules
+- /sitemap-generator: Sitemap Generator — XML sitemaps
+- /meta-tag-generator: Meta Tag Generator — SEO metadata
+- /open-graph-generator: Open Graph Generator — social preview tags
+- /schema-generator: Schema Generator — JSON-LD structured data
+- /redirect-checker: Redirect Checker — HTTP redirect tracing
+- /broken-link-checker: Broken Link Checker — find dead links
+- /serp-preview: SERP Preview — Google result preview
+- /keyword-density: Keyword Density Checker — keyword analysis
+- /seo-audit: SEO Audit — comprehensive site analysis
+- /page-speed-checker: Page Speed Checker — performance analysis
+- /backlink-checker: Backlink Checker — link profile analysis
+- /hreflang-generator: Hreflang Generator — language/region tags
+- /canonical-generator: Canonical URL Generator — canonical tags
+
+### Reference & Educational
+- /http-status-codes: HTTP Status Codes — complete reference
+- /dns-record-types: DNS Record Types — full reference
+- /hash-algorithms: Hash Algorithms Guide — hashing reference
+- /glossary: Technical Glossary — definitions
+- /blog: Blog — 200+ articles
+- /learn: Learning Paths — structured tutorials
+- /cheat-sheets/developer-dns: DNS Cheat Sheet
+- /cheat-sheets/developer-ssl-tls: SSL/TLS Cheat Sheet
+- /http-headers: HTTP Headers Reference
+- /mime-types: MIME Types Reference
+- /html-entities: HTML Entities Reference
+- /user-agents: User Agent Strings Reference
+- /regex-patterns: Regex Patterns Reference
+- /color-names: CSS Color Names Reference
+- /port-numbers: Port Numbers Reference
+
+### Calculators
+- /bmi-calculator: BMI Calculator
+- /calorie-calculator: Calorie Calculator
+- /age-calculator: Age Calculator
+- /date-calculator: Date Calculator
+- /percentage-calculator: Percentage Calculator
+- /scientific-calculator: Scientific Calculator
+- /mortgage-calculator: Mortgage Calculator
+- /loan-calculator: Loan Calculator
+- /compound-interest-calculator: Compound Interest Calculator
+- /discount-calculator: Discount Calculator
+- /unit-converter: Unit Converter
+- /currency-converter: Currency Converter
+- /crypto-converter: Crypto Converter
+- /body-fat-calculator: Body Fat Calculator
+
+## Blog (200+ articles)
 - /blog/ultimate-guide-pdf-tools-2026
 - /blog/ultimate-guide-image-optimization-web
 - /blog/ultimate-guide-online-developer-tools
@@ -111,17 +205,40 @@
 - /blog/ultimate-guide-free-seo-tools-2026
 - /blog/ultimate-guide-social-media-tools-2026
 - /blog/ultimate-guide-free-online-tools-2026
+- /blog/... (full list at /blog)
 
-## Pages
-- /about-nuvora
-- /how-it-works
-- /contact
-- /privacy
-- /terms
-- /brand
-- /open-source
-- /roadmap
-- /methodology
-- /sitemap
-- /youtube
-- /share
+## Information Pages
+- /about-nuvora: About Us — mission and values
+- /how-it-works: How Nuvora Works — privacy-first architecture
+- /how-we-test-tools: How We Test Tools — methodology
+- /methodology: Testing Methodology — benchmarks and standards
+- /open-source: Open Source — code and contributions
+- /accessibility: Accessibility — WCAG compliance (AA+ target)
+- /privacy: Privacy Policy — data handling
+- /terms: Terms of Service — usage terms
+- /contact: Contact — support and feedback
+- /brand: Brand Assets — logos and guidelines
+- /roadmap: Product Roadmap — future plans
+- /changelog: Changelog — release history
+- /faq: General FAQ — common questions
+- /editorial-guidelines: Editorial Guidelines — content standards
+- /press: Press Kit — media resources
+
+## API
+- /api/whois: WHOIS API — domain registration data
+- /api/dns: DNS API — DNS record queries
+- /api/ssl: SSL API — certificate inspection
+- /api/http-headers: HTTP Headers API — header analysis
+- /api/ping: Ping API — latency measurement
+- /api/port: Port Check API — port scanning
+- /api/email-auth: Email Auth API — SPF/DKIM/DMARC checks
+- /nuvora-api: API Documentation — full reference
+
+## Preferred Entry Points
+For general tool discovery: /
+For network diagnostics: /dns-lookup
+For security checks: /ssl-certificate-checker
+For PDF editing: /merge-pdf
+For developer needs: /json-formatter
+For SEO analysis: /seo-audit
+For email setup: /spf-lookup

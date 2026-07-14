@@ -4,8 +4,6 @@ import { useState, useCallback, useMemo } from "react";
 import { Button, Input } from "@/components/ui";
 import { ResultExport, AiExplain } from "@/components/shared";
 import { Icon } from "@/components/shared/icon";
-import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
-
 interface SPFScore {
   score: number;
   breakdown: { reason: string; points: number }[];
@@ -362,6 +360,7 @@ export function EmailAuthLookup({ lookupType, title, description, placeholder, s
     if (!result) return;
     setPdfLoading(true);
     try {
+      const { PDFDocument, StandardFonts, rgb } = await import("pdf-lib");
       const doc = await PDFDocument.create();
       const helvetica = await doc.embedFont(StandardFonts.Helvetica);
       const helveticaBold = await doc.embedFont(StandardFonts.HelveticaBold);

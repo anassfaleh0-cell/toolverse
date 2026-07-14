@@ -2,7 +2,6 @@
 
 import { useState, useRef, useCallback } from "react";
 import { Button } from "@/components/ui";
-import { removeBackground } from "@imgly/background-removal";
 import { Icon } from "@/components/shared/icon";
 
 type Mode = "ai" | "chroma";
@@ -45,6 +44,7 @@ export function BackgroundRemover() {
     setLoading(true);
     setError(null);
     try {
+      const { removeBackground } = await import("@imgly/background-removal");
       const blob = await removeBackground(originalImage.src);
       const url = URL.createObjectURL(blob);
       setResultDataUrl(url);
