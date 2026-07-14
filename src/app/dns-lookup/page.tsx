@@ -88,7 +88,7 @@ const faqItems: FaqItem[] = [
   {
     question: "How do I verify email configuration using DNS?",
     answer:
-      "Query all TXT records for your domain and verify SPF (starting with v=spf1), DKIM (selectors like default._domainkey.yourdomain.com), and DMARC (_dmarc.yourdomain.com). Check MX records for correct mail server hostnames and preference values. Confirm HELO hostnames match PTR records via <a href=\"/reverse-dns-lookup\" className=\"text-blue-600 hover:underline dark:text-blue-400\">Reverse DNS Lookup</a>.",
+       "Query all TXT records for your domain and verify SPF (starting with v=spf1), DKIM (selectors like default._domainkey.yourdomain.com), and DMARC (_dmarc.yourdomain.com). Check MX records for correct mail server hostnames and preference values. Confirm HELO hostnames match PTR records via Reverse DNS Lookup.",
   },
   {
     question: "What is NXDOMAIN and when is it legitimate?",
