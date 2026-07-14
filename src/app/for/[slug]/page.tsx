@@ -30,8 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export const dynamicParams = true;
-export const revalidate = 86400;
+export const dynamicParams = false;
 
 export default async function UseCasePage({ params }: Props) {
   const { slug } = await params;
