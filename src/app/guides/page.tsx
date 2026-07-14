@@ -40,7 +40,7 @@ export default function GuidesPage() {
                 <span className="text-xs font-medium uppercase tracking-wider text-blue-600 dark:text-blue-400">
                   {guide.difficulty}
                 </span>
-                <h2 className="mt-2 font-semibold text-zinc-900 transition-colors group-hover:text-blue-600 dark:text-zinc-50 dark:group-hover:text-blue-400">
+                <h2 className="mt-2 font-semibold text-zinc-900 transition-colors group-hover:text-blue-600 dark:text-zinc-50 dark:group-hover:text-blue-700">
                   {guide.title}
                 </h2>
                 <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 line-clamp-3">

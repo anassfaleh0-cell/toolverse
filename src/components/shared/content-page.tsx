@@ -79,7 +79,7 @@ function AuthorCard({ piece }: { piece: ContentPiece }) {
         <p className="text-sm font-semibold text-text-primary">{authorName}</p>
         <p className="text-xs text-text-tertiary">
           Published {new Date(piece.publishedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
-          {piece.updatedAt !== piece.publishedAt && ` · Updated ${new Date(piece.updatedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}`}
+          {piece.updatedAt !== piece.publishedAt && ` Â· Updated ${new Date(piece.updatedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}`}
         </p>
       </div>
     </div>
@@ -171,7 +171,7 @@ export function ContentPage({ piece }: { piece: ContentPiece }) {
                   <li key={i}>
                     <a
                       href={`#section-${i}`}
-                      className="text-sm text-text-secondary hover:text-nuvora-600 dark:hover:text-nuvora-400 transition-colors"
+                      className="text-sm text-text-secondary hover:text-nuvora-600 dark:hover:text-nuvora-600 transition-colors"
                     >
                       {section.heading}
                     </a>
@@ -295,13 +295,13 @@ export function ContentPage({ piece }: { piece: ContentPiece }) {
                     <span className="text-xs font-semibold uppercase tracking-wider text-nuvora-600 dark:text-nuvora-400">
                       {r.type}
                     </span>
-                    <h4 className="mt-2 font-semibold text-text-primary group-hover:text-nuvora-600 dark:group-hover:text-nuvora-400 transition-colors">
+                    <h4 className="mt-2 font-semibold text-text-primary group-hover:text-nuvora-600 dark:group-hover:text-nuvora-600 transition-colors">
                       {r.title}
                     </h4>
                     <p className="mt-1.5 text-sm text-text-secondary leading-relaxed line-clamp-2">
                       {r.description}
                     </p>
-                    <div className="mt-3 flex items-center gap-1 text-xs font-medium text-text-tertiary group-hover:text-nuvora-600 dark:group-hover:text-nuvora-400 transition-colors">
+                    <div className="mt-3 flex items-center gap-1 text-xs font-medium text-text-tertiary group-hover:text-nuvora-600 dark:group-hover:text-nuvora-600 transition-colors">
                       Read more
                       <Icon name="ArrowRight" className="size-3" />
                     </div>

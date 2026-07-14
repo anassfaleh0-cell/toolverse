@@ -4,7 +4,7 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: `100M Monthly Visits Roadmap — Growth Strategy`,
+  title: `100M Monthly Visits Roadmap â€” Growth Strategy`,
   description: "A data-driven plan to scale Nuvora from 1M to 100M monthly visits through content, SEO, product, and distribution strategies.",
   openGraph: { title: `100M Monthly Visits Roadmap`, description: "A data-driven plan to scale Nuvora from 1M to 100M monthly visits." },
   twitter: { title: `100M Monthly Visits Roadmap`, description: "A data-driven plan to scale Nuvora." },
@@ -15,8 +15,8 @@ const breadcrumbs = [{ label: "Home", href: SITE_URL }, { label: "100M Roadmap" 
 
 const MILESTONES = [
   {
-    period: "Now — Q4 2026",
-    target: "1M → 5M / mo",
+    period: "Now â€” Q4 2026",
+    target: "1M â†’ 5M / mo",
     color: "green",
     strategies: [
       "Complete programmatic SEO: 5K+ pages across all content verticals",
@@ -29,11 +29,11 @@ const MILESTONES = [
     rationale: "Programmatic SEO at scale (5K+ pages) alone can drive 3-5M visits with proper keyword targeting. Backlinks from 5K+ domains will push DR from current to 50+.",
   },
   {
-    period: "Q1 — Q2 2027",
-    target: "5M → 15M / mo",
+    period: "Q1 â€” Q2 2027",
+    target: "5M â†’ 15M / mo",
     color: "blue",
     strategies: [
-      "Launch public API platform — opens integration and embed use cases",
+      "Launch public API platform â€” opens integration and embed use cases",
       "User accounts with saved preferences, history sync, collections",
       "Community templates marketplace drives UGC and repeat visits",
       "Multi-language support (top 10 languages) via i18n infrastructure",
@@ -44,8 +44,8 @@ const MILESTONES = [
     rationale: "API platform adds developer audience (new segment). Internationalization doubles TAM. User accounts increase retention from 1.2 to 3+ pages/visit. 15M at 2.5 pages/visit = 37.5M pageviews.",
   },
   {
-    period: "Q3 — Q4 2027",
-    target: "15M → 40M / mo",
+    period: "Q3 â€” Q4 2027",
+    target: "15M â†’ 40M / mo",
     color: "purple",
     strategies: [
       "Launch native mobile apps (iOS + Android) for top 20 tools",
@@ -60,7 +60,7 @@ const MILESTONES = [
   },
   {
     period: "2028",
-    target: "40M → 70M / mo",
+    target: "40M â†’ 70M / mo",
     color: "amber",
     strategies: [
       "AI-powered tools and recommendations (LLM integration)",
@@ -75,7 +75,7 @@ const MILESTONES = [
   },
   {
     period: "2029+",
-    target: "70M → 100M / mo",
+    target: "70M â†’ 100M / mo",
     color: "emerald",
     strategies: [
       "Full suite of 500+ professionally maintained tools",
@@ -111,7 +111,7 @@ function MilestoneCard({ period, target, color, strategies, metrics, rationale }
       <ul className="mb-4 space-y-1.5">
         {strategies.map((s) => (
           <li key={s} className="flex items-start gap-2 text-sm text-zinc-700 dark:text-zinc-300">
-            <span className="mt-0.5 shrink-0 text-zinc-400">&#8227;</span>
+            <span className="mt-0.5 shrink-0 text-zinc-600">&#8227;</span>
             {s}
           </li>
         ))}
@@ -133,7 +133,7 @@ function MilestoneCard({ period, target, color, strategies, metrics, rationale }
 export default function HundredMRoadmapPage() {
   return (
     <>
-      <JsonLd data={webPageSchema({ name: `100M Monthly Visits Roadmap — Growth Strategy`, description: "A data-driven plan to scale Nuvora from 1M to 100M monthly visits.", url: `${SITE_URL}/100m-roadmap`, breadcrumbs })} />
+      <JsonLd data={webPageSchema({ name: `100M Monthly Visits Roadmap â€” Growth Strategy`, description: "A data-driven plan to scale Nuvora from 1M to 100M monthly visits.", url: `${SITE_URL}/100m-roadmap`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <section className="border-b border-zinc-200 bg-zinc-50 py-12 dark:border-zinc-800 dark:bg-zinc-900/50 sm:py-16">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
@@ -207,7 +207,7 @@ export default function HundredMRoadmapPage() {
               </tbody>
             </table>
           </div>
-          <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-400">Traffic estimates from Similarweb (2026). Nuvora targets exceed current benchmarks through broader tool catalog, programmatic SEO at scale, API platform, and community marketplace — strategies no single competitor combines.</p>
+          <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-400">Traffic estimates from Similarweb (2026). Nuvora targets exceed current benchmarks through broader tool catalog, programmatic SEO at scale, API platform, and community marketplace â€” strategies no single competitor combines.</p>
         </div>
       </section>
     </>

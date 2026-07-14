@@ -105,13 +105,13 @@ export function PdfToolShell({
               : "border-zinc-300 hover:border-zinc-400 dark:border-zinc-700 dark:hover:border-zinc-500",
           )}
         >
-          <svg className="mb-3 size-10 text-zinc-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+          <svg className="mb-3 size-10 text-zinc-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
           </svg>
           <p className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
             Drop {multiple ? "files" : "a file"} here or click to upload
           </p>
-          <p className="mt-1 text-xs text-zinc-400">
+          <p className="mt-1 text-xs text-zinc-600">
             {accept === "application/pdf" ? "PDF files only" : accept.split(",").join(", ")}
           </p>
         </div>
@@ -147,9 +147,9 @@ export function PdfToolShell({
                   <p className="truncate text-sm font-medium text-zinc-900 dark:text-zinc-50">
                     {entry.file.name}
                   </p>
-                  <p className="text-xs text-zinc-500">
+                  <p className="text-xs text-zinc-600">
                     {(entry.file.size / 1024).toFixed(1)} KB
-                    {entry.status === "processing" && ` — ${entry.progress}%`}
+                    {entry.status === "processing" && ` â€” ${entry.progress}%`}
                   </p>
                   {entry.status === "processing" && (
                     <div className="mt-1 h-1.5 w-full rounded-full bg-zinc-200 dark:bg-zinc-700">
@@ -160,7 +160,7 @@ export function PdfToolShell({
                     </div>
                   )}
                   {entry.status === "error" && (
-                    <p className="mt-0.5 text-xs text-red-500">{entry.error}</p>
+                    <p className="mt-0.5 text-xs text-red-700">{entry.error}</p>
                   )}
                 </div>
                 <div className="flex items-center gap-2 shrink-0">
@@ -172,7 +172,7 @@ export function PdfToolShell({
                   {entry.status === "done" && renderResult?.(entry, files.indexOf(entry))}
                   <button
                     onClick={() => removeFile(entry.id)}
-                    className="text-zinc-400 hover:text-red-500 transition-colors"
+                    className="text-zinc-600 hover:text-red-700 transition-colors"
                     aria-label={`Remove ${entry.file.name}`}
                   >
                     <svg className="size-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
@@ -201,7 +201,7 @@ export function PdfToolShell({
       {children}
 
       {files.some((f) => f.status === "error") && (
-        <div className="rounded-lg bg-red-50 p-4 text-sm text-red-600 dark:bg-red-950/20 dark:text-red-400" role="alert">
+        <div className="rounded-lg bg-red-50 p-4 text-sm text-red-700 dark:bg-red-950/20 dark:text-red-400" role="alert">
           Some files failed to process. Use the Retry button to try again.
         </div>
       )}

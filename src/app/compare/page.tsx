@@ -38,7 +38,7 @@ export default function ComparePage() {
                 className="group rounded-lg border border-zinc-200 p-5 transition-colors hover:border-blue-300 dark:border-zinc-800 dark:hover:border-blue-700"
               >
                 <span className="text-xs font-medium uppercase tracking-wider text-amber-700 dark:text-amber-400">vs</span>
-                <h2 className="mt-2 font-semibold text-zinc-900 transition-colors group-hover:text-blue-600 dark:text-zinc-50 dark:group-hover:text-blue-400">
+                <h2 className="mt-2 font-semibold text-zinc-900 transition-colors group-hover:text-blue-600 dark:text-zinc-50 dark:group-hover:text-blue-700">
                   {item.title}
                 </h2>
                 <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 line-clamp-3">{item.description}</p>

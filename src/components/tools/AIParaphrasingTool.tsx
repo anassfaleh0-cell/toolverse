@@ -625,7 +625,7 @@ export function ParaphrasingTool() {
             onChange={(e) => { setInput(e.target.value); setError(""); }}
             placeholder="Paste or type your text here (minimum 10 characters)..."
             rows={6}
-            className="w-full rounded-lg border bg-white px-4 py-3 text-sm text-zinc-900 placeholder-zinc-400 outline-none transition-colors focus:ring-2 focus:ring-blue-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder-zinc-500 dark:focus:ring-blue-400"
+            className="w-full rounded-lg border bg-white px-4 py-3 text-sm text-zinc-900 placeholder-zinc-500 outline-none transition-colors focus:ring-2 focus:ring-blue-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder-zinc-500 dark:focus:ring-blue-400"
           />
         </div>
 
@@ -693,7 +693,7 @@ export function ParaphrasingTool() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Card variant="default" className="p-5">
               <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-3 flex items-center gap-2">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4 text-zinc-400"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4 text-zinc-600"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
                 Original
               </h3>
               <div className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed whitespace-pre-wrap">
@@ -703,7 +703,7 @@ export function ParaphrasingTool() {
 
             <Card variant="default" className="p-5">
               <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-3 flex items-center gap-2">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4 text-blue-500"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4 text-blue-700"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
                 Paraphrased
               </h3>
               <div className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed whitespace-pre-wrap">
@@ -732,7 +732,7 @@ export function ParaphrasingTool() {
               </div>
             </div>
             <div className="mt-3 text-center">
-              <span className="text-xs text-zinc-400">
+              <span className="text-xs text-zinc-600">
                 Original readability: {inputReadability} ({getReadabilityLabel(inputReadability)}) &rarr;
                 Paraphrased: {outputReadability} ({getReadabilityLabel(outputReadability)})
               </span>

@@ -108,11 +108,11 @@ export function ImageResizer() {
                 : "border-zinc-300 hover:border-zinc-400 dark:border-zinc-700 dark:hover:border-zinc-500"
             }`}
           >
-            <Icon name="Upload" className="mb-3 size-10 text-zinc-400" />
+            <Icon name="Upload" className="mb-3 size-10 text-zinc-600" />
             <p className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
               {isDragOver ? "Drop your image here" : "Drop an image or click to upload"}
             </p>
-            <p className="mt-1 text-xs text-zinc-400">Supports PNG, JPEG, WebP, GIF</p>
+            <p className="mt-1 text-xs text-zinc-600">Supports PNG, JPEG, WebP, GIF</p>
           </div>
         ) : (
           <div className="flex items-center gap-4 rounded-xl border border-zinc-200 p-4 dark:border-zinc-800">
@@ -126,7 +126,7 @@ export function ImageResizer() {
             <div>
               <p className="text-sm font-medium text-zinc-900 dark:text-zinc-50">Original</p>
               <p className="text-xs text-zinc-500">
-                {originalDimensions?.width} × {originalDimensions?.height} px
+                {originalDimensions?.width} Ã— {originalDimensions?.height} px
               </p>
             </div>
             <Button
@@ -213,7 +213,7 @@ export function ImageResizer() {
           <div className="overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800">
             <div className="flex items-center justify-between border-b border-zinc-200 bg-zinc-50 px-5 py-3 dark:border-zinc-800 dark:bg-zinc-900">
               <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-                Resized {targetWidth} × {targetHeight} px
+                Resized {targetWidth} Ã— {targetHeight} px
               </p>
               <Button variant="primary" size="sm" onClick={handleDownload}>
                 Download

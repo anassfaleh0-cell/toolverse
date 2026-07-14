@@ -24,7 +24,7 @@ export function HtmlEntitiesClient({ initial, categories }: { initial: HtmlEntit
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search entities..."
-          className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm text-zinc-900 placeholder-zinc-400 focus:border-blue-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100 dark:placeholder-zinc-500 sm:max-w-md"
+          className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm text-zinc-900 placeholder-zinc-500 focus:border-blue-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100 dark:placeholder-zinc-500 sm:max-w-md"
           aria-label="Search HTML entities"
         />
         <div className="flex flex-wrap gap-2">

@@ -63,7 +63,7 @@ export function OpenGraphGenerator() {
       </div>
       <div>
         <label htmlFor="og-desc" className="mb-2 block text-sm font-medium text-zinc-700 dark:text-zinc-300">og:description</label>
-        <textarea id="og-desc" value={description} onChange={(e) => setDescription(e.target.value)} rows={2} className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder-zinc-400 outline-none transition-colors focus:ring-2 focus:ring-blue-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder-zinc-500 dark:focus:ring-blue-400" aria-label="OG description" />
+        <textarea id="og-desc" value={description} onChange={(e) => setDescription(e.target.value)} rows={2} className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder-zinc-500 outline-none transition-colors focus:ring-2 focus:ring-blue-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder-zinc-500 dark:focus:ring-blue-400" aria-label="OG description" />
       </div>
       <div className="grid gap-4 sm:grid-cols-2">
         <div>

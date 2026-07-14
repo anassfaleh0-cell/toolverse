@@ -92,10 +92,10 @@ export function CssGradientGenerator() {
             >
               {gradientType === "linear" ? (
                 <>
-                  <option value="to right">→ To Right</option>
-                  <option value="to bottom">↓ To Bottom</option>
-                  <option value="to bottom right">↘ To Bottom Right</option>
-                  <option value="to top right">↗ To Top Right</option>
+                  <option value="to right">â†’ To Right</option>
+                  <option value="to bottom">â†“ To Bottom</option>
+                  <option value="to bottom right">â†˜ To Bottom Right</option>
+                  <option value="to top right">â†— To Top Right</option>
                 </>
               ) : (
                 <>
@@ -131,10 +131,10 @@ export function CssGradientGenerator() {
                   onChange={(e) => updateColorStop(i, "position", e.target.value)}
                   className="w-20 rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 outline-none focus:ring-2 focus:ring-blue-500 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-50 dark:focus:ring-blue-400"
                 />
-                <span className="text-xs text-zinc-400">%</span>
+                <span className="text-xs text-zinc-600">%</span>
                 <span className="font-mono text-xs text-zinc-600 dark:text-zinc-400">{stop.color}</span>
                 {colorStops.length > 2 && (
-                  <button onClick={() => removeColorStop(i)} className="ml-auto text-zinc-400 hover:text-red-500">
+                  <button onClick={() => removeColorStop(i)} className="ml-auto text-zinc-600 hover:text-red-700">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-4">
                       <path d="M18 6 6 18M6 6l12 12" />
                     </svg>
@@ -161,7 +161,7 @@ export function CssGradientGenerator() {
             <CopyButton text={cssCode} label="Copy CSS" />
           </div>
           <div className="bg-zinc-950 px-5 py-4">
-            <code className="block whitespace-pre-wrap text-sm text-green-400">{cssCode}</code>
+            <code className="block whitespace-pre-wrap text-sm text-green-700">{cssCode}</code>
           </div>
         </div>
       </div>

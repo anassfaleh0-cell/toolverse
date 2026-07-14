@@ -106,7 +106,7 @@ function LandingPageContent({ slug }: { slug: string }) {
                   href={tool.url}
                   className="group rounded-lg border border-zinc-200 bg-white p-4 transition-colors hover:border-zinc-300 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700"
                 >
-                  <h3 className="text-sm font-semibold text-zinc-900 group-hover:text-blue-600 dark:text-zinc-50 dark:group-hover:text-blue-400">
+                  <h3 className="text-sm font-semibold text-zinc-900 group-hover:text-blue-600 dark:text-zinc-50 dark:group-hover:text-blue-700">
                     {tool.name}
                   </h3>
                   <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400 line-clamp-2">
@@ -263,7 +263,7 @@ async function ToolGenericPage({ slug }: { slug: string }) {
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {relatedTools.map((rt) => (
                 <Link key={rt.slug} href={rt.url} className="group rounded-xl border border-zinc-200 p-5 transition-colors hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-900">
-                  <h3 className="font-semibold text-zinc-900 group-hover:text-nuvora-600 dark:text-zinc-50 dark:group-hover:text-nuvora-400">{rt.name}</h3>
+                  <h3 className="font-semibold text-zinc-900 group-hover:text-nuvora-600 dark:text-zinc-50 dark:group-hover:text-nuvora-600">{rt.name}</h3>
                   <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400 line-clamp-2">{rt.description}</p>
                 </Link>
               ))}

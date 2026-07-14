@@ -5,11 +5,11 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: `DNS Fundamentals Learning Path — From Beginner to Advanced | ${SITE_NAME}`,
+  title: `DNS Fundamentals Learning Path â€” From Beginner to Advanced | ${SITE_NAME}`,
   description: `A structured learning path covering DNS from basic concepts to advanced topics. 6 modules: What is DNS, Record Types, Resolution, Security, Troubleshooting, and Advanced DNS.`,
   alternates: { canonical: `${SITE_URL}/learning-paths/dns-fundamentals` },
   openGraph: {
-    title: `DNS Fundamentals Learning Path — From Beginner to Advanced | ${SITE_NAME}`,
+    title: `DNS Fundamentals Learning Path â€” From Beginner to Advanced | ${SITE_NAME}`,
     description: `Master DNS from the ground up with this structured 6-module learning path. Covers record types, resolution, security, troubleshooting, and advanced topics.`,
   },
 };
@@ -133,7 +133,7 @@ const modules: Module[] = [
 export default function DnsFundamentalsLearningPathPage() {
   return (
     <>
-      <JsonLd data={webPageSchema({ name: `DNS Fundamentals Learning Path — From Beginner to Advanced | ${SITE_NAME}`, description: `A structured 6-module learning path covering DNS from basic concepts to advanced topics including resolution, security, troubleshooting, and traffic management.`, url: `${SITE_URL}/learning-paths/dns-fundamentals`, breadcrumbs })} />
+      <JsonLd data={webPageSchema({ name: `DNS Fundamentals Learning Path â€” From Beginner to Advanced | ${SITE_NAME}`, description: `A structured 6-module learning path covering DNS from basic concepts to advanced topics including resolution, security, troubleshooting, and traffic management.`, url: `${SITE_URL}/learning-paths/dns-fundamentals`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <section className="border-b border-zinc-200 bg-zinc-50 py-12 dark:border-zinc-800 dark:bg-zinc-900/50 sm:py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
@@ -147,7 +147,7 @@ export default function DnsFundamentalsLearningPathPage() {
                 A structured journey from DNS basics to advanced concepts. Complete all 6 modules to build a solid foundation in DNS theory, security, and troubleshooting.
               </p>
             </div>
-            <SocialShare url={`${SITE_URL}/learning-paths/dns-fundamentals`} title="DNS Fundamentals Learning Path — From Beginner to Advanced" />
+            <SocialShare url={`${SITE_URL}/learning-paths/dns-fundamentals`} title="DNS Fundamentals Learning Path â€” From Beginner to Advanced" />
           </div>
           <div className="mt-8 flex flex-wrap gap-4 text-sm text-zinc-500 dark:text-zinc-400">
             <span className="flex items-center gap-1.5">
@@ -188,14 +188,14 @@ export default function DnsFundamentalsLearningPathPage() {
                   <ul className="mt-2 space-y-1">
                     {mod.topics.map((topic) => (
                       <li key={topic} className="flex items-start gap-2 text-sm text-zinc-600 dark:text-zinc-400">
-                        <span className="mt-0.5 text-blue-500">&bull;</span>
+                        <span className="mt-0.5 text-blue-700">&bull;</span>
                         {topic}
                       </li>
                     ))}
                   </ul>
                 </div>
                 <div className="mt-4 flex flex-wrap items-center gap-2">
-                  <span className="text-xs font-medium text-zinc-500 dark:text-zinc-500">Related tools:</span>
+                  <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Related tools:</span>
                   {mod.relatedTools.map((tool) => (
                     <Link
                       key={tool.label}

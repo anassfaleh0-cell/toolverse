@@ -30,9 +30,9 @@ const GRADE_META: Record<Grade, { label: string; desc: string; border: string; t
   S: { label: "S", desc: "Exceptional", border: "border-emerald-400", text: "text-emerald-700 dark:text-emerald-400", glow: "shadow-emerald-500/25" },
   A: { label: "A", desc: "Excellent", border: "border-green-400", text: "text-green-700 dark:text-green-400", glow: "shadow-green-500/25" },
   B: { label: "B", desc: "Good", border: "border-amber-400", text: "text-amber-700 dark:text-amber-400", glow: "shadow-amber-500/25" },
-  C: { label: "C", desc: "Fair", border: "border-orange-400", text: "text-orange-600 dark:text-orange-400", glow: "shadow-orange-500/25" },
-  D: { label: "D", desc: "Poor", border: "border-red-400", text: "text-red-500 dark:text-red-400", glow: "shadow-red-500/25" },
-  F: { label: "F", desc: "Failing", border: "border-red-600", text: "text-red-600 dark:text-red-400", glow: "shadow-red-600/30" },
+  C: { label: "C", desc: "Fair", border: "border-orange-400", text: "text-orange-700 dark:text-orange-400", glow: "shadow-orange-500/25" },
+  D: { label: "D", desc: "Poor", border: "border-red-400", text: "text-red-700 dark:text-red-400", glow: "shadow-red-500/25" },
+  F: { label: "F", desc: "Failing", border: "border-red-600", text: "text-red-700 dark:text-red-400", glow: "shadow-red-600/30" },
 };
 
 const CACHE_PREFIX = "drc-";
@@ -77,7 +77,7 @@ async function checkDns(hostname: string): Promise<CategoryResult> {
   try {
     const data = await fetchJson(`/api/dns-lookup?hostname=${encodeURIComponent(hostname)}`);
     const ok = data.records?.length > 0;
-    return { key: "dns", label: "DNS Health", icon: "Globe", score: ok ? 100 : 40, status: ok ? "good" : "warning", statusLabel: ok ? "Resolves" : "No Records", detail: ok ? `${data.records.length} record types resolved` : "No DNS records found — domain may not exist" };
+    return { key: "dns", label: "DNS Health", icon: "Globe", score: ok ? 100 : 40, status: ok ? "good" : "warning", statusLabel: ok ? "Resolves" : "No Records", detail: ok ? `${data.records.length} record types resolved` : "No DNS records found â€” domain may not exist" };
   } catch (e) {
     return { key: "dns", label: "DNS Health", icon: "Globe", score: 0, status: "critical", statusLabel: "Failed", detail: e instanceof Error ? e.message : "DNS query failed" };
   }
@@ -127,7 +127,7 @@ async function checkStatus(url: string): Promise<CategoryResult> {
     const online = data.statusLabel === "Online";
     const redirect = data.statusLabel === "Redirect";
     const score = online ? 100 : redirect ? 70 : 20;
-    return { key: "status", label: "Website Status", icon: "Zap", score, status: online ? "good" : redirect ? "warning" : "critical", statusLabel: online ? "Online" : redirect ? "Redirect" : "Offline", detail: online ? `HTTP ${data.statusCode} — server is responding` : redirect ? `Redirect (HTTP ${data.statusCode})` : "Website is not reachable" };
+    return { key: "status", label: "Website Status", icon: "Zap", score, status: online ? "good" : redirect ? "warning" : "critical", statusLabel: online ? "Online" : redirect ? "Redirect" : "Offline", detail: online ? `HTTP ${data.statusCode} â€” server is responding` : redirect ? `Redirect (HTTP ${data.statusCode})` : "Website is not reachable" };
   } catch (e) {
     return { key: "status", label: "Website Status", icon: "Zap", score: 0, status: "critical", statusLabel: "Offline", detail: e instanceof Error ? e.message : "Website unreachable" };
   }
@@ -146,7 +146,7 @@ async function checkPing(host: string): Promise<CategoryResult> {
       else if (avg < 500) score = 40;
       else score = 20;
     }
-    return { key: "ping", label: "Response Time", icon: "Satellite", score, status: score >= 80 ? "good" : score >= 40 ? "warning" : "critical", statusLabel: loss >= 100 ? "Timeout" : `${avg}ms`, detail: loss >= 100 ? "Host did not respond within timeout" : `${avg}ms avg · ${data.min}–${data.max}ms range · ${loss}% loss` };
+    return { key: "ping", label: "Response Time", icon: "Satellite", score, status: score >= 80 ? "good" : score >= 40 ? "warning" : "critical", statusLabel: loss >= 100 ? "Timeout" : `${avg}ms`, detail: loss >= 100 ? "Host did not respond within timeout" : `${avg}ms avg Â· ${data.min}â€“${data.max}ms range Â· ${loss}% loss` };
   } catch (e) {
     return { key: "ping", label: "Response Time", icon: "Satellite", score: 0, status: "critical", statusLabel: "Failed", detail: e instanceof Error ? e.message : "Ping test failed" };
   }
@@ -158,7 +158,7 @@ function buildRecs(categories: CategoryResult[]): string[] {
     if (c.status === "critical") r.push(`Fix ${c.label}: ${c.detail}.`);
     else if (c.status === "warning") r.push(`Improve ${c.label}: ${c.detail}.`);
   }
-  if (r.length === 0) r.push("All checks passed — your domain is in excellent health!");
+  if (r.length === 0) r.push("All checks passed â€” your domain is in excellent health!");
   return r;
 }
 
@@ -212,7 +212,7 @@ export function DomainReportCard() {
 
   const handleShare = async () => {
     const shareUrl = `${window.location.origin}/domain-report?domain=${encodeURIComponent(searchedDomain)}`;
-    const text = `I checked ${searchedDomain} and it scored ${results?.overallGrade} (${results?.overallScore}%) on Nuvora Domain Report Card! Check yours →`;
+    const text = `I checked ${searchedDomain} and it scored ${results?.overallGrade} (${results?.overallScore}%) on Nuvora Domain Report Card! Check yours â†’`;
     if (navigator.share) {
       try { await navigator.share({ title: `${searchedDomain} Domain Report`, text, url: shareUrl }); return; } catch { }
     }
@@ -246,7 +246,7 @@ export function DomainReportCard() {
         </Button>
       </form>
 
-      {error && <div className="mx-auto mt-6 max-w-xl rounded-lg bg-red-50 p-4 text-center text-sm text-red-600 dark:bg-red-950/50 dark:text-red-400">{error}</div>}
+      {error && <div className="mx-auto mt-6 max-w-xl rounded-lg bg-red-50 p-4 text-center text-sm text-red-700 dark:bg-red-950/50 dark:text-red-400">{error}</div>}
 
       {loading && (
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -262,7 +262,7 @@ export function DomainReportCard() {
 
       {results && !loading && (
         <div className="mt-14 space-y-10">
-          {/* ── Report Card Header ── */}
+          {/* â”€â”€ Report Card Header â”€â”€ */}
           <div className={cn("relative overflow-hidden rounded-2xl border bg-white p-8 text-center shadow-lg dark:bg-zinc-900/50", gm?.border)}>
             <div className={cn("absolute inset-0 opacity-[0.04]", gm?.text)} style={{ background: `linear-gradient(135deg, currentColor 0%, transparent 100%)` }} />
             <p className="text-xs font-medium uppercase tracking-widest text-zinc-500 dark:text-zinc-400">Overall Grade</p>
@@ -273,11 +273,11 @@ export function DomainReportCard() {
               <p className={cn("text-lg font-bold", gm?.text)}>{gm?.desc}</p>
             </div>
             <p className="mt-4 text-xl font-bold text-zinc-900 dark:text-zinc-50">{results.domain}</p>
-            <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">Score: {results.overallScore}% · {new Date(results.timestamp).toLocaleDateString()}</p>
+            <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">Score: {results.overallScore}% Â· {new Date(results.timestamp).toLocaleDateString()}</p>
             <div className="mt-6 flex justify-center gap-3">
               <Button variant="secondary" size="sm" onClick={handleShare}>
                 {copied ? (
-                  <><svg className="mr-1.5 size-4 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path d="M20 6 9 17l-5-5" /></svg>Copied!</>
+                  <><svg className="mr-1.5 size-4 text-emerald-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path d="M20 6 9 17l-5-5" /></svg>Copied!</>
                 ) : (
                   <><svg className="mr-1.5 size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" /><polyline points="16 6 12 2 8 6" /><line x1="12" y1="2" x2="12" y2="15" /></svg>Share Report Card</>
                 )}
@@ -288,7 +288,7 @@ export function DomainReportCard() {
             </div>
           </div>
 
-          {/* ── Category Cards ── */}
+          {/* â”€â”€ Category Cards â”€â”€ */}
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {results.categories.map((cat, i) => (
               <div key={cat.key} className="rounded-xl border border-zinc-200 bg-white p-5 shadow-sm transition-all duration-300 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/50" style={{ animation: `fade-slide-up 0.4s ease-out ${i * 0.08}s both` }}>
@@ -300,7 +300,7 @@ export function DomainReportCard() {
                 <div className="mt-3">
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-zinc-500">Score</span>
-                    <span className={cn("font-bold", cat.score >= 80 ? "text-emerald-700 dark:text-emerald-400" : cat.score >= 40 ? "text-amber-700 dark:text-amber-400" : "text-red-600 dark:text-red-400")}>{cat.score}%</span>
+                    <span className={cn("font-bold", cat.score >= 80 ? "text-emerald-700 dark:text-emerald-400" : cat.score >= 40 ? "text-amber-700 dark:text-amber-400" : "text-red-700 dark:text-red-400")}>{cat.score}%</span>
                   </div>
                   <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-700">
                     <div className={cn("h-full rounded-full transition-all duration-700", cat.score >= 80 ? "bg-emerald-500" : cat.score >= 40 ? "bg-amber-500" : "bg-red-500")} style={{ width: `${cat.score}%` }} />
@@ -311,10 +311,10 @@ export function DomainReportCard() {
             ))}
           </div>
 
-          {/* ── Recommendations ── */}
+          {/* â”€â”€ Recommendations â”€â”€ */}
           <div className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/50">
             <h2 className="flex items-center gap-2 text-lg font-bold text-zinc-900 dark:text-zinc-50">
-              <svg className="size-5 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>
+              <svg className="size-5 text-blue-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>
               Recommendations
             </h2>
             <ul className="mt-4 space-y-2">

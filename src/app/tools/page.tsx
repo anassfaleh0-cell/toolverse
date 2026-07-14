@@ -105,7 +105,7 @@ export default function ToolsPage() {
                 <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
                   {tool.description}
                 </p>
-                <span className="mt-3 inline-block text-xs text-zinc-400 dark:text-zinc-500">
+                <span className="mt-3 inline-block text-xs text-zinc-600 dark:text-zinc-400">
                   {(() => {
                     const cat = categories.find((c) => c.slug === tool.category);
                     return cat ? <><Icon name={cat.icon} className="size-3.5 align-text-bottom" /> {cat.label}</> : null;

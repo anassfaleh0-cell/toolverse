@@ -90,9 +90,9 @@ export function ImageConverter() {
                 : "border-zinc-300 hover:border-zinc-400 dark:border-zinc-700 dark:hover:border-zinc-500"
             }`}
           >
-            <Icon name="Upload" className="mb-3 size-10 text-zinc-400" />
+            <Icon name="Upload" className="mb-3 size-10 text-zinc-600" />
             <p className="text-sm font-medium text-zinc-600 dark:text-zinc-400">Drop an image or click to upload</p>
-            <p className="mt-1 text-xs text-zinc-400">Supports PNG, JPEG, WebP, GIF, BMP</p>
+            <p className="mt-1 text-xs text-zinc-600">Supports PNG, JPEG, WebP, GIF, BMP</p>
           </div>
         ) : (
           <>

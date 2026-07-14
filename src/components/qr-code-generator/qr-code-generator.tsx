@@ -172,7 +172,7 @@ export function QrCodeGenerator() {
               onClick={() => setQrSize(s)}
               className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
                 qrSize === s
-                  ? "bg-zinc-900 text-white dark:bg-zinc-50 dark:text-zinc-900"
+                  ? "bg-zinc-900 text-white dark:bg-zinc-50 dark:text-zinc-400"
                   : "border border-zinc-300 bg-white text-zinc-600 hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900"
               }`}
             >

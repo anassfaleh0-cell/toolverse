@@ -6,11 +6,11 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { Card, Badge } from "@/components/ui";
 
 export const metadata: Metadata = {
-  title: `HTTP Status Codes — Complete Reference | ${SITE_NAME}`,
+  title: `HTTP Status Codes â€” Complete Reference | ${SITE_NAME}`,
   description: `Complete reference of all HTTP status codes organized by category. Includes 1xx informational, 2xx success, 3xx redirection, 4xx client error, and 5xx server error codes.`,
   alternates: { canonical: `${SITE_URL}/http-status-codes` },
   openGraph: {
-    title: `HTTP Status Codes Reference — ${SITE_NAME}`,
+    title: `HTTP Status Codes Reference â€” ${SITE_NAME}`,
     description: `Every HTTP status code explained with descriptions, when they occur, and practical examples.`,
   },
 };
@@ -120,7 +120,7 @@ export default function HttpStatusCodesPage() {
 
   return (
     <>
-      <JsonLd data={webPageSchema({ name: `HTTP Status Codes Reference — ${SITE_NAME}`, description: `Complete reference of all HTTP status codes organized by category.`, url: `${SITE_URL}/http-status-codes`, breadcrumbs })} />
+      <JsonLd data={webPageSchema({ name: `HTTP Status Codes Reference â€” ${SITE_NAME}`, description: `Complete reference of all HTTP status codes organized by category.`, url: `${SITE_URL}/http-status-codes`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <section className="border-b border-zinc-200 bg-zinc-50 py-12 dark:border-zinc-800 dark:bg-zinc-900/50 sm:py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
@@ -159,7 +159,7 @@ export default function HttpStatusCodesPage() {
                         </span>
                       </div>
                       <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">{code.description}</p>
-                      <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-500">
+                      <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
                         <span className="font-medium">When it occurs:</span> {code.whenOccurs}
                       </p>
                     </div>

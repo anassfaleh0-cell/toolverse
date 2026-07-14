@@ -72,9 +72,9 @@ const typePrefix: Record<DiffLineType, string> = {
 };
 
 const typePrefixColor: Record<DiffLineType, string> = {
-  unchanged: "text-zinc-400 dark:text-zinc-600",
+  unchanged: "text-zinc-600 dark:text-zinc-400",
   added: "text-green-700 dark:text-green-400",
-  removed: "text-red-600 dark:text-red-400",
+  removed: "text-red-700 dark:text-red-400",
 };
 
 export function TextDiffChecker() {
@@ -157,7 +157,7 @@ export function TextDiffChecker() {
                   {typePrefix[line.type]}
                 </div>
                 <div className={`flex-1 py-1 pr-4 ${line.type === "added" ? "text-green-700 dark:text-green-300" : line.type === "removed" ? "text-red-700 dark:text-red-300" : "text-zinc-900 dark:text-zinc-50"}`}>
-                  {line.content || " "}
+                  {line.content || "Â "}
                 </div>
               </div>
             ))}

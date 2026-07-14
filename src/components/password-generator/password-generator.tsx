@@ -31,7 +31,7 @@ function getStrengthColor(score: number): string {
 }
 
 function getStrengthTextColor(score: number): string {
-  if (score < 30) return "text-red-600 dark:text-red-400";
+  if (score < 30) return "text-red-700 dark:text-red-400";
   if (score < 60) return "text-amber-700 dark:text-amber-400";
   if (score < 80) return "text-green-700 dark:text-green-400";
   return "text-emerald-700 dark:text-emerald-400";
@@ -123,7 +123,7 @@ export function PasswordGenerator() {
             className="w-full accent-zinc-900 dark:accent-zinc-50"
             aria-label="Password length"
           />
-          <div className="flex justify-between text-xs text-zinc-400">4<span className="text-zinc-500">128</span></div>
+          <div className="flex justify-between text-xs text-zinc-600">4<span className="text-zinc-500">128</span></div>
         </div>
 
         <fieldset className="space-y-2">
@@ -171,7 +171,7 @@ export function PasswordGenerator() {
             <div className="h-2 overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-700">
               <div className={`h-full rounded-full transition-all ${getStrengthColor(strength)}`} style={{ width: `${strength}%` }} />
             </div>
-            <div className="flex justify-between text-xs text-zinc-400">
+            <div className="flex justify-between text-xs text-zinc-600">
               <span>Weak</span>
               <span>Very Strong</span>
             </div>

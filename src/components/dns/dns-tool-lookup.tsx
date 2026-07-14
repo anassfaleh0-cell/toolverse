@@ -97,7 +97,7 @@ export function DnsToolLookup({ lookupType, title, description, placeholder, beg
       {showBatch && (
         <div className="rounded-xl border border-zinc-200 dark:border-zinc-800">
           <div className="border-b border-zinc-200 px-5 py-3 dark:border-zinc-800">
-            <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">Batch Mode — one per line</p>
+            <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">Batch Mode â€” one per line</p>
           </div>
           <div className="space-y-3 px-5 py-4">
             <textarea
@@ -106,7 +106,7 @@ export function DnsToolLookup({ lookupType, title, description, placeholder, beg
               rows={4}
               placeholder={"example.com\ngmail.com\ngithub.com"}
               className="w-full resize-none rounded-lg border border-zinc-300 bg-white px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
-              aria-label="Batch input — one domain per line"
+              aria-label="Batch input â€” one domain per line"
             />
             <div className="flex items-center justify-between">
               <Button
@@ -149,7 +149,7 @@ export function DnsToolLookup({ lookupType, title, description, placeholder, beg
                 {batchResults.map((r, i) => (
                   <div key={i} className="flex items-center justify-between border-b border-zinc-200 px-3 py-2 text-xs last:border-b-0 dark:border-zinc-800">
                     <span className="font-mono text-zinc-900 dark:text-zinc-50">{r.input}</span>
-                    <span className={(r.output as Record<string, unknown>).error ? "text-red-500" : "text-green-500"}>{(r.output as Record<string, unknown>).error as string || "OK"}</span>
+                    <span className={(r.output as Record<string, unknown>).error ? "text-red-700" : "text-green-700"}>{(r.output as Record<string, unknown>).error as string || "OK"}</span>
                   </div>
                 ))}
               </div>
@@ -242,7 +242,7 @@ export function DnsToolLookup({ lookupType, title, description, placeholder, beg
               result.records.map((rec: string, i: number) => (
                 <div key={i} className="flex items-center justify-between px-5 py-3">
                   <pre className="flex-1 overflow-x-auto whitespace-pre-wrap break-all font-mono text-sm text-zinc-900 dark:text-zinc-50">{rec}</pre>
-                  <button type="button" onClick={() => navigator.clipboard.writeText(rec)} className="ml-2 shrink-0 rounded-lg p-2 text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800" aria-label="Copy">
+                  <button type="button" onClick={() => navigator.clipboard.writeText(rec)} className="ml-2 shrink-0 rounded-lg p-2 text-zinc-600 hover:bg-zinc-100 dark:hover:bg-zinc-800" aria-label="Copy">
                     <Icon name="Copy" className="size-4" />
                   </button>
                 </div>
@@ -255,24 +255,24 @@ export function DnsToolLookup({ lookupType, title, description, placeholder, beg
                 </div>
                 <div className="px-5 py-3">
                   <p className="text-xs font-medium text-zinc-500">DS Records</p>
-                  {result.dsRecords && result.dsRecords.length === 0 ? <p className="mt-1 text-sm text-zinc-400">No DS records in parent zone</p> : result.dsRecords?.map((d: string, i: number) => <pre key={i} className="mt-1 font-mono text-sm text-zinc-900 dark:text-zinc-50">{d}</pre>)}
+                  {result.dsRecords && result.dsRecords.length === 0 ? <p className="mt-1 text-sm text-zinc-600">No DS records in parent zone</p> : result.dsRecords?.map((d: string, i: number) => <pre key={i} className="mt-1 font-mono text-sm text-zinc-900 dark:text-zinc-50">{d}</pre>)}
                 </div>
                 <div className="px-5 py-3">
                   <p className="text-xs font-medium text-zinc-500">DNSSEC Status</p>
-                  <p className={`mt-1 text-sm font-semibold ${result.signed ? "text-green-700" : "text-red-600"}`}>{result.signed ? "Zone is signed" : "Zone is NOT signed"}</p>
+                  <p className={`mt-1 text-sm font-semibold ${result.signed ? "text-green-700" : "text-red-700"}`}>{result.signed ? "Zone is signed" : "Zone is NOT signed"}</p>
                 </div>
               </>
             ) : result.score !== undefined ? (
               <>
                 <div className="px-5 py-4">
                   <p className="text-xs font-medium text-zinc-500">Deliverability Score</p>
-                  <p className={`mt-1 text-3xl font-bold ${result.score >= 70 ? "text-green-700" : result.score >= 40 ? "text-amber-700" : "text-red-600"}`}>{result.score}/100</p>
+                  <p className={`mt-1 text-3xl font-bold ${result.score >= 70 ? "text-green-700" : result.score >= 40 ? "text-amber-700" : "text-red-700"}`}>{result.score}/100</p>
                 </div>
                 <div className="grid grid-cols-2 gap-4 px-5 py-4">
-                  <div><p className="text-xs text-zinc-500">SPF</p><p className={`font-medium ${result.spf?.length ? "text-green-700" : "text-red-600"}`}>{result.spf?.length ? "Found" : "Missing"}</p></div>
+                  <div><p className="text-xs text-zinc-500">SPF</p><p className={`font-medium ${result.spf?.length ? "text-green-700" : "text-red-700"}`}>{result.spf?.length ? "Found" : "Missing"}</p></div>
                   <div><p className="text-xs text-zinc-500">DKIM</p><p className={`font-medium ${result.dkim?.length ? "text-green-700" : "text-amber-700"}`}>{result.dkim?.length ? "Found" : "Not found"}</p></div>
-                  <div><p className="text-xs text-zinc-500">DMARC</p><p className={`font-medium ${result.dmarc?.length ? "text-green-700" : "text-red-600"}`}>{result.dmarc?.length ? "Found" : "Missing"}</p></div>
-                  <div><p className="text-xs text-zinc-500">MX</p><p className={`font-medium ${result.mx?.length ? "text-green-700" : "text-red-600"}`}>{result.mx?.length ? "Found" : "Missing"}</p></div>
+                  <div><p className="text-xs text-zinc-500">DMARC</p><p className={`font-medium ${result.dmarc?.length ? "text-green-700" : "text-red-700"}`}>{result.dmarc?.length ? "Found" : "Missing"}</p></div>
+                  <div><p className="text-xs text-zinc-500">MX</p><p className={`font-medium ${result.mx?.length ? "text-green-700" : "text-red-700"}`}>{result.mx?.length ? "Found" : "Missing"}</p></div>
                 </div>
                 <div className="px-5 py-4">
                   <p className="text-xs font-medium text-zinc-500">PTR Record</p>

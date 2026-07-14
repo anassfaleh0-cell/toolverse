@@ -318,7 +318,7 @@ export function ColorConverter() {
                 <p className="capitalize text-zinc-600 dark:text-zinc-400">{results.name}</p>
               )}
               {results.alpha < 1 && (
-                <p className="text-zinc-500 dark:text-zinc-500">Alpha: {Math.round(results.alpha * 100)}%</p>
+                <p className="text-zinc-500 dark:text-zinc-400">Alpha: {Math.round(results.alpha * 100)}%</p>
               )}
             </div>
           </div>

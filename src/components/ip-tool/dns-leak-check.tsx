@@ -68,7 +68,7 @@ export function DnsLeakCheck({ publicIp }: DnsLeakCheckProps) {
       )}
 
       {error && (
-        <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+        <p className="text-sm text-red-700 dark:text-red-400">{error}</p>
       )}
 
       {result && !loading && (
@@ -92,7 +92,7 @@ export function DnsLeakCheck({ publicIp }: DnsLeakCheckProps) {
 
           {result.webRtc.error && !result.hasLeak && (
             <p className="text-xs text-zinc-500">
-              WebRTC check: {result.webRtc.error} — your browser likely blocks WebRTC IP leaks.
+              WebRTC check: {result.webRtc.error} â€” your browser likely blocks WebRTC IP leaks.
             </p>
           )}
 
@@ -103,11 +103,11 @@ export function DnsLeakCheck({ publicIp }: DnsLeakCheckProps) {
                 <div key={r.name} className="rounded-lg border border-zinc-200 p-3 dark:border-zinc-800">
                   <p className="text-xs font-medium text-zinc-900 dark:text-zinc-50">{r.name}</p>
                   {r.error ? (
-                    <p className="mt-1 text-xs text-red-500">{r.error}</p>
+                    <p className="mt-1 text-xs text-red-700">{r.error}</p>
                   ) : (
                     <>
                       <p className="mt-0.5 font-mono text-xs text-zinc-600 dark:text-zinc-400">{r.ip || "N/A"}</p>
-                      <p className="mt-0.5 text-xs text-zinc-400">
+                      <p className="mt-0.5 text-xs text-zinc-600">
                         {r.latencyMs !== null ? `${r.latencyMs}ms` : ""}
                       </p>
                     </>

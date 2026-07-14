@@ -30,7 +30,7 @@ function getExpirationStatus(exp: number | undefined): { label: string; color: s
     }
     return { label: `Valid (expires in ${minutes}m ${remaining % 60}s)`, color: "text-green-700 dark:text-green-400" };
   }
-  return { label: "Expired", color: "text-red-600 dark:text-red-400" };
+  return { label: "Expired", color: "text-red-700 dark:text-red-400" };
 }
 
 export function JwtDecoder() {

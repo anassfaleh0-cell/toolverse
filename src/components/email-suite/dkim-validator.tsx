@@ -52,7 +52,7 @@ export function DkimValidator() {
     if (hMatch) {
       const hash = hMatch[1].toLowerCase();
       if (hash === "sha1") messages.push({ type: "warning", text: "Uses deprecated SHA1 hash (h=sha1). RFC 8301 recommends SHA256." });
-      else if (hash === "sha256") messages.push({ type: "success", text: "Uses SHA256 hash — current best practice per RFC 8301." });
+      else if (hash === "sha256") messages.push({ type: "success", text: "Uses SHA256 hash â€” current best practice per RFC 8301." });
     }
 
     const kMatch = trimmed.match(/\bk=(\w+)/);
@@ -65,7 +65,7 @@ export function DkimValidator() {
     const tMatch = trimmed.match(/\bt=([\w:]+)/);
     if (tMatch) {
       const flags = tMatch[1].toLowerCase();
-      if (flags.includes("y")) messages.push({ type: "info", text: "t=y flag set. This is a test mode DKIM record — no signatures will be used." });
+      if (flags.includes("y")) messages.push({ type: "info", text: "t=y flag set. This is a test mode DKIM record â€” no signatures will be used." });
       if (flags.includes("s")) messages.push({ type: "info", text: "t=s flag set. Signature is limited to subdomains (strict)." });
     }
 
@@ -102,7 +102,7 @@ export function DkimValidator() {
           placeholder='v=DKIM1; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC...'
           className="w-full resize-none rounded-lg border border-zinc-300 bg-white px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
         />
-        <p className="mt-1 text-[11px] text-zinc-400 dark:text-zinc-300">Paste the full TXT record from your DNS. Use DKIM Lookup to fetch one.</p>
+        <p className="mt-1 text-[11px] text-zinc-600 dark:text-zinc-300">Paste the full TXT record from your DNS. Use DKIM Lookup to fetch one.</p>
       </div>
 
       <div className="flex gap-3">
@@ -114,7 +114,7 @@ export function DkimValidator() {
       {result && (
         <div className="rounded-xl border border-zinc-200 dark:border-zinc-800">
           <div className="flex items-center justify-between border-b border-zinc-200 px-5 py-3 dark:border-zinc-800">
-            <p className={`text-sm font-semibold ${result.valid ? "text-green-700" : "text-red-600"}`}>
+            <p className={`text-sm font-semibold ${result.valid ? "text-green-700" : "text-red-700"}`}>
               {result.valid ? "Record looks valid" : "Issues found"}
             </p>
           </div>
@@ -141,12 +141,12 @@ export function DkimValidator() {
       <details className="group">
         <summary className="cursor-pointer text-xs font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400">How to read a DKIM record</summary>
         <div className="mt-3 space-y-2 rounded-lg border border-zinc-200 bg-zinc-50 p-4 text-xs text-zinc-600 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400">
-          <p><strong>v=DKIM1</strong> — Version tag (required, must be DKIM1)</p>
-          <p><strong>p=</strong> — Public key material (required, base64-encoded)</p>
-          <p><strong>k=</strong> — Key type (optional, rsa or ed25519, defaults to rsa)</p>
-          <p><strong>h=</strong> — Hash algorithm (optional, sha256 or sha1, defaults to sha256)</p>
-          <p><strong>s=</strong> — Service type (optional, email or *, defaults to *)</p>
-          <p><strong>t=</strong> — Flags (optional, y=test mode, s=strict subdomain)</p>
+          <p><strong>v=DKIM1</strong> â€” Version tag (required, must be DKIM1)</p>
+          <p><strong>p=</strong> â€” Public key material (required, base64-encoded)</p>
+          <p><strong>k=</strong> â€” Key type (optional, rsa or ed25519, defaults to rsa)</p>
+          <p><strong>h=</strong> â€” Hash algorithm (optional, sha256 or sha1, defaults to sha256)</p>
+          <p><strong>s=</strong> â€” Service type (optional, email or *, defaults to *)</p>
+          <p><strong>t=</strong> â€” Flags (optional, y=test mode, s=strict subdomain)</p>
         </div>
       </details>
 

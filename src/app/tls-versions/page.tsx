@@ -6,7 +6,7 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { Card, Badge } from "@/components/ui";
 
 export const metadata: Metadata = {
-  title: `TLS/SSL Versions Timeline — Complete Reference`,
+  title: `TLS/SSL Versions Timeline â€” Complete Reference`,
   description: `Timeline of SSL and TLS protocol versions from SSL 2.0 (1995) to TLS 1.3 (2018). Key features, security status, deprecation dates, and recommendations.`,
   alternates: { canonical: `${SITE_URL}/tls-versions` },
   openGraph: {
@@ -101,7 +101,7 @@ function getStatusConfig(status: TlsVersion["status"]) {
 export default function TlsVersionsPage() {
   return (
     <>
-      <JsonLd data={webPageSchema({ name: `TLS/SSL Versions Timeline — ${SITE_NAME}`, description: `Timeline of SSL/TLS protocol versions from SSL 2.0 to TLS 1.3.`, url: `${SITE_URL}/tls-versions`, breadcrumbs })} />
+      <JsonLd data={webPageSchema({ name: `TLS/SSL Versions Timeline â€” ${SITE_NAME}`, description: `Timeline of SSL/TLS protocol versions from SSL 2.0 to TLS 1.3.`, url: `${SITE_URL}/tls-versions`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <section className="border-b border-zinc-200 bg-zinc-50 py-12 dark:border-zinc-800 dark:bg-zinc-900/50 sm:py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
@@ -133,7 +133,7 @@ export default function TlsVersionsPage() {
                         <span className="text-sm text-zinc-500">Released {tls.year}</span>
                       </div>
                       {tls.deprecationDate && (
-                        <p className="mt-2 text-xs text-zinc-500 dark:text-zinc-500">
+                        <p className="mt-2 text-xs text-zinc-500 dark:text-zinc-400">
                           <span className="font-medium">Deprecation:</span> {tls.deprecationDate}
                         </p>
                       )}
@@ -148,7 +148,7 @@ export default function TlsVersionsPage() {
                           ))}
                         </ul>
                       </div>
-                      <p className="mt-2 text-xs text-zinc-400">{tls.rfc}</p>
+                      <p className="mt-2 text-xs text-zinc-600">{tls.rfc}</p>
                     </Card>
                   </div>
                 );

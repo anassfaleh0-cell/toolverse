@@ -91,7 +91,7 @@ export default function YouTubePage() {
                     fill="none"
                     stroke="currentColor"
                     strokeWidth={1.5}
-                    className="size-12 text-zinc-300 dark:text-zinc-600"
+                    className="size-12 text-zinc-600 dark:text-zinc-400"
                   >
                     <rect x="2" y="4" width="20" height="16" rx="2" />
                     <polygon points="10 9 15 12 10 15 10 9" fill="currentColor" stroke="none" />

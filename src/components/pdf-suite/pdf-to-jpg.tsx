@@ -127,7 +127,7 @@ export function PdfToJpg() {
           aria-label="Upload a PDF to convert to JPG"
           className="flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-zinc-300 p-12 transition-colors hover:border-zinc-400 dark:border-zinc-700 dark:hover:border-zinc-500"
         >
-          <svg className="mb-3 size-10 text-zinc-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.41a2.25 2.25 0 013.182 0l2.909 2.91m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" /></svg>
+          <svg className="mb-3 size-10 text-zinc-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.41a2.25 2.25 0 013.182 0l2.909 2.91m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" /></svg>
           <p className="text-sm font-medium text-zinc-600 dark:text-zinc-400">Drop a PDF here or click to upload</p>
         </div>
         <input ref={fileInputRef} type="file" accept="application/pdf" className="hidden" onChange={handleFileChange} aria-label="Select PDF to convert" />
@@ -139,12 +139,12 @@ export function PdfToJpg() {
     <div className="mx-auto max-w-3xl space-y-6">
       <div className="flex items-center gap-3 rounded-lg border border-zinc-200 p-3 dark:border-zinc-800">
         <span className="text-sm font-medium text-zinc-900 dark:text-zinc-50">{file.name}</span>
-        <span className="text-xs text-zinc-500">{pageCount} pages</span>
+        <span className="text-xs text-zinc-600">{pageCount} pages</span>
         <Button variant="secondary" size="sm" className="ml-auto" onClick={() => { setFile(null); setPreviews([]); }}>Change File</Button>
       </div>
 
       {loading && (
-        <div className="flex items-center justify-center py-8 text-sm text-zinc-500">Loading previews...</div>
+        <div className="flex items-center justify-center py-8 text-sm text-zinc-600">Loading previews...</div>
       )}
 
       {previews.length > 0 && (
@@ -171,7 +171,7 @@ export function PdfToJpg() {
                 >
                   <img loading="lazy" decoding="async" src={dataUrl} alt={`Page ${i + 1} preview`} className="w-full" />
                 </button>
-                <p className="text-center text-xs text-zinc-500">Page {i + 1}</p>
+                <p className="text-center text-xs text-zinc-600">Page {i + 1}</p>
               </div>
             ))}
           </div>
@@ -183,7 +183,7 @@ export function PdfToJpg() {
       )}
 
       {error && (
-        <div className="rounded-lg bg-red-50 p-4 text-sm text-red-600 dark:bg-red-950/20 dark:text-red-400">{error}</div>
+        <div className="rounded-lg bg-red-50 p-4 text-sm text-red-700 dark:bg-red-950/20 dark:text-red-400">{error}</div>
       )}
     </div>
   );

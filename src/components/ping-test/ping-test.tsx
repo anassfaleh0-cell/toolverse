@@ -20,8 +20,8 @@ interface PingResult {
 }
 
 function getLatencyQuality(avg: number, loss: number): { label: string; color: string; description: string } {
-  if (loss >= 50) return { label: "Poor", color: "text-red-600 dark:text-red-400", description: "High packet loss indicates network congestion or a failing link." };
-  if (avg > 200) return { label: "Poor", color: "text-red-600 dark:text-red-400", description: "High latency suitable only for asynchronous tasks like email." };
+  if (loss >= 50) return { label: "Poor", color: "text-red-700 dark:text-red-400", description: "High packet loss indicates network congestion or a failing link." };
+  if (avg > 200) return { label: "Poor", color: "text-red-700 dark:text-red-400", description: "High latency suitable only for asynchronous tasks like email." };
   if (avg > 100) return { label: "Fair", color: "text-amber-700 dark:text-amber-400", description: "Noticeable lag for real-time applications. Gaming and VoIP may suffer." };
   if (avg > 50) return { label: "Good", color: "text-emerald-700 dark:text-emerald-400", description: "Suitable for most applications including video calls and streaming." };
   return { label: "Excellent", color: "text-emerald-700 dark:text-emerald-400", description: "Ideal for competitive gaming, real-time collaboration, and VoIP." };
@@ -128,7 +128,7 @@ export function PingTest() {
               <DashboardSummary
                 title={result.host}
                 status={getLatencyQuality(result.avg, result.packetLoss).label === "Excellent" || getLatencyQuality(result.avg, result.packetLoss).label === "Good" ? "good" : getLatencyQuality(result.avg, result.packetLoss).label === "Fair" ? "warning" : "critical"}
-                mainFinding={`Quality ${qualityScore}/100 — ${getLatencyQuality(result.avg, result.packetLoss).label}, ${result.packetLoss}% loss, ${result.avg}ms avg`}
+                mainFinding={`Quality ${qualityScore}/100 â€” ${getLatencyQuality(result.avg, result.packetLoss).label}, ${result.packetLoss}% loss, ${result.avg}ms avg`}
                 riskLevel={result.packetLoss > 0 || result.avg > 200 ? "high" : result.avg > 100 ? "medium" : "low"}
                 riskLabel={`${qualityScore}/100`}
                 nextAction={getLatencyAdvice(result.avg, result.jitter, result.packetLoss)}
@@ -154,7 +154,7 @@ export function PingTest() {
               <p className="text-xs text-zinc-500 dark:text-zinc-400">Packet Loss</p>
               <p className={`mt-1 text-sm font-semibold ${
                 result.packetLoss === 0 ? "text-green-700 dark:text-green-400" :
-                result.packetLoss >= 50 ? "text-red-600 dark:text-red-400" :
+                result.packetLoss >= 50 ? "text-red-700 dark:text-red-400" :
                 "text-amber-700 dark:text-amber-400"
               }`}>
                 {result.packetLoss}%
@@ -234,7 +234,7 @@ export function PingTest() {
                   className="flex items-center justify-between px-5 py-3 text-sm even:bg-zinc-50 dark:even:bg-zinc-900/50"
                 >
                   <span className="text-zinc-500 dark:text-zinc-400">Request {result.times.length + i + 1}</span>
-                  <span className="font-mono text-red-600 dark:text-red-400">Timeout</span>
+                  <span className="font-mono text-red-700 dark:text-red-400">Timeout</span>
                 </div>
               ))}
             </div>

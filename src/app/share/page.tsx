@@ -5,7 +5,7 @@ import { Breadcrumbs, JsonLd, CopyCode } from "@/components/shared";
 import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `Share ${SITE_NAME} — Spread the Word`,
+  title: `Share ${SITE_NAME} â€” Spread the Word`,
   description: `Help others discover free online tools. Share ${SITE_NAME} on Reddit, Twitter, LinkedIn, Facebook, WhatsApp, and more.`,
   openGraph: {
     title: `Share ${SITE_NAME}`,
@@ -23,19 +23,19 @@ const breadcrumbs = [
 const postTemplates = [
   {
     platform: "Reddit",
-    text: `Check out ${SITE_NAME} — 200+ free online tools for developers, designers, and everyday users. No signup, no tracking, just results.\n\n${SITE_URL}`,
+    text: `Check out ${SITE_NAME} â€” 200+ free online tools for developers, designers, and everyday users. No signup, no tracking, just results.\n\n${SITE_URL}`,
   },
   {
     platform: "Twitter / X",
-    text: `Need a free online tool? ${SITE_NAME} has 200+ browser-based tools — DNS lookup, PDF conversion, image editing & more. All free, no signup.\n\n${SITE_URL}`,
+    text: `Need a free online tool? ${SITE_NAME} has 200+ browser-based tools â€” DNS lookup, PDF conversion, image editing & more. All free, no signup.\n\n${SITE_URL}`,
   },
   {
     platform: "LinkedIn",
-    text: `Free online tools shouldn't come with trade-offs. That's why I use ${SITE_NAME} — 200+ browser-based utilities that respect your privacy. No signup, no tracking, just tools that work.\n\n${SITE_URL}`,
+    text: `Free online tools shouldn't come with trade-offs. That's why I use ${SITE_NAME} â€” 200+ browser-based utilities that respect your privacy. No signup, no tracking, just tools that work.\n\n${SITE_URL}`,
   },
   {
     platform: "Facebook",
-    text: `Discover ${SITE_NAME} — 200+ free online tools for everyone! From DNS lookups to PDF compression, image editing to text utilities. All tools run in your browser, nothing leaves your device. Free, no signup needed.\n\n${SITE_URL}`,
+    text: `Discover ${SITE_NAME} â€” 200+ free online tools for everyone! From DNS lookups to PDF compression, image editing to text utilities. All tools run in your browser, nothing leaves your device. Free, no signup needed.\n\n${SITE_URL}`,
   },
 ];
 
@@ -53,7 +53,7 @@ export default function SharePage() {
     <>
       <JsonLd
         data={webPageSchema({
-          name: `Share ${SITE_NAME} — Spread the Word`,
+          name: `Share ${SITE_NAME} â€” Spread the Word`,
           description: "Help others discover free online tools.",
           url: `${SITE_URL}/share`,
           breadcrumbs,
@@ -86,7 +86,7 @@ export default function SharePage() {
                   <h3 className="font-semibold text-text-primary">{post.platform}</h3>
                   <CopyCode code={post.text} />
                 </div>
-                <pre className="mt-3 whitespace-pre-wrap rounded-lg bg-zinc-900 p-4 text-sm text-zinc-100 dark:bg-zinc-950">
+                <pre className="mt-3 whitespace-pre-wrap rounded-lg bg-zinc-900 p-4 text-sm text-zinc-600 dark:bg-zinc-950">
                   {post.text}
                 </pre>
               </div>

@@ -201,7 +201,7 @@ export function CompressPdf() {
                     }`}
                   >
                     <span className="block font-medium">{opt.label}</span>
-                    <span className="mt-0.5 block text-zinc-400 dark:text-zinc-500">{opt.description}</span>
+                    <span className="mt-0.5 block text-zinc-600 dark:text-zinc-400">{opt.description}</span>
                   </button>
                 ))}
               </div>
@@ -219,7 +219,7 @@ export function CompressPdf() {
                       <div key={entry.id} className="flex items-center justify-between px-4 py-2 text-sm">
                         <span className="truncate text-zinc-700 dark:text-zinc-300">{entry.file.name}</span>
                         <span className="ml-4 shrink-0 text-zinc-500">
-                          {(entry.file.size / 1024).toFixed(1)} KB → <span className="font-medium text-green-700 dark:text-green-400">~{(est / 1024).toFixed(1)} KB</span>
+                          {(entry.file.size / 1024).toFixed(1)} KB â†’ <span className="font-medium text-green-700 dark:text-green-400">~{(est / 1024).toFixed(1)} KB</span>
                         </span>
                       </div>
                     );
@@ -246,7 +246,7 @@ export function CompressPdf() {
                 const fp = fileProgress.get(entry.id) ?? 0;
                 return (
                   <div key={entry.id} className="flex items-center gap-2 text-xs">
-                    <span className="w-4 text-center">{fp < 0 ? "✗" : fp >= 100 ? "✓" : "..."}</span>
+                    <span className="w-4 text-center">{fp < 0 ? "âœ—" : fp >= 100 ? "âœ“" : "..."}</span>
                     <span className="truncate text-zinc-500">{entry.file.name}</span>
                     {fp >= 0 && fp < 100 && (
                       <div className="ml-auto h-1.5 w-20 rounded-full bg-zinc-200 dark:bg-zinc-700">
@@ -269,7 +269,7 @@ export function CompressPdf() {
                   {files.length} file{files.length > 1 ? "s" : ""} compressed
                   {totalOriginal > 0 && (
                     <span className="ml-2 text-green-700 dark:text-green-400">
-                      ({(totalOriginal / 1024 / 1024).toFixed(2)} MB → {(totalCompressed / 1024 / 1024).toFixed(2)} MB, {Math.round((1 - totalCompressed / totalOriginal) * 100)}% reduction)
+                      ({(totalOriginal / 1024 / 1024).toFixed(2)} MB â†’ {(totalCompressed / 1024 / 1024).toFixed(2)} MB, {Math.round((1 - totalCompressed / totalOriginal) * 100)}% reduction)
                     </span>
                   )}
                 </p>
@@ -295,7 +295,7 @@ export function CompressPdf() {
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-zinc-900 dark:text-zinc-50">{entry.file.name}</p>
                       <p className="text-xs text-zinc-500">
-                        {(r.originalSize / 1024).toFixed(1)} KB → {(r.compressedSize / 1024).toFixed(1)} KB ({reduction.toFixed(1)}% reduction)
+                        {(r.originalSize / 1024).toFixed(1)} KB â†’ {(r.compressedSize / 1024).toFixed(1)} KB ({reduction.toFixed(1)}% reduction)
                       </p>
                     </div>
                     <Button variant="primary" size="sm" onClick={() => handleDownloadSingle(entry.id)}>Download</Button>
@@ -308,7 +308,7 @@ export function CompressPdf() {
       </PdfToolShell>
 
       {error && (
-        <div className="rounded-lg bg-red-50 p-4 text-sm text-red-600 dark:bg-red-950/20 dark:text-red-400" role="alert">{error}</div>
+        <div className="rounded-lg bg-red-50 p-4 text-sm text-red-700 dark:bg-red-950/20 dark:text-red-400" role="alert">{error}</div>
       )}
     </div>
   );

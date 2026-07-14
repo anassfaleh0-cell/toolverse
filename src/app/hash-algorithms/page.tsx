@@ -6,7 +6,7 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { Card, Badge, Callout } from "@/components/ui";
 
 export const metadata: Metadata = {
-  title: `Hash Algorithm Comparison — MD5, SHA-1, SHA-256 & More`,
+  title: `Hash Algorithm Comparison â€” MD5, SHA-1, SHA-256 & More`,
   description: `Compare MD5, SHA-1, SHA-256, SHA-384, and SHA-512 hash algorithms. Bit length, block size, rounds, security status, and use cases for each algorithm.`,
   alternates: { canonical: `${SITE_URL}/hash-algorithms` },
   openGraph: {
@@ -85,7 +85,7 @@ const ALGORITHMS: HashAlgo[] = [
     status: "secure",
     description: "SHA-2 family member with 512-bit output. Highest bit length in SHA-2 family. Used in high-security environments requiring maximum collision resistance.",
     useCases: ["High-security cryptographic systems", "DNSSEC signing", "Digital signatures requiring 256-bit security level", "Long-term archival"],
-    weaknesses: ["Larger output size increases storage", "Slower than SHA-256 on 32-bit systems", "Not always necessary — often overkill"],
+    weaknesses: ["Larger output size increases storage", "Slower than SHA-256 on 32-bit systems", "Not always necessary â€” often overkill"],
     published: 2001,
   },
 ];
@@ -97,14 +97,14 @@ function getStatusConfig(status: HashAlgo["status"]) {
     case "deprecated":
       return { label: "Deprecated", variant: "warning" as const };
     case "insecure":
-      return { label: "Insecure — Do Not Use", variant: "error" as const };
+      return { label: "Insecure â€” Do Not Use", variant: "error" as const };
   }
 }
 
 export default function HashAlgorithmsPage() {
   return (
     <>
-      <JsonLd data={webPageSchema({ name: `Hash Algorithm Comparison — ${SITE_NAME}`, description: `Compare MD5, SHA-1, SHA-256, SHA-384, and SHA-512 hash algorithms.`, url: `${SITE_URL}/hash-algorithms`, breadcrumbs })} />
+      <JsonLd data={webPageSchema({ name: `Hash Algorithm Comparison â€” ${SITE_NAME}`, description: `Compare MD5, SHA-1, SHA-256, SHA-384, and SHA-512 hash algorithms.`, url: `${SITE_URL}/hash-algorithms`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <section className="border-b border-zinc-200 bg-zinc-50 py-12 dark:border-zinc-800 dark:bg-zinc-900/50 sm:py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
@@ -141,7 +141,7 @@ export default function HashAlgorithmsPage() {
                       <td className="px-4 py-4 text-zinc-700 dark:text-zinc-300">{algo.blockSize} bits</td>
                       <td className="px-4 py-4 text-zinc-700 dark:text-zinc-300">{algo.rounds}</td>
                       <td className="px-4 py-4"><Badge variant={statusConfig.variant}>{statusConfig.label}</Badge></td>
-                      <td className="hidden px-4 py-4 text-zinc-500 dark:text-zinc-500 md:table-cell">{algo.published}</td>
+                      <td className="hidden px-4 py-4 text-zinc-500 dark:text-zinc-400 md:table-cell">{algo.published}</td>
                     </tr>
                   );
                 })}
@@ -164,7 +164,7 @@ export default function HashAlgorithmsPage() {
                       <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Use Cases</h3>
                       <ul className="mt-2 space-y-1">
                         {algo.useCases.map((u) => (
-                          <li key={u} className="text-sm text-zinc-600 dark:text-zinc-400">• {u}</li>
+                          <li key={u} className="text-sm text-zinc-600 dark:text-zinc-400">â€¢ {u}</li>
                         ))}
                       </ul>
                     </div>
@@ -172,7 +172,7 @@ export default function HashAlgorithmsPage() {
                       <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Known Weaknesses</h3>
                       <ul className="mt-2 space-y-1">
                         {algo.weaknesses.map((w) => (
-                          <li key={w} className="text-sm text-zinc-600 dark:text-zinc-400">• {w}</li>
+                          <li key={w} className="text-sm text-zinc-600 dark:text-zinc-400">â€¢ {w}</li>
                         ))}
                       </ul>
                     </div>

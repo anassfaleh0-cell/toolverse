@@ -9,7 +9,7 @@ const POSITIONS = ["top-left", "top-right", "bottom-left", "bottom-right", "cent
 export function WatermarkImage() {
   const [originalImage, setOriginalImage] = useState<HTMLImageElement | null>(null);
   const [watermarkedDataUrl, setWatermarkedDataUrl] = useState<string | null>(null);
-  const [text, setText] = useState("© Nuvora");
+  const [text, setText] = useState("Â© Nuvora");
   const [opacity, setOpacity] = useState(0.5);
   const [fontSize, setFontSize] = useState(32);
   const [position, setPosition] = useState<typeof POSITIONS[number]>("bottom-right");
@@ -106,7 +106,7 @@ export function WatermarkImage() {
                 : "border-zinc-300 hover:border-zinc-400 dark:border-zinc-700 dark:hover:border-zinc-500"
             }`}
           >
-            <Icon name="Upload" className="mb-3 size-10 text-zinc-400" />
+            <Icon name="Upload" className="mb-3 size-10 text-zinc-600" />
             <p className="text-sm font-medium text-zinc-600 dark:text-zinc-400">Drop an image or click to upload</p>
           </div>
         ) : (

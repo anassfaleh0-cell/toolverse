@@ -11,7 +11,7 @@ interface MetricCardProps {
 
 const trendColors = {
   up: "text-emerald-700 dark:text-emerald-400",
-  down: "text-red-600 dark:text-red-400",
+  down: "text-red-700 dark:text-red-400",
   neutral: "text-zinc-500 dark:text-zinc-400",
 };
 
@@ -44,9 +44,9 @@ export function MetricCard({
       </p>
       {trend && (
         <p className={cn("mt-1 text-xs font-medium", trendColors[trend])}>
-          {trend === "up" && "↑ "}
-          {trend === "down" && "↓ "}
-          {trend === "neutral" && "→ "}
+          {trend === "up" && "â†‘ "}
+          {trend === "down" && "â†“ "}
+          {trend === "neutral" && "â†’ "}
           {trend === "up" && "Increasing"}
           {trend === "down" && "Decreasing"}
           {trend === "neutral" && "Stable"}

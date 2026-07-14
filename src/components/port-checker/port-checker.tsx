@@ -112,7 +112,7 @@ export function PortChecker() {
               <DashboardSummary
                 title={result.host}
                 status={openPorts.length === 0 ? "good" : openPorts.length <= 3 ? "warning" : "critical"}
-                mainFinding={openPorts.length === 0 ? "No open ports detected" : `${openPorts.length} open, ${filteredPorts.length} filtered, ${closedPorts.length} closed — Attack Surface: ${attackScore}/100`}
+                mainFinding={openPorts.length === 0 ? "No open ports detected" : `${openPorts.length} open, ${filteredPorts.length} filtered, ${closedPorts.length} closed â€” Attack Surface: ${attackScore}/100`}
                 riskLevel={openPorts.length === 0 ? "low" : openPorts.length <= 3 ? "medium" : "high"}
                 riskLabel={attackScore <= 10 ? "Minimal" : attackScore <= 40 ? "Moderate" : attackScore <= 70 ? "Elevated" : "Severe"}
                 nextAction={openPorts.length > 0 ? "Review each open port. Close unused ports at the firewall. Restrict access by source IP where possible." : "Your host has no exposed ports. Continue monitoring with periodic scans."}
@@ -137,7 +137,7 @@ export function PortChecker() {
           <div className="flex items-center justify-between">
             <p className="text-sm text-zinc-500 dark:text-zinc-400">
               Scan results for <span className="font-medium text-zinc-900 dark:text-zinc-50">{result.host}</span>
-              {" "}— {openPorts.length} open, {filteredPorts.length} filtered, {closedPorts.length} closed
+              {" "}â€” {openPorts.length} open, {filteredPorts.length} filtered, {closedPorts.length} closed
             </p>
             <CopyButton text={JSON.stringify(result, null, 2)} label="Copy" />
           </div>
@@ -150,7 +150,7 @@ export function PortChecker() {
                   <div key={p.port} className="rounded-xl border border-green-200 bg-green-50 p-4 dark:border-green-900 dark:bg-green-950">
                     <p className="text-lg font-bold text-green-700 dark:text-green-300">{p.port}</p>
                     <p className="text-xs text-green-700 dark:text-green-400">{p.service}</p>
-                    <p className="mt-1 text-xs text-green-500">{p.responseTime}ms</p>
+                    <p className="mt-1 text-xs text-green-700">{p.responseTime}ms</p>
                   </div>
                 ))}
               </div>

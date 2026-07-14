@@ -15,7 +15,7 @@ export function HeroSection() {
         <div className="mt-10">
           <SearchBox />
         </div>
-        <p className="mt-4 text-xs text-zinc-400 dark:text-zinc-300">
+        <p className="mt-4 text-xs text-zinc-600 dark:text-zinc-300">
           Trusted by thousands. 80+ tools across 6 categories.
         </p>
       </div>

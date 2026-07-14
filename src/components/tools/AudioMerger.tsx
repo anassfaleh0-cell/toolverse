@@ -100,10 +100,10 @@ export function AudioMerger() {
     <div className="mx-auto max-w-3xl space-y-6">
       <div className="rounded-xl border-2 border-dashed border-zinc-300 p-8 text-center dark:border-zinc-600">
         <input ref={inputRef} type="file" accept="audio/*" multiple onChange={handleFiles} className="hidden" />
-        <button onClick={() => inputRef.current?.click()} className="cursor-pointer text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100">
+        <button onClick={() => inputRef.current?.click()} className="cursor-pointer text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-600">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="mx-auto size-10"><path d="M12 16V4m0 0L8 8m4-4l4 4" strokeLinecap="round" strokeLinejoin="round"/><path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
           <p className="mt-2 text-sm font-medium">Add audio files</p>
-          <p className="text-xs text-zinc-400 mt-1">Select multiple files to merge</p>
+          <p className="text-xs text-zinc-600 mt-1">Select multiple files to merge</p>
         </button>
       </div>
 

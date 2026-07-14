@@ -40,7 +40,7 @@ const dosAndDonts = [
 export default function BrandPage() {
   return (
     <>
-      <JsonLd data={webPageSchema({ name: `Brand Guidelines — ${SITE_NAME}`, description: `${SITE_NAME} brand identity standards.`, url: `${SITE_URL}/brand`, breadcrumbs })} />
+      <JsonLd data={webPageSchema({ name: `Brand Guidelines â€” ${SITE_NAME}`, description: `${SITE_NAME} brand identity standards.`, url: `${SITE_URL}/brand`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <section className="border-b border-border-subtle bg-gradient-to-b from-nuvora-50/30 to-surface dark:from-nuvora-950/20">
         <div className="mx-auto max-w-4xl px-4 py-20 sm:px-6 sm:py-28">
@@ -99,11 +99,11 @@ export default function BrandPage() {
             {SITE_NAME} uses system font stacks for optimal performance. No custom fonts are loaded to ensure fast page loads.
           </p>
           <div className="mt-6 rounded-2xl border border-border-subtle bg-surface p-6">
-            <p className="text-3xl font-bold text-text-primary">Heading — Inter, system-ui, sans-serif</p>
-            <p className="mt-4 text-xl text-text-primary">Subheading — Inter, system-ui, sans-serif</p>
-            <p className="mt-4 text-base text-text-secondary">Body text — Inter, system-ui, sans-serif. Regular weight (400) for body, semibold (600) for emphasis.</p>
-            <p className="mt-3 text-sm text-text-secondary">Small text / captions — 0.875rem, secondary color.</p>
-            <p className="mt-3 font-mono text-sm text-text-secondary">Code — JetBrains Mono / monospace for code snippets and technical content.</p>
+            <p className="text-3xl font-bold text-text-primary">Heading â€” Inter, system-ui, sans-serif</p>
+            <p className="mt-4 text-xl text-text-primary">Subheading â€” Inter, system-ui, sans-serif</p>
+            <p className="mt-4 text-base text-text-secondary">Body text â€” Inter, system-ui, sans-serif. Regular weight (400) for body, semibold (600) for emphasis.</p>
+            <p className="mt-3 text-sm text-text-secondary">Small text / captions â€” 0.875rem, secondary color.</p>
+            <p className="mt-3 font-mono text-sm text-text-secondary">Code â€” JetBrains Mono / monospace for code snippets and technical content.</p>
           </div>
         </div>
       </section>
@@ -133,7 +133,7 @@ export default function BrandPage() {
             {dosAndDonts.map((item, i) => (
               <div key={i} className="rounded-2xl border border-border-subtle bg-surface p-6">
                 <p className="text-sm"><span className="font-semibold text-emerald-700 dark:text-emerald-400">Do:</span> <span className="text-text-secondary">{item.do}</span></p>
-                <p className="mt-2 text-sm"><span className="font-semibold text-red-600 dark:text-red-400">Don&rsquo;t:</span> <span className="text-text-secondary">{item.dont}</span></p>
+                <p className="mt-2 text-sm"><span className="font-semibold text-red-700 dark:text-red-400">Don&rsquo;t:</span> <span className="text-text-secondary">{item.dont}</span></p>
               </div>
             ))}
           </div>

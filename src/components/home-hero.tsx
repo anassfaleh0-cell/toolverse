@@ -23,7 +23,7 @@ export function HomeHero() {
         <div className="text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 px-4 py-1.5 text-xs font-medium text-zinc-600 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300">
             <span className="flex size-2 rounded-full bg-emerald-500" />
-            45+ free tools — no signup required
+            45+ free tools â€” no signup required
           </div>
           <h1 className="mt-6 text-balance text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-5xl lg:text-6xl">
             The Professional&apos;s{" "}
@@ -41,7 +41,7 @@ export function HomeHero() {
             className="mx-auto mt-10 flex w-full max-w-xl items-center gap-2 rounded-2xl border border-zinc-200 bg-white px-5 py-3.5 shadow-lg shadow-zinc-200/50 transition-all focus-within:border-blue-400 focus-within:shadow-blue-200/50 dark:border-zinc-700 dark:bg-zinc-900 dark:shadow-black/20 dark:focus-within:border-blue-500 dark:focus-within:shadow-blue-900/30"
             role="search"
           >
-            <Icon name="Search" className="size-5 shrink-0 text-zinc-400" aria-hidden="true" />
+            <Icon name="Search" className="size-5 shrink-0 text-zinc-600" aria-hidden="true" />
             <input
               type="search"
               value={query}
@@ -54,7 +54,7 @@ export function HomeHero() {
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             <Link
               href="/website-status-checker"
-              className="inline-flex items-center gap-2 rounded-xl bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-zinc-800 active:scale-[0.98] dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+              className="inline-flex items-center gap-2 rounded-xl bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-zinc-800 active:scale-[0.98] dark:bg-white dark:text-zinc-400 dark:hover:bg-zinc-200"
             >
               <Icon name="BarChart3" className="size-4" aria-hidden="true" />
               Analyze Any Website

@@ -145,11 +145,11 @@ export default function WebsiteHealthCheckPage() {
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
                       <span className={`flex items-center justify-center ${
-                        r.status === "passed" ? "text-emerald-500" :
-                        r.status === "failed" ? "text-red-500" :
-                        r.status === "running" ? "text-blue-500" : "text-zinc-300"
+                        r.status === "passed" ? "text-emerald-700" :
+                        r.status === "failed" ? "text-red-700" :
+                        r.status === "running" ? "text-blue-700" : "text-zinc-600"
                       }`}>
-                        {r.status === "passed" ? <Icon name="CheckCircle2" className="size-5" /> : r.status === "failed" ? <Icon name="XCircle" className="size-5" /> : r.status === "running" ? "→" : "○"}
+                        {r.status === "passed" ? <Icon name="CheckCircle2" className="size-5" /> : r.status === "failed" ? <Icon name="XCircle" className="size-5" /> : r.status === "running" ? "â†’" : "â—‹"}
                       </span>
                       <span className="font-medium text-zinc-900 dark:text-zinc-50">
                         {step?.label || r.step}
@@ -182,7 +182,7 @@ export default function WebsiteHealthCheckPage() {
 
           <div className="mt-6">
             <ToolMethodology sections={[
-              { title: "How This Works", body: "This workflow runs six independent diagnostic checks in sequence against your domain. Each check uses the same infrastructure as the individual tool pages. Results are cumulative — passing earlier steps increases confidence in later checks." },
+              { title: "How This Works", body: "This workflow runs six independent diagnostic checks in sequence against your domain. Each check uses the same infrastructure as the individual tool pages. Results are cumulative â€” passing earlier steps increases confidence in later checks." },
               { title: "Limitations", body: "Results reflect our server's perspective, not your end users'. CDN-backed sites may show different results from different geographic locations. Some checks (WHOIS, Port) may be rate-limited by upstream services." },
               { title: "Privacy", body: "Your domain is sent to each respective API endpoint. No data is stored server-side. Results are saved locally in your browser for history." },
             ]} />
@@ -207,11 +207,11 @@ function getStepSummary(step: string, data: unknown): string {
       }
       case "ssl": {
         const d = data as { certificate: { daysRemaining: number; commonName: string } };
-        return `${d.certificate?.commonName} — ${d.certificate?.daysRemaining} days remaining`;
+        return `${d.certificate?.commonName} â€” ${d.certificate?.daysRemaining} days remaining`;
       }
       case "headers": {
         const d = data as { statusCode: number; responseTime: number; headers: Record<string, string> };
-        return `Status ${d.statusCode} — ${d.responseTime}ms — ${Object.keys(d.headers || {}).length} headers`;
+        return `Status ${d.statusCode} â€” ${d.responseTime}ms â€” ${Object.keys(d.headers || {}).length} headers`;
       }
       case "port": {
         const d = data as { port: number; open: boolean };

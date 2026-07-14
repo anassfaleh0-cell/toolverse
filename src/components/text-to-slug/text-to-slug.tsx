@@ -68,7 +68,7 @@ export function TextToSlug() {
                 onClick={() => setSeparator(s)}
                 className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
                   separator === s
-                    ? "bg-zinc-900 text-white dark:bg-zinc-50 dark:text-zinc-900"
+                    ? "bg-zinc-900 text-white dark:bg-zinc-50 dark:text-zinc-400"
                     : "border border-zinc-300 bg-white text-zinc-600 hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900"
                 }`}
               >
@@ -94,13 +94,13 @@ export function TextToSlug() {
               </code>
             </div>
           </div>
-          <p className="mt-2 text-xs text-zinc-400 dark:text-zinc-500">
+          <p className="mt-2 text-xs text-zinc-600 dark:text-zinc-400">
             Preview URL: /{slug}
           </p>
         </div>
       )}
       {!slug && text.trim() && (
-        <p className="mt-2 text-xs text-zinc-400 dark:text-zinc-500">
+        <p className="mt-2 text-xs text-zinc-600 dark:text-zinc-400">
           Only alphanumeric characters, spaces, hyphens, and underscores are kept.
         </p>
       )}

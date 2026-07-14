@@ -39,15 +39,15 @@ export function CompareResults({ title, leftLabel, rightLabel, fields }: Compare
           >
             <div className="space-y-1">
               <p className="text-[10px] font-medium text-zinc-500">{leftLabel}</p>
-              <p className={`font-mono text-zinc-800 dark:text-zinc-200 ${field.diff ? "text-red-600 dark:text-red-400" : ""}`}>
-                {field.left || "—"}
+              <p className={`font-mono text-zinc-800 dark:text-zinc-200 ${field.diff ? "text-red-700 dark:text-red-400" : ""}`}>
+                {field.left || "â€”"}
               </p>
             </div>
             <div className="h-full w-px bg-zinc-200 dark:bg-zinc-700" />
             <div className="space-y-1">
               <p className="text-[10px] font-medium text-zinc-500">{rightLabel}</p>
               <p className={`font-mono text-zinc-800 dark:text-zinc-200 ${field.diff ? "text-green-700 dark:text-green-400" : ""}`}>
-                {field.right || "—"}
+                {field.right || "â€”"}
               </p>
             </div>
           </div>

@@ -99,14 +99,14 @@ export function SpeedTest() {
     if (mbps > 100) return "text-green-700 dark:text-green-400";
     if (mbps > 25) return "text-emerald-700 dark:text-emerald-400";
     if (mbps > 10) return "text-amber-700 dark:text-amber-400";
-    return "text-red-600 dark:text-red-400";
+    return "text-red-700 dark:text-red-400";
   }
 
   function pingColor(ms: number) {
     if (ms < 30) return "text-green-700 dark:text-green-400";
     if (ms < 80) return "text-emerald-700 dark:text-emerald-400";
     if (ms < 150) return "text-amber-700 dark:text-amber-400";
-    return "text-red-600 dark:text-red-400";
+    return "text-red-700 dark:text-red-400";
   }
 
   function speedLabel(mbps: number) {
@@ -188,11 +188,11 @@ export function SpeedTest() {
             <p className="mb-2 font-medium text-zinc-900 dark:text-zinc-50">Connection Summary</p>
             <ul className="space-y-2 text-zinc-600 dark:text-zinc-400">
               <li>
-                <strong>Download:</strong> {result.downloadSpeed} {result.downloadUnit} —{" "}
+                <strong>Download:</strong> {result.downloadSpeed} {result.downloadUnit} â€”{" "}
                 {speedLabel(result.downloadSpeed)} for browsing, streaming, and downloads.
               </li>
               <li>
-                <strong>Ping:</strong> {result.ping}ms —{" "}
+                <strong>Ping:</strong> {result.ping}ms â€”{" "}
                 {result.ping < 30
                   ? "Ideal for gaming, video calls, and real-time applications."
                   : result.ping < 80
@@ -202,7 +202,7 @@ export function SpeedTest() {
                       : "High latency will impact real-time applications."}
               </li>
               <li>
-                <strong>Jitter:</strong> {result.jitter}ms —{" "}
+                <strong>Jitter:</strong> {result.jitter}ms â€”{" "}
                 {result.jitter < 10
                   ? "Connection is stable with minimal variation."
                   : result.jitter < 30

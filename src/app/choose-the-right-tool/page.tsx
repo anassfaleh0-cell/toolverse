@@ -62,7 +62,7 @@ const questions: Record<string, Question> = {
         recommendations: [
           {
             name: "Domain Report Card",
-            description: "Get a complete A–F report card for any domain covering DNS, SSL, headers, WHOIS, and status.",
+            description: "Get a complete Aâ€“F report card for any domain covering DNS, SSL, headers, WHOIS, and status.",
             href: "/domain-report",
             why: "Best all-in-one domain health check with scoring.",
           },
@@ -92,7 +92,7 @@ const questions: Record<string, Question> = {
         recommendations: [
           {
             name: "IP Lookup",
-            description: "Look up any IPv4 or IPv6 address — location, ISP, hostname, ASN, and interactive map.",
+            description: "Look up any IPv4 or IPv6 address â€” location, ISP, hostname, ASN, and interactive map.",
             href: "/ip-lookup",
             why: "Most detailed IP geolocation and network info.",
           },
@@ -128,7 +128,7 @@ const questions: Record<string, Question> = {
         recommendations: [
           {
             name: "SSL Certificate Checker",
-            description: "Check SSL/TLS certificate details — issuer, validity, SANs, and expiration.",
+            description: "Check SSL/TLS certificate details â€” issuer, validity, SANs, and expiration.",
             href: "/ssl-certificate-checker",
             why: "Complete SSL certificate validation.",
           },
@@ -417,7 +417,7 @@ export default function ChooseTheRightToolPage() {
 
   return (
     <>
-      <JsonLd data={webPageSchema({ name: `Choose the Right Tool — Find the Perfect Tool for Your Task | ${SITE_NAME}`, description: `Answer a few questions and get personalized tool recommendations from ${SITE_NAME}. Find the perfect online tool for checking, converting, or generating anything.`, url: `${SITE_URL}/choose-the-right-tool`, breadcrumbs })} />
+      <JsonLd data={webPageSchema({ name: `Choose the Right Tool â€” Find the Perfect Tool for Your Task | ${SITE_NAME}`, description: `Answer a few questions and get personalized tool recommendations from ${SITE_NAME}. Find the perfect online tool for checking, converting, or generating anything.`, url: `${SITE_URL}/choose-the-right-tool`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <section className="border-b border-zinc-200 bg-zinc-50 py-12 dark:border-zinc-800 dark:bg-zinc-900/50 sm:py-16">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
@@ -431,7 +431,7 @@ export default function ChooseTheRightToolPage() {
                 Find the perfect Nuvora tool for your task. Answer a couple of questions and we&apos;ll recommend the best fit.
               </p>
             </div>
-            <SocialShare url={`${SITE_URL}/choose-the-right-tool`} title="Choose the Right Tool — Find the Perfect Tool for Your Task" />
+            <SocialShare url={`${SITE_URL}/choose-the-right-tool`} title="Choose the Right Tool â€” Find the Perfect Tool for Your Task" />
           </div>
         </div>
       </section>
@@ -494,7 +494,7 @@ export default function ChooseTheRightToolPage() {
                 {recommendations.map((rec) => (
                   <Link key={rec.href} href={rec.href}>
                     <Card variant="interactive" className="group">
-                      <h3 className="text-lg font-semibold text-zinc-900 group-hover:text-blue-600 dark:text-zinc-50 dark:group-hover:text-blue-400">
+                      <h3 className="text-lg font-semibold text-zinc-900 group-hover:text-blue-600 dark:text-zinc-50 dark:group-hover:text-blue-700">
                         {rec.name}
                       </h3>
                       <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">

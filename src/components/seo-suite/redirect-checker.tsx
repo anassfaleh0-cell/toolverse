@@ -41,7 +41,7 @@ export function RedirectChecker() {
         setSteps(chain);
       } catch {
         setSteps([
-          { url, status: 0, statusText: "CORS/Network error — try simulation mode" },
+          { url, status: 0, statusText: "CORS/Network error â€” try simulation mode" },
         ]);
       } finally {
         setLoading(false);
@@ -74,7 +74,7 @@ export function RedirectChecker() {
 
     const httpPattern = /^http:\/\//;
     if (httpPattern.test(urlObj.href)) {
-      simSteps.push({ url: urlObj.href, status: 301, statusText: "Moved Permanently (HTTP→HTTPS)" });
+      simSteps.push({ url: urlObj.href, status: 301, statusText: "Moved Permanently (HTTPâ†’HTTPS)" });
       urlObj.protocol = "https:";
     }
 
@@ -141,7 +141,7 @@ export function RedirectChecker() {
                   </span>
                 </div>
                 {i < steps.length - 1 && (
-                  <Icon name="ArrowRight" className="size-5 shrink-0 text-zinc-400" />
+                  <Icon name="ArrowRight" className="size-5 shrink-0 text-zinc-600" />
                 )}
               </div>
             ))}

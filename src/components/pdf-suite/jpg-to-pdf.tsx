@@ -114,9 +114,9 @@ export function JpgToPdf() {
           aria-label="Upload images to convert to PDF"
           className="flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-zinc-300 p-12 transition-colors hover:border-zinc-400 dark:border-zinc-700 dark:hover:border-zinc-500"
         >
-          <svg className="mb-3 size-10 text-zinc-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.41a2.25 2.25 0 013.182 0l2.909 2.91m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" /></svg>
+          <svg className="mb-3 size-10 text-zinc-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.41a2.25 2.25 0 013.182 0l2.909 2.91m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" /></svg>
           <p className="text-sm font-medium text-zinc-600 dark:text-zinc-400">Drop JPG or PNG images here or click to upload</p>
-          <p className="mt-1 text-xs text-zinc-400">Supports JPG, PNG, and WebP</p>
+          <p className="mt-1 text-xs text-zinc-600">Supports JPG, PNG, and WebP</p>
         </div>
       )}
       <input ref={fileInputRef} type="file" accept="image/*" multiple className="hidden" onChange={handleFileChange} aria-label="Select images to convert" />
@@ -129,8 +129,8 @@ export function JpgToPdf() {
               <span className="flex-1 truncate text-sm font-medium text-zinc-900 dark:text-zinc-50">{img.file.name}</span>
               <span className="text-xs text-zinc-500">({(img.file.size / 1024).toFixed(1)} KB)</span>
               <div className="flex gap-1">
-                <Button variant="ghost" size="sm" onClick={() => moveImage(i, "up")} disabled={i === 0} aria-label="Move up">↑</Button>
-                <Button variant="ghost" size="sm" onClick={() => moveImage(i, "down")} disabled={i === images.length - 1} aria-label="Move down">↓</Button>
+                <Button variant="ghost" size="sm" onClick={() => moveImage(i, "up")} disabled={i === 0} aria-label="Move up">â†‘</Button>
+                <Button variant="ghost" size="sm" onClick={() => moveImage(i, "down")} disabled={i === images.length - 1} aria-label="Move down">â†“</Button>
                 <Button variant="secondary" size="sm" onClick={() => removeImage(i)} aria-label={`Remove ${img.file.name}`}>Remove</Button>
               </div>
             </div>
@@ -154,7 +154,7 @@ export function JpgToPdf() {
       )}
 
       {error && (
-        <div className="mt-4 rounded-lg bg-red-50 p-4 text-sm text-red-600 dark:bg-red-950/20 dark:text-red-400">{error}</div>
+        <div className="mt-4 rounded-lg bg-red-50 p-4 text-sm text-red-700 dark:bg-red-950/20 dark:text-red-400">{error}</div>
       )}
     </div>
   );

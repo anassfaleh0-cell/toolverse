@@ -38,14 +38,14 @@ function FieldRenderer({
           type="file"
           accept={field.accept || "*/*"}
           onChange={handleFile}
-          className="block w-full text-sm text-zinc-500 dark:text-zinc-400 file:mr-4 file:rounded-lg file:border-0 file:bg-nuvora-50 file:px-4 file:py-2.5 file:text-sm file:font-medium file:text-nuvora-700 hover:file:bg-nuvora-100 dark:file:bg-nuvora-900/50 dark:file:text-nuvora-300 dark:hover:file:bg-nuvora-900/70"
+          className="block w-full text-sm text-zinc-500 dark:text-zinc-400 file:mr-4 file:rounded-lg file:border-0 file:bg-nuvora-50 file:px-4 file:py-2.5 file:text-sm file:font-medium file:text-nuvora-700 hover:file:bg-nuvora-100 dark:file:bg-nuvora-900/50 dark:file:text-nuvora-600 dark:hover:file:bg-nuvora-900/70"
           aria-label={field.label}
         />
         {value && value.startsWith("data:") && (
           <p className="mt-1 text-xs text-green-700 dark:text-green-400">File loaded ({Math.round(((value.length * 3) / 4 / 1024))} KB)</p>
         )}
         {value === "__error__:File exceeds 20MB limit" && (
-          <p className="mt-1 text-xs text-red-600 dark:text-red-400">File exceeds 20MB limit. Please choose a smaller file.</p>
+          <p className="mt-1 text-xs text-red-700 dark:text-red-400">File exceeds 20MB limit. Please choose a smaller file.</p>
         )}
         {value && value.startsWith("data:image/") && (
           <img src={value} alt="Preview" loading="lazy" decoding="async" className="mt-2 max-h-40 rounded-lg border border-zinc-200 object-contain dark:border-zinc-700" />
@@ -123,7 +123,7 @@ function ResultRenderer({ data }: { data: Record<string, unknown> }) {
               {!isError && !isImageResult && !isDownload && <CopyButton text={strVal} />}
             </div>
             {isError ? (
-              <p className="text-sm text-red-600 dark:text-red-400">{strVal}</p>
+              <p className="text-sm text-red-700 dark:text-red-400">{strVal}</p>
             ) : isImageResult && imageUrl ? (
               <img src={imageUrl} alt={key} loading="lazy" decoding="async" className="max-h-64 rounded-lg border border-zinc-200 object-contain dark:border-zinc-700" />
             ) : isDownload ? (
@@ -231,7 +231,7 @@ export function ToolComponent({ slug }: ToolComponentProps) {
         <p className="mt-2 text-zinc-600 dark:text-zinc-400">{tool.description}</p>
         <span className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-4 py-1.5 text-sm font-medium text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">
           <Icon name="RefreshCw" className="size-4" />
-          Coming soon — interactive version under development
+          Coming soon â€” interactive version under development
         </span>
       </div>
     );

@@ -6,8 +6,8 @@ import { Card, Badge } from "@/components/ui";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: `SSL/TLS Developer Cheat Sheet — Commands, Ciphers, Protocol Versions`,
-  description: `Complete SSL/TLS cheat sheet for developers. Quick reference for OpenSSL commands, TLS protocol versions (1.0–1.3), cipher suites, certificate troubleshooting, and common error codes.`,
+  title: `SSL/TLS Developer Cheat Sheet â€” Commands, Ciphers, Protocol Versions`,
+  description: `Complete SSL/TLS cheat sheet for developers. Quick reference for OpenSSL commands, TLS protocol versions (1.0â€“1.3), cipher suites, certificate troubleshooting, and common error codes.`,
   alternates: { canonical: `${SITE_URL}/cheat-sheets/developer-ssl-tls` },
   openGraph: {
     title: `SSL/TLS Developer Cheat Sheet`,
@@ -35,7 +35,7 @@ const opensslCommands = [
 ];
 
 const tlsVersions = [
-  { version: "SSL 3.0", year: "1996", status: "Deprecated", features: "Broken — POODLE attack. Do not use.", highlight: true },
+  { version: "SSL 3.0", year: "1996", status: "Deprecated", features: "Broken â€” POODLE attack. Do not use.", highlight: true },
   { version: "TLS 1.0", year: "1999", status: "Deprecated", features: "PCI DSS non-compliant. BEAST attack vulnerable.", highlight: true },
   { version: "TLS 1.1", year: "2006", status: "Deprecated", features: "PCI DSS non-compliant. Weak CBC ciphers.", highlight: true },
   { version: "TLS 1.2", year: "2008", status: "Recommended", features: "AEAD ciphers (GCM), ECDHE key exchange, SHA-256 HMAC. Widely supported.", highlight: false },
@@ -88,7 +88,7 @@ const errorCodes = [
 export default function DeveloperSslTlsPage() {
   return (
     <>
-      <JsonLd data={webPageSchema({ name: `SSL/TLS Developer Cheat Sheet — Commands, Ciphers, Protocol Versions | ${SITE_NAME}`, description: `Quick reference for OpenSSL commands, TLS protocol versions (1.0–1.3), cipher suite recommendations, certificate troubleshooting, and common error codes.`, url: `${SITE_URL}/cheat-sheets/developer-ssl-tls`, breadcrumbs })} />
+      <JsonLd data={webPageSchema({ name: `SSL/TLS Developer Cheat Sheet â€” Commands, Ciphers, Protocol Versions | ${SITE_NAME}`, description: `Quick reference for OpenSSL commands, TLS protocol versions (1.0â€“1.3), cipher suite recommendations, certificate troubleshooting, and common error codes.`, url: `${SITE_URL}/cheat-sheets/developer-ssl-tls`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <section className="border-b border-zinc-200 bg-zinc-50 py-12 dark:border-zinc-800 dark:bg-zinc-900/50 sm:py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
@@ -103,7 +103,7 @@ export default function DeveloperSslTlsPage() {
               </p>
               <PrintButton />
             </div>
-            <SocialShare url={`${SITE_URL}/cheat-sheets/developer-ssl-tls`} title="SSL/TLS Developer Cheat Sheet — Commands, Ciphers, Protocol Versions" />
+            <SocialShare url={`${SITE_URL}/cheat-sheets/developer-ssl-tls`} title="SSL/TLS Developer Cheat Sheet â€” Commands, Ciphers, Protocol Versions" />
           </div>
         </div>
       </section>
@@ -130,7 +130,7 @@ export default function DeveloperSslTlsPage() {
                       <td className="px-4 py-2.5 text-zinc-600 dark:text-zinc-400">
                         {cmd.description}
                       </td>
-                      <td className="whitespace-nowrap px-4 py-2.5 text-zinc-500 dark:text-zinc-500">
+                      <td className="whitespace-nowrap px-4 py-2.5 text-zinc-500 dark:text-zinc-400">
                         {cmd.note}
                       </td>
                     </tr>

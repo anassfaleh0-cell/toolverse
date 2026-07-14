@@ -32,7 +32,7 @@ export function ToolCategories() {
                 <span className="font-medium text-zinc-900 dark:text-zinc-50">
                   {cat.label}
                 </span>
-                <span className="ml-2 text-sm text-zinc-400">
+                <span className="ml-2 text-sm text-zinc-600">
                   {cat.toolCount}
                 </span>
               </div>

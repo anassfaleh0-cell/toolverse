@@ -14,7 +14,7 @@ export function MarkdownPreview() {
       const result = await marked.parse(value, { breaks: true, gfm: true });
       setHtml(result);
     } catch {
-      setHtml('<p class="text-red-500">Failed to render Markdown</p>');
+      setHtml('<p class="text-red-700">Failed to render Markdown</p>');
     }
   }, []);
 
@@ -53,7 +53,7 @@ export function MarkdownPreview() {
             Rendered Preview
           </label>
           <div
-            className="min-h-[400px] overflow-auto rounded-lg border border-zinc-300 bg-white p-4 dark:border-zinc-700 dark:bg-zinc-900 [&_a]:text-blue-600 [&_a]:underline [&_a:hover]:text-blue-500 [&_blockquote]:border-l-4 [&_blockquote]:border-zinc-300 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-zinc-600 [&_code]:rounded [&_code]:bg-zinc-100 [&_code]:px-1 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-sm [&_h1]:mb-3 [&_h1]:text-2xl [&_h1]:font-bold [&_h2]:mb-2 [&_h2]:text-xl [&_h2]:font-bold [&_h3]:mb-1 [&_h3]:text-lg [&_h3]:font-semibold [&_hr]:my-4 [&_hr]:border-zinc-300 [&_img]:max-w-full [&_li]:mb-1 [&_ol]:ml-6 [&_ol]:list-decimal [&_p]:mb-3 [&_p]:leading-relaxed [&_pre]:mb-3 [&_pre]:overflow-x-auto [&_pre]:rounded-lg [&_pre]:bg-zinc-100 [&_pre]:p-4 [&_pre]:font-mono [&_pre]:text-sm [&_table]:w-full [&_table]:border-collapse [&_td]:border [&_td]:border-zinc-300 [&_td]:p-2 [&_th]:border [&_th]:border-zinc-300 [&_th]:bg-zinc-50 [&_th]:p-2 [&_th]:font-semibold [&_ul]:ml-6 [&_ul]:list-disc"
+            className="min-h-[400px] overflow-auto rounded-lg border border-zinc-300 bg-white p-4 dark:border-zinc-700 dark:bg-zinc-900 [&_a]:text-blue-600 [&_a]:underline [&_a:hover]:text-blue-700 [&_blockquote]:border-l-4 [&_blockquote]:border-zinc-300 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-zinc-600 [&_code]:rounded [&_code]:bg-zinc-100 [&_code]:px-1 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-sm [&_h1]:mb-3 [&_h1]:text-2xl [&_h1]:font-bold [&_h2]:mb-2 [&_h2]:text-xl [&_h2]:font-bold [&_h3]:mb-1 [&_h3]:text-lg [&_h3]:font-semibold [&_hr]:my-4 [&_hr]:border-zinc-300 [&_img]:max-w-full [&_li]:mb-1 [&_ol]:ml-6 [&_ol]:list-decimal [&_p]:mb-3 [&_p]:leading-relaxed [&_pre]:mb-3 [&_pre]:overflow-x-auto [&_pre]:rounded-lg [&_pre]:bg-zinc-100 [&_pre]:p-4 [&_pre]:font-mono [&_pre]:text-sm [&_table]:w-full [&_table]:border-collapse [&_td]:border [&_td]:border-zinc-300 [&_td]:p-2 [&_th]:border [&_th]:border-zinc-300 [&_th]:bg-zinc-50 [&_th]:p-2 [&_th]:font-semibold [&_ul]:ml-6 [&_ul]:list-disc"
             dangerouslySetInnerHTML={{ __html: html }}
           />
         </div>

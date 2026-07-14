@@ -20,7 +20,7 @@ function tokenizeLine(line: string) {
     } else if (m[3]) {
       tokens.push({ text: m[3], className: "text-green-700 dark:text-green-400" });
     } else if (m[4]) {
-      tokens.push({ text: m[4], className: "text-orange-600 dark:text-orange-400" });
+      tokens.push({ text: m[4], className: "text-orange-700 dark:text-orange-400" });
     } else if (m[5]) {
       tokens.push({ text: m[5], className: "text-purple-600 dark:text-purple-400" });
     } else if (m[6]) {
@@ -232,9 +232,9 @@ export function JsonFormatter() {
             <pre className="mt-2 overflow-x-auto rounded bg-red-50 p-3 font-mono text-sm dark:bg-red-950/30">
               <code>{errorLocation.line}</code>
               {"\n"}
-              <span className="text-red-500">{errorLocation.col > 0 ? " ".repeat(errorLocation.col) : ""}^</span>
+              <span className="text-red-700">{errorLocation.col > 0 ? " ".repeat(errorLocation.col) : ""}^</span>
               {" "}
-              <span className="text-xs text-red-500">Line {errorLocation.lineNum}, Col {errorLocation.col + 1}</span>
+              <span className="text-xs text-red-700">Line {errorLocation.lineNum}, Col {errorLocation.col + 1}</span>
             </pre>
           )}
         </Alert>
@@ -273,7 +273,7 @@ export function JsonFormatter() {
                 <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
                   Formatted Output
                 </p>
-                <p className="text-xs text-zinc-400 dark:text-zinc-500">
+                <p className="text-xs text-zinc-600 dark:text-zinc-400">
                   {stats?.chars} chars | {stats?.lines} lines | {stats?.size}
                 </p>
               </div>
@@ -299,7 +299,7 @@ export function JsonFormatter() {
             </div>
             <div className="flex">
               <div
-                className="select-none border-r border-zinc-200 bg-zinc-50 py-5 text-right font-mono text-sm leading-5 text-zinc-400 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-600"
+                className="select-none border-r border-zinc-200 bg-zinc-50 py-5 text-right font-mono text-sm leading-5 text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400"
                 style={{ minWidth: `${lineNumberDigits + 2}ch` }}
               >
                 {highlightedLines.map((_, i) => (
@@ -324,7 +324,7 @@ export function JsonFormatter() {
                               <span key={j}>{t.text}</span>
                             ),
                           )
-                        : " "}
+                        : "Â "}
                     </div>
                   ))
                 )}

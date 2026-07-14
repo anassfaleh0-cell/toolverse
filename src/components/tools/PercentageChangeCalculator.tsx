@@ -97,7 +97,7 @@ export function PercentageChangeCalculator() {
                   result.direction === "Increase"
                     ? "text-green-700 dark:text-green-400"
                     : result.direction === "Decrease"
-                      ? "text-red-600 dark:text-red-400"
+                      ? "text-red-700 dark:text-red-400"
                       : "text-text-secondary"
                 }`}
               >

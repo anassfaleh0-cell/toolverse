@@ -21,11 +21,11 @@ interface PropagationResult {
 const RECORD_TYPES = ["A", "AAAA", "MX", "NS", "TXT", "CNAME"];
 
 const SERVER_GEO: Record<string, { label: string; flag: string }> = {
-  Google: { label: "Google (US)", flag: "🇺🇸" },
-  Cloudflare: { label: "Cloudflare (Global)", flag: "🌍" },
-  Quad9: { label: "Quad9 (Switzerland)", flag: "🇨🇭" },
-  OpenDNS: { label: "OpenDNS (US)", flag: "🇺🇸" },
-  Mullvad: { label: "Mullvad (Sweden)", flag: "🇸🇪" },
+  Google: { label: "Google (US)", flag: "ðŸ‡ºðŸ‡¸" },
+  Cloudflare: { label: "Cloudflare (Global)", flag: "ðŸŒ" },
+  Quad9: { label: "Quad9 (Switzerland)", flag: "ðŸ‡¨ðŸ‡­" },
+  OpenDNS: { label: "OpenDNS (US)", flag: "ðŸ‡ºðŸ‡¸" },
+  Mullvad: { label: "Mullvad (Sweden)", flag: "ðŸ‡¸ðŸ‡ª" },
 };
 
 function getPropagationStatus(uniqueValues: string[]): {
@@ -145,7 +145,7 @@ export function DnsPropagationChecker() {
       {result && !loading && (
         <div className="mt-8 space-y-6">
           <DashboardSummary
-            title={`${result.hostname} — ${result.type} Records`}
+            title={`${result.hostname} â€” ${result.type} Records`}
             status={result.uniqueValues.length === 1 ? "good" : result.uniqueValues.length <= 3 ? "warning" : "critical"}
             mainFinding={status?.label || "Checking..."}
             riskLevel={result.uniqueValues.length === 1 ? "low" : result.uniqueValues.length <= 3 ? "medium" : "high"}
@@ -193,7 +193,7 @@ export function DnsPropagationChecker() {
                       {geo.label}
                     </span>
                       <span className="inline-flex items-center gap-1 text-xs text-zinc-500 dark:text-zinc-400">
-                        {s.values === null ? <><Icon name="AlertTriangle" className="size-3.5 text-amber-500" /> No response</> : s.values.length === 0 ? <><Icon name="XCircle" className="size-3.5 text-red-500" /> No records</> : <><Icon name="CheckCircle2" className="size-3.5 text-emerald-500" /> {s.values.length} record(s)</>}
+                        {s.values === null ? <><Icon name="AlertTriangle" className="size-3.5 text-amber-700" /> No response</> : s.values.length === 0 ? <><Icon name="XCircle" className="size-3.5 text-red-700" /> No records</> : <><Icon name="CheckCircle2" className="size-3.5 text-emerald-700" /> {s.values.length} record(s)</>}
                       </span>
                   </div>
                   {s.values && s.values.length > 0 && (
@@ -204,9 +204,9 @@ export function DnsPropagationChecker() {
                           className="flex items-center gap-3 px-5 py-3 font-mono text-sm"
                         >
                           {consistent ? (
-                            <Icon name="CheckCircle2" className="size-4 text-emerald-500" />
+                            <Icon name="CheckCircle2" className="size-4 text-emerald-700" />
                           ) : (
-                            <Icon name="AlertTriangle" className="size-4 text-amber-500" />
+                            <Icon name="AlertTriangle" className="size-4 text-amber-700" />
                           )}
                           <span className="text-zinc-600 dark:text-zinc-400">
                             {val}
@@ -216,7 +216,7 @@ export function DnsPropagationChecker() {
                     </div>
                   )}
                   {s.values === null && (
-                    <div className="px-5 py-3 text-sm text-red-500">
+                    <div className="px-5 py-3 text-sm text-red-700">
                       Server did not respond. May be blocking DoH queries or experiencing an outage.
                     </div>
                   )}

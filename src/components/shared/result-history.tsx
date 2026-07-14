@@ -43,7 +43,7 @@ export function ResultHistory({ toolSlug, onRestore }: ResultHistoryProps) {
               clearResultHistory(toolSlug);
               refresh();
             }}
-            className="text-xs text-zinc-500 hover:text-red-500"
+            className="text-xs text-zinc-500 hover:text-red-700"
           >
             Clear
           </button>
@@ -74,7 +74,7 @@ export function ResultHistory({ toolSlug, onRestore }: ResultHistoryProps) {
                   deleteResultEntry(toolSlug, entry.ts);
                   refresh();
                 }}
-                className="text-[10px] text-zinc-500 hover:text-red-500"
+                className="text-[10px] text-zinc-500 hover:text-red-700"
                 aria-label="Delete entry"
               >
                 &times;

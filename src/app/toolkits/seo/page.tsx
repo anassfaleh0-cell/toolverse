@@ -5,7 +5,7 @@ import { JsonLd, Breadcrumbs, FaqSection } from "@/components/shared";
 import { webPageSchema, breadcrumbSchema, faqSchema, type FaqItem } from "@/lib/seo";
 
 const slug = "toolkits/seo";
-const pageTitle = "SEO Toolkit — Free SEO Tools for Website Optimization — Nuvora";
+const pageTitle = "SEO Toolkit â€” Free SEO Tools for Website Optimization â€” Nuvora";
 const pageDescription =
   "Curated collection of free SEO tools for technical analysis, content optimization, and website performance monitoring. Improve your search rankings today.";
 
@@ -211,7 +211,7 @@ export default function SeoToolkitPage() {
                   <div className="flex items-start gap-4">
                     <span className="text-2xl">{icons[tool.id]}</span>
                     <div>
-                      <h3 className="font-semibold text-zinc-900 group-hover:text-blue-600 dark:text-zinc-50 dark:group-hover:text-blue-400">
+                      <h3 className="font-semibold text-zinc-900 group-hover:text-blue-600 dark:text-zinc-50 dark:group-hover:text-blue-700">
                         {tool.name}
                       </h3>
                       <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">

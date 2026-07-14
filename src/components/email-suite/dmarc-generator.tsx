@@ -64,7 +64,7 @@ export function DmarcGenerator() {
         <div className="rounded-xl border border-blue-200 bg-blue-50 px-5 py-4 dark:border-blue-800 dark:bg-blue-950">
           <div className="mb-2 flex items-center justify-between">
             <p className="text-xs font-semibold uppercase tracking-wider text-blue-700 dark:text-blue-300">DMARC Deployment Strategy (RFC 7489)</p>
-            <button type="button" onClick={() => setShowGuide(false)} className="text-xs text-blue-500 hover:text-blue-700">Dismiss</button>
+            <button type="button" onClick={() => setShowGuide(false)} className="text-xs text-blue-700 hover:text-blue-700">Dismiss</button>
           </div>
           <ol className="ml-4 list-decimal space-y-1 text-sm text-blue-800 dark:text-blue-200">
             <li><strong>Monitor (p=none):</strong> Start here. Add rua to receive reports. Run for 2-4 weeks.</li>
@@ -95,9 +95,9 @@ export function DmarcGenerator() {
             onChange={(e) => setPolicy(e.target.value as typeof policy)}
             className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
           >
-            <option value="none">None (monitor only) — Start here</option>
-            <option value="quarantine">Quarantine (spam folder) — Intermediate</option>
-            <option value="reject">Reject — Maximum protection</option>
+            <option value="none">None (monitor only) â€” Start here</option>
+            <option value="quarantine">Quarantine (spam folder) â€” Intermediate</option>
+            <option value="reject">Reject â€” Maximum protection</option>
           </select>
         </div>
         <div>
@@ -123,9 +123,9 @@ export function DmarcGenerator() {
             onChange={(e) => setAdkim(e.target.value as typeof adkim)}
             className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
           >
-            <option value="">Relaxed (default) — Subdomains match</option>
-            <option value="s">Strict — Exact domain match required</option>
-            <option value="r">Relaxed — Subdomains accepted</option>
+            <option value="">Relaxed (default) â€” Subdomains match</option>
+            <option value="s">Strict â€” Exact domain match required</option>
+            <option value="r">Relaxed â€” Subdomains accepted</option>
           </select>
         </div>
         <div>
@@ -136,8 +136,8 @@ export function DmarcGenerator() {
             className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
           >
             <option value="">Relaxed (default)</option>
-            <option value="s">Strict — Exact domain match required</option>
-            <option value="r">Relaxed — Subdomains accepted</option>
+            <option value="s">Strict â€” Exact domain match required</option>
+            <option value="r">Relaxed â€” Subdomains accepted</option>
           </select>
         </div>
       </div>
@@ -146,12 +146,12 @@ export function DmarcGenerator() {
         <div>
           <label className="mb-1 block text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Aggregate Reports (rua)</label>
           <Input type="email" value={rua} onChange={(e) => setRua(e.target.value)} placeholder="dmarc-reports@example.com" />
-          <p className="mt-1 text-[11px] text-zinc-400 dark:text-zinc-300">Receives daily XML reports</p>
+          <p className="mt-1 text-[11px] text-zinc-600 dark:text-zinc-300">Receives daily XML reports</p>
         </div>
         <div>
           <label className="mb-1 block text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Forensic Reports (ruf)</label>
           <Input type="email" value={ruf} onChange={(e) => setRuf(e.target.value)} placeholder="forensic@example.com" />
-          <p className="mt-1 text-[11px] text-zinc-400 dark:text-zinc-300">Receives per-failure details</p>
+          <p className="mt-1 text-[11px] text-zinc-600 dark:text-zinc-300">Receives per-failure details</p>
         </div>
       </div>
 
@@ -159,7 +159,7 @@ export function DmarcGenerator() {
         <div>
           <label className="mb-1 block text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Percentage (pct=)</label>
           <Input type="number" min={1} max={100} value={pct} onChange={(e) => setPct(e.target.value)} />
-          <p className="mt-1 text-[11px] text-zinc-400 dark:text-zinc-300">Apply policy to X% of email</p>
+          <p className="mt-1 text-[11px] text-zinc-600 dark:text-zinc-300">Apply policy to X% of email</p>
         </div>
         <div>
           <label className="mb-1 block text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Failure Options (fo=)</label>

@@ -133,7 +133,7 @@ export default async function VsPage({ params }: Props) {
               </ul>
             </div>
             <div className="mt-4">
-              <h4 className="text-sm font-semibold text-red-500">Cons</h4>
+              <h4 className="text-sm font-semibold text-red-700">Cons</h4>
               <ul className="mt-2 space-y-1">
                 {content.prosCons.tool1.cons.map(c => <li key={c} className="text-sm text-text-secondary">- {c}</li>)}
               </ul>
@@ -148,7 +148,7 @@ export default async function VsPage({ params }: Props) {
               </ul>
             </div>
             <div className="mt-4">
-              <h4 className="text-sm font-semibold text-red-500">Cons</h4>
+              <h4 className="text-sm font-semibold text-red-700">Cons</h4>
               <ul className="mt-2 space-y-1">
                 {content.prosCons.tool2.cons.map(c => <li key={c} className="text-sm text-text-secondary">- {c}</li>)}
               </ul>

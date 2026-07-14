@@ -6,7 +6,7 @@ import { Icon } from "@/components/shared/icon";
 import { webPageSchema, breadcrumbSchema, faqSchema, type FaqItem } from "@/lib/seo";
 
 const slug = "toolkits/developer";
-const pageTitle = "Developer Toolkit — Essential Developer Tools — Nuvora";
+const pageTitle = "Developer Toolkit â€” Essential Developer Tools â€” Nuvora";
 const pageDescription =
   "Curated collection of free online developer tools for debugging, encoding, formatting, and security. Everything a software engineer needs in one place.";
 
@@ -347,7 +347,7 @@ export default function DeveloperToolkitPage() {
                       <Icon name={icons[tool.id] ?? "Wrench"} className="size-6 text-nuvora-600 dark:text-nuvora-400" />
                     </span>
                     <div>
-                      <h3 className="font-semibold text-zinc-900 group-hover:text-blue-600 dark:text-zinc-50 dark:group-hover:text-blue-400">
+                      <h3 className="font-semibold text-zinc-900 group-hover:text-blue-600 dark:text-zinc-50 dark:group-hover:text-blue-700">
                         {tool.name}
                       </h3>
                       <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">

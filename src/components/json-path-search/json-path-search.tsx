@@ -253,7 +253,7 @@ export function JsonPathSearch() {
                 }`}
               >
                 <span className="font-mono text-xs">{seg.path}</span>
-                <span className="text-xs text-zinc-400">
+                <span className="text-xs text-zinc-600">
                   ({seg.type === "object" ? "{}" : seg.type === "array" ? "[]" : typeof seg.value})
                 </span>
               </button>

@@ -102,7 +102,7 @@ export function SslCertificateChecker() {
       `SSL Certificate Check for: ${result.host}`,
       `Generated: ${new Date().toISOString()}`,
       `TLS Version: ${result.tlsVersion || "N/A"}`,
-      `Grade: ${getSecurityGrade(c).grade} — ${getSecurityGrade(c).label}`,
+      `Grade: ${getSecurityGrade(c).grade} â€” ${getSecurityGrade(c).label}`,
       "",
       `Common Name: ${c.commonName}`,
       `Organization: ${c.organization || "N/A"}`,
@@ -183,10 +183,10 @@ export function SslCertificateChecker() {
           <DashboardSummary
             title={result.host}
             status={result.certificate.daysRemaining > 30 ? "good" : result.certificate.daysRemaining > 0 ? "warning" : "critical"}
-            mainFinding={`Grade ${getSecurityGrade(result.certificate).grade} — ${result.certificate.daysRemaining > 0 ? `${result.certificate.daysRemaining} days until expiry` : "CERTIFICATE EXPIRED"}`}
+            mainFinding={`Grade ${getSecurityGrade(result.certificate).grade} â€” ${result.certificate.daysRemaining > 0 ? `${result.certificate.daysRemaining} days until expiry` : "CERTIFICATE EXPIRED"}`}
             riskLevel={result.certificate.daysRemaining > 30 ? "low" : result.certificate.daysRemaining > 0 ? "medium" : "critical"}
             riskLabel={getSecurityGrade(result.certificate).grade}
-            nextAction={result.certificate.daysRemaining <= 0 ? "RENEW IMMEDIATELY. Your certificate is expired — visitors will see security warnings." : result.certificate.daysRemaining <= 30 ? "Renew within 2 weeks to avoid disruption. Some clients may already show warnings." : "Certificate is healthy. No action needed."}
+            nextAction={result.certificate.daysRemaining <= 0 ? "RENEW IMMEDIATELY. Your certificate is expired â€” visitors will see security warnings." : result.certificate.daysRemaining <= 30 ? "Renew within 2 weeks to avoid disruption. Some clients may already show warnings." : "Certificate is healthy. No action needed."}
           >
             <GradeBadge grade={getSecurityGrade(result.certificate).grade === "A+" ? "A+" : getSecurityGrade(result.certificate).grade === "A" ? "A" : getSecurityGrade(result.certificate).grade === "B" ? "B" : getSecurityGrade(result.certificate).grade === "C" ? "C" : getSecurityGrade(result.certificate).grade === "D" ? "D" : "F"} size={64} />
             <div className="col-span-full">
@@ -212,7 +212,7 @@ export function SslCertificateChecker() {
                   Security Grade
                 </p>
                 <span className={`inline-block rounded-full px-3 py-0.5 text-xs font-bold ${getSecurityGrade(result.certificate).className}`}>
-                  {getSecurityGrade(result.certificate).grade} — {getSecurityGrade(result.certificate).label}
+                  {getSecurityGrade(result.certificate).grade} â€” {getSecurityGrade(result.certificate).label}
                 </span>
               </div>
             </div>
@@ -226,22 +226,22 @@ export function SslCertificateChecker() {
             </div>
             <div className="px-5 py-4 font-mono text-sm leading-relaxed">
               <div className="flex flex-col gap-1 text-zinc-600 dark:text-zinc-400">
-                <span className="text-zinc-500 dark:text-zinc-500">
+                <span className="text-zinc-500 dark:text-zinc-400">
                   Root CA
                   {getIssuerOrg(result.certificate.issuer) && (
-                    <span className="ml-1 text-zinc-400 dark:text-zinc-500">
+                    <span className="ml-1 text-zinc-600 dark:text-zinc-400">
                       ({getIssuerOrg(result.certificate.issuer)})
                     </span>
                   )}
                 </span>
-                <span className="ml-6 text-zinc-500 dark:text-zinc-500">
-                  └─ Intermediate CA
-                  <span className="ml-1 text-zinc-400 dark:text-zinc-500">
+                <span className="ml-6 text-zinc-500 dark:text-zinc-400">
+                  â””â”€ Intermediate CA
+                  <span className="ml-1 text-zinc-600 dark:text-zinc-400">
                     ({getIssuerCN(result.certificate.issuer)})
                   </span>
                 </span>
                 <span className="ml-12 text-zinc-700 dark:text-zinc-300 font-semibold">
-                  └─ {result.certificate.commonName}
+                  â””â”€ {result.certificate.commonName}
                 </span>
               </div>
             </div>

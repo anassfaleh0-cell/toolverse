@@ -275,7 +275,7 @@ function generateLandingPageCopy(topic: string, tone: string, length: string, au
 
   if (isLong) {
     parts.push("[Value Proposition]");
-    parts.push(applyToneToSentence(`${topics[2]} is no longer a luxury — it is a necessity. With ${topics[0]}, you can unlock ${pick(adj, 2)} potential and transform the way you approach ${topics[3]}.`, tone, 0));
+    parts.push(applyToneToSentence(`${topics[2]} is no longer a luxury â€” it is a necessity. With ${topics[0]}, you can unlock ${pick(adj, 2)} potential and transform the way you approach ${topics[3]}.`, tone, 0));
     parts.push("");
 
     parts.push("[Key Benefits]");
@@ -319,7 +319,7 @@ function generateAdvertisement(topic: string, tone: string, length: string, audi
   parts.push("");
 
   if (isLong) {
-    parts.push(applyToneToSentence(`Unlike other approaches to ${topics[2]}, our method focuses on what actually works. No fluff, no gimmicks — just ${pick(adj, 3)} outcomes.`, tone, 1));
+    parts.push(applyToneToSentence(`Unlike other approaches to ${topics[2]}, our method focuses on what actually works. No fluff, no gimmicks â€” just ${pick(adj, 3)} outcomes.`, tone, 1));
     parts.push("");
   }
 
@@ -427,7 +427,7 @@ export function ContentGenerator() {
             onChange={(e) => setTopic(e.target.value)}
             placeholder="Enter your topic, keywords, or brief description..."
             rows={4}
-            className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder-zinc-400 outline-none transition-colors focus:ring-2 focus:ring-blue-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder-zinc-500 dark:focus:ring-blue-400"
+            className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder-zinc-500 outline-none transition-colors focus:ring-2 focus:ring-blue-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder-zinc-500 dark:focus:ring-blue-400"
           />
         </div>
 
@@ -480,13 +480,13 @@ export function ContentGenerator() {
 
         <div>
           <label className="mb-1.5 block text-sm font-medium text-zinc-700 dark:text-zinc-300">
-            Target Audience <span className="text-zinc-400 dark:text-zinc-500">(optional)</span>
+            Target Audience <span className="text-zinc-600 dark:text-zinc-400">(optional)</span>
           </label>
           <input
             value={audience}
             onChange={(e) => setAudience(e.target.value)}
             placeholder="e.g., developers, marketers, beginners..."
-            className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder-zinc-400 outline-none transition-colors focus:ring-2 focus:ring-blue-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder-zinc-500 dark:focus:ring-blue-400"
+            className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder-zinc-500 outline-none transition-colors focus:ring-2 focus:ring-blue-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder-zinc-500 dark:focus:ring-blue-400"
           />
         </div>
 
@@ -528,7 +528,7 @@ export function ContentGenerator() {
                 Generated {contentType}
               </h3>
               <div className="flex items-center gap-2">
-                <span className="text-xs text-zinc-400 dark:text-zinc-500">
+                <span className="text-xs text-zinc-600 dark:text-zinc-400">
                   {wc} words
                 </span>
               </div>

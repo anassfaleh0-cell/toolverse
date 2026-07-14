@@ -78,7 +78,7 @@ export function SpfGenerator() {
       <div className="rounded-xl border border-zinc-200 dark:border-zinc-800">
         <div className="flex items-center justify-between border-b border-zinc-200 px-5 py-4 dark:border-zinc-800">
           <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Authorized Senders</p>
-          <span className="text-[11px] text-zinc-400 dark:text-zinc-300">{lookupCount}/10 DNS lookups</span>
+          <span className="text-[11px] text-zinc-600 dark:text-zinc-300">{lookupCount}/10 DNS lookups</span>
         </div>
         <div className="divide-y divide-zinc-200 dark:divide-zinc-800">
           {includes.map((inc, i) => (
@@ -103,7 +103,7 @@ export function SpfGenerator() {
                 placeholder={inc.type === "include" ? "_spf.google.com" : inc.type === "ip4" ? "192.168.1.0/24" : "example.com"}
                 className="flex-1"
               />
-              <button type="button" onClick={() => removeInclude(i)} className="shrink-0 rounded-lg p-2 text-zinc-400 dark:text-zinc-300 hover:text-red-500" aria-label="Remove">
+              <button type="button" onClick={() => removeInclude(i)} className="shrink-0 rounded-lg p-2 text-zinc-600 dark:text-zinc-300 hover:text-red-700" aria-label="Remove">
                 <Icon name="X" className="size-4" aria-hidden="true" />
               </button>
             </div>
@@ -117,7 +117,7 @@ export function SpfGenerator() {
       {warnings.length > 0 && (
         <div className="space-y-1.5">
           {warnings.map((w, i) => (
-            <div key={i} className={`flex items-start gap-2 text-xs ${w.type === "error" ? "text-red-600 dark:text-red-400" : w.type === "warning" ? "text-amber-700 dark:text-amber-400" : "text-blue-600 dark:text-blue-400"}`}>
+            <div key={i} className={`flex items-start gap-2 text-xs ${w.type === "error" ? "text-red-700 dark:text-red-400" : w.type === "warning" ? "text-amber-700 dark:text-amber-400" : "text-blue-600 dark:text-blue-400"}`}>
               <Icon
                 name={w.type === "error" ? "XCircle" : w.type === "warning" ? "AlertTriangle" : "Info"}
                 className="size-4 shrink-0 mt-0.5"
@@ -135,10 +135,10 @@ export function SpfGenerator() {
           onChange={(e) => setPolicy(e.target.value as typeof policy)}
           className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
         >
-          <option value="~all">SoftFail (~all) — Recommended for testing</option>
-          <option value="-all">Fail (-all) — Recommended for production</option>
+          <option value="~all">SoftFail (~all) â€” Recommended for testing</option>
+          <option value="-all">Fail (-all) â€” Recommended for production</option>
           <option value="?all">Neutral (?all)</option>
-          <option value="+all">Pass (+all) — Not recommended</option>
+          <option value="+all">Pass (+all) â€” Not recommended</option>
         </select>
       </div>
 

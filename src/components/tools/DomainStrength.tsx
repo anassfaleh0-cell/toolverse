@@ -97,7 +97,7 @@ export function DomainStrength() {
                 {result.score.toFixed(2)}
               </p>
               <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
-                {result.note || `out of 10 — ${scoreLabel(result.score)}`}
+                {result.note || `out of 10 â€” ${scoreLabel(result.score)}`}
               </p>
             </div>
 
@@ -109,7 +109,7 @@ export function DomainStrength() {
                     style={{ width: `${(result.score / 10) * 100}%` }}
                   />
                 </div>
-                <div className="mt-1 flex justify-between text-xs text-zinc-400 dark:text-zinc-500">
+                <div className="mt-1 flex justify-between text-xs text-zinc-600 dark:text-zinc-400">
                   <span>0</span>
                   <span>10</span>
                 </div>
@@ -137,7 +137,7 @@ export function DomainStrength() {
               </div>
             )}
 
-            <div className="mt-6 border-t border-zinc-200 pt-4 text-center text-xs text-zinc-400 dark:border-zinc-700 dark:text-zinc-500">
+            <div className="mt-6 border-t border-zinc-200 pt-4 text-center text-xs text-zinc-600 dark:border-zinc-700 dark:text-zinc-400">
               <p>Powered by OpenPageRank (CommonCrawl open data)</p>
               <p className="mt-0.5">Last updated: {result.updated}</p>
             </div>

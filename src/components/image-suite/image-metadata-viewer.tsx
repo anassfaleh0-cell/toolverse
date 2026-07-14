@@ -80,12 +80,12 @@ export function ImageMetadataViewer() {
                 : "border-zinc-300 hover:border-zinc-400 dark:border-zinc-700 dark:hover:border-zinc-500"
             }`}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="mb-3 size-10 text-zinc-400">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="mb-3 size-10 text-zinc-600">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
               <polyline points="14 2 14 8 20 8" />
             </svg>
             <p className="text-sm font-medium text-zinc-600 dark:text-zinc-400">Drop an image or click to view metadata</p>
-            <p className="mt-1 text-xs text-zinc-400">EXIF data is read entirely in-browser</p>
+            <p className="mt-1 text-xs text-zinc-600">EXIF data is read entirely in-browser</p>
           </div>
         ) : (
           <div className="space-y-5">

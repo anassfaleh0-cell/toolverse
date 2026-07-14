@@ -5,14 +5,14 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: `500+ Tool Expansion Roadmap — From 88 to 500 Tools`,
+  title: `500+ Tool Expansion Roadmap â€” From 88 to 500 Tools`,
   description: "Comprehensive roadmap detailing Nuvora's planned expansion from 88 to 500+ tools across 21 categories including PDF, image, SEO, AI, network, security, developer, and more.",
   openGraph: {
-    title: `500+ Tool Expansion Roadmap — From 88 to 500 Tools`,
+    title: `500+ Tool Expansion Roadmap â€” From 88 to 500 Tools`,
     description: "Comprehensive roadmap detailing Nuvora's planned expansion from 88 to 500+ tools across 21 categories.",
   },
   twitter: {
-    title: `500+ Tool Expansion Roadmap — From 88 to 500 Tools`,
+    title: `500+ Tool Expansion Roadmap â€” From 88 to 500 Tools`,
     description: "Comprehensive roadmap detailing Nuvora's planned expansion from 88 to 500+ tools across 21 categories.",
   },
   alternates: { canonical: `${SITE_URL}/500-tool-roadmap` },
@@ -291,7 +291,7 @@ const CATEGORIES: ToolCategory[] = [
       "HTML Entity Encoder/Decoder", "Unicode Escape/Unescape",
       "Hex Encoder/Decoder", "Binary Encoder/Decoder", "Octal Encoder/Decoder",
       "ROT13 Cipher", "ROT47 Cipher", "Caesar Cipher", "Atbash Cipher",
-      "Vigenère Cipher", "Morse Code Encoder/Decoder", "Binary to Text",
+      "VigenÃ¨re Cipher", "Morse Code Encoder/Decoder", "Binary to Text",
       "Text to Binary", "Decimal to Hex", "Hex to Decimal", "Base32 Encoder",
       "Base85 Encoder", "Quoted-Printable Encoder", "Percent Encoding",
       "ASCII to Binary Converter",
@@ -400,11 +400,11 @@ function CategorySection({ category }: { category: ToolCategory }) {
           </div>
         </div>
         <div className="flex items-center gap-3 shrink-0">
-          <span className="hidden sm:inline text-xs text-zinc-400 group-open:text-blue-600 dark:group-open:text-blue-400 transition-colors">
+          <span className="hidden sm:inline text-xs text-zinc-600 group-open:text-blue-600 dark:group-open:text-blue-700 transition-colors">
             {category.current}/{totalTools}
           </span>
           <svg
-            className="size-4 shrink-0 text-zinc-400 transition-transform group-open:rotate-180"
+            className="size-4 shrink-0 text-zinc-600 transition-transform group-open:rotate-180"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
             fill="currentColor"
@@ -431,7 +431,7 @@ function CategorySection({ category }: { category: ToolCategory }) {
             <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800">
               {category.tools.map((tool, i) => (
                 <tr key={tool} className="transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800/30">
-                  <td className="px-5 py-2 text-xs text-zinc-400 tabular-nums">{String(i + 1).padStart(2, "0")}</td>
+                  <td className="px-5 py-2 text-xs text-zinc-600 tabular-nums">{String(i + 1).padStart(2, "0")}</td>
                   <td className="px-5 py-2 text-sm text-zinc-900 dark:text-zinc-100">{tool}</td>
                   <td className="px-5 py-2 text-right">
                     {i < category.current ? (
@@ -479,7 +479,7 @@ export default function FiveHundredToolRoadmapPage() {
     <>
       <JsonLd
         data={webPageSchema({
-          name: `500+ Tool Expansion Roadmap — From 88 to 500 Tools | ${SITE_NAME}`,
+          name: `500+ Tool Expansion Roadmap â€” From 88 to 500 Tools | ${SITE_NAME}`,
           description:
             "Comprehensive roadmap detailing Nuvora's planned expansion from 88 to 500+ tools across 21 categories.",
           url: `${SITE_URL}/500-tool-roadmap`,
@@ -501,7 +501,7 @@ export default function FiveHundredToolRoadmapPage() {
             </div>
             <SocialShare
               url={`${SITE_URL}/500-tool-roadmap`}
-              title={`500+ Tool Expansion Roadmap — From 88 to 500 Tools`}
+              title={`500+ Tool Expansion Roadmap â€” From 88 to 500 Tools`}
             />
           </div>
         </div>

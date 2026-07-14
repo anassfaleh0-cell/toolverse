@@ -152,10 +152,10 @@ export function BackgroundRemover() {
                 : "border-zinc-300 hover:border-zinc-400 dark:border-zinc-700 dark:hover:border-zinc-500"
             }`}
           >
-            <Icon name="Upload" className="mb-3 size-10 text-zinc-400" />
+            <Icon name="Upload" className="mb-3 size-10 text-zinc-600" />
             <p className="text-sm font-medium text-zinc-600 dark:text-zinc-400">Drop an image or click to upload</p>
-            {mode === "chroma" && <p className="mt-1 text-xs text-zinc-400">Best results with green or blue screen background</p>}
-            {mode === "ai" && <p className="mt-1 text-xs text-zinc-400">AI removes any background automatically</p>}
+            {mode === "chroma" && <p className="mt-1 text-xs text-zinc-600">Best results with green or blue screen background</p>}
+            {mode === "ai" && <p className="mt-1 text-xs text-zinc-600">AI removes any background automatically</p>}
           </div>
         ) : (
           <>

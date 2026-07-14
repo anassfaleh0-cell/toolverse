@@ -34,7 +34,7 @@ export function BookmarkButton({ tool, className = "" }: Props) {
       onClick={handleToggle}
       className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
         bookmarked
-          ? "bg-yellow-100 text-yellow-700 hover:bg-yellow-200 dark:bg-yellow-900/30 dark:text-yellow-400"
+          ? "bg-yellow-100 text-yellow-800 hover:bg-yellow-200 dark:bg-yellow-900/30 dark:text-yellow-400"
           : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-400"
       } ${className}`}
       aria-label={bookmarked ? "Remove bookmark" : "Add bookmark"}

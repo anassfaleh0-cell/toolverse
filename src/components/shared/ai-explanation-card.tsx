@@ -158,7 +158,7 @@ export function AIExplanationCard({
               "rounded px-2 py-0.5 text-[11px] font-medium transition-colors",
               beginnerMode
                 ? "bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-400"
-                : "text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300",
+                : "text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-600",
             )}
           >
             Beginner
@@ -170,7 +170,7 @@ export function AIExplanationCard({
               "rounded px-2 py-0.5 text-[11px] font-medium transition-colors",
               expertMode
                 ? "bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-400"
-                : "text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300",
+                : "text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-600",
             )}
           >
             Expert
@@ -388,7 +388,7 @@ export function AIExplanationCard({
               <div className="space-y-1">
                 {kb.expertCommands.map((cmd, i) => (
                   <div key={i} className="flex items-start gap-2">
-                    <span className="mt-0.5 shrink-0 text-[10px] text-purple-400">$</span>
+                    <span className="mt-0.5 shrink-0 text-[10px] text-purple-700">$</span>
                     <code className="flex-1 break-all font-mono text-xs text-purple-700 dark:text-purple-300">
                       {cmd}
                     </code>

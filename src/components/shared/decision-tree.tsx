@@ -38,9 +38,9 @@ export function DecisionTree({ title, nodes, startId }: DecisionTreeProps) {
         <h3 className="text-sm font-medium text-zinc-500 dark:text-zinc-400">{title}</h3>
         <div className="flex gap-2">
           {history.length > 1 && (
-            <button type="button" onClick={handleBack} aria-label="Go back to previous question" className="text-xs text-zinc-500 underline hover:text-zinc-700 dark:hover:text-zinc-300">Back</button>
+            <button type="button" onClick={handleBack} aria-label="Go back to previous question" className="text-xs text-zinc-500 underline hover:text-zinc-700 dark:hover:text-zinc-600">Back</button>
           )}
-          <button type="button" onClick={handleReset} aria-label="Restart decision tree from beginning" className="text-xs text-zinc-500 underline hover:text-zinc-700 dark:hover:text-zinc-300">Restart</button>
+          <button type="button" onClick={handleReset} aria-label="Restart decision tree from beginning" className="text-xs text-zinc-500 underline hover:text-zinc-700 dark:hover:text-zinc-600">Restart</button>
         </div>
       </div>
 

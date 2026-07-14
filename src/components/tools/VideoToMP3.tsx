@@ -94,16 +94,16 @@ export function VideoToMP3() {
             <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{formatBytes(file.size)}</p>
             {isOverLimit && (
               <Alert variant="warning" className="mt-3">
-                File exceeds 200 MB limit — conversion may fail or be very slow.
+                File exceeds 200 MB limit â€” conversion may fail or be very slow.
               </Alert>
             )}
             <Button variant="ghost" size="sm" className="mt-2" onClick={() => { setFile(null); setResultUrl(null); }}>Remove</Button>
           </div>
         ) : (
-          <button onClick={() => inputRef.current?.click()} className="cursor-pointer text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100">
+          <button onClick={() => inputRef.current?.click()} className="cursor-pointer text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-600">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="mx-auto size-10"><path d="M12 16V4m0 0L8 8m4-4l4 4" strokeLinecap="round" strokeLinejoin="round"/><path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
             <p className="mt-2 text-sm font-medium">Select video file</p>
-            <p className="text-xs text-zinc-400 mt-1">MP4, AVI, MOV, WebM, MKV</p>
+            <p className="text-xs text-zinc-600 mt-1">MP4, AVI, MOV, WebM, MKV</p>
           </button>
         )}
       </div>

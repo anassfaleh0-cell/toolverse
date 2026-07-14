@@ -6,7 +6,7 @@ import { Card, Badge } from "@/components/ui";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: `DNS Developer Cheat Sheet — Commands, Record Types, Troubleshooting`,
+  title: `DNS Developer Cheat Sheet â€” Commands, Record Types, Troubleshooting`,
   description: `Complete DNS cheat sheet for developers. Quick reference for nslookup, dig, host commands, DNS record types (A, AAAA, CNAME, MX, TXT, NS, SOA, SRV, PTR, CAA), response codes, TTL values, and troubleshooting tips.`,
   alternates: { canonical: `${SITE_URL}/cheat-sheets/developer-dns` },
   openGraph: {
@@ -35,14 +35,14 @@ const dnsCommands = [
 ];
 
 const recordTypes = [
-  { type: "A", purpose: "IPv4 address mapping", ttl: "300–86400s", usage: "Maps domain to an IPv4 address" },
-  { type: "AAAA", purpose: "IPv6 address mapping", ttl: "300–86400s", usage: "Maps domain to an IPv6 address" },
-  { type: "CNAME", purpose: "Canonical name alias", ttl: "600–86400s", usage: "Alias one domain to another (e.g. www → @)" },
-  { type: "MX", purpose: "Mail exchange server", ttl: "300–86400s", usage: "Routes email to mail servers with priority" },
-  { type: "TXT", purpose: "Text metadata", ttl: "300–86400s", usage: "SPF, DKIM, DMARC, domain verification" },
-  { type: "NS", purpose: "Name server delegation", ttl: "86400–172800s", usage: "Delegates subdomains to authoritative servers" },
+  { type: "A", purpose: "IPv4 address mapping", ttl: "300â€“86400s", usage: "Maps domain to an IPv4 address" },
+  { type: "AAAA", purpose: "IPv6 address mapping", ttl: "300â€“86400s", usage: "Maps domain to an IPv6 address" },
+  { type: "CNAME", purpose: "Canonical name alias", ttl: "600â€“86400s", usage: "Alias one domain to another (e.g. www â†’ @)" },
+  { type: "MX", purpose: "Mail exchange server", ttl: "300â€“86400s", usage: "Routes email to mail servers with priority" },
+  { type: "TXT", purpose: "Text metadata", ttl: "300â€“86400s", usage: "SPF, DKIM, DMARC, domain verification" },
+  { type: "NS", purpose: "Name server delegation", ttl: "86400â€“172800s", usage: "Delegates subdomains to authoritative servers" },
   { type: "SOA", purpose: "Start of authority", ttl: "86400s", usage: "Zone transfer parameters, primary NS, admin contact" },
-  { type: "SRV", purpose: "Service locator", ttl: "300–86400s", usage: "Locates specific services (SIP, LDAP, XMPP)" },
+  { type: "SRV", purpose: "Service locator", ttl: "300â€“86400s", usage: "Locates specific services (SIP, LDAP, XMPP)" },
   { type: "PTR", purpose: "Reverse DNS pointer", ttl: "86400s", usage: "Maps IP address back to hostname" },
   { type: "CAA", purpose: "CA authorization", ttl: "86400s", usage: "Restricts which CAs can issue certificates for domain" },
 ];
@@ -55,13 +55,13 @@ const responseCodes = [
   { code: "FORMERR", name: "Format Error", meaning: "Server could not parse the query", action: "Check DNS client implementation, verify query format" },
   { code: "NOTIMP", name: "Not Implemented", meaning: "Operation not supported by server", action: "Use a different query type or DNS server" },
   { code: "NOTAUTH", name: "Not Authoritative", meaning: "Server is not authoritative for the zone", action: "Query the authoritative NS directly" },
-  { code: "YXDOMAIN", name: "Domain Exists", meaning: "Domain already exists when it should not", action: "Used in dynamic update — remove duplicate record" },
+  { code: "YXDOMAIN", name: "Domain Exists", meaning: "Domain already exists when it should not", action: "Used in dynamic update â€” remove duplicate record" },
   { code: "NXRRSET", name: "RR Set Exists", meaning: "Record set does not exist when it should", action: "Add the missing resource record" },
 ];
 
 const quickRefRows = [
   { property: "Default TTL", value: "3600 seconds (1 hour)" },
-  { property: "Minimum TTL (SOA)", value: "Typically 300–900 seconds" },
+  { property: "Minimum TTL (SOA)", value: "Typically 300â€“900 seconds" },
   { property: "Max TTL", value: "604800 seconds (7 days)" },
   { property: "DNS Port (UDP)", value: "53" },
   { property: "DNS Port (TCP)", value: "53 (zone transfers, large responses)" },
@@ -69,13 +69,13 @@ const quickRefRows = [
   { property: "Max label length", value: "63 characters" },
   { property: "Max UDP response", value: "512 bytes (without EDNS)" },
   { property: "EDNS max payload", value: "4096 bytes (typical)" },
-  { property: "Root servers", value: "13 logical root servers (lettered A–M)" },
+  { property: "Root servers", value: "13 logical root servers (lettered Aâ€“M)" },
 ];
 
 export default function DeveloperDnsPage() {
   return (
     <>
-      <JsonLd data={webPageSchema({ name: `DNS Developer Cheat Sheet — Commands, Record Types, Troubleshooting | ${SITE_NAME}`, description: `Quick reference for nslookup, dig, host commands, DNS record types, response codes, TTL values, and troubleshooting tips.`, url: `${SITE_URL}/cheat-sheets/developer-dns`, breadcrumbs })} />
+      <JsonLd data={webPageSchema({ name: `DNS Developer Cheat Sheet â€” Commands, Record Types, Troubleshooting | ${SITE_NAME}`, description: `Quick reference for nslookup, dig, host commands, DNS record types, response codes, TTL values, and troubleshooting tips.`, url: `${SITE_URL}/cheat-sheets/developer-dns`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <section className="border-b border-zinc-200 bg-zinc-50 py-12 dark:border-zinc-800 dark:bg-zinc-900/50 sm:py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
@@ -90,7 +90,7 @@ export default function DeveloperDnsPage() {
               </p>
               <PrintButton />
             </div>
-            <SocialShare url={`${SITE_URL}/cheat-sheets/developer-dns`} title="DNS Developer Cheat Sheet — Commands, Record Types, Troubleshooting" />
+            <SocialShare url={`${SITE_URL}/cheat-sheets/developer-dns`} title="DNS Developer Cheat Sheet â€” Commands, Record Types, Troubleshooting" />
           </div>
         </div>
       </section>
@@ -117,7 +117,7 @@ export default function DeveloperDnsPage() {
                       <td className="px-4 py-2.5 text-zinc-600 dark:text-zinc-400">
                         {cmd.description}
                       </td>
-                      <td className="whitespace-nowrap px-4 py-2.5 text-zinc-500 dark:text-zinc-500">
+                      <td className="whitespace-nowrap px-4 py-2.5 text-zinc-500 dark:text-zinc-400">
                         {cmd.example}
                       </td>
                     </tr>

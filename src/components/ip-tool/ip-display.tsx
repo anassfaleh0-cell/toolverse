@@ -242,7 +242,7 @@ export function IpDisplay({ pageUrl }: IpDisplayProps) {
 
       <Card variant="elevated" className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5">
+          <p className="text-xs font-medium uppercase tracking-wider text-zinc-600 dark:text-zinc-400 flex items-center gap-1.5">
             <span className="inline-block size-1.5 rounded-full bg-emerald-500" />
             Your Public IP
           </p>
@@ -250,7 +250,7 @@ export function IpDisplay({ pageUrl }: IpDisplayProps) {
             {displayIp}
           </p>
           {ipv6 && ipv6 !== displayIp && (
-            <p className="mt-1 font-mono text-sm text-zinc-500 dark:text-zinc-400">
+            <p className="mt-1 font-mono text-sm text-zinc-600 dark:text-zinc-400">
               IPv6: {ipv6}
             </p>
           )}
@@ -323,7 +323,7 @@ export function IpDisplay({ pageUrl }: IpDisplayProps) {
               <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
                 VPN & Proxy Detection
               </h3>
-              <p className="mt-0.5 text-xs text-zinc-500">
+              <p className="mt-0.5 text-xs text-zinc-600">
                 Privacy analysis via server-side proxy — powered by HackMyIP
               </p>
             </div>
@@ -352,7 +352,7 @@ export function IpDisplay({ pageUrl }: IpDisplayProps) {
               label={`Type: ${privacy.type.charAt(0).toUpperCase() + privacy.type.slice(1)}`}
             />
           </div>
-          <p className="mt-3 text-xs text-zinc-500">
+          <p className="mt-3 text-xs text-zinc-600">
             Connection classification: <span className="font-medium text-zinc-700 dark:text-zinc-300">{privacy.type}</span>
             {" · "}Fraud risk score: <span className="font-medium text-zinc-700 dark:text-zinc-300">{privacy.score}/100</span>
             {" · "}Grade: <span className="font-medium text-zinc-700 dark:text-zinc-300">{privacy.grade}</span>

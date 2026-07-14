@@ -180,7 +180,7 @@ export function UrlParser() {
           )}
 
           {!parsed && urlInput && (
-            <p className="text-sm text-red-500">Invalid URL. Please enter a valid URL (e.g., https://example.com).</p>
+            <p className="text-sm text-red-700">Invalid URL. Please enter a valid URL (e.g., https://example.com).</p>
           )}
         </div>
       ) : (
@@ -251,7 +251,7 @@ export function UrlParser() {
                   onChange={(e) => updateBuildParam(i, "value", e.target.value)}
                   placeholder="Value"
                 />
-                <Button variant="ghost" size="sm" onClick={() => removeBuildParam(i)}>✕</Button>
+                <Button variant="ghost" size="sm" onClick={() => removeBuildParam(i)}>âœ•</Button>
               </div>
             ))}
           </div>

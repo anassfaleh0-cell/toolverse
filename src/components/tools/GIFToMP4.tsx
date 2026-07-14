@@ -91,14 +91,14 @@ export function GIFToMP4() {
         {file ? (
           <div>
             <p className="font-medium text-zinc-900 dark:text-zinc-100">{file.name}</p>
-            <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{formatBytes(file.size)}</p>
+            <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">{formatBytes(file.size)}</p>
             <Button variant="ghost" size="sm" className="mt-2" onClick={() => { setFile(null); setResult(null); }}>Remove</Button>
           </div>
         ) : (
-          <button onClick={() => inputRef.current?.click()} className="cursor-pointer text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100">
+          <button onClick={() => inputRef.current?.click()} className="cursor-pointer text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-600">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="mx-auto size-10"><path d="M12 16V4m0 0L8 8m4-4l4 4" strokeLinecap="round" strokeLinejoin="round"/><path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
             <p className="mt-2 text-sm font-medium">Click to select GIF file</p>
-            <p className="text-xs text-zinc-400 mt-1">Animated GIF</p>
+            <p className="text-xs text-zinc-600 mt-1">Animated GIF</p>
           </button>
         )}
       </div>
@@ -140,7 +140,7 @@ export function GIFToMP4() {
           ) : (
             <video src={result} controls autoPlay loop muted className="mt-3 max-h-64 rounded-lg" />
           )}
-          <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
+          <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
             {formatBytes(file!.size)} &rarr; {formatBytes(resultSize)} ({ratio}% reduction)
           </p>
           <a href={result} download={getOutputName()} className="mt-3 inline-flex items-center gap-2 rounded-lg bg-nuvora-600 px-4 py-2 text-sm font-medium text-white hover:bg-nuvora-700">

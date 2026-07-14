@@ -106,25 +106,25 @@ export function ColorContrastChecker() {
             <div className="grid grid-cols-2 gap-4">
               <div className={`rounded-lg p-4 ${criteria.aaNormal ? "bg-emerald-50 dark:bg-emerald-950/30" : "bg-red-50 dark:bg-red-950"}`}>
                 <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">AA Normal</p>
-                <p className={`mt-1 text-lg font-bold ${criteria.aaNormal ? "text-emerald-700 dark:text-emerald-400" : "text-red-600 dark:text-red-400"}`}>
+                <p className={`mt-1 text-lg font-bold ${criteria.aaNormal ? "text-emerald-700 dark:text-emerald-400" : "text-red-700 dark:text-red-400"}`}>
                   {criteria.aaNormal ? "PASS" : "FAIL"} (4.5:1)
                 </p>
               </div>
               <div className={`rounded-lg p-4 ${criteria.aaLarge ? "bg-emerald-50 dark:bg-emerald-950/30" : "bg-red-50 dark:bg-red-950"}`}>
                 <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">AA Large</p>
-                <p className={`mt-1 text-lg font-bold ${criteria.aaLarge ? "text-emerald-700 dark:text-emerald-400" : "text-red-600 dark:text-red-400"}`}>
+                <p className={`mt-1 text-lg font-bold ${criteria.aaLarge ? "text-emerald-700 dark:text-emerald-400" : "text-red-700 dark:text-red-400"}`}>
                   {criteria.aaLarge ? "PASS" : "FAIL"} (3:1)
                 </p>
               </div>
               <div className={`rounded-lg p-4 ${criteria.aaaNormal ? "bg-emerald-50 dark:bg-emerald-950/30" : "bg-red-50 dark:bg-red-950"}`}>
                 <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">AAA Normal</p>
-                <p className={`mt-1 text-lg font-bold ${criteria.aaaNormal ? "text-emerald-700 dark:text-emerald-400" : "text-red-600 dark:text-red-400"}`}>
+                <p className={`mt-1 text-lg font-bold ${criteria.aaaNormal ? "text-emerald-700 dark:text-emerald-400" : "text-red-700 dark:text-red-400"}`}>
                   {criteria.aaaNormal ? "PASS" : "FAIL"} (7:1)
                 </p>
               </div>
               <div className={`rounded-lg p-4 ${criteria.aaaLarge ? "bg-emerald-50 dark:bg-emerald-950/30" : "bg-red-50 dark:bg-red-950"}`}>
                 <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">AAA Large</p>
-                <p className={`mt-1 text-lg font-bold ${criteria.aaaLarge ? "text-emerald-700 dark:text-emerald-400" : "text-red-600 dark:text-red-400"}`}>
+                <p className={`mt-1 text-lg font-bold ${criteria.aaaLarge ? "text-emerald-700 dark:text-emerald-400" : "text-red-700 dark:text-red-400"}`}>
                   {criteria.aaaLarge ? "PASS" : "FAIL"} (4.5:1)
                 </p>
               </div>

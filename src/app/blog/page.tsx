@@ -45,11 +45,11 @@ export default function BlogPage() {
                   </div>
                 </div>
                 <span className="text-xs font-medium uppercase tracking-wider text-nuvora-600 dark:text-nuvora-400">{article.difficulty}</span>
-                <h2 className="mt-2 font-semibold text-text-primary transition-colors group-hover:text-nuvora-600 dark:group-hover:text-nuvora-400">
+                <h2 className="mt-2 font-semibold text-text-primary transition-colors group-hover:text-nuvora-600 dark:group-hover:text-nuvora-600">
                   {article.title}
                 </h2>
                 <p className="mt-2 text-sm text-text-secondary leading-relaxed line-clamp-3">{article.description}</p>
-                <span className="mt-3 block text-sm text-text-tertiary">{article.readingTimeMinutes} min read · {new Date(article.publishedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
+                <span className="mt-3 block text-sm text-text-tertiary">{article.readingTimeMinutes} min read Â· {new Date(article.publishedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
               </Link>
             ))}
           </div>

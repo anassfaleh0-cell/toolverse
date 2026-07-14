@@ -124,7 +124,7 @@ export function VideoCompressor() {
             </p>
             {isOverLimit && (
               <Alert variant="warning" className="mt-3">
-                File exceeds 200 MB limit — compression may fail or be very
+                File exceeds 200 MB limit â€” compression may fail or be very
                 slow.
               </Alert>
             )}
@@ -143,7 +143,7 @@ export function VideoCompressor() {
         ) : (
           <button
             onClick={() => inputRef.current?.click()}
-            className="cursor-pointer text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+            className="cursor-pointer text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-600"
           >
             <svg
               viewBox="0 0 24 24"
@@ -162,7 +162,7 @@ export function VideoCompressor() {
             <p className="mt-2 text-sm font-medium">
               Click to select video file
             </p>
-            <p className="text-xs text-zinc-400 mt-1">
+            <p className="text-xs text-zinc-600 mt-1">
               MP4, AVI, MOV, WebM
             </p>
           </button>
@@ -216,7 +216,7 @@ export function VideoCompressor() {
             Compression complete
           </p>
           <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
-            {formatBytes(file?.size || 0)} → {formatBytes(resultSize)} (Reduced
+            {formatBytes(file?.size || 0)} â†’ {formatBytes(resultSize)} (Reduced
             by {ratio}%)
           </p>
           <a

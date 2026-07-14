@@ -79,7 +79,7 @@ export function ContactForm() {
           {submitting ? "Sending..." : "Send Message"}
         </Button>
       </form>
-      <p className="mt-6 text-sm text-zinc-500 dark:text-zinc-500">
+      <p className="mt-6 text-sm text-zinc-500 dark:text-zinc-400">
         Response within 24 hours.
       </p>
       {toast && (

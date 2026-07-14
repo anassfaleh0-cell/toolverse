@@ -8,7 +8,7 @@ import { getCategories } from "@/lib/registry";
 
 export const metadata: Metadata = {
   title: `All Tool Categories`,
-  description: `Browse all tool categories on ${SITE_NAME}. Find the right tool for every task — from network diagnostics and security to AI, SEO, and design.`,
+  description: `Browse all tool categories on ${SITE_NAME}. Find the right tool for every task â€” from network diagnostics and security to AI, SEO, and design.`,
   openGraph: { title: `All Tool Categories`, description: `Browse every tool category on ${SITE_NAME} and find the perfect tool.`, url: `${SITE_URL}/categories` },
   alternates: { canonical: `${SITE_URL}/categories` },
 };
@@ -23,7 +23,7 @@ export default function CategoriesPage() {
 
   return (
     <>
-      <JsonLd data={webPageSchema({ name: `All Tool Categories — ${SITE_NAME}`, description: `Browse all tool categories on ${SITE_NAME}.`, url: `${SITE_URL}/categories`, breadcrumbs })} />
+      <JsonLd data={webPageSchema({ name: `All Tool Categories â€” ${SITE_NAME}`, description: `Browse all tool categories on ${SITE_NAME}.`, url: `${SITE_URL}/categories`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <section className="border-b border-border-subtle bg-gradient-to-b from-nuvora-50/30 to-surface dark:from-nuvora-950/20">
         <div className="mx-auto max-w-5xl px-4 py-20 sm:px-6 sm:py-28">
@@ -47,7 +47,7 @@ export default function CategoriesPage() {
                 className="group rounded-2xl border border-border-subtle bg-surface p-6 transition hover:border-nuvora-300 hover:shadow-md dark:hover:border-nuvora-700"
               >
                 <Icon name={c.icon} className="size-8 text-nuvora-600 dark:text-nuvora-400" />
-                <h2 className="mt-3 text-base font-semibold text-text-primary group-hover:text-nuvora-600 dark:group-hover:text-nuvora-400">
+                <h2 className="mt-3 text-base font-semibold text-text-primary group-hover:text-nuvora-600 dark:group-hover:text-nuvora-600">
                   {c.label}
                 </h2>
                 <p className="mt-1 text-sm text-text-secondary">{c.description}</p>

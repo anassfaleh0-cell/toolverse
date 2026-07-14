@@ -159,7 +159,7 @@ export function HttpHeadersChecker() {
               <DashboardSummary
                 title={new URL(result.finalUrl).hostname}
                 status={secScore >= 66 ? "good" : secScore >= 33 ? "warning" : "critical"}
-                mainFinding={`${result.statusCode} ${result.statusText} — Grade ${grade} (${present}/${audit.length} headers)`}
+                mainFinding={`${result.statusCode} ${result.statusText} â€” Grade ${grade} (${present}/${audit.length} headers)`}
                 riskLevel={secScore >= 66 ? "low" : secScore >= 33 ? "medium" : "high"}
                 riskLabel={grade}
                 nextAction={present < audit.length ? `Add ${audit.length - present} missing security header${audit.length - present > 1 ? "s" : ""}. Start with HSTS and Content-Security-Policy.` : "Good security posture. Maintain with regular audits."}
@@ -256,12 +256,12 @@ export function HttpHeadersChecker() {
               {auditSecurityHeaders(result.headers).map((h) => (
                 <div key={h.name} className="flex items-start gap-3 text-sm">
                   {h.present ? (
-                    <span className="mt-0.5 shrink-0 text-emerald-500">&#10003;</span>
+                    <span className="mt-0.5 shrink-0 text-emerald-700">&#10003;</span>
                   ) : (
-                    <span className="mt-0.5 shrink-0 text-red-500">&#10007;</span>
+                    <span className="mt-0.5 shrink-0 text-red-700">&#10007;</span>
                   )}
                   <div>
-                    <p className={h.present ? "text-zinc-900 dark:text-zinc-50" : "text-red-600 dark:text-red-400"}>
+                    <p className={h.present ? "text-zinc-900 dark:text-zinc-50" : "text-red-700 dark:text-red-400"}>
                       {h.label}
                     </p>
                     <p className="text-xs text-zinc-500 dark:text-zinc-400">{h.why}</p>

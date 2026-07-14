@@ -5,7 +5,7 @@ import { JsonLd, Breadcrumbs, FaqSection } from "@/components/shared";
 import { webPageSchema, breadcrumbSchema, faqSchema, type FaqItem } from "@/lib/seo";
 
 const slug = "toolkits/network";
-const pageTitle = "Network Toolkit — Free Network Diagnostic Tools — Nuvora";
+const pageTitle = "Network Toolkit â€” Free Network Diagnostic Tools â€” Nuvora";
 const pageDescription =
   "Curated collection of free network diagnostic tools for DNS lookup, ping testing, port checking, IP lookup, and more. Troubleshoot network issues like a pro.";
 
@@ -168,7 +168,7 @@ const faqItems: FaqItem[] = [
   {
     question: "What is the difference between DNS Lookup and Reverse DNS Lookup?",
     answer:
-      "DNS Lookup resolves a domain name to its IP addresses and associated records. Reverse DNS Lookup does the opposite — it takes an IP address and returns the associated hostname.",
+      "DNS Lookup resolves a domain name to its IP addresses and associated records. Reverse DNS Lookup does the opposite â€” it takes an IP address and returns the associated hostname.",
   },
   {
     question: "How does the Ping Test work?",
@@ -239,7 +239,7 @@ export default function NetworkToolkitPage() {
                   <div className="flex items-start gap-4">
                     <span className="text-2xl">{icons[tool.id]}</span>
                     <div>
-                      <h3 className="font-semibold text-zinc-900 group-hover:text-blue-600 dark:text-zinc-50 dark:group-hover:text-blue-400">
+                      <h3 className="font-semibold text-zinc-900 group-hover:text-blue-600 dark:text-zinc-50 dark:group-hover:text-blue-700">
                         {tool.name}
                       </h3>
                       <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">

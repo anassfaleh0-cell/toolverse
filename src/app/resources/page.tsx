@@ -39,19 +39,19 @@ export default function ResourcesPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <div className="grid gap-8 sm:grid-cols-2">
             <Link href="/guides" className="group rounded-lg border border-zinc-200 p-6 transition-colors hover:border-blue-300 dark:border-zinc-800 dark:hover:border-blue-700">
-              <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-50 group-hover:text-blue-600 dark:group-hover:text-blue-400">Guides</h2>
+              <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-50 group-hover:text-blue-600 dark:group-hover:text-blue-700">Guides</h2>
               <p className="mt-2 text-zinc-600 dark:text-zinc-400">{guides.length} troubleshooting guides and tutorials</p>
             </Link>
             <Link href="/learn" className="group rounded-lg border border-zinc-200 p-6 transition-colors hover:border-blue-300 dark:border-zinc-800 dark:hover:border-blue-700">
-              <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-50 group-hover:text-blue-600 dark:group-hover:text-blue-400">Learn</h2>
+              <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-50 group-hover:text-blue-600 dark:group-hover:text-blue-700">Learn</h2>
               <p className="mt-2 text-zinc-600 dark:text-zinc-400">{beginner.length} beginner-friendly guides</p>
             </Link>
             <Link href="/blog" className="group rounded-lg border border-zinc-200 p-6 transition-colors hover:border-blue-300 dark:border-zinc-800 dark:hover:border-blue-700">
-              <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-50 group-hover:text-blue-600 dark:group-hover:text-blue-400">Blog</h2>
+              <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-50 group-hover:text-blue-600 dark:group-hover:text-blue-700">Blog</h2>
               <p className="mt-2 text-zinc-600 dark:text-zinc-400">{articles.length} technical articles</p>
             </Link>
             <Link href="/compare" className="group rounded-lg border border-zinc-200 p-6 transition-colors hover:border-blue-300 dark:border-zinc-800 dark:hover:border-blue-700">
-              <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-50 group-hover:text-blue-600 dark:group-hover:text-blue-400">Comparisons</h2>
+              <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-50 group-hover:text-blue-600 dark:group-hover:text-blue-700">Comparisons</h2>
               <p className="mt-2 text-zinc-600 dark:text-zinc-400">{comparisons.length} tool and protocol comparisons</p>
             </Link>
           </div>

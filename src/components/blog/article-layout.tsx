@@ -65,7 +65,7 @@ function ArticleBody({ sections }: { sections: ContentPiece["sections"] }) {
         const lists: React.ReactNode[] = [];
         const listItems = pars.filter(p => p.trim().startsWith("- "));
         if (listItems.length > 0) {
-          lists.push(<ul key="ul" className="list-disc pl-6 space-y-1.5 marker:text-nuvora-500">{listItems.map((p, j) => <li key={j}>{p.trim().slice(2)}</li>)}</ul>);
+          lists.push(<ul key="ul" className="list-disc pl-6 space-y-1.5 marker:text-nuvora-600">{listItems.map((p, j) => <li key={j}>{p.trim().slice(2)}</li>)}</ul>);
         }
         const orderedItems = pars.filter(p => p.trim().match(/^\d+\.\s/));
         if (orderedItems.length > 0) {
@@ -74,10 +74,10 @@ function ArticleBody({ sections }: { sections: ContentPiece["sections"] }) {
         return (
           <section key={i} id={`section-${i}`}>
             <h2 className="group flex items-center gap-2 text-2xl font-bold tracking-tight text-text-primary mt-0">
-              <a href={`#section-${i}`} className="text-nuvora-500 opacity-0 group-hover:opacity-100 transition-opacity text-xl" aria-label={`Link to ${section.heading}`}>#</a>
+              <a href={`#section-${i}`} className="text-nuvora-600 opacity-0 group-hover:opacity-100 transition-opacity text-xl" aria-label={`Link to ${section.heading}`}>#</a>
               {section.heading}
             </h2>
-            <div className="mt-4 space-y-4 text-base leading-relaxed text-text-secondary [&_a]:text-nuvora-600 [&_a:hover]:underline dark:[&_a]:text-nuvora-400">
+            <div className="mt-4 space-y-4 text-base leading-relaxed text-text-secondary [&_a]:text-nuvora-600 [&_a:hover]:underline dark:[&_a]:text-nuvora-600">
               {items}
               {lists}
             </div>
@@ -130,11 +130,11 @@ export function ArticleLayout({ piece, basePath = "blog" }: { piece: ContentPiec
           <span className="rounded-full bg-surface-secondary px-2 py-0.5 text-[11px] font-medium text-text-tertiary">{DIFFICULTY_LABEL[piece.difficulty] ?? piece.difficulty}</span>
         </div>
 
-        {/* H1 Title — compact */}
+        {/* H1 Title â€” compact */}
         <h1 className="text-2xl font-bold tracking-tight text-text-primary sm:text-3xl">{piece.title}</h1>
         <p className="mt-2 text-sm leading-relaxed text-text-secondary">{piece.description}</p>
 
-        {/* Author + date — compact row */}
+        {/* Author + date â€” compact row */}
         <div className="mt-4 flex items-center gap-3 pb-5 border-b border-border-subtle">
           <div className="flex size-8 items-center justify-center rounded-full bg-nuvora-100 text-[10px] font-bold text-nuvora-600 dark:bg-nuvora-900/50 dark:text-nuvora-400">
             {author.name.split(" ").map(n => n[0]).join("").slice(0, 2)}
@@ -143,16 +143,16 @@ export function ArticleLayout({ piece, basePath = "blog" }: { piece: ContentPiec
             <span className="font-medium text-text-primary">{author.name}</span>
             <span className="mx-1.5">&middot;</span>
             <time dateTime={piece.publishedAt}>{new Date(piece.publishedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</time>
-            {piece.updatedAt !== piece.publishedAt && <span> · Updated {new Date(piece.updatedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</span>}
+            {piece.updatedAt !== piece.publishedAt && <span> Â· Updated {new Date(piece.updatedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</span>}
           </div>
         </div>
 
-        {/* Featured Image — auto-generated aurora with article title */}
+        {/* Featured Image â€” auto-generated aurora with article title */}
         <div className="mt-6 mb-8 overflow-hidden rounded-xl border border-border-subtle">
           <img src={imgSrc} alt={piece.title} loading="lazy" decoding="async" className="aspect-video w-full object-cover" />
         </div>
 
-        {/* Table of Contents — if multiple sections */}
+        {/* Table of Contents â€” if multiple sections */}
         {piece.sections.length > 1 && (
           <>
             <details className="mb-6 rounded-lg border border-border-subtle bg-surface sm:hidden">
@@ -169,17 +169,17 @@ export function ArticleLayout({ piece, basePath = "blog" }: { piece: ContentPiec
                 <Icon name="List" className="size-4 text-nuvora-600 dark:text-nuvora-400" aria-hidden="true" />
                 <h2 className="text-sm font-semibold text-text-primary">Table of Contents</h2>
               </div>
-              <ul className="space-y-1">{piece.sections.map((s, i) => <li key={i}><a href={`#section-${i}`} className="text-sm text-text-secondary hover:text-nuvora-600 dark:hover:text-nuvora-400 transition-colors">{s.heading}</a></li>)}</ul>
+              <ul className="space-y-1">{piece.sections.map((s, i) => <li key={i}><a href={`#section-${i}`} className="text-sm text-text-secondary hover:text-nuvora-600 dark:hover:text-nuvora-600 transition-colors">{s.heading}</a></li>)}</ul>
             </nav>
           </>
         )}
 
-        {/* Article Body — clean prose */}
-        <div className="text-base leading-relaxed text-text-secondary [&_a]:text-nuvora-600 [&_a:hover]:underline dark:[&_a]:text-nuvora-400">
+        {/* Article Body â€” clean prose */}
+        <div className="text-base leading-relaxed text-text-secondary [&_a]:text-nuvora-600 [&_a:hover]:underline dark:[&_a]:text-nuvora-600">
           <ArticleBody sections={piece.sections} />
         </div>
 
-        {/* FAQ — lazy loaded, collapsed by default */}
+        {/* FAQ â€” lazy loaded, collapsed by default */}
         <LazySection rootMargin="300px" minHeight="200px">
           {faqItems.length > 1 && (
             <section className="mt-12">
@@ -199,7 +199,7 @@ export function ArticleLayout({ piece, basePath = "blog" }: { piece: ContentPiec
           )}
         </LazySection>
 
-        {/* Author Bio — lazy loaded */}
+        {/* Author Bio â€” lazy loaded */}
         <LazySection rootMargin="200px" minHeight="120px">
           <section className="mt-10 rounded-xl border border-border-subtle bg-surface p-5">
             <div className="flex items-start gap-4">
@@ -220,7 +220,7 @@ export function ArticleLayout({ piece, basePath = "blog" }: { piece: ContentPiec
           </section>
         </LazySection>
 
-        {/* Related Tools — lazy loaded */}
+        {/* Related Tools â€” lazy loaded */}
         <LazySection rootMargin="200px" minHeight="120px">
           {relatedTools.length > 0 && (
             <section className="mt-10">
@@ -237,7 +237,7 @@ export function ArticleLayout({ piece, basePath = "blog" }: { piece: ContentPiec
           )}
         </LazySection>
 
-        {/* Related Articles — lazy loaded */}
+        {/* Related Articles â€” lazy loaded */}
         <LazySection rootMargin="200px" minHeight="120px">
           {related.length > 0 && (
             <section className="mt-10">
@@ -248,7 +248,7 @@ export function ArticleLayout({ piece, basePath = "blog" }: { piece: ContentPiec
                     <div className="mb-2 aspect-video w-full overflow-hidden rounded-lg bg-gradient-to-br from-nuvora-100 to-aurora-100 dark:from-nuvora-900/50 dark:to-aurora-900/30">
                       <img src={generateArticleSvg(r.title)} alt={r.title} loading="lazy" decoding="async" className="h-full w-full object-cover" />
                     </div>
-                    <h3 className="text-sm font-semibold text-text-primary group-hover:text-nuvora-600 dark:group-hover:text-nuvora-400 transition-colors line-clamp-2">{r.title}</h3>
+                    <h3 className="text-sm font-semibold text-text-primary group-hover:text-nuvora-600 dark:group-hover:text-nuvora-600 transition-colors line-clamp-2">{r.title}</h3>
                     <p className="mt-1 text-xs leading-relaxed text-text-secondary line-clamp-2">{r.description}</p>
                     <span className="mt-1.5 inline-block text-xs font-medium text-nuvora-600 dark:text-nuvora-400">Read more &rarr;</span>
                   </Link>
@@ -258,7 +258,7 @@ export function ArticleLayout({ piece, basePath = "blog" }: { piece: ContentPiec
           )}
         </LazySection>
 
-        {/* Share Buttons — lazy loaded */}
+        {/* Share Buttons â€” lazy loaded */}
         <LazySection rootMargin="200px" minHeight="50px">
           <section className="mt-8 pt-6 border-t border-border-subtle">
             <div className="flex items-center gap-2">

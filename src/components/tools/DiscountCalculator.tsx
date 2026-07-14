@@ -88,7 +88,7 @@ export function DiscountCalculator() {
             <div className="grid grid-cols-2 gap-4">
               <div className="rounded-lg bg-zinc-50 p-4 dark:bg-zinc-900">
                 <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Discount Amount</p>
-                <p className="mt-1 text-xl font-bold text-red-600 dark:text-red-400">{currency.format(result.discount)}</p>
+                <p className="mt-1 text-xl font-bold text-red-700 dark:text-red-400">{currency.format(result.discount)}</p>
               </div>
               <div className="rounded-lg bg-zinc-50 p-4 dark:bg-zinc-900">
                 <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Final Price</p>

@@ -46,7 +46,7 @@ export function BlacklistCheck() {
   const formatText = useCallback(() => {
     if (!result) return "";
     const lines = [`Blacklist Check Report`, `IP: ${result.ip}`, `Blacklisted on ${result.listedCount} of ${result.total} DNSBLs`, ""];
-    result.results.forEach((r) => lines.push(`${r.listed ? "☒" : "☐"} ${r.name}: ${r.listed ? "LISTED" : "Clean"}`));
+    result.results.forEach((r) => lines.push(`${r.listed ? "â˜’" : "â˜"} ${r.name}: ${r.listed ? "LISTED" : "Clean"}`));
     return lines.join("\n");
   }, [result]);
 
@@ -78,7 +78,7 @@ export function BlacklistCheck() {
               <div>
                 <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Blacklist Report for {result.ip}</p>
                 <div className="mt-2 flex items-center gap-3">
-                  <span className={`text-2xl font-bold ${result.listedCount === 0 ? "text-green-700" : "text-red-600"}`}>{result.listedCount}</span>
+                  <span className={`text-2xl font-bold ${result.listedCount === 0 ? "text-green-700" : "text-red-700"}`}>{result.listedCount}</span>
                   <span className="text-sm text-zinc-500">of {result.total} DNSBLs</span>
                   <span className={`ml-1 rounded-full px-2 py-0.5 text-xs font-medium ${result.listedCount === 0 ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300" : "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300"}`}>
                     {result.listedCount === 0 ? "Clean" : "Listed"}
@@ -92,15 +92,15 @@ export function BlacklistCheck() {
             {result.results.map((bl, i) => (
               <div key={i} className="flex items-center justify-between px-5 py-3">
                 <div className="flex items-center gap-3">
-                  <span className={`flex size-6 shrink-0 items-center justify-center rounded-full text-xs font-bold ${bl.listed ? "bg-red-100 text-red-600 dark:bg-red-900 dark:text-red-300" : "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300"}`}>
-                    {bl.listed ? "!" : "✓"}
+                  <span className={`flex size-6 shrink-0 items-center justify-center rounded-full text-xs font-bold ${bl.listed ? "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300" : "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300"}`}>
+                    {bl.listed ? "!" : "âœ“"}
                   </span>
                   <div>
                     <p className="text-sm font-medium text-zinc-900 dark:text-zinc-50">{bl.name}</p>
                     <p className="text-xs text-zinc-500">{bl.host}</p>
                   </div>
                 </div>
-                <span className={`text-xs font-medium ${bl.listed ? "text-red-600 dark:text-red-400" : "text-green-700 dark:text-green-400"}`}>
+                <span className={`text-xs font-medium ${bl.listed ? "text-red-700 dark:text-red-400" : "text-green-700 dark:text-green-400"}`}>
                   {bl.listed ? "LISTED" : "Clean"}
                 </span>
               </div>

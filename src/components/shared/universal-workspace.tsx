@@ -134,7 +134,7 @@ export function UniversalWorkspace() {
       <button
         type="button"
         onClick={toggle}
-        className="fixed right-0 top-1/2 z-50 -translate-y-1/2 rounded-l-lg border border-r-0 border-zinc-200 bg-white px-1.5 py-4 text-zinc-500 shadow-sm transition-colors hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-200"
+        className="fixed right-0 top-1/2 z-50 -translate-y-1/2 rounded-l-lg border border-r-0 border-zinc-200 bg-white px-1.5 py-4 text-zinc-500 shadow-sm transition-colors hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-600"
         aria-label={open ? "Close workspace" : "Open workspace"}
         title="Workspace"
       >
@@ -165,7 +165,7 @@ export function UniversalWorkspace() {
           <button
             type="button"
             onClick={() => setOpen(false)}
-            className="rounded-md p-1 text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-600 dark:hover:bg-zinc-800 dark:hover:text-zinc-300"
+            className="rounded-md p-1 text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-600 dark:hover:bg-zinc-800 dark:hover:text-zinc-600"
             aria-label="Close workspace"
           >
             <svg
@@ -197,7 +197,7 @@ export function UniversalWorkspace() {
               className={`flex-1 px-3 py-2 text-xs font-medium transition-colors ${
                 tab === t.key
                   ? "border-b-2 border-blue-500 text-zinc-900 dark:text-zinc-50"
-                  : "text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300"
+                  : "text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-600"
               }`}
             >
               {t.label}
@@ -235,7 +235,7 @@ export function UniversalWorkspace() {
                       onClick={() =>
                         handleRemove(entry.toolSlug, entry.savedAt)
                       }
-                      className="shrink-0 rounded p-1 text-zinc-400 opacity-0 transition-all hover:text-red-500 group-hover:opacity-100"
+                      className="shrink-0 rounded p-1 text-zinc-600 opacity-0 transition-all hover:text-red-700 group-hover:opacity-100"
                       aria-label="Remove entry"
                     >
                       <svg
@@ -272,7 +272,7 @@ export function UniversalWorkspace() {
                       viewBox="0 0 24 24"
                       fill="currentColor"
                       stroke="none"
-                      className="size-3.5 shrink-0 text-amber-500"
+                      className="size-3.5 shrink-0 text-amber-700"
                     >
                       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                     </svg>

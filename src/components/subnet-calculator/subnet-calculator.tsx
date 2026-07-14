@@ -138,13 +138,13 @@ export function SubnetCalculator() {
         <Button onClick={handleCalculate}>Calculate</Button>
       </div>
 
-      {error && <p className="mt-3 text-sm text-red-500">{error}</p>}
+      {error && <p className="mt-3 text-sm text-red-700">{error}</p>}
 
       {result && (
         <div className="mt-6 overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800">
           <div className="border-b border-zinc-200 bg-zinc-50 px-5 py-3 dark:border-zinc-800 dark:bg-zinc-900">
             <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-              Subnet Details — {result.ip}/{result.cidr}
+              Subnet Details â€” {result.ip}/{result.cidr}
             </p>
           </div>
           <div className="divide-y divide-zinc-200 dark:divide-zinc-800">

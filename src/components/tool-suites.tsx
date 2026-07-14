@@ -168,7 +168,7 @@ export function ToolSuites() {
                           <span className={`size-2 rounded-full ${colors.dot}`} />
                         </span>
                         <div className="min-w-0">
-                          <h4 className="truncate text-sm font-semibold text-zinc-900 group-hover:text-blue-600 dark:text-zinc-50 dark:group-hover:text-blue-400">
+                          <h4 className="truncate text-sm font-semibold text-zinc-900 group-hover:text-blue-600 dark:text-zinc-50 dark:group-hover:text-blue-700">
                             {tool!.name}
                           </h4>
                           <p className="truncate text-xs text-zinc-500 dark:text-zinc-400">

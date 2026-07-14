@@ -32,12 +32,12 @@ export function BookmarksContent() {
       {bookmarks.length === 0 ? (
         <div className="mt-12 rounded-xl border border-zinc-200 p-8 text-center dark:border-zinc-800">
           <p className="text-zinc-500 dark:text-zinc-400">No bookmarks yet.</p>
-          <p className="mt-1 text-sm text-zinc-400 dark:text-zinc-500">
+          <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
             Click the <strong>Save</strong> button on any tool to add it here.
           </p>
           <Link
             href="/tools"
-            className="mt-4 inline-block rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white hover:bg-zinc-700 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
+            className="mt-4 inline-block rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white hover:bg-zinc-700 dark:bg-zinc-50 dark:text-zinc-400 dark:hover:bg-zinc-200"
           >
             Browse Tools
           </Link>
@@ -59,7 +59,7 @@ export function BookmarksContent() {
               </Link>
               <button
                 onClick={() => handleRemove(tool.slug)}
-                className="rounded-lg px-3 py-1.5 text-xs font-medium text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/20"
+                className="rounded-lg px-3 py-1.5 text-xs font-medium text-red-700 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/20"
                 aria-label={`Remove ${tool.name} from bookmarks`}
               >
                 Remove

@@ -69,7 +69,7 @@ export function TroubleshootingFlow({ title, steps, startId }: TroubleshootingFl
       <div className="mb-4 flex items-center justify-between">
         <h3 className="text-sm font-medium text-zinc-500 dark:text-zinc-400">{title}</h3>
         {history.length > 1 && !completed && (
-          <button type="button" onClick={handleReset} aria-label="Restart troubleshooting flow" className="text-xs text-zinc-500 underline hover:text-zinc-700 dark:hover:text-zinc-300">Restart</button>
+          <button type="button" onClick={handleReset} aria-label="Restart troubleshooting flow" className="text-xs text-zinc-500 underline hover:text-zinc-700 dark:hover:text-zinc-600">Restart</button>
         )}
       </div>
 
@@ -102,7 +102,7 @@ export function TroubleshootingFlow({ title, steps, startId }: TroubleshootingFl
               aria-label={`Yes, ${step.checkLabel}`}
               className="rounded-lg bg-green-600 px-5 py-2 text-sm font-medium text-white hover:bg-green-700"
             >
-              Yes — {step.checkLabel}
+              Yes â€” {step.checkLabel}
             </button>
             <button
               type="button"

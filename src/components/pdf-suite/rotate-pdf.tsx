@@ -101,7 +101,7 @@ export function RotatePdf() {
           aria-label="Upload a PDF to rotate"
           className="flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-zinc-300 p-12 transition-colors hover:border-zinc-400 dark:border-zinc-700 dark:hover:border-zinc-500"
         >
-          <svg className="mb-3 size-10 text-zinc-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182" /></svg>
+          <svg className="mb-3 size-10 text-zinc-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182" /></svg>
           <p className="text-sm font-medium text-zinc-600 dark:text-zinc-400">Drop a PDF here or click to upload</p>
         </div>
         <input ref={fileInputRef} type="file" accept="application/pdf" className="hidden" onChange={handleFileChange} aria-label="Select PDF to rotate" />
@@ -119,9 +119,9 @@ export function RotatePdf() {
 
       <div className="flex flex-wrap gap-2">
         <span className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">Rotate all:</span>
-        <Button variant="secondary" size="sm" onClick={() => rotateAll(90)}>90°</Button>
-        <Button variant="secondary" size="sm" onClick={() => rotateAll(180)}>180°</Button>
-        <Button variant="secondary" size="sm" onClick={() => rotateAll(270)}>270°</Button>
+        <Button variant="secondary" size="sm" onClick={() => rotateAll(90)}>90Â°</Button>
+        <Button variant="secondary" size="sm" onClick={() => rotateAll(180)}>180Â°</Button>
+        <Button variant="secondary" size="sm" onClick={() => rotateAll(270)}>270Â°</Button>
         <Button variant="ghost" size="sm" onClick={() => rotateAll(0)}>Reset</Button>
       </div>
 
@@ -129,7 +129,7 @@ export function RotatePdf() {
         {Array.from({ length: pageCount }, (_, i) => (
           <div key={i} className="space-y-2">
             <div className="flex items-center justify-center rounded-lg border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-700 dark:bg-zinc-900">
-              <svg className={`size-16 text-zinc-400 transition-transform`} style={{ transform: `rotate(${rotations[i] || 0}deg)` }} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+              <svg className={`size-16 text-zinc-600 transition-transform`} style={{ transform: `rotate(${rotations[i] || 0}deg)` }} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-xs text-zinc-500">Page {i + 1}</span>
@@ -137,7 +137,7 @@ export function RotatePdf() {
                 <Button variant="ghost" size="sm" onClick={() => rotatePage(i)} aria-label={`Rotate page ${i + 1}`}>
                   <svg className="size-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182" /></svg>
                 </Button>
-                <span className="text-xs text-zinc-400">{rotations[i]}°</span>
+                <span className="text-xs text-zinc-600">{rotations[i]}Â°</span>
               </div>
             </div>
           </div>
@@ -160,7 +160,7 @@ export function RotatePdf() {
       )}
 
       {error && (
-        <div className="rounded-lg bg-red-50 p-4 text-sm text-red-600 dark:bg-red-950/20 dark:text-red-400">{error}</div>
+        <div className="rounded-lg bg-red-50 p-4 text-sm text-red-700 dark:bg-red-950/20 dark:text-red-400">{error}</div>
       )}
     </div>
   );

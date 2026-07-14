@@ -58,8 +58,8 @@ export default function CompareDnsPage() {
       const rightVals = (rightTypes.get(type) || []).join("; ");
       return {
         label: type,
-        left: leftVals || "—",
-        right: rightVals || "—",
+        left: leftVals || "â€”",
+        right: rightVals || "â€”",
         diff: leftVals !== rightVals,
       };
     });
@@ -94,7 +94,7 @@ export default function CompareDnsPage() {
           placeholder="example.com"
           aria-label="First domain"
         />
-        <div className="flex items-center justify-center text-sm font-medium text-zinc-400">vs</div>
+        <div className="flex items-center justify-center text-sm font-medium text-zinc-600">vs</div>
         <Input
           type="text"
           value={rightDomain}

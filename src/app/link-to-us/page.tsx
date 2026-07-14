@@ -5,7 +5,7 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import { BRAND } from "@/lib/nuvora/brand";
 
 export const metadata: Metadata = {
-  title: `Link to ${SITE_NAME} — Share Our Free Tools`,
+  title: `Link to ${SITE_NAME} â€” Share Our Free Tools`,
   description: `Link to ${SITE_NAME} from your website. Use our pre-made HTML banners, buttons, and text links to share free online tools with your audience.`,
   openGraph: { title: `Link to ${SITE_NAME}`, description: `Add a ${SITE_NAME} link or banner to your site. Free embeddable buttons and HTML snippets.`, url: `${SITE_URL}/link-to-us` },
   alternates: { canonical: `${SITE_URL}/link-to-us` },
@@ -19,23 +19,23 @@ const breadcrumbs = [
 const htmlSnippets = [
   {
     title: "Text Link",
-    code: `<a href="${SITE_URL}" target="_blank" rel="noopener noreferrer">${SITE_NAME} — Free Online Tools</a>`,
+    code: `<a href="${SITE_URL}" target="_blank" rel="noopener noreferrer">${SITE_NAME} â€” Free Online Tools</a>`,
   },
   {
     title: "Button Link",
     code: `<a href="${SITE_URL}" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#6366f1;color:#fff;padding:12px 24px;border-radius:8px;font-weight:600;text-decoration:none;">Try ${SITE_NAME} Free Tools</a>`,
   },
   {
-    title: "Banner Ad (728×90)",
-    code: `<a href="${SITE_URL}" target="_blank" rel="noopener noreferrer"><img src="${SITE_URL}/banner-728x90.png" alt="${SITE_NAME} — Free Online Tools" width="728" height="90" style="border:0;border-radius:8px;"></a>`,
+    title: "Banner Ad (728Ã—90)",
+    code: `<a href="${SITE_URL}" target="_blank" rel="noopener noreferrer"><img src="${SITE_URL}/banner-728x90.png" alt="${SITE_NAME} â€” Free Online Tools" width="728" height="90" style="border:0;border-radius:8px;"></a>`,
   },
   {
-    title: "Wide Skyscraper (160×600)",
-    code: `<a href="${SITE_URL}" target="_blank" rel="noopener noreferrer"><img src="${SITE_URL}/banner-160x600.png" alt="${SITE_NAME} — Free Online Tools" width="160" height="600" style="border:0;border-radius:8px;"></a>`,
+    title: "Wide Skyscraper (160Ã—600)",
+    code: `<a href="${SITE_URL}" target="_blank" rel="noopener noreferrer"><img src="${SITE_URL}/banner-160x600.png" alt="${SITE_NAME} â€” Free Online Tools" width="160" height="600" style="border:0;border-radius:8px;"></a>`,
   },
   {
     title: "SEO-Friendly Link",
-    code: `<a href="${SITE_URL}/tools" target="_blank" rel="noopener noreferrer">Free Online ${SITE_NAME} Tools — No Signup Required</a>`,
+    code: `<a href="${SITE_URL}/tools" target="_blank" rel="noopener noreferrer">Free Online ${SITE_NAME} Tools â€” No Signup Required</a>`,
   },
 ];
 
@@ -67,7 +67,7 @@ export default function LinkToUsPage() {
                   <h3 className="font-semibold text-text-primary">{snippet.title}</h3>
                   <CopyCode code={snippet.code} />
                 </div>
-                <pre className="mt-3 overflow-x-auto rounded-lg bg-zinc-900 p-4 text-xs text-zinc-100 dark:bg-zinc-950">
+                <pre className="mt-3 overflow-x-auto rounded-lg bg-zinc-900 p-4 text-xs text-zinc-600 dark:bg-zinc-950">
                   <code>{snippet.code}</code>
                 </pre>
               </div>
@@ -82,7 +82,7 @@ export default function LinkToUsPage() {
           <div className="mt-6 grid gap-6 sm:grid-cols-2">
             <div className="rounded-2xl border border-border-subtle bg-surface p-6">
               <h3 className="font-semibold text-text-primary">100% Free Tools</h3>
-              <p className="mt-2 text-sm text-text-secondary">Every tool on {SITE_NAME} is completely free — no signups, no paywalls, no limits. Your audience gets instant value.</p>
+              <p className="mt-2 text-sm text-text-secondary">Every tool on {SITE_NAME} is completely free â€” no signups, no paywalls, no limits. Your audience gets instant value.</p>
             </div>
             <div className="rounded-2xl border border-border-subtle bg-surface p-6">
               <h3 className="font-semibold text-text-primary">Privacy First</h3>
@@ -94,7 +94,7 @@ export default function LinkToUsPage() {
             </div>
             <div className="rounded-2xl border border-border-subtle bg-surface p-6">
               <h3 className="font-semibold text-text-primary">No Attribution Required</h3>
-              <p className="mt-2 text-sm text-text-secondary">Use our links and banners freely. No attribution or backlink required — though we always appreciate it!</p>
+              <p className="mt-2 text-sm text-text-secondary">Use our links and banners freely. No attribution or backlink required â€” though we always appreciate it!</p>
             </div>
           </div>
         </div>

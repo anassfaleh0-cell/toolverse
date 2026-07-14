@@ -94,7 +94,7 @@ export function BrokenLinkChecker() {
         </Button>
       </div>
 
-      {progress && <p className="text-sm text-zinc-500">{progress}</p>}
+      {progress && <p className="text-sm text-zinc-600">{progress}</p>}
 
       {blockedCount > 0 && (
         <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-700 dark:border-amber-800 dark:bg-amber-950 dark:text-amber-400" role="alert">
@@ -107,8 +107,8 @@ export function BrokenLinkChecker() {
           <div className="flex items-center gap-3 text-sm">
             <span className="text-zinc-600 dark:text-zinc-400">Total: {results.length}</span>
             <span className="text-emerald-700 dark:text-emerald-400">OK: {results.length - brokenCount - blockedCount}</span>
-            {brokenCount > 0 && <span className="text-red-600 dark:text-red-400">Broken: {brokenCount}</span>}
-            {blockedCount > 0 && <span className="text-zinc-500">CORS blocked: {blockedCount}</span>}
+            {brokenCount > 0 && <span className="text-red-700 dark:text-red-400">Broken: {brokenCount}</span>}
+            {blockedCount > 0 && <span className="text-zinc-600">CORS blocked: {blockedCount}</span>}
           </div>
           <div className="overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800">
             <div className="divide-y divide-zinc-200 dark:divide-zinc-800">
@@ -120,10 +120,10 @@ export function BrokenLinkChecker() {
                       <span className={`inline-block rounded-full px-2.5 py-0.5 text-xs font-medium ${statusColor(r.status, r.blocked)}`}>
                         {r.blocked ? "CORS blocked" : r.status ? `${r.status} ${r.statusText}` : "Unreachable"}
                       </span>
-                      <span className="text-xs text-zinc-400">{r.responseTime}ms</span>
-                      {r.blocked && <span className="text-xs text-zinc-400">(use server-side check)</span>}
+                      <span className="text-xs text-zinc-600">{r.responseTime}ms</span>
+                      {r.blocked && <span className="text-xs text-zinc-600">(use server-side check)</span>}
                     </div>
-                    {r.error && <p className="mt-1 text-xs text-red-500">{r.error}</p>}
+                    {r.error && <p className="mt-1 text-xs text-red-700">{r.error}</p>}
                   </div>
                 </div>
               ))}

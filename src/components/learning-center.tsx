@@ -29,7 +29,7 @@ export function LearningCenter() {
               <span className="text-xs font-medium uppercase tracking-wider text-aurora-700 dark:text-aurora-400">
                 {item.difficulty === "beginner" ? "Beginner Guide" : "Guide"}
               </span>
-              <h3 className="mt-2 font-semibold text-text-primary transition-colors group-hover:text-nuvora-600 dark:group-hover:text-nuvora-400">
+              <h3 className="mt-2 font-semibold text-text-primary transition-colors group-hover:text-nuvora-600 dark:group-hover:text-nuvora-600">
                 {item.title}
               </h3>
               <p className="mt-2 text-sm text-text-secondary line-clamp-2">
@@ -49,7 +49,7 @@ export function LearningCenter() {
               <span className="text-xs font-medium uppercase tracking-wider text-nuvora-600 dark:text-nuvora-400">
                 Article
               </span>
-              <h3 className="mt-2 font-semibold text-text-primary transition-colors group-hover:text-nuvora-600 dark:group-hover:text-nuvora-400">
+              <h3 className="mt-2 font-semibold text-text-primary transition-colors group-hover:text-nuvora-600 dark:group-hover:text-nuvora-600">
                 {item.title}
               </h3>
               <p className="mt-2 text-sm text-text-secondary line-clamp-2">
@@ -64,7 +64,7 @@ export function LearningCenter() {
         <div className="mt-8 text-center">
           <Link
             href="/learn"
-            className="inline-flex items-center gap-2 text-sm font-medium text-nuvora-600 hover:text-nuvora-700 dark:text-nuvora-400 dark:hover:text-nuvora-300"
+            className="inline-flex items-center gap-2 text-sm font-medium text-nuvora-600 hover:text-nuvora-700 dark:text-nuvora-400 dark:hover:text-nuvora-600"
           >
             View all guides
 <Icon name="ArrowRight" className="size-4" aria-hidden="true" />

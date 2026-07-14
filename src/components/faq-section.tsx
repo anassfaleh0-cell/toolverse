@@ -26,7 +26,7 @@ function AccordionItem({
         <span className="font-medium text-zinc-900 dark:text-zinc-50">
           {question}
         </span>
-        <Icon name="ChevronDown" className={`size-5 shrink-0 text-zinc-400 transition-transform ${isOpen ? "rotate-180" : ""}`} aria-hidden="true" />
+        <Icon name="ChevronDown" className={`size-5 shrink-0 text-zinc-600 transition-transform ${isOpen ? "rotate-180" : ""}`} aria-hidden="true" />
       </button>
       <div
         className={`overflow-hidden transition-all ${

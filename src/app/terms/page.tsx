@@ -5,7 +5,7 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "Nuvora Terms of Service — rules, disclaimers, and acceptable use for our free online tools and content.",
+  description: "Nuvora Terms of Service â€” rules, disclaimers, and acceptable use for our free online tools and content.",
   openGraph: { title: "Terms of Service", description: "Nuvora Terms of Service & acceptable use policy.", url: `${SITE_URL}/terms` },
   twitter: { card: "summary_large_image", title: "Terms of Service", description: "Nuvora Terms of Service & acceptable use policy." },
   alternates: { canonical: `${SITE_URL}/terms` },
@@ -19,7 +19,7 @@ const breadcrumbs = [
 export default function Terms() {
   return (
     <>
-      <JsonLd data={webPageSchema({ name: "Terms of Service", description: "Nuvora Terms of Service — rules, disclaimers, and acceptable use.", url: `${SITE_URL}/terms`, breadcrumbs })} />
+      <JsonLd data={webPageSchema({ name: "Terms of Service", description: "Nuvora Terms of Service â€” rules, disclaimers, and acceptable use.", url: `${SITE_URL}/terms`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24">
         <Breadcrumbs items={breadcrumbs} />
@@ -38,7 +38,7 @@ export default function Terms() {
           <p>All content, tool designs, and code on Nuvora are owned by Nuvora unless otherwise noted. You may not reproduce, distribute, or create derivative works without permission.</p>
           <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">Changes</h2>
           <p>We may update these terms periodically. Continued use after changes constitutes acceptance of the new terms.</p>
-          <p className="text-sm text-zinc-400">Last updated: January 1, 2026</p>
+          <p className="text-sm text-zinc-600">Last updated: January 1, 2026</p>
         </div>
       </section>
     </>

@@ -32,7 +32,7 @@ export function IpLookupForm({ onLookup, loading }: IpLookupFormProps) {
       <div className="relative mx-auto flex w-full max-w-xl items-center gap-2">
         <div className="relative flex w-full items-center overflow-hidden rounded-xl border border-zinc-300 bg-white/80 shadow-sm backdrop-blur-sm transition-colors focus-within:border-zinc-500 focus-within:ring-2 focus-within:ring-zinc-200 dark:border-zinc-700 dark:bg-zinc-900/80 dark:focus-within:border-zinc-500 dark:focus-within:ring-zinc-800">
           <span className="flex shrink-0 items-center pl-4" aria-hidden="true">
-            <Icon name="Search" className="size-5 text-zinc-400" />
+            <Icon name="Search" className="size-5 text-zinc-600" />
           </span>
           <input
             type="text"
@@ -42,7 +42,7 @@ export function IpLookupForm({ onLookup, loading }: IpLookupFormProps) {
               if (error) setError(null);
             }}
             placeholder="Enter an IP address (e.g., 8.8.8.8)"
-            className="flex-1 bg-transparent px-3 py-3.5 text-sm text-zinc-900 outline-none placeholder:text-zinc-400 dark:text-zinc-50"
+            className="flex-1 bg-transparent px-3 py-3.5 text-sm text-zinc-900 outline-none placeholder:text-zinc-600 dark:text-zinc-50"
             aria-label="IP address to look up"
             autoComplete="off"
             spellCheck={false}
@@ -86,7 +86,7 @@ export function IpLookupForm({ onLookup, loading }: IpLookupFormProps) {
         </div>
       </div>
       {error && (
-        <p className="mx-auto mt-2 max-w-xl text-sm text-red-500 dark:text-red-400">
+        <p className="mx-auto mt-2 max-w-xl text-sm text-red-700 dark:text-red-400">
           {error}
         </p>
       )}

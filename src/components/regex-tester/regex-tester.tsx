@@ -138,9 +138,9 @@ export function RegexTester() {
           {pattern.trim() && (
             <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2">
               {isValid ? (
-                <Icon name="Check" className="size-5 text-green-500" aria-label="Valid pattern" />
+                <Icon name="Check" className="size-5 text-green-700" aria-label="Valid pattern" />
               ) : (
-                <Icon name="X" className="size-5 text-red-500" aria-label="Invalid pattern" />
+                <Icon name="X" className="size-5 text-red-700" aria-label="Invalid pattern" />
               )}
             </span>
           )}
@@ -158,7 +158,7 @@ export function RegexTester() {
                 className="h-3.5 w-3.5 rounded border-zinc-300 text-blue-600 focus:ring-blue-500 dark:border-zinc-700"
               />
               <span className="text-zinc-700 dark:text-zinc-300">{f.label}</span>
-              <span className="text-zinc-400 dark:text-zinc-500">({f.description})</span>
+              <span className="text-zinc-600 dark:text-zinc-400">({f.description})</span>
             </label>
           ))}
         </div>
@@ -268,7 +268,7 @@ export function RegexTester() {
                 <CopyButton text={replacedResult} label="Copy" />
               </div>
               <div className="p-5 font-mono text-sm leading-relaxed text-zinc-900 dark:text-zinc-50">
-                {replacedResult || <span className="text-zinc-400 dark:text-zinc-600">No matches found</span>}
+                {replacedResult || <span className="text-zinc-600 dark:text-zinc-400">No matches found</span>}
               </div>
             </div>
           )}

@@ -71,7 +71,7 @@ export default async function TagPage({ params }: { params: Promise<{ slug: stri
                 href={tool.url}
                 className="group rounded-lg border border-zinc-200 bg-white p-4 transition-colors hover:border-zinc-300 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700"
               >
-                <h3 className="text-sm font-semibold text-zinc-900 group-hover:text-blue-600 dark:text-zinc-50 dark:group-hover:text-blue-400">
+                <h3 className="text-sm font-semibold text-zinc-900 group-hover:text-blue-600 dark:text-zinc-50 dark:group-hover:text-blue-700">
                   {tool.name}
                 </h3>
                 <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400 line-clamp-2">

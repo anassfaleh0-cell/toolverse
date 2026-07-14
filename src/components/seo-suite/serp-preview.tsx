@@ -46,7 +46,7 @@ export function SerpPreview() {
       <div>
         <label htmlFor="sp-title" className="mb-2 block text-sm font-medium text-zinc-700 dark:text-zinc-300">
           Page Title
-          <span className={`ml-2 text-xs ${title.length > titleMax ? "text-red-500" : "text-zinc-400"}`}>
+          <span className={`ml-2 text-xs ${title.length > titleMax ? "text-red-700" : "text-zinc-600"}`}>
             {title.length}/{titleMax}
           </span>
         </label>
@@ -62,7 +62,7 @@ export function SerpPreview() {
       <div>
         <label htmlFor="sp-desc" className="mb-2 block text-sm font-medium text-zinc-700 dark:text-zinc-300">
           Meta Description
-          <span className={`ml-2 text-xs ${description.length > descMax ? "text-red-500" : "text-zinc-400"}`}>
+          <span className={`ml-2 text-xs ${description.length > descMax ? "text-red-700" : "text-zinc-600"}`}>
             {description.length}/{descMax}
           </span>
         </label>
@@ -109,12 +109,12 @@ export function SerpPreview() {
       </div>
 
       {title.length > titleMax && (
-        <p className="text-xs text-red-500" role="alert">
+        <p className="text-xs text-red-700" role="alert">
           Title exceeds {titleMax} characters. It may be truncated in search results.
         </p>
       )}
       {description.length > descMax && (
-        <p className="text-xs text-red-500" role="alert">
+        <p className="text-xs text-red-700" role="alert">
           Meta description exceeds {descMax} characters. It may be truncated in search results.
         </p>
       )}

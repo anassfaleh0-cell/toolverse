@@ -68,7 +68,7 @@ export function ScoreGauge({ score, max = 100, size = 80, label }: ScoreGaugePro
   return (
     <div className="flex flex-col items-center">
       <svg width={size} height={size} className="drop-shadow-sm" aria-label={label || `${Math.round(pct * 100)}%`}>
-        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="currentColor" strokeWidth={strokeWidth} className="text-zinc-200 dark:text-zinc-700" />
+        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="currentColor" strokeWidth={strokeWidth} className="text-zinc-600 dark:text-zinc-400" />
         <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke={color} strokeWidth={strokeWidth} strokeDasharray={circ} strokeDashoffset={offset} strokeLinecap="round" transform={`rotate(-90 ${size / 2} ${size / 2})`} className="transition-all duration-700" />
         <text x={size / 2} y={size / 2} textAnchor="middle" dominantBaseline="central" className="fill-zinc-900 text-[11px] font-bold dark:fill-zinc-50">
           {Math.round(pct * 100)}
@@ -116,7 +116,7 @@ const RISK_CONFIG = {
   low: { color: "bg-emerald-500", text: "text-emerald-700 dark:text-emerald-400", bar: "w-[25%]" },
   medium: { color: "bg-amber-500", text: "text-amber-700 dark:text-amber-400", bar: "w-[50%]" },
   high: { color: "bg-orange-500", text: "text-orange-700 dark:text-orange-400", bar: "w-[75%]" },
-  critical: { color: "bg-red-500", text: "text-red-600 dark:text-red-400", bar: "w-full" },
+  critical: { color: "bg-red-500", text: "text-red-700 dark:text-red-400", bar: "w-full" },
 };
 
 export function RiskMeter({ level, label }: RiskLevelProps) {
@@ -183,9 +183,9 @@ const GRADE_CONFIG: Record<string, { label: string; color: string; ring: string 
   "B-": { label: "B-", color: "text-amber-700 dark:text-amber-400", ring: "stroke-amber-500" },
   "C+": { label: "C+", color: "text-amber-700 dark:text-amber-400", ring: "stroke-amber-500" },
   "C": { label: "C", color: "text-amber-700 dark:text-amber-400", ring: "stroke-amber-500" },
-  "C-": { label: "C-", color: "text-orange-600 dark:text-orange-400", ring: "stroke-orange-500" },
-  "D": { label: "D", color: "text-orange-600 dark:text-orange-400", ring: "stroke-orange-500" },
-  "F": { label: "F", color: "text-red-600 dark:text-red-400", ring: "stroke-red-500" },
+  "C-": { label: "C-", color: "text-orange-700 dark:text-orange-400", ring: "stroke-orange-500" },
+  "D": { label: "D", color: "text-orange-700 dark:text-orange-400", ring: "stroke-orange-500" },
+  "F": { label: "F", color: "text-red-700 dark:text-red-400", ring: "stroke-red-500" },
 };
 
 export function computeSecurityGrade(present: number, total: number): { grade: string; pct: number } {
@@ -212,7 +212,7 @@ export function GradeBadge({ grade, size = 64 }: { grade: string; size?: number 
   return (
     <div className="flex flex-col items-center">
       <svg width={size} height={size} aria-label={`Grade ${grade}`}>
-        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="currentColor" strokeWidth={6} className="text-zinc-200 dark:text-zinc-700" />
+        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="currentColor" strokeWidth={6} className="text-zinc-600 dark:text-zinc-400" />
         <circle cx={size / 2} cy={size / 2} r={r} fill="none" strokeWidth={6} strokeDasharray={circ} strokeDashoffset={offset} strokeLinecap="round" transform={`rotate(-90 ${size / 2} ${size / 2})`} className={`transition-all duration-700 ${cfg.ring}`} />
         <text x={size / 2} y={size / 2} textAnchor="middle" dominantBaseline="central" className={`fill-current text-lg font-extrabold ${cfg.color}`}>{grade}</text>
       </svg>
@@ -237,7 +237,7 @@ export function CompositeScore({ overall, subScores, size = 72 }: CompositeScore
     <div className="flex flex-wrap items-center gap-4">
       <div className="flex flex-col items-center">
         <svg width={size} height={size} aria-label={`Overall score ${overall}`}>
-          <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="currentColor" strokeWidth={6} className="text-zinc-200 dark:text-zinc-700" />
+          <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="currentColor" strokeWidth={6} className="text-zinc-600 dark:text-zinc-400" />
           <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke={color} strokeWidth={6} strokeDasharray={circ} strokeDashoffset={offset} strokeLinecap="round" transform={`rotate(-90 ${size / 2} ${size / 2})`} className="transition-all duration-700" />
           <text x={size / 2} y={size / 2} textAnchor="middle" dominantBaseline="central" className="fill-zinc-900 text-base font-bold dark:fill-zinc-50">{overall}</text>
         </svg>

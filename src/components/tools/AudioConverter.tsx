@@ -96,14 +96,14 @@ export function AudioConverter() {
         {file ? (
           <div>
             <p className="font-medium text-zinc-900 dark:text-zinc-100">{file.name}</p>
-            <p className="mt-1 text-sm text-zinc-500">{formatBytes(file.size)}</p>
+            <p className="mt-1 text-sm text-zinc-600">{formatBytes(file.size)}</p>
             <Button variant="ghost" size="sm" className="mt-2" onClick={() => { setFile(null); setResult(null); }}>Remove</Button>
           </div>
         ) : (
-          <button onClick={() => inputRef.current?.click()} className="cursor-pointer text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100">
+          <button onClick={() => inputRef.current?.click()} className="cursor-pointer text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-600">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="mx-auto size-10"><path d="M12 16V4m0 0L8 8m4-4l4 4" strokeLinecap="round" strokeLinejoin="round"/><path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
             <p className="mt-2 text-sm font-medium">Click to select audio file</p>
-            <p className="text-xs text-zinc-400 mt-1">MP3, WAV, FLAC, AAC, or OGG</p>
+            <p className="text-xs text-zinc-600 mt-1">MP3, WAV, FLAC, AAC, or OGG</p>
           </button>
         )}
       </div>
@@ -129,7 +129,7 @@ export function AudioConverter() {
 
       {loading && loadProgress < 100 && (
         <div className="space-y-2">
-          <div className="flex items-center justify-between text-sm text-zinc-500">
+          <div className="flex items-center justify-between text-sm text-zinc-600">
             <span>Loading FFmpeg...</span>
             <span>{loadProgress}%</span>
           </div>
@@ -141,7 +141,7 @@ export function AudioConverter() {
 
       {loading && loadProgress >= 100 && (
         <div className="space-y-2">
-          <div className="flex items-center justify-between text-sm text-zinc-500">
+          <div className="flex items-center justify-between text-sm text-zinc-600">
             <span>Converting...</span>
             <span>{convertProgress}%</span>
           </div>

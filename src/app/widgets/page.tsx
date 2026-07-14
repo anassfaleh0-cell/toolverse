@@ -29,7 +29,7 @@ function EmbedCard({ name, slug, widgetUrl }: { name: string; slug: string; widg
       <div className="mt-4 overflow-hidden rounded-lg border border-border-subtle">
         <iframe src={url} width="100%" height="300" className="w-full" title={`${name} widget preview`} />
       </div>
-      <pre className="mt-3 overflow-x-auto rounded-lg bg-zinc-900 p-3 text-xs text-zinc-100 dark:bg-zinc-950">
+      <pre className="mt-3 overflow-x-auto rounded-lg bg-zinc-900 p-3 text-xs text-zinc-600 dark:bg-zinc-950">
         <code>{iframeCode}</code>
       </pre>
     </div>
@@ -42,7 +42,7 @@ export default function WidgetsPage() {
 
   return (
     <>
-      <JsonLd data={webPageSchema({ name: `Embeddable Widgets — ${SITE_NAME}`, description: `Free embeddable widgets from ${SITE_NAME}.`, url: `${SITE_URL}/widgets`, breadcrumbs })} />
+      <JsonLd data={webPageSchema({ name: `Embeddable Widgets â€” ${SITE_NAME}`, description: `Free embeddable widgets from ${SITE_NAME}.`, url: `${SITE_URL}/widgets`, breadcrumbs })} />
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <section className="border-b border-border-subtle bg-gradient-to-b from-nuvora-50/30 to-surface dark:from-nuvora-950/20">
         <div className="mx-auto max-w-5xl px-4 py-20 sm:px-6 sm:py-28">

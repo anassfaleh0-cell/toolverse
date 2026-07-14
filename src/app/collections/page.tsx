@@ -66,7 +66,7 @@ export function CollectionsContent() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Collection name"
-            className="min-w-0 flex-1 rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-200 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-50 dark:focus:border-zinc-500 dark:focus:ring-zinc-800"
+            className="min-w-0 flex-1 rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm text-zinc-900 placeholder:text-zinc-600 focus:border-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-200 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-50 dark:focus:border-zinc-500 dark:focus:ring-zinc-800"
             required
           />
           <input
@@ -74,11 +74,11 @@ export function CollectionsContent() {
             value={desc}
             onChange={(e) => setDesc(e.target.value)}
             placeholder="Description (optional)"
-            className="min-w-0 flex-[2] rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-200 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-50 dark:focus:border-zinc-500 dark:focus:ring-zinc-800"
+            className="min-w-0 flex-[2] rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm text-zinc-900 placeholder:text-zinc-600 focus:border-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-200 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-50 dark:focus:border-zinc-500 dark:focus:ring-zinc-800"
           />
           <button
             type="submit"
-            className="rounded-lg bg-zinc-900 px-6 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
+            className="rounded-lg bg-zinc-900 px-6 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-200"
           >
             Create
           </button>
@@ -101,7 +101,7 @@ export function CollectionsContent() {
               <h3 className="font-semibold text-zinc-900 dark:text-zinc-50">{col.name}</h3>
               <button
                 onClick={() => handleDelete(col.id)}
-                className="rounded-lg p-1.5 text-zinc-400 hover:bg-zinc-100 hover:text-red-500 dark:hover:bg-zinc-800"
+                className="rounded-lg p-1.5 text-zinc-600 hover:bg-zinc-100 hover:text-red-700 dark:hover:bg-zinc-800"
                 aria-label={`Delete ${col.name}`}
               >
                 <svg className="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
@@ -112,7 +112,7 @@ export function CollectionsContent() {
             {col.description && (
               <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{col.description}</p>
             )}
-            <p className="mt-3 text-xs text-zinc-400">{col.toolSlugs.length} tool{col.toolSlugs.length !== 1 ? "s" : ""}</p>
+            <p className="mt-3 text-xs text-zinc-600">{col.toolSlugs.length} tool{col.toolSlugs.length !== 1 ? "s" : ""}</p>
             {col.toolSlugs.length > 0 && (
               <div className="mt-3 flex flex-wrap gap-2">
                 {col.toolSlugs.map((slug) => (

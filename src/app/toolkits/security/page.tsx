@@ -5,7 +5,7 @@ import { JsonLd, Breadcrumbs, FaqSection } from "@/components/shared";
 import { webPageSchema, breadcrumbSchema, faqSchema, type FaqItem } from "@/lib/seo";
 
 const slug = "toolkits/security";
-const pageTitle = "Security Toolkit — Free Online Security Tools — Nuvora";
+const pageTitle = "Security Toolkit â€” Free Online Security Tools â€” Nuvora";
 const pageDescription =
   "Curated collection of free online security tools for SSL checking, port scanning, WHOIS lookups, and password generation. Secure your infrastructure with ease.";
 
@@ -201,7 +201,7 @@ export default function SecurityToolkitPage() {
                   <div className="flex items-start gap-4">
                     <span className="text-2xl">{icons[tool.id]}</span>
                     <div>
-                      <h3 className="font-semibold text-zinc-900 group-hover:text-blue-600 dark:text-zinc-50 dark:group-hover:text-blue-400">
+                      <h3 className="font-semibold text-zinc-900 group-hover:text-blue-600 dark:text-zinc-50 dark:group-hover:text-blue-700">
                         {tool.name}
                       </h3>
                       <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">

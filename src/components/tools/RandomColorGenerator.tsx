@@ -125,7 +125,7 @@ export function RandomColorGenerator() {
               />
               <span className="mt-1 font-mono text-xs text-text-secondary">{c.hex}</span>
               {copiedIndex === i && (
-                <span className="absolute -top-2 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-zinc-900 px-2 py-0.5 text-xs text-white dark:bg-zinc-100 dark:text-zinc-900">
+                <span className="absolute -top-2 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-zinc-900 px-2 py-0.5 text-xs text-white dark:bg-zinc-100 dark:text-zinc-400">
                   Copied!
                 </span>
               )}

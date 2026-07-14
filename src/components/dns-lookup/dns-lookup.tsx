@@ -45,18 +45,18 @@ const RECORD_EXPLANATIONS: Record<string, string> = {
   MX: "Specifies mail servers responsible for receiving email. Each entry includes a priority value (lower = preferred).",
   NS: "Delegates the domain to authoritative name servers. These servers hold the official DNS records for the zone.",
   TXT: "Holds arbitrary text data. Used for email authentication (SPF, DKIM, DMARC) and domain ownership verification.",
-  SOA: "Start of Authority — the authoritative metadata for the zone. Contains the primary nameserver, admin contact, and serial number.",
+  SOA: "Start of Authority â€” the authoritative metadata for the zone. Contains the primary nameserver, admin contact, and serial number.",
   SRV: "Service locator that identifies hosts and ports for specific services like SIP or LDAP.",
-  CAA: "Certification Authority Authorization — specifies which CAs are allowed to issue SSL/TLS certificates for the domain.",
+  CAA: "Certification Authority Authorization â€” specifies which CAs are allowed to issue SSL/TLS certificates for the domain.",
 };
 
 const COMMON_MISTAKES = [
-  "Missing MX records — email delivery fails silently; senders get bounce-back messages.",
-  "No SPF/DKIM/DMARC TXT records — email from your domain is likely flagged as spam or rejected.",
-  "CNAME at zone apex — CNAME records cannot coexist with other record types at the root domain.",
-  "Missing AAAA record — IPv6-only users (growing in mobile networks) cannot reach your site.",
-  "Excessive CNAME chains — each hop adds latency; keep chains under 3 hops.",
-  "Mismatched NS delegation — glue records at the registrar point to servers not configured for the zone.",
+  "Missing MX records â€” email delivery fails silently; senders get bounce-back messages.",
+  "No SPF/DKIM/DMARC TXT records â€” email from your domain is likely flagged as spam or rejected.",
+  "CNAME at zone apex â€” CNAME records cannot coexist with other record types at the root domain.",
+  "Missing AAAA record â€” IPv6-only users (growing in mobile networks) cannot reach your site.",
+  "Excessive CNAME chains â€” each hop adds latency; keep chains under 3 hops.",
+  "Mismatched NS delegation â€” glue records at the registrar point to servers not configured for the zone.",
 ];
 
 function getHealthChecks(records: DnsRecord[]): HealthCheck[] {
@@ -173,11 +173,11 @@ function getSuspiciousConfigs(records: DnsRecord[]): string[] {
   const aRecords = records.filter((r) => r.type === "A");
 
   if (cnames.length > 0 && aRecords.length > 0) {
-    issues.push("CNAME record coexists with A record at the same name — this violates RFC 1034 and may cause unpredictable resolution.");
+    issues.push("CNAME record coexists with A record at the same name â€” this violates RFC 1034 and may cause unpredictable resolution.");
   }
 
   if (cnames.length > 3) {
-    issues.push("Multiple CNAME records detected — long alias chains increase latency and risk of resolution failure.");
+    issues.push("Multiple CNAME records detected â€” long alias chains increase latency and risk of resolution failure.");
   }
 
   return issues;
@@ -191,7 +191,7 @@ function parseRecordValue(type: string, value: string): string {
         return `${parsed.exchange} (Priority: ${parsed.priority})`;
       }
       if (type === "SOA") {
-        return `Primary NS: ${parsed.nsname || "—"} | Serial: ${parsed.serial ?? "—"}`;
+        return `Primary NS: ${parsed.nsname || "â€”"} | Serial: ${parsed.serial ?? "â€”"}`;
       }
       if (type === "SRV" && typeof parsed.name === "string") {
         return `${parsed.name}:${parsed.port} (Priority: ${parsed.priority}, Weight: ${parsed.weight})`;
@@ -286,7 +286,7 @@ export function DnsLookup() {
         try {
           const p = JSON.parse(val);
           if (rec.type === "MX" && typeof p.priority === "number") display = `${p.exchange} (Priority: ${p.priority})`;
-          else if (rec.type === "SOA") display = `Primary NS: ${p.nsname || "—"} | Serial: ${p.serial ?? "—"}`;
+          else if (rec.type === "SOA") display = `Primary NS: ${p.nsname || "â€”"} | Serial: ${p.serial ?? "â€”"}`;
         } catch { /* not json */ }
         lines.push(`${rec.type}\t${display}`);
       }
@@ -366,7 +366,7 @@ export function DnsLookup() {
           <DashboardSummary
             title={result.hostname}
             status={healthScore !== null && healthScore >= 80 ? "good" : healthScore !== null && healthScore >= 50 ? "warning" : "critical"}
-            mainFinding={healthScore !== null ? `DNS Health Score: ${healthScore}/100 — ${healthScore >= 80 ? "Well configured" : healthScore >= 50 ? "Needs improvement" : "Critical issues found"}` : "DNS records found"}
+            mainFinding={healthScore !== null ? `DNS Health Score: ${healthScore}/100 â€” ${healthScore >= 80 ? "Well configured" : healthScore >= 50 ? "Needs improvement" : "Critical issues found"}` : "DNS records found"}
             riskLevel={healthScore !== null && healthScore >= 80 ? "low" : healthScore !== null && healthScore >= 50 ? "medium" : healthScore !== null ? "high" : "medium"}
             riskLabel={healthScore !== null ? `${healthScore}/100` : undefined}
             timestamp={timestamp || undefined}
@@ -414,7 +414,7 @@ export function DnsLookup() {
                           : "bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300"
                       }`}
                     >
-                      {check.passed ? "✓" : "—"}
+                      {check.passed ? "âœ“" : "â€”"}
                     </span>
                     <span className="text-sm text-zinc-900 dark:text-zinc-50">{check.label}</span>
                     <span className="ml-auto text-xs text-zinc-500 dark:text-zinc-300">+{check.points}</span>
@@ -435,7 +435,7 @@ export function DnsLookup() {
                   onClick={() => setFilterType(null)}
                   className={`rounded-md px-2 py-0.5 text-xs font-medium transition-colors ${
                     filterType === null
-                      ? "bg-zinc-800 text-white dark:bg-zinc-200 dark:text-zinc-900"
+                      ? "bg-zinc-800 text-white dark:bg-zinc-200 dark:text-zinc-400"
                       : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700"
                   }`}
                 >
@@ -448,7 +448,7 @@ export function DnsLookup() {
                     onClick={() => setFilterType(t)}
                     className={`rounded-md px-2 py-0.5 text-xs font-medium transition-colors ${
                       filterType === t
-                        ? "bg-zinc-800 text-white dark:bg-zinc-200 dark:text-zinc-900"
+                        ? "bg-zinc-800 text-white dark:bg-zinc-200 dark:text-zinc-400"
                         : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700"
                     }`}
                   >
@@ -513,7 +513,7 @@ export function DnsLookup() {
 
           {suspicious.length > 0 && (
             <div className="space-y-3">
-              <h3 className="text-sm font-semibold text-red-600 dark:text-red-400">
+              <h3 className="text-sm font-semibold text-red-700 dark:text-red-400">
                 Suspicious Configurations
               </h3>
               {suspicious.map((msg, i) => (
