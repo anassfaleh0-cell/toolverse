@@ -114,7 +114,7 @@ export function DkimValidator() {
       {result && (
         <div className="rounded-xl border border-zinc-200 dark:border-zinc-800">
           <div className="flex items-center justify-between border-b border-zinc-200 px-5 py-3 dark:border-zinc-800">
-            <p className={`text-sm font-semibold ${result.valid ? "text-green-600" : "text-red-600"}`}>
+            <p className={`text-sm font-semibold ${result.valid ? "text-green-700" : "text-red-600"}`}>
               {result.valid ? "Record looks valid" : "Issues found"}
             </p>
           </div>

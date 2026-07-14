@@ -109,7 +109,7 @@ export default async function GlossaryTermPage({ params }: Props) {
                   className="rounded-xl border border-border-subtle bg-surface p-5 transition-all hover:shadow-lg"
                 >
                   <h3 className="font-semibold text-text-primary">{tool.name}</h3>
-                  <p className="mt-1 text-sm text-aurora-600">Try it free on {SITE_NAME}</p>
+                  <p className="mt-1 text-sm text-aurora-700">Try it free on {SITE_NAME}</p>
                 </Link>
               ))}
             </div>

@@ -78,7 +78,7 @@ export function SalesTaxCalculator() {
               </div>
               <div className="rounded-lg bg-zinc-50 p-4 dark:bg-zinc-900">
                 <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Tax Amount</p>
-                <p className="mt-1 text-xl font-bold text-emerald-600 dark:text-emerald-400">{currency.format(result.tax)}</p>
+                <p className="mt-1 text-xl font-bold text-emerald-700 dark:text-emerald-400">{currency.format(result.tax)}</p>
               </div>
               <div className="rounded-lg bg-zinc-50 p-4 dark:bg-zinc-900">
                 <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Total (with tax)</p>

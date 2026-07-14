@@ -95,7 +95,7 @@ export function PercentageChangeCalculator() {
               <span
                 className={`font-medium ${
                   result.direction === "Increase"
-                    ? "text-green-600 dark:text-green-400"
+                    ? "text-green-700 dark:text-green-400"
                     : result.direction === "Decrease"
                       ? "text-red-600 dark:text-red-400"
                       : "text-text-secondary"

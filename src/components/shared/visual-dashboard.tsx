@@ -175,14 +175,14 @@ export function DashboardSummary({ title, status, mainFinding, riskLevel, riskLa
 }
 
 const GRADE_CONFIG: Record<string, { label: string; color: string; ring: string }> = {
-  "A+": { label: "A+", color: "text-emerald-600 dark:text-emerald-400", ring: "stroke-emerald-500" },
-  "A": { label: "A", color: "text-emerald-600 dark:text-emerald-400", ring: "stroke-emerald-500" },
-  "A-": { label: "A-", color: "text-emerald-600 dark:text-emerald-400", ring: "stroke-emerald-500" },
-  "B+": { label: "B+", color: "text-emerald-600 dark:text-emerald-400", ring: "stroke-emerald-400" },
-  "B": { label: "B", color: "text-amber-600 dark:text-amber-400", ring: "stroke-amber-500" },
-  "B-": { label: "B-", color: "text-amber-600 dark:text-amber-400", ring: "stroke-amber-500" },
-  "C+": { label: "C+", color: "text-amber-600 dark:text-amber-400", ring: "stroke-amber-500" },
-  "C": { label: "C", color: "text-amber-600 dark:text-amber-400", ring: "stroke-amber-500" },
+  "A+": { label: "A+", color: "text-emerald-700 dark:text-emerald-400", ring: "stroke-emerald-500" },
+  "A": { label: "A", color: "text-emerald-700 dark:text-emerald-400", ring: "stroke-emerald-500" },
+  "A-": { label: "A-", color: "text-emerald-700 dark:text-emerald-400", ring: "stroke-emerald-500" },
+  "B+": { label: "B+", color: "text-emerald-700 dark:text-emerald-400", ring: "stroke-emerald-400" },
+  "B": { label: "B", color: "text-amber-700 dark:text-amber-400", ring: "stroke-amber-500" },
+  "B-": { label: "B-", color: "text-amber-700 dark:text-amber-400", ring: "stroke-amber-500" },
+  "C+": { label: "C+", color: "text-amber-700 dark:text-amber-400", ring: "stroke-amber-500" },
+  "C": { label: "C", color: "text-amber-700 dark:text-amber-400", ring: "stroke-amber-500" },
   "C-": { label: "C-", color: "text-orange-600 dark:text-orange-400", ring: "stroke-orange-500" },
   "D": { label: "D", color: "text-orange-600 dark:text-orange-400", ring: "stroke-orange-500" },
   "F": { label: "F", color: "text-red-600 dark:text-red-400", ring: "stroke-red-500" },

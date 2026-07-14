@@ -214,8 +214,8 @@ function generateRecommendations(result: LookupResult, lookupType: string): { ty
 
 function ScoreBadge({ score, size = "sm" }: { score: number; size?: "sm" | "lg" }) {
   const color =
-    score >= 70 ? "text-green-600 bg-green-50 border-green-200 dark:bg-green-950 dark:border-green-800 dark:text-green-400"
-      : score >= 40 ? "text-amber-600 bg-amber-50 border-amber-200 dark:bg-amber-950 dark:border-amber-800 dark:text-amber-400"
+    score >= 70 ? "text-green-700 bg-green-50 border-green-200 dark:bg-green-950 dark:border-green-800 dark:text-green-400"
+      : score >= 40 ? "text-amber-700 bg-amber-50 border-amber-200 dark:bg-amber-950 dark:border-amber-800 dark:text-amber-400"
         : "text-red-600 bg-red-50 border-red-200 dark:bg-red-950 dark:border-red-800 dark:text-red-400";
   const cls = size === "lg" ? "text-2xl px-4 py-2" : "text-sm px-2.5 py-1";
   return (
@@ -235,7 +235,7 @@ function ScoreBar({ score, label }: { score: number; label: string }) {
           <div className={`h-full rounded-full transition-all ${color}`} style={{ width: `${Math.min(100, Math.max(0, score))}%` }} />
         </div>
       </div>
-      <span className={`w-12 text-right text-xs font-bold ${score >= 70 ? "text-green-600" : score >= 40 ? "text-amber-600" : "text-red-600"}`}>{score}</span>
+      <span className={`w-12 text-right text-xs font-bold ${score >= 70 ? "text-green-700" : score >= 40 ? "text-amber-700" : "text-red-600"}`}>{score}</span>
     </div>
   );
 }
@@ -581,7 +581,7 @@ export function EmailAuthLookup({ lookupType, title, description, placeholder, s
                   {result.spfScore.breakdown.map((b, i) => (
                     <div key={i} className="flex items-center justify-between py-0.5 text-xs">
                       <span className="text-zinc-600 dark:text-zinc-400">{b.reason}</span>
-                      <span className={`font-bold ${b.points >= 0 ? "text-green-600" : "text-red-600"}`}>{b.points >= 0 ? `+${b.points}` : b.points}</span>
+                      <span className={`font-bold ${b.points >= 0 ? "text-green-700" : "text-red-600"}`}>{b.points >= 0 ? `+${b.points}` : b.points}</span>
                     </div>
                   ))}
                 </div>
@@ -597,7 +597,7 @@ export function EmailAuthLookup({ lookupType, title, description, placeholder, s
                   </div>
                   {result.dmarcAnalysis.strengths.length > 0 && (
                     <div className="mb-1 space-y-0.5">
-                      <p className="text-[11px] font-medium text-green-600">Strengths</p>
+                      <p className="text-[11px] font-medium text-green-700">Strengths</p>
                       {result.dmarcAnalysis.strengths.map((s, i) => (
                         <p key={i} className="text-xs text-green-700 dark:text-green-400">✓ {s}</p>
                       ))}
@@ -637,7 +637,7 @@ export function EmailAuthLookup({ lookupType, title, description, placeholder, s
                       {result.dkimScore.breakdown.map((b, i) => (
                         <div key={i} className="flex items-center justify-between py-0.5 text-xs">
                           <span className="text-zinc-600 dark:text-zinc-400">{b.reason}</span>
-                          <span className={`font-bold ${b.points >= 0 ? "text-green-600" : "text-red-600"}`}>{b.points >= 0 ? `+${b.points}` : b.points}</span>
+                          <span className={`font-bold ${b.points >= 0 ? "text-green-700" : "text-red-600"}`}>{b.points >= 0 ? `+${b.points}` : b.points}</span>
                         </div>
                       ))}
                     </div>
@@ -681,7 +681,7 @@ export function EmailAuthLookup({ lookupType, title, description, placeholder, s
                 <div className="px-5 py-3 border-b border-zinc-200 dark:border-zinc-800">
                   <div className="space-y-1.5">
                     {warnings.map((w, i) => (
-                      <div key={i} className={`flex items-start gap-2 text-xs ${w.type === "error" ? "text-red-600 dark:text-red-400" : w.type === "warning" ? "text-amber-600 dark:text-amber-400" : "text-blue-600 dark:text-blue-400"}`}>
+                      <div key={i} className={`flex items-start gap-2 text-xs ${w.type === "error" ? "text-red-600 dark:text-red-400" : w.type === "warning" ? "text-amber-700 dark:text-amber-400" : "text-blue-600 dark:text-blue-400"}`}>
                         <Icon
                           name={w.type === "error" ? "XCircle" : w.type === "warning" ? "AlertTriangle" : "Info"}
                           className="size-4 shrink-0 mt-0.5"
@@ -743,7 +743,7 @@ export function EmailAuthLookup({ lookupType, title, description, placeholder, s
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Email Deliverability Score</p>
-                    <p className={`mt-1 text-3xl font-bold ${result.deliverabilityScore.overall >= 70 ? "text-green-600" : result.deliverabilityScore.overall >= 40 ? "text-amber-600" : "text-red-600"}`}>
+                    <p className={`mt-1 text-3xl font-bold ${result.deliverabilityScore.overall >= 70 ? "text-green-700" : result.deliverabilityScore.overall >= 40 ? "text-amber-700" : "text-red-600"}`}>
                       {result.deliverabilityScore.overall}/100
                     </p>
                   </div>
@@ -828,17 +828,17 @@ export function EmailAuthLookup({ lookupType, title, description, placeholder, s
               <div className="grid grid-cols-2 gap-4">
                 <div className={`rounded-lg border p-3 ${comparisonResult.overall.winner === comparisonResult.domain1 ? "border-green-300 bg-green-50 dark:border-green-700 dark:bg-green-900/20" : "border-zinc-200 dark:border-zinc-700"}`}>
                   <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">{comparisonResult.domain1}</p>
-                  <p className={`text-2xl font-bold ${comparisonResult.overall.domain1.overall >= 70 ? "text-green-600" : comparisonResult.overall.domain1.overall >= 40 ? "text-amber-600" : "text-red-600"}`}>
+                  <p className={`text-2xl font-bold ${comparisonResult.overall.domain1.overall >= 70 ? "text-green-700" : comparisonResult.overall.domain1.overall >= 40 ? "text-amber-700" : "text-red-600"}`}>
                     {comparisonResult.overall.domain1.overall}/100
                   </p>
-                  {comparisonResult.overall.winner === comparisonResult.domain1 && <p className="text-xs text-green-600 font-medium mt-1">Winner</p>}
+                  {comparisonResult.overall.winner === comparisonResult.domain1 && <p className="text-xs text-green-700 font-medium mt-1">Winner</p>}
                 </div>
                 <div className={`rounded-lg border p-3 ${comparisonResult.overall.winner === comparisonResult.domain2 ? "border-green-300 bg-green-50 dark:border-green-700 dark:bg-green-900/20" : "border-zinc-200 dark:border-zinc-700"}`}>
                   <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">{comparisonResult.domain2}</p>
-                  <p className={`text-2xl font-bold ${comparisonResult.overall.domain2.overall >= 70 ? "text-green-600" : comparisonResult.overall.domain2.overall >= 40 ? "text-amber-600" : "text-red-600"}`}>
+                  <p className={`text-2xl font-bold ${comparisonResult.overall.domain2.overall >= 70 ? "text-green-700" : comparisonResult.overall.domain2.overall >= 40 ? "text-amber-700" : "text-red-600"}`}>
                     {comparisonResult.overall.domain2.overall}/100
                   </p>
-                  {comparisonResult.overall.winner === comparisonResult.domain2 && <p className="text-xs text-green-600 font-medium mt-1">Winner</p>}
+                  {comparisonResult.overall.winner === comparisonResult.domain2 && <p className="text-xs text-green-700 font-medium mt-1">Winner</p>}
                 </div>
               </div>
             </div>
@@ -858,7 +858,7 @@ export function EmailAuthLookup({ lookupType, title, description, placeholder, s
                 </div>
               </div>
               {comp.winner && (
-                <p className="mt-2 text-xs text-green-600 font-medium">Better: {comp.winner}</p>
+                <p className="mt-2 text-xs text-green-700 font-medium">Better: {comp.winner}</p>
               )}
             </div>
           ))}

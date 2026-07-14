@@ -218,7 +218,7 @@ export function DnsToolLookup({ lookupType, title, description, placeholder, beg
             <div className="border-b border-zinc-200 px-5 py-3 dark:border-zinc-800">
               <div className="space-y-1.5">
                 {result.issues.map((issue: string, i: number) => (
-                  <div key={i} className="flex items-start gap-2 text-xs text-amber-600 dark:text-amber-400">
+                  <div key={i} className="flex items-start gap-2 text-xs text-amber-700 dark:text-amber-400">
                     <span className="mt-0.5 shrink-0">!</span>
                     <span>{issue}</span>
                   </div>
@@ -259,24 +259,24 @@ export function DnsToolLookup({ lookupType, title, description, placeholder, beg
                 </div>
                 <div className="px-5 py-3">
                   <p className="text-xs font-medium text-zinc-500">DNSSEC Status</p>
-                  <p className={`mt-1 text-sm font-semibold ${result.signed ? "text-green-600" : "text-red-600"}`}>{result.signed ? "Zone is signed" : "Zone is NOT signed"}</p>
+                  <p className={`mt-1 text-sm font-semibold ${result.signed ? "text-green-700" : "text-red-600"}`}>{result.signed ? "Zone is signed" : "Zone is NOT signed"}</p>
                 </div>
               </>
             ) : result.score !== undefined ? (
               <>
                 <div className="px-5 py-4">
                   <p className="text-xs font-medium text-zinc-500">Deliverability Score</p>
-                  <p className={`mt-1 text-3xl font-bold ${result.score >= 70 ? "text-green-600" : result.score >= 40 ? "text-amber-600" : "text-red-600"}`}>{result.score}/100</p>
+                  <p className={`mt-1 text-3xl font-bold ${result.score >= 70 ? "text-green-700" : result.score >= 40 ? "text-amber-700" : "text-red-600"}`}>{result.score}/100</p>
                 </div>
                 <div className="grid grid-cols-2 gap-4 px-5 py-4">
-                  <div><p className="text-xs text-zinc-500">SPF</p><p className={`font-medium ${result.spf?.length ? "text-green-600" : "text-red-600"}`}>{result.spf?.length ? "Found" : "Missing"}</p></div>
-                  <div><p className="text-xs text-zinc-500">DKIM</p><p className={`font-medium ${result.dkim?.length ? "text-green-600" : "text-amber-600"}`}>{result.dkim?.length ? "Found" : "Not found"}</p></div>
-                  <div><p className="text-xs text-zinc-500">DMARC</p><p className={`font-medium ${result.dmarc?.length ? "text-green-600" : "text-red-600"}`}>{result.dmarc?.length ? "Found" : "Missing"}</p></div>
-                  <div><p className="text-xs text-zinc-500">MX</p><p className={`font-medium ${result.mx?.length ? "text-green-600" : "text-red-600"}`}>{result.mx?.length ? "Found" : "Missing"}</p></div>
+                  <div><p className="text-xs text-zinc-500">SPF</p><p className={`font-medium ${result.spf?.length ? "text-green-700" : "text-red-600"}`}>{result.spf?.length ? "Found" : "Missing"}</p></div>
+                  <div><p className="text-xs text-zinc-500">DKIM</p><p className={`font-medium ${result.dkim?.length ? "text-green-700" : "text-amber-700"}`}>{result.dkim?.length ? "Found" : "Not found"}</p></div>
+                  <div><p className="text-xs text-zinc-500">DMARC</p><p className={`font-medium ${result.dmarc?.length ? "text-green-700" : "text-red-600"}`}>{result.dmarc?.length ? "Found" : "Missing"}</p></div>
+                  <div><p className="text-xs text-zinc-500">MX</p><p className={`font-medium ${result.mx?.length ? "text-green-700" : "text-red-600"}`}>{result.mx?.length ? "Found" : "Missing"}</p></div>
                 </div>
                 <div className="px-5 py-4">
                   <p className="text-xs font-medium text-zinc-500">PTR Record</p>
-                  <p className={`mt-1 text-sm ${result.ptr?.length ? "text-green-600" : "text-amber-600"}`}>{result.ptr?.length ? "Valid PTR record found" : "No PTR record"}</p>
+                  <p className={`mt-1 text-sm ${result.ptr?.length ? "text-green-700" : "text-amber-700"}`}>{result.ptr?.length ? "Valid PTR record found" : "No PTR record"}</p>
                 </div>
               </>
             ) : null}

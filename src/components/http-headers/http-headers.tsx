@@ -266,7 +266,7 @@ export function HttpHeadersChecker() {
                     </p>
                     <p className="text-xs text-zinc-500 dark:text-zinc-400">{h.why}</p>
                     {!h.present && (
-                      <p className="mt-0.5 text-xs font-medium text-amber-600 dark:text-amber-400">Missing</p>
+                      <p className="mt-0.5 text-xs font-medium text-amber-700 dark:text-amber-400">Missing</p>
                     )}
                   </div>
                 </div>

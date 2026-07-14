@@ -96,16 +96,16 @@ export function SpeedTest() {
   }
 
   function speedColor(mbps: number) {
-    if (mbps > 100) return "text-green-600 dark:text-green-400";
-    if (mbps > 25) return "text-emerald-600 dark:text-emerald-400";
-    if (mbps > 10) return "text-amber-600 dark:text-amber-400";
+    if (mbps > 100) return "text-green-700 dark:text-green-400";
+    if (mbps > 25) return "text-emerald-700 dark:text-emerald-400";
+    if (mbps > 10) return "text-amber-700 dark:text-amber-400";
     return "text-red-600 dark:text-red-400";
   }
 
   function pingColor(ms: number) {
-    if (ms < 30) return "text-green-600 dark:text-green-400";
-    if (ms < 80) return "text-emerald-600 dark:text-emerald-400";
-    if (ms < 150) return "text-amber-600 dark:text-amber-400";
+    if (ms < 30) return "text-green-700 dark:text-green-400";
+    if (ms < 80) return "text-emerald-700 dark:text-emerald-400";
+    if (ms < 150) return "text-amber-700 dark:text-amber-400";
     return "text-red-600 dark:text-red-400";
   }
 

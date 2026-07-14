@@ -219,7 +219,7 @@ export function CompressPdf() {
                       <div key={entry.id} className="flex items-center justify-between px-4 py-2 text-sm">
                         <span className="truncate text-zinc-700 dark:text-zinc-300">{entry.file.name}</span>
                         <span className="ml-4 shrink-0 text-zinc-500">
-                          {(entry.file.size / 1024).toFixed(1)} KB → <span className="font-medium text-green-600 dark:text-green-400">~{(est / 1024).toFixed(1)} KB</span>
+                          {(entry.file.size / 1024).toFixed(1)} KB → <span className="font-medium text-green-700 dark:text-green-400">~{(est / 1024).toFixed(1)} KB</span>
                         </span>
                       </div>
                     );
@@ -268,7 +268,7 @@ export function CompressPdf() {
                 <p className="mt-0.5 text-sm text-zinc-700 dark:text-zinc-300">
                   {files.length} file{files.length > 1 ? "s" : ""} compressed
                   {totalOriginal > 0 && (
-                    <span className="ml-2 text-green-600 dark:text-green-400">
+                    <span className="ml-2 text-green-700 dark:text-green-400">
                       ({(totalOriginal / 1024 / 1024).toFixed(2)} MB → {(totalCompressed / 1024 / 1024).toFixed(2)} MB, {Math.round((1 - totalCompressed / totalOriginal) * 100)}% reduction)
                     </span>
                   )}

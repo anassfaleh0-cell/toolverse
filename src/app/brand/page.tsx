@@ -132,7 +132,7 @@ export default function BrandPage() {
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             {dosAndDonts.map((item, i) => (
               <div key={i} className="rounded-2xl border border-border-subtle bg-surface p-6">
-                <p className="text-sm"><span className="font-semibold text-emerald-600 dark:text-emerald-400">Do:</span> <span className="text-text-secondary">{item.do}</span></p>
+                <p className="text-sm"><span className="font-semibold text-emerald-700 dark:text-emerald-400">Do:</span> <span className="text-text-secondary">{item.do}</span></p>
                 <p className="mt-2 text-sm"><span className="font-semibold text-red-600 dark:text-red-400">Don&rsquo;t:</span> <span className="text-text-secondary">{item.dont}</span></p>
               </div>
             ))}

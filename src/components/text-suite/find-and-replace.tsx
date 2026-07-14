@@ -77,7 +77,7 @@ export function FindAndReplace() {
       </div>
 
       {result.count > 0 && (
-        <p className="text-sm text-emerald-600 dark:text-emerald-400">
+        <p className="text-sm text-emerald-700 dark:text-emerald-400">
           {result.count} replacement{result.count !== 1 ? "s" : ""} made
         </p>
       )}

@@ -18,7 +18,7 @@ function tokenizeLine(line: string) {
       tokens.push({ text: m[1], className: "text-blue-600 dark:text-blue-400" });
       tokens.push({ text: m[2] });
     } else if (m[3]) {
-      tokens.push({ text: m[3], className: "text-green-600 dark:text-green-400" });
+      tokens.push({ text: m[3], className: "text-green-700 dark:text-green-400" });
     } else if (m[4]) {
       tokens.push({ text: m[4], className: "text-orange-600 dark:text-orange-400" });
     } else if (m[5]) {

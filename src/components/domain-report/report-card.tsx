@@ -27,9 +27,9 @@ interface ReportResult {
 }
 
 const GRADE_META: Record<Grade, { label: string; desc: string; border: string; text: string; glow: string }> = {
-  S: { label: "S", desc: "Exceptional", border: "border-emerald-400", text: "text-emerald-600 dark:text-emerald-400", glow: "shadow-emerald-500/25" },
-  A: { label: "A", desc: "Excellent", border: "border-green-400", text: "text-green-600 dark:text-green-400", glow: "shadow-green-500/25" },
-  B: { label: "B", desc: "Good", border: "border-amber-400", text: "text-amber-600 dark:text-amber-400", glow: "shadow-amber-500/25" },
+  S: { label: "S", desc: "Exceptional", border: "border-emerald-400", text: "text-emerald-700 dark:text-emerald-400", glow: "shadow-emerald-500/25" },
+  A: { label: "A", desc: "Excellent", border: "border-green-400", text: "text-green-700 dark:text-green-400", glow: "shadow-green-500/25" },
+  B: { label: "B", desc: "Good", border: "border-amber-400", text: "text-amber-700 dark:text-amber-400", glow: "shadow-amber-500/25" },
   C: { label: "C", desc: "Fair", border: "border-orange-400", text: "text-orange-600 dark:text-orange-400", glow: "shadow-orange-500/25" },
   D: { label: "D", desc: "Poor", border: "border-red-400", text: "text-red-500 dark:text-red-400", glow: "shadow-red-500/25" },
   F: { label: "F", desc: "Failing", border: "border-red-600", text: "text-red-600 dark:text-red-400", glow: "shadow-red-600/30" },
@@ -300,7 +300,7 @@ export function DomainReportCard() {
                 <div className="mt-3">
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-zinc-500">Score</span>
-                    <span className={cn("font-bold", cat.score >= 80 ? "text-emerald-600 dark:text-emerald-400" : cat.score >= 40 ? "text-amber-600 dark:text-amber-400" : "text-red-600 dark:text-red-400")}>{cat.score}%</span>
+                    <span className={cn("font-bold", cat.score >= 80 ? "text-emerald-700 dark:text-emerald-400" : cat.score >= 40 ? "text-amber-700 dark:text-amber-400" : "text-red-600 dark:text-red-400")}>{cat.score}%</span>
                   </div>
                   <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-700">
                     <div className={cn("h-full rounded-full transition-all duration-700", cat.score >= 80 ? "bg-emerald-500" : cat.score >= 40 ? "bg-amber-500" : "bg-red-500")} style={{ width: `${cat.score}%` }} />

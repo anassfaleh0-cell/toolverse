@@ -172,7 +172,7 @@ export function BodyFatCalculator() {
               </div>
               <div className="rounded-lg bg-zinc-50 p-4 dark:bg-zinc-900">
                 <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Lean Mass</p>
-                <p className="mt-1 text-xl font-bold text-emerald-600 dark:text-emerald-400">{result.leanMass.toFixed(1)} kg</p>
+                <p className="mt-1 text-xl font-bold text-emerald-700 dark:text-emerald-400">{result.leanMass.toFixed(1)} kg</p>
               </div>
             </div>
           </Card>

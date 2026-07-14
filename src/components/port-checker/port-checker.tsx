@@ -144,12 +144,12 @@ export function PortChecker() {
 
           {openPorts.length > 0 && (
             <div>
-              <h3 className="mb-3 text-sm font-semibold text-green-600 dark:text-green-400">Open Ports</h3>
+              <h3 className="mb-3 text-sm font-semibold text-green-700 dark:text-green-400">Open Ports</h3>
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
                 {openPorts.map((p) => (
                   <div key={p.port} className="rounded-xl border border-green-200 bg-green-50 p-4 dark:border-green-900 dark:bg-green-950">
                     <p className="text-lg font-bold text-green-700 dark:text-green-300">{p.port}</p>
-                    <p className="text-xs text-green-600 dark:text-green-400">{p.service}</p>
+                    <p className="text-xs text-green-700 dark:text-green-400">{p.service}</p>
                     <p className="mt-1 text-xs text-green-500">{p.responseTime}ms</p>
                   </div>
                 ))}
@@ -159,7 +159,7 @@ export function PortChecker() {
 
           {filteredPorts.length > 0 && (
             <div>
-              <h3 className="mb-3 text-sm font-semibold text-amber-600 dark:text-amber-400">Filtered Ports</h3>
+              <h3 className="mb-3 text-sm font-semibold text-amber-700 dark:text-amber-400">Filtered Ports</h3>
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
                 {filteredPorts.map((p) => (
                   <div key={p.port} className="rounded-xl border border-zinc-200 p-4 dark:border-zinc-800">

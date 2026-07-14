@@ -73,7 +73,7 @@ const typePrefix: Record<DiffLineType, string> = {
 
 const typePrefixColor: Record<DiffLineType, string> = {
   unchanged: "text-zinc-400 dark:text-zinc-600",
-  added: "text-green-600 dark:text-green-400",
+  added: "text-green-700 dark:text-green-400",
   removed: "text-red-600 dark:text-red-400",
 };
 

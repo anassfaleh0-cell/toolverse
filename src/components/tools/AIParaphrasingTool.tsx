@@ -723,7 +723,7 @@ export function ParaphrasingTool() {
                 <div className="text-xs text-zinc-500">Paraphrased Words</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">{changes}</div>
+                <div className="text-2xl font-bold text-emerald-700 dark:text-emerald-400">{changes}</div>
                 <div className="text-xs text-zinc-500">Changes Made</div>
               </div>
               <div>

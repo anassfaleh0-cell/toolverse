@@ -32,9 +32,9 @@ function getStrengthColor(score: number): string {
 
 function getStrengthTextColor(score: number): string {
   if (score < 30) return "text-red-600 dark:text-red-400";
-  if (score < 60) return "text-amber-600 dark:text-amber-400";
-  if (score < 80) return "text-green-600 dark:text-green-400";
-  return "text-emerald-600 dark:text-emerald-400";
+  if (score < 60) return "text-amber-700 dark:text-amber-400";
+  if (score < 80) return "text-green-700 dark:text-green-400";
+  return "text-emerald-700 dark:text-emerald-400";
 }
 
 function computeStrength(password: string): number {

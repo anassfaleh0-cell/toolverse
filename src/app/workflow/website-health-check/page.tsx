@@ -174,7 +174,7 @@ export default function WebsiteHealthCheckPage() {
               <p className="text-emerald-700 dark:text-emerald-300 font-semibold">
                 All checks passed for {finalDomain}
               </p>
-              <p className="mt-1 text-xs text-emerald-600 dark:text-emerald-400">
+              <p className="mt-1 text-xs text-emerald-700 dark:text-emerald-400">
                 Your website is properly configured across all diagnostic categories.
               </p>
             </div>

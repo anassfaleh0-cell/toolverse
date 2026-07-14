@@ -22,9 +22,9 @@ interface PingResult {
 function getLatencyQuality(avg: number, loss: number): { label: string; color: string; description: string } {
   if (loss >= 50) return { label: "Poor", color: "text-red-600 dark:text-red-400", description: "High packet loss indicates network congestion or a failing link." };
   if (avg > 200) return { label: "Poor", color: "text-red-600 dark:text-red-400", description: "High latency suitable only for asynchronous tasks like email." };
-  if (avg > 100) return { label: "Fair", color: "text-amber-600 dark:text-amber-400", description: "Noticeable lag for real-time applications. Gaming and VoIP may suffer." };
-  if (avg > 50) return { label: "Good", color: "text-emerald-600 dark:text-emerald-400", description: "Suitable for most applications including video calls and streaming." };
-  return { label: "Excellent", color: "text-emerald-600 dark:text-emerald-400", description: "Ideal for competitive gaming, real-time collaboration, and VoIP." };
+  if (avg > 100) return { label: "Fair", color: "text-amber-700 dark:text-amber-400", description: "Noticeable lag for real-time applications. Gaming and VoIP may suffer." };
+  if (avg > 50) return { label: "Good", color: "text-emerald-700 dark:text-emerald-400", description: "Suitable for most applications including video calls and streaming." };
+  return { label: "Excellent", color: "text-emerald-700 dark:text-emerald-400", description: "Ideal for competitive gaming, real-time collaboration, and VoIP." };
 }
 
 function getJitterQuality(jitter: number): string {
@@ -153,9 +153,9 @@ export function PingTest() {
             <Card variant="default" className="p-4">
               <p className="text-xs text-zinc-500 dark:text-zinc-400">Packet Loss</p>
               <p className={`mt-1 text-sm font-semibold ${
-                result.packetLoss === 0 ? "text-green-600 dark:text-green-400" :
+                result.packetLoss === 0 ? "text-green-700 dark:text-green-400" :
                 result.packetLoss >= 50 ? "text-red-600 dark:text-red-400" :
-                "text-amber-600 dark:text-amber-400"
+                "text-amber-700 dark:text-amber-400"
               }`}>
                 {result.packetLoss}%
               </p>

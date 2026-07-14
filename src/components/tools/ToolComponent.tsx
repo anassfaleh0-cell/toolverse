@@ -42,7 +42,7 @@ function FieldRenderer({
           aria-label={field.label}
         />
         {value && value.startsWith("data:") && (
-          <p className="mt-1 text-xs text-green-600 dark:text-green-400">File loaded ({Math.round(((value.length * 3) / 4 / 1024))} KB)</p>
+          <p className="mt-1 text-xs text-green-700 dark:text-green-400">File loaded ({Math.round(((value.length * 3) / 4 / 1024))} KB)</p>
         )}
         {value === "__error__:File exceeds 20MB limit" && (
           <p className="mt-1 text-xs text-red-600 dark:text-red-400">File exceeds 20MB limit. Please choose a smaller file.</p>

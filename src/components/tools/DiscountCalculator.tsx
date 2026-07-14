@@ -92,7 +92,7 @@ export function DiscountCalculator() {
               </div>
               <div className="rounded-lg bg-zinc-50 p-4 dark:bg-zinc-900">
                 <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Final Price</p>
-                <p className="mt-1 text-xl font-bold text-emerald-600 dark:text-emerald-400">{currency.format(result.finalPrice)}</p>
+                <p className="mt-1 text-xl font-bold text-emerald-700 dark:text-emerald-400">{currency.format(result.finalPrice)}</p>
               </div>
               <div className="rounded-lg bg-zinc-50 p-4 dark:bg-zinc-900">
                 <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Total for {result.qty} items</p>
@@ -100,7 +100,7 @@ export function DiscountCalculator() {
               </div>
               <div className="rounded-lg bg-zinc-50 p-4 dark:bg-zinc-900">
                 <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">You save</p>
-                <p className="mt-1 text-xl font-bold text-green-600 dark:text-green-400">{currency.format(result.savings)}</p>
+                <p className="mt-1 text-xl font-bold text-green-700 dark:text-green-400">{currency.format(result.savings)}</p>
               </div>
             </div>
           </Card>

@@ -26,9 +26,9 @@ function getExpirationStatus(exp: number | undefined): { label: string; color: s
     const hours = Math.floor(remaining / 3600);
     const minutes = Math.floor((remaining % 3600) / 60);
     if (hours > 0) {
-      return { label: `Valid (expires in ${hours}h ${minutes}m)`, color: "text-green-600 dark:text-green-400" };
+      return { label: `Valid (expires in ${hours}h ${minutes}m)`, color: "text-green-700 dark:text-green-400" };
     }
-    return { label: `Valid (expires in ${minutes}m ${remaining % 60}s)`, color: "text-green-600 dark:text-green-400" };
+    return { label: `Valid (expires in ${minutes}m ${remaining % 60}s)`, color: "text-green-700 dark:text-green-400" };
   }
   return { label: "Expired", color: "text-red-600 dark:text-red-400" };
 }

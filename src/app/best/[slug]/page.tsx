@@ -82,9 +82,9 @@ export default async function BestToolsPage({ params }: Props) {
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold text-text-primary">
-                    <span className="text-aurora-600">#{tool.rank}.</span> {tool.name}
+                    <span className="text-aurora-700">#{tool.rank}.</span> {tool.name}
                   </h3>
-                  <p className="mt-1 text-sm font-medium text-aurora-600">Best for: {tool.bestFor}</p>
+                  <p className="mt-1 text-sm font-medium text-aurora-700">Best for: {tool.bestFor}</p>
                   <p className="mt-2 text-text-secondary">{tool.description}</p>
                   {tool.features.length > 0 && (
                     <ul className="mt-3 flex flex-wrap gap-2">

@@ -135,8 +135,8 @@ function LandingPageContent({ slug }: { slug: string }) {
                 const typeColor: Record<string, string> = {
                   guide: "text-blue-600 dark:text-blue-400",
                   article: "text-purple-600 dark:text-purple-400",
-                  comparison: "text-amber-600 dark:text-amber-400",
-                  learn: "text-emerald-600 dark:text-emerald-400",
+                  comparison: "text-amber-700 dark:text-amber-400",
+                  learn: "text-emerald-700 dark:text-emerald-400",
                 };
                 return (
                   <Link

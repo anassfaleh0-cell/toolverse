@@ -106,7 +106,7 @@ export function BrokenLinkChecker() {
         <>
           <div className="flex items-center gap-3 text-sm">
             <span className="text-zinc-600 dark:text-zinc-400">Total: {results.length}</span>
-            <span className="text-emerald-600 dark:text-emerald-400">OK: {results.length - brokenCount - blockedCount}</span>
+            <span className="text-emerald-700 dark:text-emerald-400">OK: {results.length - brokenCount - blockedCount}</span>
             {brokenCount > 0 && <span className="text-red-600 dark:text-red-400">Broken: {brokenCount}</span>}
             {blockedCount > 0 && <span className="text-zinc-500">CORS blocked: {blockedCount}</span>}
           </div>

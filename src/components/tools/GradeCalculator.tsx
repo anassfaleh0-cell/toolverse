@@ -90,7 +90,7 @@ export function GradeCalculator() {
               </div>
               <div className="rounded-lg bg-zinc-50 p-4 text-center dark:bg-zinc-900">
                 <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">GPA</p>
-                <p className="mt-1 text-2xl font-bold text-emerald-600 dark:text-emerald-400">{result.gpa.toFixed(1)}</p>
+                <p className="mt-1 text-2xl font-bold text-emerald-700 dark:text-emerald-400">{result.gpa.toFixed(1)}</p>
               </div>
             </div>
           </Card>

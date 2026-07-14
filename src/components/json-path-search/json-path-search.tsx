@@ -248,7 +248,7 @@ export function JsonPathSearch() {
                   seg.type === "object"
                     ? "text-blue-600 dark:text-blue-400"
                     : seg.type === "array"
-                      ? "text-amber-600 dark:text-amber-400"
+                      ? "text-amber-700 dark:text-amber-400"
                       : "text-zinc-700 dark:text-zinc-300"
                 }`}
               >

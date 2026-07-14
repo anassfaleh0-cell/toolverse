@@ -61,7 +61,7 @@ export default async function VsPage({ params }: Props) {
   };
 
   const winnerBadge = (winner: 1 | 2 | "tie") => {
-    if (winner === "tie") return "text-amber-600 dark:text-amber-400";
+    if (winner === "tie") return "text-amber-700 dark:text-amber-400";
     return "text-nuvora-600 dark:text-nuvora-400";
   };
 

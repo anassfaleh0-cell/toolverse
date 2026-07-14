@@ -117,7 +117,7 @@ export function SpfGenerator() {
       {warnings.length > 0 && (
         <div className="space-y-1.5">
           {warnings.map((w, i) => (
-            <div key={i} className={`flex items-start gap-2 text-xs ${w.type === "error" ? "text-red-600 dark:text-red-400" : w.type === "warning" ? "text-amber-600 dark:text-amber-400" : "text-blue-600 dark:text-blue-400"}`}>
+            <div key={i} className={`flex items-start gap-2 text-xs ${w.type === "error" ? "text-red-600 dark:text-red-400" : w.type === "warning" ? "text-amber-700 dark:text-amber-400" : "text-blue-600 dark:text-blue-400"}`}>
               <Icon
                 name={w.type === "error" ? "XCircle" : w.type === "warning" ? "AlertTriangle" : "Info"}
                 className="size-4 shrink-0 mt-0.5"

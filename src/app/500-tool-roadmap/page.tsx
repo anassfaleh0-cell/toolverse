@@ -519,7 +519,7 @@ export default function FiveHundredToolRoadmapPage() {
               <p className="text-xs text-zinc-500 dark:text-zinc-400">Total Planned</p>
             </div>
             <div className="rounded-lg bg-zinc-50 p-3 text-center dark:bg-zinc-800">
-              <p className="text-2xl font-bold text-green-600 dark:text-green-400">{totalCurrent}</p>
+              <p className="text-2xl font-bold text-green-700 dark:text-green-400">{totalCurrent}</p>
               <p className="text-xs text-zinc-500 dark:text-zinc-400">Currently Live</p>
             </div>
             <div className="rounded-lg bg-zinc-50 p-3 text-center dark:bg-zinc-800">
