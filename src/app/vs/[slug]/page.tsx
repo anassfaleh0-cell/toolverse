@@ -11,7 +11,7 @@ import { SITE_URL } from "@/lib/constants";
 type Props = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
-  return getVsSlugs().map(p => ({ slug: p.slug }));
+  return getVsSlugs().slice(0, 500).map(p => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -33,7 +33,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export const dynamicParams = false;
+export const dynamicParams = true;
+export const revalidate = 86400;
 
 export default async function VsPage({ params }: Props) {
   const { slug } = await params;
