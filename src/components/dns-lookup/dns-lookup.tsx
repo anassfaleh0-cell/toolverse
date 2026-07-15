@@ -435,12 +435,12 @@ export function DnsLookup() {
                   onClick={() => setFilterType(null)}
                   className={`rounded-md px-2 py-0.5 text-xs font-medium transition-colors ${
                     filterType === null
-                      ? "bg-zinc-800 text-white dark:bg-zinc-200 dark:text-zinc-400"
+                      ? "bg-zinc-800 text-white dark:bg-zinc-200 dark:text-zinc-800"
                       : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700"
-                  }`}
-                >
-                  All
-                </button>
+                    }`}
+                  >
+                    All
+                  </button>
                 {allTypes.map((t) => (
                   <button
                     key={t}
@@ -448,7 +448,7 @@ export function DnsLookup() {
                     onClick={() => setFilterType(t)}
                     className={`rounded-md px-2 py-0.5 text-xs font-medium transition-colors ${
                       filterType === t
-                        ? "bg-zinc-800 text-white dark:bg-zinc-200 dark:text-zinc-400"
+                        ? "bg-zinc-800 text-white dark:bg-zinc-200 dark:text-zinc-800"
                         : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700"
                     }`}
                   >

@@ -74,7 +74,7 @@ export function ScoreGauge({ score, max = 100, size = 80, label }: ScoreGaugePro
           {Math.round(pct * 100)}
         </text>
       </svg>
-      {label && <p className="mt-1 text-xs text-zinc-500">{label}</p>}
+      {label && <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">{label}</p>}
     </div>
   );
 }
@@ -124,7 +124,7 @@ export function RiskMeter({ level, label }: RiskLevelProps) {
   return (
     <div className="space-y-1">
       <div className="flex items-center justify-between text-xs">
-        <span className="font-medium text-zinc-500">Risk Level</span>
+        <span className="font-medium text-zinc-500 dark:text-zinc-400">Risk Level</span>
         <span className={`font-semibold ${cfg.text}`}>{label || level.charAt(0).toUpperCase() + level.slice(1)}</span>
       </div>
       <div className="h-1.5 w-full overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-700">
@@ -158,7 +158,7 @@ export function DashboardSummary({ title, status, mainFinding, riskLevel, riskLa
           </div>
         </div>
         {timestamp && (
-          <p className="shrink-0 text-xs text-zinc-500">Updated {new Date(timestamp).toLocaleString()}</p>
+          <p className="shrink-0 text-xs text-zinc-500 dark:text-zinc-400">Updated {new Date(timestamp).toLocaleString()}</p>
         )}
       </div>
       <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -166,7 +166,7 @@ export function DashboardSummary({ title, status, mainFinding, riskLevel, riskLa
         {children}
       </div>
       {nextAction && (
-        <p className="mt-3 text-xs text-zinc-500">
+        <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-400">
           <span className="font-medium">Next:</span> {nextAction}
         </p>
       )}
@@ -241,14 +241,14 @@ export function CompositeScore({ overall, subScores, size = 72 }: CompositeScore
           <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke={color} strokeWidth={6} strokeDasharray={circ} strokeDashoffset={offset} strokeLinecap="round" transform={`rotate(-90 ${size / 2} ${size / 2})`} className="transition-all duration-700" />
           <text x={size / 2} y={size / 2} textAnchor="middle" dominantBaseline="central" className="fill-zinc-900 text-base font-bold dark:fill-zinc-50">{overall}</text>
         </svg>
-        <p className="mt-0.5 text-[10px] text-zinc-500">Overall</p>
+        <p className="mt-0.5 text-[10px] text-zinc-500 dark:text-zinc-400">Overall</p>
       </div>
       <div className="flex-1 space-y-1.5">
         {subScores.map((s, i) => {
           const spct = Math.min(s.score / (s.max ?? 100), 1);
           return (
             <div key={s.label} className="flex items-center gap-2 text-xs">
-              <span className="w-20 shrink-0 text-zinc-500">{s.label}</span>
+              <span className="w-20 shrink-0 text-zinc-500 dark:text-zinc-400">{s.label}</span>
               <div className="flex-1 h-1.5 rounded-full bg-zinc-200 dark:bg-zinc-700">
                 <div className={`h-full rounded-full transition-all duration-500 ${subColors[i % subColors.length]}`} style={{ width: `${spct * 100}%` }} />
               </div>
@@ -279,7 +279,7 @@ export function Timeline({ events }: { events: TimelineEvent[] }) {
           </div>
           <div className={`pb-4 ${i === events.length - 1 ? "pb-0" : ""}`}>
             <p className="text-xs font-medium text-zinc-900 dark:text-zinc-50">{e.label}</p>
-            <p className="text-xs text-zinc-500">{e.date}</p>
+            <p className="text-xs text-zinc-500 dark:text-zinc-400">{e.date}</p>
           </div>
         </div>
       ))}
@@ -294,7 +294,7 @@ export function ExpiryBar({ daysRemaining, totalDays = 365 }: { daysRemaining: n
   return (
     <div className="space-y-1">
       <div className="flex items-center justify-between text-xs">
-        <span className="text-zinc-500">Expiry</span>
+        <span className="text-zinc-500 dark:text-zinc-400">Expiry</span>
         <span className={`font-semibold ${textColor}`}>{daysRemaining > 0 ? `${daysRemaining}d remaining` : "Expired"}</span>
       </div>
       <div className="h-2 w-full overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-700">
