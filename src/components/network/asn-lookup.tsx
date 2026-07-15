@@ -46,8 +46,8 @@ export function AsnLookup() {
     <div className="mx-auto max-w-3xl space-y-5">
       <div className="flex flex-col gap-3 sm:flex-row">
         <div className="flex-1">
-          <label className="mb-1 block text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">IP Address</label>
-          <Input type="text" value={ip} onChange={(e) => setIp(e.target.value)} placeholder="8.8.8.8" onKeyDown={(e) => { if (e.key === "Enter") handleLookup(); }} />
+          <label htmlFor="asn-ip" className="mb-1 block text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">IP Address</label>
+          <Input id="asn-ip" type="text" value={ip} onChange={(e) => setIp(e.target.value)} placeholder="8.8.8.8" onKeyDown={(e) => { if (e.key === "Enter") handleLookup(); }} />
         </div>
         <div className="flex items-end">
           <Button onClick={handleLookup} disabled={loading || !ip.trim()}>{loading ? "Looking up..." : "Lookup"}</Button>

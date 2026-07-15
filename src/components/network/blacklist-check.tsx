@@ -59,8 +59,8 @@ export function BlacklistCheck() {
     <div className="mx-auto max-w-3xl space-y-5">
       <div className="flex flex-col gap-3 sm:flex-row">
         <div className="flex-1">
-          <label className="mb-1 block text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">IP Address</label>
-          <Input type="text" value={ip} onChange={(e) => setIp(e.target.value)} placeholder="192.168.1.1" onKeyDown={(e) => { if (e.key === "Enter") handleCheck(); }} />
+          <label htmlFor="bl-ip" className="mb-1 block text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">IP Address</label>
+          <Input id="bl-ip" type="text" value={ip} onChange={(e) => setIp(e.target.value)} placeholder="192.168.1.1" onKeyDown={(e) => { if (e.key === "Enter") handleCheck(); }} />
         </div>
         <div className="flex items-end">
           <Button onClick={handleCheck} disabled={loading || !ip.trim()}>{loading ? "Checking..." : "Check Blacklists"}</Button>

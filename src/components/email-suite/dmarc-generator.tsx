@@ -144,13 +144,13 @@ export function DmarcGenerator() {
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Aggregate Reports (rua)</label>
-          <Input type="email" value={rua} onChange={(e) => setRua(e.target.value)} placeholder="dmarc-reports@example.com" />
+          <label htmlFor="dmarc-rua" className="mb-1 block text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Aggregate Reports (rua)</label>
+          <Input id="dmarc-rua" type="email" value={rua} onChange={(e) => setRua(e.target.value)} placeholder="dmarc-reports@example.com" />
           <p className="mt-1 text-[11px] text-zinc-600 dark:text-zinc-300">Receives daily XML reports</p>
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Forensic Reports (ruf)</label>
-          <Input type="email" value={ruf} onChange={(e) => setRuf(e.target.value)} placeholder="forensic@example.com" />
+          <label htmlFor="dmarc-ruf" className="mb-1 block text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Forensic Reports (ruf)</label>
+          <Input id="dmarc-ruf" type="email" value={ruf} onChange={(e) => setRuf(e.target.value)} placeholder="forensic@example.com" />
           <p className="mt-1 text-[11px] text-zinc-600 dark:text-zinc-300">Receives per-failure details</p>
         </div>
       </div>

@@ -124,8 +124,8 @@ export function WatermarkImage() {
 
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
               <div>
-                <label className="mb-1 block text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Text</label>
-                <Input value={text} onChange={(e) => setText(e.target.value)} placeholder="Watermark text" />
+                <label htmlFor="wm-text" className="mb-1 block text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Text</label>
+                <Input id="wm-text" value={text} onChange={(e) => setText(e.target.value)} placeholder="Watermark text" />
               </div>
               <div>
                 <label className="mb-1 block text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Opacity</label>
@@ -142,8 +142,8 @@ export function WatermarkImage() {
                 </select>
               </div>
               <div>
-                <label className="mb-1 block text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Color</label>
-                <Input type="color" value={color} onChange={(e) => setColor(e.target.value)} className="h-12" />
+                <label htmlFor="wm-color" className="mb-1 block text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Color</label>
+                <Input id="wm-color" type="color" value={color} onChange={(e) => setColor(e.target.value)} className="h-12" />
               </div>
             </div>
 

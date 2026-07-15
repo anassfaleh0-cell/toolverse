@@ -88,7 +88,7 @@ export function GlobalSearch() {
 
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center pt-[15vh]">
-      <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setOpen(false)} />
+      <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setOpen(false)} role="presentation" onKeyDown={(e) => { if (e.key === "Escape") setOpen(false); }} />
       <div className="relative z-10 w-full max-w-xl rounded-2xl border border-border-subtle bg-surface shadow-2xl">
         <div className="flex items-center gap-3 border-b border-border-subtle px-4">
           <Icon name="Search" className="size-5 shrink-0 text-text-tertiary" />

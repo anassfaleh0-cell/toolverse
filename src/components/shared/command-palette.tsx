@@ -217,7 +217,7 @@ export function CommandPalette() {
   const trending = getTrendingSearches();
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/50 pt-[15vh]" onClick={() => setOpen(false)}>
+    <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/50 pt-[15vh]" onClick={() => setOpen(false)} role="presentation" onKeyDown={(e) => { if (e.key === "Escape") setOpen(false); }}>
       <div
         className="w-full max-w-2xl overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-2xl dark:border-zinc-700 dark:bg-zinc-900"
         onClick={(e) => e.stopPropagation()}
