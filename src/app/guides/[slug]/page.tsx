@@ -17,10 +17,12 @@ function formatLabel(text: string): string {
   return text.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
+export const dynamicParams = true;
+
 export function generateStaticParams() {
   const howTo = getHowToSlugs().map((p) => ({ slug: p.slug }));
   const content = getGuides().map((g) => ({ slug: g.slug }));
-  return [...howTo, ...content];
+  return [...howTo, ...content].slice(0, 500);
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

@@ -6,8 +6,11 @@ import { ContentPage } from "@/components/shared/content-page";
 
 type Props = { params: Promise<{ slug: string }> };
 
+export const dynamicParams = true;
+export const revalidate = 86400;
+
 export async function generateStaticParams() {
-  return getAllContent().filter((c) => c.type === "use-cases").map((c) => ({ slug: c.slug }));
+  return getAllContent().filter((c) => c.type === "use-cases").slice(0, 500).map((c) => ({ slug: c.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

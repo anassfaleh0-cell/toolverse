@@ -26,7 +26,8 @@ const TYPE_ROUTE: Record<string, string> = {
   "use-cases": "use-cases",
 };
 
-export const dynamicParams = false;
+export const dynamicParams = true;
+export const revalidate = 86400;
 
 export function generateStaticParams() {
   const landingSlugs = getAllLandingSlugs();

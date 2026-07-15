@@ -6,7 +6,8 @@ import { getTag, getAllTagSlugs, getToolsForTag } from "@/lib/seo/tags";
 import { JsonLd, Breadcrumbs } from "@/components/shared";
 import { webPageSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
 
-export const dynamicParams = false;
+export const dynamicParams = true;
+export const revalidate = 86400;
 
 export function generateStaticParams() {
   return getAllTagSlugs().map((slug) => ({ slug }));
