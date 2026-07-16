@@ -1844,6 +1844,7 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "speed-test": {
     fields: [],
     buttonText: "Start Test",
+    isComingSoon: true,
   },
   "spf-lookup": {
     fields: [{ name: "input", type: "text", label: "Domain name", placeholder: "example.com" }],
@@ -2029,14 +2030,17 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "html-minifier": {
     fields: [{ name: "input", type: "textarea", label: "HTML code", placeholder: "<html>\n<body>\n  <p>Hello</p>\n</body>\n</html>" }],
     buttonText: "Minify",
+    isComingSoon: true,
   },
   "css-minifier": {
     fields: [{ name: "input", type: "textarea", label: "CSS code", placeholder: "body {\n  color: red;\n}" }],
     buttonText: "Minify",
+    isComingSoon: true,
   },
   "js-minifier": {
     fields: [{ name: "input", type: "textarea", label: "JavaScript code", placeholder: "function hello() {\n  return 'world';\n}" }],
     buttonText: "Minify",
+    isComingSoon: true,
   },
   "number-base-converter": {
     fields: [
@@ -2148,10 +2152,12 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "css-prefixer": {
     fields: [{ name: "input", type: "textarea", label: "CSS code", placeholder: ".box { display: flex; }" }],
     buttonText: "Add Prefixes",
+    isComingSoon: true,
   },
   "js-beautifier": {
     fields: [{ name: "input", type: "textarea", label: "JavaScript code", placeholder: "function test(){return 1;}" }],
     buttonText: "Beautify JS",
+    isComingSoon: true,
   },
   "json-to-typescript": {
     fields: [{ name: "input", type: "textarea", label: "JSON object", placeholder: '{\n  "name": "John",\n  "age": 30\n}' }],
@@ -2345,6 +2351,7 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "html-to-markdown": {
     fields: [{ name: "input", type: "textarea", label: "HTML", placeholder: "<h1>Hello</h1><p>This is <strong>bold</strong> text.</p>" }],
     buttonText: "Convert to Markdown",
+    isComingSoon: true,
   },
   "rgb-to-hex": {
     fields: [
@@ -2413,6 +2420,7 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "sql-formatter": {
     fields: [{ name: "input", type: "textarea", label: "SQL query", placeholder: "SELECT * FROM users WHERE id = 1" }],
     buttonText: "Format SQL",
+    isComingSoon: true,
   },
   "json-path-search": {
     fields: [
@@ -2704,6 +2712,7 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "qr-code-generator": {
     fields: [{ name: "input", type: "text", label: "Text or URL", placeholder: "https://example.com" }],
     buttonText: "Generate QR Code",
+    isComingSoon: true,
   },
   "css-gradient-generator": {
     fields: [
@@ -3169,6 +3178,7 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "text2", type: "textarea", label: "Modified text", placeholder: "Second version of text..." },
     ],
     buttonText: "Compare",
+    isComingSoon: true,
   },
   "random-number-generator": {
     fields: [
@@ -3495,6 +3505,7 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "data-breach-checker": {
     fields: [{ name: "input", type: "text", label: "Email address", placeholder: "user@example.com" }],
     buttonText: "Check Breaches",
+    isComingSoon: true,
   },
   "ssl-expiry-checker": {
     fields: [{ name: "input", type: "text", label: "Domain name", placeholder: "example.com" }],
@@ -3504,6 +3515,7 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "xss-scanner": {
     fields: [{ name: "input", type: "textarea", label: "HTML or URL to scan", placeholder: "<script>alert('xss')</script>" }],
     buttonText: "Scan",
+    isComingSoon: true,
   },
   "cors-checker": {
     fields: [{ name: "input", type: "text", label: "URL to test", placeholder: "https://api.example.com" }],
