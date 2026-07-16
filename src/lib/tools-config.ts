@@ -2085,10 +2085,33 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "xml-formatter": {
     fields: [{ name: "input", type: "textarea", label: "XML input", placeholder: "<root><item>value</item></root>" }],
     buttonText: "Format XML",
+    process: (v) => {
+      const t = (v.input || "").trim();
+      if (!t) return { error: "Enter XML to format" };
+      if (typeof DOMParser === "undefined") return { error: "XML formatting requires a browser environment" };
+      try {
+        const doc = new DOMParser().parseFromString(t, "text/xml");
+        const serializer = new XMLSerializer();
+        const formatted = serializer.serializeToString(doc);
+        const pretty = (xml: string) => { let indent = 0; return xml.replace(/(<\/?[^>]+>)/g, (m) => { if (m.startsWith("</")) indent--; const r = "\n" + "  ".repeat(Math.max(0, indent)) + m; if (m.startsWith("<") && !m.startsWith("</") && !m.endsWith("/>")) indent++; return r; }).trim(); };
+        return { formatted: pretty(formatted), original: t };
+      } catch { return { error: "Invalid XML — check that it is well-formed" }; }
+    },
   },
   "csv-formatter": {
     fields: [{ name: "input", type: "textarea", label: "CSV data", placeholder: "name,email\nJohn,john@example.com" }],
     buttonText: "Format CSV",
+    process: (v) => {
+      const t = v.input || "";
+      const rows = t.split("\n").map(r => r.split(",").map(c => c.trim()));
+      if (rows.length === 0 || rows[0].length === 0) return { error: "Enter CSV data" };
+      const colWidths = rows[0].map((_, ci) => Math.max(...rows.map(r => (r[ci] || "").length)));
+      const pad = (s: string, w: number) => s + " ".repeat(Math.max(0, w - s.length));
+      const aligned = rows.map(r => r.map((c, i) => pad(c, colWidths[i])).join(" | "));
+      const separator = colWidths.map(w => "-".repeat(w)).join(" | ");
+      const table = [aligned[0], separator, ...aligned.slice(1)].join("\n");
+      return { formatted: table, rows: rows.length, cols: rows[0].length };
+    },
   },
   "css-prefixer": {
     fields: [{ name: "input", type: "textarea", label: "CSS code", placeholder: ".box { display: flex; }" }],
@@ -2101,6 +2124,32 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "json-to-typescript": {
     fields: [{ name: "input", type: "textarea", label: "JSON object", placeholder: '{\n  "name": "John",\n  "age": 30\n}' }],
     buttonText: "Convert to TypeScript",
+    process: (v) => {
+      const t = v.input?.trim() || "";
+      if (!t) return { error: "Enter JSON to convert" };
+      try {
+        const parsed = JSON.parse(t);
+        const toTS = (obj: unknown, name = "Root"): string => {
+          if (obj === null) return "null";
+          if (Array.isArray(obj)) {
+            if (obj.length === 0) return "unknown[]";
+            const itemType = toTS(obj[0]);
+            return `${itemType}[]`;
+          }
+          if (typeof obj === "object") {
+            const entries = Object.entries(obj as Record<string, unknown>);
+            const fields = entries.map(([k, v2]) => `  ${k.replace(/[^a-zA-Z0-9_]/g, "_")}: ${toTS(v2)};`).join("\n");
+            return `{\n${fields}\n}`;
+          }
+          if (typeof obj === "string") return "string";
+          if (typeof obj === "number") return "number";
+          if (typeof obj === "boolean") return "boolean";
+          return "unknown";
+        };
+        const interface_ = `interface ${name} ${toTS(parsed)}`;
+        return { "TypeScript Interface": interface_, original: t };
+      } catch { return { error: "Invalid JSON input" }; }
+    },
   },
   "css-selector-tester": {
     fields: [
@@ -2126,10 +2175,43 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "json-to-csv": {
     fields: [{ name: "input", type: "textarea", label: "JSON data", placeholder: '[{"name":"John","age":30}]' }],
     buttonText: "Convert to CSV",
+    process: (v) => {
+      const t = v.input?.trim() || "";
+      if (!t) return { error: "Enter JSON data" };
+      try {
+        const data = JSON.parse(t);
+        const arr = Array.isArray(data) ? data : [data];
+        if (arr.length === 0) return { error: "JSON array is empty" };
+        const keys = [...new Set(arr.flatMap(Object.keys))];
+        const escape = (s: string) => /[,"\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+        const header = keys.join(",");
+        const rows = arr.map(row => keys.map(k => escape(String((row as Record<string, unknown>)[k] ?? ""))).join(","));
+        const csv = [header, ...rows].join("\n");
+        return { csv, rows: arr.length, columns: keys.length };
+      } catch { return { error: "Invalid JSON — expected an array of objects" }; }
+    },
   },
   "csv-to-json": {
     fields: [{ name: "input", type: "textarea", label: "CSV data", placeholder: "name,age\nJohn,30" }],
     buttonText: "Convert to JSON",
+    process: (v) => {
+      const t = v.input?.trim() || "";
+      if (!t) return { error: "Enter CSV data" };
+      try {
+        const lines = t.split("\n").map(l => l.trim()).filter(Boolean);
+        if (lines.length < 2) return { error: "CSV must have a header row and at least one data row" };
+        const headers = lines[0].split(",").map(h => h.trim().replace(/^"(.*)"$/, "$1"));
+        const rows = lines.slice(1).map(l => {
+          const vals: string[] = []; let cur = ""; let inQ = false;
+          for (const c of l) { if (c === '"') inQ = !inQ; else if (c === "," && !inQ) { vals.push(cur.trim()); cur = ""; } else cur += c; }
+          vals.push(cur.trim());
+          const obj: Record<string, string> = {};
+          headers.forEach((h, i) => { obj[h] = vals[i] ? vals[i].replace(/^"(.*)"$/, "$1") : ""; });
+          return obj;
+        });
+        return { json: JSON.stringify(rows, null, 2), count: rows.length };
+      } catch { return { error: "Failed to parse CSV — check formatting" }; }
+    },
   },
   "yaml-to-json": {
     fields: [{ name: "input", type: "textarea", label: "YAML input", placeholder: "name: John\nage: 30" }],
@@ -2138,14 +2220,72 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "json-to-xml": {
     fields: [{ name: "input", type: "textarea", label: "JSON data", placeholder: '{"root": {"item": "value"}}' }],
     buttonText: "Convert to XML",
+    process: (v) => {
+      const t = v.input?.trim() || "";
+      if (!t) return { error: "Enter JSON data" };
+      try {
+        const obj = JSON.parse(t);
+        const toXml = (data: unknown, name = "root"): string => {
+          if (data === null || data === undefined) return "<" + name + "/>";
+          if (Array.isArray(data)) return data.map(item => toXml(item, name)).join("\n");
+          if (typeof data === "object") {
+            const entries = Object.entries(data as Record<string, unknown>);
+            const children = entries.map(([k, v2]) => toXml(v2, k)).join("\n");
+            return "<" + name + ">\n" + children + "\n</" + name + ">";
+          }
+          return "<" + name + ">" + String(data) + "</" + name + ">";
+        };
+        return { xml: toXml(obj), original: t };
+      } catch { return { error: "Invalid JSON" }; }
+    },
   },
   "xml-to-json": {
     fields: [{ name: "input", type: "textarea", label: "XML input", placeholder: "<root><item>value</item></root>" }],
     buttonText: "Convert to JSON",
+    process: (v) => {
+      const t = (v.input || "").trim();
+      if (!t) return { error: "Enter XML data" };
+      if (typeof DOMParser === "undefined") return { error: "XML conversion requires a browser environment" };
+      try {
+        const doc = new DOMParser().parseFromString(t, "text/xml");
+        const parseNode = (node: Element | Document): unknown => {
+          const children = Array.from(node.children);
+          if (children.length === 0) return (node.textContent || "").trim();
+          const obj: Record<string, unknown> = {};
+          for (const child of children) {
+            const key = child.tagName;
+            const val = parseNode(child);
+            if (obj[key] !== undefined) obj[key] = Array.isArray(obj[key]) ? [...(obj[key] as unknown[]), val] : [obj[key], val];
+            else obj[key] = val;
+          }
+          return obj;
+        };
+        const json = parseNode(doc.documentElement || doc);
+        return { json: JSON.stringify(json, null, 2), original: t };
+      } catch { return { error: "Invalid XML — check that it is well-formed" }; }
+    },
   },
   "xml-to-csv": {
     fields: [{ name: "input", type: "textarea", label: "XML input", placeholder: "<records><record><name>John</name></record></records>" }],
     buttonText: "Convert to CSV",
+    process: (v) => {
+      const t = (v.input || "").trim();
+      if (!t) return { error: "Enter XML data" };
+      if (typeof DOMParser === "undefined") return { error: "XML conversion requires a browser environment" };
+      try {
+        const doc = new DOMParser().parseFromString(t, "text/xml");
+        const root = doc.documentElement;
+        if (!root) return { error: "Empty XML document" };
+        const records = Array.from(root.children);
+        if (records.length === 0) return { error: "No child elements found in root" };
+        const keys = [...new Set(records.flatMap(r => Array.from(r.children).map(c => c.tagName)))];
+        const escape = (s: string) => /[,"\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+        const header = keys.join(",");
+        const rows = records.map(r => keys.map(k => escape((r.querySelector(k)?.textContent || "").trim())).join(","));
+        const csv = [header, ...rows].join("\n");
+        return { csv, records: records.length, fields: keys.length };
+      } catch { return { error: "Invalid XML — check that it is well-formed with a repeating child structure" }; }
+    },
   },
   "markdown-to-html": {
     fields: [{ name: "input", type: "textarea", label: "Markdown", placeholder: "# Hello\nThis is **bold** text." }],
@@ -2172,6 +2312,10 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "html-preview": {
     fields: [{ name: "input", type: "textarea", label: "HTML code", placeholder: "<h1>Hello World</h1>\n<p>Type HTML here...</p>" }],
     buttonText: "Preview",
+    process: (v) => {
+      const html = v.input || "";
+      return { html, "characters": html.length, "lines": html.split("\n").length };
+    },
   },
   "markdown-preview": {
     fields: [{ name: "input", type: "textarea", label: "Markdown", placeholder: "# Hello\nType markdown here..." }],
@@ -2187,6 +2331,41 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "path", type: "text", label: "JSONPath expression", placeholder: "$.store.book[*].title" },
     ],
     buttonText: "Search",
+    process: (v) => {
+      const jsonStr = v.json?.trim() || "";
+      const path = (v.path || "").trim();
+      if (!jsonStr) return { error: "Enter JSON data" };
+      if (!path) return { error: "Enter a JSONPath expression" };
+      try {
+        const data = JSON.parse(jsonStr);
+        const resolve = (obj: unknown, expr: string): unknown[] => {
+          if (!expr.startsWith("$")) return [obj];
+          const parts = expr.replace(/^\$\.?/, "").split(/(?=\.|\[)/);
+          let current: unknown[] = [obj];
+          for (const part of parts) {
+            if (part === "") continue;
+            const next: unknown[] = [];
+            for (const item of current) {
+              if (typeof item !== "object" || item === null) continue;
+              const arrItem = item as Record<string, unknown>;
+              if (part.startsWith("[")) {
+                const match = part.match(/\[(\d+)\]/);
+                if (match) { const idx = parseInt(match[1]); if (Array.isArray(item) && idx < item.length) next.push(item[idx]); }
+                else if (part === "[*]") { if (Array.isArray(item)) next.push(...item); }
+              } else {
+                const key = part.replace(/^\./, "");
+                if (key in arrItem) next.push(arrItem[key]);
+                else if (key === "*" && Array.isArray(item)) next.push(...item);
+              }
+            }
+            current = next;
+          }
+          return current;
+        };
+        const results = resolve(data, path);
+        return { result: results.length > 0 ? results.map(r => typeof r === "object" ? JSON.stringify(r, null, 2) : String(r)).join("\n---\n") : "(no results)", count: results.length, path };
+      } catch (e) { return { error: "Invalid JSON or path expression: " + (e as Error).message }; }
+    },
   },
   "list-randomizer": {
     fields: [{ name: "input", type: "textarea", label: "Items (one per line)", placeholder: "item1\nitem2\nitem3" }],
