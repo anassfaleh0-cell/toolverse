@@ -2592,6 +2592,7 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       ]},
     ],
     buttonText: "Convert",
+    isComingSoon: true,
   },
   "currency-converter": {
     fields: [
