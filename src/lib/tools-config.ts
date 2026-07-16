@@ -2302,12 +2302,42 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "b", type: "number", label: "Blue (0-255)", placeholder: "0" },
     ],
     buttonText: "Convert",
+    process: (v) => {
+      const r = parseInt(v.r); const g = parseInt(v.g); const b = parseInt(v.b);
+      if ([r, g, b].some(n => isNaN(n) || n < 0 || n > 255)) return { error: "Enter valid RGB values (0-255)" };
+      const hex = "#" + [r, g, b].map(x => x.toString(16).padStart(2, "0")).join("");
+      return { HEX: hex, RGB: `rgb(${r}, ${g}, ${b})`, swatch: `background:${hex};width:100%;height:48px;border-radius:8px;border:1px solid #e4e4e7`, R: r, G: g, B: b };
+    },
   },
   "timestamp-converter": {
     fields: [
       { name: "input", type: "text", label: "Unix timestamp or date", placeholder: "1700000000 or 2024-01-01" },
     ],
     buttonText: "Convert",
+    process: (v) => {
+      const t = (v.input || "").trim();
+      if (!t) return { error: "Enter a timestamp or date" };
+      const isNum = /^\d+(\.\d+)?$/.test(t);
+      const ms = isNum ? (t.length === 10 ? parseInt(t) * 1000 : parseInt(t)) : Date.parse(t);
+      if (isNaN(ms)) return { error: "Could not parse input — try a Unix timestamp (e.g. 1700000000) or date (e.g. 2024-01-01)" };
+      const d = new Date(ms);
+      const pad = (n: number) => n.toString().padStart(2, "0");
+      return {
+        "Unix (seconds)": Math.floor(ms / 1000).toString(),
+        "Unix (ms)": ms.toString(),
+        "UTC String": d.toUTCString(),
+        "ISO 8601": d.toISOString(),
+        "Local Date": d.toLocaleDateString(),
+        "Local Time": d.toLocaleTimeString(),
+        "Local Full": d.toString(),
+        Year: d.getFullYear().toString(),
+        Month: pad(d.getMonth() + 1),
+        Day: pad(d.getDate()),
+        Hour: pad(d.getHours()),
+        Minute: pad(d.getMinutes()),
+        Second: pad(d.getSeconds()),
+      };
+    },
   },
   "html-preview": {
     fields: [{ name: "input", type: "textarea", label: "HTML code", placeholder: "<h1>Hello World</h1>\n<p>Type HTML here...</p>" }],
@@ -2628,14 +2658,32 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       ]},
     ],
     buttonText: "Generate Gradient",
+    process: (v) => {
+      const c1 = v.color1 || "#ff6b6b";
+      const c2 = v.color2 || "#4ecdc4";
+      const dir = v.direction || "to right";
+      const css = `background: linear-gradient(${dir}, ${c1}, ${c2});`;
+      return { CSS: css, swatch: css, "First Color": c1, "Second Color": c2, Direction: dir };
+    },
   },
   "api-key-generator": {
     fields: [{ name: "length", type: "number", label: "Key length", placeholder: "32" }],
     buttonText: "Generate API Key",
+    process: (v) => {
+      const len = Math.min(128, Math.max(8, parseInt(v.length) || 32));
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
+      const key = Array.from({ length: len }, () => chars[Math.floor(Math.random() * chars.length)]).join("");
+      return { "API Key": key, length: len, prefix: key.slice(0, 8) + "..." };
+    },
   },
   "csrf-token-generator": {
     fields: [{ name: "length", type: "number", label: "Token length", placeholder: "32" }],
     buttonText: "Generate Token",
+    process: (v) => {
+      const len = Math.min(128, Math.max(8, parseInt(v.length) || 32));
+      const token = Array.from({ length: len }, () => Math.floor(Math.random() * 16).toString(16)).join("");
+      return { "CSRF Token": token, length: len };
+    },
   },
   "random-password-phrase": {
     fields: [
@@ -2643,10 +2691,26 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "separator", type: "text", label: "Separator", placeholder: "-" },
     ],
     buttonText: "Generate Passphrase",
+    process: (v) => {
+      const words = ["apple", "river", "mountain", "ocean", "forest", "sunset", "thunder", "silver", "golden", "crystal", "purple", "winter", "summer", "spring", "autumn", "bridge", "castle", "dragon", "eagle", "falcon", "garden", "harbor", "island", "jewel", "knight", "lighthouse", "meadow", "nebula", "oracle", "phoenix", "quartz", "rainbow", "shield", "temple", "umbrella", "valley", "wonder", "zenith", "archer", "blossom", "cascade", "ember", "frost", "glacier", "horizon", "iris", "jasmine", "koala", "lotus", "maple"];
+      const count = Math.min(10, Math.max(2, parseInt(v.wordCount) || 4));
+      const sep = v.separator || "-";
+      const selected: string[] = [];
+      const pool = [...words];
+      for (let i = 0; i < count; i++) { const idx = Math.floor(Math.random() * pool.length); selected.push(pool[idx]); pool.splice(idx, 1); }
+      return { passphrase: selected.join(sep), words: count, separator: sep };
+    },
   },
   "content-security-policy": {
     fields: [{ name: "input", type: "textarea", label: "CSP directives (one per line)", placeholder: "default-src 'self'\nscript-src 'self' https://analytics.example.com\nstyle-src 'self' 'unsafe-inline'" }],
     buttonText: "Generate CSP Header",
+    process: (v) => {
+      const t = v.input?.trim() || "";
+      const directives = t.split("\n").map(l => l.trim()).filter(Boolean);
+      if (directives.length === 0) return { error: "Enter at least one CSP directive" };
+      const csp = directives.join("; ");
+      return { "Content-Security-Policy": csp, directives: directives.length, "As Meta Tag": `<meta http-equiv="Content-Security-Policy" content="${csp}">` };
+    },
   },
   "hash-comparison": {
     fields: [
@@ -2654,10 +2718,33 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "hash2", type: "text", label: "Second hash", placeholder: "5d41402abc4b2a76b9719d911017c592" },
     ],
     buttonText: "Compare Hashes",
+    process: (v) => {
+      const h1 = (v.hash1 || "").trim();
+      const h2 = (v.hash2 || "").trim();
+      if (!h1 || !h2) return { error: "Enter both hashes to compare" };
+      const match = h1.toLowerCase() === h2.toLowerCase();
+      return { Match: match ? "Yes" : "No", "Hash 1": h1, "Hash 2": h2, "Length 1": h1.length, "Length 2": h2.length, "Algorithm (guess)": h1.length === 32 ? "MD5" : h1.length === 40 ? "SHA-1" : h1.length === 64 ? "SHA-256" : "Unknown" };
+    },
   },
   "password-strength-checker": {
     fields: [{ name: "input", type: "text", label: "Password to check", placeholder: "Enter a password..." }],
     buttonText: "Check Strength",
+    process: (v) => {
+      const pw = v.input || "";
+      const len = pw.length;
+      let score = 0;
+      if (len >= 8) score += 1;
+      if (len >= 12) score += 1;
+      if (len >= 16) score += 1;
+      if (/[a-z]/.test(pw) && /[A-Z]/.test(pw)) score += 1;
+      if (/\d/.test(pw)) score += 1;
+      if (/[^a-zA-Z0-9]/.test(pw)) score += 1;
+      const entropy = len * (Math.log2(26 * (/[a-z]/.test(pw) && /[A-Z]/.test(pw) ? 52 : 26) + (/\d/.test(pw) ? 10 : 0) + (/[^a-zA-Z0-9]/.test(pw) ? 32 : 0)));
+      const label = score <= 1 ? "Very Weak" : score <= 2 ? "Weak" : score <= 3 ? "Fair" : score <= 4 ? "Strong" : "Very Strong";
+      const color = score <= 1 ? "Red" : score <= 2 ? "Orange" : score <= 3 ? "Yellow" : score <= 4 ? "Light Green" : "Green";
+      const time = entropy < 28 ? "Instant" : entropy < 36 ? "Minutes" : entropy < 60 ? "Hours" : entropy < 80 ? "Days" : entropy < 100 ? "Years" : "Centuries";
+      return { Strength: `${label} (${score}/6)`, Entropy: entropy.toFixed(0) + " bits", "Time to Crack": time, Length: len, "Has Uppercase": /[A-Z]/.test(pw) ? "Yes" : "No", "Has Lowercase": /[a-z]/.test(pw) ? "Yes" : "No", "Has Number": /\d/.test(pw) ? "Yes" : "No", "Has Special Char": /[^a-zA-Z0-9]/.test(pw) ? "Yes" : "No" };
+    },
   },
   "keyword-density": {
     fields: [{ name: "input", type: "textarea", label: "Text to analyze", placeholder: "Paste your content here to check keyword density..." }],
@@ -2925,6 +3012,15 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       ]},
     ],
     buttonText: "Generate SPF Record",
+    process: (v) => {
+      const domain = (v.domain || "").trim();
+      if (!domain) return { error: "Enter your domain name" };
+      let spf = "v=spf1";
+      if (v.ips?.trim()) { for (const ip of v.ips.split(",").map(s => s.trim()).filter(Boolean)) spf += " ip4:" + ip; }
+      if (v.include?.trim()) { for (const dom of v.include.split(",").map(s => s.trim()).filter(Boolean)) spf += " include:" + dom; }
+      spf += " " + (v.policy || "~all");
+      return { "SPF Record": spf, "DNS Entry": `${domain}.  TXT "${spf}"`, Domain: domain };
+    },
   },
   "dmarc-generator": {
     fields: [
@@ -2938,6 +3034,17 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "pct", type: "number", label: "Percentage", placeholder: "100" },
     ],
     buttonText: "Generate DMARC Record",
+    process: (v) => {
+      const domain = (v.domain || "").trim();
+      if (!domain) return { error: "Enter your domain name" };
+      let dmarc = `v=DMARC1; p=${v.policy || "none"}`;
+      if (v.rua?.trim()) dmarc += `; rua=mailto:${v.rua.trim()}`;
+      const pct = parseInt(v.pct) || 100;
+      if (pct < 100) dmarc += `; pct=${pct}`;
+      const sp = v.policy === "none" ? "none" : v.policy || "none";
+      dmarc += `; sp=${sp}`;
+      return { "DMARC Record": dmarc, "DNS Entry": `_dmarc.${domain}.  TXT "${dmarc}"`, Domain: domain, Policy: v.policy || "none" };
+    },
   },
   "what-is-my-ip": {
     fields: [],
@@ -2954,6 +3061,48 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "paragraphs", type: "number", label: "Paragraphs", placeholder: "3" },
     ],
     buttonText: "Generate Lorem Ipsum",
+    process: (v) => {
+      const sentences = [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.",
+        "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
+        "Deserunt mollit anim id est laborum, sed ut perspiciatis unde omnis iste.",
+        "Natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.",
+        "Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae.",
+        "Dicta sunt explicabo nemo enim ipsam voluptatem quia voluptas sit aspernatur.",
+        "Aut odit aut fugit sed quia consequuntur magni dolores eos qui ratione.",
+        "Voluptatem sequi nesciunt neque porro quisquam est qui dolorem ipsum quia.",
+        "Dolor sit amet consectetur adipisci velit sed quia non numquam eius modi.",
+        "Tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
+        "Ut enim ad minima veniam quis nostrum exercitationem ullam corporis suscipit.",
+        "Laboriosam nisi ut aliquid ex ea commodi consequatur quis autem vel.",
+        "Eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae.",
+        "Consequatur vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.",
+        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis.",
+        "Praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias.",
+        "Excepturi sint occaecati cupiditate non provident similique sunt in culpa.",
+        "Qui officia deserunt mollitia animi id est laborum et dolorum fuga.",
+        "Et harum quidem rerum facilis est et expedita distinctio nam libero tempore.",
+        "Cum soluta nobis est eligendi optio cumque nihil impedit quo minus id.",
+        "Quod maxime placeat facere possimus omnis voluptas assumenda est omnis dolor.",
+        "Repellendus temporibus autem quibusdam et aut officiis debitis aut rerum.",
+        "Necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae.",
+        "Non recusandae itaque earum rerum hic tenetur a sapiente delectus ut aut.",
+        "Reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus.",
+        "Asperiores repellat quod aliquid libero qui fugiat quo voluptas nulla pariatur.",
+      ];
+      const count = Math.min(20, Math.max(1, parseInt(v.paragraphs) || 3));
+      const result: string[] = [];
+      for (let i = 0; i < count; i++) {
+        const sentCount = 3 + Math.floor(Math.random() * 4);
+        const selected: string[] = [];
+        for (let j = 0; j < sentCount; j++) selected.push(sentences[Math.floor(Math.random() * sentences.length)]);
+        result.push(selected.join(" "));
+      }
+      return { "Lorem Ipsum": result.join("\n\n"), paragraphs: count };
+    },
   },
   "text-diff-checker": {
     fields: [
@@ -2969,6 +3118,16 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "count", type: "number", label: "Count", placeholder: "1" },
     ],
     buttonText: "Generate",
+    process: (v) => {
+      const min = parseInt(v.min) || 1;
+      const max = parseInt(v.max) || 100;
+      const count = Math.min(100, Math.max(1, parseInt(v.count) || 1));
+      if (min >= max) return { error: "Min must be less than max" };
+      const numbers: number[] = [];
+      const used = new Set<number>();
+      while (numbers.length < count) { const n = min + Math.floor(Math.random() * (max - min + 1)); if (!used.has(n)) { used.add(n); numbers.push(n); } }
+      return { numbers: numbers.join(", "), count, range: `${min}–${max}`, unique: "Yes" };
+    },
   },
   "age-calculator": {
     fields: [
