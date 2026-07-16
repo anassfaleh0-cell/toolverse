@@ -19,6 +19,7 @@ import {
   Brush, Droplets, ZoomIn, ZoomOut, Maximize, Minimize,
   QrCode, Camera, Video, Play, Pause, Square, Volume2, VolumeX, Mic,
   Timer, Circle, ZapOff, Text as TextIcon,
+  ChevronDown, ChevronRight, Lightbulb, PenSquare, Share2, X,
 } from "lucide-react";
 
 const iconMap: Record<string, LucideIcon> = {
@@ -40,6 +41,7 @@ const iconMap: Record<string, LucideIcon> = {
   Brush, Droplets, ZoomIn, ZoomOut, Maximize, Minimize,
   QrCode, Camera, Video, Play, Pause, Square, Volume2, VolumeX, Mic,
   Timer, Circle, ZapOff, TextIcon,
+  ChevronDown, ChevronRight, Lightbulb, PenSquare, Share2, X,
   // Semantic aliases
   Warning: AlertTriangle,
   Success: CheckCircle2,
@@ -85,6 +87,9 @@ interface IconProps {
 export function Icon({ name, className }: IconProps) {
   const IconComponent = iconMap[name];
   if (!IconComponent) {
+    if (process.env.NODE_ENV !== "production") {
+      console.warn(`[Icon] Missing icon: "${name}" — add it to icon.tsx iconMap`);
+    }
     return <span className={cn("inline-flex items-center justify-center", className)} aria-hidden="true">{name}</span>;
   }
   return <IconComponent className={cn("shrink-0", className)} aria-hidden="true" />;
