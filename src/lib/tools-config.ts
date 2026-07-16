@@ -1888,6 +1888,16 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "user-agent-parser": {
     fields: [{ name: "input", type: "textarea", label: "User-Agent string", placeholder: "Mozilla/5.0 (Windows NT 10.0; ..." }],
     buttonText: "Parse",
+    asyncProcess: async (v) => {
+      const t = (v.input || "").trim();
+      if (!t) return { error: "Enter a User-Agent string" };
+      try {
+        const { UAParser } = (await import("ua-parser-js")).default;
+        const ua = new UAParser(t);
+        const b = ua.getBrowser(); const os = ua.getOS(); const d = ua.getDevice();
+        return { Browser: `${b.name || "?"} ${b.version || ""}`, OS: `${os.name || "?"} ${os.version || ""}`, Device: d.vendor ? `${d.vendor} ${d.model || ""}` : "Desktop", CPU: ua.getCPU().architecture || "Unknown", Engine: ua.getEngine().name || "Unknown", "UA Length": t.length };
+      } catch { return { error: "Failed to parse User-Agent string" }; }
+    },
   },
   "subnet-calculator": {
     fields: [
@@ -2003,6 +2013,18 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       ]},
     ],
     buttonText: "Generate Hash",
+    asyncProcess: async (v) => {
+      const t = v.input || "";
+      if (!t) return { error: "Enter text to hash" };
+      const algo = v.algorithm || "SHA-256";
+      if (typeof crypto === "undefined" || !crypto.subtle) return { error: "Web Crypto API is not available in this environment" };
+      try {
+        const enc = new TextEncoder();
+        const hashBuf = await crypto.subtle.digest(algo, enc.encode(t));
+        const hash = Array.from(new Uint8Array(hashBuf)).map(b => b.toString(16).padStart(2, "0")).join("");
+        return { hash, algorithm: algo, length: hash.length, input: t.length > 50 ? t.slice(0, 50) + "..." : t };
+      } catch { return { error: "Hash generation failed — unsupported algorithm" }; }
+    },
   },
   "html-minifier": {
     fields: [{ name: "input", type: "textarea", label: "HTML code", placeholder: "<html>\n<body>\n  <p>Hello</p>\n</body>\n</html>" }],
@@ -2081,6 +2103,16 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "yaml-formatter": {
     fields: [{ name: "input", type: "textarea", label: "YAML input", placeholder: "key: value\nlist:\n  - item" }],
     buttonText: "Format YAML",
+    asyncProcess: async (v) => {
+      const t = (v.input || "").trim();
+      if (!t) return { error: "Enter YAML to format" };
+      try {
+        const yaml = await import("js-yaml");
+        const parsed = yaml.load(t);
+        const formatted = yaml.dump(parsed, { indent: 2, lineWidth: -1, noRefs: true, sortKeys: true });
+        return { formatted, original: t };
+      } catch (e) { return { error: "Invalid YAML: " + (e as Error).message }; }
+    },
   },
   "xml-formatter": {
     fields: [{ name: "input", type: "textarea", label: "XML input", placeholder: "<root><item>value</item></root>" }],
@@ -2216,6 +2248,16 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "yaml-to-json": {
     fields: [{ name: "input", type: "textarea", label: "YAML input", placeholder: "name: John\nage: 30" }],
     buttonText: "Convert to JSON",
+    asyncProcess: async (v) => {
+      const t = (v.input || "").trim();
+      if (!t) return { error: "Enter YAML to convert" };
+      try {
+        const yaml = await import("js-yaml");
+        const parsed = yaml.load(t);
+        const formatted = JSON.stringify(parsed, null, 2);
+        return { json: formatted, original: t };
+      } catch (e) { return { error: "Invalid YAML: " + (e as Error).message }; }
+    },
   },
   "json-to-xml": {
     fields: [{ name: "input", type: "textarea", label: "JSON data", placeholder: '{"root": {"item": "value"}}' }],
@@ -2290,6 +2332,15 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "markdown-to-html": {
     fields: [{ name: "input", type: "textarea", label: "Markdown", placeholder: "# Hello\nThis is **bold** text." }],
     buttonText: "Convert to HTML",
+    asyncProcess: async (v) => {
+      const t = v.input || "";
+      if (!t.trim()) return { error: "Enter Markdown to convert" };
+      try {
+        const { marked } = await import("marked");
+        const html = await marked.parse(t);
+        return { html, "length (chars)": html.length, original: t.length > 100 ? t.slice(0, 100) + "..." : t };
+      } catch { return { error: "Markdown conversion failed" }; }
+    },
   },
   "html-to-markdown": {
     fields: [{ name: "input", type: "textarea", label: "HTML", placeholder: "<h1>Hello</h1><p>This is <strong>bold</strong> text.</p>" }],
@@ -2350,6 +2401,14 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "markdown-preview": {
     fields: [{ name: "input", type: "textarea", label: "Markdown", placeholder: "# Hello\nType markdown here..." }],
     buttonText: "Preview",
+    asyncProcess: async (v) => {
+      const t = v.input || "";
+      try {
+        const { marked } = await import("marked");
+        const html = await marked.parse(t || "*Type something to see the preview*");
+        return { "Rendered HTML": html, "source (chars)": t.length };
+      } catch { return { error: "Preview generation failed" }; }
+    },
   },
   "sql-formatter": {
     fields: [{ name: "input", type: "textarea", label: "SQL query", placeholder: "SELECT * FROM users WHERE id = 1" }],
