@@ -3134,6 +3134,25 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "birthDate", type: "text", label: "Birth date (YYYY-MM-DD)", placeholder: "1990-01-15" },
     ],
     buttonText: "Calculate Age",
+    process: (v) => {
+      const bd = new Date(v.birthDate);
+      if (isNaN(bd.getTime())) return { error: "Enter a valid date in YYYY-MM-DD format" };
+      const now = new Date();
+      let years = now.getFullYear() - bd.getFullYear();
+      const m = now.getMonth() - bd.getMonth();
+      if (m < 0 || (m === 0 && now.getDate() < bd.getDate())) years--;
+      let months = (now.getFullYear() - bd.getFullYear()) * 12 + now.getMonth() - bd.getMonth();
+      if (now.getDate() < bd.getDate()) months--;
+      const diffMs = now.getTime() - bd.getTime();
+      const days = Math.floor(diffMs / 86400000);
+      const hours = Math.floor(diffMs / 3600000);
+      const minutes = Math.floor(diffMs / 60000);
+      const seconds = Math.floor(diffMs / 1000);
+      const nextBday = new Date(now.getFullYear(), bd.getMonth(), bd.getDate());
+      if (nextBday < now) nextBday.setFullYear(nextBday.getFullYear() + 1);
+      const daysUntil = Math.ceil((nextBday.getTime() - now.getTime()) / 86400000);
+      return { "Age": `${years} years`, "In months": `${months} months`, "In days": `${days.toLocaleString()} days`, "In hours": `${hours.toLocaleString()} hours`, "In minutes": `${minutes.toLocaleString()} minutes`, "In seconds": `${seconds.toLocaleString()} seconds`, "Next Birthday": `${nextBday.toLocaleDateString()} (in ${daysUntil} days)` };
+    },
   },
   "date-calculator": {
     fields: [
@@ -3141,6 +3160,18 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "endDate", type: "text", label: "End date (YYYY-MM-DD)", placeholder: "2024-12-31" },
     ],
     buttonText: "Calculate Duration",
+    process: (v) => {
+      const start = new Date(v.startDate);
+      const end = new Date(v.endDate);
+      if (isNaN(start.getTime()) || isNaN(end.getTime())) return { error: "Enter valid dates in YYYY-MM-DD format" };
+      const diffMs = Math.abs(end.getTime() - start.getTime());
+      const days = Math.floor(diffMs / 86400000);
+      const weeks = Math.floor(days / 7);
+      const months = (end.getFullYear() - start.getFullYear()) * 12 + end.getMonth() - start.getMonth() - (end.getDate() < start.getDate() ? 1 : 0);
+      const years = Math.floor(months / 12);
+      const hours = Math.floor(diffMs / 3600000);
+      return { "Duration": `${years} years, ${months % 12} months, ${days % 30} days`, "In days": `${days.toLocaleString()} days`, "In weeks": `${weeks} weeks (${days % 7} days)`, "In hours": `${hours.toLocaleString()} hours`, "Start": start.toLocaleDateString(), "End": end.toLocaleDateString() };
+    },
   },
   "time-calculator": {
     fields: [
@@ -3155,6 +3186,16 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "addMinutes", type: "number", label: "Add/subtract minutes", placeholder: "0" },
     ],
     buttonText: "Calculate Time",
+    process: (v) => {
+      let h = parseInt(v.hours) || 0, m = parseInt(v.minutes) || 0, s = parseInt(v.seconds) || 0;
+      const ah = parseInt(v.addHours) || 0, am = parseInt(v.addMinutes) || 0;
+      const sign = v.operation === "subtract" ? -1 : 1;
+      h += sign * ah; m += sign * am;
+      if (s < 0) { m += Math.floor(s / 60) - 1; s = 60 + (s % 60); } if (m < 0) { h += Math.floor(m / 60) - 1; m = 60 + (m % 60); }
+      if (s >= 60) { m += Math.floor(s / 60); s = s % 60; } if (m >= 60) { h += Math.floor(m / 60); m = m % 60; }
+      const totalSec = h * 3600 + m * 60 + s;
+      return { "Result": `${h}h ${m}m ${s}s`, "Total seconds": totalSec, "Total minutes": (totalSec / 60).toFixed(2), "Total hours": (totalSec / 3600).toFixed(4), "Operation": v.operation };
+    },
   },
   "calorie-calculator": {
     fields: [
@@ -3174,6 +3215,16 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       ]},
     ],
     buttonText: "Calculate Calories",
+    process: (v) => {
+      const age = parseInt(v.age) || 30; const w = parseInt(v.weight) || 70; const h = parseInt(v.height) || 175;
+      const gender = v.gender || "male"; const activity = parseFloat(v.activity) || 1.2;
+      if (!age || !w || !h) return { error: "Enter valid age, weight, and height" };
+      const bmr = gender === "male" ? 88.362 + 13.397 * w + 4.799 * h - 5.677 * age : 447.593 + 9.247 * w + 3.098 * h - 4.33 * age;
+      const tdee = bmr * activity;
+      const labels = ["Sedentary", "Lightly active", "Moderately active", "Very active", "Extra active"];
+      const activityLabels: Record<string, string> = { "1.2": "Sedentary", "1.375": "Lightly active", "1.55": "Moderately active", "1.725": "Very active", "1.9": "Extra active" };
+      return { "BMR": `${Math.round(bmr)} cal/day`, "TDEE": `${Math.round(tdee)} cal/day`, "Activity Level": activityLabels[v.activity] || "Custom", Gender: gender === "male" ? "Male" : "Female", "Lose 0.5kg/week": `${Math.round(tdee - 500)} cal/day`, "Lose 1kg/week": `${Math.round(tdee - 1000)} cal/day`, "Gain 0.5kg/week": `${Math.round(tdee + 500)} cal/day` };
+    },
   },
   "budget-calculator": {
     fields: [
@@ -3187,6 +3238,28 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "other", type: "number", label: "Other ($)", placeholder: "300" },
     ],
     buttonText: "Calculate Budget",
+    process: (v) => {
+      const income = parseFloat(v.income) || 0;
+      const housing = parseFloat(v.housing) || 0; const food = parseFloat(v.food) || 0; const transport = parseFloat(v.transport) || 0;
+      const utilities = parseFloat(v.utilities) || 0; const entertainment = parseFloat(v.entertainment) || 0;
+      const savings = parseFloat(v.savings) || 0; const other = parseFloat(v.other) || 0;
+      const totalExpenses = housing + food + transport + utilities + entertainment + savings + other;
+      const remaining = income - totalExpenses;
+      const pct = (cat: number) => income > 0 ? (cat / income * 100).toFixed(1) + "%" : "—";
+      return {
+        Income: `$${income.toFixed(2)}`,
+        "Total Expenses": `$${totalExpenses.toFixed(2)}`,
+        "Remaining": `$${remaining.toFixed(2)}`,
+        "Housing": `$${housing.toFixed(2)} (${pct(housing)})`,
+        "Food": `$${food.toFixed(2)} (${pct(food)})`,
+        "Transport": `$${transport.toFixed(2)} (${pct(transport)})`,
+        "Utilities": `$${utilities.toFixed(2)} (${pct(utilities)})`,
+        "Entertainment": `$${entertainment.toFixed(2)} (${pct(entertainment)})`,
+        "Savings": `$${savings.toFixed(2)} (${pct(savings)})`,
+        "Other": `$${other.toFixed(2)} (${pct(other)})`,
+        "Status": remaining >= 0 ? "Surplus — on track" : "Deficit — expenses exceed income",
+      };
+    },
   },
   "retirement-calculator": {
     fields: [
@@ -3197,6 +3270,19 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "return", type: "number", label: "Expected annual return (%)", placeholder: "7" },
     ],
     buttonText: "Calculate Retirement",
+    process: (v) => {
+      const age = parseInt(v.age) || 30; const retireAge = parseInt(v.retireAge) || 65;
+      const savings = parseFloat(v.savings) || 0; const monthly = parseFloat(v.monthly) || 0;
+      const annualReturn = (parseFloat(v.return) || 7) / 100;
+      const years = retireAge - age; const months = years * 12;
+      if (years <= 0) return { error: "Retirement age must be greater than current age" };
+      let total = savings;
+      for (let i = 0; i < months; i++) { total = total * (1 + annualReturn / 12) + monthly; }
+      const contribTotal = savings + monthly * months;
+      const earnings = total - contribTotal;
+      const safeWithdrawal = total * 0.04;
+      return { "Total at Retirement": `$${Math.round(total).toLocaleString()}`, "Years Until Retirement": years, "Total Contributions": `$${Math.round(contribTotal).toLocaleString()}`, "Investment Earnings": `$${Math.round(earnings).toLocaleString()}`, "Monthly Contribution": `$${monthly}`, "Annual Return": `${(annualReturn * 100).toFixed(1)}%`, "Safe Withdrawal (4%)": `$${Math.round(safeWithdrawal).toLocaleString()}/year ($${Math.round(safeWithdrawal / 12).toLocaleString()}/month)` };
+    },
   },
   "crypto-converter": {
     fields: [
@@ -3264,6 +3350,30 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "to", type: "text", label: "To unit", placeholder: "mi" },
     ],
     buttonText: "Convert",
+    process: (v) => {
+      const val = parseFloat(v.value);
+      if (isNaN(val)) return { error: "Enter a valid numeric value" };
+      const from = (v.from || "").toLowerCase().trim();
+      const to = (v.to || "").toLowerCase().trim();
+      const cat = v.category || "length";
+      const units: Record<string, Record<string, number>> = {
+        length: { mm: 0.001, cm: 0.01, m: 1, km: 1000, in: 0.0254, ft: 0.3048, yd: 0.9144, mi: 1609.344 },
+        mass: { mg: 0.000001, g: 0.001, kg: 1, t: 1000, oz: 0.0283495, lb: 0.453592 },
+        volume: { ml: 0.001, l: 1, "m\u00B3": 1000, gal: 3.78541, qt: 0.946353, pt: 0.473176, cup: 0.236588, floz: 0.0295735 },
+      };
+      if (cat === "temperature") {
+        const toK = (n: number, u: string) => { u = u.replace(/[^a-z]/g, "").toLowerCase(); if (u === "c" || u === "celsius") return n + 273.15; if (u === "f" || u === "fahrenheit") return (n - 32) * 5 / 9 + 273.15; if (u === "k" || u === "kelvin") return n; return NaN; };
+        const fromK = (n: number, u: string) => { u = u.replace(/[^a-z]/g, "").toLowerCase(); if (u === "c" || u === "celsius") return n - 273.15; if (u === "f" || u === "fahrenheit") return (n - 273.15) * 9 / 5 + 32; if (u === "k" || u === "kelvin") return n; return NaN; };
+        const k = toK(val, from); if (isNaN(k)) return { error: "Unknown temperature unit. Use C, F, or K." };
+        return { result: fromK(k, to).toFixed(2), value: val, from: from.toUpperCase(), to: to.toUpperCase(), category: "Temperature" };
+      }
+      const lut = units[cat];
+      if (!lut) return { error: "Unknown category" };
+      const fromFactor = lut[from]; const toFactor = lut[to];
+      if (!fromFactor || !toFactor) return { error: `Unknown unit. Available: ${Object.keys(lut).join(", ")}` };
+      const result = val * fromFactor / toFactor;
+      return { result: result < 0.001 ? result.toExponential(4) : result.toFixed(6), value: val, from, to, category: cat, "alternative": cat === "length" && (from === "km" || to === "km") ? `${(result * 0.621371).toFixed(2)} miles` : undefined };
+    },
   },
   "distance-calculator": {
     fields: [
@@ -3273,6 +3383,15 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "lon2", type: "number", label: "Longitude point 2", placeholder: "-118.2437" },
     ],
     buttonText: "Calculate Distance",
+    process: (v) => {
+      const lat1 = parseFloat(v.lat1); const lon1 = parseFloat(v.lon1); const lat2 = parseFloat(v.lat2); const lon2 = parseFloat(v.lon2);
+      if ([lat1, lon1, lat2, lon2].some(isNaN)) return { error: "Enter valid latitude/longitude coordinates" };
+      const R = 6371; const dLat = (lat2 - lat1) * Math.PI / 180; const dLon = (lon2 - lon1) * Math.PI / 180;
+      const a = Math.sin(dLat / 2) ** 2 + Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.sin(dLon / 2) ** 2;
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      const km = R * c; const mi = km * 0.621371; const nmi = km * 0.539957;
+      return { "Distance (km)": km.toFixed(2), "Distance (mi)": mi.toFixed(2), "Distance (nmi)": nmi.toFixed(2), "Point 1": `${lat1}, ${lon1}`, "Point 2": `${lat2}, ${lon2}` };
+    },
   },
   "fuel-calculator": {
     fields: [
@@ -3281,12 +3400,38 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "price", type: "number", label: "Fuel price per liter ($)", placeholder: "1.5" },
     ],
     buttonText: "Calculate Fuel Cost",
+    process: (v) => {
+      const dist = parseFloat(v.distance); const eff = parseFloat(v.efficiency); const price = parseFloat(v.price);
+      if ([dist, eff, price].some(isNaN) || dist <= 0 || eff <= 0 || price <= 0) return { error: "Enter valid positive numbers for distance, efficiency, and price" };
+      const liters = dist / 100 * eff;
+      const cost = liters * price;
+      const costPerKm = cost / dist;
+      const co2kg = liters * 2.31;
+      return { "Total Cost": `$${cost.toFixed(2)}`, "Fuel Needed": `${liters.toFixed(1)} L`, "Cost per km": `$${costPerKm.toFixed(4)}`, "CO\u2082 Emissions": `${co2kg.toFixed(1)} kg`, "Distance": `${dist} km`, "Efficiency": `${eff} L/100km`, "Price per liter": `$${price.toFixed(2)}` };
+    },
   },
   "gpa-calculator": {
     fields: [
       { name: "grades", type: "textarea", label: "Grades (letter or number, one per line)", placeholder: "A\nB+\nA-\nB" },
     ],
     buttonText: "Calculate GPA",
+    process: (v) => {
+      const t = (v.grades || "").trim();
+      if (!t) return { error: "Enter at least one grade" };
+      const letterGPA: Record<string, number> = { "A+": 4.0, "A": 4.0, "A-": 3.7, "B+": 3.3, "B": 3.0, "B-": 2.7, "C+": 2.3, "C": 2.0, "C-": 1.7, "D+": 1.3, "D": 1.0, "D-": 0.7, "F": 0.0 };
+      const lines = t.split("\n").map(l => l.trim()).filter(Boolean);
+      let total = 0; let count = 0;
+      const details: string[] = [];
+      for (const line of lines) {
+        const grade = line.toUpperCase();
+        if (letterGPA[grade] !== undefined) { total += letterGPA[grade]; count++; details.push(`${grade} → ${letterGPA[grade]}`); }
+        else { const num = parseFloat(grade); if (!isNaN(num) && num >= 0 && num <= 100) { const gpa = num >= 93 ? 4.0 : num >= 90 ? 3.7 : num >= 87 ? 3.3 : num >= 83 ? 3.0 : num >= 80 ? 2.7 : num >= 77 ? 2.3 : num >= 73 ? 2.0 : num >= 70 ? 1.7 : num >= 67 ? 1.3 : num >= 63 ? 1.0 : num >= 60 ? 0.7 : 0.0; total += gpa; count++; details.push(`${grade} → ${gpa} (${num}%)`); } }
+      }
+      if (count === 0) return { error: "No valid grades found. Enter letter grades (A, B+, etc.) or percentages (0-100)." };
+      const gpa = total / count;
+      const honor = gpa >= 3.5 ? "Honors" : gpa >= 3.0 ? "Good standing" : gpa >= 2.0 ? "Satisfactory" : "Probation";
+      return { GPA: gpa.toFixed(2), "Grade Count": count, "Total Points": total.toFixed(1), Status: honor, "Scale": "4.0 (unweighted)", Details: details.join("\n") };
+    },
   },
   "data-breach-checker": {
     fields: [{ name: "input", type: "text", label: "Email address", placeholder: "user@example.com" }],
