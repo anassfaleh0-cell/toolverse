@@ -141,7 +141,7 @@ export default async function GlossaryTermPage({ params }: Props) {
         <section className="mt-12 text-center">
           <Link
             href="/tools"
-            className="inline-flex items-center rounded-lg bg-aurora-600 px-6 py-3 text-base font-medium text-white transition-colors hover:bg-aurora-700"
+            className="inline-flex items-center rounded-lg bg-aurora-700 px-6 py-3 text-base font-medium text-white transition-colors hover:bg-aurora-800"
           >
             Explore All Tools
           </Link>

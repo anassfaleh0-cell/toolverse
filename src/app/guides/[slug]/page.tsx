@@ -103,7 +103,7 @@ export default async function GuidePage({ params }: Props) {
           {steps.map((step) => (
             <div key={step.step} className="rounded-2xl border border-border-subtle bg-surface p-6">
               <div className="flex items-start gap-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-aurora-600 text-lg font-bold text-white">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-aurora-700 text-lg font-bold text-white">
                   {step.step}
                 </span>
                 <div>
@@ -147,7 +147,7 @@ export default async function GuidePage({ params }: Props) {
         <section className="mt-12 text-center">
           <Link
             href="/tools"
-            className="inline-flex items-center rounded-lg bg-aurora-600 px-6 py-3 text-base font-medium text-white transition-colors hover:bg-aurora-700"
+            className="inline-flex items-center rounded-lg bg-aurora-700 px-6 py-3 text-base font-medium text-white transition-colors hover:bg-aurora-800"
           >
             Explore All {SITE_NAME} Tools
           </Link>

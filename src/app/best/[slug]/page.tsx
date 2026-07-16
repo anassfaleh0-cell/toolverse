@@ -98,7 +98,7 @@ export default async function BestToolsPage({ params }: Props) {
                 </div>
                 <Link
                   href={tool.url}
-                  className="shrink-0 rounded-lg bg-aurora-600 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-aurora-700"
+                  className="shrink-0 rounded-lg bg-aurora-700 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-aurora-800"
                 >
                   Try {tool.name}
                 </Link>
@@ -126,7 +126,7 @@ export default async function BestToolsPage({ params }: Props) {
         <section className="mt-12 text-center">
           <Link
             href={`/category/${entry.category}`}
-            className="inline-flex items-center rounded-lg bg-aurora-600 px-6 py-3 text-base font-medium text-white transition-colors hover:bg-aurora-700"
+            className="inline-flex items-center rounded-lg bg-aurora-700 px-6 py-3 text-base font-medium text-white transition-colors hover:bg-aurora-800"
           >
             Explore All {catLabel} Tools on {SITE_NAME}
           </Link>
