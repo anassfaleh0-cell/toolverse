@@ -12,8 +12,8 @@ import { BRAND } from "@/lib/nuvora/brand";
 import { ClientDynamic } from "@/components/shared/client-dynamic";
 
 const Header = dynamic(() => import("@/components/header").then((m) => ({ default: m.Header })), { ssr: true });
-const UniversalWorkspace = dynamic(() => import("@/components/shared/universal-workspace").then((m) => ({ default: m.UniversalWorkspace })), { ssr: false });
-const CommandPalette = dynamic(() => import("@/components/shared/command-palette").then((m) => ({ default: m.CommandPalette })), { ssr: false });
+const UniversalWorkspace = dynamic(() => import("@/components/shared/universal-workspace").then((m) => ({ default: m.UniversalWorkspace })));
+const CommandPalette = dynamic(() => import("@/components/shared/command-palette").then((m) => ({ default: m.CommandPalette })));
 const ErrorBoundary = dynamic(() => import("@/components/shared/error-boundary").then((m) => ({ default: m.ErrorBoundary })));
 
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL, HERO_TAGLINE } from "@/lib/constants";
