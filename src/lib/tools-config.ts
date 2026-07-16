@@ -1895,10 +1895,38 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "cidr", type: "number", label: "CIDR prefix", placeholder: "24" },
     ],
     buttonText: "Calculate Subnet",
+    process: (v) => {
+      const ipStr = v.ip?.trim() || "";
+      const prefix = parseInt(v.cidr) || 24;
+      const octets = ipStr.split(".").map(Number);
+      if (octets.length !== 4 || octets.some(isNaN) || prefix < 0 || prefix > 32) return { error: "Enter a valid IP address and CIDR prefix (0-32)" };
+      const ipNum = ((octets[0] << 24) | (octets[1] << 16) | (octets[2] << 8) | octets[3]) >>> 0;
+      const mask = ~(0xFFFFFFFF >>> prefix) >>> 0;
+      const network = (ipNum & mask) >>> 0;
+      const broadcast = (ipNum | ~mask) >>> 0;
+      const firstHost = prefix < 32 ? network + 1 : network;
+      const lastHost = prefix < 31 ? broadcast - 1 : broadcast;
+      const totalHosts = prefix < 31 ? Math.pow(2, 32 - prefix) - 2 : prefix === 31 ? 2 : 1;
+      const toIp = (n: number) => [(n >>> 24) & 255, (n >>> 16) & 255, (n >>> 8) & 255, n & 255].join(".");
+      return { Network: toIp(network) + "/" + prefix, "Subnet Mask": toIp(mask), "Broadcast": toIp(broadcast), "First Host": toIp(firstHost), "Last Host": toIp(lastHost), "Total Hosts": totalHosts, "CIDR Notation": "255." + [mask >>> 24, (mask >>> 16) & 255, (mask >>> 8) & 255, mask & 255].filter((_, i) => i > 0).join(".") };
+    },
   },
   "jwt-decoder": {
     fields: [{ name: "input", type: "textarea", label: "JWT token", placeholder: "eyJhbGciOiJIUzI1NiIs..." }],
     buttonText: "Decode JWT",
+    process: (v) => {
+      const t = (v.input || "").trim();
+      const parts = t.split(".");
+      if (parts.length !== 3) return { error: "Invalid JWT format — expected 3 dot-separated parts" };
+      try {
+        const header = JSON.parse(atob(parts[0].replace(/-/g, "+").replace(/_/g, "/")));
+        const payload = JSON.parse(atob(parts[1].replace(/-/g, "+").replace(/_/g, "/")));
+        const formatted = { header: JSON.stringify(header, null, 2), payload: JSON.stringify(payload, null, 2), "signature (truncated)": parts[2].slice(0, 32) + "..." };
+        const exp = payload.exp ? new Date(payload.exp * 1000).toISOString() : undefined;
+        const iat = payload.iat ? new Date(payload.iat * 1000).toISOString() : undefined;
+        return { ...formatted, ...(exp ? { expires: exp } : {}), ...(iat ? { issued: iat } : {}), "header (decoded)": JSON.parse(JSON.stringify(header)), "payload (decoded)": JSON.parse(JSON.stringify(payload)) };
+      } catch { return { error: "Invalid JWT — base64 decode failed" }; }
+    },
   },
   "regex-tester": {
     fields: [
@@ -1907,6 +1935,24 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "input", type: "textarea", label: "Test text", placeholder: "Enter text to test against..." },
     ],
     buttonText: "Test Regex",
+    process: (v) => {
+      const pattern = v.pattern || "";
+      const flags = v.flags || "g";
+      const input = v.input || "";
+      if (!pattern) return { error: "Enter a regular expression pattern" };
+      try {
+        const re = new RegExp(pattern, flags);
+        const matches: string[] = [];
+        let match: RegExpExecArray | null;
+        let count = 0;
+        while ((match = re.exec(input)) !== null) {
+          if (match.index === re.lastIndex) re.lastIndex++;
+          count++;
+          if (count <= 50) matches.push(`[${match.index}] ${match[0].length > 100 ? match[0].slice(0, 100) + "..." : match[0]}`);
+        }
+        return { matches: count, "match details": matches.length > 0 ? matches.join("\n") : "(no matches)", pattern: `/${pattern}/${flags}`, input: input.length > 200 ? input.slice(0, 200) + "..." : input };
+      } catch (e) { return { error: `Invalid regex: ${(e as Error).message}` }; }
+    },
   },
   "md5-hash-generator": {
     fields: [{ name: "input", type: "textarea", label: "Text to hash", placeholder: "Enter text..." }],
@@ -1983,18 +2029,54 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       ]},
     ],
     buttonText: "Convert",
+    process: (v) => {
+      const t = v.input?.trim() || "";
+      const from = parseInt(v.from) || 10;
+      const to = parseInt(v.to) || 16;
+      if (!t) return { error: "Enter a number" };
+      try {
+        const decimal = parseInt(t, from);
+        if (isNaN(decimal)) return { error: `Invalid number for base ${from}` };
+        const result = decimal.toString(to).toUpperCase();
+        return { result, decimal, from_base: from, to_base: to, binary: decimal.toString(2), octal: decimal.toString(8), hex: decimal.toString(16).toUpperCase() };
+      } catch { return { error: "Invalid input for the selected base" }; }
+    },
   },
   "text-to-slug": {
     fields: [{ name: "input", type: "text", label: "Text to convert", placeholder: "Hello World! This is a Title" }],
     buttonText: "Convert to Slug",
+    process: (v) => {
+      const t = v.input || "";
+      const slug = t.toLowerCase().trim().replace(/[^\w\s-]/g, "").replace(/[\s_]+/g, "-").replace(/-+/g, "-").replace(/^-|-$/g, "");
+      return { slug, original: t };
+    },
   },
   "url-parser": {
     fields: [{ name: "input", type: "text", label: "URL", placeholder: "https://example.com/path?q=hello#fragment" }],
     buttonText: "Parse URL",
+    process: (v) => {
+      const t = (v.input || "").trim();
+      if (!t) return { error: "Enter a URL" };
+      try {
+        const u = new URL(t);
+        const params: Record<string, string> = {};
+        u.searchParams.forEach((v2, k) => { params[k] = v2; });
+        return { protocol: u.protocol, hostname: u.hostname, port: u.port || "(default)", pathname: u.pathname, search: u.search || "(none)", hash: u.hash || "(none)", host: u.host, origin: u.origin, "query params": Object.keys(params).length > 0 ? JSON.stringify(params, null, 2) : "(none)" };
+      } catch { return { error: "Invalid URL format" }; }
+    },
   },
   "json-validator": {
     fields: [{ name: "input", type: "textarea", label: "JSON to validate", placeholder: '{"key": "value"}' }],
     buttonText: "Validate",
+    process: (v) => {
+      const t = v.input?.trim() || "";
+      if (!t) return { error: "Enter JSON to validate" };
+      try {
+        const parsed = JSON.parse(t);
+        const formatted = JSON.stringify(parsed, null, 2);
+        return { valid: "Yes", formatted, type: Array.isArray(parsed) ? "Array" : typeof parsed === "object" ? "Object" : typeof parsed, keys: typeof parsed === "object" && parsed !== null ? Object.keys(parsed).length : "N/A", "size (chars)": t.length, "size (formatted)": formatted.length };
+      } catch (e) { return { error: `Invalid JSON: ${(e as Error).message}` }; }
+    },
   },
   "yaml-formatter": {
     fields: [{ name: "input", type: "textarea", label: "YAML input", placeholder: "key: value\nlist:\n  - item" }],
@@ -2026,6 +2108,20 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "html", type: "textarea", label: "HTML content", placeholder: "<div class=\"my-class\"><p>Test</p></div>" },
     ],
     buttonText: "Test Selector",
+    process: (v) => {
+      const selector = (v.selector || "").trim();
+      const html = v.html || "";
+      if (!selector) return { error: "Enter a CSS selector" };
+      if (typeof DOMParser === "undefined") return { error: "Selector testing requires a browser environment" };
+      try {
+        const doc = new DOMParser().parseFromString(html, "text/html");
+        try { doc.querySelectorAll(selector); } catch { return { error: `Invalid CSS selector: "${selector}"` }; }
+        const matched = doc.querySelectorAll(selector);
+        const count = matched.length;
+        const details = count > 0 ? Array.from(matched).slice(0, 20).map((el, i) => `${i + 1}. <${el.tagName.toLowerCase()}${el.className ? ' class="' + el.className + '"' : ""}>`).join("\n") : "";
+        return { matches: count, selector, "matched elements": details || "(none matched)", "sample HTML": html.length > 200 ? html.slice(0, 200) + "..." : html };
+      } catch { return { "matches": 0, error: "Error parsing HTML; check that it is well-formed" }; }
+    },
   },
   "json-to-csv": {
     fields: [{ name: "input", type: "textarea", label: "JSON data", placeholder: '[{"name":"John","age":30}]' }],
