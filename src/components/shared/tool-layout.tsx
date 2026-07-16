@@ -9,8 +9,15 @@ import { JsonLd } from "@/components/shared/json-ld";
 import { Icon } from "@/components/shared/icon";
 import { howToSchema } from "@/lib/seo";
 import { SITE_URL, SITE_NAME } from "@/lib/constants";
-import { TOOL_KEYWORDS } from "@/lib/seo/keywords";
 import { getToolConfig } from "@/lib/tools-config";
+
+let keywordsPromise: Promise<Record<string, { troubleshooting: string[] }>> | null = null;
+function loadKeywords() {
+  if (!keywordsPromise) {
+    keywordsPromise = import("@/lib/seo/keywords").then((m) => m.TOOL_KEYWORDS);
+  }
+  return keywordsPromise;
+}
 import type { ReactNode } from "react";
 
 interface UseCase {
@@ -50,8 +57,13 @@ function LazySection({ children, minHeight = "100px", rootMargin = "200px" }: { 
 
 export function ToolLayout({ children, toolSlug, useCases, relatedToolSlugs }: ToolLayoutProps) {
   const [copied, setCopied] = useState(false);
+  const [keywords, setKeywords] = useState<Record<string, { troubleshooting: string[] }>>({});
   const tool = toolSlug ? getToolBySlug(toolSlug) : undefined;
   const cat = tool?.category;
+
+  useEffect(() => {
+    loadKeywords().then(setKeywords);
+  }, []);
 
   const howTo = tool ? (() => {
     const config = getToolConfig(tool.slug);
@@ -181,12 +193,12 @@ export function ToolLayout({ children, toolSlug, useCases, relatedToolSlugs }: T
 
             {/* Common Use Cases */}
             {(() => {
-              const keywords = TOOL_KEYWORDS[tool.slug];
-              return keywords && keywords.troubleshooting.length > 0 ? (
+              const toolKeywords = keywords[tool.slug];
+              return toolKeywords && toolKeywords.troubleshooting.length > 0 ? (
                 <section className="mb-8">
                   <h2 className="text-base font-bold text-text-primary mb-3">Common Use Cases</h2>
                   <ul className="space-y-1.5">
-                    {keywords.troubleshooting.slice(0, 4).map((tc, i) => (
+                    {toolKeywords.troubleshooting.slice(0, 4).map((tc, i) => (
                       <li key={i} className="flex items-start gap-2 text-sm text-text-secondary">
                         <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-nuvora-500" />
                         {tc}

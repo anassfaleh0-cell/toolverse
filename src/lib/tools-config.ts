@@ -1911,6 +1911,40 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "md5-hash-generator": {
     fields: [{ name: "input", type: "textarea", label: "Text to hash", placeholder: "Enter text..." }],
     buttonText: "Generate MD5",
+    process: (v) => {
+      const md5 = (s: string): string => {
+        const rotateLeft = (x: number, n: number) => (x << n) | (x >>> (32 - n));
+        const utf8 = unescape(encodeURIComponent(s));
+        const bytes: number[] = [];
+        for (let i = 0; i < utf8.length; i++) bytes.push(utf8.charCodeAt(i));
+        const bitLen = bytes.length * 8;
+        bytes.push(0x80);
+        while (bytes.length % 64 !== 56) bytes.push(0);
+        for (let i = 0; i < 8; i++) bytes.push((bitLen >>> (i * 8)) & 0xFF);
+        const K = [0xd76aa478, 0xe8c7b756, 0x242070db, 0xc1bdceee, 0xf57c0faf, 0x4787c62a, 0xa8304613, 0xfd469501, 0x698098d8, 0x8b44f7af, 0xffff5bb1, 0x895cd7be, 0x6b901122, 0xfd987193, 0xa679438e, 0x49b40821, 0xf61e2562, 0xc040b340, 0x265e5a51, 0xe9b6c7aa, 0xd62f105d, 0x02441453, 0xd8a1e681, 0xe7d3fbc8, 0x21e1cde6, 0xc33707d6, 0xf4d50d87, 0x455a14ed, 0xa9e3e905, 0xfcefa3f8, 0x676f02d9, 0x8d2a4c8a, 0xfffa3942, 0x8771f681, 0x6d9d6122, 0xfde5380c, 0xa4beea44, 0x4bdecfa9, 0xf6bb4b60, 0xbebfbc70, 0x289b7ec6, 0xeaa127fa, 0xd4ef3085, 0x04881d05, 0xd9d4d039, 0xe6db99e5, 0x1fa27cf8, 0xc4ac5665, 0xf4292244, 0x432aff97, 0xab9423a7, 0xfc93a039, 0x655b59c3, 0x8f0ccc92, 0xffeff47d, 0x85845dd1, 0x6fa87e4f, 0xfe2ce6e0, 0xa3014314, 0x4e0811a1, 0xf7537e82, 0xbd3af235, 0x2ad7d2bb, 0xeb86d391];
+        const S = [7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20, 4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23, 6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21];
+        let a0 = 0x67452301, b0 = 0xefcdab89, c0 = 0x98badcfe, d0 = 0x10325476;
+        for (let offset = 0; offset < bytes.length; offset += 64) {
+          const M: number[] = [];
+          for (let i = 0; i < 16; i++) M[i] = bytes[offset + i * 4] | (bytes[offset + i * 4 + 1] << 8) | (bytes[offset + i * 4 + 2] << 16) | (bytes[offset + i * 4 + 3] << 24);
+          let A = a0, B = b0, C = c0, D = d0;
+          for (let i = 0; i < 64; i++) {
+            let F: number, g: number;
+            if (i < 16) { F = (B & C) | (~B & D); g = i; }
+            else if (i < 32) { F = (D & B) | (~D & C); g = (5 * i + 1) % 16; }
+            else if (i < 48) { F = B ^ C ^ D; g = (3 * i + 5) % 16; }
+            else { F = C ^ (B | ~D); g = (7 * i) % 16; }
+            F = (F + A + K[i] + M[g]) & 0xFFFFFFFF;
+            A = D; D = C; C = B; B = (B + rotateLeft(F, S[i])) & 0xFFFFFFFF;
+          }
+          a0 = (a0 + A) & 0xFFFFFFFF; b0 = (b0 + B) & 0xFFFFFFFF; c0 = (c0 + C) & 0xFFFFFFFF; d0 = (d0 + D) & 0xFFFFFFFF;
+        }
+        const toHex = (n: number) => ((n >>> 0) & 0xFFFFFFFF).toString(16).padStart(8, "0");
+        return toHex(a0) + toHex(b0) + toHex(c0) + toHex(d0);
+      };
+      const hash = md5(v.input || "");
+      return { MD5: hash, length: hash.length, input: v.input.length > 50 ? v.input.slice(0, 50) + "..." : v.input };
+    },
   },
   "sha-hash-generator": {
     fields: [
@@ -2061,30 +2095,73 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "list-randomizer": {
     fields: [{ name: "input", type: "textarea", label: "Items (one per line)", placeholder: "item1\nitem2\nitem3" }],
     buttonText: "Randomize",
+    process: (v) => {
+      const items = v.input.trim().split("\n").filter(Boolean);
+      for (let i = items.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [items[i], items[j]] = [items[j], items[i]]; }
+      return { result: items.join("\n"), count: items.length };
+    },
   },
   "remove-duplicate-lines": {
     fields: [{ name: "input", type: "textarea", label: "Text with duplicates", placeholder: "line1\nline1\nline2\nline3\nline2" }],
     buttonText: "Remove Duplicates",
+    process: (v) => {
+      const lines = v.input.split("\n");
+      const seen = new Set<string>();
+      const result: string[] = [];
+      for (const l of lines) { if (!seen.has(l.trim())) { seen.add(l.trim()); result.push(l); } }
+      return { cleaned: result.join("\n"), original: lines.length, unique: result.length, removed: lines.length - result.length };
+    },
   },
   "sort-lines": {
     fields: [{ name: "input", type: "textarea", label: "Text to sort", placeholder: "banana\napple\ncherry" }],
     buttonText: "Sort Lines",
+    process: (v) => {
+      const lines = v.input.split("\n");
+      const sorted = [...lines].sort((a, b) => a.localeCompare(b));
+      const sortedDesc = [...lines].sort((a, b) => b.localeCompare(a));
+      return { sorted: sorted.join("\n"), "sorted (descending)": sortedDesc.join("\n"), count: lines.length };
+    },
   },
   "reverse-text": {
     fields: [{ name: "input", type: "textarea", label: "Text to reverse", placeholder: "Hello World" }],
     buttonText: "Reverse",
+    process: (v) => {
+      const t = v.input;
+      return { reversed: t.split("").reverse().join(""), "reversed (words)": t.split(/\s+/).reverse().join(" "), "reversed (lines)": t.split("\n").reverse().join("\n"), length: t.length };
+    },
   },
   "remove-empty-lines": {
     fields: [{ name: "input", type: "textarea", label: "Text with empty lines", placeholder: "line1\n\n\nline2\n\nline3" }],
     buttonText: "Clean",
+    process: (v) => {
+      const lines = v.input.split("\n");
+      const cleaned = lines.filter(l => l.trim().length > 0);
+      return { cleaned: cleaned.join("\n"), removed: lines.length - cleaned.length };
+    },
   },
   "text-cleaner": {
     fields: [{ name: "input", type: "textarea", label: "Text to clean", placeholder: "Paste text with extra  spaces,  special chars, and HTML..." }],
     buttonText: "Clean Text",
+    process: (v) => {
+      let t = v.input;
+      const original = t;
+      t = t.replace(/<[^>]*>/g, "");
+      t = t.replace(/\s+/g, " ");
+      t = t.replace(/[^\S\r\n]+/g, " ").trim();
+      t = t.replace(/[\u2018\u2019]/g, "'").replace(/[\u201C\u201D]/g, '"').replace(/[\u2013\u2014]/g, "-").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#39;/g, "'");
+      return { cleaned: t, "chars removed": original.length - t.length };
+    },
   },
   "line-counter": {
     fields: [{ name: "input", type: "textarea", label: "Text to analyze", placeholder: "line1\nline2\nline3" }],
     buttonText: "Count Lines",
+    process: (v) => {
+      const t = v.input;
+      const lines = t.split("\n");
+      const nonEmpty = lines.filter(l => l.trim().length > 0);
+      const words = t.trim() ? t.trim().split(/\s+/).length : 0;
+      return { Lines: lines.length, "Non-empty lines": nonEmpty.length, Words: words, Characters: t.length, "Characters (no space)": t.replace(/\s/g, "").length };
+    },
   },
   "find-and-replace": {
     fields: [
@@ -2093,6 +2170,16 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "replace", type: "text", label: "Replace with", placeholder: "replacement" },
     ],
     buttonText: "Find & Replace",
+    process: (v) => {
+      const t = v.input || "";
+      const find = v.find || "";
+      const replace = v.replace || "";
+      if (!find) return { error: "Enter text to find" };
+      const escaped = find.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const result = t.replace(new RegExp(escaped, "g"), replace);
+      const count = (result !== t) ? (t.match(new RegExp(escaped, "g")) || []).length : 0;
+      return { result, replacements: count };
+    },
   },
   "text-splitter": {
     fields: [
@@ -2100,6 +2187,12 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "delimiter", type: "text", label: "Delimiter", placeholder: "," },
     ],
     buttonText: "Split",
+    process: (v) => {
+      const t = v.input || "";
+      const delim = v.delimiter || ",";
+      const parts = t.split(delim).map(s => s.trim());
+      return { result: parts.join("\n"), count: parts.length, delimiter: delim };
+    },
   },
   "text-joiner": {
     fields: [
@@ -2107,6 +2200,11 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "separator", type: "text", label: "Separator", placeholder: "," },
     ],
     buttonText: "Join",
+    process: (v) => {
+      const items = v.input.trim().split("\n").filter(Boolean);
+      const sep = v.separator || ",";
+      return { result: items.join(sep), count: items.length, separator: sep };
+    },
   },
   "excerpt-generator": {
     fields: [
@@ -2114,34 +2212,116 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "length", type: "number", label: "Max characters", placeholder: "150" },
     ],
     buttonText: "Generate Excerpt",
+    process: (v) => {
+      const t = v.input || "";
+      const max = Math.max(1, parseInt(v.length) || 150);
+      if (t.length <= max) return { excerpt: t, truncated: false, length: t.length };
+      const excerpt = t.slice(0, max).replace(/\s+\S*$/, "") + "...";
+      return { excerpt, original: t.length, excerpted: excerpt.length, truncated: true };
+    },
   },
   "alphabetizer": {
     fields: [{ name: "input", type: "textarea", label: "Items (one per line)", placeholder: "banana\napple\ncherry" }],
     buttonText: "Sort A-Z",
+    process: (v) => {
+      const lines = v.input.trim().split("\n").filter(Boolean);
+      const asc = [...lines].sort((a, b) => a.localeCompare(b));
+      const desc = [...lines].sort((a, b) => b.localeCompare(a));
+      return { "sorted (A-Z)": asc.join("\n"), "sorted (Z-A)": desc.join("\n"), count: lines.length };
+    },
   },
   "palindrome-checker": {
     fields: [{ name: "input", type: "text", label: "Word or phrase", placeholder: "racecar" }],
     buttonText: "Check Palindrome",
+    process: (v) => {
+      const t = v.input || "";
+      const clean = t.toLowerCase().replace(/[^a-z0-9]/g, "");
+      const reversed = clean.split("").reverse().join("");
+      const isPal = clean === reversed && clean.length > 0;
+      return { palindrome: isPal ? "Yes" : "No", original: t, reversed: t.split("").reverse().join(""), "characters": t.length, "letters only": clean };
+    },
   },
   "anagram-finder": {
     fields: [{ name: "input", type: "text", label: "Word or phrase", placeholder: "listen" }],
     buttonText: "Find Anagrams",
+    process: (v) => {
+      const t = (v.input || "").trim();
+      if (!t) return { error: "Enter a word or phrase" };
+      const letters = t.toLowerCase().replace(/[^a-z0-9]/g, "").split("").sort().join("");
+      const permute = (str: string): string[] => {
+        if (str.length <= 1) return [str];
+        if (str.length > 7) return [];
+        const result: string[] = [];
+        const seen = new Set<string>();
+        for (let i = 0; i < str.length; i++) {
+          if (seen.has(str[i])) continue;
+          seen.add(str[i]);
+          for (const perm of permute(str.slice(0, i) + str.slice(i + 1))) {
+            result.push(str[i] + perm);
+          }
+        }
+        return result;
+      };
+      const perms = letters.length <= 7 ? permute(letters) : [];
+      return { sorted: letters, "possible anagrams": perms.length > 0 ? perms.join(", ") : "Too many combinations (enter 7 or fewer letters)", count: perms.length };
+    },
   },
   "text-to-binary": {
     fields: [{ name: "input", type: "textarea", label: "Text to convert", placeholder: "Hello" }],
     buttonText: "Convert to Binary",
+    process: (v) => {
+      const t = v.input || "";
+      const binary = Array.from(t).map(c => c.charCodeAt(0).toString(2).padStart(8, "0")).join(" ");
+      const hex = Array.from(t).map(c => c.charCodeAt(0).toString(16).padStart(2, "0")).join(" ");
+      return { binary, hex, length: t.length };
+    },
   },
   "morse-code": {
     fields: [{ name: "input", type: "text", label: "Text to convert", placeholder: "SOS" }],
     buttonText: "Convert to Morse Code",
+    process: (v) => {
+      const morse: Record<string, string> = { "A": ".-", "B": "-...", "C": "-.-.", "D": "-..", "E": ".", "F": "..-.", "G": "--.", "H": "....", "I": "..", "J": ".---", "K": "-.-", "L": ".-..", "M": "--", "N": "-.", "O": "---", "P": ".--.", "Q": "--.-", "R": ".-.", "S": "...", "T": "-", "U": "..-", "V": "...-", "W": ".--", "X": "-..-", "Y": "-.--", "Z": "--..", "0": "-----", "1": ".----", "2": "..---", "3": "...--", "4": "....-", "5": ".....", "6": "-....", "7": "--...", "8": "---..", "9": "----.", ".": ".-.-.-", ",": "--..--", "?": "..--..", "'": ".----.", "!": "-.-.--", "/": "-..-.", "(": "-.--.", ")": "-.--.-", "&": ".-...", ":": "---...", ";": "-.-.-.", "=": "-...-", "+": ".-.-.", "-": "-....-", "_": "..--.-", "\"": ".-..-.", "$": "...-..-", "@": ".--.-." };
+      const reverseMorse: Record<string, string> = {};
+      for (const [k, v2] of Object.entries(morse)) reverseMorse[v2] = k;
+      const t = (v.input || "").trim().toUpperCase();
+      const isMorse = /^[.\-\/\s]+$/.test(t);
+      if (isMorse) {
+        const decoded = t.split(/\s+/).map(s => reverseMorse[s] || (s === "/" ? " " : "?")).join("");
+        return { decoded, source: "Morse", input: t };
+      } else {
+        const encoded = t.split("").map(c => morse[c] || (c === " " ? "/" : "?")).join(" ");
+        return { encoded, source: "Text", input: t };
+      }
+    },
   },
   "pig-latin": {
     fields: [{ name: "input", type: "textarea", label: "English text", placeholder: "Hello world" }],
     buttonText: "Translate",
+    process: (v) => {
+      const t = (v.input || "").trim();
+      if (!t) return { error: "Enter text to translate" };
+      const toPig = (w: string) => {
+        const m = w.match(/^([^aeiouAEIOU]*)(.*)/);
+        if (!m || !m[1]) return w + "way";
+        const prefix = m[1], rest = m[2];
+        const isUpper = w[0] === w[0].toUpperCase() && w[0] !== w[0].toLowerCase();
+        const result = (rest + prefix.toLowerCase() + "ay");
+        return isUpper ? result[0].toUpperCase() + result.slice(1) : result;
+      };
+      const translated = t.split(/\s+/).map(toPig).join(" ");
+      return { "pig latin": translated, original: t };
+    },
   },
   "word-scrambler": {
     fields: [{ name: "input", type: "textarea", label: "Text to scramble", placeholder: "The quick brown fox" }],
     buttonText: "Scramble",
+    process: (v) => {
+      const t = v.input || "";
+      const shuffle = (s: string) => { const a = s.split(""); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a.join(""); };
+      const byWords = t.split(/\s+/).map(w => w.length > 3 ? w[0] + shuffle(w.slice(1, -1)) + w[w.length - 1] : shuffle(w)).join(" ");
+      const byChars = shuffle(t);
+      return { "scrambled (words)": byWords, "scrambled (chars)": byChars };
+    },
   },
   "text-repeater": {
     fields: [
@@ -2149,6 +2329,13 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "count", type: "number", label: "Number of times", placeholder: "5" },
     ],
     buttonText: "Repeat",
+    process: (v) => {
+      const t = v.input || "";
+      const c = Math.min(1000, Math.max(1, parseInt(v.count) || 5));
+      const lines: string[] = [];
+      for (let i = 0; i < c; i++) { lines.push(`${i + 1}. ${t}`); }
+      return { result: lines.join("\n"), count: c, text: t };
+    },
   },
   "qr-code-generator": {
     fields: [{ name: "input", type: "text", label: "Text or URL", placeholder: "https://example.com" }],

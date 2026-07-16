@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
-import { Breadcrumbs, JsonLd } from "@/components/shared";
+import { Breadcrumbs } from "@/components/shared/breadcrumbs";
+import { JsonLd } from "@/components/shared/json-ld";
 import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {

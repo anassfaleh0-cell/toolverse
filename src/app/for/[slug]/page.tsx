@@ -3,7 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getUseCaseSlugs } from "@/lib/content/programmatic-slugs";
 import { generateUseCaseContent, generateMetaForUseCase } from "@/lib/content/programmatic-content";
-import { Breadcrumbs, JsonLd, FaqSection } from "@/components/shared";
+import { Breadcrumbs } from "@/components/shared/breadcrumbs";
+import { JsonLd } from "@/components/shared/json-ld";
+import { FaqSection } from "@/components/shared/faq-section";
 import { breadcrumbSchema, faqSchema, webPageSchema } from "@/lib/seo";
 import { SITE_URL } from "@/lib/constants";
 

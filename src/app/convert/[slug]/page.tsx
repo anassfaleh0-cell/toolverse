@@ -4,7 +4,9 @@ import { notFound } from "next/navigation";
 import { getConverterSlugs } from "@/lib/content/programmatic-slugs";
 import { Icon } from "@/components/shared/icon";
 import { generateConverterContent, generateMetaForConverter } from "@/lib/content/programmatic-content";
-import { Breadcrumbs, JsonLd, FaqSection } from "@/components/shared";
+import { Breadcrumbs } from "@/components/shared/breadcrumbs";
+import { JsonLd } from "@/components/shared/json-ld";
+import { FaqSection } from "@/components/shared/faq-section";
 import { breadcrumbSchema, faqSchema, webPageSchema } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
