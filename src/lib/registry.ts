@@ -31,7 +31,7 @@ for (const t of enriched) {
   slugCounts.set(t.slug, (slugCounts.get(t.slug) || 0) + 1);
 }
 const duplicateSlugs = [...slugCounts.entries()].filter(([, c]) => c > 1);
-if (duplicateSlugs.length > 0) {
+if (duplicateSlugs.length > 0 && process.env.NODE_ENV !== "production") {
   console.warn(`[Scale Audit] Duplicate slugs found: ${duplicateSlugs.map(([s, c]) => `${s} (${c}x)`).join(", ")}`);
 }
 
@@ -143,7 +143,7 @@ export async function generateToolMetadata(tool: Tool): Promise<Metadata> {
     title: tool.name,
     description: richDescription,
     keywords: keywords ? [keywords.primary, ...keywords.secondary.slice(0, 5)].join(", ") : undefined,
-    openGraph: { title: ogTitle, description: richDescription, url: `${SITE_URL}${tool.url}` },
+    openGraph: { title: ogTitle, description: richDescription, url: `${SITE_URL}${tool.url}`, images: [{ url: `${SITE_URL}/opengraph-image` }] },
     twitter: { card: "summary_large_image", title: ogTitle, description: richDescription },
     alternates: { canonical: `${SITE_URL}${tool.url}` },
     robots: config.isComingSoon ? { index: false, follow: true } : { index: true, follow: true },
