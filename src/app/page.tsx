@@ -17,10 +17,10 @@ const ContinueReading = dynamic(() => import("@/components/shared/continue-readi
 const PopularPaths = dynamic(() => import("@/components/shared/popular-paths").then((m) => ({ default: m.PopularPaths })));
 
 export const metadata: Metadata = {
-  title: `${SITE_NAME} — ${HERO_TAGLINE}`,
-  description: SITE_DESCRIPTION,
-  openGraph: { title: `${SITE_NAME} — ${HERO_TAGLINE}`, description: SITE_DESCRIPTION, url: SITE_URL },
-  twitter: { card: "summary_large_image", title: `${SITE_NAME} — ${HERO_TAGLINE}`, description: SITE_DESCRIPTION },
+  title: `${SITE_NAME} — Free Online Tools for Developers & IT Pros`,
+  description: `${SITE_DESCRIPTION} DNS lookup, IP lookup, WHOIS, SSL checker, password generator, and 250+ more.`,
+  openGraph: { title: `${SITE_NAME} — Free Online Tools for Developers & IT Pros`, description: SITE_DESCRIPTION, url: SITE_URL },
+  twitter: { card: "summary_large_image", title: `${SITE_NAME} — Free Online Tools`, description: SITE_DESCRIPTION },
   alternates: { canonical: SITE_URL },
 };
 
@@ -28,6 +28,8 @@ const breadcrumbs = [{ label: "Home", href: SITE_URL }];
 
 const FEATURED_TOOLS = [
   { id: "dns-lookup", icon: "Globe", gradient: "from-nuvora-500 to-aurora-500", label: "Network" },
+  { id: "ip-lookup", icon: "MapPin", gradient: "from-blue-500 to-indigo-500", label: "Network" },
+  { id: "whois-lookup", icon: "Search", gradient: "from-teal-500 to-cyan-500", label: "Network" },
   { id: "merge-pdf", icon: "FileText", gradient: "from-red-500 to-rose-500", label: "PDF" },
   { id: "compress-pdf", icon: "FileArchive", gradient: "from-orange-500 to-amber-500", label: "PDF" },
   { id: "background-remover", icon: "Sparkles", gradient: "from-purple-500 to-violet-500", label: "Image" },

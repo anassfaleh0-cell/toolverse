@@ -43,8 +43,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: page.getTitle(),
       description: page.getDescription(),
       alternates: { canonical: `${SITE_URL}/${page.slug}` },
-      openGraph: { title: page.getTitle(), description: page.getDescription(), url: `${SITE_URL}/${page.slug}`, images: [{ url: `${SITE_URL}/opengraph-image` }] },
-      twitter: { card: "summary_large_image", title: page.getTitle(), description: page.getDescription() },
+      openGraph: { title: page.getTitle(), description: page.getDescription(), url: `${SITE_URL}/${page.slug}`, images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630 }] },
+      twitter: { card: "summary_large_image", title: page.getTitle(), description: page.getDescription(), images: [`${SITE_URL}/opengraph-image`] },
     };
   }
   const tool = getToolBySlug(slug);

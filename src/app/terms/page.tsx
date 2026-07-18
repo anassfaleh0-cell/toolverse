@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { SITE_URL } from "@/lib/constants";
+import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import { Breadcrumbs, JsonLd } from "@/components/shared";
 import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Terms of Service",
-  description: "Nuvora Terms of Service â€” rules, disclaimers, and acceptable use for our free online tools and content.",
-  openGraph: { title: "Terms of Service", description: "Nuvora Terms of Service & acceptable use policy.", url: `${SITE_URL}/terms` },
-  twitter: { card: "summary_large_image", title: "Terms of Service", description: "Nuvora Terms of Service & acceptable use policy." },
+  title: `Terms of Service — ${SITE_NAME} Free Online Tools`,
+  description: `${SITE_NAME} Terms of Service — rules, disclaimers, and acceptable use for our free online tools, guides, and content.`,
+  openGraph: { title: `Terms of Service — ${SITE_NAME}`, description: `${SITE_NAME} Terms of Service & acceptable use policy.`, url: `${SITE_URL}/terms` },
+  twitter: { card: "summary_large_image", title: `Terms of Service — ${SITE_NAME}`, description: `${SITE_NAME} Terms of Service & acceptable use policy.` },
   alternates: { canonical: `${SITE_URL}/terms` },
 };
 

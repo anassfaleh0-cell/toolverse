@@ -61,6 +61,7 @@ export const metadata: Metadata = {
     "perplexity-allow": "all",
     "reddit:title": SITE_NAME,
     "reddit:description": SITE_DESCRIPTION,
+
   },
   manifest: "/manifest.webmanifest",
   appleWebApp: {
@@ -102,6 +103,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           </>
         )}
         <link rel="dns-prefetch" href="https://www.googletagservices.com" />
+        <meta property="og:image" content={`${SITE_URL}/og-image.svg`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/svg+xml" />
+        <meta name="twitter:image" content={`${SITE_URL}/og-image.svg`} />
+        <meta name="twitter:image:width" content="1200" />
+        <meta name="twitter:image:height" content="630" />
+        <meta name="twitter:image:type" content="image/svg+xml" />
       </head>
       <body className="flex min-h-screen flex-col bg-background font-sans antialiased">
         <ThemeProvider>

@@ -118,7 +118,7 @@ const TYPE_ROUTE_MAP: Record<string, string> = {
 };
 
 export function getSitemapPaths(): string[] {
-  const contentPaths = ALL_CONTENT.map(
+  const contentPaths = ALL_CONTENT.filter((c) => !c.noindex).map(
     (c) => `/${TYPE_ROUTE_MAP[c.type] ?? c.type}/${c.slug}`,
   );
   return [

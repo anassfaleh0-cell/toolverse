@@ -9,10 +9,10 @@ import { getAllContent } from "@/lib/content/registry";
 import { AUTHORS } from "@/lib/content/authors";
 
 export const metadata: Metadata = {
-  title: `About Nuvora — Editorial Standards & Mission`,
-  description: `Learn about ${SITE_NAME}'s editorial policy, content methodology, accuracy standards, and how we research and test every tool and guide.`,
-  openGraph: { title: `About Nuvora`, description: `${SITE_NAME} is a free online platform providing network diagnostic tools, security checkers, and educational content.`, url: `${SITE_URL}/about` },
-  twitter: { card: "summary_large_image", title: `About Nuvora`, description: `${SITE_NAME} is a free online platform providing network diagnostic tools.` },
+  title: `About ${SITE_NAME} — Free Online Tools & Editorial Standards`,
+  description: `Learn about ${SITE_NAME}'s editorial standards, testing methodology, and data sources. 255+ free online tools with verified accuracy and privacy-first design.`,
+  openGraph: { title: `About ${SITE_NAME} — Free Online Tools`, description: `${SITE_NAME} provides free online tools and expert guides for developers, IT pros, and webmasters.`, url: `${SITE_URL}/about` },
+  twitter: { card: "summary_large_image", title: `About ${SITE_NAME}`, description: `Free online tools and expert guides from ${SITE_NAME}.` },
   alternates: { canonical: `${SITE_URL}/about` },
 };
 

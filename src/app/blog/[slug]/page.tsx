@@ -31,7 +31,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: piece.title,
       description: piece.description,
+      images: [`${SITE_URL}/og-image.svg`],
     },
+
     alternates: { canonical: `${SITE_URL}/blog/${slug}` },
   };
 }

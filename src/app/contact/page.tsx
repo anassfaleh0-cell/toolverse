@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { SITE_URL } from "@/lib/constants";
+import { SITE_URL, SITE_NAME } from "@/lib/constants";
 import { Breadcrumbs, JsonLd } from "@/components/shared";
 import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 import type { Thing, WithContext } from "schema-dts";
 import { ContactForm } from "@/components/contact-form";
 
 export const metadata: Metadata = {
-  title: "Contact Us â€” Nuvora",
-  description: "Get in touch with the Nuvora team. Send feedback, report issues, or suggest new tools. Email: hello@nuvora.dev.",
-  openGraph: { title: "Contact Us â€” Nuvora", description: "Get in touch with the Nuvora team. Send feedback, report issues, or suggest new tools.", url: `${SITE_URL}/contact` },
-  twitter: { card: "summary_large_image", title: "Contact Us â€” Nuvora", description: "Get in touch with the Nuvora team." },
+  title: `Contact Us — ${SITE_NAME} Free Online Tools`,
+  description: `Contact the ${SITE_NAME} team. Report issues, suggest new tools, or send feedback. Email: hello@nuvora.dev. We respond within 2 business days.`,
+  openGraph: { title: `Contact Us — ${SITE_NAME}`, description: `Get in touch with the ${SITE_NAME} team. Send feedback, report issues, or suggest new tools.`, url: `${SITE_URL}/contact` },
+  twitter: { card: "summary_large_image", title: `Contact Us — ${SITE_NAME}`, description: `Contact the ${SITE_NAME} team for support and feedback.` },
   alternates: { canonical: `${SITE_URL}/contact` },
 };
 

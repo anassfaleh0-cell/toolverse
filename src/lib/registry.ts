@@ -134,17 +134,18 @@ const CTA_BY_CATEGORY: Record<string, string> = {
 export async function generateToolMetadata(tool: Tool): Promise<Metadata> {
   const keywords = (await getToolKeywords())[tool.slug];
   const cta = CTA_BY_CATEGORY[tool.category] || "Free online tool. No signup, no tracking.";
-  const richDescription = keywords
+  const rawDesc = keywords
     ? `Free ${keywords.primary} tool. ${tool.description} ${keywords.secondary.slice(0, 3).join(", ")}. ${cta}`
     : tool.description;
+  const description = rawDesc.length > 160 ? rawDesc.slice(0, 157) + "..." : rawDesc;
   const ogTitle = `${tool.name} - ${SITE_NAME}`;
   const config = getToolConfig(tool.slug);
   return {
-    title: tool.name,
-    description: richDescription,
+    title: `${tool.name} — ${SITE_NAME}`,
+    description,
     keywords: keywords ? [keywords.primary, ...keywords.secondary.slice(0, 5)].join(", ") : undefined,
-    openGraph: { title: ogTitle, description: richDescription, url: `${SITE_URL}${tool.url}`, images: [{ url: `${SITE_URL}/opengraph-image` }] },
-    twitter: { card: "summary_large_image", title: ogTitle, description: richDescription },
+    openGraph: { title: ogTitle, description, url: `${SITE_URL}${tool.url}`, images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630 }] },
+    twitter: { card: "summary_large_image", title: ogTitle, description, images: [`${SITE_URL}/opengraph-image`] },
     alternates: { canonical: `${SITE_URL}${tool.url}` },
     robots: config.isComingSoon ? { index: false, follow: true } : { index: true, follow: true },
   };
@@ -217,10 +218,8 @@ export function generateCategoryBreadcrumbs(category: Category) {
 }
 
 export const SITEMAP_PATHS = [
-  ...enriched.filter((t) => t.url.startsWith("/")).map((t) => t.url),
   "/tools",
   "/categories",
-  ...CATEGORIES.map((c) => `/category/${c.slug}`),
   "/about",
   "/contact",
   "/privacy",

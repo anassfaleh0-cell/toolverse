@@ -24,6 +24,7 @@ export interface ToolConfig {
   asyncProcess?: AsyncProcessFn;
   howTo?: { action: string; desc: string }[];
   isComingSoon?: boolean;
+  warning?: string;
 }
 
 const CLIENT_TOOLS: Record<string, (v: Record<string, string>) => Record<string, unknown>> = {
@@ -179,6 +180,126 @@ const CLIENT_TOOLS: Record<string, (v: Record<string, string>) => Record<string,
       else { d.innerHTML = t; return d.value || d.textContent || ""; }
     };
     return { encoded: div(v.input, true), decoded: div(v.input, false) };
+  },
+  "html-minifier": (v) => {
+    const html = v.input || ""; if (!html.trim()) return { error: "Enter HTML to minify" };
+    const orig = html.length;
+    const out = html.replace(/<!--[\s\S]*?-->/g, "").replace(/>\s+</g, "><").replace(/\s{2,}/g, " ").trim();
+    return { minified: out, "Original": `${orig} chars`, "Minified": `${out.length} chars`, "Saved": `${orig - out.length} chars (${orig ? Math.round((1 - out.length / orig) * 100) : 0}%)` };
+  },
+  "css-minifier": (v) => {
+    let css = v.input || ""; if (!css.trim()) return { error: "Enter CSS to minify" };
+    const orig = css.length;
+    css = css.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\s+/g, " ").replace(/\s*([{}:;,])\s*/g, "$1").replace(/;}/g, "}").trim();
+    return { minified: css, "Original": `${orig} chars`, "Minified": `${css.length} chars`, "Saved": `${orig - css.length} chars (${orig ? Math.round((1 - css.length / orig) * 100) : 0}%)` };
+  },
+  "js-minifier": (v) => {
+    let js = v.input || ""; if (!js.trim()) return { error: "Enter JavaScript to minify" };
+    const orig = js.length;
+    js = js.replace(/\/\/.*$/gm, "").replace(/\/\*[\s\S]*?\*\//g, "").replace(/\s+/g, " ").replace(/\s*([{}();,:=+\-*/%!<>&|^~?])\s*/g, "$1").replace(/;}/g, "}").trim();
+    if (!js) return { error: "No valid JavaScript to minify (all content was comments)" };
+    return { minified: js, "Original": `${orig} chars`, "Minified": `${js.length} chars`, "Saved": `${orig - js.length} chars (${orig ? Math.round((1 - js.length / orig) * 100) : 0}%)` };
+  },
+  "css-prefixer": (v) => {
+    const css = v.input || ""; if (!css.trim()) return { error: "Enter CSS to prefix" };
+    const props = ["transform","transform-origin","transition","animation","animation-name","border-radius","box-shadow","box-sizing","user-select","appearance","backdrop-filter","filter","column-count","column-gap","text-shadow"];
+    const prefs = ["-webkit-","-moz-","-ms-","-o-"];
+    let out = css;
+    out = out.replace(/@keyframes\s+/g, "@-webkit-keyframes ");
+    for (const p of props) {
+      const re = new RegExp(`(?<!-)${p}\\s*:`, "gi");
+      out = out.replace(re, (m) => prefs.map(pr => pr + m).join(";") + ";" + m);
+    }
+    out = out.replace(/display\s*:\s*flex\b/gi, "display:-webkit-flex;display:-ms-flexbox;display:flex");
+    out = out.replace(/display\s*:\s*inline-flex\b/gi, "display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex");
+    return { prefixed: out, "Note": "Vendor prefixes added for WebKit, Mozilla, Microsoft, and Opera" };
+  },
+  "js-beautifier": (v) => {
+    let js = v.input || ""; if (!js.trim()) return { error: "Enter JavaScript to beautify" };
+    js = js.replace(/\r\n/g, "\n").replace(/;/g, ";\n").replace(/{/g, "{\n").replace(/}/g, "\n}").replace(/,/g, ", ");
+    let indent = 0;
+    const result: string[] = [];
+    for (const line of js.split("\n").map(l => l.trim()).filter(l => l)) {
+      if (/^[})\]]/.test(line)) indent = Math.max(0, indent - 1);
+      result.push("  ".repeat(indent) + line);
+      if (/[{\[(]$/.test(line)) indent++;
+    }
+    return { beautified: result.join("\n") };
+  },
+  "html-to-markdown": (v) => {
+    let md = v.input || ""; if (!md.trim()) return { error: "Enter HTML to convert" };
+    const orig = md.length;
+    md = md.replace(/<h1[^>]*>(.*?)<\/h1>/gi, "# $1\n\n").replace(/<h2[^>]*>(.*?)<\/h2>/gi, "## $1\n\n");
+    md = md.replace(/<h3[^>]*>(.*?)<\/h3>/gi, "### $1\n\n").replace(/<h4[^>]*>(.*?)<\/h4>/gi, "#### $1\n\n");
+    md = md.replace(/<h5[^>]*>(.*?)<\/h5>/gi, "##### $1\n\n").replace(/<h6[^>]*>(.*?)<\/h6>/gi, "###### $1\n\n");
+    md = md.replace(/<(strong|b)[^>]*>(.*?)<\/\1>/gi, "**$2**").replace(/<(em|i)[^>]*>(.*?)<\/\1>/gi, "*$2*");
+    md = md.replace(/<a\s+(?:[^>]*?\s+)?href="([^"]*)"[^>]*>(.*?)<\/a>/gi, "[$2]($1)");
+    md = md.replace(/<img[^>]*src="([^"]*)"[^>]*alt="([^"]*)"[^>]*\/?>/gi, "![$2]($1)");
+    md = md.replace(/<br\s*\/?>/gi, "\n").replace(/<hr\s*\/?>/gi, "\n---\n");
+    md = md.replace(/<li[^>]*>(.*?)<\/li>/gi, "- $1");
+    md = md.replace(/<p[^>]*>(.*?)<\/p>/gi, "$1\n\n").replace(/<code[^>]*>(.*?)<\/code>/gi, "`$1`");
+    md = md.replace(/<pre[^>]*>([\s\S]*?)<\/pre>/gi, "```\n$1\n```").replace(/<blockquote[^>]*>([\s\S]*?)<\/blockquote>/gi, "> $1\n\n");
+    md = md.replace(/<[^>]*>/g, "").replace(/\n{3,}/g, "\n\n").trim();
+    return { markdown: md, "HTML": `${orig} chars`, "Markdown": `${md.length} chars` };
+  },
+  "sql-formatter": (v) => {
+    let sql = v.input || ""; if (!sql.trim()) return { error: "Enter SQL to format" };
+    const kws = ["SELECT","FROM","WHERE","AND","OR","ORDER BY","GROUP BY","HAVING","LIMIT","OFFSET","JOIN","LEFT JOIN","RIGHT JOIN","INNER JOIN","OUTER JOIN","CROSS JOIN","ON","INTO","VALUES","SET","UPDATE","DELETE","INSERT","CREATE","ALTER","DROP","TABLE","INDEX","VIEW","AS","DISTINCT","UNION","ALL","NOT","IN","BETWEEN","LIKE","IS","NULL","ASC","DESC"];
+    sql = sql.replace(/\s+/g, " ");
+    for (const kw of kws) sql = sql.replace(new RegExp(`\\b${kw}\\b`, "gi"), `\n${kw}`);
+    const lines = sql.split("\n").map(l => l.trim()).filter(Boolean);
+    let indent = 0; const result: string[] = [];
+    for (const line of lines) {
+      const u = line.toUpperCase();
+      if (/^(SELECT|INSERT|UPDATE|DELETE|CREATE|ALTER|DROP)/.test(u)) indent = 0;
+      else if (/^(FROM|WHERE|ORDER BY|GROUP BY|HAVING|LIMIT|OFFSET)/.test(u)) indent = 0;
+      else if (/^(AND|OR)/.test(u)) indent = 1;
+      result.push("  ".repeat(indent) + line);
+    }
+    return { formatted: result.join("\n") };
+  },
+  "qr-code-generator": (v) => {
+    const data = v.input?.trim();
+    if (!data) return { error: "Enter text or URL to encode" };
+    const url = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(data)}`;
+    return { "QR Code": `__image__:${url}`, "Encoded Data": data };
+  },
+  "text-diff-checker": (v) => {
+    const t1 = v.text1 || ""; const t2 = v.text2 || "";
+    if (!t1 && !t2) return { error: "Enter both text versions to compare" };
+    const a = t1.split("\n"); const b = t2.split("\n"); const max = Math.max(a.length, b.length);
+    const lines: string[] = []; let adds = 0; let rems = 0;
+    for (let i = 0; i < max; i++) {
+      if (a[i] !== b[i]) {
+        if (a[i] != null) { lines.push(`- ${a[i]}`); rems++; }
+        if (b[i] != null) { lines.push(`+ ${b[i]}`); adds++; }
+      }
+    }
+    if (!adds && !rems) return { "Result": "Texts are identical", "Lines Compared": a.length };
+    return { diff: lines.join("\n"), "Summary": `${rems} removed, ${adds} added` };
+  },
+  "xss-scanner": (v) => {
+    const input = v.input || ""; if (!input.trim()) return { error: "Enter HTML or URL to scan" };
+    const patterns: { p: RegExp; l: string; s: string }[] = [
+      { p: /<script[\s>]/gi, l: "Inline <script> tag", s: "Critical" },
+      { p: /javascript:\s*/gi, l: "javascript: URL scheme", s: "Critical" },
+      { p: /on\w+\s*=\s*["']?[^"'\s>]+/gi, l: "Inline event handler", s: "Critical" },
+      { p: /<iframe[\s>]/gi, l: "<iframe> embed", s: "High" },
+      { p: /<embed[\s>]/gi, l: "<embed> tag", s: "High" },
+      { p: /<object[\s>]/gi, l: "<object> tag", s: "High" },
+      { p: /<svg[\s>]/gi, l: "<svg> XSS vector", s: "Medium" },
+      { p: /alert\(|prompt\(|confirm\(/gi, l: "JS popup function", s: "Medium" },
+      { p: /eval\s*\(/gi, l: "eval() execution", s: "Critical" },
+      { p: /document\.cookie/gi, l: "Cookie access", s: "Medium" },
+      { p: /data:\s*text\/html/gi, l: "data: HTML URI", s: "High" },
+      { p: /<base[\s>]/gi, l: "<base> hijack vector", s: "Low" },
+    ];
+    const found = patterns.filter(({ p }) => p.test(input));
+    if (!found.length) return { "Verdict": "No XSS patterns detected", "Severity": "Safe" };
+    const sev = { Critical: 0, High: 0, Medium: 0, Low: 0 };
+    found.forEach(f => sev[f.s as keyof typeof sev]++);
+    const ov = sev.Critical > 0 ? "Critical" : sev.High > 0 ? "High" : sev.Medium > 0 ? "Medium" : "Low";
+    return { "Verdict": `${found.length} pattern${found.length > 1 ? "s" : ""} detected`, "Severity": ov, "Findings": found.map(f => `[${f.s}] ${f.l}`).join("\n") };
   },
 };
 
@@ -1844,7 +1965,14 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "speed-test": {
     fields: [],
     buttonText: "Start Test",
-    isComingSoon: true,
+    asyncProcess: async () => {
+      const start = performance.now();
+      try {
+        const res = await fetch("https://www.google.com/favicon.ico", { mode: "no-cors" });
+        const elapsed = Math.round(performance.now() - start);
+        return { "Latency": `${elapsed}ms`, "Status": res.status || "OK", "Note": "Simple latency test via no-cors fetch. For bandwidth testing, use a dedicated speed test service." };
+      } catch { return { error: "Speed test failed. Check your network connection." }; }
+    },
   },
   "spf-lookup": {
     fields: [{ name: "input", type: "text", label: "Domain name", placeholder: "example.com" }],
@@ -2030,17 +2158,17 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "html-minifier": {
     fields: [{ name: "input", type: "textarea", label: "HTML code", placeholder: "<html>\n<body>\n  <p>Hello</p>\n</body>\n</html>" }],
     buttonText: "Minify",
-    isComingSoon: true,
+    process: CLIENT_TOOLS["html-minifier"],
   },
   "css-minifier": {
     fields: [{ name: "input", type: "textarea", label: "CSS code", placeholder: "body {\n  color: red;\n}" }],
     buttonText: "Minify",
-    isComingSoon: true,
+    process: CLIENT_TOOLS["css-minifier"],
   },
   "js-minifier": {
     fields: [{ name: "input", type: "textarea", label: "JavaScript code", placeholder: "function hello() {\n  return 'world';\n}" }],
     buttonText: "Minify",
-    isComingSoon: true,
+    process: CLIENT_TOOLS["js-minifier"],
   },
   "number-base-converter": {
     fields: [
@@ -2152,12 +2280,12 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "css-prefixer": {
     fields: [{ name: "input", type: "textarea", label: "CSS code", placeholder: ".box { display: flex; }" }],
     buttonText: "Add Prefixes",
-    isComingSoon: true,
+    process: CLIENT_TOOLS["css-prefixer"],
   },
   "js-beautifier": {
     fields: [{ name: "input", type: "textarea", label: "JavaScript code", placeholder: "function test(){return 1;}" }],
     buttonText: "Beautify JS",
-    isComingSoon: true,
+    process: CLIENT_TOOLS["js-beautifier"],
   },
   "json-to-typescript": {
     fields: [{ name: "input", type: "textarea", label: "JSON object", placeholder: '{\n  "name": "John",\n  "age": 30\n}' }],
@@ -2351,7 +2479,7 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "html-to-markdown": {
     fields: [{ name: "input", type: "textarea", label: "HTML", placeholder: "<h1>Hello</h1><p>This is <strong>bold</strong> text.</p>" }],
     buttonText: "Convert to Markdown",
-    isComingSoon: true,
+    process: CLIENT_TOOLS["html-to-markdown"],
   },
   "rgb-to-hex": {
     fields: [
@@ -2420,7 +2548,7 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "sql-formatter": {
     fields: [{ name: "input", type: "textarea", label: "SQL query", placeholder: "SELECT * FROM users WHERE id = 1" }],
     buttonText: "Format SQL",
-    isComingSoon: true,
+    process: CLIENT_TOOLS["sql-formatter"],
   },
   "json-path-search": {
     fields: [
@@ -2712,7 +2840,7 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "qr-code-generator": {
     fields: [{ name: "input", type: "text", label: "Text or URL", placeholder: "https://example.com" }],
     buttonText: "Generate QR Code",
-    isComingSoon: true,
+    process: CLIENT_TOOLS["qr-code-generator"],
   },
   "css-gradient-generator": {
     fields: [
@@ -3178,7 +3306,7 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       { name: "text2", type: "textarea", label: "Modified text", placeholder: "Second version of text..." },
     ],
     buttonText: "Compare",
-    isComingSoon: true,
+    process: CLIENT_TOOLS["text-diff-checker"],
   },
   "random-number-generator": {
     fields: [
@@ -3368,7 +3496,24 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
       ]},
     ],
     buttonText: "Convert",
-    isComingSoon: true,
+    asyncProcess: async (v) => {
+      const amount = parseFloat(v.amount) || 1;
+      const from = v.from || "BTC"; const to = v.to || "USD";
+      try {
+        const res = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd");
+        if (!res.ok) {
+          if (res.status === 429) return { error: "CoinGecko rate limit reached. Please wait a moment and try again." };
+          return { error: `CoinGecko API error: ${res.status}. Try again later.` };
+        }
+        const data = await res.json();
+        const rates: Record<string, number> = { BTC: data.bitcoin?.usd || 0, ETH: data.ethereum?.usd || 0, USD: 1 };
+        const fRate = rates[from]; const tRate = rates[to];
+        if (!fRate || !tRate) return { error: "Rate unavailable for selected currencies" };
+        const result = amount * fRate / tRate;
+        const fmt = result >= 1000 ? result.toLocaleString(undefined, { maximumFractionDigits: 2 }) : result.toFixed(from === "USD" ? 8 : 4);
+        return { "Result": `${fmt} ${to}`, "Amount": `${amount} ${from}`, "Rate": `1 ${from} = ${(fRate / tRate).toFixed(6)} ${to}` };
+      } catch { return { error: "Failed to connect to CoinGecko. Check your network." }; }
+    },
   },
   "currency-converter": {
     fields: [
@@ -3503,7 +3648,7 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
     },
   },
   "data-breach-checker": {
-    fields: [{ name: "input", type: "text", label: "Email address", placeholder: "user@example.com" }],
+    fields: [],
     buttonText: "Check Breaches",
     isComingSoon: true,
   },
@@ -3515,7 +3660,8 @@ const CHECKER_CONFIGS: Record<string, ToolConfig> = {
   "xss-scanner": {
     fields: [{ name: "input", type: "textarea", label: "HTML or URL to scan", placeholder: "<script>alert('xss')</script>" }],
     buttonText: "Scan",
-    isComingSoon: true,
+    process: CLIENT_TOOLS["xss-scanner"],
+    warning: "Only use this tool to test websites you own or have explicit permission to test. Unauthorized scanning of third-party websites may violate local laws and is prohibited.",
   },
   "cors-checker": {
     fields: [{ name: "input", type: "text", label: "URL to test", placeholder: "https://api.example.com" }],

@@ -244,6 +244,14 @@ export function ToolComponent({ slug }: ToolComponentProps) {
 
   return (
     <div className="mx-auto max-w-3xl">
+      {config.warning && (
+        <div className="mb-6 rounded-lg border-2 border-amber-300 bg-amber-50 p-4 dark:border-amber-700 dark:bg-amber-900/20">
+          <div className="flex items-start gap-3">
+            <svg className="mt-0.5 size-5 shrink-0 text-amber-600 dark:text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" /><line x1="12" y1="9" x2="12" y2="13" /><line x1="12" y1="17" x2="12.01" y2="17" /></svg>
+            <p className="text-sm font-medium text-amber-800 dark:text-amber-300">{config.warning}</p>
+          </div>
+        </div>
+      )}
       <form onSubmit={handleSubmit} className="space-y-4">
         {hasFields ? (
           config.fields.map((field) => (

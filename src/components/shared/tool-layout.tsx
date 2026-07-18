@@ -132,7 +132,7 @@ export function ToolLayout({ children, toolSlug, useCases, relatedToolSlugs }: T
             <section className="mt-10 mb-8 rounded-xl border border-border-subtle bg-surface-secondary/50 p-5">
               <h2 className="text-base font-bold text-text-primary mb-2">What is {tool.name}?</h2>
               <p className="text-sm leading-relaxed text-text-secondary">
-                {tool.description} All processing happens directly in your browser — no data is uploaded to any server. {tool.name} is designed to be fast, private, and easy to use.
+                {tool.description} {tool.category === "security" ? "Your data stays on your device — nothing is sent to any server." : tool.category === "image-design" || tool.category === "audio-video" ? "All file processing happens locally in your browser. No uploads, no servers, no privacy concerns." : tool.category === "network-internet" ? "Queries are made through encrypted API endpoints. No logs are kept and no data is stored." : "All processing happens directly in your browser — no data is uploaded to any server."} {tool.name} is designed to be fast, private, and easy to use.
               </p>
             </section>
 

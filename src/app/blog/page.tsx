@@ -6,10 +6,10 @@ import { Breadcrumbs, JsonLd } from "@/components/shared";
 import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `Blog`,
-  description: `Expert guides and articles about SEO tools, DNS management, developer tools, AI tools, calculators, and webmaster resources. ${SITE_DESCRIPTION}`,
-  openGraph: { title: `Blog`, description: `Expert guides and articles about SEO tools, DNS management, developer tools, AI tools, calculators, and webmaster resources.`, url: `${SITE_URL}/blog` },
-  twitter: { card: "summary_large_image", title: `Blog`, description: `Expert guides about SEO, DNS, developer tools, AI, and calculators.` },
+  title: `Blog — Expert Guides & Articles — ${SITE_NAME}`,
+  description: `Expert guides about DNS management, SEO tools, developer utilities, AI tools, and webmaster resources. Learn from in-depth articles and tutorials.`,
+  openGraph: { title: `Blog — Expert Guides & Articles — ${SITE_NAME}`, description: `Expert guides about DNS management, SEO tools, developer utilities, AI tools, and webmaster resources.`, url: `${SITE_URL}/blog` },
+  twitter: { card: "summary_large_image", title: `Blog — Expert Guides & Articles — ${SITE_NAME}`, description: `Expert guides about DNS, SEO, developer tools, and AI.` },
   alternates: { canonical: `${SITE_URL}/blog` },
 };
 

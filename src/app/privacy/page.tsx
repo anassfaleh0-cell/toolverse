@@ -5,8 +5,8 @@ import { Breadcrumbs, JsonLd } from "@/components/shared";
 import { breadcrumbSchema, webPageSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `Privacy Policy — ${SITE_NAME}`,
-  description: `${SITE_NAME} Privacy Policy. Learn how we protect your data, what information we collect, and your rights regarding your personal information when using our free online tools.`,
+  title: `Privacy Policy — Free Online Tools Privacy — ${SITE_NAME}`,
+  description: `Read how ${SITE_NAME} protects your privacy. No tracking, no data storage, no signup required. Learn about our data collection practices and your rights.`,
   openGraph: { title: `Privacy Policy — ${SITE_NAME}`, description: `${SITE_NAME} Privacy Policy — data collection, usage, and protection.`, url: `${SITE_URL}/privacy` },
   twitter: { card: "summary_large_image", title: `Privacy Policy — ${SITE_NAME}`, description: `${SITE_NAME} Privacy Policy — data collection and protection.` },
   alternates: { canonical: `${SITE_URL}/privacy` },
@@ -112,6 +112,8 @@ export default function Privacy() {
               <li><strong>Vercel:</strong> Website hosting and deployment</li>
               <li><strong>Plausible:</strong> Privacy-focused analytics (no cookies)</li>
               <li><strong>Google AdSense:</strong> Contextual and personalized advertising</li>
+              <li><strong>ip-api.com:</strong> IP geolocation and network provider data (used by IP Lookup and WHOIS tools)</li>
+              <li><strong>CoinGecko:</strong> Cryptocurrency exchange rate data (used by the Crypto Converter tool)</li>
             </ul>
             <p className="mt-2">
               We do not sell, trade, or rent your personal information to third parties.
